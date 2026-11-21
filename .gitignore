@@ -1,0 +1,4 @@
+sfx/
+__pycache__/
+*.png
+*.mp4
