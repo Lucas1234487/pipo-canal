@@ -29,9 +29,10 @@ Todos de https://opengameart.org, baixados só quando a página dizia CC0 1.0 (o
 | sfx/fire-crackling | fogo crepitando | antumdeluge |
 | sfx/rain-long-thunder | chuva com trovão | wuxiascrub |
 | sfx/heartbeat-sounds | batimento lento e rápido | bart |
+| sfx/3-pop-sounds, sfx/pop-sounds, sfx/pop-effect-sounds, sfx/a-slide-pop-sound | estouros (pop) para a Pipo | wubitog, cogitollc, trezegames, ezduzziteh |
 | musica/adventure-intro-title-cinematic-epic | abertura épica | nene |
 | musica/cinematic-percussion-loop | percussão cinematográfica em loop | marwan-antonios |
 | musica/cc0-mystery | mistério / exploração | polygondan |
 | musica/a-mystery-travel | mistério leve | cybersoft |
 
-Páginas recusadas por não serem CC0 (não usar sem crédito): cracking-sounds, long-deep-impact, big-low-frequency-explosion-boom, robot-scanning-area, breeze, 6-monstrous-growls, cinematic-ending-music, cinematic-intro-soundtrack, cinematic-strings-trailer, cinematic-trailer-music, mystery, high-tension, distant-horizon.
+Páginas recusadas por não serem CC0 (não usar sem crédito): bubble-pop, cork, cracking-sounds, long-deep-impact, big-low-frequency-explosion-boom, robot-scanning-area, breeze, 6-monstrous-growls, cinematic-ending-music, cinematic-intro-soundtrack, cinematic-strings-trailer, cinematic-trailer-music, mystery, high-tension, distant-horizon.

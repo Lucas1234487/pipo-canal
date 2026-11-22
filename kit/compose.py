@@ -1,6 +1,8 @@
 """Monta o MP4 final: quadros 3D (WORK/frames) + legenda karaoke + pilulas de texto + narracao + trilha + efeitos.
 Uso: python3 compose.py WORK [lang] [saida.mp4]
-Precisa de WORK/timing[_lang].json, WORK/events.json, quadros WORK/frames/fNNNN.png e KIT/sfx/*.wav (gerados por sfx_procedural.py).
+Precisa de WORK/timing[_lang].json, WORK/events.json e quadros WORK/frames/fNNNN.png.
+Som (22/11/2026): events sfx/music aceitam 'assets/sfx/...' (CC0, ver assets/LICENCAS.md) em qualquer formato,
+e recortes [arquivo, inicio_s, dur_s, fade_s]. 'shot_whoosh': arquivo ou null. Os .wav de kit/sfx/ (procedurais) foram reprovados pelo Lucas.
 Pilulas por idioma: events["pills"] (PT) e events["pills_en"] (EN), se existir.
 """
 import json, subprocess, wave, sys, os, numpy as np
@@ -97,15 +99,40 @@ TT = N / FPS
 out = np.zeros(int(TT * SR) + SR)
 
 
+REPO = os.path.dirname(KIT)
+
+
+SFX = KIT + "/sfx/"
+
+
+def resolve(name):
+    """'assets/...' = relativo ao repositorio; caminho absoluto = como esta; senao = kit/sfx/ (procedural antigo)."""
+    if os.path.isabs(name):
+        return name
+    if name.startswith("assets/"):
+        return os.path.join(REPO, name)
+    return SFX + name
+
+
 def rd(p):
-    w = wave.open(p)
-    a = np.frombuffer(w.readframes(w.getnframes()), np.int16).astype(float) / 32768
-    if w.getnchannels() == 2:
-        a = a.reshape(-1, 2).mean(1)
-    sr = w.getframerate()
-    if sr != SR:
-        a = np.interp(np.arange(0, len(a), sr / SR), np.arange(len(a)), a)
-    return a
+    """Le qualquer audio (wav 16/24/32 bit, ogg, mp3, flac) como mono float no SR do projeto, via ffmpeg."""
+    r = subprocess.run(["ffmpeg", "-v", "error", "-i", p, "-f", "s16le", "-ac", "1", "-ar", str(SR), "-"], capture_output=True)
+    if r.returncode != 0 or not r.stdout:
+        raise RuntimeError("audio ilegivel: %s %s" % (p, r.stderr[-200:]))
+    return np.frombuffer(r.stdout, np.int16).astype(float) / 32768
+
+
+def rd_cut(spec):
+    """spec = nome | [nome, inicio_s, dur_s, fade_s]: recorta um trecho de um arquivo longo (ex.: rugido dentro de um pacote)."""
+    if isinstance(spec, str):
+        return rd(resolve(spec))
+    name, a, d = spec[0], spec[1], spec[2]
+    fd = spec[3] if len(spec) > 3 else 0.05
+    x = rd(resolve(name))[int(a * SR):int((a + d) * SR)].copy()
+    n = max(1, int(fd * SR))
+    if len(x) > 2 * n:
+        x[:n] *= np.linspace(0, 1, n); x[-n:] *= np.linspace(1, 0, n)
+    return x
 
 
 def add(a, t, g=1.0):
@@ -113,14 +140,15 @@ def add(a, t, g=1.0):
     out[s:e] += a[:e - s] * g
 
 
-SFX = KIT + "/sfx/"
 voice = np.zeros_like(out)
 for l in T["lines"]:
     a = rd(f"{T['aud']}/l{l['i']}.wav")
     a = a / (np.abs(a).max() + 1e-9) * 0.8
     s = int(l["start"] * SR)
     voice[s:s + len(a)] += a[:len(voice) - s]
-mus = rd(SFX + E.get("music", "trilha_leve_96bpm.wav"))
+mus = rd_cut(E.get("music", "trilha_leve_96bpm.wav"))
+if E.get("music_offset"):
+    mus = mus[int(E["music_offset"] * SR):]
 bed = np.tile(mus, int(np.ceil(len(out) / len(mus))))[:len(out)]
 k = int(0.25 * SR)
 env = np.convolve(np.abs(voice), np.ones(k) / k, mode="same")
@@ -133,11 +161,14 @@ for a, b in (E.get("music_gaps") or ([E["music_gap"]] if E.get("music_gap") else
 gate = np.convolve(gate, np.ones(480) / 480, mode="same")
 out += bed * duck * gate + voice
 pop_t = f2t(E["f_pop"]) if E.get("f_pop") else -9
-for fr in E["shots"][1:]:
-    if abs(f2t(fr) - pop_t) > 0.2:
-        add(rd(SFX + "whoosh.wav"), f2t(fr) - 0.12, 0.25)
+SW = E.get("shot_whoosh", "whoosh.wav")      # null = sem whoosh automatico nos cortes
+if SW:
+    sw = rd_cut(SW)
+    for fr in E["shots"][1:]:
+        if abs(f2t(fr) - pop_t) > 0.2:
+            add(sw, f2t(fr) - 0.12, E.get("shot_whoosh_gain", 0.25))
 for name, t, g in E.get("sfx", []):
-    add(rd(SFX + name), t, g)
+    add(rd_cut(name), t, g)
 out = out[:int(TT * SR)]
 out = out / (np.abs(out).max() + 1e-9) * 0.9
 mixp = f"{WORK}/mix{suf}.wav"

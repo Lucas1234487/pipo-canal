@@ -1,0 +1,169 @@
+{
+ "N": 1047,
+ "fps": 30,
+ "duracao_s": 34.9,
+ "shots": [
+  1,
+  197,
+  282,
+  368,
+  507,
+  589,
+  714,
+  824,
+  914
+ ],
+ "cortes": [
+  1,
+  62,
+  112,
+  197,
+  282,
+  327,
+  368,
+  442,
+  507,
+  589,
+  643,
+  714,
+  754,
+  824,
+  914,
+  957
+ ],
+ "f_pop": 862,
+ "t_pop": 28.7,
+ "music": null,
+ "sfx": [],
+ "pills": [],
+ "pills_en": [],
+ "music_gap": [
+  16.9,
+  17.4
+ ],
+ "music_gaps": [
+  [
+   16.9,
+   17.4
+  ]
+ ],
+ "silencios": [
+  {
+   "t0": 16.9,
+   "t1": 17.4,
+   "motivo": "antes da revelacao da ceia (o V sobe do frango no 'ossinho')"
+  }
+ ],
+ "marcas": {
+  "brilho_raiox": 25,
+  "match_galinha": 282,
+  "acertou": 328,
+  "ossinho": 530,
+  "duas": 593,
+  "claviculas": 604,
+  "puxar": 771,
+  "estalo": 862
+ },
+ "ponto_furcula_tela": {
+  "x": 0.5,
+  "y": 0.45
+ },
+ "planos": [
+  {
+   "nome": "A1_rugido",
+   "mundo": "A_cinzas",
+   "f0": 1,
+   "f1": 61
+  },
+  {
+   "nome": "A2_peito",
+   "mundo": "A_cinzas",
+   "f0": 62,
+   "f1": 111
+  },
+  {
+   "nome": "A3_close",
+   "mundo": "A_cinzas",
+   "f0": 112,
+   "f1": 196
+  },
+  {
+   "nome": "A4_card",
+   "mundo": "A_cinzas",
+   "f0": 197,
+   "f1": 281
+  },
+  {
+   "nome": "A5_match",
+   "mundo": "A_cinzas",
+   "f0": 282,
+   "f1": 326
+  },
+  {
+   "nome": "A6_acertou",
+   "mundo": "A_cinzas",
+   "f0": 327,
+   "f1": 367
+  },
+  {
+   "nome": "A7_aves",
+   "mundo": "A_cinzas",
+   "f0": 368,
+   "f1": 441
+  },
+  {
+   "nome": "A8_herdaram",
+   "mundo": "A_cinzas",
+   "f0": 442,
+   "f1": 506
+  },
+  {
+   "nome": "B1_ceia",
+   "mundo": "B_ceia",
+   "f0": 507,
+   "f1": 588
+  },
+  {
+   "nome": "C1_split",
+   "mundo": "C_split",
+   "f0": 589,
+   "f1": 642
+  },
+  {
+   "nome": "C2_igual",
+   "mundo": "C_split",
+   "f0": 643,
+   "f1": 713
+  },
+  {
+   "nome": "B2_mesa",
+   "mundo": "B_ceia",
+   "f0": 714,
+   "f1": 753
+  },
+  {
+   "nome": "B3_puxa",
+   "mundo": "B_ceia",
+   "f0": 754,
+   "f1": 823
+  },
+  {
+   "nome": "B4_estalo",
+   "mundo": "B_ceia",
+   "f0": 824,
+   "f1": 913
+  },
+  {
+   "nome": "B5_final",
+   "mundo": "B_ceia",
+   "f0": 914,
+   "f1": 956
+  },
+  {
+   "nome": "B6_loop",
+   "mundo": "B_ceia",
+   "f0": 957,
+   "f1": 1047
+  }
+ ]
+}

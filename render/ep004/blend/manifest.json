@@ -1,0 +1,30 @@
+[
+ {
+  "blend": "A_cinzas.blend",
+  "frame_start": 1,
+  "frame_end": 506,
+  "out_prefix": "frames/f",
+  "cmd": "blender -b A_cinzas.blend -o //frames/f -s 1 -e 506 -a -- --cycles-device OPTIX"
+ },
+ {
+  "blend": "B_ceia.blend",
+  "frame_start": 507,
+  "frame_end": 588,
+  "out_prefix": "frames/f",
+  "cmd": "blender -b B_ceia.blend -o //frames/f -s 507 -e 588 -a -- --cycles-device OPTIX"
+ },
+ {
+  "blend": "C_split.blend",
+  "frame_start": 589,
+  "frame_end": 713,
+  "out_prefix": "frames/f",
+  "cmd": "blender -b C_split.blend -o //frames/f -s 589 -e 713 -a -- --cycles-device OPTIX"
+ },
+ {
+  "blend": "B_ceia.blend",
+  "frame_start": 714,
+  "frame_end": 1047,
+  "out_prefix": "frames/f",
+  "cmd": "blender -b B_ceia.blend -o //frames/f -s 714 -e 1047 -a -- --cycles-device OPTIX"
+ }
+]
