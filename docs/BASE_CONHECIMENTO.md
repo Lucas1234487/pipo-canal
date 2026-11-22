@@ -176,3 +176,10 @@ Todo vídeo de série ou continuação mostra na tela pelo menos 1 comentário r
 
 ## 12. Gag da Pipo milho (ideia do Lucas, 22/11/2026, adotada no ep003)
 Galinha come milho. Quando o vídeo revela que a galinha é dinossauro, a Pipo (espiga) percebe que o "dinossauro" continua querendo comê-la e foge. É a Pipo entrando na história pelo que ela É (milho), não por drama inventado. Usar sempre que o tema cruzar com o que come milho (aves, porcos, pipoqueira, cinema).
+
+## 13. A Pipo no fundo: easter eggs e arco secundário (ideia do Lucas, 22/11/2026, ADOTADA)
+- A Pipo é meio "despipocada": em vídeos que não são sobre ela, aparece do nada no fundo fazendo algo aleatório que combina com o tema (vagando no espaço num vídeo de planetas, fazendo algo suspeito num cotidiano, correndo numa batalha histórica).
+- Sem enfoque: fica fora do foco principal, nunca roubando a narração, nunca na faixa de legenda. É para quem presta atenção.
+- Arco secundário entre vídeos: o que ela faz num vídeo tem consequência no próximo (rouba um pirulito num, aparece comendo o pirulito no outro). O controle fica em docs/diretor/arco_pipo.md e TODO vídeo consulta e atualiza esse arquivo.
+- Trava: guerra só histórica e antiga (ou fictícia), nunca conflito atual nem nada que encoste em política; arma só cartunesca e sem violência contra pessoas. Nada que pareça perigo real para criança.
+- Isso alimenta a regra do comentário (seção 11): quem achar a Pipo ou pegar a ligação pode ir para a tela no próximo vídeo.
