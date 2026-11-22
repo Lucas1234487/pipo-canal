@@ -19,6 +19,8 @@ def inter(a, b):
 def runs(items):
     """agrupa ocorrencias por (tipo, alvo) em faixas de quadros"""
     g = {}
+    if isinstance(items, dict):  # QA por mundo (ep com varias cenas): {"A": [...], "B": [...]}
+        items = [it for v in items.values() for it in v]
     for it in items:
         g.setdefault((it["tipo"], it["alvo"]), []).append(it["frame"])
     out = []
@@ -45,7 +47,7 @@ lay = json.load(open(f"{WORK}/layout_{lang}.json")) if os.path.exists(f"{WORK}/l
 if not lay:
     FAIL.append(f"layout_{lang}.json ausente: rode o compose antes")
 bad_overlap, bad_safe, bad_multi, bad_3d = [], [], [], []
-boxes3d = scene["boxes"] if scene else {}
+boxes3d = scene.get("boxes", {}) if scene else {}  # ep multi-cena: o foco fora da faixa de legenda vem em scene["foco"]
 for fr, L in lay.items():
     cap = L.get("legenda"); pills = L.get("pilulas", [])
     if len(pills) > 1:
