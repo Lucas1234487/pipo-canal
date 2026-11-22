@@ -195,3 +195,12 @@ Galinha come milho. Quando o vídeo revela que a galinha é dinossauro, a Pipo (
 - Token: fine-grained, só o repositório pipo-canal, Contents: Read and write (+ Metadata). Guardado como Secret GH_TOKEN no notebook. No notebook: `from kaggle_secrets import UserSecretsClient; os.environ['GH_TOKEN']=UserSecretsClient().get_secret('GH_TOKEN')` e depois `bash render/kaggle_push.sh <pasta> <branch> "<msg>"`. Daqui: `git fetch --depth 1 origin <branch>`.
 - Rodar célula: clicar em "Run current cell" (shift+Enter às vezes não liga a sessão). Há fila de GPU de segundos a 1 min.
 - O proxy desta sessão não deixa apagar branch remoto (403). Usar nomes de branch reaproveitáveis (render-out/<ep>, push com -f).
+
+## 15. Lições do ep003 (22/11/2026, Diretor 1; detalhes no handover 0002)
+- UMA ideia por vídeo, com um "caramba" visual. O gancho só se resolve no último terço. Vídeo de conhecimento: 30 a 40 s até prova em contrário.
+- Bicho principal com silhueta reconhecível em 0,5 s de longe. Modelo procedural que vira "urso" ou "capivara" reprova.
+- Render final em 1080 nativo no Kaggle; nada de 720p ampliado.
+- SFX procedural reprovado pelo Lucas. Buscar banco grátis com licença comercial pelo Kaggle (internet) e guardar a licença no repositório.
+- A plateia de agentes é ~2 pontos mais branda que o Lucas.
+- Cota de uso do Lucas: no máximo 3 a 4 agentes por ciclo. Plateia num agente só, com 5 personas.
+- Fato: galinha e T. rex são PRIMOS terópodes; a galinha não descende do T. rex. O colágeno de 2007 é contestado.

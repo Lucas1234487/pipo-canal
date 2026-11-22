@@ -22,3 +22,9 @@ Leitura (Diretor 1):
 - O dinossauro tem a maior taxa de curtida (1,8%), o único comentário e o comentário responde exatamente a pergunta final. A pergunta com lado funciona; a abertura não segura.
 - Os vídeos estavam sem título real, sem descrição e sem declaração de público. Corrigir isso é o mínimo antes de julgar o conteúdo.
 - Média vista calculada como tempo de exibição / views; o Studio ainda mostra "dados insuficientes" na retenção.
+
+## ep003 (não publicado)
+| Versão | Duração | Plateia | Lucas | Decisão |
+|---|---|---|---|---|
+| v1 | 63 s | 5, 5, 6, 5, 5 (ninguém até o fim; saem aos 18, 35, 37, 37 e 42 s) | 3 | reprovado |
+| v2 (reedição) | 45 s | Davi 3 (sai aos 17,5 s), Thiago 4 (os outros 3 não votaram: limite de uso) | — | reprovado |
