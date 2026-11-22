@@ -191,4 +191,7 @@ Galinha come milho. Quando o vídeo revela que a galinha é dinossauro, a Pipo (
 - Entrada: o notebook clona o branch público render/<ep> do repositório e roda render/kaggle_setup.sh (pip bpy + libEGL). OptiX funciona nas 2 T4 (os avisos de EGL/HIP são inofensivos).
 - Medido no mundo do T. rex (o mais pesado): 540x960 com 3 amostras = 1,09 s/quadro; 1080x1920 nativo com 16 amostras = 4,2 s/quadro, num processo só. A CPU daqui faz ~3 s/quadro a 540x960. Rodar 2 processos (1 por GPU, quadros divididos) deve cortar o tempo pela metade (ainda não medido).
 - SEMPRE desligar a sessão (botão de power) ao terminar, para não queimar a cota com a máquina parada.
-- Volta dos quadros: o shell daqui não alcança o kaggle.com. Caminho planejado: o notebook empurra o resultado para o GitHub com um token de escopo mínimo guardado nos Secrets do Kaggle (o Lucas cria; o Diretor nunca vê o token).
+- Volta dos quadros (TESTADO e funcionando em 22/11 10h15): o shell daqui não alcança o kaggle.com. Caminho: o notebook empurra o resultado para o GitHub com um token de escopo mínimo guardado nos Secrets do Kaggle (o Lucas cria; o Diretor nunca vê o token).
+- Token: fine-grained, só o repositório pipo-canal, Contents: Read and write (+ Metadata). Guardado como Secret GH_TOKEN no notebook. No notebook: `from kaggle_secrets import UserSecretsClient; os.environ['GH_TOKEN']=UserSecretsClient().get_secret('GH_TOKEN')` e depois `bash render/kaggle_push.sh <pasta> <branch> "<msg>"`. Daqui: `git fetch --depth 1 origin <branch>`.
+- Rodar célula: clicar em "Run current cell" (shift+Enter às vezes não liga a sessão). Há fila de GPU de segundos a 1 min.
+- O proxy desta sessão não deixa apagar branch remoto (403). Usar nomes de branch reaproveitáveis (render-out/<ep>, push com -f).

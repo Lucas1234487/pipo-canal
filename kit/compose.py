@@ -127,7 +127,7 @@ env = np.convolve(np.abs(voice), np.ones(k) / k, mode="same")
 duck = np.convolve(np.where(env > 0.01, 0.10, 0.20), np.ones(k) / k, mode="same")
 tt = np.arange(len(out)) / SR
 gate = np.ones_like(out)
-for a, b in [E["music_gap"]] if E.get("music_gap") else []:
+for a, b in (E.get("music_gaps") or ([E["music_gap"]] if E.get("music_gap") else [])):   # music_gaps: varios silencios (ep003)
     gate[(tt > a) & (tt < b)] = 0.0
     r = (tt >= b) & (tt < b + 0.8); gate[r] = (tt[r] - b) / 0.8
 gate = np.convolve(gate, np.ones(480) / 480, mode="same")
