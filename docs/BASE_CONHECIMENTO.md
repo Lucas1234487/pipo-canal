@@ -180,6 +180,7 @@ Galinha come milho. Quando o vídeo revela que a galinha é dinossauro, a Pipo (
 ## 13. A Pipo no fundo: easter eggs e arco secundário (ideia do Lucas, 22/11/2026, ADOTADA)
 - A Pipo é meio "despipocada": em vídeos que não são sobre ela, aparece do nada no fundo fazendo algo aleatório que combina com o tema (vagando no espaço num vídeo de planetas, fazendo algo suspeito num cotidiano, correndo numa batalha histórica).
 - Sem enfoque: fica fora do foco principal, nunca roubando a narração, nunca na faixa de legenda. É para quem presta atenção.
+- Arcos curtos e trocáveis (Lucas, 02h09): não é um arco único para sempre. Cada arco dura de 3 a 7 vídeos, fecha com um desfecho (a ponta solta paga) e o próximo arco começa do zero, com outra mini-história. Variar a duração deixa o público sem saber quando acaba.
 - Arco secundário entre vídeos: o que ela faz num vídeo tem consequência no próximo (rouba um pirulito num, aparece comendo o pirulito no outro). O controle fica em docs/diretor/arco_pipo.md e TODO vídeo consulta e atualiza esse arquivo.
 - Trava: guerra só histórica e antiga (ou fictícia), nunca conflito atual nem nada que encoste em política; arma só cartunesca e sem violência contra pessoas. Nada que pareça perigo real para criança.
 - Isso alimenta a regra do comentário (seção 11): quem achar a Pipo ou pegar a ligação pode ir para a tela no próximo vídeo.

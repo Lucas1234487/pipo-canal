@@ -1,6 +1,9 @@
 # Arco secundário da Pipo (continuidade entre vídeos)
 
+Arcos curtos: cada arco dura de 3 a 7 vídeos e fecha com um desfecho; depois começa outro do zero. Planeje o desfecho quando abrir o arco.
 Regra: antes de produzir, ler a última linha. Depois de publicar, acrescentar uma linha. A Pipo no fundo deixa uma "ponta solta" que o vídeo seguinte paga.
+
+## Arco 1: "A galinha quer a Pipo" (planejado para 4 vídeos: ep003 a ep006; desfecho: a Pipo faz as pazes com a galinha ou consegue enganá-la, a definir pelo Diretor da vez)
 
 | Vídeo | Data | Onde ela aparece | O que faz | Ponta solta para o próximo |
 |---|---|---|---|---|
