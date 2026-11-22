@@ -34,7 +34,12 @@ async def one(i, t):
 
 async def go():
     out = []; t0 = R.get("lead", 0.45)
+    ref = None
+    if R.get("align_to_pt") and os.path.exists(f"{WORK}/timing.json"):
+        ref = json.load(open(f"{WORK}/timing.json"))["lines"]   # EN alinhado frase a frase com o PT (faixa de audio do mesmo video)
     for i, ln in enumerate(R["lines"]):
+        if ref and i < len(ref):
+            t0 = max(t0, ref[i]["start"])
         for k in range(4):
             try:
                 ws = await one(i, ln["text"]); break
