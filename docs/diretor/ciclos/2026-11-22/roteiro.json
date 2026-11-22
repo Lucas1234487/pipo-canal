@@ -1,0 +1,78 @@
+{
+ "voice": "pt-BR-AntonioNeural",
+ "rate": "+4%",
+ "pitch": "+0Hz",
+ "lead": 0.0,
+ "lines": [
+  {
+   "text": "Você comeu um desses no almoço.",
+   "pause": 0.3,
+   "shot": "0s T. rex em close baixo rugindo para a lente, boca aberta, cinzas caindo, contraluz laranja de incêndio | SFX: rugido grave + vento"
+  },
+  {
+   "text": "Ele morreu com o asteroide, sessenta e seis milhões de anos atrás.",
+   "pause": 0.3,
+   "shot": "T. rex recua, câmera abre: planície queimando, céu escuro, rastro do asteroide cruzando o céu ao fundo | SFX: estrondo distante, riser baixo"
+  },
+  {
+   "text": "Mas nem todo dinossauro morreu.",
+   "pause": 0.5,
+   "shot": "close no olho do T. rex, a íris fecha | SFX: silêncio da trilha (pausa antes do estouro)"
+  },
+  {
+   "text": "Um inscrito chutou: a galinha. E acertou.",
+   "pause": 0.3,
+   "shot": "MATCH-CUT: galinha no mesmo enquadramento e pose do T. rex; placa 3D com o comentário '@Niko_com_k: A galinha eu acho' | SFX: pop + cocoricó curto"
+  },
+  {
+   "text": "E galinha come milho.",
+   "pause": 1.2,
+   "shot": "[PIPO_FOGE] ~3 s: a galinha vira a cabeça e vê a Pipo (espiga de milho) no quintal; a Pipo congela, cara de tédio com a sobrancelha levantada, e sai correndo; a galinha vai atrás | SFX: boing (virada), silêncio de 0,3 s (congela), whoosh + passinhos rápidos"
+  },
+  {
+   "text": "Ave não é parente de dinossauro. Ave é dinossauro.",
+   "pause": 0.3,
+   "shot": "T. rex e galinha lado a lado, mesma pose, câmera gira em volta | SFX: whoosh"
+  },
+  {
+   "text": "Imagine abrir o peito de um T. rex: lá dentro tem o mesmo ossinho da sorte do frango.",
+   "pause": 0.3,
+   "shot": "raio-x: câmera atravessa o peito do T. rex, a fúrcula em V acende; corte para a fúrcula da galinha no mesmo lugar | SFX: click + ding"
+  },
+  {
+   "text": "Até a proteína do osso dele parece com a da galinha.",
+   "pause": 0.3,
+   "shot": "fêmur fossilizado de T. rex na mesa; fibras de proteína brilham e se alinham ao lado de um osso de galinha | SFX: thump"
+  },
+  {
+   "text": "Depois do impacto, sem sol, as florestas morrem.",
+   "pause": 0.3,
+   "shot": "sol some atrás da poeira (céu da parte 1), floresta escurece e as copas começam a tombar | SFX: vento, trilha séria baixa"
+  },
+  {
+   "text": "Sobra quem cisca o chão e quebra semente.",
+   "pause": 0.3,
+   "shot": "últimas copas tombam; corte para ave pequena no chão de cinzas bicando sementes | SFX: madeira rachando + bicadas"
+  },
+  {
+   "text": "Na Bélgica, acharam uma ave de pouco antes do impacto: meio galinha, meio pato.",
+   "pause": 0.3,
+   "shot": "globo da parte 1 gira até a Bélgica; fóssil de crânio pequeno vira ave viva em giro | pill: WONDERCHICKEN, 66,7 MI DE ANOS | SFX: whoosh + ding"
+  },
+  {
+   "text": "Hoje são vinte e sete bilhões de galinhas. Mais de três por pessoa.",
+   "pause": 0.3,
+   "shot": "câmera sobe de um quintal com galinhas e abre para fileiras infinitas até o horizonte | SFX: riser"
+  },
+  {
+   "text": "O dinossauro não sumiu. Virou almoço.",
+   "pause": 0.5,
+   "shot": "volta ao prato: coxa de frango na mesa, sombra de T. rex projetada na parede | SFX: estouro/vinheta"
+  },
+  {
+   "text": "T. rex: penas ou escamas? Comenta.",
+   "pause": 0.3,
+   "shot": "T. rex em silhueta, metade com penas, metade com escamas, câmera parada; frase sozinha na tela; ao fundo, pequena e fora de foco, a perseguição galinha x Pipo continua em loop vivo | SFX: trilha corta, passinhos baixos ao fundo"
+  }
+ ]
+}
