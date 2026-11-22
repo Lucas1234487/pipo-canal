@@ -1,0 +1,51 @@
+[
+ {
+  "blend": "A_cinzas.blend",
+  "frame_start": 1,
+  "frame_end": 381,
+  "out_prefix": "frames/f",
+  "cmd": "blender -b A_cinzas.blend -o //frames/f -s 1 -e 381 -a -- --cycles-device OPTIX"
+ },
+ {
+  "blend": "A_cinzas.blend",
+  "frame_start": 1020,
+  "frame_end": 1327,
+  "out_prefix": "frames/f",
+  "cmd": "blender -b A_cinzas.blend -o //frames/f -s 1020 -e 1327 -a -- --cycles-device OPTIX"
+ },
+ {
+  "blend": "B_quintal.blend",
+  "frame_start": 382,
+  "frame_end": 572,
+  "out_prefix": "frames/f",
+  "cmd": "blender -b B_quintal.blend -o //frames/f -s 382 -e 572 -a -- --cycles-device OPTIX"
+ },
+ {
+  "blend": "B_quintal.blend",
+  "frame_start": 1439,
+  "frame_end": 1746,
+  "out_prefix": "frames/f",
+  "cmd": "blender -b B_quintal.blend -o //frames/f -s 1439 -e 1746 -a -- --cycles-device OPTIX"
+ },
+ {
+  "blend": "C_comparacao.blend",
+  "frame_start": 573,
+  "frame_end": 1019,
+  "out_prefix": "frames/f",
+  "cmd": "blender -b C_comparacao.blend -o //frames/f -s 573 -e 1019 -a -- --cycles-device OPTIX"
+ },
+ {
+  "blend": "C_comparacao.blend",
+  "frame_start": 1328,
+  "frame_end": 1438,
+  "out_prefix": "frames/f",
+  "cmd": "blender -b C_comparacao.blend -o //frames/f -s 1328 -e 1438 -a -- --cycles-device OPTIX"
+ },
+ {
+  "blend": "C_comparacao.blend",
+  "frame_start": 1747,
+  "frame_end": 1912,
+  "out_prefix": "frames/f",
+  "cmd": "blender -b C_comparacao.blend -o //frames/f -s 1747 -e 1912 -a -- --cycles-device OPTIX"
+ }
+]
