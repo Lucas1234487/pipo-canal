@@ -1,4 +1,15 @@
-# Decisões pendentes (só o Lucas decide)
+# Decisões (respondidas pelo Lucas em 21/11/2026)
+
+DECIDIDO:
+1. Idiomas: opção A (um canal no YouTube com faixa de áudio EN). Começar SÓ no YouTube; Instagram fica para depois.
+2. Voz: continuar no edge-tts grátis (risco aceito pelo dono). Se der problema, trocar ou pagar.
+3. Metricool: plano grátis. Quando o limite do mês acabar, publicar pelo Claude in Chrome direto no YouTube Studio.
+4. Duração do conhecimento: mistura controlada de A e C: alvo 55 s, até 70 s normalmente; 75 a 90 s só com virada real.
+5. Pipo mudo (A): narrador fora de cena.
+6. Voz masculina: A/B de 2 semanas, Antonio tratado x Brian Multilingual, medindo retenção nos 3 primeiros segundos. Feminina = Thalita. Francisca fora.
+
+---
+# Histórico das opções apresentadas
 
 21/11/2026. Seis itens. Até você responder, o pipeline usa a opção marcada como padrão.
 

@@ -22,6 +22,13 @@ Marcação: onde algo ainda depende do dono aparece "[DECISÃO PENDENTE: ...]" c
 
 ---
 
+### 0.1 Decisões do dono em 21/11/2026 (valem sobre qualquer outra seção)
+- Plataforma: SÓ YouTube Shorts por enquanto (Instagram depois). Um canal único; a versão EN entra como faixa de áudio EN do mesmo Short (subida pelo YouTube Studio via Claude in Chrome), com título/descrição traduzidos. Legenda queimada continua em PT.
+- Voz: edge-tts grátis. Feminina Thalita; masculina em A/B de 2 semanas (Antonio tratado +8%/-4Hz x en-US-BrianMultilingualNeural falando PT), alternando dia a dia e registrando no histórico qual voz foi usada. Francisca nunca.
+- Metricool no plano grátis; quando o limite mensal acabar, publicar direto no YouTube Studio pelo Claude in Chrome.
+- Conhecimento: alvo 55 s, normalmente até 70 s; 75 a 90 s só com virada real no meio.
+- Pipo é muda (narrador fora de cena).
+
 ## 1. Público-alvo
 
 ### 1.1 A contradição e a resolução
