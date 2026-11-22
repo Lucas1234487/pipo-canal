@@ -1,7 +1,7 @@
 #!/bin/bash
 # Envia uma pasta do Kaggle para um branch do GitHub. Uso: bash kaggle_push.sh <pasta> <branch> "<mensagem>"
 # Precisa de GH_TOKEN no ambiente (vem dos Secrets do Kaggle). Nunca imprime o token.
-set -e
+set -eo pipefail
 SRC=$1; BR=$2; MSG=${3:-"render do Kaggle"}
 [ -n "$GH_TOKEN" ] || { echo "SEM GH_TOKEN"; exit 1; }
 T=$(mktemp -d)
