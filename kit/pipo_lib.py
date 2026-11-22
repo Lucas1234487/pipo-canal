@@ -676,11 +676,14 @@ def aim(loc, tgt):
     return (Vector(tgt) - Vector(loc)).to_track_quat('-Z', 'Y').to_euler()
 
 
-def finish(shots, events, shake_at=None):
+def finish(shots, events, shake_at=None, dof=None):
     """shots: lista de (t_inicio_s, loc_inicio, loc_fim, alvo, lente). Corte seco entre shots, drift linear dentro.
     events: dict salvo em WORK/events.json para o compose (precisa de N, shots, f_pop, sfx, pills)."""
     cd = D.cameras.new("Cam"); cd.lens = 32; cd.clip_start = 0.05
     cam = link(D.objects.new("Cam", cd)); s.camera = cam
+    if dof:
+        foco = empty("foco", (0, 0, 0.55), dof[0])      # mira no rosto, nao no chao
+        cd.dof.use_dof = True; cd.dof.focus_object = foco; cd.dof.aperture_fstop = dof[1]
     for i, (t0, a, b, tgt, lens) in enumerate(shots):
         t1 = shots[i + 1][0] if i + 1 < len(shots) else N / 30
         f0, f1 = f(t0), max(f(t0) + 1, f(t1) - 1)
@@ -707,6 +710,13 @@ def finish(shots, events, shake_at=None):
         return
     os.makedirs(WORK + "/frames", exist_ok=True); os.makedirs(WORK + "/prev", exist_ok=True)
     if mode == "full":
+        rg = os.environ.get("PIPO_RANGE")          # "a-b": usado pelo render_par.py para dividir o trabalho
+        if rg:
+            a, b = [int(x) for x in rg.split("-")]
+            s.frame_start, s.frame_end = a, b
+        th = int(os.environ.get("PIPO_THREADS", "0"))
+        if th:
+            s.render.threads_mode = 'FIXED'; s.render.threads = th
         s.render.filepath = WORK + "/frames/f"
         s.render.use_overwrite = False
         s.render.use_placeholder = True

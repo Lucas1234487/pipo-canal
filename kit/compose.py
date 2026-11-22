@@ -144,22 +144,51 @@ mixp = f"{WORK}/mix{suf}.wav"
 w = wave.open(mixp, "wb"); w.setnchannels(1); w.setsampwidth(2); w.setframerate(SR)
 w.writeframes((out * 32767).astype(np.int16).tobytes()); w.close()
 
-# ---------- video
+# ---------- video (blocos em paralelo + concatenacao sem reencode)
+J = int(os.environ.get("PIPO_JOBS", str(max(1, os.cpu_count() or 1))))
+size = (N + J - 1) // J
+ranges = [(1 + i * size, min(N, (i + 1) * size)) for i in range(J) if 1 + i * size <= N]
+
+
+def encode_chunk(rg):
+    a, b = rg
+    part = f"{WORK}/part{suf}_{a:04d}.mp4"
+    p = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{OW}x{OH}", "-r", str(FPS), "-i", "-",
+                          "-c:v", "libx264", "-crf", "18", "-preset", "veryfast", "-pix_fmt", "yuv420p", "-threads", "1", part], stdin=subprocess.PIPE)
+    lay = {}
+    for fr in range(a, b + 1):
+        im = Image.open(f"{WORK}/frames/f{fr:04d}.png").convert("RGB").resize((OW, OH), Image.LANCZOS)
+        t = f2t(fr)
+        LAYOUT.clear()
+        draw_pill(im, t, fr)
+        draw_caption(im, t, fr)
+        lay.update(LAYOUT)
+        p.stdin.write(im.tobytes())
+    p.stdin.close()
+    if p.wait() != 0:
+        raise RuntimeError("ffmpeg falhou no bloco %s" % (rg,))
+    return part, {str(k): v for k, v in lay.items()}
+
+
+from multiprocessing import Pool
+with Pool(len(ranges)) as pool:
+    res = pool.map(encode_chunk, ranges)
+layout = {}
+lst = f"{WORK}/parts{suf}.txt"
+with open(lst, "w") as fh:
+    for part, lay in res:
+        fh.write(f"file '{os.path.basename(part)}'\n")
+        layout.update(lay)
+json.dump(layout, open(f"{WORK}/layout{suf or '_pt'}.json", "w"))
+vid = f"{WORK}/video{suf}.mp4"
+subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", lst, "-c", "copy", vid], check=True)
 tmp = OUT + ".tmp.mp4"
-p = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{OW}x{OH}", "-r", str(FPS), "-i", "-",
-                      "-i", mixp, "-af", "loudnorm=I=-14:TP=-1.5:LRA=11",
-                      "-c:v", "libx264", "-crf", "18", "-preset", "veryfast", "-pix_fmt", "yuv420p",
-                      "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-shortest", "-movflags", "+faststart", tmp], stdin=subprocess.PIPE)
-for fr in range(1, N + 1):
-    im = Image.open(f"{WORK}/frames/f{fr:04d}.png").convert("RGB").resize((OW, OH), Image.LANCZOS)
-    t = f2t(fr)
-    draw_pill(im, t, fr)
-    draw_caption(im, t, fr)
-    p.stdin.write(im.tobytes())
-p.stdin.close()
-json.dump({str(k): v for k, v in LAYOUT.items()}, open(f"{WORK}/layout{suf or '_pt'}.json", "w"))
-if p.wait() == 0:
+r = subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", vid, "-i", mixp, "-map", "0:v", "-map", "1:a", "-c:v", "copy",
+                    "-af", "loudnorm=I=-14:TP=-1.5:LRA=11", "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-shortest", "-movflags", "+faststart", tmp])
+if r.returncode == 0:
     os.replace(tmp, OUT)
+    for part, _ in res:
+        os.remove(part)
     print("OK", OUT)
 else:
-    raise SystemExit("ffmpeg falhou")
+    raise SystemExit("ffmpeg falhou na mixagem final")

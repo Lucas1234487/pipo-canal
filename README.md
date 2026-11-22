@@ -1,3 +1,11 @@
+# PipoPop
+
+**Comece aqui:** este canal é comandado pelo Diretor. Leia `docs/diretor/BRIEFING_DIRETOR.md` e siga a ordem de leitura de `docs/diretor/APOSENTADORIA.md`.
+Memória: `docs/BASE_CONHECIMENTO.md` (longo prazo), `docs/diretor/handovers/` (diário de cada mandato, em ordem), `docs/diretor/PLACAR.md` (números).
+Referência do que funcionou: `referencias/dinossauros/`.
+
+---
+
 # Pipo - kit de produção do canal
 
 Canal de vídeos curtos 3D (YouTube Shorts + Instagram Reels), PT e EN, foco Brasil.
