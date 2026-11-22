@@ -1,0 +1,58 @@
+{
+ "voice": "pt-BR-AntonioNeural",
+ "rate": "+8%",
+ "pitch": "+0Hz",
+ "lead": 0.15,
+ "lines": [
+  {
+   "text": "Esse osso brilhando fica no peito do T. rex.",
+   "pause": 0.25,
+   "shot": "0s: T. rex rugindo nas cinzas; faixa de raio-x passa pelo peito e revela a fúrcula em V acesa (azul-ciano) | SFX: rugido + varredura"
+  },
+  {
+   "text": "E você já segurou um desses.",
+   "pause": 0.35,
+   "shot": "close na fúrcula girando dentro do peito translúcido | SFX: batimento grave"
+  },
+  {
+   "text": "Na parte um, o Niko chutou quem escapou: a galinha.",
+   "pause": 0.2,
+   "shot": "card do comentário '@Niko_com_k: A galinha eu acho' sobre as cinzas; galinha aparece no lugar do rex (match cut de silhueta)"
+  },
+  {
+   "text": "Acertou. Aves são dinossauros.",
+   "pause": 0.2,
+   "shot": "carimbo 'ACERTOU' | SFX: impacto"
+  },
+  {
+   "text": "E herdaram esse osso.",
+   "pause": 0.55,
+   "shot": "fúrcula da galinha acende no mesmo lugar da tela da fúrcula do rex | silêncio antes da revelação"
+  },
+  {
+   "text": "É o ossinho da sorte.",
+   "pause": 0.25,
+   "shot": "MATCH CUT: mesa de ceia de Natal à noite, frango assado; o V brilhante sobe do frango | SFX: whoosh + sininho? (não; impacto suave)"
+  },
+  {
+   "text": "Duas clavículas grudadas, igual às do T. rex.",
+   "pause": 0.3,
+   "shot": "split: as duas fúrculas lado a lado (rex e frango), as duas metades (clavículas) acendem uma de cada vez"
+  },
+  {
+   "text": "Na ceia de Natal, quando você puxar ele,",
+   "pause": 0.05,
+   "shot": "o ossinho sendo tensionado dos dois lados, tremendo"
+  },
+  {
+   "text": "vai estar disputando um osso de dinossauro.",
+   "pause": 0.4,
+   "shot": "CRACK: ossinho quebra; a Pipo (espiga na mesa, fundo) estoura em pipoca no mesmo quadro | SFX: osso quebrando + pop"
+  },
+  {
+   "text": "Na sua casa, quem fica com o pedaço maior?",
+   "pause": 0.8,
+   "shot": "pedaço maior girando sob a luz da árvore; pergunta sozinha na tela"
+  }
+ ]
+}
