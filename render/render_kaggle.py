@@ -12,6 +12,25 @@ for m in man:
     for f in range(m["frame_start"], m["frame_end"] + 1):
         jobs.append((m["blend"], f))
 jobs.sort(key=lambda j: j[1])
+CH = 240
+EP = os.environ.get("EP", "ep003")
+allf = [f for _, f in jobs]
+chunks = [allf[i:i + CH] for i in range(0, len(allf), CH)]
+def ja_enviado(i):
+    r = subprocess.run(["git", "ls-remote", "https://github.com/Lucas1234487/pipo-canal", f"render-out/{EP}-c{i:02d}"], capture_output=True, text=True)
+    return bool(r.stdout.strip())
+feitos = {i for i in range(len(chunks)) if ja_enviado(i)}
+print("PEDAÇOS JÁ ENVIADOS", sorted(feitos), "de", len(chunks), flush=True)
+pular = {f for i in feitos for f in chunks[i]}
+jobs = [j for j in jobs if j[1] not in pular]
+def envia(i):
+    fr = chunks[i]; d = f"{OUT}/c{i:02d}"; os.makedirs(d, exist_ok=True)
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-framerate", "30", "-start_number", str(fr[0]), "-i", f"{OUT}/frames/f%04d.png",
+                    "-frames:v", str(len(fr)), "-c:v", "libx264", "-preset", "slow", "-crf", "14", "-pix_fmt", "yuv444p", f"{d}/quadros.mp4"], check=True)
+    json.dump(dict(first=fr[0], last=fr[-1], n=len(fr), w=W, h=H, spp=SPP), open(f"{d}/info.json", "w"))
+    r = subprocess.run(["bash", "/home/claude/pipo-canal/render/kaggle_push.sh", d, f"render-out/{EP}-c{i:02d}", f"{EP} pedaço {i}"], capture_output=True, text=True)
+    print("ENVIO", i, r.stdout.strip()[-60:], r.returncode, flush=True)
+    return r.returncode == 0
 WORKER = r'''
 import bpy, sys, json, time, os
 jobs = json.loads(sys.argv[-1]); B, W, H, SPP, OUT = sys.argv[-6], int(sys.argv[-5]), int(sys.argv[-4]), int(sys.argv[-3]), sys.argv[-2]
@@ -48,14 +67,19 @@ for g in (0, 1):
     env = dict(os.environ, CUDA_VISIBLE_DEVICES=str(g))
     log = open(f"{OUT}/gpu{g}.log", "w")
     procs.append(subprocess.Popen(["python3", "/tmp/worker.py", B, str(W), str(H), str(SPP), OUT, json.dumps(part)], env=env, stdout=log, stderr=subprocess.STDOUT))
-while any(p.poll() is None for p in procs):
-    time.sleep(30)
+def pronto(i):
+    return all(os.path.exists(f"{OUT}/frames/f{f:04d}.png") for f in chunks[i])
+while True:
+    vivos = any(p.poll() is None for p in procs)
+    for i in range(len(chunks)):
+        if i not in feitos and pronto(i):
+            time.sleep(3)
+            if envia(i): feitos.add(i)
     n = len(os.listdir(OUT + "/frames"))
-    print(f"{n}/{len(jobs)} quadros, {round(time.time()-t)} s", flush=True)
-falta = [f for _, f in jobs if not os.path.exists(f"{OUT}/frames/f{f:04d}.png")]
-print("FALTANDO", falta[:20], len(falta))
-first = jobs[0][1]
-subprocess.run(["ffmpeg", "-v", "error", "-y", "-framerate", "30", "-start_number", str(first), "-i", f"{OUT}/frames/f%04d.png",
-                "-c:v", "libx264", "-preset", "slow", "-crf", "14", "-pix_fmt", "yuv444p", f"{OUT}/video/quadros.mp4"], check=True)
-json.dump(dict(first=first, n=len(jobs), w=W, h=H, spp=SPP, segundos=round(time.time()-t)), open(f"{OUT}/video/info.json", "w"))
-print("VIDEO", os.path.getsize(f"{OUT}/video/quadros.mp4") // 1e6, "MB")
+    print(f"{n}/{len(jobs)} quadros novos, pedaços {len(feitos)}/{len(chunks)}, {round(time.time()-t)} s", flush=True)
+    if not vivos: break
+    time.sleep(30)
+faltam = [i for i in range(len(chunks)) if i not in feitos]
+print("PEDAÇOS FALTANDO", faltam, flush=True)
+if faltam: sys.exit(1)
+print("TUDO ENVIADO", round(time.time() - t), "s")
