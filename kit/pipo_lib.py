@@ -610,11 +610,11 @@ def pipo_start_popped():
     K(kern, "scale", 1, (0.001,) * 3); K(pop_root, "scale", 1, (1,) * 3)
 
 
-def pipo_pop(fp, burst=True):
+def pipo_pop(fp, burst=True, size=1.0):
     """O ESTOURO: espiguinha some, menininha de pipoca aparece (com particulas, anel e raios)"""
     K(kern, "scale", fp - 1, (1, 1, 1)); K(kern, "scale", fp, (0.001,) * 3)
     K(pop_root, "scale", fp - 1, (0.001,) * 3)
-    K(pop_root, "scale", fp + 3, (1.35,) * 3); K(pop_root, "scale", fp + 8, (0.92,) * 3); K(pop_root, "scale", fp + 12, (1.0,) * 3)
+    K(pop_root, "scale", fp + 3, (1.35 * size,) * 3); K(pop_root, "scale", fp + 8, (0.92 * size,) * 3); K(pop_root, "scale", fp + 12, (size,) * 3)
     set_face(FP, fp, lid=-85, brow=(15, 0.33), browL=(15, 0.33), look=(0, -6))
     if not burst:
         return
@@ -647,9 +647,9 @@ def pipo_pop(fp, burst=True):
         K(ray, "location", fp + 9, (math.cos(a) * 1.4, -0.3, 0.75 + math.sin(a) * 1.4))
 
 
-def pipo_unpop(fr):
+def pipo_unpop(fr, size=1.0):
     """volta a ser espiguinha (para o loop final)"""
-    K(pop_root, "scale", fr, (1.0,) * 3); K(pop_root, "scale", fr + 4, (1.1,) * 3); K(pop_root, "scale", fr + 9, (0.001,) * 3)
+    K(pop_root, "scale", fr, (size,) * 3); K(pop_root, "scale", fr + 4, (1.1 * size,) * 3); K(pop_root, "scale", fr + 9, (0.001,) * 3)
     K(kern, "scale", fr + 8, (0.001,) * 3); K(kern, "scale", fr + 13, (1.08,) * 3); K(kern, "scale", fr + 17, (1.0,) * 3)
 
 
@@ -702,6 +702,9 @@ def finish(shots, events, shake_at=None):
     events = dict(events); events["N"] = N; events["shots"] = [f(x[0]) for x in shots]
     json.dump(events, open(WORK + "/events.json", "w"), ensure_ascii=False, indent=1)
     mode = sys.argv[-1]
+    if mode == "qa":
+        run_qa()
+        return
     os.makedirs(WORK + "/frames", exist_ok=True); os.makedirs(WORK + "/prev", exist_ok=True)
     if mode == "full":
         s.render.filepath = WORK + "/frames/f"
@@ -716,3 +719,111 @@ def finish(shots, events, shake_at=None):
             t = time.time()
             bpy.ops.render.render(write_still=True)
             print("TIME", fr, round(time.time() - t, 2))
+
+
+# ------------------------------------------------------------- QA (revisao automatica de sobreposicao)
+QA_KEYS = {}
+QA_TOUCH = set()
+
+
+def qa_touch(a, b):
+    """declara que dois grupos encostam/sobrepoem DE PROPOSITO (ex.: etiqueta pendurada no fone)"""
+    QA_TOUCH.add(tuple(sorted((a, b))))
+
+
+def qa_key(name, *objs):
+    """marca objetos importantes do episodio para a revisao (ex.: qa_key("etiqueta", tag_piv))"""
+    QA_KEYS[name] = objs
+
+
+def _meshes_under(o):
+    out = [o] if o.type in ('MESH', 'FONT', 'META') else []
+    for c in o.children_recursive:
+        if c.type in ('MESH', 'FONT') and not c.hide_render:
+            out.append(c)
+    return out
+
+
+def _bbox2d(objs, cam):
+    from bpy_extras.object_utils import world_to_camera_view
+    xs, ys = [], []
+    for o in objs:
+        if o.hide_render:
+            continue
+        mw = o.matrix_world
+        if mw.to_scale().length < 0.01:
+            continue
+        for c in o.bound_box:
+            p = world_to_camera_view(s, cam, mw @ Vector(c))
+            if p.z > 0:
+                xs.append(p.x); ys.append(1 - p.y)   # y de cima para baixo
+    if not xs:
+        return None
+    return [min(xs), min(ys), max(xs), max(ys)]
+
+
+def run_qa(step=3, bvh_step=15):
+    """modo qa: nao renderiza; mede sobreposicao entre grupos-chave, corte na borda,
+    texto 3D na faixa da legenda/pilula e objetos atravessando (BVH). Grava WORK/qa_scene.json"""
+    from mathutils.bvhtree import BVHTree
+    cam = s.camera
+    groups = dict(QA_KEYS)
+    groups.setdefault("pipo_espiga", (kern,))
+    groups.setdefault("pipo_pipoca", (pop_root,))
+    gm = {k: sum((_meshes_under(o) for o in v), []) for k, v in groups.items()}
+    texts = [o for o in bpy.data.objects if o.type == 'FONT' and not o.hide_render]
+    issues, boxes = [], {}
+    deps = bpy.context.evaluated_depsgraph_get()
+    for fr in range(1, N + 1, step):
+        s.frame_set(fr)
+        bx = {k: _bbox2d(v, cam) for k, v in gm.items()}
+        bx = {k: b for k, b in bx.items() if b and (b[2] - b[0]) * (b[3] - b[1]) > 0.0004}
+        boxes[fr] = bx
+        ks = list(bx)
+        for i in range(len(ks)):
+            a = bx[ks[i]]
+            w = a[2] - a[0]
+            if a[0] < -0.35 * w or a[2] > 1 + 0.35 * w:
+                issues.append(dict(frame=fr, tipo="cortado_na_borda", alvo=ks[i]))
+            for j in range(i + 1, len(ks)):
+                b = bx[ks[j]]
+                if tuple(sorted((ks[i], ks[j]))) in QA_TOUCH:
+                    continue
+                ix = max(0, min(a[2], b[2]) - max(a[0], b[0])); iy = max(0, min(a[3], b[3]) - max(a[1], b[1]))
+                amin = min((a[2] - a[0]) * (a[3] - a[1]), (b[2] - b[0]) * (b[3] - b[1]))
+                if amin > 0 and ix * iy / amin > 0.15:
+                    issues.append(dict(frame=fr, tipo="imagens_sobrepostas", alvo=f"{ks[i]} x {ks[j]}", fracao=round(ix * iy / amin, 2)))
+        for t in texts:
+            b = _bbox2d([t], cam)
+            if not b or (b[2] - b[0]) < 0.03:
+                continue
+            for band, (y0, y1) in (("legenda", (0.58, 0.70)), ("pilula", (0.11, 0.20))):
+                if b[1] < y1 and b[3] > y0 and b[2] > 0.1 and b[0] < 0.9:
+                    issues.append(dict(frame=fr, tipo=f"texto3d_na_faixa_da_{band}", alvo=t.data.body))
+        if fr % bvh_step == 1:
+            trees = {}
+            for k, objs in gm.items():
+                if k not in bx:
+                    continue
+                for o in objs:
+                    if o.type != 'MESH' or o.matrix_world.to_scale().length < 0.05:
+                        continue
+                    try:
+                        oe = o.evaluated_get(deps)
+                        me = oe.to_mesh()
+                        vs = [oe.matrix_world @ v.co for v in me.vertices]
+                        ps = [tuple(p.vertices) for p in me.polygons]
+                        trees.setdefault(k, []).append(BVHTree.FromPolygons(vs, ps))
+                        oe.to_mesh_clear()
+                    except Exception:
+                        pass
+            kk = list(trees)
+            for i in range(len(kk)):
+                for j in range(i + 1, len(kk)):
+                    if tuple(sorted((kk[i], kk[j]))) in QA_TOUCH:
+                        continue
+                    hit = any(ta.overlap(tb) for ta in trees[kk[i]] for tb in trees[kk[j]])
+                    if hit:
+                        issues.append(dict(frame=fr, tipo="objetos_atravessando", alvo=f"{kk[i]} x {kk[j]}"))
+    json.dump(dict(issues=issues, boxes={str(k): v for k, v in boxes.items()}), open(WORK + "/qa_scene.json", "w"), ensure_ascii=False)
+    print("QA_SCENE", len(issues), "ocorrencias")

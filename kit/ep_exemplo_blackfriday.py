@@ -11,10 +11,11 @@ exec(open(KIT + "/pipo_lib.py").read())
 t_duz = wt("duzentos"); t_cinq = wt("cinquenta"); t_cem_pop = wt("cem", 2)
 t_parab = wt("parabéns"); t_voce = wt("você"); t_metade = wt("metade")
 t_hist = wt("histórico"); t_manda = wt("manda"); t_quarta = wt("quarta"); t_sexta = wt("sexta")
-PIPX = -0.85
+PIPX = -1.0
 
+pipo_place(PIPX, -0.95, 1.45)
 # ------------------------------------------------------------- props
-PX = 0.95  # product x
+PX = 1.4  # product x
 ped_m = toon("ped", (0.95, 0.30, 0.42))
 bpy.ops.mesh.primitive_cylinder_add(vertices=48, radius=0.85, depth=1.0, location=(PX, 0.3, 0.5))
 ped = give(smooth(bpy.context.object), ped_m, 0.025)
@@ -157,7 +158,7 @@ pipo_idle(FK, 1, f_voce)
 pipo_hop(f_duz, 0.25)
 pipo_hop(f_cinq + 2, 0.35)
 pipo_tension(f_voce + 10, f_pop)
-pipo_pop(f_pop)
+pipo_pop(f_pop, size=0.78)
 set_face(FP, f_pop, lid=-85, brow=(15, 0.33), browL=(15, 0.33), look=(0, -6))       # shocked
 set_face(FP, f_meta - 4, lid=-85, brow=(15, 0.33), browL=(15, 0.33), look=(0, -6))
 set_face(FP, f_meta + 2, lid=-20, brow=(-15, 0.22), browL=(-15, 0.22), look=(-18, 0))  # annoyed at the tag
@@ -165,7 +166,7 @@ blink(FP, f_meta + 40, -20)
 set_face(FP, f_hist, lid=-20, look=(-25, 2))     # looks at the chart
 set_face(FP, f_manda, lid=-25, brow=(8, 0.24), browL=(-12, 0.3), look=(0, -6))   # signature deadpan to camera
 blink(FP, f_manda + 30, -25)
-pipo_unpop(f_loop)
+pipo_unpop(f_loop, size=0.78)
 set_face(FK, f_loop, lid=TIRED, brow=(8, 0.24), browL=(-12, 0.29), look=(-18, 0))
 pipo_idle(FP, f_pop + 12, f_loop)
 K(body, "scale", f_loop, (1, 1, 1))
@@ -175,7 +176,7 @@ K(body, "scale", f_loop, (1, 1, 1))
 # price history chart + confetti
 confetti(f(t_sexta))
 # price history chart (appears with "histórico")
-chart = empty("chart", (PX + 0.05, -0.6, 2.75))
+chart = empty("chart", (PX - 0.2, -0.6, 3.15))
 chart.rotation_euler = (0, 0, math.radians(-8))
 bars = []
 cm_g = toon("bg", (0.3, 0.9, 0.45)); cm_r = toon("br", (0.95, 0.15, 0.25))
@@ -203,16 +204,16 @@ hide_scale(chart, f_manda - 4, dur=6)
 
 # ------------------------------------------------------------- camera + events
 shots = [  # (t_inicio_s, loc_inicio, loc_fim, alvo, lente)
-    (0.0, (-0.25, -5.9, 1.55), (-0.25, -5.3, 1.5), (-0.15, 0, 1.15), 30),
-    (f_duz / 30 - 0.15, (1.3, -3.3, 2.0), (1.25, -3.1, 1.95), (PX + 0.2, 0, 1.35), 34),
-    (t_sexta - 0.05, (-0.4, -5.6, 0.7), (-0.2, -5.2, 0.8), (0.2, 0, 1.5), 28),
+    (0.0, (0.15, -6.6, 1.6), (0.15, -6.0, 1.55), (0.25, 0, 0.8), 30),
+    (f_duz / 30 - 0.15, (1.3, -3.5, 1.9), (1.25, -3.3, 1.85), (PX + 0.2, 0, 0.95), 34),
+    (t_sexta - 0.05, (-0.4, -5.9, 0.6), (-0.2, -5.5, 0.7), (0.2, 0, 1.15), 28),
     (t_parab - 0.05, (-0.6, -4.0, 1.5), (-0.6, -3.7, 1.45), (PIPX + 0.15, -0.95, 1.0), 36),
-    (t_voce - 0.05, (0.9, -3.6, 1.35), (1.1, -2.2, 1.3), (PX + 0.2, 0, 1.2), 34),
-    (t_cem_pop - 0.02, (-0.3, -5.6, 1.7), (-0.35, -6.0, 1.75), (-0.25, -0.6, 1.35), 30),
-    (t_metade - 0.1, (0.3, -5.8, 1.6), (0.25, -5.5, 1.6), (0.15, 0, 1.25), 32),
-    (t_hist - 0.25, (0.5, -4.8, 2.2), (0.55, -4.6, 2.2), (PX - 0.1, -0.6, 2.1), 32),
+    (t_voce - 0.05, (0.9, -3.8, 1.5), (1.1, -2.6, 1.5), (PX + 0.2, 0, 0.85), 34),
+    (t_cem_pop - 0.02, (0.05, -6.3, 1.7), (0.0, -6.7, 1.75), (0.15, -0.6, 1.0), 30),
+    (t_metade - 0.1, (0.2, -6.6, 1.6), (0.2, -6.3, 1.6), (0.15, 0, 0.9), 32),
+    (t_hist - 0.25, (0.75, -5.0, 2.4), (0.8, -4.8, 2.4), (PX - 0.3, -0.6, 2.8), 32),
     (t_manda - 0.05, (-0.5, -5.0, 1.8), (-0.5, -4.7, 1.75), (PIPX + 0.3, -0.95, 1.3), 34),
-    ((f_loop + 10) / 30, (-0.25, -5.9, 1.55), (-0.25, -5.9, 1.55), (-0.15, 0, 1.15), 30),
+    ((f_loop + 10) / 30, (0.15, -6.6, 1.6), (0.15, -6.6, 1.6), (0.25, 0, 0.8), 30),
 ]
 events = dict(
     f_pop=f_pop, f_loop=f_loop,
@@ -231,4 +232,7 @@ events = dict(
         (t_hist - 0.2, t_manda - 0.05, "OLHA O HISTÓRICO", [255, 255, 255], [26, 8, 36])],
     music_gap=[(f_pop - 1) / 30 - 0.75, (f_pop - 1) / 30],
 )
+# grupos que a revisao automatica vigia (sobreposicao, corte, objetos atravessando)
+qa_key("etiqueta", tag_piv); qa_key("fone", hp); qa_key("pedestal", ped); qa_key("grafico", chart)
+qa_touch("etiqueta", "fone"); qa_touch("fone", "pedestal"); qa_touch("etiqueta", "pedestal")
 finish(shots, events, shake_at=f_pop)

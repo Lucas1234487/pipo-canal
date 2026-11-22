@@ -44,7 +44,10 @@ def clean(t):
     return t if t.endswith("…") or t.endswith("?") or t.endswith("!") else t.rstrip(".,:;")
 
 
-def draw_caption(img, t):
+LAYOUT = {}
+
+
+def draw_caption(img, t, fr=None):
     c = next((ch for ch in chunks if ch[0]["cs"] <= t < ch[0]["ce"]), None)
     if not c:
         return
@@ -63,12 +66,15 @@ def draw_caption(img, t):
     for i, tk in enumerate(toks):
         d.text((x, y), tk, font=font, fill=YEL if i == active else (255, 255, 255), stroke_width=11, stroke_fill=DARK, anchor="lm")
         x += widths[i] + sp
+    if fr is not None:
+        hh = font.size * 0.75 + 11
+        LAYOUT.setdefault(fr, {})["legenda"] = [(OW / 2 - total / 2 - 11) / OW, (y - hh) / OH, (OW / 2 + total / 2 + 11) / OW, (y + hh) / OH]
 
 
 pills = E.get("pills_" + lang, E.get("pills", [])) if lang else E.get("pills", [])
 
 
-def draw_pill(img, t):
+def draw_pill(img, t, fr=None):
     for a, b, txt, bg, fg in pills:
         if a <= t < b:
             sc = min(1.0, 0.7 + (t - a) * 3)
@@ -81,6 +87,8 @@ def draw_pill(img, t):
             d.rounded_rectangle((box[0] + 7, box[1] + 9, box[2] + 7, box[3] + 9), radius=h // 2, fill=DARK)
             d.rounded_rectangle(box, radius=h // 2, fill=tuple(bg), outline=DARK, width=6)
             d.text((cx, cy + 2), txt, font=fnt, fill=tuple(fg), anchor="mm")
+            if fr is not None:
+                LAYOUT.setdefault(fr, {}).setdefault("pilulas", []).append([box[0] / OW, box[1] / OH, (box[2] + 7) / OW, (box[3] + 9) / OH])
 
 
 # ---------- audio
@@ -145,10 +153,11 @@ p = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt
 for fr in range(1, N + 1):
     im = Image.open(f"{WORK}/frames/f{fr:04d}.png").convert("RGB").resize((OW, OH), Image.LANCZOS)
     t = f2t(fr)
-    draw_pill(im, t)
-    draw_caption(im, t)
+    draw_pill(im, t, fr)
+    draw_caption(im, t, fr)
     p.stdin.write(im.tobytes())
 p.stdin.close()
+json.dump({str(k): v for k, v in LAYOUT.items()}, open(f"{WORK}/layout{suf or '_pt'}.json", "w"))
 if p.wait() == 0:
     os.replace(tmp, OUT)
     print("OK", OUT)
