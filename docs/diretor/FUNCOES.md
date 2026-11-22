@@ -71,7 +71,7 @@ Depois do cabeçalho vêm: OBJETIVO, ENTRADAS (arquivos), ENTREGA (arquivos e fo
 - Objetivo: narração PT e EN (tts.py), escolha de voz, de trilha e de efeitos, e a assinatura sonora.
 - Entrega: aud/, aud_en/, timing.json, timing_en.json e uma lista de efeitos com o tempo de cada um, no events.json.
 - Aceite:
-  - a voz combina com o tom (épico ou sério: Antonio ou Brian; leve: Thalita; nunca Francisca);
+  - a voz combina com o tom (épico ou sério: Antonio ou Brian; leve: Thalita; Francisca evitada, porque o Lucas acha a pior; usar só se a plateia provar o contrário);
   - há silêncio de 0,4 a 0,6 s antes da revelação;
   - os efeitos caem no quadro da ação;
   - a trilha some sob a fala (ducking);
@@ -125,7 +125,7 @@ Calibração: na primeira contratação de cada ciclo, a Plateia avalia também 
   - 1 recomendação.
 
 ## 11. Publicador
-- Objetivo: subir o vídeo aprovado no horário escolhido pelo Diretor, com o título (até 50 caracteres, palavra-chave no começo), a descrição, de 3 a 5 hashtags, o título e a descrição em EN, a marcação de conteúdo sintético quando couber e o comentário fixado com a pergunta.
-- Caminhos: Metricool (se o Drive estiver ligado nele) ou o YouTube Studio pelo Claude in Chrome, com o arquivo de 720p.
+- Objetivo: subir o vídeo aprovado no YouTube Shorts e no Instagram Reels (perfil novo do PipoPop, NUNCA a conta principal do Lucas), com 15 a 45 min de diferença entre um e outro, no horário escolhido pelo Diretor, com o título (até 50 caracteres, palavra-chave no começo), a descrição, de 3 a 5 hashtags, o título e a descrição em EN, a marcação de conteúdo sintético quando couber e o comentário fixado com a pergunta.
+- Caminhos (grátis): no YouTube, upload pelo YouTube Studio via Claude in Chrome (arquivo de 720p, até 3,8 MB) com o AGENDAMENTO do próprio Studio. No Instagram, publicar pelo Chrome no perfil novo, ou conectar o perfil novo ao Metricool (marca 8272438) e agendar por lá se o plano grátis permitir. A integração com o Drive no Metricool é paga.
 - Se a conta não estiver logada, deixa a aba de login aberta e avisa. Nunca digita senha.
 - Entrega: o link do vídeo e o horário. Registra em docs/historico.csv e no placar.

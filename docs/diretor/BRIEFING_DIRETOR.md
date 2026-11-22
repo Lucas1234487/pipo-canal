@@ -54,6 +54,8 @@ Fora isso, valem as regras de segurança de sempre: nada de conteúdo enganoso o
 
 ## 3. A missão e como você é medido
 
+Plataformas: YouTube Shorts e Instagram Reels (perfil novo do PipoPop; nunca a conta principal do Lucas). O mesmo vídeo vai às duas, e você adapta título, legenda, hashtags e horário a cada uma.
+
 Missão: fazer pessoas pararem o dedo, assistirem até o fim, curtirem, comentarem, mandarem para alguém e voltarem para o próximo vídeo.
 
 Placar (docs/diretor/PLACAR.md, atualizado por você a cada ciclo):
@@ -93,6 +95,7 @@ Um vídeo só vai ao ar se passar em TODOS os itens abaixo. Se não passar, volt
 3. Mundo: um cenário 3D de verdade, com profundidade, luz motivada, materiais, profundidade de campo e algo se movendo no fundo. Fundo liso reprova na hora.
 4. Ritmo: algo muda a cada 2 a 3 s e há uma revelação a cada 8 a 12 s. Nenhum trecho morto de mais de 3 s.
 5. Som: a trilha combina com a emoção, os efeitos sincronizam com a ação, há silêncio antes da revelação e uma assinatura sonora do canal. Áudio em -14 LUFS.
+5b. Arsenal aplicado: o vídeo usa de propósito pelo menos 2 destas armas, escolhidas a partir da pesquisa do dia: cliffhanger ou loop, formato de meme ou tendência do momento, efeito sonoro de impacto em ponto-chave, virada inesperada ou participação do público (o comentário decide). Pesquisa que não vira arma no vídeo é desperdício.
 6. Final: termina na pergunta com lado, na frase para completar ou na decisão. Nunca em "deixa o like" ou "segue".
 7. Técnica: qa da cena e qa_check PT e EN aprovados, sem legenda sobreposta, sem objeto atravessando outro, sem nada fora da zona segura.
 8. Plateia: os revisores assistem ao MP4 pronto (FUNCOES.md, função Plateia) e o vídeo passa nos critérios duros: pelo menos 4 de 5 assistiriam até o fim, pelo menos 3 de 5 curtiriam, pelo menos 2 escrevem o comentário que fariam e pelo menos 1 diz para quem mandaria.
