@@ -152,6 +152,13 @@ python3 kit/qa_check.py $WORK pt; python3 kit/qa_check.py $WORK en
 
 1. A integração Google Drive do Metricool é só do plano pago (verificado em 22/11/2026), então não dá no plano grátis. Caminho grátis: subir pelo YouTube Studio via Chrome e usar o AGENDAMENTO do próprio Studio (o PC precisa estar ligado só na hora do upload, não na hora da publicação). Subir vários vídeos agendados de uma vez quando o PC estiver ligado.
 2. Perfil novo do Instagram: criado pelo Lucas em 22/11/2026.
-3. O ep002 está privado no YouTube. Decidir se apaga, se refaz ou se deixa como está.
+3. CORREÇÃO 22/11 (Diretor 1): o ep002 está PÚBLICO no YouTube (522 views, 8 curtidas), não privado. Fica no ar.
 4. As 3 tarefas agendadas antigas (vídeo A, vídeo B e estratégia semanal) estão pausadas. O Diretor reescreve e religa quando o processo dele estiver pronto.
 5. A parte 2 dos dinossauros está pendente, com público já fisgado.
+
+## 9. Atualizações do Diretor 1 (22/11/2026)
+- IDs no YouTube: dinossauros 927OYhLGseo; Black Friday v1 (3D) _t2jvPMi7-o; Black Friday v2 (toon) 6S5F10a1MlI; ep002 presente RsBcFHR2h1I. Handle do canal: @pipopo.88.
+- Os 4 estavam sem título real/descrição e 3 sem a declaração "feito para crianças". Lucas decidiu: NÃO é para crianças, em todos os vídeos. Sem essa resposta o Studio não salva edição.
+- "Vídeo relacionado" (único link clicável em Shorts) exige a verificação do canal por telefone, que só o Lucas faz (Studio > Configurações > Canal > Recursos avançados). Até lá, a ligação entre partes vai só em texto e no comentário fixado.
+- No editor do Studio, clicar no player pode jogar para tela cheia e mandar a digitação para o player. Focar os campos por JavaScript (#textbox: [0] título, [1] descrição) antes de digitar.
+- A VM desta sessão tem 2 núcleos (a do Diretor anterior no Claude Code tinha 4, ~2,4 s/quadro). Conferir nproc no começo de cada ciclo antes de estimar render.
