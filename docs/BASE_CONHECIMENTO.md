@@ -184,3 +184,11 @@ Galinha come milho. Quando o vídeo revela que a galinha é dinossauro, a Pipo (
 - Arco secundário entre vídeos: o que ela faz num vídeo tem consequência no próximo (rouba um pirulito num, aparece comendo o pirulito no outro). O controle fica em docs/diretor/arco_pipo.md e TODO vídeo consulta e atualiza esse arquivo.
 - Trava: guerra só histórica e antiga (ou fictícia), nunca conflito atual nem nada que encoste em política; arma só cartunesca e sem violência contra pessoas. Nada que pareça perigo real para criança.
 - Isso alimenta a regra do comentário (seção 11): quem achar a Pipo ou pegar a ligação pode ir para a tela no próximo vídeo.
+
+## 14. Render na GPU do Kaggle (22/11/2026, Diretor 1)
+- Conta do Lucas no Kaggle (lucascoliv), telefone verificado. GPU T4 x2 grátis, 30 h por semana, cota zera no domingo 00:00 UTC. Internet do notebook ligada.
+- Notebook de trabalho: https://www.kaggle.com/code/lucascoliv/notebook7af22065de (acelerador GPU T4 x2). Há fila para pegar GPU (pegou em ~1 min na posição 14).
+- Entrada: o notebook clona o branch público render/<ep> do repositório e roda render/kaggle_setup.sh (pip bpy + libEGL). OptiX funciona nas 2 T4 (os avisos de EGL/HIP são inofensivos).
+- Medido no mundo do T. rex (o mais pesado): 540x960 com 3 amostras = 1,09 s/quadro; 1080x1920 nativo com 16 amostras = 4,2 s/quadro, num processo só. A CPU daqui faz ~3 s/quadro a 540x960. Rodar 2 processos (1 por GPU, quadros divididos) deve cortar o tempo pela metade (ainda não medido).
+- SEMPRE desligar a sessão (botão de power) ao terminar, para não queimar a cota com a máquina parada.
+- Volta dos quadros: o shell daqui não alcança o kaggle.com. Caminho planejado: o notebook empurra o resultado para o GitHub com um token de escopo mínimo guardado nos Secrets do Kaggle (o Lucas cria; o Diretor nunca vê o token).
