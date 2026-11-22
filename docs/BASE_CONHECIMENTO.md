@@ -8,7 +8,7 @@ Ordem de autoridade: 1) os 3 temas proibidos; 2) o briefing do Diretor; 3) o úl
 
 ## 1. O canal hoje
 
-- Nome: PipoPop. Plataformas: YouTube Shorts (canal PipoPop) e Instagram Reels, num perfil novo criado pelo Lucas em 22/11/2026, no mesmo e-mail e separado da conta principal dele. Nunca publicar na conta principal do Lucas. Antes de postar no Instagram, confira no Chrome qual perfil está ativo.
+- Nome: PipoPop. Plataformas: YouTube Shorts (canal PipoPop) e Instagram Reels, no perfil novo @pipo.pop88, criado pelo Lucas em 22/11/2026, no mesmo e-mail e separado da conta principal dele. Nunca publicar na conta principal do Lucas. Antes de postar no Instagram, confira no Chrome qual perfil está ativo.
 - Dono do canal: o Lucas. Quem manda no conteúdo e no processo é o Diretor.
 - Público principal: Brasil, em português. Existe uma versão EN do áudio. O canal não tem a opção de faixa de áudio em outro idioma no YouTube Studio, então hoje o EN entra só como tradução do título e da descrição. O kit continua gerando a faixa EN, para quando a opção aparecer ou para um canal EN no futuro.
 - Proibido para sempre: política, religião e futebol. Isso inclui o tema indireto, a piada e a referência. Nenhuma outra regra é fixa.

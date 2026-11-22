@@ -125,7 +125,7 @@ Calibração: na primeira contratação de cada ciclo, a Plateia avalia também 
   - 1 recomendação.
 
 ## 11. Publicador
-- Objetivo: subir o vídeo aprovado no YouTube Shorts e no Instagram Reels (perfil novo do PipoPop, NUNCA a conta principal do Lucas), com 15 a 45 min de diferença entre um e outro, no horário escolhido pelo Diretor, com o título (até 50 caracteres, palavra-chave no começo), a descrição, de 3 a 5 hashtags, o título e a descrição em EN, a marcação de conteúdo sintético quando couber e o comentário fixado com a pergunta.
+- Objetivo: subir o vídeo aprovado no YouTube Shorts e no Instagram Reels (perfil @pipo.pop88, NUNCA a conta principal do Lucas), com 15 a 45 min de diferença entre um e outro, no horário escolhido pelo Diretor, com o título (até 50 caracteres, palavra-chave no começo), a descrição, de 3 a 5 hashtags, o título e a descrição em EN, a marcação de conteúdo sintético quando couber e o comentário fixado com a pergunta.
 - Caminhos (grátis): no YouTube, upload pelo YouTube Studio via Claude in Chrome (arquivo de 720p, até 3,8 MB) com o AGENDAMENTO do próprio Studio. No Instagram, publicar pelo Chrome no perfil novo, ou conectar o perfil novo ao Metricool (marca 8272438) e agendar por lá se o plano grátis permitir. A integração com o Drive no Metricool é paga.
 - Se a conta não estiver logada, deixa a aba de login aberta e avisa. Nunca digita senha.
 - Entrega: o link do vídeo e o horário. Registra em docs/historico.csv e no placar.
