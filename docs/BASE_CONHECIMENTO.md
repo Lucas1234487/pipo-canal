@@ -150,8 +150,8 @@ python3 kit/qa_check.py $WORK pt; python3 kit/qa_check.py $WORK en
 
 ## 8. Pendências abertas em 22/11/2026
 
-1. O Lucas precisa ligar o Google Drive dentro do Metricool para a publicação agendada funcionar sem o Chrome.
-2. Criar o perfil novo do Instagram no mesmo e-mail, sem mexer na conta principal. Pelo app, em Perfil > trocar de conta > Criar nova conta, a conta nova fica ligada à Central de Contas. O Lucas tem que fazer ou aprovar, e código de verificação e senha são dele.
+1. A integração Google Drive do Metricool é só do plano pago (verificado em 22/11/2026), então não dá no plano grátis. Caminho grátis: subir pelo YouTube Studio via Chrome e usar o AGENDAMENTO do próprio Studio (o PC precisa estar ligado só na hora do upload, não na hora da publicação). Subir vários vídeos agendados de uma vez quando o PC estiver ligado.
+2. Perfil novo do Instagram: criado pelo Lucas em 22/11/2026.
 3. O ep002 está privado no YouTube. Decidir se apaga, se refaz ou se deixa como está.
 4. As 3 tarefas agendadas antigas (vídeo A, vídeo B e estratégia semanal) estão pausadas. O Diretor reescreve e religa quando o processo dele estiver pronto.
 5. A parte 2 dos dinossauros está pendente, com público já fisgado.
