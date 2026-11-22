@@ -46,15 +46,13 @@ Nada de vídeo novo. No canal existente:
 Nenhuma. Ele tinha razão na nota 3. As sugestões dele (Pipo como lente do canal, a Pipo que às vezes é o drama, easter egg no fundo com arcos curtos de 3 a 7 vídeos, erro proposital com trava, comentário que volta no vídeo seguinte) estão na BASE, seções 10 a 13.
 
 ## Próximo ciclo: o que eu faria primeiro
-1. Perguntar ao Lucas o que ele quis dizer com "o único ponto alto é o gráfico" e "sem qualidade nas imagens", antes de produzir.
+1. RESPONDIDO pelo Lucas: a luz e o visual estão bonitos; os modelos 3D é que estão mal feitos. Prioridade: modelos melhores (BASE seção 16).
 2. Montar um banco de SFX e trilhas reais pelo Kaggle (internet ligada), com licença comercial verificada e o arquivo de licença no repositório. Testar um vídeo curto só para medir o ganho de som.
 3. Refazer a parte 2 como UMA ideia: "o T. rex tinha ossinho da sorte", com abertura no raio-x da fúrcula, ~30 s, 1080 nativo e um T. rex de silhueta inconfundível. A pergunta final com lado de verdade.
 Alternativa: um "E se..." curto com narrador + Pipo (formato novo do Lucas), numa ideia só.
 
 ## Pendências e coisas que só o Lucas pode fazer
-- Verificar o canal no YouTube por telefone (Studio > Configurações > Canal > Recursos avançados), para liberar o "Vídeo relacionado" (link clicável entre partes).
-- Apagar o branch "kaggle-teste" no GitHub (o proxy daqui não deixa).
-- Responder a dúvida sobre "gráfico" e "qualidade de imagem".
+- Verificação do canal: o Lucas já enviou o vídeo de verificação; está em análise no YouTube.
 - As 3 tarefas agendadas antigas continuam pausadas e não foram reescritas.
 
 ## Séries abertas

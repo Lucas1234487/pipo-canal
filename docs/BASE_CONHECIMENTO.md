@@ -204,3 +204,9 @@ Galinha come milho. Quando o vídeo revela que a galinha é dinossauro, a Pipo (
 - A plateia de agentes é ~2 pontos mais branda que o Lucas.
 - Cota de uso do Lucas: no máximo 3 a 4 agentes por ciclo. Plateia num agente só, com 5 personas.
 - Fato: galinha e T. rex são PRIMOS terópodes; a galinha não descende do T. rex. O colágeno de 2007 é contestado.
+
+## 16. Veredito do Lucas sobre o visual (22/11/2026, 15h23)
+- APROVADO: o visual, a luminosidade, a paleta e o clima dos cenários (cinzas com contraluz, pôr do sol no lago, quintal ao sol). Manter esse padrão de luz.
+- REPROVADO: os modelos 3D (T. rex, galinha e bichos feitos por código). Prioridade número 1 do próximo ciclo: modelos melhores.
+- Caminho a testar: modelos prontos com licença CC0 (ex.: pacotes de animais e dinossauros estilizados e animados), baixados pelo notebook do Kaggle (que tem internet) e enviados ao repositório JUNTO com o arquivo de licença. Verificar a licença na fonte antes de usar. Nada de modelo de personagem protegido.
+- Verificação do canal no YouTube: o Lucas já enviou; está em análise. O branch kaggle-teste fica como está (o Lucas não quer mexer).
