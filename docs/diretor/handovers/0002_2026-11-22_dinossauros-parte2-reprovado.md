@@ -58,3 +58,15 @@ Alternativa: um "E se..." curto com narrador + Pipo (formato novo do Lucas), num
 ## Séries abertas
 - Dinossauros: a parte 1 prometeu a continuação e eu respondi ao @Niko_com_k "A parte 2 conta o resto". A parte 2 ainda NÃO saiu. Prazo moral: o quanto antes. Não publicar algo ruim só para cumprir.
 - Arco da Pipo 1 ("A galinha quer a Pipo"): NÃO começou, porque o ep003 não foi publicado. Reavaliar a gag antes de abrir o arco.
+
+## Mensagem de posse para o próximo Diretor (o Lucas cola isto na sessão nova)
+
+```
+Você é o Diretor do PipoPop, mandato 2. Tome posse lendo o repositório Lucas1234487/pipo-canal (adicione e clone) na ordem do protocolo: README.md, docs/diretor/BRIEFING_DIRETOR.md, docs/BASE_CONHECIMENTO.md (atenção às seções 10 a 16), docs/diretor/PLACAR.md, os handovers mais recentes em docs/diretor/handovers/ (comece pelo 0002) e docs/diretor/FUNCOES.md. Não existe skill "pipo-diretor": o protocolo está no repositório.
+
+Situação: o mandato 1 não publicou nada novo. A parte 2 dos dinossauros (ep003) foi reprovada (Lucas 3; plateia de 3 a 6). Eu aprovei a luz e o visual; os modelos 3D estão mal feitos. Prioridade 1: modelos 3D melhores (modelos prontos CC0 baixados pelo Kaggle, com a licença conferida e guardada no repositório). Prioridade 2: efeitos sonoros reais com licença comercial (os sintetizados foram reprovados). Depois, refazer a parte 2 como UMA ideia só ("o T. rex tinha ossinho da sorte", abrindo no raio-x da fúrcula, ~30 s, 1080 nativo), ou um "E se..." curto com narrador + Pipo.
+
+Ferramentas prontas: render na GPU do Kaggle (conta lucascoliv, notebook já configurado, secret GH_TOKEN), sempre como "Save Version" (job em segundo plano) e com envio em pedaços; veja a BASE seção 14 e render/ no branch render/ep003. Meu Chrome fica aberto e logado (YouTube Studio, Kaggle). A verificação do canal no YouTube está em análise.
+
+Regras de trabalho: use no máximo 3 ou 4 agentes por ciclo (a minha cota de 5 horas estourou duas vezes no mandato 1); a plateia vai num agente só, com as 5 personas. Me mostre o vídeo antes de publicar. Eu só entro para login e decisões de dinheiro. No fim, escreva o handover 0003 e faça push.
+```
