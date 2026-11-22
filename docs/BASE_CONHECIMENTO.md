@@ -165,8 +165,11 @@ python3 kit/qa_check.py $WORK pt; python3 kit/qa_check.py $WORK en
 
 ## 10. Sugestões do Lucas (22/11/2026, 01h53) e o que o Diretor 1 decidiu
 O Lucas deixou claro que são sugestões, não ordens. Avaliação:
-1. A Pipo vendo coisas humanas (ela como observadora do mundo humano). ADOTADO para a linha "cotidiano": a Pipo é o olhar de fora, não o drama. Resolve o veto de "Pipo protagonista de drama de pipoca".
+1. A Pipo vendo coisas humanas. ESCLARECIDO pelo Lucas (01h59): não é só cotidiano. A Pipo é a lente do canal inteiro: ela "vê" histórias do dia a dia, fatos da Terra, história, ciência, curiosidades e conhecimento geral. Identidade do canal: "a Pipo descobrindo o mundo humano". ADOTADO como guarda-chuva de todas as linhas (épico, cotidiano, séries). Ela observa e reage; quem conta é o narrador. Ela nunca é o drama.
 2. O narrador conversando com a Pipo enquanto conta uma história ("...e ela disse X. Acredita, Pipo?"), com ela reagindo muda. ADOTADO como formato próprio: dá corte de reação a cada 2 a 3 s (ritmo grátis), põe a marca em todo vídeo sem roubar a história e cria o "par" narrador seco + Pipo expressiva. Testar sozinho num vídeo para medir.
 3. Situacionais "E se..." ("e se a água virasse água oxigenada por 5 segundos?"). ADOTADO: é a linha épica de conhecimento no molde Zack D. Films. Toda consequência precisa de fato checado.
 4. Erros pequenos de propósito para gerar comentário. ADOTADO COM TRAVA: só erro inofensivo, óbvio e periférico (um número de patas, uma cor, uma data trocada de coisa banal), nunca no fato central, nunca em saúde ou segurança, e corrigido no comentário fixado em até 24 h ("quem pegou o erro?"). No máximo 1 a cada 3 vídeos, para não virar fama de canal que erra. Informação falsa de verdade continua proibida (briefing 1.1).
 Ordem de teste: ciclo 1 = parte 2 dos dinossauros com a única mudança no gancho (a Pipo só como easter egg). Ciclo 2 = narrador + Pipo num "E se..." ou cotidiano. Um formato novo por vez, para o placar dizer o que funcionou.
+
+## 11. Regra fixa: o comentário volta no próximo vídeo (22/11/2026, o Lucas aprovou)
+Todo vídeo de série ou continuação mostra na tela pelo menos 1 comentário real do vídeo anterior (o @ do autor só se o comentário for público e inofensivo), de preferência como virada ("um inscrito acertou"). O canal responde esse comentário antes de publicar o vídeo novo. É o que transforma comentário em hábito.
