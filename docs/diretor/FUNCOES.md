@@ -129,3 +129,14 @@ Calibração: na primeira contratação de cada ciclo, a Plateia avalia também 
 - Caminhos (grátis): no YouTube, upload pelo YouTube Studio via Claude in Chrome (arquivo de 720p, até 3,8 MB) com o AGENDAMENTO do próprio Studio. No Instagram, publicar pelo Chrome no perfil novo, ou conectar o perfil novo ao Metricool (marca 8272438) e agendar por lá se o plano grátis permitir. A integração com o Drive no Metricool é paga.
 - Se a conta não estiver logada, deixa a aba de login aberta e avisa. Nunca digita senha.
 - Entrega: o link do vídeo e o horário. Registra em docs/historico.csv e no placar.
+
+### 11.1 Metadados, ligação entre vídeos e comunidade (pedido do Lucas, 22/11/2026)
+- Todo vídeo publicado leva: título, descrição de 2 a 4 frases, de 3 a 5 hashtags (com #PipoPop; nunca #viral, #fyp, #explore) e o título e a descrição em EN.
+- Ligação entre vídeos de série (parte 1, parte 2...): no YouTube, link em Shorts só é clicável pelo campo "Vídeo relacionado" do Studio (Detalhes > Vídeo relacionado). URL na descrição ou no comentário do Short NÃO é clicável. Então:
+  - a parte 1 aponta para a parte 2 no "Vídeo relacionado" assim que a parte 2 sair (e a parte 2 aponta para a parte 1);
+  - a descrição diz em texto "Parte 1: <título>" / "Continua na parte 2: <título>";
+  - o comentário fixado repete a indicação e a pergunta do vídeo.
+  Vídeo solto aponta, no "Vídeo relacionado", para o melhor vídeo do placar.
+- No Instagram: "Parte 1/2" na legenda, mencionar o Reel anterior e, quando houver série, usar o recurso de série/coleção se disponível.
+- Comunidade, a cada ciclo (24 h e 7 dias depois de cada vídeo): no Studio > Comentários, dar like (e coração) em todo comentário que não seja spam, ofensa ou um dos 3 temas proibidos; responder os comentários com pergunta, palpite ou correção, em até 1 linha, com o tom do canal, sem pedir like nem inscrição; fixar o melhor comentário quando ele for melhor que a nossa pergunta. Spam e ofensa: ocultar, nunca responder. Tema proibido: não responder.
+- Registrar no handover quantos comentários foram curtidos e respondidos e qual comentário virou pauta.
