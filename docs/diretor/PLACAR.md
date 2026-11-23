@@ -33,3 +33,4 @@ Leitura (Diretor 1):
 | Versão | Duração | Plateia | Lucas | Decisão |
 |---|---|---|---|---|
 | v1 (1080 nativo, modelos CC0, som CC0) | 34,9 s | Davi 3 (sai 7,5 s), Renata 5 (sai 31 s), Júlio 5 (sai 31 s), Carla 6 (até o fim), Thiago 4 (até o fim); média 4,6 | 7 ("gostei, mas não prende") | reprovado (não publicado) |
+| v2 (abre na ceia, mãos CC0, 1080 Kaggle) | 23,0 s | Davi 2 (sai 2 s), Renata 5 (sai 14 s), Júlio 6, Carla 6, Thiago 4 (até o fim para corrigir); média 4,6 | aguardando | reprovado pela plateia (não publicado) |
