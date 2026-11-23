@@ -1,0 +1,55 @@
+{
+ "voice": "pt-BR-AntonioNeural",
+ "rate": "+12%",
+ "pitch": "+0Hz",
+ "lead": 0.12,
+ "lines": [
+  {
+   "text": "Esse ossinho que você disputa na ceia...",
+   "pause": 0.0,
+   "shot": "0s: CLOSE em duas mãos puxando o ossinho em V sobre a mesa de Natal (frango assado, luzes da árvore em bokeh). O osso já está tremendo. SFX: rangido de osso + batimento"
+  },
+  {
+   "text": "é de dinossauro.",
+   "pause": 0.3,
+   "shot": "CORTE no 'dinossauro': T. rex nas cinzas ruge, faixa de raio-x revela a fúrcula em V no ALTO do peito (entre os ombros). SFX: rugido + varredura"
+  },
+  {
+   "text": "O T. rex tinha um igual, no alto do peito.",
+   "pause": 0.15,
+   "shot": "close no peito translúcido do rex, V aceso girando devagar"
+  },
+  {
+   "text": "Duas clavículas grudadas em V.",
+   "pause": 0.25,
+   "shot": "as duas metades do V acendem uma de cada vez (pop, pop)"
+  },
+  {
+   "text": "O Niko acertou: aves são dinossauros.",
+   "pause": 0.15,
+   "shot": "galinha ciscando no quintal ao sol; card pequeno do comentário '@Niko_com_k: A galinha eu acho' no alto, sem cobrir a galinha; carimbo ACERTOU no 'acertou'"
+  },
+  {
+   "text": "A galinha é prima do T. rex. Os dois herdaram esse osso.",
+   "pause": 0.45,
+   "shot": "sobreposição: a fúrcula do rex e a da galinha (no alto do peito) se encaixam no mesmo lugar da tela; rex bem iluminado | silêncio antes da volta"
+  },
+  {
+   "text": "Então, quando você puxar ele,",
+   "pause": 0.0,
+   "shot": "volta às mãos na mesa de Natal, tensão máxima, osso tremendo, batimento rápido"
+  },
+  {
+   "text": "vai disputar um osso de dinossauro.",
+   "pause": 0.25,
+   "shot": "CRACK no fim de 'dinossauro': ossinho quebra entre as mãos; a Pipo (espiga, fundo desfocado) estoura no mesmo quadro"
+  },
+  {
+   "text": "Na sua casa, quem fica com o maior?",
+   "pause": 0.4,
+   "shot": "mão com o pedaço maior levantado contra as luzes; termina aqui (loop para o começo)"
+  }
+ ],
+ "trim": true,
+ "trim_tail": 0.1
+}

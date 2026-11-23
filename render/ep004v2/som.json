@@ -1,0 +1,29 @@
+{
+ "music": "assets/musica/cc0-mystery/mystery%20exploration.mp3",
+ "music_gaps": [[18.75, 19.2]],
+ "shot_whoosh": ["assets/sfx/air-whoosh/whoosh2_0.wav", 0.0, 0.6, 0.08],
+ "shot_whoosh_gain": 0.15,
+ "sfx": [
+  ["assets/sfx/heartbeat-sounds/heartbeat_slow_reverb.wav", 0.0, 0.8],
+  [["assets/sfx/100-cc0-sfx-2/sfx100v2_wood_02.ogg", 0.0, 1.5, 0.2], 0.1, 0.35],
+  ["assets/sfx/heartbeat-sounds/heartbeat_slow_reverb.wav", 1.05, 0.8],
+  ["assets/sfx/cc0-deep-monster-roar/monster_roar.wav", 2.5, 0.95],
+  [["assets/sfx/t-rex-calls/t-rex_calls.mp3", 4.3, 2.6, 0.3], 2.62, 0.45],
+  [["assets/sfx/air-whoosh/whoosh2_0.wav", 0.0, 0.7, 0.05], 3.2, 0.55],
+  ["assets/sfx/pop-effect-sounds/p_2.ogg", 6.34, 0.7],
+  ["assets/sfx/pop-effect-sounds/p_2.ogg", 6.67, 0.7],
+  ["assets/sfx/100-cc0-sfx-2/sfx100v2_hit_02.ogg", 7.25, 0.45],
+  ["assets/sfx/100-cc0-sfx-2/sfx100v2_hit_01.ogg", 8.89, 0.6],
+  ["assets/sfx/pop-sounds/pop3.ogg", 8.92, 0.4],
+  [["assets/sfx/air-whoosh/whoosh2_0.wav", 1.0, 0.7, 0.05], 13.5, 0.5],
+  ["assets/sfx/75-cc0-breaking-falling-hit-sfx/bfh1_hit_03.ogg", 13.86, 0.6],
+  ["assets/sfx/heartbeat-sounds/heartbeat_slow_reverb.wav", 15.45, 0.8],
+  ["assets/sfx/heartbeat-sounds/heartbeat_fast_reverb.wav", 16.6, 0.8],
+  ["assets/sfx/heartbeat-sounds/heartbeat_fast_reverb.wav", 17.6, 0.9],
+  [["assets/sfx/100-cc0-sfx-2/sfx100v2_wood_02.ogg", 0.0, 2.0, 0.3], 17.0, 0.45],
+  ["assets/sfx/deep-bone-crackbreak-sfx/Deep Break 3.wav", 19.15, 1.0],
+  ["assets/sfx/75-cc0-breaking-falling-hit-sfx/bfh1_wood_breaking_01.ogg", 19.17, 0.7],
+  ["assets/sfx/pop-sounds/pop3.ogg", 19.2, 0.8],
+  [["assets/sfx/air-whoosh/whoosh2_0.wav", 0.0, 0.6, 0.08], 19.9, 0.3]
+ ]
+}

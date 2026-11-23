@@ -1,0 +1,135 @@
+{
+ "N": 690,
+ "fps": 30,
+ "duracao_s": 23.0,
+ "shots": [
+  1,
+  77,
+  129,
+  189,
+  255,
+  333,
+  403,
+  463,
+  520,
+  575,
+  623
+ ],
+ "cortes": [
+  1,
+  77,
+  129,
+  189,
+  255,
+  333,
+  403,
+  463,
+  520,
+  575,
+  623
+ ],
+ "f_pop": 575,
+ "t_pop": 19.133,
+ "music": null,
+ "sfx": [],
+ "pills": [],
+ "pills_en": [],
+ "marcas": {
+  "estalo": 575,
+  "pop_pipo": 575,
+  "rugido": 77,
+  "v_acende_alto_do_peito": 159,
+  "peito": 171,
+  "metade_esquerda_duas": 191,
+  "metade_direita_claviculas": 201,
+  "juncao_grudadas": 219,
+  "card_niko": 256,
+  "carimbo_acertou": 268,
+  "encaixe_herdaram": 431,
+  "puxar": 501,
+  "fim_da_fala": 658
+ },
+ "ponto_furcula_tela": {
+  "x": 0.5,
+  "y": 0.42
+ },
+ "planos": [
+  {
+   "nome": "P1_ceia",
+   "mundo": "B_ceia",
+   "f0": 1,
+   "f1": 76,
+   "s": 2.53
+  },
+  {
+   "nome": "A1_rugido",
+   "mundo": "A_cinzas",
+   "f0": 77,
+   "f1": 128,
+   "s": 1.73
+  },
+  {
+   "nome": "A2_peito",
+   "mundo": "A_cinzas",
+   "f0": 129,
+   "f1": 188,
+   "s": 2.0
+  },
+  {
+   "nome": "A3_close",
+   "mundo": "A_cinzas",
+   "f0": 189,
+   "f1": 254,
+   "s": 2.2
+  },
+  {
+   "nome": "Q1_quintal",
+   "mundo": "Q_quintal",
+   "f0": 255,
+   "f1": 332,
+   "s": 2.6
+  },
+  {
+   "nome": "C1_primos",
+   "mundo": "C_primos",
+   "f0": 333,
+   "f1": 402,
+   "s": 2.33
+  },
+  {
+   "nome": "C2_herdaram",
+   "mundo": "C_primos",
+   "f0": 403,
+   "f1": 462,
+   "s": 2.0
+  },
+  {
+   "nome": "B2_mesa",
+   "mundo": "B_ceia",
+   "f0": 463,
+   "f1": 519,
+   "s": 1.9
+  },
+  {
+   "nome": "B3_tensao",
+   "mundo": "B_ceia",
+   "f0": 520,
+   "f1": 574,
+   "s": 1.83
+  },
+  {
+   "nome": "B4_vitoria",
+   "mundo": "B_ceia",
+   "f0": 575,
+   "f1": 622,
+   "s": 1.6
+  },
+  {
+   "nome": "B5_loop",
+   "mundo": "B_ceia",
+   "f0": 623,
+   "f1": 690,
+   "s": 2.27
+  }
+ ]
+}

@@ -1,0 +1,8 @@
+Tempo por quadro na CPU desta maquina (2 nucleos), 1080x1920 nativo, Cycles + OIDN, 1 quadro cheio por mundo
+B_ceia: quadro 540, 12 spp -> 45.1 s/quadro (304 quadros)
+A_cinzas: quadro 200, 12 spp -> 68.8 s/quadro (178 quadros)
+Q_quintal: quadro 290, 10 spp -> 37.2 s/quadro (78 quadros)
+C_primos: quadro 440, 12 spp -> 47.3 s/quadro (130 quadros)
+Media ponderada: 50.7 s/quadro. Total estimado: 9.7 h para 690 quadros.
+NAO cabe na meta de 9 s/quadro na CPU. Recomendacao: render na GPU do Kaggle (manifest pronto, cycles-device OPTIX).
+Para caber na CPU seria preciso cair para ~540x960 com upscale ou ~4 spp, o que perde o visual aprovado (DOF/bokeh ruidoso).
