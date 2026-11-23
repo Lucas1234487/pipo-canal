@@ -2,6 +2,7 @@
 Uso: python3 tts.py WORK [lang]   -> le WORK/roteiro.json (ou roteiro_en.json), grava WORK/aud*/ e WORK/timing*.json
 roteiro.json: {"voice": "pt-BR-ThalitaMultilingualNeural", "rate": "+6%", "pitch": "+2Hz", "lead": 0.45,
                "lines": [{"text": "...", "pause": 0.35}, ...]}
+               "trim": true corta o silencio do fim de cada frase (recomendado; "trim_tail" = folga em s, padrao 0.12)
 Vozes: leve PT = pt-BR-ThalitaMultilingualNeural (+6%,+2Hz) | serio PT = pt-BR-AntonioNeural (+4%,-2Hz)
        alternativas a testar: en-US-AndrewMultilingualNeural / en-US-BrianMultilingualNeural falando PT
        EN leve = en-US-EmmaMultilingualNeural (+10%,+3Hz) | EN serio = en-US-AndrewMultilingualNeural (+5%,-2Hz)
@@ -47,7 +48,10 @@ async def go():
                 print("retry", i, e); await asyncio.sleep(2 + 3 * k)
         else:
             raise SystemExit("TTS falhou")
-        subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", f"{AD}/l{i}.mp3", "-ar", "48000", "-ac", "1", f"{AD}/l{i}.wav"], check=True)
+        cut = []
+        if R.get("trim") and ws:   # corta o silencio que o edge-tts deixa no fim de cada frase
+            cut = ["-t", f"{ws[-1][1] + ws[-1][2] + R.get('trim_tail', 0.12):.3f}", "-af", "afade=t=out:st=%.3f:d=0.06" % (ws[-1][1] + ws[-1][2] + R.get('trim_tail', 0.12) - 0.06)]
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", f"{AD}/l{i}.mp3", "-ar", "48000", "-ac", "1"] + cut + [f"{AD}/l{i}.wav"], check=True)
         d = float(subprocess.run(["ffprobe", "-v", "0", "-show_entries", "format=duration", "-of", "csv=p=0", f"{AD}/l{i}.wav"], capture_output=True, text=True).stdout)
         out.append(dict(i=i, text=ln["text"], start=t0, dur=d, words=[(w, t0 + o, du) for w, o, du in ws]))
         t0 += d + ln.get("pause", 0.3)
