@@ -28,3 +28,8 @@ Leitura (Diretor 1):
 |---|---|---|---|---|
 | v1 | 63 s | 5, 5, 6, 5, 5 (ninguém até o fim; saem aos 18, 35, 37, 37 e 42 s) | 3 | reprovado |
 | v2 (reedição) | 45 s | Davi 3 (sai aos 17,5 s), Thiago 4 (os outros 3 não votaram: limite de uso) | — | reprovado |
+
+## ep004 (não publicado) — "O T. rex tinha ossinho da sorte"
+| Versão | Duração | Plateia | Lucas | Decisão |
+|---|---|---|---|---|
+| v1 (1080 nativo, modelos CC0, som CC0) | 34,9 s | Davi 3 (sai 7,5 s), Renata 5 (sai 31 s), Júlio 5 (sai 31 s), Carla 6 (até o fim), Thiago 4 (até o fim); média 4,6 | aguardando | reprovado pela plateia |

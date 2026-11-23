@@ -210,3 +210,11 @@ Galinha come milho. Quando o vídeo revela que a galinha é dinossauro, a Pipo (
 - REPROVADO: os modelos 3D (T. rex, galinha e bichos feitos por código). Prioridade número 1 do próximo ciclo: modelos melhores.
 - Caminho a testar: modelos prontos com licença CC0 (ex.: pacotes de animais e dinossauros estilizados e animados), baixados pelo notebook do Kaggle (que tem internet) e enviados ao repositório JUNTO com o arquivo de licença. Verificar a licença na fonte antes de usar. Nada de modelo de personagem protegido.
 - Verificação do canal no YouTube: o Lucas já enviou; está em análise. O branch kaggle-teste fica como está (o Lucas não quer mexer).
+
+## 17. Assets e lições do mandato 2 (22/11/2026)
+- Modelos 3D CC0 e sons CC0 estão em assets/ (licenças em assets/LICENCAS.md). Quaternius: só pacotes antigos CC0 do itch.io; o site usa a QAL desde 28/08/2026 (proíbe redistribuir).
+- kit/compose.py toca qualquer áudio de assets/ e recortes [arquivo, início, dur, fade]. Nunca mais usar os .wav procedurais de kit/sfx.
+- Fila de GPU do Kaggle ("Save Version", T4 x2) chegou a ~3 h num domingo à tarde. Disparar render cedo.
+- ep004: a parte boa (a ceia de Natal) chegou aos 17 s. O que é identificação do público (a ceia, a família) abre o vídeo; recap de comentário da parte anterior só depois do gancho e em 1 frase.
+- Texto na tela que imita interface real (card de comentário) nunca leva número inventado.
+- Cuidado de fato: não dizer nem mostrar que a galinha "escapou" da extinção ou descende do T. rex; o certo é "os ancestrais das aves sobreviveram" e "a galinha é prima do T. rex". A fúrcula fica no alto do peito, entre os ombros.

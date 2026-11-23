@@ -2,10 +2,10 @@
 Diretor: mandato 2  ·  Ciclo: posse, assets CC0 (modelos e sons), ep004 "O T. rex tinha ossinho da sorte" (parte 2 dos dinossauros, refeita)
 
 ## Estado em uma frase
-Ainda estagnado no placar (nada novo publicado até este handover), mas os dois bloqueios do mandato 1 caíram: modelo 3D feio e som sintetizado. O ep004 está com a cena pronta e o render na fila do Kaggle. STATUS DO RENDER/PUBLICAÇÃO: ver a seção "Onde parei" no fim.
+Ainda estagnado no placar (nada novo publicado até este handover), mas os dois bloqueios do mandato 1 caíram: modelo 3D feio e som sintetizado. O ep004 foi renderizado em 1080 nativo (o Kaggle ficou ~3 h na fila) e a plateia REPROVOU: média 4,6 (3, 5, 5, 6, 4). Não publiquei.
 
 ## O que publiquei
-Nada ainda. Ver "Onde parei".
+Nada. O ep004 v1 foi reprovado pela plateia (votos em docs/diretor/ciclos/2026-11-22/ep004_plateia/). O MP4 foi mostrado ao Lucas para a opinião dele.
 
 ## O que fiz
 1. Modelos 3D (prioridade 1 do Lucas): assets/modelos/
@@ -43,5 +43,31 @@ Nada ainda. Ver "Onde parei".
 - Dinossauros: parte 2 = ep004 (ver "Onde parei").
 - Arco da Pipo 1: começa no ep004 (pena de galinha na cabeça). Atualizar docs/diretor/arco_pipo.md quando publicar.
 
-## Onde parei
-(preencher no fim do ciclo)
+## Por que o ep004 v1 reprovou (plateia, média 4,6)
+1. Recap do Niko (6,6 a 10,6 s) é enrolação para quem não viu a parte 1; o card cobre a galinha. Davi sai aos 7,5 s.
+2. O ouro (a ceia de Natal) só chega aos 17 s; o meio tem câmera parada (3,5 a 6 s) e o lado a lado (19,5 a 23,5 s) fica escuro e o rex irreconhecível.
+3. Final sem ação: o osso quebra sozinho, sem mãos; 4 s parados no fim, pergunta duplicada (pill + legenda).
+Fatos: "quem escapou: a galinha" está errado (a galinha não existia há 66 mi de anos; foram os ancestrais das aves). A cena rex + galinha + "herdaram esse osso" sugere descendência (são primos). A fúrcula da galinha ficou na barriga; o certo é no alto do peito.
+Detalhes: a legenda parte "T. rex" ("T" / "REX"); anel branco no pescoço da galinha aos 14,5 s.
+Acerto: a Carla (mãe) assistiu até o fim, comentou e mandaria no grupo da família. O ângulo da ceia funciona.
+
+## Onde parei / próximo ciclo
+1. Mostrei o v1 ao Lucas; anotar a nota dele no PLACAR.
+2. ep004 v2 (refazer, não reeditar), ~25 s:
+   - Abrir NA CEIA: duas mãos puxando o ossinho em close na mesa de Natal, primeira frase "Esse ossinho que você disputa na ceia... é de dinossauro." Raio-x revela o mesmo V no peito do T. rex (corte no estalo de tensão).
+   - Fato certo: "os ancestrais das aves sobreviveram ao asteroide; a galinha é prima do T. rex, e os dois herdaram esse osso". Fúrcula no alto do peito.
+   - Niko em 1 frase depois do gancho ("o Niko acertou na parte 1"), card maior e sem cobrir nada.
+   - Mãos: CC0 (procurar no OGA/itch "hands" rigged CC0) ou só pontas de dedos em close com DoF.
+   - Final: termina NO estalo + a pergunta (sem 4 s parados; a pergunta só na pill ou só na legenda).
+   - Legenda: tratar "T. rex" como uma palavra só (compose/tts).
+   - Lado a lado: mais luz no lado do rex ou trocar por sobreposição das duas fúrculas.
+   - A cena B_ceia e os assets do v1 estão no branch render/ep004 (reaproveitar a mesa, o ossinho e a Pipo).
+3. Disparar o render no Kaggle CEDO (fila longa). Plano B: pedir ao Lucas para rodar a célula na sessão interativa (eu fui bloqueado pela permissão de clicar "Run" na sessão interativa).
+4. Agentes usados neste ciclo: 2 (3D e plateia).
+
+## Mensagem de posse para o próximo Diretor
+```
+Você é o Diretor do PipoPop, mandato 3. Tome posse lendo o repositório Lucas1234487/pipo-canal (adicione e clone) na ordem: README.md, docs/diretor/BRIEFING_DIRETOR.md, docs/BASE_CONHECIMENTO.md (seções 10 a 17), docs/diretor/PLACAR.md, docs/diretor/handovers/0003 e 0002, docs/diretor/FUNCOES.md e assets/LICENCAS.md.
+Situação: modelos 3D CC0 e som CC0 resolvidos (assets/). O ep004 "o T. rex tinha ossinho da sorte" foi renderizado em 1080 e reprovado pela plateia (4,6): o melhor (a ceia de Natal) chega tarde, o recap do Niko enrola, falta mão puxando o osso e há erro de fato (galinha "escapou"). Prioridade: o ep004 v2 do handover 0003, abrindo na ceia, ~25 s, e PUBLICAR antes do Natal. Render no Kaggle cedo (a fila chegou a 3 h).
+Regras: no máximo 3 ou 4 agentes por ciclo; plateia num agente só. Me mostre o vídeo antes de publicar. No fim, handover 0004 e push.
+```
