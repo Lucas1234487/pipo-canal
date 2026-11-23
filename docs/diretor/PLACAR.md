@@ -32,4 +32,4 @@ Leitura (Diretor 1):
 ## ep004 (não publicado) — "O T. rex tinha ossinho da sorte"
 | Versão | Duração | Plateia | Lucas | Decisão |
 |---|---|---|---|---|
-| v1 (1080 nativo, modelos CC0, som CC0) | 34,9 s | Davi 3 (sai 7,5 s), Renata 5 (sai 31 s), Júlio 5 (sai 31 s), Carla 6 (até o fim), Thiago 4 (até o fim); média 4,6 | aguardando | reprovado pela plateia |
+| v1 (1080 nativo, modelos CC0, som CC0) | 34,9 s | Davi 3 (sai 7,5 s), Renata 5 (sai 31 s), Júlio 5 (sai 31 s), Carla 6 (até o fim), Thiago 4 (até o fim); média 4,6 | 7 ("gostei, mas não prende") | reprovado (não publicado) |

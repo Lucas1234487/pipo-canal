@@ -52,7 +52,7 @@ Detalhes: a legenda parte "T. rex" ("T" / "REX"); anel branco no pescoço da gal
 Acerto: a Carla (mãe) assistiu até o fim, comentou e mandaria no grupo da família. O ângulo da ceia funciona.
 
 ## Onde parei / próximo ciclo
-1. Mostrei o v1 ao Lucas; anotar a nota dele no PLACAR.
+1. Lucas deu 7 ao v1: "gostei, mas acho que não prende mesmo". Subiu de 3 (ep003) para 7: modelos e som resolveram o acabamento; o que falta é retenção (estrutura). Desta vez a plateia ficou MAIS dura que o Lucas (4,6 contra 7).
 2. ep004 v2 (refazer, não reeditar), ~25 s:
    - Abrir NA CEIA: duas mãos puxando o ossinho em close na mesa de Natal, primeira frase "Esse ossinho que você disputa na ceia... é de dinossauro." Raio-x revela o mesmo V no peito do T. rex (corte no estalo de tensão).
    - Fato certo: "os ancestrais das aves sobreviveram ao asteroide; a galinha é prima do T. rex, e os dois herdaram esse osso". Fúrcula no alto do peito.
