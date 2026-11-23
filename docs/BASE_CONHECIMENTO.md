@@ -218,3 +218,12 @@ Galinha come milho. Quando o vídeo revela que a galinha é dinossauro, a Pipo (
 - ep004: a parte boa (a ceia de Natal) chegou aos 17 s. O que é identificação do público (a ceia, a família) abre o vídeo; recap de comentário da parte anterior só depois do gancho e em 1 frase.
 - Texto na tela que imita interface real (card de comentário) nunca leva número inventado.
 - Cuidado de fato: não dizer nem mostrar que a galinha "escapou" da extinção ou descende do T. rex; o certo é "os ancestrais das aves sobreviveram" e "a galinha é prima do T. rex". A fúrcula fica no alto do peito, entre os ombros.
+
+## 18. Mandato 3 (23/11/2026)
+- NUNCA usar o Chrome do PC do trabalho do Lucas (EMS) para o canal. Ele bloqueia sites de IA por política da empresa, e o Lucas decidiu (23/11, 08h22) parar de usar esse Chrome. Kaggle, Studio e publicação só num Chrome pessoal ou com o Lucas fazendo o clique.
+- O .gitignore tinha "sfx/" e escondia assets/sfx: os ~280 efeitos CC0 nunca tinham entrado no repo. Corrigido para "kit/sfx/"; efeitos baixados de novo com a licença CC0 conferida na página (proveniencia.tsv).
+- kit/tts.py: opção "trim": true corta o silêncio que o edge-tts deixa no fim de cada frase (o mesmo texto caiu de 28 s para 22 s). Usar sempre.
+- Mãos CC0 com rig: assets/modelos/maos_arms_lowpoly (DevMops, OpenGameArt). Texturas da galinha Kelgar recuperadas do blend do v1 para assets/modelos/galinha_kelgar/textures.
+- Kaggle segunda de manhã: sem fila. O ep004 v2 (690 quadros, 1080, 16 amostras, 4 mundos) levou cerca de 1h no T4 x2. Na CPU daqui seriam ~9,7 h: render na CPU não é opção para 1080.
+- Comparativo Claude x Gemini (doc: https://claude.ai/artifact/HAFoUh55EYpedP8JM9diKA): empate em roteiro e 3D por código; o Gemini ganha em ouvir áudio e assistir vídeo. Ideia: o Gemini como Plateia que assiste o MP4 com som e como curador de som. Depende de chave de API (decisão do Lucas).
+- QA do quintal: a galinha bicando desce a cabeça até ~0,8 da altura; enquadrar com folga (alvo da câmera gp+0,06, distância ~1,3 m) para não cair na faixa da legenda nem fora da zona segura.
