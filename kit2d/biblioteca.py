@@ -76,6 +76,41 @@ PIPOCA = hexc("#FFF3D2")
 PIPOCA_SOMBRA = hexc("#EBCB8B")
 
 
+ROSA = hexc("#FF5FA2")
+ROSA_BOCHECHA = (1.0, 0.45, 0.6)
+
+
+def cilios(ctx, cx, cy, rx, ry, lid, lado, seed):
+    """Cílios no canto de fora da pálpebra (lado = -1 olho esquerdo, +1 direito)."""
+    if lid >= 0.99:
+        for i, f in enumerate((0.55, 0.85)):
+            x = cx + lado * rx * f
+            traco(ctx, [(x, cy + 2), (x + lado * 10, cy + 14)], lw=4, seed=seed + 70 + i, amp=0.3)
+        return
+    yl = cy - ry + 2 * ry * max(lid, 0.18)
+    dx = rx * math.sqrt(max(0, 1 - ((yl - cy) / ry) ** 2))
+    for i, f in enumerate((0.45, 0.75, 1.0)):
+        x = cx + lado * dx * f
+        y = yl - 2 if f < 1 else yl + 3
+        ang = -1.9 + 0.35 * i if lado < 0 else -1.24 - 0.35 * i
+        ln = 16 + 6 * i
+        traco(ctx, [(x, y), (x + math.cos(ang) * ln, y + math.sin(ang) * ln)], lw=5, seed=seed + 60 + i, amp=0.3)
+
+
+def bochechas(ctx, xs, y, rx=26, ry=15):
+    for x in xs:
+        ctx.save(); ctx.translate(x, y); ctx.scale(rx, ry); ctx.arc(0, 0, 1, 0, 2 * math.pi); ctx.restore()
+        ctx.set_source_rgba(*ROSA_BOCHECHA, 0.45); ctx.fill()
+
+
+def lacinho(ctx, cx, cy, esc, cor, seed, giro=0.0):
+    ctx.save(); ctx.translate(cx, cy); ctx.rotate(giro); ctx.scale(esc, esc)
+    for d in (-1, 1):
+        forma(ctx, [(0, 0), (d * 40, -26), (d * 46, 24)], cor, sombra=False, lw=5, seed=seed + d, amp=0.8)
+    forma(ctx, pts_elipse(0, 0, 12, 12, 10), escurece(cor, 0.2), sombra=False, lw=5, seed=seed + 5)
+    ctx.restore()
+
+
 def _corpo_espiga():
     pts = []
     for i in range(30):
@@ -142,12 +177,15 @@ def desenha_pipo_espiga(ctx, st, t, seed):
     lid = piscada(t, seed, lid_base)
     for sx, sd in ((-1, 1), (1, 2)):
         olho(ctx, sx * 50, -150, 36, 42, look, lid, MILHO_SOMBRA, seed + sd)
-        traco(ctx, [(sx * 50 - 26, -96), (sx * 50, -90), (sx * 50 + 24, -97)], lw=4, alpha=0.6, seed=seed + 20 + sd)  # olheira
+        cilios(ctx, sx * 50, -150, 36, 42, lid, sx, seed + sd)
+        traco(ctx, [(sx * 50 - 22, -98), (sx * 50, -94), (sx * 50 + 20, -99)], lw=3, alpha=0.4, seed=seed + 20 + sd)  # olheira leve
+    bochechas(ctx, (-92, 92), -92)
     sob = st.get("sobrancelha", 0.0)
-    traco(ctx, [(-86, -208), (-50, -206), (-18, -200)], lw=10, seed=seed + 30)
+    traco(ctx, [(-84, -206), (-56, -216), (-24, -210)], lw=7, seed=seed + 30)
     up = 20 + 26 * sob
-    traco(ctx, [(18, -204 - up * 0.5), (50, -212 - up), (86, -204 - up * 0.6)], lw=10, seed=seed + 31)
-    boca(ctx, st.get("boca", "reta"), 4, -64, 1.0, seed + 32)
+    traco(ctx, [(22, -206 - up * 0.5), (54, -216 - up), (84, -206 - up * 0.6)], lw=7, seed=seed + 31)
+    boca(ctx, st.get("boca", "reta"), 4, -64, 0.85, seed + 32)
+    lacinho(ctx, -70, -292, 0.9, ROSA, seed + 33, giro=-0.35)
     # palha (na frente)
     for sx in (-1, 1):
         leaf = [(sx * 10, 250), (sx * 90, 210), (sx * 150, 90), (sx * 158, -30), (sx * 128, 40), (sx * 70, 150), (sx * 20, 205)]
@@ -182,18 +220,20 @@ def desenha_pipoca(ctx, st, t, seed):
     for sx in (-1, 1):   # laços da maria-chiquinha
         cx, cy = sx * 128, -215
         for d in (-1, 1):
-            forma(ctx, [(cx, cy), (cx + d * 34, cy - 24), (cx + d * 38, cy + 20)], VERMELHO, sombra=False, lw=5, seed=seed + 90 + d * sx, amp=0.8)
-        forma(ctx, pts_elipse(cx, cy, 11, 11, 10), escurece(VERMELHO, 0.2), sombra=False, lw=5, seed=seed + 95 + sx)
+            forma(ctx, [(cx, cy), (cx + d * 34, cy - 24), (cx + d * 38, cy + 20)], ROSA, sombra=False, lw=5, seed=seed + 90 + d * sx, amp=0.8)
+        forma(ctx, pts_elipse(cx, cy, 11, 11, 10), escurece(ROSA, 0.2), sombra=False, lw=5, seed=seed + 95 + sx)
     # casquinha do grão
     forma(ctx, [(-50, 168), (0, 150), (50, 168), (30, 196), (-30, 196)], hexc("#D9822B"), sombra=False, lw=5, seed=seed + 99)
     look = LOOK.get(st.get("olhar", "camera"), (0, 0))
     lid = piscada(t, seed, st.get("palpebra", 0.12))
     for sx, sd in ((-1, 1), (1, 2)):
         olho(ctx, sx * 48, -110, 38, 46, look, lid, PIPOCA_SOMBRA, seed + sd)
+        cilios(ctx, sx * 48, -110, 38, 46, lid, sx, seed + sd)
+    bochechas(ctx, (-96, 96), -52)
     sob = st.get("sobrancelha", 0.4)
-    traco(ctx, [(-84, -176), (-50, -174), (-18, -168)], lw=10, seed=seed + 30)
+    traco(ctx, [(-82, -174), (-54, -184), (-22, -178)], lw=7, seed=seed + 30)
     up = 18 + 26 * sob
-    traco(ctx, [(18, -172 - up * 0.5), (50, -180 - up), (86, -172 - up * 0.6)], lw=10, seed=seed + 31)
+    traco(ctx, [(22, -174 - up * 0.5), (54, -184 - up), (84, -174 - up * 0.6)], lw=7, seed=seed + 31)
     boca(ctx, st.get("boca", "o"), 4, -30, 1.0, seed + 32)
     _bracos(ctx, dict(st, segura=None), seed, PIPOCA)
     return {"corpo": (-250, -320, 250, 200), "rosto": (-100, -210, 100, -10)}
@@ -225,6 +265,8 @@ def particulas_estouro(ctx, dt, seed):
 
 
 def desenha_pipo(ctx, st, t, seed):
+    if st.get("forma") == "pipoca":   # já estourada (ex.: cena depois do estouro)
+        return desenha_pipoca(ctx, st, t, seed)
     te = st.get("_estouro")
     if te is not None and t >= te:
         dt = t - te
