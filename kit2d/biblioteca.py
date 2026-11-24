@@ -1,7 +1,7 @@
 """Biblioteca de desenhos do PipoPop 2D: personagens, objetos e cenários.
 Cada desenho de elemento recebe (ctx, st, t, pal) já transladado para o centro do elemento e devolve um dict de caixas
 locais {"corpo": (x0,y0,x1,y1), "rosto"/"texto": ...} usado pela revisão automática."""
-import math, random
+import math, os, random
 import cairo
 from estilo import (W, H, INK, LW, AMARELO, BRANCO, VERMELHO, VERDE, hexc, mix, escurece, clareia, forma, traco, texto, medir,
                     pts_elipse, pts_ret, path_suave, jitter, ease_out_back, ease_out, clamp)
@@ -630,9 +630,54 @@ def desenha_bloco(ctx, st, t, pal, seed):
     return {"corpo": (-w / 2, -h / 2, w / 2, h / 2), "texto": b}
 
 
+_FOTOS = {}
+RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
+def _foto_surface(caminho):
+    if caminho not in _FOTOS:
+        cam = caminho if os.path.isabs(caminho) else os.path.join(RAIZ, caminho)
+        if not os.path.exists(cam):
+            raise SystemExit(f"foto não encontrada: {cam}")
+        from PIL import Image
+        im = Image.open(cam).convert("RGBA")
+        if max(im.size) > 1400:
+            im.thumbnail((1400, 1400))
+        r, g, b, a = im.split(); im = Image.merge("RGBA", (b, g, r, a))   # cairo ARGB32 = BGRA na memória
+        data = bytearray(im.tobytes())
+        surf = cairo.ImageSurface.create_for_data(data, cairo.FORMAT_ARGB32, im.width, im.height, im.width * 4)
+        _FOTOS[caminho] = (surf, data)
+    return _FOTOS[caminho][0]
+
+
+def desenha_foto(ctx, st, t, pal, seed):
+    """Foto real (CC0/domínio público) numa moldura de polaroide. 'arquivo', 'largura' (px), 'altura' (opcional),
+    'legenda' (texto curto embaixo), 'credito' (pequeno), 'zoom_lento' (Ken Burns, padrão 0.04)."""
+    surf = _foto_surface(st["arquivo"])
+    w = st.get("largura", 640); iw, ih = surf.get_width(), surf.get_height()
+    h = st.get("altura", w * ih / iw)
+    borda, base = 22, (70 if st.get("legenda") else 22)
+    W2, H2 = w + 2 * borda, h + borda + base
+    x0, y0 = -W2 / 2, -H2 / 2
+    ctx.save(); ctx.translate(12, 14); ctx.rectangle(x0, y0, W2, H2); ctx.set_source_rgba(*INK, 0.3); ctx.fill(); ctx.restore()
+    forma(ctx, pts_ret(x0, y0, W2, H2, 6, 2), (1, 0.98, 0.94), sombra=False, lw=6, seed=seed, amp=0.5)
+    ctx.save(); ctx.rectangle(x0 + borda, y0 + borda, w, h); ctx.clip()
+    k = max(w / iw, h / ih) * (1 + st.get("zoom_lento", 0.04) * min(t, 6) / 6)
+    ctx.translate(x0 + borda + w / 2, y0 + borda + h / 2); ctx.scale(k, k); ctx.translate(-iw / 2, -ih / 2)
+    ctx.set_source_surface(surf, 0, 0); ctx.paint(); ctx.restore()
+    ctx.rectangle(x0 + borda, y0 + borda, w, h); ctx.set_source_rgb(*INK); ctx.set_line_width(4); ctx.stroke()
+    caixa = (x0, y0, x0 + W2, y0 + H2)
+    if st.get("legenda"):
+        texto(ctx, st["legenda"], 0, y0 + borda + h + base / 2, 44, cor=INK, contorno=(1, 0.98, 0.94), sombra=False, max_w=w)
+    if st.get("credito"):
+        ctx.select_font_face("Sans"); ctx.set_font_size(18); ctx.set_source_rgba(*INK, 0.55)
+        ctx.move_to(x0 + borda, y0 + H2 - 6); ctx.show_text(st["credito"][:80])
+    return {"corpo": caixa, "texto": caixa if st.get("legenda") else None}
+
+
 DESENHOS = {"celular": desenha_celular, "calendario": desenha_calendario, "relogio": desenha_relogio, "contador": desenha_contador,
             "barra": desenha_barra, "comentario": desenha_comentario, "seta": desenha_seta, "carimbo": desenha_carimbo,
-            "texto": desenha_texto, "rachadura": desenha_rachadura, "bloco": desenha_bloco}
+            "texto": desenha_texto, "rachadura": desenha_rachadura, "bloco": desenha_bloco, "foto": desenha_foto}
 
 
 # ============================ CENÁRIOS ============================

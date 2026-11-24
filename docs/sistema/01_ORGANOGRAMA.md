@@ -1,5 +1,7 @@
 # 01. Organograma: Diretor, gerentes e desenvolvedores
 
+> 24/11: a estrutura de produção agora é a do BRIEFING_v3.md (Diretor -> Gerente de Produção por vídeo -> organizadores O1 a O4 -> QA-Claude + QA-Gemini -> aprovação do Lucas). Onde este arquivo divergir, vale o BRIEFING_v3.
+
 ## 1. Diretor (a sessão principal, Claude)
 O homem do meio: tem as ideias, aprova, decide e cobra. Personalidade e missão em docs/diretor/BRIEFING_DIRETOR.md (palavras do Lucas; não editar o sentido).
 Faz pessoalmente só o que exige julgamento:

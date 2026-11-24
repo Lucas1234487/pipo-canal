@@ -67,6 +67,7 @@ Elementos (`tipo`) e as propriedades que aceitam (todas podem mudar com `muda`):
 | carimbo | carimbo torto | `texto`, `cor`, `inclina`, `tam` |
 | rachadura | tela trincada | `progresso` 0 a 1 |
 | bloco | cartão/painel (split, antes e depois) | `largura`, `altura`, `cor`, `texto`, `tam` |
+| foto | foto real CC0/domínio público numa polaroide (kit/imagens.py) | `arquivo` (caminho), `largura` (px), `altura`, `legenda`, `credito`, `zoom_lento` |
 
 Todo elemento: `id`, `x`, `y`, `escala`, `rot` (graus), `alpha`, `espelha`, `pode_sobrepor` (true = não acusar texto sobreposto).
 
