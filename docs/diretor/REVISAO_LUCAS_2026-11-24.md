@@ -3,7 +3,7 @@ Regra: o que ele marcou GOSTEI é para usar; TALVEZ só com o ajuste pedido; NÃ
 
 ## Elenco
 GOSTEI: vizinho_exagerado, tia_do_zap, gala, estagiario, vovo_turbo, crianca_terrivel ("muito bom"), tiozao_do_churrasco, nerd, influencer, seu_ze_da_banca.
-NÃO GOSTEI: crush ("ela não é bonita": refazer bonita) e esportista (pediu "faça o Neymaro": não podemos, é pessoa real e futebol; substituído por "marombeiro").
+NÃO GOSTEI: crush ("ela não é bonita": refazer bonita) e esportista (pediu "faça o Neymaro": liberado como exceção única nos guardrails; também entra o "marombeiro").
 TALVEZ: chefe ("rosto cortado?": conferir).
 
 ## Cenários

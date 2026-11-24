@@ -15,7 +15,7 @@ Atualizado em 24/11/2026 com as decisões do Lucas. Este arquivo vale acima de q
 - Padrão de qualidade: "dá pra ver que é IA, mas uma IA que deu trabalho". Imersão (foto real em tela cheia que mergulha no desenho, fundo que é o lugar da história com vida, camadas) vale mais que cena simples.
 
 ## 1. Nunca, em hipótese nenhuma
-1. Política, religião ou futebol: nem direto, nem indireto, nem na piada, na referência ou na trilha.
+1. Política, religião ou futebol: nem direto, nem indireto, nem na piada, na referência ou na trilha. ÚNICA exceção (decisão do Lucas, 24/11 20h39): o personagem caricato "Neymaro" (preset neymaro), sem nome real, sem escudo, logo, número ou patrocínio, sem ofensa; nenhum outro jogador, time ou partida.
 2. Fato falso ou exagerado apresentado como verdade. Todo fato central tem 2 fontes em WORK/fatos.md. Hipótese vai como hipótese. Ficção vai declarada ("imagina um mundo onde...").
 3. Conteúdo protegido de terceiros: personagem, logo, música, trecho de vídeo, still de filme/série/jogo/esporte, obra de arte.
 4. **Memes:** o formato do meme entra como ESTRUTURA redesenhada no nosso traço (elemento `meme` do kit2d). A foto original de meme famoso NÃO entra: quase toda é foto de stock, frame de filme ou pessoa real, e isso dá reivindicação de direitos e risco à monetização. Texto e piada do meme são livres; a imagem é sempre nossa.
