@@ -12,3 +12,8 @@ Bilhete em WORK/bilhetes/O3.md. 1 lição no caderno.
 - Pop/click em cada texto que entra; efeito cartunesco demais chama atenção para si (dose).
 - Música 18 a 24 dB abaixo da voz durante a fala; ela volta nas pausas. Troque de faixa (silencios + sfx) quando a emoção muda.
 - Master -14 LUFS, true peak -1 dBTP (o compose já normaliza; confira no relatório do qa_check).
+
+## Todo som tem que aparecer no celular (Lucas, 24/11: "o Boom não teve som nenhum")
+- Alto-falante de celular quase não toca grave: um "boom" só de grave some. Todo efeito precisa de corpo entre 200 Hz e 3 kHz.
+- Antes de usar um som novo, rode `python3 kit/checa_sons.py assets/sfx/<pasta>`: ele simula o celular e acusa o que some. Som acusado é consertado (saturação + passa-alta + realce de médios) ou trocado.
+- O Lucas gosta de MUITO efeito sonoro (o ep006, com vidro quebrando e impactos, é a referência): som em toda entrada, corte e virada.
