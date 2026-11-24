@@ -6,7 +6,7 @@ Decisão do Lucas (24/11/2026): o padrão deixa de ser 3D. O 3D gastava ~1 h de 
 - Cartoon editorial plano: formas vetoriais, contorno escuro grosso (3 a 6 px em 1080), sombra chapada de 1 tom, paleta saturada escolhida por tema (nunca pastel de app infantil, nunca céu bebê + grama clara).
 - Textura leve por cima (grão/papel, 3 a 6% de opacidade) e pequenas imperfeições de traço. É o antídoto contra "cara de IA" (relatório 02, seção 12).
 - Cenários desenhados com objetos do tema (escritório, quarto, cozinha, ônibus, mercado, tela de celular). Câmera 2D com zoom e pan suaves.
-- Personagens: elenco fixo e simples, reconhecível em 0,5 s. A Pipo em 2D (espiga com olhar cansado e uma sobrancelha levantada; vira a pipoca com maria-chiquinha no estouro). Um "humano genérico" de traço simples (sem rosto real, sem pessoa real), variando cabelo e roupa.
+- Personagens: elenco fixo e simples, reconhecível em 0,5 s. A Pipo em 2D é menina: espiga com olhar cansado, uma sobrancelha fina levantada, cílios, bochechas rosadas e lacinho rosa; estoura em todo vídeo e vira a pipoca de maria-chiquinha com laços rosa. Um "humano genérico" de traço simples (sem rosto real, sem pessoa real), variando cabelo e roupa.
 - Texto como imagem: números grandes, contadores, gráficos simples, setas, carimbos, "cards" de comentário (sem número de curtida inventado).
 
 ## 2. Vocabulário de movimento (o renderizador oferece todos)

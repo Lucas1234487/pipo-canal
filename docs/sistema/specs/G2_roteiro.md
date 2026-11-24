@@ -17,5 +17,5 @@ roteiro.json (formato do kit/tts.py, "trim": true, voz: Thalita para A, masculin
 ## Aceite
 - Lido em voz alta, cabe em 20 a 35 s (A) ou 35 a 60 s (B).
 - Nada de "você sabia", fato batido, gíria forçada ou frase de IA.
-- A Pipo aparece de propósito (reação, easter egg ou estouro na revelação), nunca parada enquanto a voz fala.
+- A Pipo aparece de propósito e ESTOURA em todo vídeo (pedido do Lucas, 24/11): de espiga vira pipoca no pico da revelação, com som de estouro, e as cenas seguintes usam `"forma": "pipoca"`. O que varia é o momento e o motivo do estouro, nunca a ausência dele. Nunca parada enquanto a voz fala.
 - Pergunta final respondível em até 3 palavras.

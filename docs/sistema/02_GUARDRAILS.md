@@ -29,7 +29,7 @@ Um vídeo é publicado se passar nos 6 itens. Nota da plateia NÃO trava publica
 Reprovou no piso: uma correção. Reprovou de novo: entra o vídeo de reserva e o caso vai para o handover.
 
 ## 4. Anti-cringe (resumo da Bíblia seção 6 e das personas)
-Nunca "você sabia", nunca fato batido (polvo de três corações, mel que não estraga, 10% do cérebro, galinha é dinossauro), nunca gíria forçada (aura, sigma, rizz, 6-7, brainrot), nunca "comenta aí", nunca personagem parado enquanto a voz fala, nunca o mesmo susto, estouro ou frase em todo vídeo, nunca frases de IA ("fascinante", "mergulhar", "é importante notar"), nunca lição de moral.
+Nunca "você sabia", nunca fato batido (polvo de três corações, mel que não estraga, 10% do cérebro, galinha é dinossauro), nunca gíria forçada (aura, sigma, rizz, 6-7, brainrot), nunca "comenta aí", nunca personagem parado enquanto a voz fala, nunca o mesmo susto ou frase em todo vídeo (o estouro da Pipo é obrigatório, mas o gatilho dele muda), nunca frases de IA ("fascinante", "mergulhar", "é importante notar"), nunca lição de moral.
 
 ## 5. Escalar para o Lucas (só isto)
 Login, criação de conta, dinheiro, um guardrail que precise ser revisto ou um risco à conta (strike, aviso de política). Todo o resto o Diretor decide e registra.
