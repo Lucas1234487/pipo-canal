@@ -4,6 +4,6 @@ Entrega em WORK/: roteiro.json, fatos.md, timing.json (rode `python3 kit/tts.py 
 - Gancho na 1ª frase (resultado chocante, número ou conflito). Virada no meio. Fim: lição curta (só história) + pergunta + chamada (mandar para alguém, quando couber).
 - Fatos com 2 fontes em fatos.md (Gemini com --busca ajuda; você confere).
 - Voz: pt-BR-FranciscaNeural ou pt-BR-AntonioNeural. Nada de sigla, palavra estrangeira ou número em algarismo na fala.
-- Teste a pronúncia: `python3 kit/gemini.py video --arquivo WORK/narracao.(mp3|wav)` não existe; em vez disso gere a narração e rode o Gemini no MP4 final pelo QA. Aqui, reescreva palavras de risco antes.
+- Pronúncia: reescreva as palavras de risco antes de gerar a voz; a checagem de pronúncia no Gemini acontece no QA final.
 - Marque no roteiro (campo "shot") o que a cena mostra e onde cabe foto real (O2 decide).
 Bilhete em WORK/bilhetes/O1.md. 1 lição no caderno.
