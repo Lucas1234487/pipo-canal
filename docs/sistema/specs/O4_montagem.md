@@ -5,3 +5,5 @@ Comandos: `python3 kit2d/render2d.py WORK` -> `python3 kit/compose.py WORK` -> `
 - A revisão automática tem que dar APROVADO. Se reprovar, conserte no cenas.json (ou devolva ao O2/O3 pelo gerente) e rode de novo.
 - Olhe a qa_sheet com os seus olhos: texto cortado, sobreposição, personagem fora de quadro.
 Bilhete em WORK/bilhetes/O4.md. 1 lição no caderno.
+
+- Disco: depois do final_pt.mp4 e do upload.mp4 prontos, apague WORK/frames (cada vídeo gera 2 a 5 GB de quadros).

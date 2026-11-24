@@ -7,6 +7,13 @@ Atualizado em 24/11/2026 com as decisões do Lucas. Este arquivo vale acima de q
 2. **Estrutura completa, sem exceção.** Diretor -> Gerente de Produção -> organizadores O1 Roteiro e Fala, O2 Cenário, O3 Sonoplastia, O4 Montagem -> QA final (QA-Claude novo + QA-Gemini) -> agendamento. Nenhum vídeo pula o QA final.
 3. **Publica sozinho, o Lucas só veta.** O que passa no piso (seção 3) é agendado sem esperar o OK do Lucas. Ele pode segurar qualquer vídeo a qualquer hora (seção 5).
 
+## 0.1 Atualização constante (Lucas, 24/11 15h46)
+- FIXO: a Pipo e o elenco principal (presets do humano), a assinatura visual e estas regras.
+- VIVO, sempre atualizado com o ambiente: roteiros, regras inventadas, pautas, cenários, memes, reações e sons. O G1 semanal renova a lista de memes/trends em alta (docs/pesquisa/memes_em_alta_*.md) e aposenta o que tem mais de 30 dias sem estar em alta; o G1 diário confere se o assunto do momento ainda está quente.
+- Nenhum meme, regra inventada, fundo temático ou gancho se repete no mesmo pilar em menos de 14 dias (o Diretor confere no historico.csv).
+- Todo mês o motor ganha pelo menos 2 cenários ou recursos novos, escolhidos pelo que o público respondeu (EXPERIMENTOS.md) e pelo que os organizadores pediram nos bilhetes.
+- Padrão de qualidade: "dá pra ver que é IA, mas uma IA que deu trabalho". Imersão (foto real em tela cheia que mergulha no desenho, fundo que é o lugar da história com vida, camadas) vale mais que cena simples.
+
 ## 1. Nunca, em hipótese nenhuma
 1. Política, religião ou futebol: nem direto, nem indireto, nem na piada, na referência ou na trilha.
 2. Fato falso ou exagerado apresentado como verdade. Todo fato central tem 2 fontes em WORK/fatos.md. Hipótese vai como hipótese. Ficção vai declarada ("imagina um mundo onde...").

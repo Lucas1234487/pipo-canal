@@ -12,3 +12,5 @@ Bilhete em WORK/bilhetes/O2.md. 1 lição no caderno.
 - Fundo dinâmico = fundo que É o lugar da história e tem coisas acontecendo nele (casa de Natal com pisca-pisca piscando e o vizinho exagerado ao lado; loja com placas de desconto piscando; praia com ondas). Use os cenários temáticos do CENAS.md.
 - Fundo abstrato animado (gradiente, bokeh, raios, espiral...) só em cena de dado/explicação, revelação ou meme. Cor lisa ou listra parada: não.
 - Memes da Pipo (elemento "meme") e reações de meme (ação "reacao") entram em momentos de piada, no máximo 2 por vídeo.
+
+- Imersão: quando houver foto real, prefira começar com ela em tela cheia (`fundo_foto`, Ken Burns/parallax) e `mergulho` para o mundo 2D; a foto em polaroide é a opção mais simples, não a padrão.
