@@ -44,11 +44,12 @@ Topo: `paleta` (padrão), `musica` (apelido ou caminho em assets/musica), `music
 
 Cena: `em` (corte; a 1ª é sempre 0), `cenario`, `paleta`, `padrao` (no chapado/celular), `zoom` (1,0), `deriva` (aproximação lenta automática, 0,025; 0 desliga),
 `elementos`, `acoes` (de câmera). Cada cena nova começa do zero: elementos não passam de uma cena para outra.
+Opcionais da cena: `transicao` (seção 4.2), `energia`/`calma` (fundos animados), `fundo_foto` (seção 4.3).
 
 ## 4. Cardápio
 Paletas: tomate, mostarda, petroleo, uva, menta, cobalto, noite, rosa, laranja (troque a cada cena: dá ritmo).
 
-Cenários: `chapado` (cor + padrão: raios, bolinhas, listras, chuva, nada) · `sala` (sofá; `cor_sofa`) · `escritorio` · `quarto` · `celular` (tela gigante; `hora`, `cor_tela`).
+Cenários: `chapado` (cor + padrão: os animados da seção 4.2 ou os antigos raios, bolinhas, listras, chuva, nada) · `sala` (sofá; `cor_sofa`) · `escritorio` · `quarto` · `celular` (tela gigante; `hora`, `cor_tela`).
 
 Elementos (`tipo`) e as propriedades que aceitam (todas podem mudar com `muda`):
 | tipo | para que | propriedades |
@@ -98,6 +99,49 @@ Use `x` 0,5 e `y` 0,335 com `escala` 1: a caixa (900 x 900) fica entre y 0,10 e 
  "acoes": [{"em": "linha1", "faz": "entra", "jeito": "pop", "som": "pop"},
            {"em": "noite", "faz": "muda", "prop": "revela", "para": 2, "som": "pop2"}]}
 ```
+
+### 4.2 Fundos animados e transições (kit2d/fundos.py)
+Prefira estes aos antigos (cor chapada e listras). Valem no `chapado` e viram o papel de parede da tela no `celular`.
+Todos usam as cores da paleta, se mexem sozinhos e baixam o contraste no centro (onde ficam Pipo e texto).
+Na cena: `energia` 0 a 1 (padrão 0,6: velocidade e quantidade) e `calma` 0 a 1 (quanto o centro fica mais liso).
+
+| padrao | o que é | quando usar | extras |
+|---|---|---|---|
+| gradiente_vivo | 3 cores da paleta girando e respirando, brilhos suaves | neutro, explicação | |
+| bokeh | círculos desfocados subindo em 3 profundidades | clima, nostalgia, sonho | |
+| formas | confete: triângulos, círculos, zigue-zague, estrelinhas caindo e girando | festa, lista, curiosidade | |
+| espiral | espiral hipnótica girando | choque, virada, "o quê?" | `velocidade` (1) |
+| halftone | retícula de HQ pulsando em onda | humor, quadrinho | |
+| ondas | faixas onduladas com contorno (lava) | transição de assunto, calma | |
+| raios_hq | speed lines de HQ pulsando, miolo limpo | impacto, revelação | |
+| grade_retro | chão synthwave com grade andando, sol listrado, montanhas | anos 80, tecnologia, "antigamente" | |
+| ceu | céu com sol/lua e nuvens em parallax | ao ar livre, tempo, clima | `ceu`: dia, tarde, noite (estrelas cintilando) |
+| espaco | estrelas em parallax, nebulosa, planeta com anel, estrela cadente | ciência, "imagine", tamanho das coisas | |
+| papel_rasgado | tiras de papel colorido rasgado deslizando | colagem, lista, antes e depois | |
+| luzes | pisca-pisca em fios, piscando em sequência | Natal, Ano Novo, festa | |
+| cidade | céu noturno + prédios com janelas acesas em parallax | cidade, noite, trabalho | |
+
+`transicao` (na cena que ENTRA): o 1º quadro da cena nova se mistura com o último da anterior.
+`wipe_diagonal` (faixa colorida varre na diagonal), `zoom_blur` (a cena velha explode em zoom), `papel` (a cena velha rasga ao meio),
+`flash_cor` (flash na cor de destaque), `mergulho` e `emergir` (seção 4.3). `transicao_dur` em s (0,25; mergulho/emergir 0,5).
+Use no máximo uma a cada 2 ou 3 cortes: o resto é corte seco (o whoosh já entra sozinho).
+```json
+{"em": "virou", "cenario": "chapado", "padrao": "espiral", "paleta": "cobalto", "energia": 0.9, "velocidade": 1.4, "transicao": "zoom_blur", "elementos": [...]}
+```
+
+### 4.3 Foto real em tela cheia e mergulho no desenho
+`fundo_foto` na cena: foto CC0/domínio público (kit/imagens.py) cobrindo a tela, com Ken Burns e parallax de 2 camadas
+(atrás desfocada e lenta; na frente nítida, maior, com máscara radial no foco). Vinheta e textura de papel por cima; elementos 2D por cima normalmente.
+- `estilo`: real, duotone (2 cores da paleta: casa com o desenho), posterizada (poucas cores + contorno de tinta), pintada (suavizada, cor viva).
+- `kb_de` / `kb_para`: [zoom, x, y], x e y = ponto da FOTO (0 a 1) que fica no centro; vai de um ao outro ao longo da cena (padrão [1, 0,5, 0,5] -> [1,18, 0,5, 0,45]).
+- `parallax` (true), `vinheta` (0,45). Ponha `"deriva": 0` (o Ken Burns já move a câmera).
+- `"transicao": "mergulho"` na cena 2D seguinte: a câmera mergulha num ponto da foto (`mergulho_em` [x, y] da TELA) e a cena nova nasce dali numa íris que abre, com flash.
+  `"emergir"` é o inverso (a cena 2D fecha numa íris e a foto se afasta do ponto). Bom para abrir o vídeo: foto real -> mergulho -> nosso mundo.
+```json
+{"em": 0, "fundo_foto": "WORK/img/foto1.jpg", "estilo": "real", "kb_de": [1.0, 0.45, 0.5], "kb_para": [1.6, 0.47, 0.47], "deriva": 0, "elementos": [...]},
+{"em": "cidade", "cenario": "chapado", "padrao": "cidade", "paleta": "noite", "transicao": "mergulho", "mergulho_em": [0.5, 0.45], "elementos": [...]}
+```
+Custo: os fundos animados somam ~10 a 30 ms por quadro (camadas suaves em 1/4 da resolução, sprites em cache); o render fica até ~1,2x o tempo dos fundos antigos.
 
 Ações de elemento (`"faz"`), sempre com `em`; `som` e `volume` opcionais em qualquer uma:
 - `entra` (`jeito`: pop, carimba, desliza_esq, desliza_dir, sobe, desce, cai, aparece). Se o elemento tem `entra`, ele fica invisível antes.

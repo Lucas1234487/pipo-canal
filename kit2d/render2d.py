@@ -15,6 +15,7 @@ from PIL import Image
 import estilo as E
 from estilo import W, H, FPS, clamp, ease_out_back, ease_in_back, ease_out, ease_in_out, hexc
 import biblioteca as B
+import fundos as F
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CAUDA = 0.6   # segundos depois da última palavra
@@ -294,6 +295,8 @@ class Filme:
                 raise SystemExit(f"cena {i} começa em {cena.t0:.2f}s, antes da cena anterior: ponha as cenas em ordem")
             self.cenas.append(cena); desde = cena.t0
         self.cenas[0].t0 = 0.0
+        for i, c in enumerate(self.cenas):   # início/fim de cada cena (Ken Burns do fundo_foto)
+            c.d["_t0"] = c.t0; c.d["_t1"] = self.cenas[i + 1].t0 if i + 1 < len(self.cenas) else self.N / FPS
         self.congela = [z for c in self.cenas for z in c.congela]
 
     def tempo(self, fr):
@@ -320,12 +323,41 @@ class Filme:
 
     def quadro(self, fr, ctx, tex):
         t, frozen = self.tempo(fr)
-        E.set_boil(int(t * FPS))
         c = self.cena_em(t)
+        tr = c.d.get("transicao"); u = (t - c.t0) / c.d.get("transicao_dur", F.DUR_TRANSICAO.get(tr, 0.25))
+        prev = None
+        if tr and c.idx > 0 and 0 <= u < 1:
+            if tr not in F.TRANSICOES:
+                raise SystemExit(f"cena {c.idx}: transicao '{tr}' não existe. Use: {', '.join(F.TRANSICOES)}")
+            prev = self.ultimo_quadro(c.idx - 1, c.t0 - 1 / FPS)
+        E.set_boil(int(t * FPS))
+        caixas, flash = self.desenha_cena(ctx, c, t)
+        ctx.identity_matrix()
+        if prev is not None:
+            F.transicao(ctx, tr, prev, u, c.pal, seed=c.idx * 13 + 1, opts=c.d)
+        if flash > 0:
+            ctx.set_source_rgba(1, 1, 1, flash * 0.85); ctx.paint()
+        E.aplica_textura(ctx, tex, int(t * FPS))
+        return caixas
+
+    def ultimo_quadro(self, idx, t):
+        """Último quadro da cena anterior (sem textura), guardado para a transição do corte."""
+        if getattr(self, "_prev", (None,))[0] != idx:
+            surf = cairo.ImageSurface(cairo.FORMAT_ARGB32, W, H); cp = cairo.Context(surf)
+            cp.set_line_cap(cairo.LINE_CAP_ROUND); cp.set_line_join(cairo.LINE_JOIN_ROUND)
+            E.set_boil(int(t * FPS))
+            self.desenha_cena(cp, self.cenas[idx], t); surf.flush()
+            self._prev = (idx, surf)
+        return self._prev[1]
+
+    def desenha_cena(self, ctx, c, t):
         z, cx, cy, rot, sdx, sdy, flash = camera(c, t)
         ctx.identity_matrix()
         ctx.translate(W / 2 + sdx, H / 2 + sdy); ctx.scale(z, z); ctx.rotate(math.radians(rot)); ctx.translate(-cx * W, -cy * H)
-        B.cenario(ctx, c.d.get("cenario", "chapado"), c.pal, t, c.d, seed=c.idx * 13 + 1)
+        if c.d.get("fundo_foto"):     # foto real em tela cheia (Ken Burns, estilo, parallax): kit2d/fundos.py
+            F.foto(ctx, c.pal, t, c.d, seed=c.idx * 13 + 1)
+        else:
+            B.cenario(ctx, c.d.get("cenario", "chapado"), c.pal, t, c.d, seed=c.idx * 13 + 1)
         caixas = {}
         for el in c.els:
             st = el.estado(t)
@@ -364,11 +396,7 @@ class Filme:
                 if b:
                     caixas[(el.id, k, el.tipo, entrou, bool(el.d.get("pode_sobrepor")))] = dev_box(ctx, b)
             ctx.restore()
-        ctx.identity_matrix()
-        if flash > 0:
-            ctx.set_source_rgba(1, 1, 1, flash * 0.85); ctx.paint()
-        E.aplica_textura(ctx, tex, int(t * FPS))
-        return caixas
+        return caixas, flash
 
     def fluxo(self, ctx, el, st, t, c):
         """Folhinhas/objetos voando de um elemento para outro (o celular comendo o calendário)."""
