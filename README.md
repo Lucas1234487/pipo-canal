@@ -1,6 +1,6 @@
 # PipoPop
 
-**Comece aqui:** este canal é comandado pelo Diretor. Leia `docs/diretor/BRIEFING_DIRETOR.md` e siga a ordem de leitura de `docs/diretor/APOSENTADORIA.md`. Depois leia `docs/diretor/RESGATE_PESQUISA.md` (o que a pesquisa inicial mandou e o canal esqueceu).
+**Comece aqui:** `docs/sistema/00_LEIA_PRIMEIRO.md` (Sistema v2, 24/11/2026). Este canal é comandado pelo Diretor. Leia `docs/diretor/BRIEFING_DIRETOR.md` e siga a ordem de leitura de `docs/diretor/APOSENTADORIA.md`. Depois leia `docs/diretor/RESGATE_PESQUISA.md` (o que a pesquisa inicial mandou e o canal esqueceu).
 Memória: `docs/BASE_CONHECIMENTO.md` (longo prazo), `docs/diretor/handovers/` (diário de cada mandato, em ordem), `docs/diretor/PLACAR.md` (números).
 Referência do que funcionou: `referencias/dinossauros/`.
 
