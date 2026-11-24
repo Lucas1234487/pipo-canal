@@ -44,3 +44,9 @@ Duração 45 a 65 s (Lucas, 24/11: aprofundar a história e o sentimento). Trans
 ## Retenção (Gemini no ep007 v2)
 - O ponto de saída foi o "Agora imagina um mundo com uma regra" (0:12) com a Pipo parada num fundo liso. A cena da regra precisa de ação (a regra acontecendo, não só o texto).
 - Contador visível tem que bater do começo ao fim (o Gemini cobrou o 32 que virou 30).
+
+## Referências de mercado (docs/pesquisa/2026-11-24_referencias_canais.md)
+- Conhecimento: premissa no 1º segundo e FIM logo depois da resposta, sem epílogo (modelo Zack D. Films). Faixa 25 a 40 s.
+- História: emoção universal, conflito claro, clímax; a estrutura pode se repetir, o cenário, o elenco e o tipo de virada NÃO (risco de desmonetização por "histórias com diferenças superficiais").
+- CTA de envio com destinatário concreto ("manda pro vizinho que já montou a árvore").
+- Banco de regras inventadas e pautas na pesquisa; a regra "as pipocas só estouram quando alguém ri" está reservada para a Pipo protagonista.

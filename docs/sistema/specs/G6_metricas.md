@@ -18,3 +18,6 @@ Para cada vídeo com 24 h e com 7 dias: views, % visualizado x deslizado, duraç
 
 ## Entrega
 PLACAR.md atualizado e, no semanal, docs/diretor/ciclos/AAAA-MM-DD/metricas.md. Ao Diretor: até 10 linhas.
+
+## Métrica principal (pesquisa 24/11)
+"Visualizado vs. Deslizado" (Studio > Análise > Conteúdo > Shorts) vale mais que a view bruta, que desde 31/03/2025 conta no play/loop. Registre no PLACAR para cada vídeo. Nunca apague nem reposte um Short que foi mal nas primeiras horas: o YouTube testa em grupo pequeno antes de ampliar.

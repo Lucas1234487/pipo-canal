@@ -4,7 +4,7 @@
 Uma sessão do Diretor produz os 3 vídeos do dia seguinte, um por pilar (decisão do Lucas, 24/11):
 - M = assunto do momento (data, tendência, notícia leve da semana: Black Friday, Natal, volta às aulas), 25 a 40 s;
 - H = história com regra inventada (specs/G2, formato HISTÓRIA), 45 a 65 s;
-- C = conhecimento/curiosidade (como o do ossinho de dinossauro), 35 a 60 s.
+- C = conhecimento/curiosidade (como o do ossinho de dinossauro), 25 a 40 s, acaba logo depois da resposta.
 A Pipo faz pontas e estoura em todos. Um 4º vídeo (Pipo protagonista) só depois de 5 dias seguidos em que os 3 passaram no piso sem correção manual (ver BASE 24/11).
 HIERARQUIA (obrigatória, BRIEFING_v3): Diretor -> 1 Gerente de Produção por vídeo -> O1 Roteiro e Fala, O2 Cenário, O3 Sonoplastia, O4 Montagem -> QA-Claude (agente novo) + QA-Gemini -> agendamento automático (o Lucas só veta: pasta com segurar.json não é agendada).
 1. Posse rápida: 00_LEIA_PRIMEIRO, GUARDRAILS, último handover, PAUTAS.md.
