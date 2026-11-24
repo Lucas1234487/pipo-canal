@@ -7,3 +7,8 @@ Entrega: WORK/cenas.json (sem a parte de som: deixe "musica", "sfx", "silencios"
 - Foto real quando um fato ganha força com a coisa de verdade (osso, planeta, lugar, bicho): `python3 kit/imagens.py buscar "termo em inglês" WORK`, olhe WORK/img/candidatas.jpg, `usar WORK n`, elemento "foto" com crédito. Só CC0/domínio público. Não em todo vídeo.
 - Zona segura e legenda: rode a prévia e o render até o QA de cena zerar reprovações.
 Bilhete em WORK/bilhetes/O2.md. 1 lição no caderno.
+
+## Fundo condizente com a história (Lucas, 24/11 15h33)
+- Fundo dinâmico = fundo que É o lugar da história e tem coisas acontecendo nele (casa de Natal com pisca-pisca piscando e o vizinho exagerado ao lado; loja com placas de desconto piscando; praia com ondas). Use os cenários temáticos do CENAS.md.
+- Fundo abstrato animado (gradiente, bokeh, raios, espiral...) só em cena de dado/explicação, revelação ou meme. Cor lisa ou listra parada: não.
+- Memes da Pipo (elemento "meme") e reações de meme (ação "reacao") entram em momentos de piada, no máximo 2 por vídeo.

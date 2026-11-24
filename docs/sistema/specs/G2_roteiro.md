@@ -61,7 +61,12 @@ Todo vídeo tem pelo menos 1 gatilho, no máximo 2, escolhidos deste cardápio e
 Sempre na fala E escrito na tela, curto. Os exemplos do Lucas são exemplos, não texto fixo: reescreva para cada vídeo.
 
 ## Opcionais (usar de vez em quando, registrar em EXPERIMENTOS.md)
-- Errinho proposital inofensivo para gerar comentário de correção: um detalhe do CENÁRIO (relógio com 13 horas, calendário com 31 de fevereiro, Pipo com uma meia de cada cor), nunca o fato principal nem um número da fala. No máximo 1 a cada 5 vídeos. A resposta da Pipo ao primeiro que apontar é obrigatória (G5).
+- Errinho proposital inofensivo para gerar comentário de correção: um detalhe do CENÁRIO (relógio com 13 horas, calendário com 31 de fevereiro, Pipo com uma meia de cada cor) OU um erro de ortografia num texto da tela ("exeção", "concerteza"), nunca o fato principal, nunca um número da fala, nunca na fala. Cerca de 1 a cada 5 vídeos (decisão do Lucas). A resposta da Pipo ao primeiro que apontar é obrigatória (G5).
 - Easter egg escondido (a Pipo minúscula num canto, objeto de um vídeo anterior).
 - Opinião leve que divide (pizza doce vale?), sem política, religião ou futebol.
 - Série com "parte 2" de verdade (só se a parte 2 já estiver produzida ou na fila).
+
+## Humor: duplo sentido e "entendi a referência" (Lucas, 24/11 15h33)
+- Alguns vídeos (não todos) levam piadinha besta de duplo sentido ou referência que só quem é da internet pega, para o pessoal comentar "entendi a referência".
+- Limites: duplo sentido leve, de tiozão, nunca explícito nem sexual na imagem; sem ofender grupo nenhum; sem política, religião, futebol. Referência é verbal ou de estrutura (bordão, formato de meme redesenhado), nunca o trecho, a imagem ou o personagem protegido.
+- Registre no meta.json ("humor": "duplo_sentido" | "referencia" | "nenhum") para o G6 comparar.
