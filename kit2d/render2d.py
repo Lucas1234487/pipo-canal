@@ -33,6 +33,21 @@ SONS = {   # apelidos -> arquivos CC0 de assets/ (ver assets/LICENCAS.md)
     "arroto": "assets/sfx/80-cc0-creature-sfx/burp_02.ogg", "ooh": "assets/sfx/80-cc0-creature-sfx/ooh.ogg",
     "fofo": "assets/sfx/80-cc0-creature-sfx/cute_02.ogg", "coracao": "assets/sfx/heartbeat-sounds/heartbeat_fast_0.wav",
 }
+# sons de meme (assets/sfx/memes/, CC0 do Freesound via Openverse + "fa"/"fa2" gerados por nós; ver memes/proveniencia.tsv)
+SONS.update({k: f"assets/sfx/memes/{k}.ogg" for k in (
+    "boom", "disco", "violino_triste", "badumtss", "palhaco", "riser", "dundun", "ohh", "risada", "grilo",
+    "certo", "errado", "dinheiro", "glitch", "gongo", "apito_sobe", "apito_desce", "boing", "fa", "fa2")})
+
+# reações de meme (ação de câmera "reacao"): duração padrão, som padrão e recorte do som [dur, fade] (None = inteiro)
+REACOES = {
+    "boom":      {"dur": 0.9, "som": "boom", "corte": None},
+    "disco":     {"dur": 1.0, "som": "disco", "corte": None},
+    "triste":    {"dur": 1.2, "som": "violino_triste", "corte": (2.6, 0.8)},
+    "dramatico": {"dur": 1.2, "som": "dundun", "corte": (2.2, 0.7)},
+    "ohh":       {"dur": 0.9, "som": "ohh", "corte": (2.0, 0.8)},
+    "grilo":     {"dur": 1.2, "som": "grilo", "corte": None},
+    "fa":        {"dur": 0.7, "som": "fa", "corte": None},
+}
 MUSICAS = {
     "percussao": "assets/musica/cinematic-percussion-loop/Cinematic%20percussion%20loop%202.wav",
     "misterio": "assets/musica/cc0-mystery/mystery%20exploration.mp3",
@@ -213,7 +228,7 @@ class Cena:
         self.t0 = rel.t(d.get("em", 0), desde)
         self.pal = E.paleta(d.get("paleta"))
         self.cam = {k: Trilha(v) for k, v in (("zoom", d.get("zoom", 1.0)), ("cx", 0.5), ("cy", 0.5), ("rot", 0.0))}
-        self.efeitos = []; self.congela = []; self.sons = []
+        self.efeitos = []; self.congela = []; self.sons = []; self.reacoes = []
         ocup = set()
         for e in d.get("elementos", []):   # âncoras: "ancora": "sofa_assento" no lugar de x, y
             if e.get("ancora"):
@@ -232,6 +247,8 @@ class Cena:
             dur = a.get("dur")
             if a.get("ate") is not None:
                 dur = max(0.1, rel.t(a["ate"], t0, fim=True) - t0)
+            if a["faz"] == "reacao":
+                self.reacao(a, t0, dur, idx); continue
             if a.get("som"):
                 self.sons.append([som(a["som"]), round(t0 + a.get("som_atraso", 0), 3), a.get("volume", 0.7)])
             faz = a["faz"]
@@ -248,6 +265,42 @@ class Cena:
                 self.congela.append((t0, dur or 0.5))
             else:
                 raise SystemExit(f"cena {idx}: ação de câmera desconhecida '{faz}'")
+
+    def reacao(self, a, t0, dur, idx):
+        """Reação de meme: câmera + cor + som num pacote só (kit2d/CENAS.md, "Reações de meme")."""
+        est = a.get("estilo", "boom")
+        if est not in REACOES:
+            raise SystemExit(f"cena {idx}: reação '{est}' não existe. Estilos: {', '.join(REACOES)}")
+        cfg = REACOES[est]
+        dur = clamp(dur or cfg["dur"], 0.4, 1.2)
+        alvo = a.get("alvo")
+        if alvo is None:   # padrão: o primeiro personagem da cena
+            alvo = next((e.id for e in self.els if e.tipo in PERSONAGENS), [0.5, 0.4])
+        el = None
+        if isinstance(alvo, str):
+            el = next((e for e in self.els if e.id == alvo), None)
+            if el is None:
+                raise SystemExit(f"cena {idx}: reação '{est}': alvo '{alvo}' não é id de elemento desta cena")
+            st = el.estado(t0)
+            px, py = st["x"] + st["_dx"] / W, st["y"] + st["_dy"] / H
+            if el.tipo in PERSONAGENS:   # mira no rosto, não na barriga
+                py -= (145 if el.tipo == "pipo" else 255) * st.get("escala", 1) / H
+        else:
+            px, py = alvo
+        r = {"estilo": est, "t0": t0, "dur": dur, "alvo": (px, py), "el": el.id if el else None,
+             "forca": a.get("forca", 1.0), "texto": a.get("texto", "*para tudo*"), "texto_y": a.get("texto_y", 0.1)}
+        self.reacoes.append(r)
+        if est == "boom":
+            self.congela.append((t0 + 0.12, 0.4))
+        elif est in ("disco", "grilo"):
+            self.congela.append((t0, dur))
+        nome = a.get("som", cfg["som"])
+        if nome:
+            corte = cfg["corte"] if "som" not in a else None
+            if a.get("som_dur"):
+                corte = (a["som_dur"], 0.3)
+            spec = [som(nome), 0, corte[0], corte[1]] if corte else som(nome)
+            self.sons.append([spec, round(t0 + a.get("som_atraso", 0), 3), a.get("volume", 0.8)])
 
 
 # ======================= efeitos transitórios =======================
@@ -279,10 +332,49 @@ def efeitos_el(el, t):
     return sx, sy, dx, dy, alpha, extra
 
 
-def camera(c, t):
+def reacao_ativa(c, tr):
+    for r in c.reacoes:
+        if r["t0"] <= tr < r["t0"] + r["dur"]:
+            return r, tr - r["t0"]
+    return None, 0.0
+
+
+def reacao_cam(r, u):
+    """(multiplicador de zoom, peso do centro no alvo, tremor dx, dy, flash) da reação no instante u (s desde o início)."""
+    e, f, d = r["estilo"], r["forca"], r["dur"]
+    zm, w, sx, sy, fl = 1.0, 0.0, 0.0, 0.0, 0.0
+    if e == "boom":
+        k = ease_out(clamp(u / 0.12)); zm = 1 + 0.8 * f * k; w = k
+        if u < 0.55:
+            g = 9 * f * (1 - u / 0.55); sx = math.sin(u * 90) * g; sy = math.cos(u * 73) * g
+    elif e == "triste":
+        k = ease_in_out(clamp(u / d)); zm = 1 + 0.18 * f * k; w = k * 0.8
+    elif e == "dramatico":
+        n = 0 if u < d * 0.42 else (1 if u < d * 0.875 else 2)   # 3 cortes secos, no ritmo do "dun dun dunnn"
+        zm = (1.3, 1.8, 2.5)[n] ** f; w = 1.0
+    elif e == "ohh":
+        zm = 1 + 0.14 * f * math.exp(-u * 7) * clamp(u / 0.03); w = 0.5
+    elif e == "grilo":
+        k = ease_in_out(clamp(u / d)); zm = 1 + 0.07 * f * k; w = k * 0.6
+    elif e == "fa":
+        zm = 1 + 0.45 * f; w = 1.0
+        if u < 0.5:
+            g = 24 * f * (1 - u / 0.5); sx = math.sin(u * 97 + 1) * g; sy = math.cos(u * 81) * g
+        fl = max(0.0, 1 - u / 0.14)
+    return zm, w, sx, sy, fl
+
+
+def camera(c, t, tr=None):
+    tr = t if tr is None else tr
     z = c.cam["zoom"](t) * (1 + c.d.get("deriva", 0.025) * clamp((t - c.t0) / 4))
     cx, cy, rot = c.cam["cx"](t), c.cam["cy"](t), c.cam["rot"](t)
     dx = dy = 0.0; flash = 0.0
+    r, u = reacao_ativa(c, tr)
+    if r:
+        zm, w, dx, dy, flash = reacao_cam(r, u)
+        z *= zm
+        px = clamp(r["alvo"][0], 0.5 / z, 1 - 0.5 / z); py = clamp(r["alvo"][1], 0.5 / z, 1 - 0.5 / z)   # não mostra fora do cenário
+        cx += (px - cx) * w; cy += (py - cy) * w
     for tipo, t0, p in c.efeitos + [e for el in c.els for e in el.efeitos if e[0] == "treme_cam"]:
         u = t - t0
         if u < 0:
@@ -341,15 +433,18 @@ class Filme:
 
     def quadro(self, fr, ctx, tex):
         t, frozen = self.tempo(fr)
+        tr = (fr - 1) / FPS   # tempo real (as reações continuam andando durante o congela)
         E.set_boil(int(t * FPS))
         c = self.cena_em(t)
-        z, cx, cy, rot, sdx, sdy, flash = camera(c, t)
+        z, cx, cy, rot, sdx, sdy, flash = camera(c, t, tr)
+        rea, ru = reacao_ativa(c, tr)
         ctx.identity_matrix()
         ctx.translate(W / 2 + sdx, H / 2 + sdy); ctx.scale(z, z); ctx.rotate(math.radians(rot)); ctx.translate(-cx * W, -cy * H)
         B.cenario(ctx, c.d.get("cenario", "chapado"), c.pal, t, c.d, seed=c.idx * 13 + 1)
         caixas = {}
         nome_cen = c.d.get("cenario", "chapado")
         atras = [el for el in c.els if el.d.get("camada", "meio" if el.tipo in ATRAS_DA_FRENTE else "topo") == "meio"]
+        self._rea = (rea, ru)
         for el in atras:
             self.elemento(ctx, el, t, c, caixas)
         C2.cenario_frente(ctx, nome_cen, c.pal, t, c.d, seed=c.idx * 13 + 1)
@@ -357,6 +452,8 @@ class Filme:
             if el not in atras:
                 self.elemento(ctx, el, t, c, caixas)
         ctx.identity_matrix()
+        if rea:
+            reacao_tela(ctx, rea, ru, tr)
         if flash > 0:
             ctx.set_source_rgba(1, 1, 1, flash * 0.85); ctx.paint()
         E.aplica_textura(ctx, tex, int(t * FPS))
@@ -371,6 +468,9 @@ class Filme:
                 self.fluxo(ctx, el, st, t, c); return
             sx, sy, dx, dy, alpha, extra = efeitos_el(el, t)
             st.update(extra)
+            rea, ru = getattr(self, "_rea", (None, 0))
+            if rea and rea["estilo"] == "grilo" and el.id == rea["el"]:
+                st["_pisca"] = 1.0 if (0.3 <= ru / rea["dur"] * 1.2 < 0.42 or 0.72 <= ru / rea["dur"] * 1.2 < 0.84) else 0.0
             a = st.get("alpha", 1) * alpha
             if a <= 0.01:
                 return
@@ -423,6 +523,71 @@ class Filme:
             ctx.restore()
 
 
+def _vinheta(ctx, a, cor=(0, 0, 0)):
+    g = cairo.RadialGradient(W / 2, H * 0.45, H * 0.28, W / 2, H * 0.45, H * 0.78)
+    g.add_color_stop_rgba(0, *cor, 0); g.add_color_stop_rgba(1, *cor, a)
+    ctx.set_source(g); ctx.paint()
+
+
+def _tinge(ctx, op, cor, a):
+    ctx.save(); ctx.set_operator(op); ctx.set_source_rgb(*cor); ctx.paint_with_alpha(a); ctx.restore()
+
+
+def reacao_tela(ctx, r, u, tr):
+    """Cor, vinheta, linhas de impacto e texto da reação (em coordenadas de tela, por cima do cenário)."""
+    e = r["estilo"]
+    if e == "boom":
+        k = clamp(u / 0.12)
+        _tinge(ctx, cairo.OPERATOR_OVERLAY, (0.95, 0.12, 0.08), 0.45 * k)
+        _vinheta(ctx, 0.7 * k)
+    elif e == "disco":
+        k = clamp(u / 0.08)
+        _tinge(ctx, cairo.OPERATOR_HSL_SATURATION, (0.5, 0.5, 0.5), 0.9 * k)
+        _vinheta(ctx, 0.35 * k)
+        if r["texto"] and u > 0.1:
+            p = ease_out_back(clamp((u - 0.1) / 0.18), 2.0)
+            ctx.save(); ctx.translate(W / 2, H * r["texto_y"]); ctx.rotate(math.radians(-3)); ctx.scale(max(1e-3, p), max(1e-3, p))
+            ctx.select_font_face(E.FONT, cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_BOLD); ctx.set_font_size(88)
+            tw = min(ctx.text_extents(r["texto"])[2], W * 0.78)
+            pts = E.pts_ret(-tw / 2 - 44, -78, tw + 88, 156, r=40)   # tarja escura: lê por cima de qualquer coisa
+            E.forma(ctx, pts, E.INK, sombra=True, seed=7)
+            E.texto(ctx, r["texto"], 0, 0, 88, contorno=None, sombra=False, max_w=W * 0.78); ctx.restore()
+    elif e == "triste":
+        k = clamp(u / 0.3)
+        _tinge(ctx, cairo.OPERATOR_HSL_SATURATION, (0.5, 0.5, 0.5), 0.8 * k)
+        _tinge(ctx, cairo.OPERATOR_MULTIPLY, (0.45, 0.6, 1.0), 0.55 * k)
+        _vinheta(ctx, 0.6 * k, (0.02, 0.04, 0.15))
+    elif e == "dramatico":
+        _tinge(ctx, cairo.OPERATOR_OVERLAY, (0.2, 0.15, 0.3), 0.35)
+        _vinheta(ctx, 0.55)
+    elif e == "ohh":
+        k = clamp(u / 0.06) * clamp((r["dur"] - u) / 0.15)
+        _linhas_impacto(ctx, k, int(tr * FPS / 2))
+    elif e == "grilo":
+        _tinge(ctx, cairo.OPERATOR_HSL_SATURATION, (0.5, 0.5, 0.5), 0.35 * clamp(u / 0.3))
+    elif e == "fa":
+        _tinge(ctx, cairo.OPERATOR_OVERLAY, (1.0, 0.85, 0.2), 0.35 * max(0.0, 1 - u / 0.6))
+        _vinheta(ctx, 0.5)
+
+
+def _linhas_impacto(ctx, k, semente):
+    """Linhas de mangá vindo das bordas para o centro (o miolo fica livre). Trocam a cada 2 quadros."""
+    import random
+    rnd = random.Random(semente)
+    cx, cy = W / 2, H * 0.42
+    n = 46
+    for i in range(n):
+        a = 2 * math.pi * (i + rnd.uniform(-0.35, 0.35)) / n
+        r0 = H * rnd.uniform(0.27, 0.36); r1 = H * 0.9; lg = rnd.uniform(8, 22)
+        ux, uy = math.cos(a), math.sin(a); nx, ny = -uy, ux
+        ctx.move_to(cx + ux * r0, cy + uy * r0)
+        ctx.line_to(cx + ux * r1 + nx * lg, cy + uy * r1 + ny * lg)
+        ctx.line_to(cx + ux * r1 - nx * lg, cy + uy * r1 - ny * lg)
+        ctx.close_path()
+    ctx.set_source_rgba(1, 1, 1, 0.95 * k); ctx.fill_preserve()
+    ctx.set_line_width(4); ctx.set_source_rgba(*E.INK, 0.9 * k); ctx.stroke()
+
+
 def dev_box(ctx, b):
     pts = [ctx.user_to_device(x, y) for x, y in ((b[0], b[1]), (b[2], b[1]), (b[0], b[3]), (b[2], b[3]))]
     xs = [p[0] for p in pts]; ys = [p[1] for p in pts]
@@ -454,6 +619,8 @@ def _render(args):
 def qa_cena(filme, boxes):
     """Revisão por quadro: texto na faixa da legenda (60-72% da altura), fora da zona segura, textos sobrepostos."""
     issues, out = [], {}
+    janelas = [(r["t0"], r["t0"] + r["dur"]) for c in filme.cenas for r in c.reacoes]
+    em_reacao = lambda fr: any(a <= (fr - 1) / FPS < b for a, b in janelas)
     for fr, bx in boxes.items():
         out[fr] = {}
         textos = []
@@ -483,6 +650,8 @@ def qa_cena(filme, boxes):
                 amin = min((b1[2] - b1[0]) * (b1[3] - b1[1]), (b2[2] - b2[0]) * (b2[3] - b2[1])) or 1
                 if ix * iy / amin > 0.08:
                     issues.append({"tipo": "imagens_sobrepostas", "alvo": f"{e1}+{e2}", "frame": fr})
+    # numa reação de meme (≤1,2 s) o zoom empurra coisas para a faixa da legenda de propósito: não acusa
+    issues = [i for i in issues if not (em_reacao(i["frame"]) and i["tipo"] in ("texto_na_faixa_legenda", "rosto_na_faixa_legenda", "fora_zona_segura"))]
     return {"motor": "kit2d", "issues": issues, "boxes": out}
 
 

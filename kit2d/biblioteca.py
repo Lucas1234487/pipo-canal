@@ -175,7 +175,7 @@ def desenha_pipo_espiga(ctx, st, t, seed):
     # rosto
     look = LOOK.get(st.get("olhar", "camera"), (0, 0))
     lid_base = st.get("palpebra", 0.42)
-    lid = piscada(t, seed, lid_base)
+    lid = max(piscada(t, seed, lid_base), st.get("_pisca", 0))   # _pisca: piscada forçada (reação "grilo")
     for sx, sd in ((-1, 1), (1, 2)):
         olho(ctx, sx * 50, -150, 36, 42, look, lid, MILHO_SOMBRA, seed + sd)
         cilios(ctx, sx * 50, -150, 36, 42, lid, sx, seed + sd)
@@ -226,7 +226,7 @@ def desenha_pipoca(ctx, st, t, seed):
     # casquinha do grão
     forma(ctx, [(-50, 168), (0, 150), (50, 168), (30, 196), (-30, 196)], hexc("#D9822B"), sombra=False, lw=5, seed=seed + 99)
     look = LOOK.get(st.get("olhar", "camera"), (0, 0))
-    lid = piscada(t, seed, st.get("palpebra", 0.12))
+    lid = max(piscada(t, seed, st.get("palpebra", 0.12)), st.get("_pisca", 0))
     for sx, sd in ((-1, 1), (1, 2)):
         olho(ctx, sx * 48, -110, 38, 46, look, lid, PIPOCA_SOMBRA, seed + sd)
         cilios(ctx, sx * 48, -110, 38, 46, lid, sx, seed + sd)
@@ -321,7 +321,7 @@ def desenha_humano_v1(ctx, st, t, seed):
     # rosto
     expr = st.get("expressao", "neutro")
     look = LOOK.get(st.get("olhar", "camera"), (0, 0))
-    lid = piscada(t, seed, 0)
+    lid = max(piscada(t, seed, 0), st.get("_pisca", 0))
     for sx in (-1, 1):
         ex, ey = sx * 34 + look[0] * 6, -255 + look[1] * 5
         if lid > 0.5:
