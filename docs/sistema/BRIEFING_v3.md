@@ -22,12 +22,13 @@ Diretor
 - O1 vem primeiro. O2 e O3 trabalham em paralelo a partir do roteiro e do timing. O4 junta tudo por último.
 - O gerente confere cada entrega e devolve ao Diretor 15 linhas + arquivos.
 - Pesquisa (G1), publicação (G5) e métricas (G6) seguem como gerentes próprios.
+- Se um gerente não tiver a ferramenta Agent na sessão dele, ele devolve ao Diretor a lista de organizadores com os briefings prontos, e o Diretor os contrata em nome dele. A estrutura de papéis e o QA final não mudam.
 
 ## 3. Aprovação do Lucas (substitui "publicar sem mostrar")
 - Nenhum vídeo é agendado sem o OK do Lucas.
 - Depois do QA, o Diretor manda os vídeos ao Lucas (SendUserFile) com 3 linhas por vídeo: tema, nota do Gemini, o que o QA-Claude apontou.
 - O vídeo fica em fila/AAAA-MM-DD_X/ sem aprovado_lucas.json. Quando o Lucas aprovar na conversa, a sessão grava aprovado_lucas.json (data, comentário dele) e dá push. Se ele pedir mudança, a sessão corrige e manda de novo.
-- A publicação em lote só agenda pastas com aprovado_lucas.json.
+- Assim que o Lucas aprovar, a própria sessão agenda no Studio pelo Claude in Chrome (G5), se o Chrome dele responder. Se não responder, a publicação em lote das 8h41 agenda. Ela só agenda pastas com aprovado_lucas.json.
 
 ## 4. O que o Lucas quer ver nos vídeos
 - Três pilares por dia: assunto do momento, história com regra inventada (ligada a quem assiste: mãe, filho, namorada, trabalho) e conhecimento (como o ossinho de dinossauro).
