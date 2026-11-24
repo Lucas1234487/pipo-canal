@@ -3,6 +3,7 @@ Cada desenho de elemento recebe (ctx, st, t, pal) já transladado para o centro 
 locais {"corpo": (x0,y0,x1,y1), "rosto"/"texto": ...} usado pela revisão automática."""
 import math, os, random
 import cairo
+import cenarios2 as C2
 from estilo import (W, H, INK, LW, AMARELO, BRANCO, VERMELHO, VERDE, hexc, mix, escurece, clareia, forma, traco, texto, medir,
                     pts_elipse, pts_ret, path_suave, jitter, ease_out_back, ease_out, clamp)
 
@@ -684,6 +685,7 @@ def desenha_foto(ctx, st, t, pal, seed):
 DESENHOS = {"celular": desenha_celular, "calendario": desenha_calendario, "relogio": desenha_relogio, "contador": desenha_contador,
             "barra": desenha_barra, "comentario": desenha_comentario, "seta": desenha_seta, "carimbo": desenha_carimbo,
             "texto": desenha_texto, "rachadura": desenha_rachadura, "bloco": desenha_bloco, "foto": desenha_foto}
+DESENHOS["porta"] = C2.desenha_porta   # cenarios2: porta que abre
 
 
 def _meme(ctx, st, t, pal, seed):   # formatos de meme redesenhados: kit2d/memes.py (import tardio, sem ciclo)
@@ -696,6 +698,8 @@ DESENHOS["meme"] = _meme
 
 # ============================ CENÁRIOS ============================
 def cenario(ctx, nome, pal, t, opts, seed=1):
+    if C2.tem(nome):   # cenários em camadas (kit2d/cenarios2.py)
+        return C2.fundo(ctx, nome, pal, t, opts, seed)
     bg, bg2, a1, a2, a3 = pal
     ctx.set_source_rgb(*bg); ctx.paint()
     padrao = opts.get("padrao", "raios" if nome == "chapado" else None)
