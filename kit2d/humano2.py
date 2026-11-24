@@ -9,7 +9,8 @@ from estilo import (INK, LW, BRANCO, VERMELHO, hexc, mix, escurece, clareia, for
 
 PELES = {"clara": "#F6C9A0", "media": "#D9935F", "morena": "#A8683D", "escura": "#6E4227"}
 CABELO_COR = {"preto": "#231A2B", "castanho": "#5A3420", "loiro": "#E8B84A", "ruivo": "#C8531F", "grisalho": "#BDB7C4",
-              "azul": "#2D58D6", "branco": "#EDEAF2", "rosa": "#E85A9A"}
+              "azul": "#2D58D6", "branco": "#EDEAF2", "rosa": "#E85A9A",
+              "platinado": "#F3E7C2", "castanho_escuro": "#3A2218", "caramelo": "#C98A4B"}
 BOCA_ESCURA = hexc("#6E1A2A")
 LINGUA = hexc("#F0687A")
 AGUA = hexc("#7FD3FF")
@@ -27,7 +28,8 @@ def _cor(v, padrao):
 def _proporcoes(st):
     idade = st.get("idade", "adulto")
     corpo = st.get("corpo", "medio")
-    lar = {"magro": (90, 60, 70, 26, 25, 22), "forte": (136, 108, 104, 38, 38, 30)}.get(corpo, (110, 80, 86, 32, 30, 25))
+    lar = {"magro": (90, 60, 70, 26, 25, 22), "forte": (136, 108, 104, 38, 38, 30),
+           "maromba": (172, 100, 100, 58, 40, 42)}.get(corpo, (110, 80, 86, 32, 30, 25))   # maromba: ombrão, cintura fina, braço enorme
     ow, cw, hw, aw, pw, nw = lar
     P = dict(idade=idade, chao=338.0, lean=0.0, joelho=0.0)
     if idade == "crianca":
@@ -44,6 +46,13 @@ def _proporcoes(st):
     pesc = {"longo": 40, "curto": -12, "normal": 0}.get(pesc, pesc if isinstance(pesc, (int, float)) else 0)
     P["hc"] -= pesc * (0.6 if idade == "crianca" else 1.0)
     P.update(ow=ow, cw=cw, hw=hw, aw=aw, pw=pw, nw=nw, cabeca=st.get("cabeca", "oval"), queixo=st.get("queixo", "normal"))
+    P["muque"] = corpo == "maromba"
+    if P["muque"]:
+        P["mao"] = 33
+    P["oleo"] = bool(st.get("bronzeado"))
+    P["chuteira"] = bool(st.get("chuteira"))
+    if st.get("olhos") == "grandes":   # olhos de personagem bonito: maiores e mais altos
+        ex, erx, ery = P["olho"]; P["olho"] = (ex + 2, erx * 1.12, ery * 1.3)
     if st.get("oculos") and st.get("oculos_tipo") == "fundo_de_garrafa":
         ex, erx, ery = P["olho"]; P["olho"] = (ex, erx * 1.3, ery * 1.3)
     return P
@@ -76,7 +85,7 @@ def _fcab(P, a):
 
 
 # ======================================================================== poses
-POSES = ("em_pe", "sentado", "bracos_cruzados", "maos_na_cabeca", "acenando", "apontando", "comemorando")
+POSES = ("em_pe", "sentado", "bracos_cruzados", "maos_na_cabeca", "acenando", "apontando", "comemorando", "muque", "correndo", "caido")
 
 
 def _ik(S, T, a, b, dobra):
@@ -115,7 +124,15 @@ def _bracos_pose(pose, P, st, t, sx, seed):
         bomb = 14 * math.sin(t * 8 + (0 if sx > 0 else 1.2))
         a1, a2 = _ik(S, (sx * (P["ow"] + 0.30 * (a + b)), hc - ry * 0.95 + bomb), a, b, -sx)
         return a1, a2, "punho"
-    elif pose == "maos_na_cabeca":
+    elif pose == "muque":   # os dois braços dobrados para cima mostrando o bíceps (pulsa)
+        pulso = 6 * math.sin(t * 6 + (0 if sx > 0 else 0.5))
+        a1 = math.pi / 2 - sx * (math.pi / 2 + 0.12) + sx * 0.02 * math.sin(t * 6)
+        return a1, -math.pi / 2 - sx * 0.18 + sx * pulso / 200, "punho"
+    elif pose == "correndo":   # cotovelo dobrado, braços balançando alternados
+        sw = 0.55 * math.sin(t * 9 + (0 if sx > 0 else math.pi))
+        a1 = math.pi / 2 - sx * 0.42 + sw * 0.6
+        return a1, -math.pi / 2 + sx * 0.12 + sw * 0.7, "punho"
+    elif pose in ("maos_na_cabeca", "caido"):
         a1, a2 = _ik(S, (sx * rx * 0.86, hc - ry * 0.40), a, b, sx)
         return a1, a2, "aberta"
     elif pose == "bracos_cruzados":
@@ -215,6 +232,17 @@ def _braco(ctx, S, a1, a2, mao, P, roupa, pele, manga, seed):
     E = (S[0] + a * math.cos(a1), S[1] + a * math.sin(a1))
     Wr = (E[0] + b * math.cos(a2), E[1] + b * math.sin(a2))
     _tubo(ctx, [S, E, Wr], w, pele)
+    if P.get("muque"):   # bíceps: bola do lado de dentro da dobra do cotovelo
+        dx, dy = math.cos(a1), math.sin(a1)
+        nx, ny = -dy, dx
+        if nx * math.cos(a2) + ny * math.sin(a2) < 0:
+            nx, ny = -nx, -ny
+        bx, by = S[0] + dx * a * 0.48 + nx * w * 0.42, S[1] + dy * a * 0.48 + ny * w * 0.42
+        ctx.save(); ctx.translate(bx, by); ctx.rotate(a1)
+        forma(ctx, pts_elipse(0, 0, a * 0.42, w * 0.6, 14), pele, sombra=False, lw=5, seed=seed + 3, amp=0.5)
+        ctx.restore()
+    if P.get("oleo"):   # brilho de pele besuntada
+        _linha(ctx, [(S[0] + (E[0] - S[0]) * 0.2 - 6, S[1] + (E[1] - S[1]) * 0.2 - 8), (S[0] + (E[0] - S[0]) * 0.7 - 6, S[1] + (E[1] - S[1]) * 0.7 - 8)], 6, (1, 1, 1), 0.55)
     if manga == "regata":
         M = S; ang = a1
         _mao(ctx, Wr[0], Wr[1], a2, mao, pele, P["mao"], seed + 40)
@@ -301,7 +329,24 @@ def _espirais(ctx, P, cor, pontos, seed):
         traco(ctx, [(x - 9, y + 4), (x - 6, y - 7), (x + 5, y - 6), (x + 6, y + 4), (x - 1, y + 3)], lw=3.5, cor=c, seed=seed + i, amp=0.4)
 
 
-def _cabelo_tras(ctx, P, estilo, cor, t, seed):
+def _sway(t, seed, v, k=0.05):
+    """Balanço do cabelo comprido: cresce para as pontas (v maior)."""
+    return k * math.sin(t * 2.1 + seed * 0.37) * max(0.0, v) + 0.02 * math.sin(t * 3.3 + seed) * max(0.0, v - 0.6)
+
+
+def _cabelo_tras(ctx, P, estilo, cor, t, seed, luzes=None):
+    if estilo == "volumoso":   # cabelão de propaganda de xampu: volume, ondas nas pontas e balanço
+        lado = [(1.1, -0.62), (1.28, -0.12), (1.42, 0.42), (1.46, 0.92), (1.4, 1.32)]
+        pontas = [(1.48, 1.64), (1.24, 1.5), (1.14, 1.76), (0.92, 1.52), (0.74, 1.66), (0.58, 1.32)]
+        H = lambda pts, sx: [_hp(P, sx * u + _sway(t, seed, v), v) for u, v in pts]
+        pts = _arco(P, 198, 342, 1.26, 8) + H(lado, 1) + H(pontas, 1) + H(list(reversed(pontas)), -1) + H(list(reversed(lado)), -1)
+        forma(ctx, pts, escurece(cor, 0.12), seed=seed, amp=1.0)
+        for sx in (-1, 1):
+            for j, du in enumerate((0.0, 0.16)):
+                traco(ctx, H([(1.12 - du, 0.1), (1.3 - du, 0.62), (1.22 - du, 1.05), (1.32 - du, 1.45)], sx), lw=4, cor=_fio(cor), seed=seed + 3 + j + sx, amp=0.4)
+            if luzes is not None:
+                traco(ctx, H([(1.2, 0.2), (1.36, 0.7), (1.3, 1.1), (1.38, 1.4)], sx), lw=9, cor=luzes, seed=seed + 7 + sx, amp=0.4, alpha=0.8)
+        return
     if estilo == "longo":
         lado = [(1.02, -0.6), (1.14, -0.05), (1.2, 0.55), (1.22, 1.05)]
         pontas = [(1.18, 1.55), (0.95, 1.28), (0.74, 1.6), (0.5, 1.22)]
@@ -336,9 +381,51 @@ def _cabelo_tras(ctx, P, estilo, cor, t, seed):
         ctx.restore()
 
 
-def _cabelo_frente(ctx, P, estilo, cor, idade, seed, bone):
+def _cabelo_frente(ctx, P, estilo, cor, idade, seed, bone, t=0.0, luzes=None):
     rx, ry = P["rx"], P["ry"]
     esc = _fio(cor)
+    H = lambda pts: [_hp(P, u, v) for u, v in pts]
+    if estilo == "volumoso" and not bone:
+        out = _arco(P, 172, 368, 1.2, 14, bump=0.03)
+        linha = [(1.08, 0.22), (1.0, -0.16), (0.84, -0.44), (0.58, -0.6), (0.3, -0.7), (0.18, -0.8),   # risca do lado direito
+                 (0.02, -0.72), (-0.26, -0.68), (-0.56, -0.62), (-0.82, -0.44), (-1.0, -0.12), (-1.1, 0.18)]   # franja varrida para a esquerda
+        forma(ctx, out + H(linha), cor, sombra=False, seed=seed + 11, amp=0.7)
+        for i, q in enumerate(([(0.16, -1.02), (-0.3, -0.82), (-0.74, -0.42)], [(0.2, -1.0), (-0.1, -0.82), (-0.5, -0.7)], [(0.24, -1.02), (0.62, -0.84), (0.94, -0.38)])):
+            traco(ctx, H(q), lw=3.5, cor=esc, seed=seed + 12 + i, amp=0.4)
+        if luzes is not None:
+            traco(ctx, H([(0.12, -0.98), (-0.36, -0.78), (-0.8, -0.5)]), lw=9, cor=luzes, seed=seed + 16, amp=0.3, alpha=0.85)
+        traco(ctx, _arco(P, 212, 252, 0.98, 6), lw=13, cor=clareia(cor, 0.5), seed=seed + 17, amp=0.3, alpha=0.75)   # brilho de xampu
+        traco(ctx, _arco(P, 222, 244, 1.03, 4), lw=5, cor=(1, 1, 1), seed=seed + 18, amp=0.2, alpha=0.7)
+        sx_ = -1
+        for sx in (-1, 1):   # mechas da frente caindo nos ombros, com balanço
+            sw = lambda v: _sway(t, seed + 5, v)
+            pts = [_hp(P, sx * u + sw(v), v) for u, v in ((0.9, -0.02), (1.14, 0.14), (1.26, 0.6), (1.18, 1.02), (1.3, 1.44), (1.06, 1.3), (0.96, 0.84), (0.88, 0.3))]
+            forma(ctx, pts, cor, sombra=False, seed=seed + 20 + sx, amp=0.6)
+            traco(ctx, [_hp(P, sx * u + sw(v), v) for u, v in ((1.04, 0.2), (1.12, 0.66), (1.08, 1.1))], lw=3.5, cor=esc, seed=seed + 24 + sx)
+            if luzes is not None and sx == sx_:
+                traco(ctx, [_hp(P, sx * u + sw(v), v) for u, v in ((1.12, 0.3), (1.2, 0.7), (1.16, 1.15))], lw=7, cor=luzes, seed=seed + 26, alpha=0.8)
+        return
+    if estilo == "ondulado" and not bone:   # topo ondulado com volume, risca de lado e uma mecha caindo na testa
+        pts = H([(-1.06, 0.02), (-1.04, -0.45), (-0.92, -0.9), (-0.62, -1.16), (-0.3, -1.22), (-0.1, -1.34), (0.2, -1.3), (0.48, -1.32),
+                 (0.78, -1.12), (1.0, -0.78), (1.08, -0.36), (1.06, 0.02), (0.98, -0.36), (0.78, -0.6), (0.46, -0.68), (0.2, -0.66),
+                 (0.06, -0.56), (-0.04, -0.42), (-0.12, -0.56), (-0.36, -0.68), (-0.68, -0.64), (-0.96, -0.4)])
+        forma(ctx, pts, cor, sombra=True, sombra_off=(5, 7), seed=seed + 11, amp=0.7)
+        for i, q in enumerate(([(-0.78, -0.62), (-0.55, -0.98), (-0.18, -1.08)], [(-0.4, -0.62), (-0.05, -0.92), (0.4, -1.06)],
+                               [(0.2, -0.62), (0.55, -0.82), (0.86, -0.8)], [(0.06, -0.74), (-0.02, -0.58), (-0.04, -0.46)])):
+            traco(ctx, H(q), lw=4, cor=esc, seed=seed + 12 + i, amp=0.4)
+        traco(ctx, H([(-0.62, -1.0), (-0.3, -1.12), (0.05, -1.17)]), lw=10, cor=clareia(cor, 0.45), seed=seed + 17, amp=0.3, alpha=0.85)
+        return
+    if estilo == "raspado" and not bone:   # máquina 1: só a sombra dos fios, entradas altas
+        linha = [(1.0, -0.1), (0.9, -0.5), (0.5, -0.72), (0.0, -0.76), (-0.5, -0.72), (-0.9, -0.5), (-1.0, -0.1)]
+        pts = _arco(P, 182, 358, 1.03, 12) + H(linha)
+        path_suave(ctx, pts); ctx.set_source_rgba(*cor, 0.85); ctx.fill()
+        rr = random.Random(seed)
+        for i in range(70):
+            a = rr.uniform(200, 340); r = rr.uniform(0.82, 1.0)
+            x, y = _fcab(P, math.radians(a)); ctx.arc(x * r, P["hc"] + y * r, 2.2, 0, 2 * math.pi)
+        ctx.set_source_rgba(*escurece(cor, 0.4), 0.8); ctx.fill()
+        traco(ctx, _arco(P, 182, 358, 1.0, 12), lw=4.5, seed=seed + 3, amp=0.4)
+        return
     if estilo == "careca":
         if idade == "idoso":
             for sx in (-1, 1):
@@ -352,7 +439,6 @@ def _cabelo_frente(ctx, P, estilo, cor, idade, seed, bone):
             for sx in (-1, 1):
                 forma(ctx, [_hp(P, sx * 0.84, -0.5), _hp(P, sx * 1.06, -0.4), _hp(P, sx * 1.05, -0.02), _hp(P, sx * 0.92, -0.1)], cor, sombra=False, lw=5, seed=seed + sx)
         return
-    H = lambda pts: [_hp(P, u, v) for u, v in pts]
     if estilo == "topete":
         out = _arco(P, 172, 368, 1.06, 12)
         forma(ctx, out + H([(1.03, 0.0), (0.95, -0.4), (0.5, -0.58), (0.0, -0.6), (-0.5, -0.58), (-0.95, -0.4), (-1.03, 0.0)]), cor, sombra=False, seed=seed + 11, amp=0.8)
@@ -368,12 +454,13 @@ def _cabelo_frente(ctx, P, estilo, cor, idade, seed, bone):
         crista = H([(-0.24, -0.6), (-0.32, -1.12), (-0.2, -1.08), (-0.18, -1.5), (-0.04, -1.28), (0.05, -1.66), (0.14, -1.3), (0.26, -1.52), (0.24, -1.1), (0.34, -1.12), (0.24, -0.6)])
         forma(ctx, crista, cor, sombra=True, sombra_off=(6, 8), seed=seed + 13, amp=0.6)
         return
-    if estilo == "calvicie":
-        for sx in (-1, 1):
-            forma(ctx, H([(sx * 0.78, -0.62), (sx * 1.08, -0.45), (sx * 1.12, 0.05), (sx * 0.96, 0.16), (sx * 0.92, -0.2), (sx * 0.86, -0.4)]), cor, sombra=False, lw=5, seed=seed + sx, amp=0.8)
-        for i, dy in enumerate((-0.86, -0.94)):   # fiozinhos penteados por cima (a famosa "ponte")
-            traco(ctx, H([(-0.8, -0.55 + dy * 0.2), (-0.2, dy - 0.04), (0.4, dy + 0.02), (0.82, -0.6)]), lw=4, cor=cor, seed=seed + 5 + i, amp=0.5)
-        traco(ctx, _arco(P, 222, 250, 0.82, 4), lw=10, cor=(1, 1, 1), alpha=0.45, seed=seed + 3, amp=0.3)
+    if estilo == "calvicie":   # tufos dos lados e a "ponte", todos seguindo o contorno da cabeça (qualquer formato)
+        for sx, (a0, a1) in ((1, (14, -40)), (-1, (166, 220))):
+            pts = _arco(P, a0, a1, 1.1, 6) + list(reversed(_arco(P, a0, a1, 0.94, 6)))
+            forma(ctx, pts, cor, sombra=False, lw=5, seed=seed + sx, amp=0.6)
+        for i, r in enumerate((0.9, 0.97)):   # fiozinhos penteados por cima
+            traco(ctx, _arco(P, 214 + i * 6, 326 - i * 4, r, 6), lw=4, cor=escurece(cor, 0.15), seed=seed + 5 + i, amp=0.4)
+        traco(ctx, _arco(P, 236, 262, 0.8, 4), lw=10, cor=(1, 1, 1), alpha=0.45, seed=seed + 3, amp=0.3)
         return
     if estilo == "franja_reta":
         out = _arco(P, 176, 364, 1.09, 12)
@@ -455,13 +542,16 @@ EXPR = {   # tampa da pálpebra, inclinação (+ = bravo), pupila, pálpebra de 
     "nervoso":      dict(lid=0.0, tilt=-0.15, pup=0.6, baixo=0.0, sob=(-14, -8, 0), boca="ondulada", grande=1.08),
     "envergonhado": dict(lid=0.32, tilt=-0.2, pup=1.0, baixo=0.18, sob=(-12, -7, 0), boca="sorrisinho", corado=0.85, olhar="baixo"),
     "apaixonado":   dict(lid=0.16, tilt=0.0, pup=1.15, baixo=0.15, sob=(-10, -14, -6), boca="sorriso", corado=0.45, coracao=True),
+    "charmoso":     dict(lid=0.12, tilt=0.0, pup=1.12, baixo=0.22, sob=(-8, -13, -5), boca="charme", corado=0.2, brilho=True),
+    "esforco":      dict(lid=0.22, tilt=0.4, pup=0.9, baixo=0.24, sob=(14, 0, -10), boca="careta"),
+    "ofegante":     dict(lid=0.42, tilt=-0.25, pup=1.0, baixo=0.0, sob=(-12, -5, 4), boca="ofegante", corado=0.55),
     "cansado":      dict(lid=0.55, tilt=-0.1, pup=1.0, baixo=0.0, sob=(4, 2, 6), boca="cansado", olheira=True),
 }
 LOOK = {"camera": (0, 0), "frente": (0, 0), "celular": (0.1, 0.9), "baixo": (0, 0.85), "cima": (0, -0.9),
         "esq": (-0.9, 0.05), "dir": (0.9, 0.05), "esquerda": (-0.9, 0.05), "direita": (0.9, 0.05)}
 
 
-def _olho(ctx, cx, cy, rx, ry, lado, look, e, lid, cor_lid, seed):
+def _olho(ctx, cx, cy, rx, ry, lado, look, e, lid, cor_lid, seed, iris=None):
     fecha = e.get("fecha")
     if fecha == "feliz":
         traco(ctx, [(cx - rx * 1.1, cy + 4), (cx, cy - ry * 0.75), (cx + rx * 1.1, cy + 4)], lw=7, seed=seed, amp=0.5)
@@ -484,7 +574,13 @@ def _olho(ctx, cx, cy, rx, ry, lado, look, e, lid, cor_lid, seed):
     if e.get("coracao"):
         _coracao(ctx, px, py + 2, pr * 1.05, hexc("#FF3D6E"), lw=3)
     else:
-        ctx.arc(px, py, pr, 0, 2 * math.pi); ctx.set_source_rgb(*INK); ctx.fill()
+        if iris:   # íris colorida com pupila menor (olhar de personagem bonito)
+            ctx.arc(px, py, pr * 1.05, 0, 2 * math.pi); ctx.set_source_rgb(*iris); ctx.fill_preserve()
+            ctx.set_source_rgb(*INK); ctx.set_line_width(3); ctx.stroke()
+            ctx.arc(px, py + pr * 0.15, pr * 0.7, 0, math.pi); ctx.set_source_rgba(*clareia(iris, 0.35), 0.6); ctx.fill()
+            ctx.arc(px, py, pr * 0.52, 0, 2 * math.pi); ctx.set_source_rgb(*INK); ctx.fill()
+        else:
+            ctx.arc(px, py, pr, 0, 2 * math.pi); ctx.set_source_rgb(*INK); ctx.fill()
         ctx.arc(px - pr * 0.35, py - pr * 0.4, pr * (0.42 if e.get("brilho") else 0.3), 0, 2 * math.pi); ctx.set_source_rgb(1, 1, 1); ctx.fill()
         if e.get("brilho"):
             ctx.arc(px + pr * 0.35, py + pr * 0.35, pr * 0.16, 0, 2 * math.pi); ctx.fill()
@@ -533,7 +629,22 @@ def _dentes_abertos(ctx, dentes, x, top, alto, w):
         _linha(ctx, [(x, top), (x, top + alto)], 2.5, INK, 0.35)
 
 
-def _boca(ctx, tipo, x, y, w, t, seed, dentes="normal"):
+def _labios(ctx, x, y, w, cor, seed, sorri=1.0):
+    """Boca fechada com lábios coloridos: arco do cupido, lábio de baixo cheio, brilho e cantinhos para cima."""
+    ww = w * 0.88; c = sorri * 5
+    meio = [(x + ww * 0.5, y + 2), (x, y + 5), (x - ww * 0.5, y + 2)]
+    cima = [(x - ww, y - c), (x - ww * 0.5, y - 9), (x - ww * 0.14, y - 11), (x, y - 7), (x + ww * 0.14, y - 11), (x + ww * 0.5, y - 9), (x + ww, y - c)] + meio
+    baixo = [(x - ww, y - c), (x - ww * 0.5, y + 2), (x, y + 5), (x + ww * 0.5, y + 2), (x + ww, y - c), (x + ww * 0.55, y + 12), (x, y + 18), (x - ww * 0.55, y + 12)]
+    forma(ctx, baixo, cor, sombra=False, lw=4, seed=seed, amp=0.25)
+    forma(ctx, cima, escurece(cor, 0.14), sombra=False, lw=4, seed=seed + 1, amp=0.25)
+    traco(ctx, [(x - ww, y - c), (x - ww * 0.5, y + 2), (x, y + 5), (x + ww * 0.5, y + 2), (x + ww, y - c)], lw=4.5, seed=seed + 2, amp=0.2)
+    ctx.save(); ctx.translate(x - ww * 0.18, y + 10); ctx.scale(ww * 0.22, 3.2); ctx.arc(0, 0, 1, 0, 2 * math.pi); ctx.restore()
+    ctx.set_source_rgba(1, 1, 1, 0.6); ctx.fill()
+    for sx in (-1, 1):   # covinha do sorriso
+        traco(ctx, [(x + sx * (ww + 2), y - c + 1), (x + sx * (ww + 7), y - c - 5)], lw=3.5, alpha=0.7, seed=seed + 4 + sx, amp=0.2)
+
+
+def _boca(ctx, tipo, x, y, w, t, seed, dentes="normal", labios=None):
     def aberta(top, bot, dentes_k=0.0, lingua=True, wob=0.0):
         pts = top + bot
         p = jitter(pts, 0.6, seed)
@@ -548,8 +659,22 @@ def _boca(ctx, tipo, x, y, w, t, seed, dentes="normal"):
             ctx.save(); ctx.translate(x + wob, max(ys) + 2); ctx.scale(w * 0.62, (max(ys) - min(ys)) * 0.42); ctx.arc(0, 0, 1, 0, 2 * math.pi); ctx.restore()
             ctx.set_source_rgb(*LINGUA); ctx.fill()
         ctx.restore()
+        if labios:   # contorno de lábio colorido por fora da boca aberta
+            path_suave(ctx, p); ctx.set_line_width(13); ctx.set_source_rgb(*labios); ctx.set_line_join(cairo.LINE_JOIN_ROUND); ctx.stroke()
         path_suave(ctx, p); ctx.set_line_width(5); ctx.set_source_rgb(*INK); ctx.set_line_join(cairo.LINE_JOIN_ROUND); ctx.stroke()
 
+    if labios and tipo in ("charme", "leve", "sorriso", "sorrisinho"):
+        _labios(ctx, x, y, w, labios, seed, sorri={"sorrisinho": 0.4, "leve": 0.6}.get(tipo, 1.0))
+        return
+    if tipo == "charme":   # sorriso fechado confiante (sem lábio colorido)
+        traco(ctx, [(x - w * 0.7, y + 1), (x - w * 0.2, y + 9), (x + w * 0.35, y + 6), (x + w * 0.82, y - 12)], lw=6.5, seed=seed, amp=0.3)
+        return
+    if tipo == "ofegante":   # boca aberta puxando ar, língua de fora
+        hh = w * (0.42 + 0.14 * math.sin(t * 11))
+        aberta([(x - w * 0.6, y - 4), (x, y - 12), (x + w * 0.6, y - 4)], [(x + w * 0.5, y + hh), (x, y + hh * 1.35), (x - w * 0.5, y + hh)], lingua=False)
+        forma(ctx, pts_elipse(x + 6, y + hh * 1.35 + 12, 15, 17 + 3 * math.sin(t * 11), 10), LINGUA, sombra=False, lw=4, seed=seed + 5, amp=0.3)
+        traco(ctx, [(x + 6, y + hh * 1.35 + 2), (x + 6, y + hh * 1.35 + 18)], lw=3, alpha=0.5, seed=seed + 6, amp=0.2)
+        return
     if tipo == "sorriso_aberto":
         aberta([(x - w, y - 6), (x - w * 0.5, y - 2), (x, y - 1), (x + w * 0.5, y - 2), (x + w, y - 6)],
                [(x + w * 0.72, y + w * 0.42), (x, y + w * 0.78), (x - w * 0.72, y + w * 0.42)], dentes_k=0.3)
@@ -594,6 +719,11 @@ def _barba(ctx, P, tipo, cor, my, w, seed):
         pts = [_hp(P, -0.98, 0.05), _hp(P, -0.92, 0.55), _hp(P, -0.55, 0.92), (0, hc + ry * 1.12), _hp(P, 0.55, 0.92), _hp(P, 0.92, 0.55), _hp(P, 0.98, 0.05),
                _hp(P, 0.8, 0.28), (w * 1.5, my - 8), (0, my - 16), (-w * 1.5, my - 8), _hp(P, -0.8, 0.28)]
         forma(ctx, pts, cor, sombra=False, lw=5, seed=seed, amp=0.9)
+    elif tipo == "rala":   # sombra de barba por fazer, sem contorno
+        pts = [_hp(P, -0.96, 0.3), _hp(P, -0.88, 0.62), _hp(P, -0.52, 0.94), (0, hc + ry * 1.04), _hp(P, 0.52, 0.94), _hp(P, 0.88, 0.62), _hp(P, 0.96, 0.3),
+               _hp(P, 0.74, 0.62), (w * 1.3, my + 4), (0, my + 12), (-w * 1.3, my + 4), _hp(P, -0.74, 0.62)]
+        path_suave(ctx, pts); ctx.set_source_rgba(*cor, 0.22); ctx.fill()
+        return
     elif tipo == "bigodao":   # bigode de guidão com pontas enroladas
         for sx in (-1, 1):
             pts = [(0, my - 16), (sx * w * 0.7, my - 22), (sx * w * 1.6, my - 10), (sx * w * 2.0, my - 26), (sx * w * 2.15, my - 8), (sx * w * 1.6, my + 4), (sx * w * 0.6, my - 2), (0, my - 6)]
@@ -635,6 +765,26 @@ def _nariz(ctx, tipo, x, ny, pele, crianca, seed):
         traco(ctx, [(x - 3, ny - 18), (x + 7, ny), (x - 5, ny + 4)], lw=4.5, alpha=0.7, seed=seed, amp=0.4)
 
 
+def _sob_feita(ctx, p0, pm, p2, cor, l0, l2):
+    """Sobrancelha desenhada como forma afinando: p0 (dentro) -> pm (arco) -> p2 (ponta)."""
+    cx, cy = 2 * pm[0] - (p0[0] + p2[0]) / 2, 2 * pm[1] - (p0[1] + p2[1]) / 2
+    cima, baixo = [], []
+    n = 10
+    for i in range(n + 1):
+        u = i / n
+        x = (1 - u) ** 2 * p0[0] + 2 * u * (1 - u) * cx + u * u * p2[0]
+        y = (1 - u) ** 2 * p0[1] + 2 * u * (1 - u) * cy + u * u * p2[1]
+        dx = 2 * (1 - u) * (cx - p0[0]) + 2 * u * (p2[0] - cx); dy = 2 * (1 - u) * (cy - p0[1]) + 2 * u * (p2[1] - cy)
+        d = math.hypot(dx, dy) or 1
+        nx, ny = -dy / d, dx / d
+        if ny > 0:
+            nx, ny = -nx, -ny
+        larg = (l0 + (l2 - l0) * u ** 0.8) / 2
+        cima.append((x + nx * larg, y + ny * larg)); baixo.append((x - nx * larg, y - ny * larg))
+    path_suave(ctx, cima + list(reversed(baixo))); ctx.set_source_rgb(*cor); ctx.fill_preserve()
+    ctx.set_source_rgba(*INK, 0.5); ctx.set_line_width(1.5); ctx.stroke()
+
+
 def _rosto(ctx, P, st, t, seed, pele, cab):
     rx, ry, hc = P["rx"], P["ry"], P["hc"]
     nome = st.get("expressao", "neutro")
@@ -667,7 +817,7 @@ def _rosto(ctx, P, st, t, seed, pele, cab):
     cor_lid = escurece(pele, 0.2)
     my = hc + ry * (0.52 if crianca else 0.56)
     # ASSINATURA: bochecha-grão (grãozinho de milho rosado em cada bochecha, sempre)
-    corado = e.get("corado", 0.0) + (0.15 if crianca else 0.0)
+    corado = e.get("corado", 0.0) + (0.15 if crianca else 0.0) + (0.25 if st.get("blush") else 0.0)
     for sx in (-1, 1):
         cx, cy = sx * (ex + 20), ey + ery + 16
         if corado > 0.3:
@@ -691,8 +841,19 @@ def _rosto(ctx, P, st, t, seed, pele, cab):
     cb = mix(cab, INK, 0.45) if st.get("cabelo") not in ("careca",) else mix(cab, INK, 0.6)
     pontas = []
     for sx in (-1, 1):
-        _olho(ctx, sx * ex, ey, erx, ery, sx, look, e, lid, cor_lid, seed + 3 + sx)
-        if st.get("cilios") and not e.get("fecha") and lid < 0.95:
+        _olho(ctx, sx * ex, ey, erx, ery, sx, look, e, lid, cor_lid, seed + 3 + sx, iris=_cor(st["iris"], "#7A4A2A") if st.get("iris") else None)
+        if st.get("cilios") == "longos" and not e.get("fecha") and lid < 0.95:   # delineado com gatinho + 3 cílios curvos
+            g = e.get("grande", 1.0)
+            cx_, rx_, ry_ = sx * ex, erx * g, ery * g
+            topo = [(cx_ + sx * rx_ * math.cos(a), ey - ry_ * math.sin(a)) for a in [math.pi * (0.92 - 0.84 * i / 8) for i in range(9)]]
+            _linha(ctx, topo + [(cx_ + sx * (rx_ + 17), ey - ry_ * 0.62)], 7, INK)
+            yl = ey - ry_ + 2 * ry_ * max(0.05, lid)
+            for i, f in enumerate((0.45, 0.72, 0.93)):
+                x0 = cx_ + sx * rx_ * f
+                y0 = ey - ry_ * math.sqrt(max(0.0, 1 - f * f)) - 2
+                c = 9 + 3 * i
+                traco(ctx, [(x0, y0), (x0 + sx * c * 0.35, y0 - c * 0.8), (x0 + sx * c * 0.95, y0 - c * 1.0)], lw=4.5, seed=seed + 60 + i + sx, amp=0.15)
+        elif st.get("cilios") and not e.get("fecha") and lid < 0.95:
             g = e.get("grande", 1.0)
             yl = ey - ery * g + 2 * ery * g * max(0.05, lid)
             for i, f in enumerate((0.55, 0.85)):
@@ -700,8 +861,12 @@ def _rosto(ctx, P, st, t, seed, pele, cab):
                 ang = -1.9 + 0.4 * i if sx < 0 else -1.24 - 0.4 * i
                 traco(ctx, [(x0, yl), (x0 + math.cos(ang) * 14, yl + math.sin(ang) * 14)], lw=4.5, seed=seed + 60 + i + sx, amp=0.2)
         xi, xo = sx * ex - sx * (erx + 2), sx * ex + sx * (erx + 8)
-        by = ey - ery * e.get("grande", 1.0) - 16 - (4 if estilo_sob == "grossa" else 0)
-        traco(ctx, [(xo, by + sob[2]), (sx * ex, by + sob[1] - 3), (xi, by + sob[0])], lw=lw_sob, cor=cb, seed=seed + 10 + sx, amp=0.6)
+        by = ey - ery * e.get("grande", 1.0) - (10 if st.get("olhos") == "grandes" else 16) - (4 if estilo_sob == "grossa" else 0)
+        if estilo_sob in ("arqueada", "marcada"):   # bem feita: grossa por dentro, arco alto, ponta fina
+            _sob_feita(ctx, (xi, by + sob[0]), (sx * ex + sx * erx * 0.35, by + sob[1] - (9 if estilo_sob == "arqueada" else 5)), (xo + sx * 4, by + sob[2] + 4),
+                       cb, 11 if estilo_sob == "arqueada" else 15, 3 if estilo_sob == "arqueada" else 6)
+        else:
+            traco(ctx, [(xo, by + sob[2]), (sx * ex, by + sob[1] - 3), (xi, by + sob[0])], lw=lw_sob, cor=cb, seed=seed + 10 + sx, amp=0.6)
         pontas.append((xi, by + sob[0]))
         if e.get("olheira") or st.get("olheiras"):
             for j in (0, 1):
@@ -725,8 +890,9 @@ def _rosto(ctx, P, st, t, seed, pele, cab):
     if st.get("barba") and not crianca:
         _barba(ctx, P, st.get("barba"), mix(cab, INK, 0.15), my, w, seed + 30)
     boca = e.get("boca", "leve")
-    _boca(ctx, boca, 0, my, w, t, seed + 40, dentes)
-    if boca in ("leve", "sorriso", "sorrisinho", "triste", "ondulada", "cansado"):
+    labios = _cor(st["labios"], "#D8506A") if st.get("labios") else None
+    _boca(ctx, boca, 0, my, w, t, seed + 40, dentes, labios)
+    if boca in ("leve", "sorriso", "sorrisinho", "triste", "ondulada", "cansado") and not labios:
         _dentes_fechada(ctx, dentes, 0, my + (4 if boca != "sorriso" else 8), w)
     pinta = st.get("pinta")
     if pinta:
@@ -743,6 +909,21 @@ def _extras(ctx, P, st, t):
     ex, erx, ery = P["olho"]
     ey = hc + (16 if crianca else 6)
     seed = 0
+    if st.get("veia"):   # veia saltando na testa, pulsando
+        k = 1 + 0.12 * math.sin(t * 9)
+        x0, y0 = rx * 0.34, hc - ry * 0.5
+        cv = hexc("#7A4FD1") if not isinstance(st.get("veia"), str) else _cor(st.get("veia"), "#7A4FD1")
+        for pts in ([(0, 34), (2, 12), (-4, -6), (0, -24)], [(-4, -6), (-18, -18)], [(2, 12), (16, 2)]):
+            _linha(ctx, [(x0 + u * k, y0 + v * k) for u, v in pts], 11, INK, 0.9)
+            _linha(ctx, [(x0 + u * k, y0 + v * k) for u, v in pts], 6, cv)
+    if st.get("suor"):   # gotas de suor voando da cabeça
+        for i in range(3):
+            u = (t * 1.1 + i / 3) % 1.0
+            sx = 1 if i % 2 == 0 else -1
+            ang = -math.pi / 2 + sx * (0.7 + 0.25 * i)
+            d = ry * (1.05 + 0.7 * u)
+            ctx.push_group(); _gota(ctx, math.cos(ang) * d, hc + math.sin(ang) * d, 11 - 4 * u); ctx.pop_group_to_source(); ctx.paint_with_alpha(1 - u * u)
+        _gota(ctx, -rx * 0.9, hc - ry * 0.2 + ((t * 0.6) % 1.0) * 50, 10)
     if nome == "chorando":
         for sx in (-1, 1):
             x = sx * ex
@@ -760,7 +941,7 @@ def _extras(ctx, P, st, t):
             ctx.push_group(); _coracao(ctx, 0, 0, 16, hexc("#FF3D6E")); ctx.pop_group_to_source(); ctx.paint_with_alpha(a)
             ctx.restore()
     elif nome == "bravo":
-        x, y = rx * 0.78, hc - ry * 0.62
+        x, y = _fcab(P, math.radians(-48)); x, y = x * 0.66, hc + y * 0.66
         for a in range(4):
             ang = a * math.pi / 2 + 0.78
             _linha(ctx, [(x + math.cos(ang) * 5, y + math.sin(ang) * 5), (x + math.cos(ang) * 17, y + math.sin(ang) * 17)], 6, VERMELHO)
@@ -830,6 +1011,82 @@ def _brilho_gala(ctx, P, nivel, t, my, w, boca, seed):
         x, y = (w * 0.35, my + 8) if boca in ("sorriso_aberto", "gargalhada") else (w * 0.7, my - 2)
         if k > 0.3:
             _estrela(ctx, x, y, 16 * k, (1, 1, 1))
+
+
+def _jaqueta(ctx, P, cor, seed):
+    """Jaqueta/blazer aberto por cima da roupa: duas abas com lapela."""
+    ow, cw, hw, sy, hy, nw = P["ow"], P["cw"], P["hw"], P["sy"], P["hy"], P["nw"]
+    meio = (sy + hy) / 2
+    for sx in (-1, 1):
+        pts = [(nw + 6, sy - 6), (ow * 0.72, sy - 2), (ow * 0.97, sy + 16), (ow, sy + 44), (ow * 0.9, sy + 96), (cw, meio + 22), (hw, hy + 6), (hw * 0.96, hy + 28),
+               (cw * 0.36, hy + 30), (cw * 0.3, meio + 10), (nw * 0.7, sy + 70), (nw + 26, sy + 34), (nw + 10, sy + 24)]
+        forma(ctx, [(sx * x, y) for x, y in pts], cor, sombra=False, sombreado=0.1, seed=seed + sx, amp=0.6)
+        traco(ctx, [(sx * (nw + 10), sy + 24), (sx * (nw + 26), sy + 34), (sx * nw * 0.7, sy + 70)], lw=3.5, alpha=0.6, seed=seed + 3 + sx, amp=0.3)
+        _linha(ctx, [(sx * cw * 0.55, meio + 40), (sx * cw * 0.85, meio + 40)], 4, escurece(cor, 0.3))
+
+
+def _colar(ctx, P, cor, seed):
+    sy, nw = P["sy"], P["nw"]
+    pts = [(-nw - 2, sy - 6), (-nw * 0.6, sy + 18), (0, sy + 30), (nw * 0.6, sy + 18), (nw + 2, sy - 6)]
+    _linha(ctx, pts, 7, INK, 0.6); _linha(ctx, pts, 4, cor)
+    forma(ctx, [(0, sy + 28), (9, sy + 40), (0, sy + 52), (-9, sy + 40)], cor, sombra=False, lw=3.5, seed=seed, amp=0.2)
+    ctx.arc(-2, sy + 37, 2.5, 0, 2 * math.pi); ctx.set_source_rgba(1, 1, 1, 0.9); ctx.fill()
+
+
+def _brincos(ctx, P, cor, tipo, t):
+    rx, ry, hc = P["rx"], P["ry"], P["hc"]
+    for sx in (-1, 1):
+        ex = abs(_fcab(P, 0.15 if sx > 0 else math.pi - 0.15)[0])
+        x, y = sx * (ex - 4), hc + 34
+        if tipo == "brilhante":   # pontinho de brilhante com faísca
+            forma(ctx, pts_elipse(x, y, 8, 8, 8), (0.92, 0.97, 1.0), sombra=False, lw=3.5, seed=3 + sx, amp=0.1)
+            k = abs(math.sin(t * 3 + sx))
+            if k > 0.4:
+                _estrela(ctx, x + sx * 10, y - 10, 11 * k, (1, 1, 1))
+        else:   # argola
+            bal = 0.15 * math.sin(t * 2.4 + sx)
+            ctx.save(); ctx.translate(x, y); ctx.rotate(bal)
+            ctx.arc(0, 16, 15, 0, 2 * math.pi); ctx.set_source_rgb(*INK); ctx.set_line_width(9); ctx.stroke()
+            ctx.arc(0, 16, 15, 0, 2 * math.pi); ctx.set_source_rgb(*cor); ctx.set_line_width(4.5); ctx.stroke()
+            ctx.restore()
+
+
+def _garrafa(ctx, x, y, cor, t, seed):
+    """Garrafinha GIGANTE de academia (galão de 2 L) segura pela alça."""
+    ctx.save(); ctx.translate(x, y); ctx.rotate(-0.12)
+    forma(ctx, pts_ret(-44, -190, 88, 230, 30), (0.78, 0.92, 1.0), sombra=True, lw=5, seed=seed, amp=0.5)
+    ctx.save(); path_suave(ctx, pts_ret(-44, -190, 88, 230, 30)); ctx.clip()
+    nivel = -60 + 6 * math.sin(t * 4)
+    ctx.rectangle(-60, nivel, 120, 120); ctx.set_source_rgba(*cor, 0.85); ctx.fill()
+    for i in range(3):
+        yy = -150 + i * 40
+        _linha(ctx, [(-44, yy), (-28, yy)], 4, INK, 0.5)
+    ctx.restore()
+    forma(ctx, pts_ret(-30, -226, 60, 40, 12), hexc("#2B2440"), sombra=False, lw=5, seed=seed + 1, amp=0.4)
+    forma(ctx, pts_ret(-44, -40, 88, 34, 8), hexc("#FFD21F"), sombra=False, lw=4, seed=seed + 2, amp=0.3)
+    _linha(ctx, [(-24, -172), (-24, -84)], 8, (1, 1, 1), 0.7)
+    ctx.restore()
+
+
+def _relogio(ctx, x, y, ang, cor):
+    ctx.save(); ctx.translate(x, y); ctx.rotate(ang)
+    forma(ctx, pts_ret(-30, -16, 26, 32, 6), cor, sombra=False, lw=4.5, seed=4, amp=0.2)
+    forma(ctx, pts_ret(-26, -12, 18, 24, 5), hexc("#1B1726"), sombra=False, lw=3, seed=5, amp=0.1)
+    _linha(ctx, [(-22, 0), (-16, -6), (-12, 4)], 2.5, hexc("#7CFF6B"))
+    ctx.restore()
+
+
+def _numero(ctx, P, txt, seed):
+    """Número de peito de corrida (preso com alfinetes)."""
+    from estilo import texto
+    sy, hy = P["sy"], P["hy"]
+    y = sy + (hy - sy) * 0.5
+    forma(ctx, pts_ret(-62, y - 44, 124, 88, 8), BRANCO, sombra=False, lw=4.5, seed=seed, amp=0.4)
+    _linha(ctx, [(-62, y - 28), (62, y - 28)], 6, hexc("#E8352A"))
+    texto(ctx, str(txt), 0, y + 10, 46, cor=INK, contorno=None, sombra=False, lw=0)
+    for sx in (-1, 1):
+        for sy_ in (-1, 1):
+            ctx.arc(sx * 50, y + sy_ * 34, 3.5, 0, 2 * math.pi); ctx.set_source_rgb(*hexc("#B8BDD0")); ctx.fill()
 
 
 def _faixa(ctx, P, cor):
@@ -969,6 +1226,10 @@ def _pernas(ctx, P, ks, calca, sapato, seed):
             _tubo(ctx, [Hh, Kk], pw * 2 + 4, calca, sombra=(sx > 0))
         return
     for sx, Hh, Kk, Aa in out:
+        if P.get("chuteira"):
+            for k in (-0.6, 0.0, 0.6):
+                ctx.rectangle(Aa[0] + sx * 10 + k * (pw + 6) - 4, chao + 14, 8, 12)
+            ctx.set_source_rgb(*INK); ctx.fill()
         forma(ctx, pts_elipse(Aa[0] + sx * 10, chao + 4, pw + 16, 18, 14), sapato, sombra=True, sombra_off=(6, 6), lw=5, seed=seed + 5 + sx, amp=0.6)
         traco(ctx, [(Aa[0] + sx * 10 - pw * 0.5, chao - 6), (Aa[0] + sx * 10 + pw * 0.3, chao - 9)], lw=4, cor=clareia(sapato, 0.4), seed=seed + 8 + sx, amp=0.3)
 
@@ -1062,10 +1323,13 @@ def desenha_humano2(ctx, st, t, seed):
     P = _proporcoes(st)
     idade = P["idade"]
     pele = _cor(st.get("pele"), PELES["media"])
+    if st.get("bronzeado"):   # bronze de academia: puxa para o laranja (vale para qualquer tom de pele)
+        pele = mix(pele, hexc("#E07A34"), 0.3)
     cab = _cor(st.get("cabelo_cor"), CABELO_COR["grisalho" if idade == "idoso" else "preto"])
     roupa = _cor(st.get("roupa"), "#2A7DE1")
     calca = _cor(st.get("calca"), "#2B2440")
     sapato = _cor(st.get("sapato"), "#3A2E52")
+    luzes = _cor(st.get("luzes"), "#C98A4B") if st.get("luzes") else None
     estilo = {"rabo": "rabo_de_cavalo", "black": "black_power", "trancas": "trancas", "tranca": "trancas"}.get(st.get("cabelo", "curto"), st.get("cabelo", "curto"))
     manga = st.get("manga", "curta")
     bone = st.get("bone")
@@ -1090,6 +1354,16 @@ def desenha_humano2(ctx, st, t, seed):
     elif nome_expr == "nervoso":
         ox += math.sin(t * 60) * 1.8
 
+    # "caido": o corpo todo deita no chão (cabeça para a esquerda) e rola de um lado para o outro (o cai-cai)
+    kc = 1.0 if pose == "caido" else 0.0
+    if prev:
+        k0 = 1.0 if prev == "caido" else 0.0
+        kc = k0 + (kc - k0) * k
+    ctx.save()
+    if kc > 0:
+        dy = (P["chao"] - P["ow"] * 0.75 - P["hy"]) * kc
+        ctx.translate((70 + 14 * math.sin(t * 7)) * kc, dy)
+        ctx.translate(0, P["hy"]); ctx.rotate(-math.pi / 2 * kc + 0.09 * math.sin(t * 7) * kc); ctx.translate(0, -P["hy"])
     # 1. atrás de tudo: banco, cabelo de trás, mochila
     if st.get("assento", True):
         _banco(ctx, P, ks, seed + 200)
@@ -1105,7 +1379,12 @@ def desenha_humano2(ctx, st, t, seed):
             ctx.translate(0, queixo_y); ctx.scale(hsx, hsy); ctx.translate(0, -queixo_y)
 
     ctx.save(); cabeca_tf()
-    _cabelo_tras(ctx, P, estilo, cab, t, seed + 100)
+    if st.get("aura"):   # brilho suave atrás da cabeça (personagem bonito)
+        ac = _cor(st.get("aura"), "#FFE3F0")
+        g = cairo.RadialGradient(0, P["hc"], P["rx"] * 0.4, 0, P["hc"], P["rx"] * 2.1)
+        g.add_color_stop_rgba(0, *ac, 0.75); g.add_color_stop_rgba(0.55, *ac, 0.35); g.add_color_stop_rgba(1, *ac, 0)
+        ctx.set_source(g); ctx.arc(0, P["hc"], P["rx"] * 2.1, 0, 2 * math.pi); ctx.fill()
+    _cabelo_tras(ctx, P, estilo, cab, t, seed + 100, luzes)
     ctx.restore()
     if st.get("mochila"):
         _mochila_tras(ctx, P, _cor(st.get("mochila"), "#E8452C"), seed + 150)
@@ -1119,6 +1398,15 @@ def desenha_humano2(ctx, st, t, seed):
     pescoco = escurece(pele, 0.14)
     forma(ctx, pts_ret(-P["nw"], P["hc"] + P["ry"] - 30, 2 * P["nw"], P["sy"] - (P["hc"] + P["ry"]) + 40, 10), pescoco, sombra=False, lw=5, seed=seed + 6, amp=0.5)
     _tronco(ctx, P, roupa, pele, seed + 20, st.get("estampa"))
+    if st.get("jaqueta"):
+        _jaqueta(ctx, P, _cor(st.get("jaqueta"), "#2B2440"), seed + 165)
+    if st.get("colar"):
+        _colar(ctx, P, _cor(st.get("colar"), "#F2C14E"), seed + 166)
+    if st.get("numero"):
+        _numero(ctx, P, st.get("numero") if st.get("numero") is not True else "42", seed + 167)
+    if P["muque"] and manga == "regata":   # peitoral marcado
+        for sx in (-1, 1):
+            traco(ctx, [(sx * P["cw"] * 0.8, P["sy"] + 70), (sx * P["cw"] * 0.4, P["sy"] + 96), (sx * 6, P["sy"] + 88)], lw=4, alpha=0.45, seed=seed + 168 + sx, amp=0.3)
     if st.get("avental"):
         _avental(ctx, P, _cor(st.get("avental"), "#FFF8EC"), seed + 160)
     if st.get("gravata"):
@@ -1130,7 +1418,7 @@ def desenha_humano2(ctx, st, t, seed):
     ctx.save(); cabeca_tf()
     _cabeca(ctx, P, pele, seed, st.get("orelhas", "normal"))
     my, wb, boca = _rosto(ctx, P, st, t, seed, pele, cab)
-    _cabelo_frente(ctx, P, estilo, cab, idade, seed + 110, bone)
+    _cabelo_frente(ctx, P, estilo, cab, idade, seed + 110, bone, t, luzes)
     if estilo == "trancas":
         _trancas(ctx, P, cab, t, seed + 120)
     if st.get("faixa"):
@@ -1141,6 +1429,8 @@ def desenha_humano2(ctx, st, t, seed):
         _bone(ctx, P, _cor(bone, "#E8352A"), seed + 180)
     if st.get("fone"):
         _fone(ctx, P, _cor(st.get("fone"), "#2B2233"), seed + 190)
+    if st.get("brincos"):
+        _brincos(ctx, P, _cor(st.get("brincos") if st.get("brincos") != "brilhante" else None, "#F2C14E"), "brilhante" if st.get("brincos") == "brilhante" else "argola", t)
     if st.get("brilho"):
         _brilho_gala(ctx, P, st.get("brilho"), t, my, wb, boca, seed + 210)
     _extras(ctx, P, st, t)
@@ -1166,19 +1456,32 @@ def desenha_humano2(ctx, st, t, seed):
         bracos.append((sx, a1, a2, mao))
     if pose == "bracos_cruzados":
         bracos.sort(key=lambda b: b[0])   # o braço da esquerda por baixo
+    cor_manga = _cor(st.get("jaqueta"), "#2B2440") if st.get("jaqueta") else roupa
     for sx, a1, a2, mao in bracos:
-        _braco(ctx, (sx * P["ow"] * 0.88, P["sy"] + 24), a1, a2, mao, P, roupa, pele, manga, seed + 70 + sx)
+        Wr = _braco(ctx, (sx * P["ow"] * 0.88, P["sy"] + 24), a1, a2, mao, P, cor_manga, pele, manga, seed + 70 + sx)
+        if st.get("relogio") and sx < 0:
+            _relogio(ctx, Wr[0], Wr[1], a2, _cor(st.get("relogio"), "#FF3DA8"))
+        if st.get("segura") == "garrafa" and sx > 0:
+            _garrafa(ctx, Wr[0] + 4, Wr[1] + 30, _cor(st.get("garrafa_cor"), "#5BE0A0"), t, seed + 90)
     ctx.restore()
+    ctx.restore()   # fim do "caido"
 
     rx, ry, hc = P["rx"], P["ry"], P["hc"]
-    vol = {"black_power": 1.45, "cacheado": 1.25, "topete": 1.6, "moicano": 1.66, "arrepiado": 1.38}.get(estilo, 1.12)
+    vol = {"black_power": 1.45, "cacheado": 1.25, "topete": 1.6, "moicano": 1.66, "arrepiado": 1.38, "ondulado": 1.36, "volumoso": 1.2}.get(estilo, 1.12)
     topo = hc - ry * vol + oy - (30 if estilo == "coque" else 0)
     rosto = (-rx + ox, hc - ry + oy, rx + ox, hc + ry + oy)
     if P["lean"]:
         dx = math.sin(P["lean"]) * (P["hy"] - hc)
         rosto = (rosto[0] + dx, rosto[1], rosto[2] + dx, rosto[3])
-    larg = max(P["ow"] + 30, rx * vol + 10)
-    if pose in ("acenando", "comemorando", "apontando"):
+    larg = max(P["ow"] + 30, rx * vol + 10, rx * 1.5 if estilo == "volumoso" else 0)
+    if st.get("segura") == "garrafa":
+        larg = max(larg, P["ow"] + 120)
+    if pose in ("acenando", "comemorando", "apontando", "muque"):
         larg = max(larg, P["ow"] + P["ua"] + P["fa"] * 0.6)
         topo = min(topo, hc - ry * 1.1 + oy)
+    if kc > 0.5:   # deitado: caixa horizontal
+        yb = P["hy"] + (P["chao"] - P["ow"] * 0.75 - P["hy"])
+        cab_x = -(P["hy"] - hc) + 70
+        return {"corpo": (cab_x - ry * vol - 20, yb - P["ow"] - 40, P["chao"] - P["hy"] + 40, P["chao"] + 22),
+                "rosto": (cab_x - ry, yb - rx, cab_x + ry, yb + rx)}
     return {"corpo": (-larg, topo, larg, P["chao"] + 22), "rosto": rosto}

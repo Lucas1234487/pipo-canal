@@ -9,8 +9,16 @@ ELENCO = {
                        segura="celular", olhar="celular", pinta="esq", roupa="#16A57A", estampa="havaiana", expressao="feliz"),
     "gala": dict(cabelo="topete", cabelo_cor="preto", pele="morena", queixo="quadrado", sobrancelha="grossa", brilho=True, corpo="forte",
                  roupa="#FFF3E0", manga="longa", expressao="feliz"),
-    "crush": dict(cabelo="longo", cabelo_cor="castanho", pele="escura", cilios=True, brilho="sutil", pinta="dir", sobrancelha="fina",
-                  roupa="#E83E7C", expressao="neutro"),
+    # crush: bonita de verdade (cartoon elegante, sem sexualizar): olhos grandes com íris e cílios, sobrancelha feita, lábio com cor,
+    # cabelão volumoso com luzes e balanço, blazer, colar e argolas, aura suave. Compare com o gala (bonitão CARICATO).
+    "crush": dict(cabelo="volumoso", cabelo_cor="castanho_escuro", luzes="caramelo", pele="morena", olhos="grandes", iris="#8A5A2B",
+                  cilios="longos", sobrancelha="arqueada", labios="#D9506E", pinta="dir", blush=True, brilho="sutil", aura="#FFD9EC",
+                  roupa="#FFF3F6", jaqueta="#E83E7C", manga="longa", colar="#F2C14E", brincos="#F2C14E", calca="#2B2440", sapato="#E83E7C",
+                  expressao="charmoso"),
+    # crush_ele: a versão masculina, igualmente bonito (nada de caricato): ondulado com volume, barba por fazer, sorriso de canto
+    "crush_ele": dict(cabelo="ondulado", cabelo_cor="preto", pele="escura", olhos="grandes", iris="#6B3E1F", sobrancelha="marcada",
+                      barba="rala", brilho="sutil", aura="#D9ECFF", roupa="#FFFFFF", jaqueta="#2747C9", manga="longa",
+                      colar="#E6E6EE", calca="#2B2440", sapato="#FFFFFF", expressao="charmoso"),
     "chefe": dict(cabelo="calvicie", cabelo_cor="grisalho", pele="clara", corpo="forte", cabeca="feijao", sobrancelha="monocelha",
                   gravata="#2A3FD1", roupa="#FFF8EC", manga="longa", queixo="furinho", expressao="bravo"),
     "estagiario": dict(cabelo="arrepiado", cabelo_cor="castanho", pele="media", corpo="magro", olheiras=True, fone="#2A7DE1", dentes="dentuco",
@@ -23,10 +31,21 @@ ELENCO = {
                                 avental="#E8452C", pochete="#3A2E52", bone="#FFF3E0", roupa="#1F5FD1", expressao="feliz"),
     "nerd": dict(cabelo="franja_reta", cabelo_cor="castanho", pele="media", dentes="aparelho", oculos=True, oculos_tipo="fundo_de_garrafa",
                  gravata="#E8452C", roupa="#C8E6FF", estampa="xadrez", sobrancelha="fina", expressao="feliz", pescoco="longo"),
-    "esportista": dict(cabelo="moicano", cabelo_cor="loiro", pele="escura", corpo="forte", faixa="#E8452C", manga="regata", roupa="#16A57A",
-                       queixo="quadrado", nariz="arrebitado", expressao="feliz", pose="bracos_cruzados"),
+    # marombeiro: o esportista do elenco (sem futebol, sem pessoa real): braço enorme, regata, garrafinha gigante, veia na testa, bronze
+    "marombeiro": dict(cabelo="raspado", cabelo_cor="preto", pele="media", bronzeado=True, corpo="maromba", manga="regata", roupa="#E8352A",
+                       veia=True, segura="garrafa", queixo="quadrado", pescoco="curto", sobrancelha="grossa", calca="#2B2440", sapato="#FFFFFF",
+                       expressao="esforco", pose="muque"),
+    # maratonista de domingo: faixa, relógio, roupa neon, número de peito, suor voando, ofegante
+    "maratonista": dict(cabelo="curto", cabelo_cor="ruivo", pele="clara", corpo="magro", faixa="#FF3DA8", relogio="#FF3DA8",
+                        roupa="#C6FF1A", manga="regata", numero="42", suor=True, calca="#2747C9", sapato="#FF7A1A", expressao="ofegante", pose="correndo"),
+    # neymaro: EXCEÇÃO aprovada pelo dono em 24/11/2026 (caricatura simpática; camisa amarela GENÉRICA: sem escudo, número, patrocínio ou logo)
+    "neymaro": dict(cabelo="moicano", cabelo_cor="platinado", pele="media", faixa="#FFFFFF", brincos="brilhante", sobrancelha="marcada",
+                    barba="rala", roupa="#FFD21F", calca="#1F5FD1", sapato="#FF3DA8", chuteira=True, corpo="magro",
+                    expressao="gargalhada", pose="comemorando"),
     "influencer": dict(cabelo="rabo_de_cavalo", cabelo_cor="rosa", pele="clara", cilios=True, brilho="sutil", segura="celular", olhar="celular",
                        roupa="#FFF3E0", sobrancelha="fina", nariz="arrebitado", expressao="apaixonado"),
     "seu_ze_da_banca": dict(idade="idoso", cabelo="careca", pele="media", barba="cheia", cabelo_cor="grisalho", nariz="batata", orelhas="abano",
                             corpo="magro", roupa="#C8844A", estampa="xadrez", bone="#2B2440", expressao="nervoso"),
 }
+
+ELENCO["esportista"] = ELENCO["marombeiro"]   # nome antigo continua valendo

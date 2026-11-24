@@ -351,30 +351,113 @@ def _conteudo(ctx, st, t, pal, seed, ret, foto, txt, chave, expr, extra=None):
     return caixa, caras
 
 
+def _quica(p):
+    """Ease out bounce: cai e quica duas vezes."""
+    p = clamp(p)
+    if p < 1 / 2.75:
+        return 7.5625 * p * p
+    if p < 2 / 2.75:
+        p -= 1.5 / 2.75; return 7.5625 * p * p + 0.75
+    if p < 2.5 / 2.75:
+        p -= 2.25 / 2.75; return 7.5625 * p * p + 0.9375
+    p -= 2.625 / 2.75; return 7.5625 * p * p + 0.984375
+
+
+def _mosca(ctx, x, y, t, seed):
+    """Mosquinha voando em oito, com rastro pontilhado e asinhas batendo."""
+    for k in range(1, 7):   # rastro
+        tt = t - k * 0.06
+        ctx.arc(x + math.sin(tt * 3.1) * 90, y + math.sin(tt * 6.2) * 34, 3, 0, 2 * math.pi)
+    ctx.set_source_rgba(*INK, 0.35); ctx.fill()
+    mx, my = x + math.sin(t * 3.1) * 90, y + math.sin(t * 6.2) * 34
+    asa = 0.5 + 0.5 * abs(math.sin(t * 40))
+    for sx in (-1, 1):
+        ctx.save(); ctx.translate(mx + sx * 8, my - 8); ctx.rotate(sx * 0.5); ctx.scale(7, 12 * asa); ctx.arc(0, 0, 1, 0, 2 * math.pi); ctx.restore()
+        ctx.set_source_rgba(0.85, 0.95, 1, 0.85); ctx.fill_preserve(); ctx.set_source_rgb(*INK); ctx.set_line_width(2); ctx.stroke()
+    ctx.arc(mx, my, 12, 0, 2 * math.pi); ctx.set_source_rgb(*INK); ctx.fill()
+    ctx.arc(mx + 5, my - 3, 3, 0, 2 * math.pi); ctx.set_source_rgb(0.75, 0.2, 0.2); ctx.fill()
+
+
 def f_expectativa_realidade(ctx, st, t, pal, seed, w, h):
+    """Em cima tudo lindo (céu, raios, estrelinhas); embaixo cinza, torto, chuva e mosca. A REALIDADE despenca e quica."""
     x0, y0, g = -w / 2, -h / 2, 18
     rh = (h - g) / 2; fh = 92
     textos = []; caras = []
-    cfg = (("EXPECTATIVA", "foto_a", "texto_a", "pers_a", "feliz", hexc("#9BE3FF"), VERDE),
-           ("REALIDADE", "foto_b", "texto_b", "pers_b", "acabado", hexc("#B9B3C6"), VERMELHO))
-    for i, (rot, kf, kt, kp, expr, cor, cfaixa) in enumerate(cfg):
-        p = _p(st, i); y = y0 + i * (rh + g)
-        with Painel(ctx, (x0, y, w, rh), cor, p, seed + i) as ok:
-            if not ok:
-                continue
-            area = (x0, y + fh, w, rh - fh)
-            if i == 1 and not st.get(kf) and not st.get(kt):   # nuvenzinha de chuva na realidade
-                for k in range(5):
-                    yy = y + fh + 70 + ((t * 260 + k * 53) % 150)
-                    traco(ctx, [(x0 + w * 0.72 + k * 22 - 40, yy), (x0 + w * 0.72 + k * 22 - 46, yy + 22)], lw=5, cor=hexc("#3F7BD6"), seed=seed + 40 + k)
-                _nuvem(ctx, x0 + w * 0.72, y + fh + 60, 0.75, hexc("#6E6A80"), seed + 45)
-            cx, cr = _conteudo(ctx, st, t, pal, seed + 10 + i, area, st.get(kf), st.get(kt), kp, expr)
+    sem_a = not st.get("foto_a") and not st.get("texto_a")
+    sem_b = not st.get("foto_b") and not st.get("texto_b")
+    p0, p1 = _p(st, 0), _p(st, 1)
+    q = _quica(p1)
+    # o tombo: ao bater, o painel de cima treme
+    imp = clamp((p1 - 0.32) / 0.25) * (1 - clamp((p1 - 0.57) / 0.4)) if p1 < 1 else 0.0
+    tre = 10 * imp * math.sin(t * 70)
+    # ---- EXPECTATIVA
+    ctx.save(); ctx.translate(tre, 0)
+    ya = y0
+    with Painel(ctx, (x0, ya, w, rh), hexc(st.get("cor_a", "#8FE3FF")), p0, seed) as ok:
+        if ok:
+            gr = cairo.LinearGradient(0, ya, 0, ya + rh)
+            gr.add_color_stop_rgb(0, *hexc("#7FD8FF")); gr.add_color_stop_rgb(1, *hexc("#FFC2E2"))
+            ctx.set_source(gr); ctx.paint()
+            cx_, cy_ = 0, ya + rh * 0.62
+            for k in range(14):   # raios de sol girando
+                a = t * 0.5 + k * math.pi / 7
+                ctx.move_to(cx_, cy_); ctx.line_to(cx_ + math.cos(a - 0.09) * w, cy_ + math.sin(a - 0.09) * w)
+                ctx.line_to(cx_ + math.cos(a + 0.09) * w, cy_ + math.sin(a + 0.09) * w); ctx.close_path()
+            ctx.set_source_rgba(1, 1, 0.85, 0.35); ctx.fill()
+            if sem_a:   # arco-íris atrás
+                for j, c in enumerate(("#FF6B6B", "#FFB84D", "#FFE45C", "#7BE07B", "#5CB8FF")):
+                    ctx.arc(0, ya + rh + 40, w * 0.42 - j * 22, math.pi, 2 * math.pi)
+                    ctx.set_source_rgba(*hexc(c), 0.7); ctx.set_line_width(22); ctx.stroke()
+            cx, cr = _conteudo(ctx, st, t + 0.0, pal, seed + 10, (x0, ya + fh, w, rh - fh), st.get("foto_a"), st.get("texto_a"), "pers_a", "feliz")
             textos.append(cx); caras += cr
-            if i == 0 and not st.get(kf) and not st.get(kt):
-                for k, (bx_, by_) in enumerate(((0.18, 0.35), (0.82, 0.30), (0.25, 0.80), (0.78, 0.75))):
-                    _brilho(ctx, x0 + w * bx_, y + fh + (rh - fh) * by_, 34, t, seed + 50 + k)
-            _faixa(ctx, x0, y, w, fh, cfaixa)
-            textos.append(_txt(ctx, st.get("rotulo_a" if i == 0 else "rotulo_b", rot), x0 + w / 2, y + fh / 2 + 2, w - 80, 64, max_linhas=1))
+            for k, (bx_, by_) in enumerate(((0.12, 0.3), (0.86, 0.26), (0.2, 0.78), (0.8, 0.72), (0.33, 0.18), (0.66, 0.5), (0.93, 0.62), (0.06, 0.6))):
+                _brilho(ctx, x0 + w * bx_, ya + fh + (rh - fh) * by_, 26 + 12 * (k % 3), t * 1.3, seed + 50 + k)
+            for k in range(6):   # estrelinhas amarelas subindo
+                u = (t * 0.35 + k / 6) % 1.0
+                _estrela(ctx, x0 + w * (0.08 + 0.17 * k), ya + rh - u * (rh - fh), 15 * (1 - u * 0.5), AMARELO, seed + 70 + k, giro=t * 2 + k)
+            _faixa(ctx, x0, ya, w, fh, VERDE)
+            textos.append(_txt(ctx, st.get("rotulo_a", "EXPECTATIVA"), x0 + w / 2, ya + fh / 2 + 2, w - 80, 64, max_linhas=1))
+            _estrela(ctx, x0 + 60, ya + fh / 2, 26, AMARELO, seed + 90, giro=t)
+            _estrela(ctx, x0 + w - 60, ya + fh / 2, 26, AMARELO, seed + 91, giro=-t)
+    ctx.restore()
+    # ---- REALIDADE: despenca do alto, quica e fica torta
+    if p1 > 0.001:
+        yb = y0 + rh + g
+        queda = -(rh + g + 260) * (1 - q)
+        rot = 3.2 * q + 10 * (1 - q)
+        ctx.save(); ctx.translate(0, queda)
+        with Painel(ctx, (x0, yb, w, rh), hexc(st.get("cor_b", "#A9A6B2")), 1.0, seed + 1, rot=rot) as ok:
+            if ok:
+                gr = cairo.LinearGradient(0, yb, 0, yb + rh)
+                gr.add_color_stop_rgb(0, *hexc("#8D8A97")); gr.add_color_stop_rgb(1, *hexc("#B5B2BC"))
+                ctx.set_source(gr); ctx.paint()
+                for k in range(3):   # rachaduras na parede
+                    xx = x0 + w * (0.1 + 0.33 * k)
+                    traco(ctx, [(xx, yb + fh), (xx + 18, yb + fh + 40), (xx - 6, yb + fh + 80), (xx + 14, yb + fh + 120)], lw=4, alpha=0.4, seed=seed + 30 + k)
+                if sem_b:
+                    for k in range(7):   # chuva
+                        yy = yb + fh + 70 + ((t * 300 + k * 47) % 190)
+                        traco(ctx, [(x0 + w * 0.66 + k * 26 - 60, yy), (x0 + w * 0.66 + k * 26 - 67, yy + 24)], lw=5, cor=hexc("#3F7BD6"), seed=seed + 40 + k)
+                    _nuvem(ctx, x0 + w * 0.7, yb + fh + 62, 0.85, hexc("#5E5A6E"), seed + 45)
+                cx, cr = _conteudo(ctx, st, t, pal, seed + 11, (x0, yb + fh, w, rh - fh), st.get("foto_b"), st.get("texto_b"), "pers_b", "acabado")
+                textos.append(cx); caras += cr
+                ctx.rectangle(x0, yb, w, rh); ctx.set_source_rgba(0.45, 0.44, 0.5, 0.18); ctx.fill()   # tudo meio cinza
+                _mosca(ctx, x0 + w * 0.26, yb + fh + 90, t, seed + 60)
+                # faixa caída: torta, com um canto descolado
+                ctx.save(); ctx.translate(x0 + w / 2, yb + fh / 2); ctx.rotate(math.radians(-4))
+                forma(ctx, [(-w / 2 - 10, -fh / 2), (w / 2 - 70, -fh / 2), (w / 2 - 10, -fh / 2 + 34), (w / 2 - 40, fh / 2 + 8), (-w / 2 - 10, fh / 2)],
+                      escurece(VERMELHO, 0.12), sombra=True, lw=LW, seed=seed + 81, amp=0.8)
+                textos.append(_txt(ctx, st.get("rotulo_b", "REALIDADE"), -30, 4, w - 160, 64, max_linhas=1))
+                ctx.restore()
+        ctx.restore()
+        if 0.3 < p1 < 0.95:   # poeira do tombo
+            u = clamp((p1 - 0.3) / 0.65)
+            for k in range(9):
+                sx = -1 if k % 2 else 1
+                xx = sx * (w * 0.2 + u * w * 0.36 + k * 8)
+                yy = y0 + rh + g / 2 - 10 - math.sin(u * math.pi) * 30 - k * 3
+                ctx.arc(xx, yy, (26 + k * 3) * (1 - u * 0.5), 0, 2 * math.pi)
+            ctx.set_source_rgba(0.95, 0.93, 0.98, 0.85 * (1 - u)); ctx.fill()
     return textos, caras
 
 
@@ -423,43 +506,84 @@ def f_pov(ctx, st, t, pal, seed, w, h):
 
 
 def f_plot_twist(ctx, st, t, pal, seed, w, h):
+    """Cena normal; no plot twist a tela dá um giro, o carimbo despenca com impacto (tremor, rajada, estrelas) e a Pipo solta um ?!.
+    Anime `revela` de 1 a 2 com `dur` 0,8 a 1,2 s: 1ª metade = giro, 2ª metade = carimbo."""
     x0, y0 = -w / 2, -h / 2
     textos = []; caras = []
     p1 = _p(st, 1)
+    giro = clamp(p1 * 2)            # 0 a 1: tela girando
+    bate = clamp((p1 - 0.5) * 2)    # 0 a 1: carimbo descendo
+    imp = math.sin(math.pi * clamp((bate - 0.72) / 0.28)) if 0.72 < bate < 1 else 0.0
+    sh = 22 * imp
     fh = 0
+    ctx.save()
+    ctx.translate(sh * math.sin(t * 83), sh * math.cos(t * 71))
+    if 0 < giro < 1:
+        ctx.rotate(2 * math.pi * ease_in_out_(giro))
+        z = 1 - 0.3 * math.sin(math.pi * giro)
+        ctx.scale(z, z)
     with Painel(ctx, (x0, y0, w, h), hexc(st.get("cor_cena", "#B18CFF")), _p(st, 0), seed) as ok:
         if ok:
+            if p1 > 0.5:   # depois do giro, fundo de choque: rajada em espiral
+                ctx.save(); ctx.translate(0, y0 + h * 0.55); ctx.rotate(t * 0.6)
+                for k in range(16):
+                    a = k * math.pi / 8
+                    ctx.move_to(0, 0); ctx.line_to(math.cos(a - 0.1) * w, math.sin(a - 0.1) * w); ctx.line_to(math.cos(a + 0.1) * w, math.sin(a + 0.1) * w); ctx.close_path()
+                ctx.set_source_rgba(1, 1, 1, 0.16); ctx.fill(); ctx.restore()
             if st.get("texto"):
                 linhas, tam = _quebra(ctx, st["texto"], w - 100, 62, 2)
                 fh = len(linhas) * tam * 1.12 + 44
                 _faixa(ctx, x0, y0, w, fh, BRANCO)
                 textos.append(_tinta(ctx, "\n".join(linhas), 0, y0 + fh / 2, w - 100, tam, max_linhas=2))
-            expr = "choque" if p1 > 0 else st.get("expr", "feliz")
+            expr = "choque" if p1 > 0.5 else st.get("expr", "feliz")
             bx, _ = _pers(ctx, _st_pers(st, expr, "pers_a"), 0, y0 + fh + 120, (h - fh) * 1.0, t, seed + 3)
-            caras.append(bx.get("rosto"))
-    if p1 > 0:
+            ro = bx.get("rosto"); caras.append(ro)
+            if ro and bate > 0.2:   # ?! saltando acima da cabeça
+                k = ease_out_back(clamp((bate - 0.2) / 0.35), 2.6)
+                ctx.save(); ctx.translate(ro[2] + 10, ro[1] - 30); ctx.rotate(0.18 * math.sin(t * 9)); ctx.scale(max(0.01, k), max(0.01, k))
+                textos.append(texto(ctx, "?!", 0, 0, 130, cor=AMARELO, sombra=True))
+                ctx.restore()
+                if textos[-1]:
+                    b_ = textos[-1]; textos[-1] = (ro[2] + 10 + b_[0] * k, ro[1] - 30 + b_[1] * k, ro[2] + 10 + b_[2] * k, ro[1] - 30 + b_[3] * k)
+                for sx in (-1, 1):   # risquinhos de susto
+                    for j in range(3):
+                        a = -math.pi / 2 + sx * (0.5 + j * 0.3)
+                        cxr, cyr = (ro[0] + ro[2]) / 2, (ro[1] + ro[3]) / 2
+                        r0 = (ro[2] - ro[0]) * 0.62
+                        traco(ctx, [(cxr + math.cos(a) * r0, cyr + math.sin(a) * r0), (cxr + math.cos(a) * (r0 + 40), cyr + math.sin(a) * (r0 + 40))], lw=8, seed=seed + 20 + j + sx)
+    ctx.restore()
+    if bate > 0:
         cy = y0 + h * 0.80
-        k = 1 + 1.5 * (1 - p1) ** 2
+        tam = st.get("tam", 112)
+        k = 1 + 2.4 * (1 - bate) ** 2   # vem de perto da câmera e bate
+        if bate >= 0.72:   # rajada do impacto atrás do carimbo
+            _rajada(ctx, 0, cy, 260, 620, 26, seed + 50, t, cor=BRANCO, alpha=0.75)
         ctx.save(); ctx.translate(0, cy)
-        for j in range(7):   # estrelinhas em volta, piscando e girando
-            a = 2 * math.pi * j / 7 + t * 0.8
-            r = 360 + 25 * math.sin(t * 4 + j)
-            _estrela(ctx, math.cos(a) * r, math.sin(a) * 150, 26 + 8 * math.sin(t * 7 + j), AMARELO if j % 2 else BRANCO, seed + 60 + j, giro=t * 2 + j)
-        ctx.scale(k, k)
+        nst = 8
+        for j in range(nst):   # estrelas: explodem no impacto e ficam girando em volta
+            u = clamp((bate - 0.72) / 0.28)
+            a = 2 * math.pi * j / nst + t * 0.9
+            r = (160 + 230 * u) + 22 * math.sin(t * 4 + j)
+            if bate >= 0.72:
+                _estrela(ctx, math.cos(a) * r * 1.1, math.sin(a) * r * 0.45, 24 + 8 * math.sin(t * 7 + j), AMARELO if j % 2 else BRANCO, seed + 60 + j, giro=t * 2 + j)
+        sk = k * (1 + 0.04 * math.sin(t * 5)) if bate >= 1 else k
+        ctx.scale(sk, sk)
         ctx.push_group()
-        tw_ = medir(ctx, st.get("carimbo", "PLOT TWIST").upper(), st.get("tam", 112)) + 130
+        tw_ = medir(ctx, st.get("carimbo", "PLOT TWIST").upper(), tam) + 130
         ctx.save(); ctx.rotate(math.radians(-13))
-        forma(ctx, pts_ret(-tw_ / 2, -st.get("tam", 112) * 0.95, tw_, st.get("tam", 112) * 1.9, 24), BRANCO, sombra=True, lw=LW, seed=seed + 69)
+        forma(ctx, pts_ret(-tw_ / 2, -tam * 0.95, tw_, tam * 1.9, 24), BRANCO, sombra=True, lw=LW, seed=seed + 69)
         ctx.restore()
-        bc = B.desenha_carimbo(ctx, {"texto": st.get("carimbo", "PLOT TWIST"), "cor": st.get("cor_carimbo", "#E8352A"), "inclina": -13,
-                                     "tam": st.get("tam", 112)}, t, pal, seed + 70)
-        ctx.pop_group_to_source(); ctx.paint_with_alpha(clamp(p1 * 2))
+        bc = B.desenha_carimbo(ctx, {"texto": st.get("carimbo", "PLOT TWIST"), "cor": st.get("cor_carimbo", "#E8352A"), "inclina": -13, "tam": tam}, t, pal, seed + 70)
+        ctx.pop_group_to_source(); ctx.paint_with_alpha(clamp(bate * 3))
         ctx.restore()
         bt = bc.get("texto")
-        if bt and p1 > 0.9:
-            # caixa do carimbo girado (aprox. pela diagonal)
+        if bt and bate > 0.9:
             textos.append((bt[0] - 30, cy + bt[1] - 60, bt[2] + 30, cy + bt[3] + 60))
     return textos, caras
+
+
+def ease_in_out_(x):
+    return x * x * (3 - 2 * x)
 
 
 def _rabiscos(ctx, x, y, w, h, t, seed):

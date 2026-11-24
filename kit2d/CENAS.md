@@ -123,10 +123,10 @@ Use `x` 0,5 e `y` 0,335 com `escala` 1: a caixa (900 x 900) fica entre y 0,10 e 
 | formato | painéis | textos e opções |
 |---|---|---|
 | aprova_reprova | 2: recusa com a mão / aponta aprovando | `nao`, `sim` |
-| expectativa_realidade | 2: EXPECTATIVA / REALIDADE | `foto_a`/`foto_b` (CC0 de kit/imagens.py, polaroide) ou `texto_a`/`texto_b`; sem nada: Pipo feliz / Pipo acabada com nuvem de chuva; `rotulo_a`/`rotulo_b` |
+| expectativa_realidade | 2: EXPECTATIVA (céu degradê, raios girando, arco-íris, estrelinhas) / REALIDADE (cinza, rachado, faixa torta, chuva, mosca voando). Anime `revela` 1 a 2 com `dur` 0,7 a 1: a REALIDADE despenca de cima, quica, levanta poeira e faz o painel de cima tremer | `foto_a`/`foto_b` (CC0 de kit/imagens.py, polaroide) ou `texto_a`/`texto_b`; sem nada: Pipo feliz / Pipo acabada; `rotulo_a`/`rotulo_b`, `cor_a`, `cor_b` |
 | ninguem_eu | 2: "Ninguém:" vazio / "Eu:" + cena | `texto` (o que vem depois de Eu:), `ninguem`, `eu` |
 | pov | 2: faixa POV / cena | `texto`, `expr` (choque, feliz, acabado, maroto, nada, nervoso) |
-| plot_twist | 2: cena / carimbo PLOT TWIST com estrelinhas (personagem leva susto) | `texto` (faixa em cima), `carimbo`, `cor_carimbo` |
+| plot_twist | 2: cena / plot twist. Anime `revela` 1 a 2 com `dur` 0,8 a 1,2: na 1ª metade a tela dá um giro inteiro, na 2ª o carimbo vem da câmera e bate (tremor, rajada branca, estrelas explodindo e girando), a Pipo leva susto com "?!" saltando | `texto` (faixa em cima), `carimbo`, `cor_carimbo`, `expr` (antes do twist) |
 | eu_explicando | 2: eu no quadro rabiscado / "eles:" com cara de nada | `texto` (vira "eu explicando X"), `eles`, `eles_pers` (lista de pessoas) |
 | cerebro_niveis | 3 ou 4 níveis, cérebro cada vez mais brilhante | `niveis`: lista de textos |
 | botoes_dificil | 2: dois botões vermelhos com dedo indeciso / personagem suando | `botao_a`, `botao_b` |
@@ -220,8 +220,10 @@ Músicas: percussao, misterio, viagem, aventura. Tudo CC0 (assets/LICENCAS.md). 
 - `corpo`: magro, medio (padrão), forte.
 - `cabelo`: curto, longo (franja e mechas com pontas), coque, cacheado, black_power, careca, rabo_de_cavalo, trancas. `barba`: true (cheia), "bigode", "cavanhaque".
 - `cabelo_cor`: preto, castanho, loiro, ruivo, grisalho, branco, azul, rosa ou "#hex". `pele`: clara, media, morena, escura. `roupa`, `calca`, `sapato`: "#hex". `manga`: curta (padrão) ou longa.
-- `expressao`: neutro, feliz, gargalhada, bravo, surpreso, triste, chorando (lágrimas), nervoso (gota de suor), envergonhado (bochecha corada), apaixonado (olhos de coração), cansado. Pisca sozinho. As sobrancelhas mudam suave na troca.
-- `pose`: em_pe (padrão), sentado (com banquinho; `"assento": false` para sentar no sofá do cenário), bracos_cruzados, maos_na_cabeca, acenando, apontando (`aponta_para`: [dx, dy], direção na tela), comemorando.
+- `expressao`: neutro, feliz, gargalhada, bravo, surpreso, triste, chorando (lágrimas), nervoso (gota de suor), envergonhado (bochecha corada), apaixonado (olhos de coração), cansado,
+  charmoso (sorriso de canto, olho brilhando), esforco (dente cerrado, cara de quem levanta peso), ofegante (boca aberta puxando ar, língua de fora). Pisca sozinho. As sobrancelhas mudam suave na troca.
+- `pose`: em_pe (padrão), sentado (com banquinho; `"assento": false` para sentar no sofá do cenário), bracos_cruzados, maos_na_cabeca, acenando, apontando (`aponta_para`: [dx, dy], direção na tela), comemorando,
+  muque (os dois bíceps para cima), correndo (braços balançando), caido (deita no chão com a cabeça para a esquerda e rola: o "cai-cai"; ocupa ~1,6x a largura, deixe espaço à esquerda).
   Troque com `{"em": "palavra", "faz": "pose", "para": "comemorando"}` (ou `muda` com `prop` "pose"): os braços e as pernas giram até a pose nova em 0,38 s.
 - `segura`: "celular" (com pose em_pe ou sentado) põe as duas mãos no celular; `"olhar": "celular"` acende a tela no rosto.
 - Acessórios: `oculos`, `bone`, `mochila`, `avental`, `gravata`, `fone`. Use true ou uma cor ("#hex").
@@ -244,9 +246,21 @@ Traços (combine à vontade; a piada é o traço, nunca o grupo: nada de raça, 
 - `cabelo` extras: topete, moicano, calvicie (coroa careca com a "ponte" de fios), franja_reta, arrepiado. `barba`: também "bigodao".
 - `brilho`: true (aura de galã: estrelinhas e dente que brilha) ou "sutil".
 - Roupa: `estampa` (natal, havaiana, listras, xadrez), `manga` "regata", `pochete`, `faixa` (testeira). `oculos_tipo`: redondo, ponta, fundo_de_garrafa (aumenta os olhos), escuro; `oculos_cor`.
+- Beleza (para personagem bonito de verdade, não caricato): `olhos` "grandes", `iris` "#hex" (íris colorida), `cilios` "longos" (delineado com gatinho + cílios curvos),
+  `sobrancelha` "arqueada" (feita, afina na ponta) ou "marcada" (mais grossa, masculina), `labios` "#hex" (lábio colorido; boca aberta ganha contorno da cor),
+  `blush`, `aura` "#hex" (brilho suave atrás da cabeça), `cabelo` "volumoso" (cabelão com volume, franja varrida, brilho e balanço) com `luzes` "#hex" (mechas),
+  `cabelo` "ondulado" (topo ondulado com mecha na testa), `barba` "rala" (por fazer), `jaqueta` "#hex" (blazer aberto; as mangas ficam da cor dela), `colar`, `brincos` ("#hex" = argola, "brilhante").
+- Esporte (sem futebol): `corpo` "maromba" (ombrão, cintura fina, bíceps), `bronzeado`, `veia` (na testa, pulsando), `segura` "garrafa" (galão de academia; `garrafa_cor`),
+  `cabelo` "raspado", `relogio` "#hex", `numero` (número de peito, ex. "42"), `suor` (gotas voando), `chuteira` (travas no sapato; só no neymaro).
+- Cores de cabelo novas: platinado, castanho_escuro, caramelo.
 
 Elenco fixo (`"preset": "nome"`; qualquer propriedade no elemento vale por cima; lista em kit2d/elenco.py):
-vizinho_exagerado, tia_do_zap, gala, crush, chefe, estagiario, vovo_turbo, crianca_terrivel, tiozao_do_churrasco, nerd, esportista, influencer, seu_ze_da_banca.
+vizinho_exagerado, tia_do_zap, gala, crush, crush_ele, chefe, estagiario, vovo_turbo, crianca_terrivel, tiozao_do_churrasco, nerd, marombeiro (alias: esportista),
+maratonista, neymaro, influencer, seu_ze_da_banca.
+- gala x crush: o gala é o bonitão CARICATO (topete, brilho exagerado, dente que brilha); crush e crush_ele são bonitos de verdade (olhos com íris, sobrancelha feita, cabelo com brilho, roupa estilosa, aura sutil). Não troque um pelo outro.
+- marombeiro: braços enormes, regata, garrafinha gigante, veia na testa, bronze, pose muque. maratonista (de domingo): faixa, relógio, roupa neon, número 42, suor, ofegante, pose correndo.
+- neymaro: EXCEÇÃO à regra de futebol/pessoa real, aprovada pelo dono em 24/11/2026 (só este preset). Caricatura simpática: moicano platinado, faixa, brilhante na orelha, sorrisão,
+  chuteira colorida, camisa amarela GENÉRICA. Nunca ponha escudo, número 10, patrocínio, logo de clube/seleção/marca nem o nome real. Pose comemorando; `"pose": "caido"` + `"expressao": "chorando"` faz o cai-cai.
 Ex.: `{"id": "chefe", "tipo": "humano", "preset": "chefe", "x": 0.7, "y": 0.36, "escala": 0.85, "acoes": [{"em": "prazo", "faz": "expressao", "para": "surpreso"}]}`
 Use os mesmos nomes de preset nos vídeos para virarem personagens recorrentes.
 ### 4.2 Reações de meme (ação de câmera `"faz": "reacao"`)
