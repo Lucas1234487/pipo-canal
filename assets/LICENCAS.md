@@ -8,6 +8,7 @@ Regra: só entra aqui asset com licença CC0 (domínio público) conferida NA P�
 |---|---|---|---|---|
 | quaternius_dinos_2018/ | T. rex, Velociraptor, Triceratops, Stegosaurus, Parasaurolophus, Apatosaurus, low poly, com armature e animações (Idle, Walk, Run, Attack, Jump, Death) | Quaternius | https://quaternius.itch.io/animated-lowpoly-dinosaurs ("Dinosaur Animated Pack - Dec 2018.zip") | CC0 1.0: na página do itch ("CC0 license") e no License.txt do pacote |
 | galinha_kelgar/ | Galinha com armature e 13 animações (ciscar, andar, comer...) | Čestmír Dammer (cdmir), projeto Kelgar | https://opengameart.org/content/chicken-animated | CC0 1.0: na página e no license.txt do pacote |
+| maos_arms_lowpoly/ | Braços e mãos low poly com rig Rigify (dedos com FK), FBX + .blend + textura; usados com subdivisão e pose de pinça no ep004 v2 | DevMops | https://opengameart.org/content/low-poly-arms-rigged ("arms_low_poly_rigged.zip") | CC0 1.0: na página (conferida em 23/11/2026); cópia em maos_arms_lowpoly/LICENCA.txt |
 
 ATENÇÃO: o site quaternius.com passou a usar a "Quaternius Asset License (QAL) v1.0" em 28/08/2026 para os downloads atuais, que proíbe redistribuir os assets. NÃO baixe Quaternius pelo site nem pelo Drive dele para pôr neste repositório (é público). O pacote de 2018 acima veio do itch.io, publicado como CC0 (licença irrevogável), com o License.txt original guardado na pasta.
 

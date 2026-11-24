@@ -8,3 +8,4 @@ Regra: antes de produzir, ler a última linha. Depois de publicar, acrescentar u
 | Vídeo | Data | Onde ela aparece | O que faz | Ponta solta para o próximo |
 |---|---|---|---|---|
 | ep003 dinossauros parte 2 | 22/11/2026 | quintal (primeiro plano na gag) e fundo do plano final | foge da galinha, porque galinha come milho; perseguição em loop | ela aparece no próximo vídeo com uma pena de galinha presa na cabeça (escapou, mas por pouco) |
+| ep004 ossinho da sorte (parte 2) | 24/11/2026 | mesa da ceia, fundo desfocado | espiga com uma pena de galinha na cabeça; estoura em pipoca no estalo do osso | definir no próximo vídeo |

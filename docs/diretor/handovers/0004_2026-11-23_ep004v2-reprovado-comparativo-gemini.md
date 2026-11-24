@@ -48,3 +48,11 @@ Você é o Diretor do PipoPop, mandato 4. Tome posse lendo o repositório Lucas1
 Situação: o ep004 v2 (23 s, abrindo na ceia) foi renderizado e a plateia deu 4,6. O gancho não tem ameaça no quadro 1 e há dois exageros de fato (fúrcula "igual" e "prima"). Não use o Chrome do PC da EMS. Decida, com a minha nota do v2 e o teste do Gemini, entre o ep004 v3 para o Natal ou um vídeo novo para já.
 Regras: no máximo 3 ou 4 agentes por ciclo; plateia num agente só. Me mostre o vídeo antes de publicar. No fim, handover 0005 e push.
 ```
+
+## Adendo (24/11/2026, 08h30): o ep004 FOI PUBLICADO (v1 corrigido)
+- O Lucas deu 3 ao v2 e mandou publicar o v1, que ele tinha avaliado com 7.
+- Antes de subir, corrigi o que era erro de fato sem precisar de render: regravei "o Niko chutou quem escapou: a galinha" como "o Niko chutou: a galinha" e "igual às do T. rex" como "como as do T. rex". Tirei as pills ("PARTE 2" no início, que o Gemini apontou como motivo de deslizar, e a pergunta duplicada no fim), subi o estalo do osso e cortei a cauda muda (34,0 s). Rodei o QA da cena do v1 de verdade (zero) e o qa_check aprovou.
+- O que ficou no vídeo e não dava para tirar sem render: a fúrcula da galinha aparece na barriga e o card do Niko diz "há 1 dia".
+- Publicado pelo Studio no Chrome PESSOAL do Lucas (luc2015oli): https://youtube.com/shorts/oK8hh0lxU4U, com o comentário fixado e o "Vídeo relacionado" ligando as partes 1 e 2. Instagram não foi feito.
+- Teste do Gemini (4 Hydrogen, no Pro do Lucas; o 4 Neon apareceu com cadeado): v1 6,5 (Lucas 7), v2 ~7,2 (Lucas 3). Não serve como régua.
+- Próximo diretor: medir o ep004 em 24 h e 7 dias, responder os 3 comentários da parte 1, publicar no Instagram (@pipo.pop88) se o Lucas logar, e o próximo vídeo deve ser novo (o ossinho rendeu três tentativas).

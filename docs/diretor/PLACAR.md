@@ -42,3 +42,9 @@ Leitura (Diretor 1):
 | ep004 v2 | 3 | 4,6 | ~7,2 (3 perfis; o app apagou a resposta no meio) |
 Leitura: nenhuma das duas plateias acompanha o Lucas. O Gemini acertou o v1 e errou feio o v2 (deu mais nota ao vídeo que o Lucas achou pior). No app ele também apaga a resposta no meio (2 de 3 tentativas). Não vale trocar a plateia por ele.
 
+## Publicados no mandato 3
+| # | ID | Título | Duração | Publicado | Versão | Notas antes |
+|---|---|---|---|---|---|---|
+| ep004 | oK8hh0lxU4U | O ossinho da sorte do Natal é de dinossauro 🦖 | 0:34 | 24/11/2026 ~08h30 (público) | v1 corrigido (frase do Niko e "como as do T. rex" regravadas, sem pills, estalo mais alto, cauda cortada) | Lucas 7, plateia 4,6, Gemini 6,5 |
+Ligações: "Vídeo relacionado" da parte 2 aponta para a parte 1 (927OYhLGseo) e vice-versa. Comentário fixado com a pergunta. Declaração de IA: "Não" (o vídeo não se encaixa em nenhum critério do YouTube: pessoa real, filmagem real, cena realista ou música gerada). Medir em 24 h e 7 dias.
+
