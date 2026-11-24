@@ -91,6 +91,30 @@ def _ret(ctx, x, y, w, h, cor, a=1.0):
     ctx.rectangle(x, y, w, h); ctx.set_source_rgba(*cor, a); ctx.fill()
 
 
+# ============================ camada fixa em cache ============================
+_FIXAS = {}
+MF = 160   # folga em volta da tela (câmera com zoom < 1, tremida)
+
+
+def _camada_fixa(ctx, chave, desenha):
+    """Desenha uma vez a parte parada de um cenário numa imagem (por processo) e depois só cola.
+    Usada nos cenários mais detalhados (cidade_noite_alto, supermercado) para não pesar no render."""
+    surf = _FIXAS.get(chave)
+    if surf is None:
+        if len(_FIXAS) >= 6:
+            _FIXAS.clear()
+        surf = cairo.ImageSurface(cairo.FORMAT_ARGB32, W + 2 * MF, H + 2 * MF)
+        c = cairo.Context(surf); c.translate(MF, MF)
+        c.set_line_cap(cairo.LINE_CAP_ROUND); c.set_line_join(cairo.LINE_JOIN_ROUND)
+        desenha(c)
+        surf.flush(); _FIXAS[chave] = surf
+    ctx.save(); ctx.set_source_surface(surf, -MF, -MF); ctx.paint(); ctx.restore()
+
+
+def _chave(S, *extra):
+    return (S.nome, tuple(tuple(c) for c in S.pal), S.seed) + extra
+
+
 # ============================ peças comuns ============================
 def _nuvem_pts(cx, cy, s):
     pts = []
@@ -454,6 +478,10 @@ def _sofa(ctx, S, parte="tudo"):
         for k, cx in enumerate((250, 610)):
             forma(ctx, pts_ret(cx - 80, 960 + k * 10, 160, 150, 44), S.pal[2] if k == 0 else S.pal[4], seed=S.seed + 11 + k,
                   sombreado=0.1, sombra_off=(6, 6))   # almofadas
+    if parte == "bracos":   # frente da sala: só os braços do sofá; o assento fica atrás e as pernas/pés aparecem
+        for sx in (80, 640):
+            forma(ctx, pts_ret(sx, 1010, 130, 350, 56), S.tc(escurece(sofa, 0.06)), seed=S.seed + 15 + sx)
+        return
     if parte in ("tudo", "frente"):
         forma(ctx, pts_ret(120, 1120, 620, 230, 46), tc(sofa), sombreado=0.05, seed=S.seed + 13)      # assento
         traco(ctx, [(430, 1132), (430, 1340)], lw=4, alpha=0.45, seed=S.seed + 14)
@@ -485,7 +513,7 @@ def fundo_sala(ctx, S):
 
 def frente_sala(ctx, S):
     if S.ocup & {"sofa_assento", "sofa_esq", "sofa_dir"}:
-        _sofa(ctx, S, "frente")
+        _sofa(ctx, S, "bracos")   # pedido do dono: o pé não some no sofá (pernas por cima do assento)
     if "porta" in S.ocup:
         _batente(ctx, *PORTA_SALA, DW, DH, MADEIRA, S.seed + 140, S)
 
@@ -713,16 +741,7 @@ def fundo_rua(ctx, S):
     ctx.set_source_rgb(*BRANCO); ctx.fill()
     _poste(ctx, S, 90, CALCADA + 40, 560)
     _semaforo(ctx, S, 960, CALCADA + 40, 520)
-    if S.opts.get("chuva"):
-        def chuva(ctx):
-            r = random.Random(7)
-            ctx.set_source_rgba(0.85, 0.92, 1.0, 0.35); ctx.set_line_width(4); ctx.set_line_cap(cairo.LINE_CAP_ROUND)
-            for i in range(90):
-                x0 = r.uniform(-200, W + 200); v = r.uniform(1400, 2000); ph = r.uniform(0, H)
-                y0 = (ph + S.tv * v) % (H + 200) - 100
-                ctx.move_to(x0 - y0 * 0.15, y0); ctx.line_to(x0 - y0 * 0.15 - 10, y0 + 54)
-            ctx.stroke()
-        S.apos.append(chuva)
+    # chuva na rua: agora é a camada genérica chuva_tela (render2d, depois do fundo), que vale em qualquer cenário
 
 
 def frente_rua(ctx, S):
@@ -736,65 +755,197 @@ def frente_rua(ctx, S):
 
 
 # ---------- ÔNIBUS
+AZUL_BANCO = hexc("#2F5FD0")
+AMARELO_BARRA = hexc("#FFC21A")
+OVP = (540, 470)   # ponto de fuga do corredor do ônibus (olhando da frente para o fundo)
+
+
+def _ov(xl, yl, z):
+    """Corredor em perspectiva: xl lateral (-1 a 1 = largura do ônibus), yl px em relação ao horizonte na boca, z 0 (perto) a 1 (fundo)."""
+    s = 1 / (1 + 2.85 * z)
+    return OVP[0] + xl * 540 * s, OVP[1] + yl * s
+
+
+def _banco_ov(ctx, S, lado, z, seed, gente=None):
+    """Banco duplo azul de frente para a câmera, num ponto z do corredor; gente = cor da roupa de quem está sentado."""
+    x0, x1 = (-0.95, -0.36) if lado < 0 else (0.36, 0.95)
+    tl = _ov(x0, 120, z); br = _ov(x1, 640, z); _, ya = _ov(0, 470, z)
+    w = br[0] - tl[0]; h = br[1] - tl[1]
+    forma(ctx, pts_ret(tl[0], tl[1], w, h, w * 0.12), AZUL_BANCO, seed=seed, sombreado=0.08, lw=max(3, 6 / (1 + 2.85 * z)))
+    if gente is not None:   # passageiro sentado (silhueta simples)
+        for k, cx in enumerate((tl[0] + w * 0.3, tl[0] + w * 0.72)):
+            if (seed + k) % 3 == 0:
+                continue
+            hr = w * 0.13
+            forma(ctx, pts_ret(cx - hr * 1.5, tl[1] + h * 0.05, hr * 3, h * 0.62, hr), mix(gente[k % len(gente)], CINZA, 0.25), sombra=False, lw=3, seed=seed + 5 + k)
+            forma(ctx, pts_elipse(cx, tl[1] - hr * 0.2, hr, hr * 1.1, 12), mix(hexc("#C98A5B" if k else "#8A5A3B"), CINZA, 0.2), sombra=False, lw=3, seed=seed + 7 + k)
+    _ret(ctx, tl[0], ya, w, h * 0.12, escurece(AZUL_BANCO, 0.25))   # assento
+    traco(ctx, [(tl[0] + w * 0.1, tl[1] - 4), (br[0] - w * 0.1, tl[1] - 4)], lw=max(3, 9 / (1 + 2.85 * z)), cor=AMARELO_BARRA, amp=0)
+
+
+def _pessoa_em_pe(ctx, S, xl, z, cor, seed, braco=1):
+    """Passageiro em pé no corredor segurando a barra do teto (silhueta, balança com o ônibus)."""
+    bal = math.sin(S.tv * 2.2 + seed) * 6 if S.vida else 0
+    pe = _ov(xl, 990, z); cab = _ov(xl, 40, z); s = 1 / (1 + 2.85 * z)
+    cx = pe[0] + bal * s
+    hr = 62 * s
+    bx = cx + braco * 70 * s; barra = _ov(0.25 * braco, -470, z)[1]
+    traco(ctx, [(cx + braco * 50 * s, cab[1] + 160 * s), (bx, barra)], lw=max(4, 30 * s), cor=INK, amp=0)
+    traco(ctx, [(cx + braco * 50 * s, cab[1] + 160 * s), (bx, barra)], lw=max(2, 18 * s), cor=mix(cor, CINZA, 0.2), amp=0)
+    forma(ctx, pts_ret(cx - 75 * s, cab[1] + 90 * s, 150 * s, pe[1] - cab[1] - 90 * s, 40 * s), mix(cor, CINZA, 0.2), sombra=False, lw=4, seed=seed)
+    forma(ctx, pts_elipse(cx, cab[1] + 30 * s, hr, hr * 1.1, 12), mix(hexc("#D9935F"), CINZA, 0.2), sombra=False, lw=4, seed=seed + 1)
+    ctx.arc(bx, barra + 8 * s, 14 * s, 0, 2 * math.pi); ctx.set_source_rgb(*hexc("#D9935F")); ctx.fill()
+
+
 def fundo_onibus(ctx, S):
+    """Ônibus urbano visto da frente para o fundo: corredor, bancos azuis, barras amarelas, catraca com cobrador,
+    gente em pé segurando a barra, janelas laterais com a cidade passando e o vidro de trás com o trânsito."""
     bg, bg2, a1, a2, a3 = S.pal
     bob = math.sin(S.tv * 9) * 3 if S.vida else 0
-    ctx.set_source_rgb(*bg); ctx.paint()
-    _ret(ctx, 0, 0, W, 200, clareia(bg, 0.35))
-    traco(ctx, [(-10, 200), (W + 10, 200)], lw=6, seed=S.seed + 1)
-    forma(ctx, pts_ret(120, 60, 840, 60, 30), BRANCO, seed=S.seed + 2)                 # luz do teto
-    _ret(ctx, 0, 820, W, H, escurece(bg, 0.15))
-    _ret(ctx, 0, 1460, W, H, hexc("#4A4560"))
-    for k in range(6):
-        ctx.rectangle(0, 1500 + k * 60, W, 10)
-    ctx.set_source_rgba(*INK, 0.3); ctx.fill()
-    # janelões com a paisagem passando
-    jan = [(20, 300), (390, 300), (760, 300)]
+    parede = hexc("#DCE1EA")
+    rx0, ry0 = _ov(-0.8, -440, 1); rx1, ry1 = _ov(0.8, 120, 1)
+    janelas = []
+    for xl in (-1, 1):
+        for z0, z1 in [(0.02, 0.24), (0.3, 0.5), (0.56, 0.74), (0.8, 0.96)]:
+            janelas.append([_ov(xl, -400, z0), _ov(xl, -400, z1), _ov(xl, 120, z1), _ov(xl, 120, z0)])
+    ctx.save(); ctx.translate(0, bob)
+    _camada_fixa(ctx, _chave(S), lambda c: _onibus_fixo(c, S, janelas, rx0, ry0, rx1, ry1))
+    _onibus_vivo(ctx, S)
+    ctx.restore()
+    _onibus_paisagem(ctx, S, bob, janelas, rx0, ry0, rx1, ry1, parede)
+    _onibus_frente_fundo(ctx, S, bob)
+
+
+def _onibus_fixo(ctx, S, janelas, rx0, ry0, rx1, ry1):
+    """Parte parada do ônibus (cache): paredes, piso, teto, cartazes, fileiras do fundo, cobrador e o poste da catraca."""
+    bg, bg2, a1, a2, a3 = S.pal
+    parede = hexc("#DCE1EA"); teto = hexc("#F1F2F6"); piso = hexc("#5A5668")
+    ctx.set_source_rgb(*parede); ctx.paint()
+    # teto, piso e paredes laterais (trapézios até o fundo)
+    for pts, cor in (([(-20, -40), (W + 20, -40), _ov(1, -560, 1), _ov(-1, -560, 1)], teto),
+                     ([(-20, H + 40), (W + 20, H + 40), (W + 20, 1460), _ov(1, 990, 0), _ov(1, 990, 1), _ov(-1, 990, 1), _ov(-1, 990, 0), (-20, 1460)], piso)):
+        ctx.move_to(*pts[0]); [ctx.line_to(*q) for q in pts[1:]]; ctx.close_path(); ctx.set_source_rgb(*cor); ctx.fill()
+    for k in range(1, 12):   # frisos do piso de borracha
+        z = (k / 11) ** 1.4
+        a, b = _ov(-1, 990, z), _ov(1, 990, z)
+        ctx.move_to(*a); ctx.line_to(*b)
+    ctx.set_source_rgba(*INK, 0.22); ctx.set_line_width(3); ctx.stroke()
+    a, b = _ov(-0.06, 990, 0), _ov(0.06, 990, 0)
+    ctx.move_to(*a); ctx.line_to(*_ov(-0.06, 990, 1)); ctx.line_to(*_ov(0.06, 990, 1)); ctx.line_to(*b); ctx.close_path()
+    ctx.set_source_rgba(*AMARELO_BARRA, 0.55); ctx.fill()   # faixa do corredor
+    for xl in (-1, 1):   # faixa da cor da paleta embaixo das janelas
+        q = [_ov(xl, 180, 0), _ov(xl, 180, 1), _ov(xl, 300, 1), _ov(xl, 300, 0)]
+        ctx.move_to(*q[0]); [ctx.line_to(*z) for z in q[1:]]; ctx.close_path(); ctx.set_source_rgb(*bg); ctx.fill()
+    # fundo do ônibus: parede de trás com o vidro traseiro
+    fx0, fy0 = _ov(-1, -560, 1); fx1, fy1 = _ov(1, 990, 1)
+    _ret(ctx, fx0, fy0, fx1 - fx0, fy1 - fy0, escurece(parede, 0.08))
+    for q in janelas:   # caixilho escuro (a paisagem vem depois da tinta)
+        ctx.move_to(*q[0]); [ctx.line_to(*z) for z in q[1:]]; ctx.close_path()
+    ctx.rectangle(rx0, ry0, rx1 - rx0, ry1 - ry0)
+    ctx.set_source_rgb(*escurece(parede, 0.45)); ctx.fill()
+    # cartazes acima das janelas
+    for k, (xl, z0, z1, c) in enumerate(((-1, 0.05, 0.22, a1), (-1, 0.32, 0.48, a2), (1, 0.05, 0.22, AMARELO_BARRA), (1, 0.32, 0.48, a1))):
+        q = [_ov(xl, -540, z0), _ov(xl, -540, z1), _ov(xl, -440, z1), _ov(xl, -440, z0)]
+        ctx.move_to(*q[0]); [ctx.line_to(*z) for z in q[1:]]; ctx.close_path(); ctx.set_source_rgb(*c); ctx.fill_preserve()
+        ctx.set_source_rgb(*INK); ctx.set_line_width(3); ctx.stroke()
+    # luz do teto (faixa no meio)
+    q = [_ov(-0.12, -555, 0.02), _ov(0.12, -555, 0.02), _ov(0.12, -555, 0.95), _ov(-0.12, -555, 0.95)]
+    ctx.move_to(*q[0]); [ctx.line_to(*z) for z in q[1:]]; ctx.close_path(); ctx.set_source_rgb(*BRANCO); ctx.fill_preserve()
+    ctx.set_source_rgba(*INK, 0.5); ctx.set_line_width(3); ctx.stroke()
+    # fileiras de bancos azuis do fundo para a frente, catraca com cobrador e gente em pé
+    roupas = [a1, a2, hexc("#3DAA3A"), hexc("#E8452C")]
+    for i, z in enumerate((0.9, 0.72, 0.55)):
+        _banco_ov(ctx, S, -1, z, S.seed + 400 + i, roupas[i:] + roupas[:i])
+        _banco_ov(ctx, S, 1, z, S.seed + 410 + i, roupas[i + 1:] + roupas[:i + 1])
+    # catraca + cobrador (lado esquerdo, meio do ônibus)
+    z = 0.36
+    mesa = [_ov(-0.95, 520, z), _ov(-0.45, 520, z), _ov(-0.45, 990, z), _ov(-0.95, 990, z)]
+    cob = _ov(-0.75, 250, z); s = 1 / (1 + 2.85 * z)
+    forma(ctx, pts_ret(cob[0] - 70 * s, cob[1], 140 * s, 300 * s, 40 * s), hexc("#2A7DE1"), sombra=False, lw=4, seed=S.seed + 450)  # cobrador
+    forma(ctx, pts_elipse(cob[0], cob[1] - 50 * s, 62 * s, 68 * s, 14), hexc("#A8683D"), sombra=False, lw=4, seed=S.seed + 451)
+    forma(ctx, [(cob[0] - 66 * s, cob[1] - 80 * s), (cob[0] + 66 * s, cob[1] - 80 * s), (cob[0] + 100 * s, cob[1] - 60 * s), (cob[0] - 60 * s, cob[1] - 130 * s)],
+          hexc("#1F3CB0"), sombra=False, lw=4, seed=S.seed + 452)   # boné
+    forma(ctx, [mesa[0], mesa[1], mesa[2], mesa[3]], hexc("#8A8FA3"), seed=S.seed + 453, sombra_off=(5, 6))
+    cx, cy = _ov(-0.36, 560, z)   # catraca: poste com 3 braços girando
+    forma(ctx, pts_ret(cx - 28 * s, cy - 40 * s, 56 * s, 380 * s, 10 * s), hexc("#BFC5D2"), seed=S.seed + 454, sombra_off=(4, 4))
+
+
+def _onibus_vivo(ctx, S):
+    """Catraca girando, gente em pé balançando, banco da catraca e barras amarelas."""
+    bg, bg2, a1, a2, a3 = S.pal
+    roupas = [a1, a2, hexc("#3DAA3A"), hexc("#E8452C")]
+    _pessoa_em_pe(ctx, S, 0.1, 0.62, a2, S.seed + 440, braco=1)
+    z = 0.36; s = 1 / (1 + 2.85 * z)
+    cx, cy = _ov(-0.36, 560, z)
+    giro = S.tv * 1.5 if S.vida else 0
+    for k in range(3):
+        a = giro + k * 2 * math.pi / 3
+        ex, ey = cx + math.cos(a) * 150 * s, cy + 20 * s + math.sin(a) * 40 * s
+        traco(ctx, [(cx, cy + 20 * s), (ex, ey)], lw=max(4, 22 * s), cor=INK, amp=0)
+        traco(ctx, [(cx, cy + 20 * s), (ex, ey)], lw=max(2, 12 * s), cor=hexc("#D8DCE6"), amp=0)
+    _banco_ov(ctx, S, 1, 0.36, S.seed + 420, roupas)
+    _pessoa_em_pe(ctx, S, -0.12, 0.42, a1, S.seed + 441, braco=-1)
+    # barras amarelas: verticais no corredor e corrimão do teto com alças
+    for z in (0.2, 0.48, 0.8):
+        for xl in (-0.34, 0.34):
+            traco(ctx, [_ov(xl, -470, z), _ov(xl, 990, z)], lw=max(4, 22 / (1 + 2.85 * z)), cor=AMARELO_BARRA, amp=0)
+    for xl in (-0.3, 0.3):
+        traco(ctx, [_ov(xl, -470, 0), _ov(xl, -470, 1)], lw=10, cor=AMARELO_BARRA, amp=0)
+
+
+def _onibus_paisagem(ctx, S, bob, janelas, rx0, ry0, rx1, ry1, parede):
+    a1 = S.pal[2]
 
     def paisagem(ctx):
-        ctx.save()
-        for x0, _ in jan:
-            ctx.rectangle(x0, 290, 300, 470)
-        ctx.clip()
-        _ceu_simples(ctx, S, 0, 290, W, 470)
-        v = S.tv
-        # morros (devagar), árvores e postes (rápido)
-        cm = hexc("#3DAA3A") if S.ceu != "noite" else hexc("#1E3A3A")
-        ctx.move_to(0, 760)
-        for i in range(0, W + 41, 40):
-            ctx.line_to(i, 620 + 40 * math.sin((i + v * 60) / 160) + bob)
-        ctx.line_to(W, 760); ctx.close_path(); ctx.set_source_rgb(*S.tc(cm) if S.ceu == "noite" else cm); ctx.fill()
-        for k in range(5):
-            x = (k * 300 - v * 520) % (W + 300) - 150
-            traco(ctx, [(x, 780), (x, 600 + bob)], lw=10, seed=S.seed + 30 + k, amp=0)
-            forma(ctx, pts_elipse(x, 590 + bob, 70, 80, 14), escurece(cm, 0.2), sombra=False, lw=5, seed=S.seed + 35 + k, amp=1)
-        xp = (-v * 900) % (W + 400) - 200
-        traco(ctx, [(xp, 780), (xp, 380 + bob)], lw=14, seed=S.seed + 41, amp=0)
+        ctx.save(); ctx.translate(0, bob)
+        for q in janelas:
+            ctx.move_to(*q[0]); [ctx.line_to(*z) for z in q[1:]]; ctx.close_path()
+        ctx.rectangle(rx0, ry0, rx1 - rx0, ry1 - ry0)
+        ctx.save(); ctx.clip()
+        _ceu_simples(ctx, S, -20, 0, W + 40, 1100)
+        v = S.tv * 0.35
+        r = random.Random(S.seed + 460)
+        cores = [hexc("#E8A33D"), hexc("#D95B43"), hexc("#7FA7D9"), hexc("#B5A1D9"), hexc("#8BC28C"), hexc("#E6D3A3")]
+        noite = S.ceu == "noite"
+        for xl in (-1, 1):   # prédios passando nas janelas laterais (afastam para o fundo)
+            for k in range(9):
+                zb = (k / 9 + v) % 1.0
+                zw = 0.06 + 0.03 * ((k * 7) % 3)
+                top = -560 - 260 * r.random()
+                c = cores[(k + (xl > 0) * 3) % len(cores)]
+                q = [_ov(xl, top, zb), _ov(xl, top, zb + zw), _ov(xl, 130, zb + zw), _ov(xl, 130, zb)]
+                ctx.move_to(*q[0]); [ctx.line_to(*z) for z in q[1:]]; ctx.close_path()
+                ctx.set_source_rgb(*(escurece(c, 0.55) if noite else c)); ctx.fill_preserve()
+                ctx.set_source_rgb(*INK); ctx.set_line_width(3); ctx.stroke()
+        # vidro de trás: rua e o carro que vem atrás
+        _ret(ctx, rx0, ry1 - (ry1 - ry0) * 0.3, rx1 - rx0, (ry1 - ry0) * 0.3, hexc("#3A3548"))
+        _carro(ctx, (rx0 + rx1) / 2 + math.sin(S.tv * 0.7) * 20, ry1 - 6, 0.22, a1, S.seed + 470, S.tv, farol=noite)
+        if S.opts.get("chuva"):
+            _chuva_vidro(ctx, S, rx0, ry0, rx1 - rx0, ry1 - ry0)
         ctx.restore()
-        for x0, _ in jan:
-            ctx.rectangle(x0, 290, 300, 470)
-        ctx.set_line_width(6); ctx.set_source_rgb(*INK); ctx.stroke()
-        # barra de segurar e alças balançando
-        traco(ctx, [(-10, 250), (W + 10, 250)], lw=16, cor=S.tc(CINZA), seed=S.seed + 50)
-        traco(ctx, [(-10, 250), (W + 10, 250)], lw=4, cor=INK, seed=S.seed + 50, alpha=0.6)
-        for k, x in enumerate((210, 540, 870)):
-            a = math.sin(S.tv * 2.4 + k) * 0.18 if S.vida else 0
-            ex, ey = x + math.sin(a) * 120, 250 + math.cos(a) * 120
-            traco(ctx, [(x, 250), (ex, ey)], lw=10, cor=S.tc(a1), seed=S.seed + 52 + k)
-            forma(ctx, pts_elipse(ex, ey + 22, 26, 26, 12), S.tc(a1), sombra=False, lw=5, seed=S.seed + 55 + k)
-            ctx.arc(ex, ey + 22, 12, 0, 2 * math.pi); ctx.set_source_rgb(*S.tc(clareia(bg, 0.35))); ctx.fill()
+        ctx.set_source_rgb(*INK); ctx.set_line_width(5); ctx.stroke()
+        for q in janelas:   # vidro de correr (faixa no terço de cima)
+            a, b = q[0], q[1]; c, d = q[3], q[2]
+            traco(ctx, [(a[0], a[1] + (c[1] - a[1]) * 0.33), (b[0], b[1] + (d[1] - b[1]) * 0.33)], lw=5, cor=S.tc(escurece(parede, 0.3)), amp=0)
         if S.luz == "noite":
-            _halo(ctx, 540, 90, 600, 0.25)
-    for x0, _ in jan:
-        forma(ctx, pts_ret(x0 - 16, 274, 332, 502, 20), escurece(bg, 0.3), seed=S.seed + 3 + x0)
+            _halo(ctx, 540, 120, 700, 0.22)
+        ctx.restore()
     S.apos.append(paisagem)
-    # botão de parada
-    forma(ctx, pts_ret(470, 830, 140, 70, 12), VERMELHO, seed=S.seed + 60)
-    texto(ctx, "PARE", 540, 865, 34, cor=BRANCO, lw=3, sombra=False)
-    # bancos de trás (encostos vistos de frente) atrás da pessoa
+
+
+def _onibus_frente_fundo(ctx, S, bob):
+    # bancos da 1ª fileira (onde a gente senta), botão PARE no poste do meio
     for x0 in (120, 600):
-        forma(ctx, pts_ret(x0, 880 + bob, 380, 420, 50), a2, seed=S.seed + 70 + x0, sombreado=0.06)
-        forma(ctx, pts_ret(x0 + 30, 910 + bob, 320, 120, 40), escurece(a2, 0.15), sombra=False, lw=4, seed=S.seed + 72 + x0)
+        forma(ctx, pts_ret(x0, 880 + bob, 380, 420, 50), AZUL_BANCO, seed=S.seed + 70 + x0)
+        forma(ctx, pts_ret(x0 + 30, 910 + bob, 320, 140, 40), clareia(AZUL_BANCO, 0.12), sombra=False, lw=4, seed=S.seed + 72 + x0)
+        for k in range(5):   # padrãozinho do tecido do banco
+            ctx.arc(x0 + 70 + k * 60, 970 + bob, 6, 0, 2 * math.pi)
+        ctx.set_source_rgba(*AMARELO_BARRA, 0.6); ctx.fill()
+        traco(ctx, [(x0 + 50, 870 + bob), (x0 + 330, 870 + bob)], lw=18, cor=AMARELO_BARRA, seed=S.seed + 74 + x0)
+    traco(ctx, [(550, -20), (550, 1500)], lw=26, cor=AMARELO_BARRA, seed=S.seed + 76, amp=0)
+    traco(ctx, [(550, -20), (550, 1500)], lw=4, cor=INK, seed=S.seed + 76, amp=0, alpha=0.5)
+    forma(ctx, pts_ret(480, 830, 140, 70, 12), VERMELHO, seed=S.seed + 60)
+    texto(ctx, "PARE", 550, 865, 34, cor=BRANCO, lw=3, sombra=False)
 
 
 def _ceu_simples(ctx, S, x, y, w, h):
@@ -811,12 +962,13 @@ def _ceu_simples(ctx, S, x, y, w, h):
 
 
 def frente_onibus(ctx, S):
-    """Encosto do banco da frente (esconde as pernas de quem está sentado) e a barra dele."""
-    tc = S.tc; a2 = S.pal[3]
+    """Encosto azul do banco da frente (esconde as pernas de quem está sentado) com a barra amarela de segurar."""
+    tc = S.tc
     bob = math.sin(S.tv * 9 + 0.6) * 3 if S.vida else 0
     for x0 in (120, 610):
-        forma(ctx, pts_ret(x0, 1250 + bob, 380, 330, 54), tc(escurece(a2, 0.06)), seed=S.seed + 80 + x0, sombreado=0.08)
-        traco(ctx, [(x0 + 40, 1240 + bob), (x0 + 340, 1240 + bob)], lw=18, cor=tc(CINZA), seed=S.seed + 82 + x0)
+        forma(ctx, pts_ret(x0, 1250 + bob, 380, 330, 54), tc(escurece(AZUL_BANCO, 0.12)), seed=S.seed + 80 + x0, sombreado=0.08)
+        forma(ctx, pts_ret(x0 + 40, 1300 + bob, 300, 120, 30), tc(hexc("#8A8FA3")), sombra=False, lw=4, seed=S.seed + 81 + x0)   # plástico de trás
+        traco(ctx, [(x0 + 40, 1240 + bob), (x0 + 340, 1240 + bob)], lw=20, cor=tc(AMARELO_BARRA), seed=S.seed + 82 + x0)
         traco(ctx, [(x0 + 40, 1240 + bob), (x0 + 340, 1240 + bob)], lw=4, cor=INK, seed=S.seed + 82 + x0, alpha=0.6)
 
 
@@ -900,6 +1052,9 @@ def fundo_carro(ctx, S):
             x = (k * 380 - v * 700) % (920 + 300) - 80
             traco(ctx, [(x, 760), (x, 470)], lw=12, seed=S.seed + 20 + k, amp=0)
             forma(ctx, pts_elipse(x, 470, 60, 70, 12), VERDE, sombra=False, lw=4, seed=S.seed + 23 + k)
+        for k in range(3):   # placas de rua passando (mais rápidas: estão mais perto)
+            x = (k * 470 + 200 - v * 820) % (920 + 500) - 150
+            _placa_rua(ctx, S, x, 760, 1.0, k)
         ctx.restore()
         forma(ctx, pts_ret(80, 330, 920, 420, 60), BRANCO, sombra=False, lw=6, seed=S.seed + 26, contorno=INK) if False else None
         ctx.rectangle(80, 330, 920, 420); ctx.set_line_width(6); ctx.set_source_rgb(*INK); ctx.stroke()
@@ -932,15 +1087,67 @@ def _carro_motorista_fundo(ctx, S):
         w0, w1 = 4 + 40 * p0, 4 + 40 * p1
         ctx.move_to(W / 2 - w0, y0); ctx.line_to(W / 2 + w0, y0); ctx.line_to(W / 2 + w1, y1); ctx.line_to(W / 2 - w1, y1); ctx.close_path()
     ctx.set_source_rgb(*BRANCO); ctx.fill()
-    for k in range(4):   # postes/árvores passando dos lados
+    itens = []
+    for k in range(4):   # postes/árvores e placas passando dos lados (do longe para o perto)
         u = ((k / 4) + v * 0.5) % 1.0
+        itens.append((u, k))
+    for u, k in sorted(itens):
         p = u ** 2
         for lado in (-1, 1):
             x = W / 2 + lado * (60 + p * 1100); y = hz + p * (H - hz) * 0.9
             s = 0.15 + p * 1.6
+            if (k + (lado > 0)) % 2 == 0:
+                _placa_rua(ctx, S, x, y, s * 0.9, k + lado)
+                continue
             traco(ctx, [(x, y), (x, y - 300 * s)], lw=max(3, 14 * s), seed=S.seed + 40 + k, amp=0)
             forma(ctx, pts_elipse(x, y - 300 * s, 70 * s, 80 * s, 12), escurece(VERDE, 0.1), sombra=False, lw=max(2, 5 * s),
                   seed=S.seed + 44 + k + lado, amp=0.6)
+
+
+def _placa_rua(ctx, S, x, ybase, s, k):
+    """Placa de trânsito num poste: verde de direção, velocidade máxima ou PARE (k escolhe)."""
+    tipo = k % 3
+    alt = 300 * s
+    traco(ctx, [(x, ybase), (x, ybase - alt)], lw=max(3, 10 * s), cor=CINZA, amp=0)
+    ctx.save(); ctx.translate(x, ybase - alt)
+    if tipo == 0:
+        forma(ctx, pts_ret(-110 * s, -60 * s, 220 * s, 80 * s, 10 * s), hexc("#1E8A4C"), sombra=False, lw=max(2, 5 * s), seed=S.seed + 600 + k)
+        if s > 0.25:
+            texto(ctx, "CENTRO", -16 * s, -20 * s, 34 * s, cor=BRANCO, lw=max(1, 3 * s), sombra=False)
+            ctx.move_to(70 * s, -34 * s); ctx.line_to(96 * s, -20 * s); ctx.line_to(70 * s, -6 * s); ctx.close_path()
+            ctx.set_source_rgb(*BRANCO); ctx.fill()
+    elif tipo == 1:
+        forma(ctx, pts_elipse(0, -30 * s, 52 * s, 52 * s, 18), BRANCO, sombra=False, lw=max(2, 5 * s), seed=S.seed + 610 + k, contorno=VERMELHO)
+        ctx.arc(0, -30 * s, 52 * s, 0, 2 * math.pi); ctx.set_source_rgb(*INK); ctx.set_line_width(max(1, 3 * s)); ctx.stroke()
+        if s > 0.25:
+            texto(ctx, "60", 0, -30 * s, 46 * s, cor=INK, contorno=None, sombra=False)
+    else:
+        oct_ = [(math.cos(math.pi / 8 + j * math.pi / 4) * 56 * s, -30 * s + math.sin(math.pi / 8 + j * math.pi / 4) * 56 * s) for j in range(8)]
+        forma(ctx, oct_, VERMELHO, sombra=False, lw=max(2, 5 * s), seed=S.seed + 620 + k)
+        if s > 0.25:
+            texto(ctx, "PARE", 0, -30 * s, 30 * s, cor=BRANCO, lw=max(1, 3 * s), sombra=False)
+    ctx.restore()
+
+
+def _maos_volante(ctx, S, cx, cy, r, sy=1.0, pele=None, manga=None):
+    """Duas mãos segurando o volante (10 e 2 horas), com o punho da manga entrando por baixo."""
+    pele = S.tc(hexc(pele) if isinstance(pele, str) and pele.startswith("#") else hexc({"clara": "#F6C9A0", "morena": "#A8683D", "escura": "#6E4227"}.get(pele, "#D9935F")))
+    manga = S.tc(hexc(manga) if manga else hexc("#2A7DE1"))
+    for lado in (-1, 1):
+        a = math.radians(-90 + lado * 58)
+        hx, hy = cx + math.cos(a) * r, cy + math.sin(a) * r * sy
+        traco(ctx, [(hx + lado * r * 0.35, hy + r * 0.9), (hx + lado * 10, hy + 26)], lw=max(10, r * 0.34), cor=INK, amp=0)
+        traco(ctx, [(hx + lado * r * 0.35, hy + r * 0.9), (hx + lado * 10, hy + 26)], lw=max(6, r * 0.24), cor=manga, amp=0)
+        forma(ctx, pts_elipse(hx, hy, r * 0.17, r * 0.15, 12), pele, sombra=False, lw=5, seed=S.seed + 700 + lado)
+        for f in range(3):   # dedos por cima do aro
+            traco(ctx, [(hx - r * 0.1 + f * r * 0.1, hy - r * 0.08), (hx - r * 0.1 + f * r * 0.1, hy + r * 0.06)], lw=3, alpha=0.6, amp=0)
+
+
+def _saidas_ar(ctx, S, x, y):
+    for dx in (-1, 1):
+        forma(ctx, pts_ret(x + dx * 200 - 60, y - 34, 120, 68, 14), S.tc(hexc("#3A3348")), sombra=False, lw=4, seed=S.seed + 720 + dx)
+        for k in range(3):
+            traco(ctx, [(x + dx * 200 - 48, y - 18 + k * 18), (x + dx * 200 + 48, y - 18 + k * 18)], lw=4, cor=S.tc(CINZA), amp=0)
 
 
 def frente_carro(ctx, S):
@@ -957,6 +1164,13 @@ def frente_carro(ctx, S):
         ctx.set_source_rgb(*tc(hexc("#2B2440"))); ctx.fill_preserve(); ctx.set_source_rgb(*INK); ctx.set_line_width(6); ctx.stroke()
         traco(ctx, [(-250, 0), (250, 0)], lw=40, cor=tc(hexc("#2B2440")), seed=S.seed + 4); ctx.restore()
         _radio(ctx, S, 760, 1260)
+        _saidas_ar(ctx, S, 760, 1380)
+        for k, gx in enumerate((620, 900)):   # mostradores do painel
+            forma(ctx, pts_elipse(gx, 1530, 80, 80, 20), tc(hexc("#1A1626")), sombra=False, lw=5, seed=S.seed + 730 + k)
+            a = math.radians(200 + 120 * (0.5 + 0.4 * math.sin(S.tv * 0.8 + k)))
+            traco(ctx, [(gx, 1530), (gx + math.cos(a) * 60, 1530 + math.sin(a) * 60)], lw=6, cor=VERMELHO, amp=0)
+        if S.opts.get("maos", True) is not False:
+            _maos_volante(ctx, S, 300, 1500, 275, pele=S.opts.get("pele"), manga=S.opts.get("manga_cor"))
         return
     # vista de dentro, de frente para as pessoas: colunas, teto e painel
     forma(ctx, [(-40, -40), (W + 40, -40), (W + 40, 170), (-40, 230)], painel, seed=S.seed + 1)
@@ -974,6 +1188,9 @@ def frente_carro(ctx, S):
     ctx.set_source_rgb(*vol); ctx.fill_preserve(); ctx.set_source_rgb(*INK); ctx.set_line_width(6); ctx.stroke()
     traco(ctx, [(320, 1150), (320, 1220)], lw=34, cor=vol, seed=S.seed + 13)
     forma(ctx, pts_elipse(320, 1150, 44, 34, 14), vol, seed=S.seed + 14, sombra_off=(5, 5))
+    _saidas_ar(ctx, S, 540, 1330)
+    if "motorista" in S.ocup and S.opts.get("maos", True) is not False:   # mãos de quem dirige no volante
+        _maos_volante(ctx, S, 320, 1090, 160, sy=0.8, pele=S.opts.get("pele"), manga=S.opts.get("manga_cor"))
     # reflexo no para-brisa
     ctx.move_to(700, 240); ctx.line_to(800, 240); ctx.line_to(620, 700); ctx.line_to(560, 700); ctx.close_path()
     ctx.set_source_rgba(1, 1, 1, 0.10); ctx.fill()
@@ -987,6 +1204,15 @@ def _retrovisor(ctx, S, x, y):
     ex, ey = x + math.sin(a) * 90, y + 60 + math.cos(a) * 90
     traco(ctx, [(x, y + 60), (ex, ey)], lw=3, seed=S.seed + 10, amp=0)
     forma(ctx, [(ex, ey - 6), (ex + 30, ey + 30), (ex, ey + 80), (ex - 30, ey + 30)], S.tc(VERDE), seed=S.seed + 11, sombra_off=(4, 5), reto=False)
+    b = math.sin(S.tv * 2.2 + 1.1) * 0.3 if S.vida else 0   # enfeite: milhinho com miçangas
+    mx, my = x - 40 + math.sin(b) * 120, y + 60 + math.cos(b) * 120
+    for k in range(6):
+        u = (k + 0.5) / 6
+        ctx.new_sub_path(); ctx.arc(x - 40 + (mx - x + 40) * u, y + 60 + (my - y - 60) * u, 6, 0, 2 * math.pi)
+    ctx.set_source_rgb(*S.tc(hexc("#FF5FA2"))); ctx.fill_preserve(); ctx.set_source_rgb(*INK); ctx.set_line_width(2); ctx.stroke()
+    forma(ctx, pts_elipse(mx, my + 30, 18, 30, 12), S.tc(hexc("#FFC21A")), seed=S.seed + 13, sombra_off=(4, 4))
+    for d in (-1, 1):
+        forma(ctx, [(mx, my + 62), (mx + d * 22, my + 30), (mx + d * 6, my + 50)], S.tc(VERDE), sombra=False, lw=3, seed=S.seed + 14 + d)
 
 
 def _radio(ctx, S, x, y):
@@ -1260,8 +1486,17 @@ def frente_loja(ctx, S):
 
 # ---------- SUPERMERCADO (corredor em perspectiva)
 def fundo_supermercado(ctx, S):
-    bg, bg2, a1, a2, a3 = S.pal
+    bg = S.pal[0]
     vx, vy = 540, 760
+    _camada_fixa(ctx, _chave(S), lambda c: _super_fixo(c, S, vx, vy))   # prateleiras e produtos (parados)
+    ctx.save(); ctx.rectangle(vx - 88, vy - 198, 176, 196); ctx.clip()
+    _silhuetas(ctx, S, vx - 90, vx + 90, vy, s=0.3, n=1, vel=40, cor=escurece(bg, 0.55))
+    ctx.restore()
+    _super_vivo(ctx, S)
+
+
+def _super_fixo(ctx, S, vx, vy):
+    bg, bg2, a1, a2, a3 = S.pal
     ctx.set_source_rgb(*clareia(bg, 0.55)); ctx.paint()
     _ret(ctx, 0, 0, W, 150, BRANCO)
     for k in range(4):     # luzes do teto em perspectiva
@@ -1273,7 +1508,6 @@ def fundo_supermercado(ctx, S):
     ctx.move_to(vx - 60, vy); ctx.line_to(vx + 60, vy); ctx.line_to(W + 400, H); ctx.line_to(-400, H); ctx.close_path(); ctx.set_source(g); ctx.fill()
     # fundo do corredor
     forma(ctx, pts_ret(vx - 90, vy - 200, 180, 200, 6), escurece(bg, 0.1), seed=S.seed + 500)
-    _silhuetas(ctx, S, vx - 90, vx + 90, vy, s=0.3, n=1, vel=40, cor=escurece(bg, 0.55))
     cores = [a1, a2, a3, VERDE, AMARELO, VERMELHO, hexc("#38B6FF")]
     for lado in (-1, 1):
         xin, xout = vx + lado * 90, (-60 if lado < 0 else W + 60)
@@ -1284,7 +1518,7 @@ def fundo_supermercado(ctx, S):
             f0, f1 = p / 5, (p + 1) / 5
             yi0, yo0 = topo_in + (base_in - topo_in) * f0, topo_out + (base_out - topo_out) * f0
             yi1, yo1 = topo_in + (base_in - topo_in) * f1, topo_out + (base_out - topo_out) * f1
-            for q in range(7):
+            for q in range(4):   # longe: só cores; perto (u > 0,6): produtos com rótulo (_produto)
                 u0, u1 = (q + 0.1) / 7, (q + 0.85) / 7
                 e0, e1 = u0 ** 1.6, u1 ** 1.6
                 xa, xb = xin + (xout - xin) * e0, xin + (xout - xin) * e1
@@ -1294,14 +1528,84 @@ def fundo_supermercado(ctx, S):
                 ctx.move_to(xa, ya1 - (ya1 - ya0) * hh); ctx.line_to(xb, yb1 - (yb1 - yb0) * hh); ctx.line_to(xb, yb1); ctx.line_to(xa, ya1)
                 ctx.close_path(); ctx.set_source_rgb(*cores[(p * 3 + q + (lado > 0) * 2) % len(cores)]); ctx.fill_preserve()
                 ctx.set_source_rgb(*INK); ctx.set_line_width(2.5 + 2 * e1); ctx.stroke()
+            for q in range(2):
+                e0, e1 = (0.6 + 0.2 * q + 0.02) ** 1.6, (0.6 + 0.2 * q + 0.18) ** 1.6
+                xa, xb = xin + (xout - xin) * e0, xin + (xout - xin) * e1
+                yb = yi1 + (yo1 - yi1) * (e0 + e1) / 2; hh = ((yo1 - yo0) * e1 + (yi1 - yi0) * (1 - e1)) * 0.74
+                _produto(ctx, S, (xa + xb) / 2, yb - 4, abs(xb - xa), hh, p * 2 + q + (lado > 0) * 5)
             ctx.move_to(xin, yi1); ctx.line_to(xout, yo1); ctx.set_line_width(8); ctx.set_source_rgb(*BRANCO); ctx.stroke()
+            e = 0.9 ** 1.6   # etiqueta de preço na borda da prateleira
+            px, py = xin + (xout - xin) * e, yi1 + (yo1 - yi1) * e
+            forma(ctx, pts_ret(px - 44, py - 2, 88, 34, 6), AMARELO, sombra=False, lw=3, seed=S.seed + 530 + p)
+            texto(ctx, PRECOS[(p + (lado > 0) * 2) % len(PRECOS)], px, py + 15, 22, cor=VERMELHO, contorno=None, sombra=False)
         traco(ctx, [(xin, topo_in), (xin, base_in)], lw=5, seed=S.seed + 505 + lado)
+
+
+def _super_vivo(ctx, S):
+    """Cartazes e placa de preço balançando (por cima da camada fixa)."""
+    # cartazes de oferta pendurados nas pontas das prateleiras
+    for k, (cx, txt, cor) in enumerate(((165, "OFERTA!", VERMELHO), (915, "LEVE 3\nPAGUE 2", hexc("#1F8A4C")))):
+        bal2 = math.sin(S.tv * 1.3 + k * 2) * 0.06 if S.vida else 0
+        ctx.save(); ctx.translate(cx, 150); ctx.rotate(bal2)
+        traco(ctx, [(0, 0), (0, 70)], lw=4, amp=0)
+        if k == 0:   # estrela de oferta
+            est = [(math.cos(j * math.pi / 8) * (110 if j % 2 == 0 else 82), 160 + math.sin(j * math.pi / 8) * (110 if j % 2 == 0 else 82)) for j in range(16)]
+            forma(ctx, est, AMARELO, seed=S.seed + 540)
+            texto(ctx, txt, 0, 160, 40, cor=cor, contorno=BRANCO, lw=4, sombra=False, max_w=150)
+        else:
+            forma(ctx, pts_ret(-100, 70, 200, 150, 16), BRANCO, seed=S.seed + 541)
+            for j, ln in enumerate(txt.split("\n")):
+                texto(ctx, ln, 0, 118 + j * 54, 42, cor=cor, contorno=None, sombra=False, max_w=170)
+        ctx.restore()
     # placa de preço pendurada balançando
     bal = math.sin(S.tv * 1.6) * 0.08 if S.vida else 0
     ctx.save(); ctx.translate(540, 150); ctx.rotate(bal)
     traco(ctx, [(-60, 0), (-60, 120)], lw=4, amp=0); traco(ctx, [(60, 0), (60, 120)], lw=4, amp=0)
     forma(ctx, pts_ret(-170, 120, 340, 150, 18), AMARELO, seed=S.seed + 510)
     texto(ctx, S.opts.get("preco", "R$ 9,99"), 0, 195, 70, cor=VERMELHO, max_w=300)
+    ctx.restore()
+
+
+# easter eggs do supermercado: marcas inventadas (nada de marca real)
+ROTULOS = [("MILHO", "PIPO"), ("CAFÉ", "SEM SONO"), ("LEITE DA", "VACA FELIZ"), ("FEIJÃO", "DA VÓ"), ("PIPOCA", "PIPO"),
+           ("ÁGUA", "MOLHADA"), ("ARROZ", "SOLTINHO"), ("SUCO DE", "SEGUNDA"), ("MIOJO", "3 MIN*"), ("PÃO DE", "ONTEM"),
+           ("BOLACHA", "BISCOITO"), ("SABÃO", "CHEIROSO")]
+PRECOS = ["R$ 4,99", "R$ 0,99", "R$ 12,90", "R$ 7,49", "R$ 2,50"]
+COR_PROD = [hexc("#FFC21A"), hexc("#6B3E26"), hexc("#38B6FF"), hexc("#8A4B2A"), hexc("#FFF3D2"), hexc("#7FD3FF"), hexc("#F2F2F2"),
+            hexc("#FF8A3D"), hexc("#E8352A"), hexc("#D9A55B"), hexc("#3DAA3A"), hexc("#FF5FD2")]
+
+
+def _produto(ctx, S, x, ybase, w, h, k):
+    """Produto de prateleira com rótulo inventado (caixa, garrafa, pacote com a carinha da Pipo ou lata)."""
+    k = k % len(ROTULOS); r1, r2 = ROTULOS[k]; cor = COR_PROD[k]
+    tipo = ("pacote" if r2 == "PIPO" else ("garrafa" if k in (2, 5, 7) else ("lata" if k in (8, 11) else "caixa")))
+    w = w * 0.86; ctx.save(); ctx.translate(x, ybase)
+    if tipo == "garrafa":
+        forma(ctx, [(-w * 0.16, -h), (w * 0.16, -h), (w * 0.16, -h * 0.82), (w * 0.4, -h * 0.66), (w * 0.4, 0), (-w * 0.4, 0),
+                    (-w * 0.4, -h * 0.66), (-w * 0.16, -h * 0.82)], cor, seed=S.seed + 550 + k, sombra_off=(5, 5), lw=4)
+        forma(ctx, pts_ret(-w * 0.18, -h - 12, w * 0.36, 16, 4), VERMELHO, sombra=False, lw=3, seed=S.seed + 551 + k)
+        ly, lh, lw_ = -h * 0.55, h * 0.36, w * 0.8
+    elif tipo == "lata":
+        forma(ctx, pts_ret(-w * 0.38, -h * 0.7, w * 0.76, h * 0.7, 10), cor, seed=S.seed + 550 + k, sombra_off=(5, 5), lw=4)
+        ly, lh, lw_ = -h * 0.55, h * 0.36, w * 0.76
+    elif tipo == "pacote":
+        forma(ctx, [(-w * 0.46, -h * 0.92), (w * 0.46, -h * 0.92), (w * 0.5, -h * 0.2), (w * 0.44, 0), (-w * 0.44, 0), (-w * 0.5, -h * 0.2)],
+              cor, seed=S.seed + 550 + k, sombra_off=(5, 5), lw=4)
+        for sx in (-1, 1):   # carinha da Pipo: olhos com pálpebra cansada e bochecha
+            ex, ey, er = sx * w * 0.14, -h * 0.66, w * 0.09
+            ctx.arc(ex, ey, er, 0, 2 * math.pi); ctx.set_source_rgb(1, 1, 1); ctx.fill_preserve(); ctx.set_source_rgb(*INK); ctx.set_line_width(2.5); ctx.stroke()
+            ctx.arc(ex, ey + er * 0.2, er * 0.45, 0, 2 * math.pi); ctx.set_source_rgb(*INK); ctx.fill()
+            ctx.rectangle(ex - er, ey - er, 2 * er, er * 0.9); ctx.set_source_rgb(*escurece(cor, 0.2)); ctx.fill()
+        traco(ctx, [(-w * 0.07, -h * 0.5), (w * 0.08, -h * 0.49)], lw=3, amp=0)
+        ly, lh, lw_ = -h * 0.36, h * 0.3, w * 0.84
+    else:
+        forma(ctx, pts_ret(-w * 0.44, -h * 0.94, w * 0.88, h * 0.94, 6), cor, seed=S.seed + 550 + k, sombra_off=(5, 5), lw=4)
+        ly, lh, lw_ = -h * 0.66, h * 0.42, w * 0.8
+    _ret(ctx, -lw_ / 2, ly, lw_, lh, BRANCO)
+    ctx.rectangle(-lw_ / 2, ly, lw_, lh); ctx.set_source_rgb(*INK); ctx.set_line_width(2.5); ctx.stroke()
+    tam = min(lh * 0.36, lw_ * 0.26)
+    for j, ln in enumerate((r1, r2)):
+        texto(ctx, ln, 0, ly + lh * (0.3 + 0.42 * j), tam, cor=escurece(cor, 0.45) if sum(cor) < 2.4 else VERMELHO, contorno=None, sombra=False, max_w=lw_ * 0.92)
     ctx.restore()
 
 
@@ -1463,23 +1767,42 @@ def frente_festa(ctx, S):
 
 
 # ---------- CIDADE À NOITE VISTA DO ALTO
+NEON = [("PIPOCA", "#FF5FD2"), ("24H", "#38D1C6"), ("HOTEL", "#FFD21F"), ("BAR", "#FF3B3B"), ("CINE", "#7CF26B"), ("PIPO", "#FFC21A")]
+
+
 def fundo_cidade_noite_alto(ctx, S):
-    hz = 520
-    g = cairo.LinearGradient(0, 0, 0, hz)
-    g.add_color_stop_rgb(0, *hexc("#0B0A24")); g.add_color_stop_rgb(1, *hexc("#3B2A6B"))
-    ctx.rectangle(0, 0, W, hz); ctx.set_source(g); ctx.fill()
-    _estrelas(ctx, S, 0, 0, W, hz - 120, 45, seed=1)
-    forma(ctx, pts_elipse(860, 180, 46, 46, 16), hexc("#FFF1B8"), sombra=False, lw=4, seed=S.seed + 800)
-    g = cairo.LinearGradient(0, hz, 0, H)
-    g.add_color_stop_rgb(0, *hexc("#1A1840")); g.add_color_stop_rgb(1, *hexc("#0E0D26"))
-    ctx.rectangle(0, hz, W, H - hz); ctx.set_source(g); ctx.fill()
-    _halo(ctx, 540, hz + 40, 900, 0.18)
-    # ruas em perspectiva (linhas de luz) e carrinhos andando nelas
+    """Cidade à noite vista do alto: céu com lua e serra ao longe, rio com ponte iluminada, avenidas com rios de faróis
+    (brancos vindo, vermelhos indo), prédios variados em profundidade com janelas piscando e letreiros de neon."""
+    hz = 540
     vx, vy = 540, hz - 300
 
-    def P(u, v):   # u em [-1,1] lateral, v em [0,1] profundidade (0 = horizonte)
+    def P(u, v):   # u lateral [-1,1]; v profundidade (0 horizonte, 1 perto)
         y = hz + (H - hz) * v ** 1.6
         return vx + u * (200 + 1500 * v ** 1.6), y
+    rio = lambda v: -0.62 + 0.38 * math.sin(v * 3.2 + 0.4)   # centro do rio (u) em cada v
+    AV_U, AV_V = 0.28, 0.62
+    vp = 0.5
+    _camada_fixa(ctx, _chave(S), lambda c: _cidade_fixa(c, S, hz, P, rio, AV_U, AV_V, vp))
+    _estrelas(ctx, S, 0, 0, W, hz - 160, 50, seed=1)
+    forma(ctx, pts_elipse(860, 180, 46, 46, 16), hexc("#FFF1B8"), sombra=False, lw=4, seed=S.seed + 800)
+    _cidade_viva(ctx, S, hz, P, rio, AV_U, AV_V, vp)
+
+
+def _cidade_fixa(ctx, S, hz, P, rio, AV_U, AV_V, vp):
+    """Parte parada da cidade (vai para o cache): céu, serra, chão, ruas, avenidas, rio e ponte."""
+    g = cairo.LinearGradient(0, -MF, 0, hz)
+    g.add_color_stop_rgb(0, *hexc("#0B0A24")); g.add_color_stop_rgb(0.7, *hexc("#2E2463")); g.add_color_stop_rgb(1, *hexc("#6B3F7A"))
+    ctx.rectangle(-MF, -MF, W + 2 * MF, hz + MF); ctx.set_source(g); ctx.fill()
+    _halo(ctx, 860, 180, 220, 0.18)
+    ctx.move_to(-MF, hz)   # serra ao longe
+    for i in range(0, W + 41, 40):
+        ctx.line_to(i, hz - 40 - 34 * abs(math.sin(i / 170.0)) - 18 * math.sin(i / 53.0))
+    ctx.line_to(W + MF, hz); ctx.close_path(); ctx.set_source_rgb(*hexc("#1E1A45")); ctx.fill()
+    g = cairo.LinearGradient(0, hz, 0, H)
+    g.add_color_stop_rgb(0, *hexc("#2A2050")); g.add_color_stop_rgb(1, *hexc("#0E0D26"))
+    ctx.rectangle(-MF, hz, W + 2 * MF, H - hz + MF); ctx.set_source(g); ctx.fill()
+    _halo(ctx, 540, hz + 60, 900, 0.16)
+    # ruas (grade fraca) e as 2 avenidas
     ctx.set_line_cap(cairo.LINE_CAP_ROUND)
     for i in range(-6, 7):
         a, b = P(i / 6, 0.02), P(i / 6, 1.0)
@@ -1488,31 +1811,105 @@ def fundo_cidade_noite_alto(ctx, S):
         v = j / 13
         a, b = P(-1.2, v), P(1.2, v)
         ctx.move_to(*a); ctx.line_to(*b)
-    ctx.set_source_rgba(1.0, 0.75, 0.35, 0.55); ctx.set_line_width(4); ctx.stroke()
+    ctx.set_source_rgba(1.0, 0.75, 0.35, 0.35); ctx.set_line_width(3); ctx.stroke()
+    # rio com reflexos
+    vs = [j / 40 for j in range(41)]
+    ctx.move_to(*P(rio(0) - 0.05, 0))
+    for v in vs:
+        ctx.line_to(*P(rio(v) - 0.05 - 0.07 * v, v))
+    for v in reversed(vs):
+        ctx.line_to(*P(rio(v) + 0.05 + 0.07 * v, v))
+    ctx.close_path(); ctx.set_source_rgb(*hexc("#16245A")); ctx.fill_preserve()
+    ctx.set_source_rgba(0.5, 0.6, 1.0, 0.5); ctx.set_line_width(3); ctx.stroke()
+    for (a, b, w) in ((P(AV_U, 0.0), P(AV_U + 0.05, 1.0), 26), (P(-1.3, AV_V), P(1.3, AV_V), 22)):
+        ctx.move_to(*a); ctx.line_to(*b); ctx.set_source_rgba(1.0, 0.7, 0.3, 0.25); ctx.set_line_width(w * 2.2); ctx.stroke()
+        ctx.move_to(*a); ctx.line_to(*b); ctx.set_source_rgb(*hexc("#2B2440")); ctx.set_line_width(w); ctx.stroke()
+    # ponte sobre o rio, com postes acesos
+    c = rio(vp)
+    a, b = P(c - 0.3, vp), P(c + 0.3, vp)
+    for k in range(4):
+        xa = a[0] + (b[0] - a[0]) * (k + 0.5) / 4
+        ctx.arc(xa, a[1] + 26, (b[0] - a[0]) / 8.5, math.pi, 2 * math.pi)
+        ctx.set_source_rgb(*hexc("#3A3260")); ctx.set_line_width(5); ctx.stroke()
+    traco(ctx, [a, b], lw=14, cor=hexc("#4A3F78"), amp=0); traco(ctx, [a, b], lw=3, cor=INK, amp=0)
+    for k in range(7):
+        xa, ya = a[0] + (b[0] - a[0]) * k / 6, a[1] + (b[1] - a[1]) * k / 6
+        ctx.new_sub_path(); ctx.arc(xa, ya - 10, 4, 0, 2 * math.pi)
+    ctx.set_source_rgb(1, 0.85, 0.5); ctx.fill()
+
+
+def _cidade_viva(ctx, S, hz, P, rio, AV_U, AV_V, vp):
+    """Parte que se mexe: brilho no rio, faróis nas avenidas, prédios com janelas e letreiros piscando."""
+    r = random.Random(S.seed + 3)
+    for k in range(26):
+        v = (r.random() + (S.tv * 0.02 if S.vida else 0)) % 1
+        x, y = P(rio(v) + r.uniform(-0.05, 0.05), v)
+        wv = 6 + 30 * v ** 1.6
+        a = 0.35 + 0.35 * math.sin(S.tv * 3 + k)
+        ctx.move_to(x - wv, y); ctx.line_to(x + wv, y)
+        ctx.set_source_rgba(1.0, 0.85, 0.5, max(0, a)); ctx.set_line_width(1 + 3 * v); ctx.stroke()
+    # faróis nas avenidas: brancos vindo (para a câmera), vermelhos indo
+    for k in range(40):
+        ida = k % 2
+        ph = (k * 0.618) % 1
+        v = (ph + (S.tv * 0.06 * (1 if ida else -1) if S.vida else 0)) % 1
+        if k < 26:
+            x, y = P(AV_U + 0.05 * v + (0.012 if ida else -0.012), v)
+        else:
+            u = ((ph * 2.6 + (S.tv * 0.1 * (1 if ida else -1) if S.vida else 0)) % 2.6) - 1.3
+            x, y = P(u, AV_V + (0.006 if ida else -0.006))
+            v = AV_V
+        rr = 2 + 5 * v ** 1.6
+        cor = (1, 1, 0.85) if not ida else (1, 0.25, 0.2)
+        g2 = cairo.RadialGradient(x, y, 0, x, y, rr * 4)
+        g2.add_color_stop_rgba(0, *cor, 0.6); g2.add_color_stop_rgba(1, *cor, 0)
+        ctx.set_source(g2); ctx.arc(x, y, rr * 4, 0, 2 * math.pi); ctx.fill()
+        ctx.arc(x, y, rr, 0, 2 * math.pi); ctx.set_source_rgb(*cor); ctx.fill()
+    # prédios variados, do fundo para a frente (fora do rio e das avenidas)
     r = random.Random(S.seed + 9)
-    # prédios (topos) com janelas que acendem e apagam
-    for k in range(70):
-        u, v = r.uniform(-1.1, 1.1), r.uniform(0.05, 1.0)
+    predios = []
+    while len(predios) < 130:
+        u, v = r.uniform(-1.15, 1.15), r.uniform(0.04, 1.0)
+        if abs(u - rio(v)) < 0.11 + 0.08 * v or abs(u - AV_U - 0.05 * v) < 0.07 or abs(v - AV_V) < 0.04 or abs(v - vp) < 0.03:
+            continue
+        predios.append((v, u, r.random(), r.random(), r.random(), r.randint(0, 99)))
+    predios.sort()
+    neon_i = 0
+    for v, u, ra, rb, rc, ri in predios:
         x, y = P(u, v)
         s = 0.25 + v ** 1.6 * 1.6
-        bw, bh = r.uniform(40, 80) * s, r.uniform(60, 180) * s
-        ctx.rectangle(x - bw / 2, y - bh, bw, bh); ctx.set_source_rgb(*mix(hexc("#2B2766"), hexc("#141233"), r.random())); ctx.fill()
-        for j in range(4):
-            on = (int(S.tv * 1.3 + k * 0.37 + j * 0.71) * 7 + k + j) % 5 > 1
-            if on:
-                ctx.rectangle(x - bw / 2 + bw * (0.15 + 0.4 * (j % 2)), y - bh + bh * (0.15 + 0.4 * (j // 2)), bw * 0.25, bh * 0.2)
-        ctx.set_source_rgb(*hexc("#FFD36A")); ctx.fill()
-    ctx.set_source_rgb(1, 1, 0.85)
-    for k in range(22):   # faróis andando pelas ruas
-        lado = k % 2
-        if lado:
-            i = r.randint(-6, 6); v = (r.random() + S.tv * r.uniform(0.03, 0.08)) % 1
-            x, y = P(i / 6 + 0.015, v)
+        bw = (40 + 50 * ra) * s
+        bh = (70 + 130 * rb + (220 if ri % 11 == 0 else 0)) * s
+        base = mix(hexc("#2B2766"), hexc("#141233"), rc)
+        base = mix(base, hexc("#3B2A6B"), 0.5 * (1 - v))   # névoa ao longe
+        lado = 0.28 * bw
+        ctx.move_to(x + bw / 2, y); ctx.line_to(x + bw / 2 + lado, y - lado * 0.5); ctx.line_to(x + bw / 2 + lado, y - bh - lado * 0.5)
+        ctx.line_to(x + bw / 2, y - bh); ctx.close_path(); ctx.set_source_rgb(*escurece(base, 0.35)); ctx.fill()
+        ctx.move_to(x - bw / 2, y - bh); ctx.line_to(x + bw / 2, y - bh); ctx.line_to(x + bw / 2 + lado, y - bh - lado * 0.5)
+        ctx.line_to(x - bw / 2 + lado, y - bh - lado * 0.5); ctx.close_path(); ctx.set_source_rgb(*clareia(base, 0.15)); ctx.fill()
+        ctx.rectangle(x - bw / 2, y - bh, bw, bh); ctx.set_source_rgb(*base); ctx.fill_preserve()
+        if v > 0.35:
+            ctx.set_source_rgba(*INK, 0.8); ctx.set_line_width(1 + 2 * v); ctx.stroke()
         else:
-            j = r.randint(1, 13); u = ((r.random() + S.tv * r.uniform(0.05, 0.12)) % 2.4) - 1.2
-            x, y = P(u, j / 13)
-        ctx.new_sub_path(); ctx.arc(x, y, 3 + 5 * (y - hz) / (H - hz), 0, 2 * math.pi)
-    ctx.fill()
+            ctx.new_path()
+        if ri % 5 == 0 and bh > 60:   # torre com antena e luz vermelha piscando
+            ctx.move_to(x, y - bh); ctx.line_to(x, y - bh - 40 * s); ctx.set_source_rgb(*hexc("#5A5490")); ctx.set_line_width(max(1, 3 * s)); ctx.stroke()
+            if int(S.tv * 1.5 + ri) % 2 == 0 or not S.vida:
+                ctx.arc(x, y - bh - 40 * s, max(2, 4 * s), 0, 2 * math.pi); ctx.set_source_rgb(1, 0.2, 0.2); ctx.fill()
+        cols, rows = (3 if bw > 50 else 2), max(2, int(bh / (22 * s + 8)))
+        for j in range(cols * rows):
+            cx_, cy_ = j % cols, j // cols
+            on = (int(S.tv * 0.9 + ri * 0.37 + j * 0.71) * 7 + ri + j) % 5 > 1
+            if on:
+                ctx.rectangle(x - bw / 2 + bw * (0.12 + 0.8 * cx_ / cols), y - bh + bh * (0.08 + 0.86 * cy_ / rows), bw * 0.5 / cols, bh * 0.5 / rows)
+        ctx.set_source_rgb(*mix(hexc("#FFD36A"), hexc("#8A7AB0"), 0.6 * (1 - v))); ctx.fill()
+        if v > 0.62 and ri % 3 == 0 and neon_i < len(NEON):   # letreiro de neon no telhado
+            txt, cn = NEON[neon_i]; neon_i += 1
+            on = (int(S.tv * 2 + ri) % 5 != 0) or not S.vida
+            tam = 22 * s
+            if on:
+                _halo(ctx, x, y - bh - tam, tam * 3, 0.25)
+            texto(ctx, txt, x, y - bh - tam * 0.9, tam, cor=hexc(cn) if on else escurece(hexc(cn), 0.6), contorno=INK, lw=max(2, tam * 0.1), sombra=False)
 
 
 # ---------- TERRA VISTA DO ESPAÇO À NOITE
@@ -1622,43 +2019,119 @@ def frente_hospital(ctx, S):
 
 
 # ---------- ACADEMIA
+def _halter(ctx, x, y, s, cor, seed):
+    traco(ctx, [(x - 30 * s, y), (x + 30 * s, y)], lw=10 * s, amp=0)
+    for sx in (-1, 1):
+        pts = [(x + sx * 36 * s + math.cos(a) * 16 * s, y + math.sin(a) * 26 * s) for a in [j * math.pi / 3 for j in range(6)]]
+        forma(ctx, pts, cor, sombra=False, lw=3, seed=seed + sx)
+
+
+def _silhueta_malhando(ctx, S, x, chao, s, cor, tipo, seed):
+    """Gente malhando ao fundo: 'rosca' (bíceps em pé), 'corre' (na esteira) ou 'supino' (deitada no banco)."""
+    t = S.tv + seed * 0.37
+    ctx.set_source_rgba(*cor, 0.9)
+    if tipo == "supino":
+        ctx.rectangle(x - 150 * s, chao - 40 * s, 300 * s, 50 * s); ctx.fill()
+        ctx.arc(x - 175 * s, chao - 30 * s, 34 * s, 0, 2 * math.pi); ctx.fill()
+        up = (0.5 + 0.5 * math.sin(t * 2.2)) * 70 * s
+        yb = chao - 120 * s - up
+        traco(ctx, [(x - 90 * s, chao - 40 * s), (x - 90 * s, yb)], lw=22 * s, cor=cor, amp=0)
+        traco(ctx, [(x - 40 * s, chao - 40 * s), (x - 40 * s, yb)], lw=22 * s, cor=cor, amp=0)
+        traco(ctx, [(x - 200 * s, yb), (x + 70 * s, yb)], lw=10 * s, cor=CINZA, amp=0)
+        for bx in (-200, 70):
+            forma(ctx, pts_ret(x + bx * s - 12 * s, yb - 50 * s, 24 * s, 100 * s, 6 * s), escurece(cor, 0.2), sombra=False, lw=3, seed=seed + bx)
+        return
+    b = abs(math.sin(t * 7)) * 8 * s if tipo == "corre" else 0
+    ctx.new_sub_path(); ctx.arc(x, chao - 330 * s - b, 36 * s, 0, 2 * math.pi)
+    ctx.rectangle(x - 45 * s, chao - 290 * s - b, 90 * s, 170 * s)
+    for sx in (-1, 1):
+        ang = math.sin(t * 7 + (sx > 0) * math.pi) * (0.5 if tipo == "corre" else 0)
+        ctx.save(); ctx.translate(x + sx * 22 * s, chao - 125 * s - b); ctx.rotate(ang)
+        ctx.rectangle(-14 * s, 0, 28 * s, 125 * s); ctx.restore()
+    ctx.fill()
+    if tipo == "rosca":
+        for sx in (-1, 1):
+            k = 0.5 + 0.5 * math.sin(t * 2.4 + (sx > 0) * math.pi)
+            ex, ey = x + sx * 55 * s, chao - 200 * s
+            hx, hy = ex + sx * 20 * s, ey - 90 * s * k + 30 * s * (1 - k)
+            traco(ctx, [(x + sx * 45 * s, chao - 280 * s), (ex, ey), (hx, hy)], lw=22 * s, cor=cor, amp=0)
+            _halter(ctx, hx, hy, s * 0.8, escurece(cor, 0.3), seed + sx)
+
+
 def fundo_academia(ctx, S):
+    """Academia de bairro: espelho grande com gente malhando refletida, fila de esteiras, halteres no suporte,
+    banco de supino com barra, anilhas, placa SEM DOR SEM GANHO (opção 'cartaz')."""
+    _camada_fixa(ctx, _chave(S), lambda c: _academia_fixa(c, S))
+    _academia_viva(ctx, S)
+
+
+def _academia_fixa(ctx, S):
+    """Parte parada da academia (cache): paredes, piso, espelho, placa, halteres, banco, anilhas, esteiras."""
     bg, bg2, a1, a2, a3 = S.pal
     ctx.set_source_rgb(*bg); ctx.paint()
-    _ret(ctx, 0, 1380, W, H, hexc("#2B2440"))
-    for k in range(8):
-        traco(ctx, [(k * 160, 1380), (k * 160 - 120, H)], lw=4, alpha=0.3, seed=S.seed + 1100 + k)
-    # espelho
-    forma(ctx, pts_ret(60, 240, 560, 520, 10), CINZA, seed=S.seed + 1101)
-    forma(ctx, pts_ret(76, 256, 528, 488, 6), clareia(VIDRO_CLARO, 0.2), sombra=False, lw=4, seed=S.seed + 1102)
-    for k in range(2):
-        ctx.move_to(160 + k * 160, 256); ctx.line_to(260 + k * 160, 256); ctx.line_to(140 + k * 160, 744); ctx.line_to(40 + k * 160 + 36, 744)
-        ctx.close_path()
-    ctx.set_source_rgba(1, 1, 1, 0.35); ctx.fill()
-    # cartaz
-    forma(ctx, pts_ret(700, 250, 300, 190, 10), a1, seed=S.seed + 1103)
-    texto(ctx, S.opts.get("cartaz", "FOCO!"), 850, 345, 70, cor=BRANCO, max_w=260)
-    # suporte de halteres
-    forma(ctx, pts_ret(650, 820, 380, 24, 6), CINZA, seed=S.seed + 1104)
-    forma(ctx, pts_ret(650, 960, 380, 24, 6), CINZA, seed=S.seed + 1105)
-    for row, y in enumerate((800, 940)):
+    _ret(ctx, 0, 0, W, 150, escurece(bg, 0.3))   # faixa escura no alto da parede
+    _ret(ctx, 0, 1000, W, 380, escurece(bg, 0.15))
+    traco(ctx, [(-10, 1000), (W + 10, 1000)], lw=5, alpha=0.5, seed=S.seed + 1099)
+    _ret(ctx, 0, 1380, W, H, hexc("#24202F"))   # piso de borracha em placas
+    for k in range(9):
+        traco(ctx, [(k * 140 - 20, 1380), (k * 170 - 260, H)], lw=3, alpha=0.4, seed=S.seed + 1100 + k)
+    for y in (1470, 1590, 1740):
+        traco(ctx, [(-10, y), (W + 10, y)], lw=3, alpha=0.4, seed=S.seed + 1100 + y)
+    # espelho grande com o reflexo de gente malhando
+    forma(ctx, pts_ret(40, 190, 620, 640, 8), CINZA, seed=S.seed + 1101)
+    forma(ctx, pts_ret(56, 206, 588, 608, 4), clareia(VIDRO_CLARO, 0.15), sombra=False, lw=4, seed=S.seed + 1102)
+    _ret(ctx, 56, 640, 588, 180, mix(VIDRO_CLARO, escurece(bg, 0.2), 0.45))
+    # placa SEM DOR SEM GANHO
+    forma(ctx, pts_ret(700, 220, 320, 250, 12), VERMELHO, seed=S.seed + 1103)
+    forma(ctx, pts_ret(716, 236, 288, 218, 8), AMARELO, sombra=False, lw=4, seed=S.seed + 1104)
+    linhas = S.opts.get("cartaz", "SEM DOR\nSEM GANHO").split("\n")
+    for j, ln in enumerate(linhas):
+        texto(ctx, ln, 860, 345 + (j - (len(linhas) - 1) / 2) * 76, 62, cor=VERMELHO, contorno=INK, lw=4, sombra=False, max_w=270)
+    # suporte de halteres (3 andares, do leve ao pesado)
+    forma(ctx, [(680, 560), (1050, 560), (1050, 590), (680, 590)], CINZA, seed=S.seed + 1105)
+    for row, y in enumerate((620, 730, 840)):
+        forma(ctx, pts_ret(680, y + 30, 370, 20, 6), CINZA, seed=S.seed + 1106 + row)
         for k in range(4):
-            x = 690 + k * 90
-            traco(ctx, [(x - 26, y), (x + 26, y)], lw=10, seed=S.seed + 1106 + k + row * 5)
-            for sx in (-1, 1):
-                forma(ctx, pts_ret(x + sx * 30 - 11, y - 22 - k * 3, 22, 44 + k * 6, 6), [a2, a3, INK, a1][k], sombra=False, lw=3,
-                      seed=S.seed + 1112 + k + sx + row * 10)
-    traco(ctx, [(670, 844), (670, 1380)], lw=10, seed=S.seed + 1120); traco(ctx, [(1010, 844), (1010, 1380)], lw=10, seed=S.seed + 1121)
-    _ventilador(ctx, S, 540, 110, 0.9)
-    _relogio(ctx, S, 950, 600, 50)
-    # esteira (base atrás, console na frente)
+            _halter(ctx, 730 + k * 92, y + 8 - row * 2, 0.85 + 0.12 * row, [a2, a1, hexc("#3A3348"), a3][(k + row) % 4], S.seed + 1110 + k + row * 10)
+    traco(ctx, [(690, 590), (690, 1000)], lw=10, seed=S.seed + 1120); traco(ctx, [(1040, 590), (1040, 1000)], lw=10, seed=S.seed + 1121)
+    # banco de supino com a barra no cavalete e alguém treinando
+    forma(ctx, pts_ret(720, 1270, 320, 44, 16), hexc("#3A3348"), seed=S.seed + 1122)
+    for lx in (760, 1000):
+        traco(ctx, [(lx, 1314), (lx, 1380)], lw=12, seed=S.seed + 1123 + lx)
+    for ux in (735, 1025):
+        traco(ctx, [(ux, 1380), (ux, 1110)], lw=14, cor=CINZA, seed=S.seed + 1125 + ux)
+    for k, (ax, r) in enumerate(((1060, 70), (1060, 52))):   # anilhas encostadas
+        forma(ctx, pts_elipse(ax - k * 30, 1380 - r, 18, r, 14), hexc("#2B2440"), sombra=False, lw=4, seed=S.seed + 1127 + k)
+    forma(ctx, pts_elipse(640, 1355, 30, 26, 12), a1, seed=S.seed + 1129, sombra_off=(4, 4))   # kettlebell
+    traco(ctx, [(620, 1335), (640, 1305), (660, 1335)], lw=8, amp=0)
+    # fila de esteiras: a do fundo com alguém correndo, a da frente (âncora) com o console na camada da frente
+    forma(ctx, [(130, 1280), (330, 1280), (350, 1320), (110, 1320)], hexc("#2B2440"), seed=S.seed + 1131)
+    traco(ctx, [(140, 1300), (165, 1120)], lw=10, cor=CINZA, amp=0)
+    forma(ctx, pts_ret(120, 1090, 120, 44, 10), hexc("#2B2440"), sombra=False, lw=4, seed=S.seed + 1132)
     forma(ctx, [(120, 1360), (560, 1360), (600, 1430), (80, 1430)], hexc("#2B2440"), seed=S.seed + 1122)
+
+
+def _academia_viva(ctx, S):
+    """Gente malhando (no espelho, no supino, na esteira do fundo), lona da esteira, relógio e ventilador."""
+    bg = S.pal[0]
+    ctx.save(); ctx.rectangle(56, 206, 588, 608); ctx.clip()
+    _silhueta_malhando(ctx, S, 200, 760, 0.95, mix(escurece(bg, 0.4), VIDRO_CLARO, 0.35), "rosca", 1)
+    _silhueta_malhando(ctx, S, 470, 760, 0.85, mix(escurece(bg, 0.4), VIDRO_CLARO, 0.45), "corre", 2)
+    ctx.restore()
+    for k in range(2):
+        ctx.move_to(170 + k * 170, 206); ctx.line_to(260 + k * 170, 206); ctx.line_to(150 + k * 170, 814); ctx.line_to(60 + k * 170, 814)
+        ctx.close_path()
+    ctx.set_source_rgba(1, 1, 1, 0.25); ctx.fill()
+    _relogio(ctx, S, 870, 100, 44)
+    _silhueta_malhando(ctx, S, 900, 1268, 0.8, escurece(bg, 0.55), "supino", 3)
+    _silhueta_malhando(ctx, S, 250, 1285, 0.6, escurece(bg, 0.5), "corre", 4)
     rol = (S.tv * 260) % 60 if S.vida else 0
     ctx.save(); ctx.rectangle(110, 1360, 470, 60); ctx.clip()
     for k in range(10):
         x = 100 + k * 60 + rol
         ctx.move_to(x, 1366); ctx.line_to(x - 10, 1424)
     ctx.set_source_rgba(1, 1, 1, 0.35); ctx.set_line_width(5); ctx.stroke(); ctx.restore()
+    _ventilador(ctx, S, 540, 90, 0.8)
 
 
 def frente_academia(ctx, S):
@@ -1886,3 +2359,92 @@ def desenha_porta(ctx, st, t, pal, seed):
     dentro = hexc(st["dentro"]) if st.get("dentro") else hexc("#FFE7B0")
     _porta_desenho(ctx, 0, 0, w, h, float(st.get("abre", 0)), cor, dentro, seed)
     return {"corpo": (-w / 2, -h / 2, w / 2, h / 2)}
+
+
+# ============================ chuva em qualquer cenário ============================
+# cenários internos: "chuva": true continua sendo gotas escorrendo na janela; "chuva": "tela" força a chuva na tela toda
+CHUVA_JANELA = {"sala", "escritorio", "quarto", "cozinha", "sala_natal", "hospital", "onibus", "carro"}
+
+
+def chuva_tela(ctx, t, forca=1.0, seed=1, vida=True):
+    """Chuva caindo por cima do cenário e atrás dos personagens: céu fechando, 2 profundidades de gotas e respingos no chão."""
+    f = clamp(forca, 0, 2); tv = t if vida else 0.0
+    if f <= 0:
+        return
+    ctx.save()
+    ctx.set_source_rgba(0.22, 0.27, 0.40, 0.10 + 0.06 * f); ctx.paint()   # dia fechado
+    ctx.set_line_cap(cairo.LINE_CAP_ROUND)
+    r = random.Random(7 + seed)
+    for n, lw, a, vel, ln in ((int(70 * f), 3, 0.28, (1100, 1500), 40), (int(45 * f), 5, 0.5, (1700, 2300), 70)):
+        for i in range(n):
+            x0 = r.uniform(-250, W + 250); v = r.uniform(*vel); ph = r.uniform(0, H + 200)
+            y0 = (ph + tv * v) % (H + 200) - 100
+            ctx.move_to(x0 - y0 * 0.16, y0); ctx.line_to(x0 - y0 * 0.16 - ln * 0.17, y0 + ln)
+        ctx.set_source_rgba(0.86, 0.93, 1.0, a); ctx.set_line_width(lw); ctx.stroke()
+    for i in range(int(16 * f)):   # respingos: anel achatado que abre e some
+        per = r.uniform(0.35, 0.6); u = ((tv + r.uniform(0, per)) % per) / per
+        x, y = r.uniform(30, W - 30), r.uniform(1380, 1880)
+        ctx.save(); ctx.translate(x, y); ctx.scale(1, 0.3); ctx.arc(0, 0, 8 + 26 * u, 0, 2 * math.pi); ctx.restore()
+        ctx.set_source_rgba(0.9, 0.95, 1.0, 0.55 * (1 - u)); ctx.set_line_width(3); ctx.stroke()
+    ctx.restore()
+
+
+# ============================ elementos soltos: árvore de Natal e casa ============================
+def _estado_el(st, pal, t, seed):
+    return Estado("_elemento", pal, t, {"luz": st.get("luz", "dia"), "vida": st.get("vida", True)}, seed)
+
+
+def desenha_arvore_el(ctx, st, t, pal, seed):
+    """Árvore de Natal solta (a mesma da sala_natal): luzes correndo, estrela com halo. altura (px), luzes 0..1."""
+    S = _estado_el(st, pal, t, seed)
+    alt = st.get("altura", 560)
+    topo_rel = 60 + 0.54 * alt + 0.42 * alt + 44
+    base = topo_rel / 2
+    _arvore_natal(ctx, S, 0, base, alt, seed=seed % 7)
+    acesa = clamp(st.get("luzes", 1.0))
+    if acesa > 0.01:
+        ctx.push_group()
+        for f in S.apos:
+            f(ctx)
+        ctx.pop_group_to_source(); ctx.paint_with_alpha(acesa)
+    w = alt * 0.42
+    return {"corpo": (-w - 10, -base, w + 10, base)}
+
+
+def desenha_casa_el(ctx, st, t, pal, seed):
+    """Casa solta (fachada da casa_natal_fora): cor (parede), telhado, luzes 0..1 (pisca-pisca acendendo da esquerda
+    para a direita e janela acendendo), natal (true: pisca-pisca e guirlanda)."""
+    S = _estado_el(st, pal, t, seed)
+    bg, bg2, a1, a2, a3 = pal
+    w, h = st.get("largura", 520), st.get("altura", 460)
+    cor = hexc(st["cor"]) if st.get("cor") else (a3 if sum(a3) < 2.6 else mix(a3, bg, 0.35))
+    tel = hexc(st["telhado"]) if st.get("telhado") else escurece(bg, 0.25)
+    luzes = clamp(st.get("luzes", 1.0)); natal = st.get("natal", True)
+    x0, y0 = -w / 2, -h / 2 + h * 0.3   # parede começa abaixo do telhado
+    forma(ctx, pts_ret(w * 0.18, -h / 2 + h * 0.02, w * 0.12, h * 0.26, 6), escurece(tel, 0.15), seed=seed + 1)   # chaminé
+    forma(ctx, pts_ret(x0, y0, w, h / 2 - y0, 8), cor, seed=seed + 2, sombreado=0.05)
+    forma(ctx, [(x0 - 40, y0 + 20), (-x0 + 40, y0 + 20), (0, -h / 2)], tel, seed=seed + 3)
+    dw, dh = w * 0.26, h * 0.42
+    _porta_desenho(ctx, w * 0.16, h / 2 - dh / 2, dw, dh, 0, a1, hexc("#FFE7B0"), seed + 4)
+    jx, jy, jw, jh = x0 + w * 0.1, y0 + h * 0.12, w * 0.3, h * 0.28
+    forma(ctx, pts_ret(jx - 12, jy - 12, jw + 24, jh + 24, 6), BRANCO, seed=seed + 5)
+    _ret(ctx, jx, jy, jw, jh, mix(hexc("#2B2766"), hexc("#FFD98A"), luzes))
+    if luzes > 0.05:
+        _halo(ctx, jx + jw / 2, jy + jh / 2, jw * 1.2, 0.3 * luzes)
+    traco(ctx, [(jx + jw / 2, jy), (jx + jw / 2, jy + jh)], lw=7, cor=BRANCO, amp=0)
+    ctx.rectangle(jx, jy, jw, jh); ctx.set_line_width(5); ctx.set_source_rgb(*INK); ctx.stroke()
+    if natal:
+        gx, gy = w * 0.16, h / 2 - dh * 0.78
+        forma(ctx, pts_elipse(gx, gy, dw * 0.22, dw * 0.22, 16), hexc("#1F8A4C"), sombra=False, lw=5, seed=seed + 6, reto=False)
+        ctx.arc(gx, gy, dw * 0.1, 0, 2 * math.pi); ctx.set_source_rgb(*a1); ctx.fill()
+        pts = _fio((x0 - 30, y0 + 16), (0, -h / 2 + 8), 9, cai=8) + _fio((0, -h / 2 + 8), (-x0 + 30, y0 + 16), 9, cai=8) \
+            + _fio((x0 + 6, y0 + 30), (-x0 - 6, y0 + 30), 13, cai=28)
+        pts.sort(key=lambda p: p[0])
+        k = int(round(len(pts) * luzes))
+        if k:
+            _lampadas(ctx, S, pts[:k], r=9, ritmo=5, glow=0.35)
+        for x, y in pts[k:]:   # apagadas
+            ctx.new_sub_path(); ctx.arc(x, y, 8, 0, 2 * math.pi)
+        if k < len(pts):
+            ctx.set_source_rgb(*hexc("#5B5670")); ctx.fill_preserve(); ctx.set_source_rgb(*INK); ctx.set_line_width(2.5); ctx.stroke()
+    return {"corpo": (x0 - 40, -h / 2, -x0 + 40, h / 2)}

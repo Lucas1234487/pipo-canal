@@ -122,23 +122,38 @@ def _corpo_espiga():
     return pts
 
 
-def _bracos(ctx, st, seed, cor):
+def _bracos(ctx, st, seed, cor, ombro=(106, -10), dy=0):
+    """Braços da Pipo (espiga e pipoca). ombro = (x, y) do ombro direito; dy desce o celular (pipoca é mais baixa).
+    segura: "celular" (duas mãos no celular) · aponta_para [dx, dy] ou pose "apontando": um braço aponta, o outro balança."""
+    ox, oy = ombro
     segura = st.get("segura")
     if segura == "celular":
         for sx in (-1, 1):
-            traco(ctx, [(sx * 104, -10), (sx * 92, 50), (sx * 44, 74)], lw=13, seed=seed + sx)
+            traco(ctx, [(sx * ox, oy), (sx * (ox - 14), (oy + 74 + dy) / 2 + 18), (sx * 44, 74 + dy)], lw=13, seed=seed + sx)
         # celular visto por trás (a tela ilumina o rosto)
-        ctx.save(); ctx.translate(0, 40); ctx.rotate(-0.08)
+        ctx.save(); ctx.translate(0, 40 + dy); ctx.rotate(-0.08)
         forma(ctx, pts_ret(-62, -100, 124, 200, 20), hexc("#3A2E52"), sombra=True, lw=5, seed=seed + 5, sombra_off=(6, 8))
         ctx.arc(-30, -72, 10, 0, 2 * math.pi); ctx.set_source_rgb(*INK); ctx.fill()
         ctx.restore()
         for sx in (-1, 1):
-            forma(ctx, pts_elipse(sx * 48, 74, 24, 22, 12), cor, sombra=False, lw=5, seed=seed + 7 + sx)
-    else:
-        bal = math.sin(st["_t"] * 2.4) * 6
-        for sx in (-1, 1):
-            traco(ctx, [(sx * 106, -10), (sx * 150, 50 + bal), (sx * 158, 110 + bal)], lw=13, seed=seed + sx)
-            forma(ctx, pts_elipse(sx * 160, 118 + bal, 24, 22, 12), cor, sombra=False, lw=5, seed=seed + 9 + sx)
+            forma(ctx, pts_elipse(sx * 48, 74 + dy, 24, 22, 12), cor, sombra=False, lw=5, seed=seed + 7 + sx)
+        return
+    ap = st.get("aponta_para") or ([1, -0.35] if st.get("pose") == "apontando" else None)
+    lado = (1 if ap[0] >= 0 else -1) if ap else 0
+    bal = math.sin(st["_t"] * 2.4) * 6
+    for sx in (-1, 1):
+        if sx == lado:
+            n = math.hypot(*ap) or 1; ux, uy = ap[0] / n, ap[1] / n
+            sxp, syp = sx * ox, oy
+            hx, hy = sxp + ux * 165, syp + uy * 165
+            traco(ctx, [(sxp, syp), (sxp + ux * 85 - uy * 10 * sx, syp + uy * 85 + ux * 10 * sx), (hx, hy)], lw=13, seed=seed + sx)
+            ctx.save(); ctx.translate(hx, hy); ctx.rotate(math.atan2(uy, ux))
+            forma(ctx, pts_ret(4, -9, 50, 18, 9), cor, sombra=False, lw=5, seed=seed + 12)   # indicador
+            forma(ctx, pts_elipse(0, 0, 25, 23, 12), cor, sombra=False, lw=5, seed=seed + 9 + sx)
+            ctx.restore()
+        else:
+            traco(ctx, [(sx * ox, oy), (sx * (ox + 44), oy + 60 + bal), (sx * (ox + 52), oy + 120 + bal)], lw=13, seed=seed + sx)
+            forma(ctx, pts_elipse(sx * (ox + 54), oy + 128 + bal, 24, 22, 12), cor, sombra=False, lw=5, seed=seed + 9 + sx)
 
 
 def desenha_pipo_espiga(ctx, st, t, seed):
@@ -236,7 +251,7 @@ def desenha_pipoca(ctx, st, t, seed):
     up = 18 + 26 * sob
     traco(ctx, [(22, -174 - up * 0.5), (54, -184 - up), (84, -174 - up * 0.6)], lw=7, seed=seed + 31)
     boca(ctx, st.get("boca", "o"), 4, -30, 1.0, seed + 32)
-    _bracos(ctx, dict(st, segura=None), seed, PIPOCA)
+    _bracos(ctx, st, seed, PIPOCA, ombro=(176, 10), dy=60)   # braços da pipoca: segura e aponta como a espiga
     return {"corpo": (-250, -320, 250, 200), "rosto": (-100, -210, 100, -10)}
 
 
@@ -394,15 +409,26 @@ def _tela(ctx, st, x, y, w, h, t, pal, seed):
     ctx.restore()
 
 
+def _botoes_laterais(ctx, x0, x1, y0, esc, cor, seed):
+    """Botões na lateral de um smartphone moderno (volume à esquerda, power à direita), sem marca."""
+    for k, (x, y, hh) in enumerate(((x0 - 7 * esc, y0, 60), (x0 - 7 * esc, y0 + 80 * esc, 60), (x1 - 3 * esc, y0 + 20 * esc, 100))):
+        forma(ctx, pts_ret(x, y, 10 * esc, hh * esc, 4 * esc), cor, sombra=False, lw=3, seed=seed + k)
+
+
 def desenha_celular(ctx, st, t, pal, seed):
-    w, h = 340, 660
-    forma(ctx, pts_ret(-w / 2, -h / 2, w, h, 46), hexc("#2B2238"), sombreado=0.06, seed=seed, lw=LW + 1)
-    sx, sy, sw, sh = -w / 2 + 18, -h / 2 + 46, w - 36, h - 92
+    """Smartphone moderno genérico (sem logo): cantos bem redondos, bordas finas, ilha no topo e barrinha embaixo."""
+    w, h = 330, 676
+    corpo = hexc(st.get("cor_corpo", "#2B2238"))
+    _botoes_laterais(ctx, -w / 2, w / 2, -h / 2 + 130, 1.0, escurece(corpo, 0.1), seed + 20)
+    forma(ctx, pts_ret(-w / 2, -h / 2, w, h, 64, 6), corpo, sombreado=0.06, seed=seed, lw=LW + 1)
+    sx, sy, sw, sh = -w / 2 + 13, -h / 2 + 13, w - 26, h - 26
     _tela(ctx, st, sx, sy, sw, sh, t, pal, seed + 3)
-    path_suave(ctx, pts_ret(sx, sy, sw, sh, 22)); ctx.set_line_width(4); ctx.set_source_rgb(*INK); ctx.stroke()
-    forma(ctx, pts_ret(-40, -h / 2 + 18, 80, 14, 7), INK, sombra=False, lw=0, seed=seed + 4)
+    path_suave(ctx, pts_ret(sx, sy, sw, sh, 52, 6)); ctx.set_line_width(4); ctx.set_source_rgb(*INK); ctx.stroke()
+    path_suave(ctx, pts_ret(-48, sy + 16, 96, 28, 14)); ctx.set_source_rgb(0.04, 0.03, 0.06); ctx.fill()   # ilha
+    ctx.arc(28, sy + 30, 6, 0, 2 * math.pi); ctx.set_source_rgb(0.15, 0.17, 0.3); ctx.fill()
+    path_suave(ctx, pts_ret(-58, sy + sh - 20, 116, 8, 4)); ctx.set_source_rgba(1, 1, 1, 0.85); ctx.fill()   # barrinha
     # reflexo
-    ctx.save(); path_suave(ctx, pts_ret(sx, sy, sw, sh, 22)); ctx.clip()
+    ctx.save(); path_suave(ctx, pts_ret(sx, sy, sw, sh, 52, 6)); ctx.clip()
     ctx.move_to(sx + sw * 0.55, sy); ctx.line_to(sx + sw * 0.8, sy); ctx.line_to(sx + sw * 0.25, sy + sh); ctx.line_to(sx, sy + sh); ctx.close_path()
     ctx.set_source_rgba(1, 1, 1, 0.08); ctx.fill(); ctx.restore()
     if st.get("dedao"):
@@ -686,6 +712,16 @@ DESENHOS = {"celular": desenha_celular, "calendario": desenha_calendario, "relog
             "barra": desenha_barra, "comentario": desenha_comentario, "seta": desenha_seta, "carimbo": desenha_carimbo,
             "texto": desenha_texto, "rachadura": desenha_rachadura, "bloco": desenha_bloco, "foto": desenha_foto}
 DESENHOS["porta"] = C2.desenha_porta   # cenarios2: porta que abre
+DESENHOS["arvore_natal"] = C2.desenha_arvore_el   # árvore de Natal solta (luzes piscando)
+DESENHOS["casa"] = C2.desenha_casa_el             # fachada solta com luzes 0..1
+
+
+def _mapa(ctx, st, t, pal, seed):   # mapa estilizado do Brasil / mundo: kit2d/mapa.py
+    import mapa
+    return mapa.desenha_mapa(ctx, st, t, pal, seed)
+
+
+DESENHOS["mapa"] = _mapa
 
 
 def _meme(ctx, st, t, pal, seed):   # formatos de meme redesenhados: kit2d/memes.py (import tardio, sem ciclo)
@@ -777,16 +813,21 @@ def cenario(ctx, nome, pal, t, opts, seed=1):
         forma(ctx, pts_ret(40, 1000, 1000, 120, 40), BRANCO, seed=seed + 6)                    # cama
         forma(ctx, pts_ret(20, 1090, 1040, 260, 50), a2, sombreado=0.05, seed=seed + 7)
         forma(ctx, pts_ret(70, 930, 300, 140, 60), BRANCO, seed=seed + 8)                      # travesseiro
-    elif nome == "celular":
-        forma(ctx, pts_ret(40, 90, W - 80, H - 180, 90), hexc("#2B2238"), seed=seed, lw=LW + 2)
+    elif nome == "celular":   # smartphone moderno genérico (sem logo): bordas finas, cantos redondos, ilha e barrinha
+        _botoes_laterais(ctx, 46, W - 46, 360, 2.2, hexc("#1E1A28"), seed + 5)
+        forma(ctx, pts_ret(46, 70, W - 92, H - 140, 150, 8), hexc("#2B2238"), seed=seed, lw=LW + 2)
         tela = hexc(opts["cor_tela"]) if opts.get("cor_tela") else escurece(bg, 0.55)
-        forma(ctx, pts_ret(76, 170, W - 152, H - 340, 60), tela, sombra=False, lw=5, seed=seed + 1)
+        forma(ctx, pts_ret(72, 96, W - 144, H - 192, 126, 8), tela, sombra=False, lw=5, seed=seed + 1, amp=0.8)
         if padrao in fundos.PADROES:   # fundo novo vira o papel de parede da tela
-            ctx.save(); path_suave(ctx, pts_ret(80, 174, W - 160, H - 348, 58)); ctx.clip()
+            ctx.save(); path_suave(ctx, pts_ret(76, 100, W - 152, H - 200, 122, 8)); ctx.clip()
             fundos.desenha(ctx, padrao, pal, t, opts, seed); ctx.restore()
-        forma(ctx, pts_ret(W / 2 - 90, 120, 180, 30, 15), INK, sombra=False, lw=0, seed=seed + 2)
-        ctx.select_font_face("Fredoka Light", cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_BOLD); ctx.set_font_size(40)
-        ctx.move_to(130, 240); ctx.set_source_rgb(*BRANCO); ctx.show_text(opts.get("hora", "23:47"))
-        for k in range(4):
-            ctx.rectangle(860 + k * 18, 230 - k * 8, 12, 10 + k * 8)
+        path_suave(ctx, pts_ret(W / 2 - 120, 128, 240, 66, 33)); ctx.set_source_rgb(0.04, 0.03, 0.06); ctx.fill()   # ilha
+        ctx.arc(W / 2 + 70, 161, 13, 0, 2 * math.pi); ctx.set_source_rgb(0.15, 0.17, 0.3); ctx.fill()
+        ctx.select_font_face("Fredoka Light", cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_BOLD); ctx.set_font_size(44)
+        ctx.move_to(170, 176); ctx.set_source_rgb(*BRANCO); ctx.show_text(opts.get("hora", "23:47"))
+        for k in range(4):   # sinal
+            ctx.rectangle(756 + k * 16, 170 - k * 8, 11, 10 + k * 8)
         ctx.fill()
+        path_suave(ctx, pts_ret(840, 146, 62, 30, 9)); ctx.set_source_rgb(*BRANCO); ctx.set_line_width(4); ctx.stroke()   # bateria
+        ctx.rectangle(846, 152, 38, 18); ctx.fill(); ctx.rectangle(904, 154, 6, 14); ctx.fill()
+        path_suave(ctx, pts_ret(W / 2 - 150, H - 128, 300, 14, 7)); ctx.set_source_rgba(1, 1, 1, 0.9); ctx.fill()   # barrinha

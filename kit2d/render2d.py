@@ -128,7 +128,7 @@ class Trilha:
 
 CURVAS = {"suave": ease_in_out, "rapido": ease_out, "elastico": lambda x: ease_out_back(x, 1.6), "linear": lambda x: x}
 PERSONAGENS = ("pipo", "humano")
-ATRAS_DA_FRENTE = PERSONAGENS + ("porta",)   # desenhados antes da camada da frente do cenário (o resto fica por cima)
+ATRAS_DA_FRENTE = PERSONAGENS + ("porta", "arvore_natal", "casa")   # desenhados antes da camada da frente do cenário (o resto fica por cima)
 NUMERICAS = ("x", "y", "escala", "rot", "alpha")
 
 
@@ -145,6 +145,17 @@ class Elemento:
             tem_entra |= a.get("faz") == "entra"
         if tem_entra:
             self.tr_get("_vis").base = 0
+        if self.tipo == "split":   # tela dividida: cada painel é uma mini-cena com cenário e elementos próprios
+            self.paineis = []
+            ps = d.get("paineis", [])
+            if not 2 <= len(ps) <= 3:
+                raise SystemExit(f"split {self.id}: 'paineis' precisa ter 2 ou 3 painéis")
+            for i, p in enumerate(ps):
+                pd = dict(p, em=cena.t0); pd.setdefault("paleta", cena.d.get("paleta"))
+                if pd.get("cenario") in F.PADROES:   # "cenario": "bokeh" = chapado com esse padrão
+                    pd["padrao"] = pd["cenario"]; pd["cenario"] = "chapado"
+                pd.setdefault("cenario", "chapado")
+                self.paineis.append(Cena(pd, rel, cena.t0, cena.idx * 100 + 50 + idx * 3 + i))
         for a in d.get("acoes", []):
             self.acao(a, rel)
 
@@ -228,7 +239,7 @@ class Cena:
         self.d = d; self.idx = idx
         self.t0 = rel.t(d.get("em", 0), desde)
         self.pal = E.paleta(d.get("paleta"))
-        self.cam = {k: Trilha(v) for k, v in (("zoom", d.get("zoom", 1.0)), ("cx", 0.5), ("cy", 0.5), ("rot", 0.0))}
+        self.cam = {k: Trilha(v) for k, v in (("zoom", d.get("zoom", 1.0)), ("cx", 0.5), ("cy", 0.5), ("rot", 0.0), ("brilho", d.get("brilho", 1.0)))}
         self.efeitos = []; self.congela = []; self.sons = []; self.reacoes = []
         ocup = set()
         for e in d.get("elementos", []):   # âncoras: "ancora": "sofa_assento" no lugar de x, y
@@ -260,6 +271,8 @@ class Cena:
                 self.cam["cy"].add(t0, dur or 0.6, a["para"][1], CURVAS.get(a.get("curva", "suave")))
             elif faz == "inclina":
                 self.cam["rot"].add(t0, dur or 0.4, a["para"])
+            elif faz == "brilho":   # escurece (0) / clareia (2) cenário e personagens; textos e cartões não mudam
+                self.cam["brilho"].add(t0, dur or 0.5, a["para"], CURVAS.get(a.get("curva", "suave")))
             elif faz in ("soco", "treme", "flash"):
                 self.efeitos.append((faz, t0, dict(a, dur=dur)))
             elif faz == "congela":
@@ -322,6 +335,14 @@ def efeitos_el(el, t):
         elif tipo == "treme" and u < (p.get("dur") or 0.4):
             f = p.get("forca", 14) * (1 - u / (p.get("dur") or 0.4))
             dx += math.sin(u * 95) * f; dy += math.cos(u * 77) * f * 0.6
+        elif tipo == "pisca" and p.get("brilho"):   # em vez de sumir: halo pulsando
+            d = p.get("dur") or 99
+            if u < d - 1e-3:
+                k = 0.5 - 0.5 * math.cos(math.pi * u / p.get("ritmo", 0.25))
+                k *= clamp(u / 0.1) * clamp((d - u) / 0.15)
+                if k > extra.get("_brilho", 0):
+                    extra["_brilho"] = k; extra["_cor_brilho"] = p.get("cor")
+                sx *= 1 + 0.045 * k; sy *= 1 + 0.045 * k
         elif tipo == "pisca":
             d = p.get("dur") or 99
             if u < d - 1e-3 and int(u / p.get("ritmo", 0.25) + 1e-6) % 2 == 1:
@@ -471,22 +492,76 @@ class Filme:
         rea, ru = reacao_ativa(c, treal)
         ctx.identity_matrix()
         ctx.translate(W / 2 + sdx, H / 2 + sdy); ctx.scale(z, z); ctx.rotate(math.radians(rot)); ctx.translate(-cx * W, -cy * H)
-        if c.d.get("fundo_foto"):     # foto real em tela cheia (Ken Burns, estilo, parallax): kit2d/fundos.py
-            F.foto(ctx, c.pal, t, c.d, seed=c.idx * 13 + 1)
-        else:
-            B.cenario(ctx, c.d.get("cenario", "chapado"), c.pal, t, c.d, seed=c.idx * 13 + 1)
         caixas = {}
-        nome_cen = c.d.get("cenario", "chapado")
-        atras = [el for el in c.els if el.d.get("camada", "meio" if el.tipo in ATRAS_DA_FRENTE else "topo") == "meio"]
         self._rea = (rea, ru)
+        self.camadas(ctx, c, t, caixas)
+        return caixas, flash, rea, ru
+
+    def camadas(self, ctx, c, t, caixas):
+        """Fundo -> chuva -> meio (personagens) -> frente do cenário -> brilho da cena -> topo (textos, cartões)."""
+        nome_cen = c.d.get("cenario", "chapado")
+        seed = c.idx * 13 + 1
+        if c.d.get("fundo_foto"):     # foto real em tela cheia (Ken Burns, estilo, parallax): kit2d/fundos.py
+            F.foto(ctx, c.pal, t, c.d, seed=seed)
+        else:
+            B.cenario(ctx, nome_cen, c.pal, t, c.d, seed=seed)
+        ch = c.d.get("chuva")
+        if ch and (ch == "tela" or nome_cen not in C2.CHUVA_JANELA):   # chuva caindo na tela toda (atrás dos personagens)
+            C2.chuva_tela(ctx, t, c.d.get("chuva_forca", 1.0), seed, c.d.get("vida", True) is not False)
+        atras = [el for el in c.els if el.d.get("camada", "meio" if el.tipo in ATRAS_DA_FRENTE else "topo") == "meio"]
         for el in atras:
             self.elemento(ctx, el, t, c, caixas)
         if not c.d.get("fundo_foto"):
-            C2.cenario_frente(ctx, nome_cen, c.pal, t, c.d, seed=c.idx * 13 + 1)
+            C2.cenario_frente(ctx, nome_cen, c.pal, t, c.d, seed=seed)
+        b = c.cam["brilho"](t)
+        if abs(b - 1) > 0.005:
+            aplica_brilho(ctx, b)
         for el in c.els:
             if el not in atras:
                 self.elemento(ctx, el, t, c, caixas)
-        return caixas, flash, rea, ru
+
+    def split(self, ctx, el, st, t, c, caixas):
+        """Tela dividida: 2 ou 3 painéis lado a lado (ou empilhados), cada um com a sua mini-cena recortada e escalada."""
+        n = len(el.paineis); pilha = st.get("direcao", "lado") == "pilha"
+        Wd = st.get("largura", 960); Hd = st.get("altura", 900 if not pilha else 940)
+        x0, y0 = -Wd / 2, -Hd / 2
+        ctx.rectangle(x0 + 14, y0 + 16, Wd, Hd); ctx.set_source_rgba(*E.INK, 0.3); ctx.fill()   # sombra chapada
+        rects = []
+        for i, p in enumerate(el.paineis):
+            rx, ry, rw, rh = (x0, y0 + i * Hd / n, Wd, Hd / n) if pilha else (x0 + i * Wd / n, y0, Wd / n, Hd)
+            rects.append((rx, ry, rw, rh))
+            fx, fy = p.d.get("foco", [0.5, 0.42])
+            k = max(rw / W, rh / H) * p.d.get("zoom", 1.0 if pilha else 1.35)
+            vw, vh = rw / k / W / 2, rh / k / H / 2   # meia janela visível (fração da mini-cena): não mostra fora dela
+            fx = clamp(fx, vw, 1 - vw) if vw < 0.5 else 0.5; fy = clamp(fy, vh, 1 - vh) if vh < 0.5 else 0.5
+            ctx.save(); ctx.rectangle(rx, ry, rw, rh); ctx.clip()
+            ctx.translate(rx + rw / 2, ry + rh / 2); ctx.scale(k, k); ctx.translate(-fx * W, -fy * H)
+            sub = {}
+            self.camadas(ctx, p, t, sub)
+            ctx.restore()
+            for kk, v in sub.items():
+                caixas[(f"{el.id}/{kk[0]}",) + kk[1:]] = v
+        lw = st.get("contorno", 16)
+        for rx, ry, rw, rh in rects:   # contorno grosso entre os painéis
+            ctx.rectangle(rx, ry, rw, rh)
+        ctx.set_source_rgb(*E.INK); ctx.set_line_width(lw); ctx.set_line_join(cairo.LINE_JOIN_MITER); ctx.stroke()
+        ctx.set_line_join(cairo.LINE_JOIN_ROUND)
+        txt = []
+        for (rx, ry, rw, rh), p in zip(rects, el.paineis):   # rótulos (VOCÊ / VIZINHO)
+            rot = p.d.get("rotulo")
+            if rot:
+                tam = st.get("tam_rotulo", 58)
+                tw = min(E.medir(ctx, rot, tam), rw - 90)
+                cor = hexc(p.d["cor_rotulo"]) if p.d.get("cor_rotulo") else p.pal[2]
+                yy = ry + 30 + tam * 0.7 if p.d.get("rotulo_pos", "cima") == "cima" else ry + rh - 30 - tam * 0.7
+                E.forma(ctx, E.pts_ret(rx + rw / 2 - tw / 2 - 30, yy - tam * 0.68, tw + 60, tam * 1.36, tam * 0.45), cor, seed=el.seed + len(txt))
+                txt.append(E.texto(ctx, rot, rx + rw / 2, yy, tam, cor=E.BRANCO, max_w=rw - 90))
+        if st.get("meio") and n == 2:   # selo no meio da divisão ("VS")
+            mx, my = (0, 0)
+            E.forma(ctx, E.pts_elipse(mx, my, 78, 78, 22), c.pal[2], seed=el.seed + 9)
+            txt.append(E.texto(ctx, st["meio"], mx, my, 64, max_w=120))
+        tb = (min(b[0] for b in txt), min(b[1] for b in txt), max(b[2] for b in txt), max(b[3] for b in txt)) if txt else None
+        return {"corpo": (x0, y0, x0 + Wd, y0 + Hd), "texto": tb}
 
     def elemento(self, ctx, el, t, c, caixas):
         if True:
@@ -512,9 +587,12 @@ class Filme:
             if el.d.get("espelha"):
                 sx = -sx
             ctx.scale(max(1e-3, s * sx), max(1e-3, s * sy) if sy > 0 else 1e-3)
-            if a < 0.99:
+            glow = st.get("_brilho", 0)
+            if a < 0.99 or glow > 0.01:
                 ctx.push_group()
-            if el.tipo == "pipo":
+            if el.tipo == "split":
+                bx = self.split(ctx, el, st, t, c, caixas)
+            elif el.tipo == "pipo":
                 bx = B.desenha_pipo(ctx, st, t, el.seed)
             elif el.tipo == "humano":
                 bx = B.desenha_humano(ctx, st, t, el.seed)
@@ -522,7 +600,12 @@ class Filme:
                 bx = B.DESENHOS[el.tipo](ctx, st, t, c.pal, el.seed)
             else:
                 raise SystemExit(f"tipo desconhecido '{el.tipo}'. Tipos: pipo, humano, fluxo, {', '.join(B.DESENHOS)}")
-            if a < 0.99:
+            if glow > 0.01:   # pisca com brilho: halo atrás do elemento e o próprio elemento clareando
+                pat = ctx.pop_group()
+                halo_elemento(ctx, (bx or {}).get("corpo"), glow * a, st.get("_cor_brilho"), t)
+                ctx.set_source(pat); ctx.paint_with_alpha(a)
+                ctx.save(); ctx.set_operator(cairo.OPERATOR_ADD); ctx.set_source_rgba(1, 0.95, 0.75, 0.28 * glow * a); ctx.mask(pat); ctx.restore()
+            elif a < 0.99:
                 ctx.pop_group_to_source(); ctx.paint_with_alpha(a)
             entrou = st["_pop"] > 0.98 and abs(st["_dx"]) < 2 and abs(st["_dy"]) < 2 and a > 0.5
             for k, b in (bx or {}).items():
@@ -550,6 +633,34 @@ class Filme:
             s = st.get("escala", 1) * (1 - 0.75 * e ** 2); ctx.scale(s, s)
             B.desenha_folhinha(ctx, int(1 + r * 30), hexc(st.get("cor", "#E8352A")), el.seed + i)
             ctx.restore()
+
+
+def aplica_brilho(ctx, b):
+    """Brilho da cena (0 a 2): abaixo de 1 escurece para a noite (0 = quase breu), acima de 1 clareia (tela/screen)."""
+    ctx.save(); ctx.identity_matrix()
+    if b < 1:
+        ctx.set_source_rgba(0.03, 0.02, 0.09, clamp(1 - b) * 0.9); ctx.paint()
+    else:
+        ctx.set_operator(cairo.OPERATOR_SCREEN); ctx.set_source_rgba(1, 0.97, 0.88, clamp(b - 1) * 0.6); ctx.paint()
+    ctx.restore()
+
+
+def halo_elemento(ctx, corpo, k, cor, t):
+    """Halo pulsando atrás do elemento (pisca com brilho) e 4 estrelinhas girando em volta."""
+    if not corpo:
+        return
+    x0, y0, x1, y1 = corpo
+    cx, cy = (x0 + x1) / 2, (y0 + y1) / 2; r = max(60, math.hypot(x1 - x0, y1 - y0) * 0.62)
+    c = hexc(cor) if cor else (1.0, 0.86, 0.35)
+    g = cairo.RadialGradient(cx, cy, r * 0.2, cx, cy, r)
+    g.add_color_stop_rgba(0, *c, 0.85 * k); g.add_color_stop_rgba(0.55, *c, 0.4 * k); g.add_color_stop_rgba(1, *c, 0)
+    ctx.set_source(g); ctx.arc(cx, cy, r, 0, 2 * math.pi); ctx.fill()
+    for i in range(4):
+        a = t * 1.3 + i * math.pi / 2; rr = r * 0.78; px, py = cx + math.cos(a) * rr, cy + math.sin(a) * rr * 0.8
+        s = (16 + 14 * k) * (0.7 + 0.3 * math.sin(t * 6 + i))
+        pts = [(px + math.cos(j * math.pi / 4) * (s if j % 2 == 0 else s * 0.3), py + math.sin(j * math.pi / 4) * (s if j % 2 == 0 else s * 0.3)) for j in range(8)]
+        ctx.move_to(*pts[0]); [ctx.line_to(*q) for q in pts[1:]]; ctx.close_path()
+        ctx.set_source_rgba(1, 1, 0.9, k); ctx.fill_preserve(); ctx.set_source_rgba(*E.INK, k); ctx.set_line_width(3); ctx.stroke()
 
 
 def _vinheta(ctx, a, cor=(0, 0, 0)):
