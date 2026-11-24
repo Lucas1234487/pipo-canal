@@ -44,7 +44,10 @@ Topo: `paleta` (padrão), `musica` (apelido ou caminho em assets/musica), `music
 
 Cena: `em` (corte; a 1ª é sempre 0), `cenario`, `paleta`, `padrao` (no chapado/celular), `zoom` (1,0), `deriva` (aproximação lenta automática, 0,025; 0 desliga),
 `elementos`, `acoes` (de câmera). Cada cena nova começa do zero: elementos não passam de uma cena para outra.
-Opcionais da cena: `transicao` (seção 4.2), `energia`/`calma` (fundos animados), `fundo_foto` (seção 4.3).
+Opcionais da cena: `transicao` (seção 4.2), `energia`/`calma` (fundos animados), `fundo_foto` (seção 4.3),
+`brilho` (0 a 2, padrão 1: escurece/clareia cenário e personagens; textos e cartões não mudam; anime com a ação de câmera `brilho`),
+`chuva` (true: chuva caindo em qualquer cenário, por cima do fundo e atrás dos personagens; nos cenários internos com janela vira gotas no vidro,
+`"chuva": "tela"` força a chuva na tela toda) e `chuva_forca` (0 a 2, padrão 1).
 
 ## 4. Cardápio
 Paletas: tomate, mostarda, petroleo, uva, menta, cobalto, noite, rosa, laranja (troque a cada cena: dá ritmo).
@@ -57,28 +60,28 @@ A frente (mesa, balcão, painel, encosto do banco, cerca...) é desenhada DEPOIS
 `pipo`, `humano` e `porta` ficam atrás da frente; textos, cartões, setas etc. ficam por cima dela. Mude com `"camada": "meio"` ou `"topo"`.
 
 Opções da cena: `luz` (dia, tarde, noite: noite = abajur/lâmpadas com halo quente e janela escura com lua; tarde = laranja com raio de sol; os personagens pegam só um pouco da cor e não perdem contraste) ·
-`ceu` (só o céu das janelas) · `vida`: false (congela as animações) · `chuva`: true (gotas escorrendo na janela; chuva na rua) · `frente`: false (sem camada da frente).
+`ceu` (só o céu das janelas) · `vida`: false (congela as animações) · `chuva`: true (gotas escorrendo na janela nos internos; chuva caindo nos externos e no chapado) · `frente`: false (sem camada da frente).
 
 | cenário | o que tem (vida) | âncoras |
 |---|---|---|
-| sala | janela com cortina balançando, nuvens, pássaro, carrinho ao longe, ventilador de teto, relógio, porta, luminária; `cor_sofa` | sofa_assento, sofa_esq, sofa_dir, porta, janela, quadro, relogio, chao |
+| sala | janela com cortina balançando, nuvens, pássaro, carrinho ao longe, ventilador de teto, relógio, porta, luminária; `cor_sofa`. Sentado no sofá: só os braços do sofá ficam na frente, pernas e pés aparecem | sofa_assento, sofa_esq, sofa_dir, porta, janela, quadro, relogio, chao |
 | escritorio | persiana, mural de post-its, monitor com texto rolando, café com vapor, luminária, relógio (mesa na frente) | cadeira, em_pe, mesa, monitor, janela, quadro, relogio |
 | quarto | janela (noite por padrão), cama, criado-mudo com abajur, ventilador, pôster | cama, em_pe, janela, abajur, poster |
 | cozinha | geladeira com ímãs, janela com cortininha, panela com vapor, utensílios balançando (balcão na frente) | balcao, geladeira, fogao, pia, janela, relogio |
 | rua | prédios, loja com toldo, semáforo trocando (`sinal` fixa: verde, amarelo, vermelho), poste, carro passando na frente | calcada, calcada_esq, calcada_dir, loja, semaforo, poste, ceu |
-| onibus | paisagem passando nas janelas, alças balançando, botão PARE (encosto da frente) | banco, banco_dir, em_pe, janela, pare |
+| onibus | ônibus urbano visto da frente para o fundo: corredor, bancos azuis com gente, barras amarelas, catraca girando com cobrador de boné, gente em pé segurando a barra, cidade passando nas janelas, carro vindo no vidro de trás, botão PARE (encosto azul da frente) | banco, banco_dir, em_pe, janela, pare |
 | escola | lousa (`lousa`: "texto\nde giz"), relógio, carteiras (carteira na frente) | carteira, professor, lousa, relogio |
-| carro | de frente para quem está dentro: rua passando no vidro de trás, cheirinho balançando, rádio, volante na frente do motorista. `vista`: "motorista" = rua vindo no para-brisa | motorista, carona, para_brisa, retrovisor, radio |
+| carro | de frente para quem está dentro: rua com placas (CENTRO, 60, PARE) passando no vidro de trás, cheirinho e milhinho de miçangas no retrovisor, rádio e saídas de ar, volante com as mãos de quem dirige. `vista`: "motorista" = rua vindo no para-brisa com placas, mãos no volante, mostradores. `maos`: false tira as mãos; `pele`, `manga_cor` | motorista, carona, para_brisa, retrovisor, radio |
 | casa_natal_fora | fachada à noite (padrão), pisca-pisca correndo, árvore acesa na janela, vizinho com MUITO mais luz, estrelas, cerca com luzinhas na frente | quintal, quintal_esq, quintal_dir, porta, janela, vizinho, ceu |
 | sala_natal | árvore piscando, presentes, festão, ventilador de teto e de pé (calor), mesa da ceia com peru soltando vapor na frente | mesa, arvore, presentes, ceia, centro, janela |
 | loja | vitrine com gente passando, araras, placas piscando (`placa` "-50%", `placa2` "PROMO"), balcão com caixa na frente | caixa, centro, vitrine, placa, placa2 |
-| supermercado | corredor em perspectiva, placa de preço balançando (`preco`), alguém cruzando no fundo, carrinho na frente | carrinho, corredor, placa, fundo |
+| supermercado | corredor em perspectiva, produtos com rótulos inventados (Milho Pipo, Café Sem Sono, Leite da Vaca Feliz, Pipoca Pipo com a carinha dela...), etiquetas de preço, cartazes OFERTA! e LEVE 3 PAGUE 2 balançando, placa de preço (`preco`), alguém cruzando no fundo, carrinho na frente | carrinho, corredor, placa, fundo |
 | praia | ondas, espuma indo e voltando, sol girando, barquinho, gaivota, guarda-sol; cadeira de praia na frente se alguém senta | areia, areia_dir, cadeira, guarda_sol, mar, ceu |
 | festa | bandeirinhas, balões, globo e feixes de luz coloridos girando, velas, confete caindo na frente (noite por padrão) | centro, esq, bolo, globo |
-| cidade_noite_alto | cidade vista do alto: janelas acendendo e apagando, faróis andando nas ruas | ceu, cidade, lua |
+| cidade_noite_alto | cidade vista do alto: serra e lua, rio com reflexos e ponte iluminada, avenidas com faróis (brancos vindo, vermelhos indo), prédios variados com antena piscando, janelas acendendo, letreiros de neon | ceu, cidade, lua |
 | espaco_terra | Terra à noite girando com luzes das cidades piscando, atmosfera, satélite passando | espaco, terra, satelite, flutuando |
 | hospital | monitor cardíaco com traçado correndo e bipe, soro pingando, persiana, leito | leito, medico, monitor, janela |
-| academia | espelho, halteres, esteira com a lona andando e km subindo, ventilador, cartaz (`cartaz`) | esteira, halteres, espelho, cartaz |
+| academia | espelho grande com gente malhando refletida, halteres no suporte, banco de supino com alguém treinando, anilhas, kettlebell, esteiras em fila (a da frente com km subindo), placa SEM DOR SEM GANHO (`cartaz`, aceita \n) | esteira, halteres, espelho, cartaz |
 | restaurante | luminárias balançando, cardápio (`cardapio`), garçom passando ao fundo, pratos com vapor e toalha xadrez na frente | mesa, mesa_dir, garcom, cardapio |
 
 Âncoras: em qualquer elemento, `"ancora": "sofa_assento"` no lugar de `x`, `y` (com `dx`, `dy` opcionais, em fração da tela).
@@ -89,14 +92,14 @@ Personagem sem `escala` ganha a escala certa da âncora. `move` também aceita �
 Porta que abre: `{"id": "pt", "tipo": "porta", "ancora": "porta", "acoes": [{"em": "toc", "faz": "muda", "prop": "abre", "para": 1, "dur": 0.5, "som": "porta"}]}`
 e, DEPOIS dela na lista, o humano com `"ancora": "porta"` e `{"faz": "entra", "jeito": "aparece"}`: ele aparece no vão e o batente fica na frente dele.
 A porta também funciona no chapado (`largura`, `altura`, `cor`, `dentro` = cor da luz do outro lado).
-Cenários: `chapado` (cor + padrão: os animados da seção 4.2 ou os antigos raios, bolinhas, listras, chuva, nada) · `sala` (sofá; `cor_sofa`) · `escritorio` · `quarto` · `celular` (tela gigante; `hora`, `cor_tela`).
+Cenários: `chapado` (cor + padrão: os animados da seção 4.2 ou os antigos raios, bolinhas, listras, chuva, nada) · `sala` (sofá; `cor_sofa`) · `escritorio` · `quarto` · `celular` (tela gigante de smartphone moderno genérico, sem logo: bordas finas, ilha no topo, barrinha embaixo; `hora`, `cor_tela`).
 
 Elementos (`tipo`) e as propriedades que aceitam (todas podem mudar com `muda`):
 | tipo | para que | propriedades |
 |---|---|---|
-| pipo | a Pipo (espiga cansada, sobrancelha levantada) | `segura`: "celular"; `olhar`: camera, celular, esq, dir, cima, baixo; `sobrancelha` 0 a 1,2; `palpebra` (0,42 cansada; 0 aberta); `boca`: reta, o, sorriso, sorriso_torto, triste; `forma`: "pipoca" (já estourada) |
+| pipo | a Pipo (espiga cansada, sobrancelha levantada) | `segura`: "celular"; `aponta_para` [dx, dy] (um braço aponta com o dedo) ou `pose`: "apontando"; `olhar`: camera, celular, esq, dir, cima, baixo; `sobrancelha` 0 a 1,2; `palpebra` (0,42 cansada; 0 aberta); `boca`: reta, o, sorriso, sorriso_torto, triste; `forma`: "pipoca" (já estourada; também segura e aponta) |
 | humano | pessoa (cartoon editorial, kit2d/humano2.py; detalhes na seção 4.1) | `preset` (elenco fixo, seção 4.2), `idade`, `corpo`, `cabelo`, `cabelo_cor`, `barba`, `pele`, `roupa`, `calca`, `sapato`, `manga`, `expressao`, `olhar`, `pose`, `aponta_para`, `segura`: "celular", `assento`, traços (4.2) e acessórios `oculos`, `bone`, `mochila`, `avental`, `gravata`, `fone` |
-| celular | celular na mão | `tela`: feed (rolando), boca (come coisas), texto; `linhas` (tela texto); `cor_tela`; `dedao`: true (polegar rolando) |
+| celular | smartphone moderno na mão (genérico, sem logo) | `tela`: feed (rolando), boca (come coisas), texto; `linhas` (tela texto); `cor_tela`; `cor_corpo`; `dedao`: true (polegar rolando) |
 | calendario | folhinha do mês | `titulo`, `comidos` (quantos dias viraram buraco), `cor` |
 | fluxo | folhinhas voando de A para B | `de`, `para`: id de elemento ou [x, y]; `ritmo` (por s), `vida` (s), `adianta` (s já em voo no 1º quadro), `cor` |
 | relogio | despertador | `horas` (fatia colorida 0 a 12), `giro` (voltas/s dos ponteiros), `cor` |
@@ -110,8 +113,31 @@ Elementos (`tipo`) e as propriedades que aceitam (todas podem mudar com `muda`):
 | bloco | cartão/painel (split, antes e depois) | `largura`, `altura`, `cor`, `texto`, `tam` |
 | foto | foto real CC0/domínio público numa polaroide (kit/imagens.py) | `arquivo` (caminho), `largura` (px), `altura`, `legenda`, `credito`, `zoom_lento` |
 | meme | formato de meme redesenhado no nosso estilo (seção 4.1) | `formato`, `revela`, `largura`, `altura` (900), `pers`, `pers_a`/`pers_b`, textos do formato |
+| split | tela dividida em 2 ou 3 painéis, cada um com a sua mini-cena (seção 4.4) | `paineis`, `direcao` (lado, pilha), `largura` (960), `altura` (900), `meio` ("VS"), `contorno` (16), `tam_rotulo` |
+| mapa | mapa estilizado (kit2d/mapa.py, sem precisão cartográfica) | `qual`: brasil, mundo, america_sul; `regioes` (ou `estados`): true pinta as 5 regiões; `destaque`: lista de cidades com ponto brilhando (`"bauru"` ou `{"cidade", "rotulo", "cor", "lado"}` ou `{"lon", "lat", ...}`); `largura`, `cor` (terra), `cor_mar` (false tira), `titulo` |
+| arvore_natal | árvore de Natal solta com pisca-pisca correndo e estrela com halo | `altura` (560 px), `luzes` 0 a 1 (anime para acender), `luz`: "noite" (brilho mais forte) |
+| casa | fachada solta (a da casa_natal_fora) | `largura` (520), `altura` (460), `cor` (parede), `telhado`, `luzes` 0 a 1 (o pisca-pisca acende da esquerda para a direita e a janela esquenta), `natal` (false tira pisca-pisca e guirlanda) |
 
-Todo elemento: `id`, `x`, `y`, `escala`, `rot` (graus), `alpha`, `espelha`, `pode_sobrepor` (true = não acusar texto sobreposto).
+Todo elemento: `id`, `x`, `y`, `escala`, `rot` (graus), `alpha`, `espelha`, `pode_sobrepor` (true = não acusar texto sobreposto), `camada` (meio/topo).
+`arvore_natal` e `casa` ficam na camada do meio (como cenário: escurecem com o `brilho`); para deixar acesas no escuro use `"camada": "topo"`.
+Cidades do `mapa`: sao_paulo, rio, brasilia, salvador, manaus, belem, fortaleza, recife, porto_alegre, curitiba, belo_horizonte, goiania,
+florianopolis, natal, campo_grande, cuiaba, porto_velho, boa_vista, macapa, sao_luis, teresina, joao_pessoa, maceio, aracaju, vitoria, palmas,
+rio_branco, campinas, bauru, birigui; mundo: nova_york, los_angeles, cidade_do_mexico, buenos_aires, londres, paris, lisboa, madri, roma, moscou,
+cairo, lagos, joanesburgo, dubai, mumbai, pequim, xangai, toquio, seul, sydney, polo_norte. Com `escala` 1 e `y` 0,34 o mapa do Brasil fica entre y 0,08 e 0,60.
+
+### 4.4 Tela dividida (`"tipo": "split"`)
+Cada painel é uma mini-cena desenhada inteira (cenário, chuva, elementos com âncoras e ações amarradas às palavras, frente do cenário),
+recortada e encolhida para caber no painel, com contorno grosso entre eles.
+- Painel: `cenario` (nome de cenário ou de padrão animado, ex. "bokeh"), `paleta`, `elementos`, `rotulo` ("VOCÊ"), `cor_rotulo`, `rotulo_pos` (cima/baixo),
+  `foco` [x, y] (ponto da mini-cena que fica no centro do painel, padrão [0,5, 0,42]), `zoom` (1,35 lado a lado; 1,0 empilhado), `brilho`, `chuva` e as opções do cenário.
+- `direcao`: "lado" (colunas, padrão) ou "pilha" (linhas). Use `x` 0,5 e `y` 0,34: a caixa (960 x 900) fica entre y 0,10 e 0,58, fora da legenda.
+- QA: as caixas dos elementos de dentro saem com id `split/elemento` e os rótulos contam como texto do split.
+```json
+{"id": "sp", "tipo": "split", "x": 0.5, "y": 0.34, "meio": "VS", "paineis": [
+  {"cenario": "sala", "rotulo": "VOCÊ", "brilho": 0.6, "elementos": [{"id": "a", "tipo": "pipo", "ancora": "sofa_assento", "segura": "celular"}]},
+  {"cenario": "casa_natal_fora", "rotulo": "VIZINHO", "foco": [0.75, 0.45],
+   "elementos": [{"id": "b", "tipo": "humano", "preset": "vizinho_exagerado", "ancora": "quintal_dir", "pose": "comemorando"}]}]}
+```
 
 ### 4.1 Memes (`"tipo": "meme"`, kit2d/memes.py)
 Regra do canal: o meme é a ESTRUTURA redesenhada (painéis, rótulos, nossos personagens). Nunca a foto original de meme famoso, nunca pessoa real.
@@ -203,10 +229,12 @@ Ações de elemento (`"faz"`), sempre com `em`; `som` e `volume` opcionais em qu
 - `move` (`para` [x, y]) · `escala` (`para`) · `gira` (`para` graus) · `curva`: suave, rapido, elastico, linear
 - `muda` (`prop`, `para`): qualquer propriedade; número anima, texto troca na hora
 - `conta` / `cresce` (`para`): anima `valor` (contador, barra)
-- `squash` (`forca` 0,2) · `soco` (zoom punch no elemento) · `pula` (`altura`) · `treme` (`dur`, `forca`) · `pisca` (`ritmo`, `dur`) · `mastiga` (celular com tela boca)
+- `squash` (`forca` 0,2) · `soco` (zoom punch no elemento) · `pula` (`altura`) · `treme` (`dur`, `forca`) · `pisca` (`ritmo`, `dur`; com `"brilho": true` não some:
+  ganha halo pulsando atrás, clareia e solta estrelinhas; `cor` do halo) · `mastiga` (celular com tela boca)
 - `olha`, `sobrancelha`, `boca`, `palpebra`, `expressao`, `pose` (`para`) · `estoura` (Pipo vira pipoca com partículas)
 
-Ações de câmera (em `acoes` da cena): `soco` (zoom punch, `forca` 0,12) · `treme` · `zoom` (`para`) · `pan` (`para` [x, y] do centro) · `inclina` (graus) · `flash` · `congela` (`dur`: freeze; use no fim).
+Ações de câmera (em `acoes` da cena): `soco` (zoom punch, `forca` 0,12) · `treme` · `zoom` (`para`) · `pan` (`para` [x, y] do centro) · `inclina` (graus) · `flash` · `congela` (`dur`: freeze; use no fim)
+· `brilho` (`para` 0 a 2, `dur`/`ate`): "as luzes acendendo" = cena com `"brilho": 0.15` e `{"em": "acendeu", "faz": "brilho", "para": 1, "dur": 0.6}`.
 Cuidado: zoom e pan empurram o que está embaixo para a faixa da legenda. Prefira `soco` no elemento.
 
 Sons (`som`): pop, pop2, pop3, pops, estouro, whoosh, slide, impacto, impacto2, vidro, queda, metal, madeira, carimbo, tique, porta, passos, mastiga, mastiga2, arroto, ooh, fofo, coracao.
