@@ -15,4 +15,6 @@ Sem Gemini: rodar `python3 kit/plateia_kit.py WORK pt` e um único subagente Cla
 WORK/avaliacao.md. Ao Diretor: 3 linhas por vídeo (piso, média, a correção que vale).
 
 ## Calibração
+Ponto de partida (24/11/2026): o Gemini Flash deu 9,0 a um vídeo que o Lucas avaliou com 7. Trate a média dele com desconto de cerca de 2 pontos até a calibração semanal dizer outra coisa.
+
 Toda semana, comparar a média do Gemini com a nota do Lucas (quando houver) e as métricas reais (G6). Registrar na BASE se o Gemini erra para cima ou para baixo e quanto.

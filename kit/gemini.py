@@ -12,6 +12,11 @@ CA = "/root/.ccr/ca-bundle.crt"
 CTX = ssl.create_default_context(cafile=CA) if os.path.exists(CA) else ssl.create_default_context()
 
 
+class ErroAPI(Exception):
+    def __init__(self, code, msg):
+        super().__init__(f"HTTP {code}: {msg}"); self.code = code
+
+
 def chave():
     k = os.environ.get("GEMINI_API_KEY", "").strip()
     f = os.path.expanduser("~/.pipo/gemini_key")
@@ -36,9 +41,9 @@ def req(url, data=None, headers=None, method=None, raw=False, timeout=600):
                 return resp if raw else json.loads(resp.read() or b"{}")
         except urllib.error.HTTPError as e:
             msg = e.read().decode("utf8", "ignore")[:600]
-            if e.code in (429, 500, 503) and tentativa < 2:
+            if e.code in (500, 503) and tentativa < 2:
                 time.sleep(8 * (tentativa + 1)); continue
-            sys.stderr.write(f"ERRO HTTP {e.code}: {msg}\n"); sys.exit(1)
+            raise ErroAPI(e.code, msg)
         except urllib.error.URLError as e:
             if tentativa < 2:
                 time.sleep(5); continue
@@ -55,7 +60,19 @@ def modelos():
             return out
 
 
-def escolhe(tipo):
+# Ordem de preferência. Os "pro" só funcionam com faturamento ligado na chave; sem ele, a cota é zero e o script cai para os flash.
+PREF = {"pro": ["gemini-4-argon", "gemini-4-carbon", "gemini-4-neon", "gemini-pro-latest", "gemini-3.1-pro-preview"],
+        "flash": ["gemini-3.8-flash", "gemini-3.7-flash", "gemini-3.6-flash", "gemini-flash-latest", "gemini-3.5-flash", "gemini-2.5-flash"]}
+
+
+def candidatos(tipo):
+    nomes = {m["name"].split("/")[-1] for m in modelos() if "generateContent" in m.get("supportedGenerationMethods", [])}
+    ordem = PREF["pro"] + PREF["flash"] if tipo == "pro" else PREF["flash"]
+    lst = [n for n in ordem if n in nomes]
+    return lst or [escolhe_regex(tipo)]
+
+
+def escolhe_regex(tipo):
     ruins = ("tts", "image", "embed", "lyria", "live", "audio", "veo", "imagen", "aqa", "learnlm", "gemma", "robotics", "computer", "lite", "cyber")
     cands = []
     for m in modelos():
@@ -120,14 +137,22 @@ def main():
     prompt = open(a.prompt).read() if a.prompt and os.path.exists(a.prompt) else (a.prompt or "")
     if not prompt:
         sys.stderr.write("faltou --prompt (arquivo ou texto)\n"); sys.exit(1)
-    modelo = a.modelo or escolhe(a.tipo or ("pro" if a.modo == "video" else "flash"))
-    sys.stderr.write(f"modelo: {modelo}\n")
+    lista = [a.modelo] if a.modelo else candidatos(a.tipo or ("pro" if a.modo == "video" else "flash"))
     partes = [{"text": prompt}]
     if a.modo == "video":
         f = sobe(a.arquivo)
         partes = [{"file_data": {"mime_type": f.get("mimeType", "video/mp4"), "file_uri": f["uri"]}}, {"text": prompt}]
-    print(gerar(modelo, partes, a.busca, a.json))
+    for modelo in lista:
+        try:
+            txt = gerar(modelo, partes, a.busca, a.json)
+            sys.stderr.write(f"modelo: {modelo}\n"); print(txt); return
+        except ErroAPI as e:
+            sys.stderr.write(f"{modelo} indisponível ({e.code}), tentando o próximo\n")
+    sys.stderr.write("ERRO: nenhum modelo respondeu\n"); sys.exit(1)
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except ErroAPI as e:
+        sys.stderr.write(f"ERRO {e}\n"); sys.exit(1)
