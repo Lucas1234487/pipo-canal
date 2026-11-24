@@ -24,7 +24,7 @@ CAUDA = 0.6   # segundos depois da última palavra
 SONS = {   # apelidos -> arquivos CC0 de assets/ (ver assets/LICENCAS.md)
     "pop": "assets/sfx/pop-sounds/pop1.ogg", "pop2": "assets/sfx/pop-sounds/pop4.ogg", "pop3": "assets/sfx/pop-sounds/pop7.ogg",
     "pops": "assets/sfx/3-pop-sounds/3pops.ogg", "estouro": "assets/sfx/3-pop-sounds/pop2.ogg",
-    "whoosh": "assets/sfx/air-whoosh/whoosh2_0.wav", "slide": "assets/sfx/a-slide-pop-sound/slidepop_0.mp3",
+    "whoosh": "assets/sfx/air-whoosh/whoosh_1passada.ogg", "slide": "assets/sfx/a-slide-pop-sound/slidepop_0.mp3",
     "impacto": "assets/sfx/75-cc0-breaking-falling-hit-sfx/bfh1_hit_03.ogg", "impacto2": "assets/sfx/75-cc0-breaking-falling-hit-sfx/bfh1_hit_07.ogg",
     "vidro": "assets/sfx/75-cc0-breaking-falling-hit-sfx/bfh1_glass_breaking_02.ogg", "queda": "assets/sfx/75-cc0-breaking-falling-hit-sfx/bfh1_falling_01.ogg",
     "metal": "assets/sfx/100-cc0-sfx-2/sfx100v2_metal_hit_01.ogg", "madeira": "assets/sfx/100-cc0-sfx-2/sfx100v2_wood_hit_01.ogg",
