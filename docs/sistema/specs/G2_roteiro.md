@@ -50,3 +50,18 @@ Duração 45 a 65 s (Lucas, 24/11: aprofundar a história e o sentimento). Trans
 - História: emoção universal, conflito claro, clímax; a estrutura pode se repetir, o cenário, o elenco e o tipo de virada NÃO (risco de desmonetização por "histórias com diferenças superficiais").
 - CTA de envio com destinatário concreto ("manda pro vizinho que já montou a árvore").
 - Banco de regras inventadas e pautas na pesquisa; a regra "as pipocas só estouram quando alguém ri" está reservada para a Pipo protagonista.
+
+## Interação: todo vídeo pede uma ação (Lucas, 24/11 15h29: "fazer as pessoas interagirem")
+Todo vídeo tem pelo menos 1 gatilho, no máximo 2, escolhidos deste cardápio e VARIADOS entre vídeos (registre qual usou no meta.json, campo "interacao", para o G6 comparar):
+- Começo (até 3 s): impacto + pergunta que a pessoa responde na cabeça ("Você ia aguentar?").
+- Meio, logo antes da virada: curtida natural ("deixa o like se você também é o vizinho do pisca-pisca"). Nunca condicionar o final ao like.
+- Fim, comentário: "comenta se isso já aconteceu com você", "conta nos comentários quem na sua casa...", frase para completar, dilema com dois lados.
+- Fim, compartilhamento: "manda pra quem se identifica", "manda pra quem precisa ouvir isso", com destinatário concreto (o mais forte segundo a pesquisa).
+- Comentário fixado sempre puxa resposta (pergunta com lado ou marcação de alguém).
+Sempre na fala E escrito na tela, curto. Os exemplos do Lucas são exemplos, não texto fixo: reescreva para cada vídeo.
+
+## Opcionais (usar de vez em quando, registrar em EXPERIMENTOS.md)
+- Errinho proposital inofensivo para gerar comentário de correção: um detalhe do CENÁRIO (relógio com 13 horas, calendário com 31 de fevereiro, Pipo com uma meia de cada cor), nunca o fato principal nem um número da fala. No máximo 1 a cada 5 vídeos. A resposta da Pipo ao primeiro que apontar é obrigatória (G5).
+- Easter egg escondido (a Pipo minúscula num canto, objeto de um vídeo anterior).
+- Opinião leve que divide (pizza doce vale?), sem política, religião ou futebol.
+- Série com "parte 2" de verdade (só se a parte 2 já estiver produzida ou na fila).

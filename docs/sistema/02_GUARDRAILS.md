@@ -33,12 +33,12 @@ Atualizado em 24/11/2026 com as decisões do Lucas. Este arquivo vale acima de q
 2. fatos.md com 2 fontes por fato central.
 3. Nenhum item da seção 1 violado.
 4. Quadro 1 com conflito ou pergunta visível sem som.
-5. Fim com pergunta, decisão, frase para completar ou chamada concreta de envio ("manda pra quem..."). Nunca "deixa o like", "se inscreve" ou "comenta aí".
+5. Pelo menos 1 gatilho de interação (curtir, comentar ou compartilhar) escrito de um jeito natural e específico do vídeo (ver specs/G2, "Interação"). Pedido genérico e solto ("deixa o like aí", "se inscreve", "comenta aí") não conta.
 6. QA-Claude sem REPROVA e QA-Gemini sem erro grave (fato errado, ofensa, trecho incompreensível, erro de continuidade visível).
 Reprovou: uma rodada de correção pelo organizador certo. Reprovou de novo: entra a reserva e o caso vai para o handover.
 
 ## 4. Anti-cringe
-Nunca "você sabia", nunca fato batido (polvo de três corações, mel que não estraga, 10% do cérebro, galinha é dinossauro), nunca gíria forçada (aura, sigma, rizz, 6-7, brainrot), nunca personagem parado enquanto a voz fala, nunca o mesmo susto ou frase em todo vídeo, nunca frases de IA ("fascinante", "mergulhar", "é importante notar"). Lição de moral só no pilar história: uma frase curta, sem sermão.
+Nunca "você sabia", nunca fato batido (polvo de três corações, mel que não estraga, 10% do cérebro, galinha é dinossauro), nunca gíria forçada (aura, sigma, rizz, 6-7, brainrot), nunca pedido de interação genérico e solto (ele tem que nascer da história: "comenta se já aconteceu com você", "manda pra quem acende o pisca-pisca em outubro"), nunca chantagem do tipo "só conto o final se der like" (o vídeo sempre entrega), nunca personagem parado enquanto a voz fala, nunca o mesmo susto ou frase em todo vídeo, nunca frases de IA ("fascinante", "mergulhar", "é importante notar"). Lição de moral só no pilar história: uma frase curta, sem sermão.
 
 ## 5. Veto do Lucas
 - Se o Lucas disser "segura", "não posta" ou reprovar um vídeo em qualquer conversa, a sessão grava fila/<pasta>/segurar.json (motivo, data) e, se já estiver agendado, muda o vídeo para privado no Studio. Nada com segurar.json é agendado.
