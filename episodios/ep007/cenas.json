@@ -1,0 +1,598 @@
+{
+ "paleta": "noite",
+ "musica": "misterio",
+ "cenas": [
+  {
+   "em": 0,
+   "cenario": "chapado",
+   "paleta": "laranja",
+   "padrao": "bolinhas",
+   "elementos": [
+    {
+     "tipo": "humano",
+     "cabelo": "longo",
+     "cabelo_cor": "ruivo",
+     "pele": "clara",
+     "roupa": "#E8352A",
+     "id": "a",
+     "x": 0.28,
+     "y": 0.42,
+     "escala": 1.2,
+     "expressao": "feliz",
+     "olhar": "dir",
+     "acoes": [
+      {
+       "em": "ver",
+       "faz": "pula",
+       "altura": 25,
+       "som": "fofo",
+       "volume": 0.5
+      }
+     ]
+    },
+    {
+     "tipo": "humano",
+     "cabelo": "curto",
+     "cabelo_cor": "castanho",
+     "pele": "media",
+     "roupa": "#3D7BD9",
+     "id": "p",
+     "x": 0.72,
+     "y": 0.42,
+     "escala": 1.2,
+     "expressao": "neutro",
+     "olhar": "esq",
+     "acoes": [
+      {
+       "em": "sorriso",
+       "faz": "expressao",
+       "para": "feliz",
+       "som": "pop",
+       "volume": 0.6
+      },
+      {
+       "em": "sorriso",
+       "faz": "soco"
+      }
+     ]
+    },
+    {
+     "id": "seta",
+     "tipo": "seta",
+     "x": 0.5,
+     "y": 0.22,
+     "vetor": [
+      220,
+      0
+     ],
+     "curva": 0.3,
+     "progresso": 0,
+     "acoes": [
+      {
+       "em": "ativa",
+       "faz": "muda",
+       "prop": "progresso",
+       "para": 1,
+       "dur": 0.4
+      }
+     ]
+    },
+    {
+     "id": "t",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.165,
+     "texto": "< 1 segundo",
+     "tam": 100,
+     "fundo": "#FFC21A",
+     "acoes": [
+      {
+       "em": "menos",
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "impacto",
+       "volume": 0.6
+      }
+     ]
+    }
+   ],
+   "acoes": []
+  },
+  {
+   "em": "agora",
+   "cenario": "chapado",
+   "paleta": "uva",
+   "padrao": "raios",
+   "elementos": [
+    {
+     "id": "c",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.25,
+     "texto": "REGRA:",
+     "tam": 140,
+     "fundo": "#E8352A",
+     "rot": -6,
+     "acoes": [
+      {
+       "em": "regra",
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "carimbo"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.5,
+     "y": 0.44,
+     "escala": 1.0,
+     "olhar": "camera",
+     "sobrancelha": 0.6,
+     "acoes": [
+      {
+       "em": "agora",
+       "faz": "entra",
+       "jeito": "sobe",
+       "dur": 0.3,
+       "som": "whoosh",
+       "volume": 0.3
+      },
+      {
+       "em": "regra",
+       "faz": "sobrancelha",
+       "para": 1.2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": "cada",
+   "cenario": "chapado",
+   "paleta": "tomate",
+   "padrao": "bolinhas",
+   "elementos": [
+    {
+     "id": "p",
+     "tipo": "humano",
+     "x": 0.5,
+     "y": 0.41,
+     "escala": 1.1,
+     "cabelo": "curto",
+     "cabelo_cor": "castanho",
+     "pele": "media",
+     "roupa": "#3D7BD9",
+     "expressao": "neutro",
+     "acoes": [
+      {
+       "em": "ano",
+       "faz": "expressao",
+       "para": "triste"
+      }
+     ]
+    },
+    {
+     "id": "v",
+     "tipo": "contador",
+     "x": 0.5,
+     "y": 0.135,
+     "valor": 30,
+     "sufixo": " anos",
+     "tam": 120,
+     "fundo": true,
+     "acoes": [
+      {
+       "em": "envelhece",
+       "faz": "conta",
+       "para": 31,
+       "dur": 0.4,
+       "som": "tique"
+      },
+      {
+       "em": "ano",
+       "faz": "soco",
+       "som": "impacto2",
+       "volume": 0.6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": "linha3",
+   "cenario": "escritorio",
+   "paleta": "mostarda",
+   "elementos": [
+    {
+     "id": "p",
+     "tipo": "humano",
+     "x": 0.5,
+     "y": 0.41,
+     "escala": 1.1,
+     "cabelo": "curto",
+     "cabelo_cor": "castanho",
+     "pele": "media",
+     "roupa": "#3D7BD9",
+     "expressao": "neutro",
+     "olhar": "camera"
+    },
+    {
+     "id": "v",
+     "tipo": "contador",
+     "x": 0.5,
+     "y": 0.135,
+     "valor": 31,
+     "sufixo": " anos",
+     "tam": 120,
+     "fundo": true
+    },
+    {
+     "id": "c1",
+     "tipo": "comentario",
+     "x": 0.4,
+     "y": 0.27,
+     "nome": "chefe",
+     "texto": "reunião às 18h",
+     "cor_avatar": "#E8352A",
+     "largura": 540,
+     "acoes": [
+      {
+       "em": "reuniao",
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop"
+      }
+     ],
+     "escala": 1.05
+    },
+    {
+     "id": "c2",
+     "tipo": "comentario",
+     "x": 0.6,
+     "y": 0.37,
+     "nome": "gerente",
+     "texto": "o prazo é hoje",
+     "cor_avatar": "#2BA84A",
+     "largura": 540,
+     "acoes": [
+      {
+       "em": "prazo",
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop2"
+      }
+     ],
+     "escala": 1.05
+    },
+    {
+     "id": "c3",
+     "tipo": "comentario",
+     "x": 0.4,
+     "y": 0.48,
+     "nome": "TI",
+     "texto": "o sistema caiu",
+     "cor_avatar": "#7A3DD9",
+     "largura": 540,
+     "acoes": [
+      {
+       "em": "sistema",
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop3"
+      }
+     ],
+     "escala": 1.05
+    }
+   ],
+   "acoes": [
+    {
+     "em": "reuniao",
+     "faz": "soco",
+     "forca": 0.04
+    },
+    {
+     "em": "prazo",
+     "faz": "soco",
+     "forca": 0.04
+    },
+    {
+     "em": "sistema",
+     "faz": "soco",
+     "forca": 0.04
+    }
+   ]
+  },
+  {
+   "em": "linha5",
+   "cenario": "chapado",
+   "paleta": "noite",
+   "padrao": "listras",
+   "elementos": [
+    {
+     "id": "p",
+     "tipo": "humano",
+     "x": 0.5,
+     "y": 0.41,
+     "escala": 1.1,
+     "cabelo": "curto",
+     "cabelo_cor": "castanho",
+     "pele": "media",
+     "roupa": "#3D7BD9",
+     "expressao": "triste",
+     "olhar": "baixo",
+     "acoes": [
+      {
+       "em": "anos",
+       "faz": "muda",
+       "prop": "cabelo_cor",
+       "para": "grisalho",
+       "som": "ooh",
+       "volume": 0.4
+      },
+      {
+       "em": "anos",
+       "faz": "treme",
+       "dur": 0.3,
+       "forca": 6
+      }
+     ]
+    },
+    {
+     "id": "v",
+     "tipo": "contador",
+     "x": 0.5,
+     "y": 0.135,
+     "valor": 31,
+     "sufixo": " anos",
+     "tam": 120,
+     "fundo": true,
+     "acoes": [
+      {
+       "em": "dez",
+       "faz": "conta",
+       "para": 41,
+       "ate": "mais",
+       "som": "tique"
+      },
+      {
+       "em": "mais",
+       "faz": "treme",
+       "dur": 0.4,
+       "forca": 14
+      }
+     ]
+    }
+   ],
+   "acoes": [
+    {
+     "em": "mais",
+     "faz": "soco",
+     "forca": 0.1,
+     "som": "impacto",
+     "volume": 0.7
+    }
+   ]
+  },
+  {
+   "em": "linha6",
+   "cenario": "chapado",
+   "paleta": "menta",
+   "padrao": "raios",
+   "elementos": [
+    {
+     "id": "cel",
+     "tipo": "celular",
+     "x": 0.5,
+     "y": 0.4,
+     "escala": 1.0,
+     "rot": -6,
+     "tela": "texto",
+     "linhas": [
+      "VÓ",
+      "vídeo..."
+     ],
+     "cor_tela": "#2BA84A",
+     "acoes": [
+      {
+       "em": "celular",
+       "faz": "entra",
+       "jeito": "cai",
+       "dur": 0.3,
+       "som": "queda",
+       "volume": 0.5
+      },
+      {
+       "em": "tocou",
+       "faz": "treme",
+       "dur": 0.8,
+       "forca": 10,
+       "som": "tique"
+      }
+     ]
+    },
+    {
+     "id": "vo",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.15,
+     "texto": "VÓ LIGANDO",
+     "tam": 110,
+     "fundo": "#2BA84A",
+     "acoes": [
+      {
+       "em": "tocou",
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop"
+      },
+      {
+       "em": "fazendo",
+       "faz": "sai",
+       "jeito": "some"
+      }
+     ]
+    },
+    {
+     "id": "oi",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.175,
+     "texto": "CARETA!",
+     "tam": 105,
+     "fundo": "#FF5FA2",
+     "acoes": [
+      {
+       "em": "careta",
+       "faz": "entra",
+       "jeito": "carimba",
+       "som": "impacto"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.76,
+     "y": 0.48,
+     "escala": 0.8,
+     "olhar": "esq",
+     "sobrancelha": 0.8,
+     "acoes": [
+      {
+       "em": "avo",
+       "faz": "entra",
+       "jeito": "desliza_dir",
+       "dur": 0.3,
+       "som": "whoosh",
+       "volume": 0.3
+      },
+      {
+       "em": "careta",
+       "faz": "estoura",
+       "som": "estouro",
+       "depois": 0.2
+      }
+     ]
+    }
+   ],
+   "acoes": [
+    {
+     "em": "careta",
+     "faz": "flash",
+     "depois": 0.2
+    }
+   ]
+  },
+  {
+   "em": "linha7",
+   "cenario": "sala",
+   "paleta": "rosa",
+   "elementos": [
+    {
+     "id": "p",
+     "tipo": "humano",
+     "x": 0.38,
+     "y": 0.38,
+     "escala": 1.2,
+     "cabelo": "curto",
+     "cabelo_cor": "castanho",
+     "pele": "media",
+     "roupa": "#3D7BD9",
+     "expressao": "feliz",
+     "segura": "celular",
+     "acoes": [
+      {
+       "em": "riu",
+       "faz": "pula",
+       "altura": 30,
+       "som": "fofo",
+       "volume": 0.5
+      }
+     ]
+    },
+    {
+     "id": "t",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.13,
+     "texto": "não custa nada",
+     "tam": 120,
+     "acoes": [
+      {
+       "em": "custa",
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.76,
+     "y": 0.48,
+     "escala": 0.75,
+     "forma": "pipoca",
+     "boca": "sorriso",
+     "olhar": "esq"
+    }
+   ]
+  },
+  {
+   "em": "linha8",
+   "cenario": "celular",
+   "hora": "18:33",
+   "paleta": "noite",
+   "elementos": [
+    {
+     "id": "q",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.24,
+     "texto": "Quem te fez\nsorrir hoje?",
+     "tam": 105,
+     "cor": "#FFC21A",
+     "acoes": [
+      {
+       "em": "quem",
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.5,
+     "y": 0.46,
+     "escala": 0.9,
+     "rot": 0,
+     "forma": "pipoca",
+     "olhar": "camera",
+     "sobrancelha": 1,
+     "acoes": [
+      {
+       "em": "quem",
+       "faz": "entra",
+       "jeito": "desliza_esq",
+       "dur": 0.3,
+       "som": "whoosh",
+       "volume": 0.3
+      }
+     ]
+    }
+   ],
+   "acoes": [
+    {
+     "em": "hoje",
+     "faz": "congela",
+     "depois": 0.4,
+     "dur": 1.0
+    }
+   ]
+  }
+ ]
+}

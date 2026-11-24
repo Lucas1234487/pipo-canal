@@ -1,0 +1,55 @@
+{
+ "voice": "pt-BR-ThalitaMultilingualNeural",
+ "rate": "+8%",
+ "pitch": "+0Hz",
+ "lead": 0.1,
+ "trim": true,
+ "trim_tail": 0.1,
+ "lines": [
+  {
+   "text": "Ver alguém sorrir ativa o músculo do sorriso no seu rosto. Sozinho, em menos de um segundo.",
+   "pause": 0.2,
+   "shot": "pessoa dormindo; balão com o nome; o cérebro acende"
+  },
+  {
+   "text": "Agora imagina um mundo com uma regra:",
+   "pause": 0.1,
+   "shot": "corte seco, carimbo REGRA"
+  },
+  {
+   "text": "cada dia que você passa sem sorrir, você envelhece um ano.",
+   "pause": 0.25,
+   "shot": "contador de vida em cima da cabeça cai de 61 para 60"
+  },
+  {
+   "text": "O Pedro trabalha num escritório.",
+   "pause": 0.1,
+   "shot": "escritório, Pedro na mesa"
+  },
+  {
+   "text": "Lá é reunião, prazo, o sistema caiu.",
+   "pause": 0.2,
+   "shot": "comentários pipocando, contador caindo a cada apelido"
+  },
+  {
+   "text": "Dez dias sem um sorriso. Dez anos a mais.",
+   "pause": 0.2,
+   "shot": "contador despenca para 51; cabelo fica grisalho"
+  },
+  {
+   "text": "Até que o celular tocou. Era a avó, fazendo careta na chamada de vídeo.",
+   "pause": 0.3,
+   "shot": "celular VÓ; no Pedro o contador para; a Pipo estoura"
+  },
+  {
+   "text": "Ele riu. Um sorriso não custa nada. Pra quem recebe, pode valer anos.",
+   "pause": 0.3,
+   "shot": "Pedro sorrindo, cor volta ao cabelo"
+  },
+  {
+   "text": "Quem te fez sorrir hoje?",
+   "pause": 0.4,
+   "shot": "pergunta na tela, congela"
+  }
+ ]
+}

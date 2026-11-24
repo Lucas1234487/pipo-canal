@@ -19,3 +19,13 @@ roteiro.json (formato do kit/tts.py, "trim": true, voz: Thalita para A, masculin
 - Nada de "você sabia", fato batido, gíria forçada ou frase de IA.
 - A Pipo aparece de propósito e ESTOURA em todo vídeo (pedido do Lucas, 24/11): de espiga vira pipoca no pico da revelação, com som de estouro, e as cenas seguintes usam `"forma": "pipoca"`. O que varia é o momento e o motivo do estouro, nunca a ausência dele. Nunca parada enquanto a voz fala.
 - Pergunta final respondível em até 3 palavras.
+
+## Formato HISTÓRIA COM REGRA INVENTADA (pedido do Lucas, 24/11; vale para todos os vídeos desse tipo)
+Inspiração: os vídeos de IA que viralizam. Um mundo quase real, com UMA regra inventada (ex.: dá para trocar partes do corpo; quem passa um dia sem sorrir envelhece um ano). Não copie regras de vídeos que já existem: o Lucas reconhece (a do "nome que dá tempo de vida" já existe, proibida).
+1. Abre com algo verdadeiro para aprender (1 frase, fato com 2 fontes em fatos.md) ligado à regra.
+2. "Agora imagina um mundo com uma regra:" + a regra (carimbo/texto grande).
+3. Um personagem comum (Pedro, Ana...) sofre a regra no dia a dia; um contador visível mostra o custo.
+4. Virada com alguém próximo (avó, amigo, desconhecido). A Pipo estoura na virada.
+5. Liçãozinha de moral em 1 frase curta, sem sermão.
+6. Pergunta final ao espectador ligada à lição.
+Duração 28 a 35 s. Transições RÁPIDAS em todo vídeo: corte a cada 2 a 3 s, troca de paleta, whoosh/pop em cada entrada (o Lucas elogiou os efeitos e transições do ep006).
