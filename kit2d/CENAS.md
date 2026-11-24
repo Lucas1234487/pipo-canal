@@ -68,8 +68,36 @@ Elementos (`tipo`) e as propriedades que aceitam (todas podem mudar com `muda`):
 | rachadura | tela trincada | `progresso` 0 a 1 |
 | bloco | cartão/painel (split, antes e depois) | `largura`, `altura`, `cor`, `texto`, `tam` |
 | foto | foto real CC0/domínio público numa polaroide (kit/imagens.py) | `arquivo` (caminho), `largura` (px), `altura`, `legenda`, `credito`, `zoom_lento` |
+| meme | formato de meme redesenhado no nosso estilo (seção 4.1) | `formato`, `revela`, `largura`, `altura` (900), `pers`, `pers_a`/`pers_b`, textos do formato |
 
 Todo elemento: `id`, `x`, `y`, `escala`, `rot` (graus), `alpha`, `espelha`, `pode_sobrepor` (true = não acusar texto sobreposto).
+
+### 4.1 Memes (`"tipo": "meme"`, kit2d/memes.py)
+Regra do canal: o meme é a ESTRUTURA redesenhada (painéis, rótulos, nossos personagens). Nunca a foto original de meme famoso, nunca pessoa real.
+Use `x` 0,5 e `y` 0,335 com `escala` 1: a caixa (900 x 900) fica entre y 0,10 e 0,57, fora da legenda. Textos nunca ficam abaixo de 48 px (quebram linha).
+- `revela`: quantos painéis/níveis já apareceram (padrão: todos). Comece em 1 e anime: `{"em": "palavra", "faz": "muda", "prop": "revela", "para": 2}`; cada painel entra com pop.
+- `pers`: identidade do personagem (padrão Pipo; ex. `{"tipo": "humano", "cabelo": "coque", "pele": "escura"}`). O formato põe a expressão; `pers_a`/`pers_b` sobrepõem por painel.
+- `tam` ajusta o texto principal; `cor_a`, `cor_b`, `cor_cena` trocam as cores dos painéis.
+
+| formato | painéis | textos e opções |
+|---|---|---|
+| aprova_reprova | 2: recusa com a mão / aponta aprovando | `nao`, `sim` |
+| expectativa_realidade | 2: EXPECTATIVA / REALIDADE | `foto_a`/`foto_b` (CC0 de kit/imagens.py, polaroide) ou `texto_a`/`texto_b`; sem nada: Pipo feliz / Pipo acabada com nuvem de chuva; `rotulo_a`/`rotulo_b` |
+| ninguem_eu | 2: "Ninguém:" vazio / "Eu:" + cena | `texto` (o que vem depois de Eu:), `ninguem`, `eu` |
+| pov | 2: faixa POV / cena | `texto`, `expr` (choque, feliz, acabado, maroto, nada, nervoso) |
+| plot_twist | 2: cena / carimbo PLOT TWIST com estrelinhas (personagem leva susto) | `texto` (faixa em cima), `carimbo`, `cor_carimbo` |
+| eu_explicando | 2: eu no quadro rabiscado / "eles:" com cara de nada | `texto` (vira "eu explicando X"), `eles`, `eles_pers` (lista de pessoas) |
+| cerebro_niveis | 3 ou 4 níveis, cérebro cada vez mais brilhante | `niveis`: lista de textos |
+| botoes_dificil | 2: dois botões vermelhos com dedo indeciso / personagem suando | `botao_a`, `botao_b` |
+| grafico_mentiroso | 2: gráfico subindo / despenca e fura o chão (ou explode para fora) | `texto` (título), `direcao`: despenca ou explode, `valor` (ex. "-99%") |
+| legenda_choque | 1 ou 2: texto gigante tremendo com linhas de impacto / personagem chocado (só com `pers`) | `texto` (vira maiúsculo), `cor_explosao` |
+
+```json
+{"id": "m", "tipo": "meme", "formato": "aprova_reprova", "x": 0.5, "y": 0.335, "revela": 1,
+ "nao": "estudar com antecedência", "sim": "estudar na noite da prova",
+ "acoes": [{"em": "linha1", "faz": "entra", "jeito": "pop", "som": "pop"},
+           {"em": "noite", "faz": "muda", "prop": "revela", "para": 2, "som": "pop2"}]}
+```
 
 Ações de elemento (`"faz"`), sempre com `em`; `som` e `volume` opcionais em qualquer uma:
 - `entra` (`jeito`: pop, carimba, desliza_esq, desliza_dir, sobe, desce, cai, aparece). Se o elemento tem `entra`, ele fica invisível antes.
