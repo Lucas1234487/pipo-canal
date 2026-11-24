@@ -92,6 +92,20 @@ Use `x` 0,5 e `y` 0,335 com `escala` 1: a caixa (900 x 900) fica entre y 0,10 e 
 | grafico_mentiroso | 2: gráfico subindo / despenca e fura o chão (ou explode para fora) | `texto` (título), `direcao`: despenca ou explode, `valor` (ex. "-99%") |
 | legenda_choque | 1 ou 2: texto gigante tremendo com linhas de impacto / personagem chocado (só com `pers`) | `texto` (vira maiúsculo), `cor_explosao` |
 
+Formatos das trends de out/nov 2026 (pesquisa, fontes e um exemplo de cada em docs/pesquisa/2026-11-24_memes_em_alta.md):
+| formato | trend | painéis / animação | textos e opções |
+|---|---|---|---|
+| carregando | Recharged / "carregando 1% a 100%" | 1; anime `nivel` (0 a 100) com `muda` + `dur`: a bateria enche e a Pipo levanta; no 100 vira pipoca | `texto` (faixa), `nivel`, `vira_pipoca` (false mantém espiga), `cor_cena` |
+| estagios | "5 estágios de ser..." | 1 por estágio (3 a 6), a cara da Pipo piora a cada linha | `texto` (vira "N estágios de X") ou `titulo`, `estagios` (lista), `exprs` (lista) |
+| retrospectiva | "sinto que não fiz nada esse ano" | 1 por mês (12), o último fica dourado | `texto` (faixa), `meses` (lista curta, 1 ou 2 palavras), `rotulos` (troca JAN..DEZ), `colunas`, `destaque` |
+| carta_noel | "Querido Papai Noel, eu visto tamanho..." | 2: carta / resposta à mão circulada, Pipo espiando com lápis | `inicio`, `tamanho`, `cor_cena` |
+| soft_launch | soft launch (My Moon My Man, sem o áudio) | 2: cortina com sombra e "?" / cortina sobe: coração com o "amor" + carimbo | `texto` (faixa), `amor`, `carimbo` (OFICIAL) |
+| remoendo | "paid me no mind" (ler a mesma mensagem de novo e de novo) | 1 + leituras: balão da mensagem / 4 caras, cada uma com uma ênfase | `de`, `mensagem`, `leituras` (lista), `exprs`, `cor_avatar` |
+| vai_vai_vai | "go go go" | 2; anime `revela` de 1 a 2 com `dur`: os VAI brotam um a um e a Pipo treme | `texto` (faixa), `progresso` (0,99), `rotulo` (texto do visor), `grito` (VAI) |
+| nao_nao_sim | "não, não, não... SIM!" | 1 por item: carimbo NÃO + cara de recusa; o último é o SIM com festa | `itens` (lista, o último é o SIM), `nao`, `sim`, `cor_sim` |
+| nao_julgamos | "a gente escuta e não julga" | 3: roda de conversa / balão da confissão / a plateia reage (um sorri, outro sua) | `titulo`, `confissao`, `reacao` (balãozinho opcional), `ouvintes` (lista de humanos), `reacoes` (expressões) |
+| distraida | "getting robbed" (vidrada no celular) | 2; anime `revela` de 1 a 2 com `dur`: a mão entra, agarra o saco e arrasta | `texto` (faixa), `roubado` (etiqueta do saco), `hora` (relógio de parede), `cor_luva` |
+
 ```json
 {"id": "m", "tipo": "meme", "formato": "aprova_reprova", "x": 0.5, "y": 0.335, "revela": 1,
  "nao": "estudar com antecedência", "sim": "estudar na noite da prova",
