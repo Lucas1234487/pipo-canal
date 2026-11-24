@@ -54,7 +54,7 @@ Elementos (`tipo`) e as propriedades que aceitam (todas podem mudar com `muda`):
 | tipo | para que | propriedades |
 |---|---|---|
 | pipo | a Pipo (espiga cansada, sobrancelha levantada) | `segura`: "celular"; `olhar`: camera, celular, esq, dir, cima, baixo; `sobrancelha` 0 a 1,2; `palpebra` (0,42 cansada; 0 aberta); `boca`: reta, o, sorriso, sorriso_torto, triste; `forma`: "pipoca" (já estourada) |
-| humano | pessoa genérica | `cabelo`: curto, longo, coque, cacheado, careca; `cabelo_cor`: preto, castanho, loiro, ruivo, grisalho, azul ou "#hex"; `pele`: clara, media, morena, escura; `roupa`, `calca` (#hex); `expressao`: neutro, feliz, bravo, surpreso, triste; `olhar`; `segura`: "celular" |
+| humano | pessoa (cartoon editorial, kit2d/humano2.py; detalhes na seção 4.1) | `idade`, `corpo`, `cabelo`, `cabelo_cor`, `barba`, `pele`, `roupa`, `calca`, `sapato`, `manga`, `expressao`, `olhar`, `pose`, `aponta_para`, `segura`: "celular", `assento`, acessórios `oculos`, `bone`, `mochila`, `avental`, `gravata`, `fone` |
 | celular | celular na mão | `tela`: feed (rolando), boca (come coisas), texto; `linhas` (tela texto); `cor_tela`; `dedao`: true (polegar rolando) |
 | calendario | folhinha do mês | `titulo`, `comidos` (quantos dias viraram buraco), `cor` |
 | fluxo | folhinhas voando de A para B | `de`, `para`: id de elemento ou [x, y]; `ritmo` (por s), `vida` (s), `adianta` (s já em voo no 1º quadro), `cor` |
@@ -78,13 +78,28 @@ Ações de elemento (`"faz"`), sempre com `em`; `som` e `volume` opcionais em qu
 - `muda` (`prop`, `para`): qualquer propriedade; número anima, texto troca na hora
 - `conta` / `cresce` (`para`): anima `valor` (contador, barra)
 - `squash` (`forca` 0,2) · `soco` (zoom punch no elemento) · `pula` (`altura`) · `treme` (`dur`, `forca`) · `pisca` (`ritmo`, `dur`) · `mastiga` (celular com tela boca)
-- `olha`, `sobrancelha`, `boca`, `palpebra`, `expressao` (`para`) · `estoura` (Pipo vira pipoca com partículas)
+- `olha`, `sobrancelha`, `boca`, `palpebra`, `expressao`, `pose` (`para`) · `estoura` (Pipo vira pipoca com partículas)
 
 Ações de câmera (em `acoes` da cena): `soco` (zoom punch, `forca` 0,12) · `treme` · `zoom` (`para`) · `pan` (`para` [x, y] do centro) · `inclina` (graus) · `flash` · `congela` (`dur`: freeze; use no fim).
 Cuidado: zoom e pan empurram o que está embaixo para a faixa da legenda. Prefira `soco` no elemento.
 
 Sons (`som`): pop, pop2, pop3, pops, estouro, whoosh, slide, impacto, impacto2, vidro, queda, metal, madeira, carimbo, tique, porta, passos, mastiga, mastiga2, arroto, ooh, fofo, coracao.
 Músicas: percussao, misterio, viagem, aventura. Tudo CC0 (assets/LICENCAS.md). Não use arquivo de fora de assets/.
+
+### 4.1 Humano em detalhe
+- `idade`: adulto (padrão), crianca (cabeça bem maior, corpo curto), idoso (leve corcunda, rugas, cabelo grisalho e óculos por padrão; `"oculos": false` tira).
+- `corpo`: magro, medio (padrão), forte.
+- `cabelo`: curto, longo (franja e mechas com pontas), coque, cacheado, black_power, careca, rabo_de_cavalo, trancas. `barba`: true (cheia), "bigode", "cavanhaque".
+- `cabelo_cor`: preto, castanho, loiro, ruivo, grisalho, branco, azul, rosa ou "#hex". `pele`: clara, media, morena, escura. `roupa`, `calca`, `sapato`: "#hex". `manga`: curta (padrão) ou longa.
+- `expressao`: neutro, feliz, gargalhada, bravo, surpreso, triste, chorando (lágrimas), nervoso (gota de suor), envergonhado (bochecha corada), apaixonado (olhos de coração), cansado. Pisca sozinho. As sobrancelhas mudam suave na troca.
+- `pose`: em_pe (padrão), sentado (com banquinho; `"assento": false` para sentar no sofá do cenário), bracos_cruzados, maos_na_cabeca, acenando, apontando (`aponta_para`: [dx, dy], direção na tela), comemorando.
+  Troque com `{"em": "palavra", "faz": "pose", "para": "comemorando"}` (ou `muda` com `prop` "pose"): os braços e as pernas giram até a pose nova em 0,38 s.
+- `segura`: "celular" (com pose em_pe ou sentado) põe as duas mãos no celular; `"olhar": "celular"` acende a tela no rosto.
+- Acessórios: `oculos`, `bone`, `mochila`, `avental`, `gravata`, `fone`. Use true ou uma cor ("#hex").
+- Medidas (escala 1): pés em y +338 px do centro para todas as idades; rosto do adulto entre -334 e -138; criança e idoso têm o rosto mais baixo; sentado desce o corpo 66 px.
+  Com `escala` 0,8 e `y` 0,36 o rosto do adulto fica entre 0,22 e 0,30. Rosto nunca entre `y` 0,60 e 0,72: o QA acusa `rosto_na_faixa_legenda`.
+- Exemplo: `{"id": "vo", "tipo": "humano", "x": 0.7, "y": 0.36, "escala": 0.85, "idade": "idoso", "cabelo": "coque", "expressao": "feliz", "pose": "acenando", "avental": true}`
+
 
 ## 5. Exemplos
 ### A) Celular comendo o calendário (quadro 1 com conflito)

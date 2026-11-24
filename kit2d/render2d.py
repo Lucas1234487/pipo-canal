@@ -178,7 +178,7 @@ class Elemento:
         elif faz in ("muda", "conta", "cresce"):
             prop = a.get("prop", "valor")
             self.tr_get(prop).add(t0, dur if dur is not None else (0.8 if faz != "muda" else 0.35), a["para"], CURVAS.get(a.get("curva", "rapido" if faz != "muda" else "suave")))
-        elif faz in ("olha", "sobrancelha", "boca", "palpebra", "tela", "segura", "expressao"):
+        elif faz in ("olha", "sobrancelha", "boca", "palpebra", "tela", "segura", "expressao", "pose"):
             prop = {"olha": "olhar"}.get(faz, faz)
             self.tr_get(prop).add(t0, dur or 0.2, a["para"])
         elif faz == "estoura":
@@ -194,6 +194,10 @@ class Elemento:
             st.setdefault(k, v)
         for k, tr in self.tr.items():
             st[k] = tr(t)
+            if isinstance(st[k], str):   # troca de texto (pose, expressao...): valor anterior e hora, para o desenho suavizar
+                tws = [tw[0] for tw in tr.tw if tw[0] <= t]
+                if tws:
+                    st["_troca_" + k] = (tr(tws[-1] - 1e-4), tws[-1])
         st["_t"] = t; st["_estouro"] = self.estouro
         return st
 
