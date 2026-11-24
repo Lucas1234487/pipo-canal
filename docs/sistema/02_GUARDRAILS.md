@@ -21,6 +21,7 @@ Atualizado em 24/11/2026 com as decisões do Lucas. Este arquivo vale acima de q
 11. Copiar a regra inventada de vídeo que já existe (o Lucas reconhece; a do "nome que dá vida" já existe).
 
 ## 2. Sempre
+- VARIEDADE (política de "conteúdo inautêntico" do YouTube desde 15/07/2025 mira "roteiros em template" e produção em massa): dois vídeos seguidos do mesmo pilar nunca repetem a mesma estrutura de cenas, o mesmo gancho, a mesma paleta de abertura ou a mesma música. O Diretor confere isso no lote do dia contra os 3 anteriores do mesmo pilar.
 - A Pipo aparece em todo vídeo e ESTOURA em todo vídeo (o gatilho muda). Ela é feminina (cílios, bochechas, lacinho rosa). Nos 3 pilares ela faz ponta; protagonista só no 4º vídeo, quando ele for liberado.
 - Voz que só fala português: pt-BR-FranciscaNeural ou pt-BR-AntonioNeural. Sem sigla nem palavra estrangeira na fala.
 - Transições rápidas: corte a cada 2 a 3 s, nada parado mais de 3 s, som em toda entrada.
