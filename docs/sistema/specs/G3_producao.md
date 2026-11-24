@@ -22,3 +22,10 @@ WORK/final_pt.mp4, WORK/upload.mp4, WORK/meta.json, WORK/qa_sheet_pt.jpg e o rel
 
 ## Aceite
 qa_check aprovado; upload abaixo de 3,8 MB; render 2D de um vídeo em menos de 5 min.
+
+## Próximo passo de qualidade (Lucas, 24/11: "os fundos podem ser mais complexos e as pessoas interagirem com o fundo")
+Backlog do kit2d, por ordem:
+1. Cenários com profundidade: 3 camadas (fundo, meio, frente), objetos que se mexem (cortina, vapor do café, chuva na janela, carro passando), luz da cena (dia, fim de tarde, noite com abajur).
+2. Interação: personagem senta no sofá, abre a porta, deita na cama, pega o celular da mesa, olha pela janela, fica atrás da mesa (camada da frente cobre as pernas).
+3. Humano mais bonito: rosto mais expressivo, cabelo longo que não pareça véu (o Gemini leu a ruiva como hijab), criança com proporção de criança.
+4. Novos cenários: rua/trânsito, cozinha, carro, ônibus, escola.

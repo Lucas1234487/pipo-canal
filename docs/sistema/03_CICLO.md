@@ -1,15 +1,20 @@
 # 03. Ciclo: o que acontece todo dia e toda semana
 
 ## 1. Produção diária (tarefa agendada na nuvem, de madrugada, sem o Lucas)
-Uma sessão do Diretor produz os 2 vídeos do dia seguinte (A = cotidiano/humor, 20 a 35 s; B = curiosidade/conhecimento, 35 a 60 s).
+Uma sessão do Diretor produz os 3 vídeos do dia seguinte, um por pilar (decisão do Lucas, 24/11):
+- M = assunto do momento (data, tendência, notícia leve da semana: Black Friday, Natal, volta às aulas), 25 a 40 s;
+- H = história com regra inventada (specs/G2, formato HISTÓRIA), 45 a 65 s;
+- C = conhecimento/curiosidade (como o do ossinho de dinossauro), 35 a 60 s.
+A Pipo faz pontas e estoura em todos. Um 4º vídeo (Pipo protagonista) só depois de 5 dias seguidos em que os 3 passaram no piso sem correção manual (ver BASE 24/11).
+HIERARQUIA (obrigatória): o Diretor não produz vídeo com as próprias mãos. Ele contrata, pela ferramenta Agent, 1 gerente de produção por vídeo (no máximo 3 subagentes Claude no dia). Cada gerente segue G2+G3, usa como desenvolvedores os scripts do kit e o Gemini (dev-fatos, dev-escritor, dev-áudio) e devolve 15 linhas + arquivos. O Diretor escolhe as pautas, aprova o texto, roda o G4 e decide a fila.
 1. Posse rápida: 00_LEIA_PRIMEIRO, GUARDRAILS, último handover, PAUTAS.md.
 2. G1 Pesquisa (modo diário, de preferência só Gemini): 5 pautas pontuadas para o dia, cada uma com destinatário ("manda pro grupo da firma"), gancho de quadro 1 e pergunta final com lado. Respeita a fila de PAUTAS.md e o calendário (datas dos próximos 7 dias).
-3. Diretor escolhe 2 pautas (uma A, uma B), em até 5 linhas de justificativa.
-4. G2 Roteiro: roteiro.json + cenas.json + fatos.md de cada vídeo. Diretor lê os 2 roteiros (texto puro) e aprova ou manda 1 correção.
+3. Diretor escolhe 3 pautas (M, H, C), em até 5 linhas de justificativa.
+4. G2 Roteiro: roteiro.json + cenas.json + fatos.md de cada vídeo. Diretor lê os 3 roteiros (texto puro) e aprova ou manda 1 correção.
 5. G3 Produção: narração, render 2D, compose, qa_check, versão de upload (720p, até 3,8 MB), metadados (título até 50 caracteres com palavra-chave no começo, descrição de 2 a 4 frases, 3 a 5 hashtags com #PipoPop, comentário fixado).
-6. G4 Avaliação: Gemini assiste aos 2 MP4 com som (5 perfis de público, fatos, som). Relatório curto em WORK/avaliacao.md.
+6. G4 Avaliação (PORTÃO OBRIGATÓRIO, pedido do Lucas): Gemini assiste a cada MP4 com som (5 perfis, fatos, continuidade, som) e faz uma 2ª passada só de pronúncia. Relatório em WORK/avaliacao_gemini.md. Sem relatório do Gemini o vídeo NÃO vai para a fila agendável: vai para fila/pendente_gemini/ e a sessão de publicação roda o G4 antes de agendar. kit/gemini.py já tenta de novo em queda de rede e troca de modelo em 429.
 7. Diretor aplica o piso (GUARDRAILS seção 3): publica, corrige uma vez ou usa a reserva.
-8. Os aprovados vão para a fila de publicação: branch git `fila` (pasta AAAA-MM-DD_A e _B, com o MP4 de upload e meta.json), com push.
+8. Os aprovados vão para a fila de publicação: branch git `fila` (pasta AAAA-MM-DD_M, _H e _C, com o MP4 de upload e meta.json), com push.
 9. Handover curto do dia (o que saiu, notas, 1 lição) e push. Fim.
 
 ## 2. Vídeo de reserva
@@ -22,12 +27,13 @@ Uma tarefa agendada que exige o PC pessoal do Lucas (Claude in Chrome no Chrome 
 3. O comentário fixado é postado depois que o vídeo vai ao ar (próxima sessão com o PC ligado), junto com a rodada de comentários (curtir, responder, ocultar spam).
 4. Se o PC estiver desligado, nada se perde: a fila acumula e a próxima sessão agenda os atrasados nos próximos horários livres.
 Horários (Brasília, minuto quebrado, a partir do relatório 08):
-| Dia | Vídeo A | Vídeo B |
-|---|---|---|
-| Seg a qui | 12h07 | 18h33 |
-| Sexta | 11h37 | 17h04 |
-| Sábado | 10h41 | 18h06 |
-| Domingo | 11h13 | 18h09 |
+| Dia | 1º | 2º | 3º |
+|---|---|---|---|
+| Seg a qui | 12h07 | 18h33 | 21h17 |
+| Sexta | 11h37 | 17h04 | 20h43 |
+| Sábado | 10h41 | 15h52 | 19h06 |
+| Domingo | 11h13 | 15h38 | 19h09 |
+Ordem: C no 1º horário, M no 2º, H no 3º (história à noite, quando a pessoa tem tempo e manda para alguém). Antes de agendar, a sessão confere que avaliacao_gemini.md existe e não tem erro grave; se faltar, roda o G4 ali mesmo.
 Instagram (@pipo.pop88): mesmo vídeo, 15 a 45 min depois, quando o login no Chrome pessoal estiver ativo. Se não estiver, deixa a aba de login aberta e segue.
 
 ## 4. Métricas

@@ -35,7 +35,7 @@ def req(url, data=None, headers=None, method=None, raw=False, timeout=600):
     if body is not None and "Content-Type" not in h:
         h["Content-Type"] = "application/json"
     r = urllib.request.Request(url, data=body, headers=h, method=method)
-    for tentativa in range(3):
+    for tentativa in range(3):  # rede: RemoteDisconnected/URLError/timeout tentam de novo
         try:
             with urllib.request.urlopen(r, context=CTX, timeout=timeout) as resp:
                 return resp if raw else json.loads(resp.read() or b"{}")
@@ -44,9 +44,9 @@ def req(url, data=None, headers=None, method=None, raw=False, timeout=600):
             if e.code in (500, 503) and tentativa < 2:
                 time.sleep(8 * (tentativa + 1)); continue
             raise ErroAPI(e.code, msg)
-        except urllib.error.URLError as e:
+        except (urllib.error.URLError, ConnectionError, TimeoutError, OSError) as e:
             if tentativa < 2:
-                time.sleep(5); continue
+                time.sleep(6 * (tentativa + 1)); continue
             sys.stderr.write(f"ERRO DE REDE: {e}\n"); sys.exit(1)
 
 

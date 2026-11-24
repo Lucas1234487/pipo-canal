@@ -35,3 +35,12 @@ Duração 45 a 65 s (Lucas, 24/11: aprofundar a história e o sentimento). Trans
 - Arco de sentimento: primeiro clima fechado e tenso (paletas noite/petroleo, `padrao: "chuva"`, música misterio, expressão triste); na virada, crescente e explosivo (flash, soco, estouro da Pipo, paletas quentes, troca para a música aventura via `silencios` + `sfx`).
 - Paralelos que o público reconhece: mãe que liga, namorada que manda meme, filho que aparece na porta, chefe, prazo. O espectador tem que se ver no personagem antes de ver ele ficar bem.
 - Call to action no fim, além da pergunta: pedir para MANDAR o vídeo para a pessoa ligada à lição ("Manda esse vídeo pra essa pessoa. Ela merece saber."). Comentário fixado puxa marcação ("Marca aqui quem...").
+
+## Voz e pronúncia (Lucas, 24/11)
+- A voz pt-BR-ThalitaMultilingualNeural troca de fonética em palavras que parecem estrangeiras (meme, TI, nomes, siglas). Padrão agora: pt-BR-FranciscaNeural (feminina) ou pt-BR-AntonioNeural (masculina), que só falam português.
+- Mesmo assim, escreva para o ouvido: siglas por extenso ("o cara da informática"), estrangeirismos aportuguesados ("mími" só se precisar), números por extenso.
+- O Gemini disse "nenhum problema" na pronúncia do ep007 e o Lucas ouviu erros: a checagem do Gemini é obrigatória, mas não basta. Evitar a palavra arriscada é a regra.
+
+## Retenção (Gemini no ep007 v2)
+- O ponto de saída foi o "Agora imagina um mundo com uma regra" (0:12) com a Pipo parada num fundo liso. A cena da regra precisa de ação (a regra acontecendo, não só o texto).
+- Contador visível tem que bater do começo ao fim (o Gemini cobrou o 32 que virou 30).
