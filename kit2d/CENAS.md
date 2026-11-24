@@ -44,6 +44,7 @@ Topo: `paleta` (padrão), `musica` (apelido ou caminho em assets/musica), `music
 
 Cena: `em` (corte; a 1ª é sempre 0), `cenario`, `paleta`, `padrao` (no chapado/celular), `zoom` (1,0), `deriva` (aproximação lenta automática, 0,025; 0 desliga),
 `elementos`, `acoes` (de câmera). Cada cena nova começa do zero: elementos não passam de uma cena para outra.
+Opcionais da cena: `transicao` (seção 4.2), `energia`/`calma` (fundos animados), `fundo_foto` (seção 4.3).
 
 ## 4. Cardápio
 Paletas: tomate, mostarda, petroleo, uva, menta, cobalto, noite, rosa, laranja (troque a cada cena: dá ritmo).
@@ -88,6 +89,7 @@ Personagem sem `escala` ganha a escala certa da âncora. `move` também aceita �
 Porta que abre: `{"id": "pt", "tipo": "porta", "ancora": "porta", "acoes": [{"em": "toc", "faz": "muda", "prop": "abre", "para": 1, "dur": 0.5, "som": "porta"}]}`
 e, DEPOIS dela na lista, o humano com `"ancora": "porta"` e `{"faz": "entra", "jeito": "aparece"}`: ele aparece no vão e o batente fica na frente dele.
 A porta também funciona no chapado (`largura`, `altura`, `cor`, `dentro` = cor da luz do outro lado).
+Cenários: `chapado` (cor + padrão: os animados da seção 4.2 ou os antigos raios, bolinhas, listras, chuva, nada) · `sala` (sofá; `cor_sofa`) · `escritorio` · `quarto` · `celular` (tela gigante; `hora`, `cor_tela`).
 
 Elementos (`tipo`) e as propriedades que aceitam (todas podem mudar com `muda`):
 | tipo | para que | propriedades |
@@ -152,6 +154,49 @@ Formatos das trends de out/nov 2026 (pesquisa, fontes e um exemplo de cada em do
            {"em": "noite", "faz": "muda", "prop": "revela", "para": 2, "som": "pop2"}]}
 ```
 
+### 4.2 Fundos animados e transições (kit2d/fundos.py)
+Prefira estes aos antigos (cor chapada e listras). Valem no `chapado` e viram o papel de parede da tela no `celular`.
+Todos usam as cores da paleta, se mexem sozinhos e baixam o contraste no centro (onde ficam Pipo e texto).
+Na cena: `energia` 0 a 1 (padrão 0,6: velocidade e quantidade) e `calma` 0 a 1 (quanto o centro fica mais liso).
+
+| padrao | o que é | quando usar | extras |
+|---|---|---|---|
+| gradiente_vivo | 3 cores da paleta girando e respirando, brilhos suaves | neutro, explicação | |
+| bokeh | círculos desfocados subindo em 3 profundidades | clima, nostalgia, sonho | |
+| formas | confete: triângulos, círculos, zigue-zague, estrelinhas caindo e girando | festa, lista, curiosidade | |
+| espiral | espiral hipnótica girando | choque, virada, "o quê?" | `velocidade` (1) |
+| halftone | retícula de HQ pulsando em onda | humor, quadrinho | |
+| ondas | faixas onduladas com contorno (lava) | transição de assunto, calma | |
+| raios_hq | speed lines de HQ pulsando, miolo limpo | impacto, revelação | |
+| grade_retro | chão synthwave com grade andando, sol listrado, montanhas | anos 80, tecnologia, "antigamente" | |
+| ceu | céu com sol/lua e nuvens em parallax | ao ar livre, tempo, clima | `ceu`: dia, tarde, noite (estrelas cintilando) |
+| espaco | estrelas em parallax, nebulosa, planeta com anel, estrela cadente | ciência, "imagine", tamanho das coisas | |
+| papel_rasgado | tiras de papel colorido rasgado deslizando | colagem, lista, antes e depois | |
+| luzes | pisca-pisca em fios, piscando em sequência | Natal, Ano Novo, festa | |
+| cidade | céu noturno + prédios com janelas acesas em parallax | cidade, noite, trabalho | |
+
+`transicao` (na cena que ENTRA): o 1º quadro da cena nova se mistura com o último da anterior.
+`wipe_diagonal` (faixa colorida varre na diagonal), `zoom_blur` (a cena velha explode em zoom), `papel` (a cena velha rasga ao meio),
+`flash_cor` (flash na cor de destaque), `mergulho` e `emergir` (seção 4.3). `transicao_dur` em s (0,25; mergulho/emergir 0,5).
+Use no máximo uma a cada 2 ou 3 cortes: o resto é corte seco (o whoosh já entra sozinho).
+```json
+{"em": "virou", "cenario": "chapado", "padrao": "espiral", "paleta": "cobalto", "energia": 0.9, "velocidade": 1.4, "transicao": "zoom_blur", "elementos": [...]}
+```
+
+### 4.3 Foto real em tela cheia e mergulho no desenho
+`fundo_foto` na cena: foto CC0/domínio público (kit/imagens.py) cobrindo a tela, com Ken Burns e parallax de 2 camadas
+(atrás desfocada e lenta; na frente nítida, maior, com máscara radial no foco). Vinheta e textura de papel por cima; elementos 2D por cima normalmente.
+- `estilo`: real, duotone (2 cores da paleta: casa com o desenho), posterizada (poucas cores + contorno de tinta), pintada (suavizada, cor viva).
+- `kb_de` / `kb_para`: [zoom, x, y], x e y = ponto da FOTO (0 a 1) que fica no centro; vai de um ao outro ao longo da cena (padrão [1, 0,5, 0,5] -> [1,18, 0,5, 0,45]).
+- `parallax` (true), `vinheta` (0,45). Ponha `"deriva": 0` (o Ken Burns já move a câmera).
+- `"transicao": "mergulho"` na cena 2D seguinte: a câmera mergulha num ponto da foto (`mergulho_em` [x, y] da TELA) e a cena nova nasce dali numa íris que abre, com flash.
+  `"emergir"` é o inverso (a cena 2D fecha numa íris e a foto se afasta do ponto). Bom para abrir o vídeo: foto real -> mergulho -> nosso mundo.
+```json
+{"em": 0, "fundo_foto": "WORK/img/foto1.jpg", "estilo": "real", "kb_de": [1.0, 0.45, 0.5], "kb_para": [1.6, 0.47, 0.47], "deriva": 0, "elementos": [...]},
+{"em": "cidade", "cenario": "chapado", "padrao": "cidade", "paleta": "noite", "transicao": "mergulho", "mergulho_em": [0.5, 0.45], "elementos": [...]}
+```
+Custo: os fundos animados somam ~10 a 30 ms por quadro (camadas suaves em 1/4 da resolução, sprites em cache); o render fica até ~1,2x o tempo dos fundos antigos.
+
 Ações de elemento (`"faz"`), sempre com `em`; `som` e `volume` opcionais em qualquer uma:
 - `entra` (`jeito`: pop, carimba, desliza_esq, desliza_dir, sobe, desce, cai, aparece). Se o elemento tem `entra`, ele fica invisível antes.
 - `sai` (pop, desliza_esq, desliza_dir, some)
@@ -170,7 +215,6 @@ riser (suspense 1,6 s), dundun ("dun dun dunnn"), ohh (plateia), risada (plateia
 glitch, gongo, apito_sobe, apito_desce, boing, fa e fa2 (o "FAAH" com eco, nosso; fa = voz grave, fa2 = voz aguda). Use `volume` 0,6 a 0,9.
 Músicas: percussao, misterio, viagem, aventura. Tudo CC0 (assets/LICENCAS.md). Não use arquivo de fora de assets/.
 
-<<<<<<< HEAD
 ### 4.1 Humano em detalhe
 - `idade`: adulto (padrão), crianca (cabeça bem maior, corpo curto), idoso (leve corcunda, rugas, cabelo grisalho e óculos por padrão; `"oculos": false` tira).
 - `corpo`: magro, medio (padrão), forte.
@@ -205,7 +249,6 @@ Elenco fixo (`"preset": "nome"`; qualquer propriedade no elemento vale por cima;
 vizinho_exagerado, tia_do_zap, gala, crush, chefe, estagiario, vovo_turbo, crianca_terrivel, tiozao_do_churrasco, nerd, esportista, influencer, seu_ze_da_banca.
 Ex.: `{"id": "chefe", "tipo": "humano", "preset": "chefe", "x": 0.7, "y": 0.36, "escala": 0.85, "acoes": [{"em": "prazo", "faz": "expressao", "para": "surpreso"}]}`
 Use os mesmos nomes de preset nos vídeos para virarem personagens recorrentes.
-=======
 ### 4.2 Reações de meme (ação de câmera `"faz": "reacao"`)
 O efeito cômico dos memes virais (o "aughhh", o vine boom, o arranhão de disco) refeito com som livre e a nossa câmera. Nunca áudio ou vídeo original de desenho, filme ou streamer.
 ```json
@@ -227,7 +270,6 @@ O efeito cômico dos memes virais (o "aughhh", o vine boom, o arranhão de disco
 | fa | zoom seco + tremor forte + flash branco (0,7 s) | fa | grito de susto/indignação, "FAAH" |
 
 Regra de dose: no máximo 2 reações por vídeo, nunca duas seguidas da mesma; pausa na narração ajuda (a reação dura até 1,2 s e o som passa disso).
->>>>>>> 173e494c7501ec40588642ed280c2f10b727a1db
 
 ## 5. Exemplos
 ### A) Celular comendo o calendário (quadro 1 com conflito)

@@ -703,7 +703,10 @@ def cenario(ctx, nome, pal, t, opts, seed=1):
     bg, bg2, a1, a2, a3 = pal
     ctx.set_source_rgb(*bg); ctx.paint()
     padrao = opts.get("padrao", "raios" if nome == "chapado" else None)
-    if nome in ("chapado", "celular") and padrao:
+    import fundos   # fundos abstratos animados (kit2d/fundos.py)
+    if nome == "chapado" and padrao in fundos.PADROES:
+        fundos.desenha(ctx, padrao, pal, t, opts, seed)
+    elif nome in ("chapado", "celular") and padrao and padrao not in fundos.PADROES:
         ctx.save()
         if padrao == "raios":
             ctx.translate(W / 2, H * 0.4); ctx.rotate(t * 0.08)
@@ -778,6 +781,9 @@ def cenario(ctx, nome, pal, t, opts, seed=1):
         forma(ctx, pts_ret(40, 90, W - 80, H - 180, 90), hexc("#2B2238"), seed=seed, lw=LW + 2)
         tela = hexc(opts["cor_tela"]) if opts.get("cor_tela") else escurece(bg, 0.55)
         forma(ctx, pts_ret(76, 170, W - 152, H - 340, 60), tela, sombra=False, lw=5, seed=seed + 1)
+        if padrao in fundos.PADROES:   # fundo novo vira o papel de parede da tela
+            ctx.save(); path_suave(ctx, pts_ret(80, 174, W - 160, H - 348, 58)); ctx.clip()
+            fundos.desenha(ctx, padrao, pal, t, opts, seed); ctx.restore()
         forma(ctx, pts_ret(W / 2 - 90, 120, 180, 30, 15), INK, sombra=False, lw=0, seed=seed + 2)
         ctx.select_font_face("Fredoka Light", cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_BOLD); ctx.set_font_size(40)
         ctx.move_to(130, 240); ctx.set_source_rgb(*BRANCO); ctx.show_text(opts.get("hora", "23:47"))
