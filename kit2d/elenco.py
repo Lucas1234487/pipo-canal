@@ -27,6 +27,6 @@ ELENCO = {
                        queixo="quadrado", nariz="arrebitado", expressao="feliz", pose="bracos_cruzados"),
     "influencer": dict(cabelo="rabo_de_cavalo", cabelo_cor="rosa", pele="clara", cilios=True, brilho="sutil", segura="celular", olhar="celular",
                        roupa="#FFF3E0", sobrancelha="fina", nariz="arrebitado", expressao="apaixonado"),
-    "seu_ze_da_banca": dict(idade="idoso", cabelo="careca", pele="media", barba="cheia", cabelo_cor="grisalho", nariz="adunco", orelhas="abano",
+    "seu_ze_da_banca": dict(idade="idoso", cabelo="careca", pele="media", barba="cheia", cabelo_cor="grisalho", nariz="batata", orelhas="abano",
                             corpo="magro", roupa="#C8844A", estampa="xadrez", bone="#2B2440", expressao="nervoso"),
 }
