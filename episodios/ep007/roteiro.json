@@ -1,55 +1,70 @@
 {
  "voice": "pt-BR-ThalitaMultilingualNeural",
- "rate": "+8%",
+ "rate": "+6%",
  "pitch": "+0Hz",
  "lead": 0.1,
  "trim": true,
  "trim_tail": 0.1,
  "lines": [
   {
-   "text": "Ver alguém sorrir ativa o músculo do sorriso no seu rosto. Sozinho, em menos de um segundo.",
-   "pause": 0.2,
-   "shot": "pessoa dormindo; balão com o nome; o cérebro acende"
+   "text": "Em dez dias, o Pedro envelheceu dez anos.",
+   "pause": 0.25
+  },
+  {
+   "text": "E a culpa foi de uma coisa que você faz sem perceber.",
+   "pause": 0.2
+  },
+  {
+   "text": "Ver alguém sorrir ativa o músculo do sorriso no seu rosto. Em menos de um segundo.",
+   "pause": 0.25
   },
   {
    "text": "Agora imagina um mundo com uma regra:",
-   "pause": 0.1,
-   "shot": "corte seco, carimbo REGRA"
+   "pause": 0.1
   },
   {
    "text": "cada dia que você passa sem sorrir, você envelhece um ano.",
-   "pause": 0.25,
-   "shot": "contador de vida em cima da cabeça cai de 61 para 60"
+   "pause": 0.3
   },
   {
-   "text": "O Pedro trabalha num escritório.",
-   "pause": 0.1,
-   "shot": "escritório, Pedro na mesa"
+   "text": "O Pedro acorda cansado. Trânsito. Reunião. Prazo. O sistema caiu.",
+   "pause": 0.2
   },
   {
-   "text": "Lá é reunião, prazo, o sistema caiu.",
-   "pause": 0.2,
-   "shot": "comentários pipocando, contador caindo a cada apelido"
+   "text": "A mãe liga. Ele recusa: tô ocupado, mãe.",
+   "pause": 0.2
   },
   {
-   "text": "Dez dias sem um sorriso. Dez anos a mais.",
-   "pause": 0.2,
-   "shot": "contador despenca para 51; cabelo fica grisalho"
+   "text": "A namorada manda um meme. Visualizado. Sem resposta.",
+   "pause": 0.25
   },
   {
-   "text": "Até que o celular tocou. Era a avó, fazendo careta na chamada de vídeo.",
-   "pause": 0.3,
-   "shot": "celular VÓ; no Pedro o contador para; a Pipo estoura"
+   "text": "Dez dias assim. Dez anos a mais no espelho.",
+   "pause": 0.4
   },
   {
-   "text": "Ele riu. Um sorriso não custa nada. Pra quem recebe, pode valer anos.",
-   "pause": 0.3,
-   "shot": "Pedro sorrindo, cor volta ao cabelo"
+   "text": "Até que, numa noite, o filho dele aparece na porta, todo rabiscado de canetinha:",
+   "pause": 0.1
   },
   {
-   "text": "Quem te fez sorrir hoje?",
-   "pause": 0.4,
-   "shot": "pergunta na tela, congela"
+   "text": "Pai! Eu sou um tigre!",
+   "pause": 0.25
+  },
+  {
+   "text": "E o Pedro riu. Riu alto, de doer a barriga.",
+   "pause": 0.2
+  },
+  {
+   "text": "Ligou pra mãe. Respondeu o meme. E os anos foram voltando, um por um.",
+   "pause": 0.3
+  },
+  {
+   "text": "Sorriso não é bobeira. Pra quem recebe, pode valer anos.",
+   "pause": 0.3
+  },
+  {
+   "text": "Quem te fez sorrir hoje? Manda esse vídeo pra essa pessoa. Ela merece saber.",
+   "pause": 0.4
   }
  ]
 }

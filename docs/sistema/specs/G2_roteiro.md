@@ -28,4 +28,10 @@ Inspiração: os vídeos de IA que viralizam. Um mundo quase real, com UMA regra
 4. Virada com alguém próximo (avó, amigo, desconhecido). A Pipo estoura na virada.
 5. Liçãozinha de moral em 1 frase curta, sem sermão.
 6. Pergunta final ao espectador ligada à lição.
-Duração 28 a 35 s. Transições RÁPIDAS em todo vídeo: corte a cada 2 a 3 s, troca de paleta, whoosh/pop em cada entrada (o Lucas elogiou os efeitos e transições do ep006).
+Duração 45 a 65 s (Lucas, 24/11: aprofundar a história e o sentimento). Transições RÁPIDAS em todo vídeo: corte a cada 2 a 3 s, troca de paleta, whoosh/pop em cada entrada (o Lucas elogiou os efeitos e transições do ep006).
+
+### Aprofundamento (Lucas, 24/11, vale para todas as histórias)
+- Gancho impactante na 1ª frase: o resultado chocante antes da explicação ("Em dez dias, o Pedro envelheceu dez anos."). Só depois o fato real.
+- Arco de sentimento: primeiro clima fechado e tenso (paletas noite/petroleo, `padrao: "chuva"`, música misterio, expressão triste); na virada, crescente e explosivo (flash, soco, estouro da Pipo, paletas quentes, troca para a música aventura via `silencios` + `sfx`).
+- Paralelos que o público reconhece: mãe que liga, namorada que manda meme, filho que aparece na porta, chefe, prazo. O espectador tem que se ver no personagem antes de ver ele ficar bem.
+- Call to action no fim, além da pergunta: pedir para MANDAR o vídeo para a pessoa ligada à lição ("Manda esse vídeo pra essa pessoa. Ela merece saber."). Comentário fixado puxa marcação ("Marca aqui quem...").

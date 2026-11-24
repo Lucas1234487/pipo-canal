@@ -1,9 +1,141 @@
 {
  "paleta": "noite",
  "musica": "misterio",
+ "silencios": [
+  [
+   42.752,
+   63.11800000000001
+  ]
+ ],
+ "sfx": [
+  [
+   "assets/musica/adventure-intro-title-cinematic-epic/Adventure%20Theme%20Intro.wav",
+   42.852000000000004,
+   0.35
+  ]
+ ],
  "cenas": [
   {
    "em": 0,
+   "cenario": "chapado",
+   "paleta": "noite",
+   "padrao": "chuva",
+   "elementos": [
+    {
+     "tipo": "humano",
+     "cabelo": "curto",
+     "cabelo_cor": "castanho",
+     "pele": "media",
+     "roupa": "#3D7BD9",
+     "id": "p",
+     "x": 0.5,
+     "y": 0.41,
+     "escala": 1.1,
+     "expressao": "neutro",
+     "acoes": [
+      {
+       "em": "anos",
+       "faz": "muda",
+       "prop": "cabelo_cor",
+       "para": "grisalho",
+       "som": "ooh",
+       "volume": 0.5
+      },
+      {
+       "em": "anos",
+       "faz": "expressao",
+       "para": "triste"
+      },
+      {
+       "em": "anos",
+       "faz": "treme",
+       "dur": 0.4,
+       "forca": 8
+      }
+     ]
+    },
+    {
+     "id": "v",
+     "tipo": "contador",
+     "x": 0.5,
+     "y": 0.135,
+     "valor": 30,
+     "sufixo": " anos",
+     "tam": 120,
+     "fundo": true,
+     "acoes": [
+      {
+       "em": "dez",
+       "faz": "conta",
+       "para": 40,
+       "ate": "anos",
+       "som": "tique"
+      },
+      {
+       "em": "anos",
+       "faz": "soco",
+       "som": "impacto",
+       "volume": 0.8
+      }
+     ]
+    }
+   ],
+   "acoes": [
+    {
+     "em": "anos",
+     "faz": "treme",
+     "forca": 18,
+     "dur": 0.4
+    }
+   ]
+  },
+  {
+   "em": "linha1",
+   "cenario": "chapado",
+   "paleta": "petroleo",
+   "padrao": "chuva",
+   "elementos": [
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.5,
+     "y": 0.44,
+     "escala": 1.0,
+     "olhar": "camera",
+     "sobrancelha": 0.4,
+     "acoes": [
+      {
+       "em": "culpa",
+       "faz": "sobrancelha",
+       "para": 1.2
+      },
+      {
+       "em": "voce",
+       "faz": "soco"
+      }
+     ]
+    },
+    {
+     "id": "t",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.18,
+     "texto": "você faz isso\ntodo dia",
+     "tam": 100,
+     "acoes": [
+      {
+       "em": "voce",
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop"
+      }
+     ],
+     "cor": "#FFC21A"
+    }
+   ]
+  },
+  {
+   "em": "linha2",
    "cenario": "chapado",
    "paleta": "laranja",
    "padrao": "bolinhas",
@@ -17,7 +149,7 @@
      "id": "a",
      "x": 0.28,
      "y": 0.42,
-     "escala": 1.2,
+     "escala": 1.15,
      "expressao": "feliz",
      "olhar": "dir",
      "acoes": [
@@ -39,19 +171,19 @@
      "id": "p",
      "x": 0.72,
      "y": 0.42,
-     "escala": 1.2,
+     "escala": 1.15,
      "expressao": "neutro",
      "olhar": "esq",
      "acoes": [
       {
-       "em": "sorriso",
+       "em": "rosto",
        "faz": "expressao",
        "para": "feliz",
        "som": "pop",
        "volume": 0.6
       },
       {
-       "em": "sorriso",
+       "em": "rosto",
        "faz": "soco"
       }
      ]
@@ -60,7 +192,7 @@
      "id": "seta",
      "tipo": "seta",
      "x": 0.5,
-     "y": 0.22,
+     "y": 0.24,
      "vetor": [
       220,
       0
@@ -84,22 +216,20 @@
      "y": 0.165,
      "texto": "< 1 segundo",
      "tam": 100,
-     "fundo": "#FFC21A",
      "acoes": [
       {
        "em": "menos",
        "faz": "entra",
        "jeito": "pop",
-       "som": "impacto",
-       "volume": 0.6
+       "som": "impacto"
       }
-     ]
+     ],
+     "fundo": "#FFC21A"
     }
-   ],
-   "acoes": []
+   ]
   },
   {
-   "em": "agora",
+   "em": "linha3",
    "cenario": "chapado",
    "paleta": "uva",
    "padrao": "raios",
@@ -111,8 +241,6 @@
      "y": 0.25,
      "texto": "REGRA:",
      "tam": 140,
-     "fundo": "#E8352A",
-     "rot": -6,
      "acoes": [
       {
        "em": "regra",
@@ -120,14 +248,15 @@
        "jeito": "pop",
        "som": "carimbo"
       }
-     ]
+     ],
+     "fundo": "#E8352A"
     },
     {
      "id": "pipo",
      "tipo": "pipo",
      "x": 0.5,
-     "y": 0.44,
-     "escala": 1.0,
+     "y": 0.46,
+     "escala": 0.9,
      "olhar": "camera",
      "sobrancelha": 0.6,
      "acoes": [
@@ -138,33 +267,27 @@
        "dur": 0.3,
        "som": "whoosh",
        "volume": 0.3
-      },
-      {
-       "em": "regra",
-       "faz": "sobrancelha",
-       "para": 1.2
       }
      ]
     }
    ]
   },
   {
-   "em": "cada",
+   "em": "linha4",
    "cenario": "chapado",
    "paleta": "tomate",
    "padrao": "bolinhas",
    "elementos": [
     {
-     "id": "p",
      "tipo": "humano",
-     "x": 0.5,
-     "y": 0.41,
-     "escala": 1.1,
      "cabelo": "curto",
      "cabelo_cor": "castanho",
      "pele": "media",
      "roupa": "#3D7BD9",
-     "expressao": "neutro",
+     "id": "p",
+     "x": 0.5,
+     "y": 0.41,
+     "escala": 1.1,
      "acoes": [
       {
        "em": "ano",
@@ -201,22 +324,22 @@
    ]
   },
   {
-   "em": "linha3",
+   "em": "linha5",
    "cenario": "escritorio",
-   "paleta": "mostarda",
+   "paleta": "petroleo",
    "elementos": [
     {
-     "id": "p",
      "tipo": "humano",
-     "x": 0.5,
-     "y": 0.41,
-     "escala": 1.1,
      "cabelo": "curto",
      "cabelo_cor": "castanho",
      "pele": "media",
      "roupa": "#3D7BD9",
-     "expressao": "neutro",
-     "olhar": "camera"
+     "id": "p",
+     "x": 0.5,
+     "y": 0.4,
+     "escala": 1.1,
+     "expressao": "triste",
+     "olhar": "baixo"
     },
     {
      "id": "v",
@@ -232,11 +355,31 @@
      "id": "c1",
      "tipo": "comentario",
      "x": 0.4,
-     "y": 0.27,
+     "y": 0.25,
+     "nome": "GPS",
+     "texto": "trânsito: +40 min",
+     "cor_avatar": "#E8352A",
+     "largura": 560,
+     "escala": 1.05,
+     "acoes": [
+      {
+       "em": "transito",
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop"
+      }
+     ]
+    },
+    {
+     "id": "c2",
+     "tipo": "comentario",
+     "x": 0.6,
+     "y": 0.33,
      "nome": "chefe",
      "texto": "reunião às 18h",
-     "cor_avatar": "#E8352A",
-     "largura": 540,
+     "cor_avatar": "#2BA84A",
+     "largura": 560,
+     "escala": 1.05,
      "acoes": [
       {
        "em": "reuniao",
@@ -244,49 +387,53 @@
        "jeito": "pop",
        "som": "pop"
       }
-     ],
-     "escala": 1.05
-    },
-    {
-     "id": "c2",
-     "tipo": "comentario",
-     "x": 0.6,
-     "y": 0.37,
-     "nome": "gerente",
-     "texto": "o prazo é hoje",
-     "cor_avatar": "#2BA84A",
-     "largura": 540,
-     "acoes": [
-      {
-       "em": "prazo",
-       "faz": "entra",
-       "jeito": "pop",
-       "som": "pop2"
-      }
-     ],
-     "escala": 1.05
+     ]
     },
     {
      "id": "c3",
      "tipo": "comentario",
      "x": 0.4,
-     "y": 0.48,
+     "y": 0.41,
+     "nome": "gerente",
+     "texto": "o prazo é hoje",
+     "cor_avatar": "#7A3DD9",
+     "largura": 560,
+     "escala": 1.05,
+     "acoes": [
+      {
+       "em": "prazo",
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop"
+      }
+     ]
+    },
+    {
+     "id": "c4",
+     "tipo": "comentario",
+     "x": 0.6,
+     "y": 0.49,
      "nome": "TI",
      "texto": "o sistema caiu",
-     "cor_avatar": "#7A3DD9",
-     "largura": 540,
+     "cor_avatar": "#1F8FE0",
+     "largura": 560,
+     "escala": 1.05,
      "acoes": [
       {
        "em": "sistema",
        "faz": "entra",
        "jeito": "pop",
-       "som": "pop3"
+       "som": "pop"
       }
-     ],
-     "escala": 1.05
+     ]
     }
    ],
    "acoes": [
+    {
+     "em": "transito",
+     "faz": "soco",
+     "forca": 0.04
+    },
     {
      "em": "reuniao",
      "faz": "soco",
@@ -305,21 +452,137 @@
    ]
   },
   {
-   "em": "linha5",
+   "em": "linha6",
    "cenario": "chapado",
    "paleta": "noite",
-   "padrao": "listras",
+   "padrao": "chuva",
    "elementos": [
     {
-     "id": "p",
-     "tipo": "humano",
+     "id": "cel",
+     "tipo": "celular",
      "x": 0.5,
-     "y": 0.41,
-     "escala": 1.1,
+     "y": 0.28,
+     "escala": 0.95,
+     "rot": -5,
+     "tela": "texto",
+     "linhas": [
+      "Mãe",
+      "ligando..."
+     ],
+     "cor_tela": "#2BA84A",
+     "acoes": [
+      {
+       "em": "liga",
+       "faz": "treme",
+       "dur": 0.7,
+       "forca": 10,
+       "som": "tique"
+      },
+      {
+       "em": "recusa",
+       "faz": "muda",
+       "prop": "cor_tela",
+       "para": "#E8352A",
+       "som": "impacto2",
+       "volume": 0.5
+      }
+     ]
+    },
+    {
+     "id": "c1",
+     "tipo": "comentario",
+     "x": 0.5,
+     "y": 0.53,
+     "nome": "Pedro",
+     "texto": "tô ocupado, mãe",
+     "cor_avatar": "#3D7BD9",
+     "largura": 560,
+     "escala": 1.05,
+     "acoes": [
+      {
+       "em": "ocupado",
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": "linha7",
+   "cenario": "chapado",
+   "paleta": "petroleo",
+   "padrao": "chuva",
+   "elementos": [
+    {
+     "id": "c1",
+     "tipo": "comentario",
+     "x": 0.45,
+     "y": 0.2,
+     "nome": "Amor",
+     "texto": "olha esse meme kkk",
+     "cor_avatar": "#FF5FA2",
+     "largura": 560,
+     "escala": 1.05,
+     "acoes": [
+      {
+       "em": "meme",
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop"
+      }
+     ]
+    },
+    {
+     "id": "vis",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.285,
+     "texto": "visualizado",
+     "tam": 80,
+     "acoes": [
+      {
+       "em": "visualizado",
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "tique"
+      }
+     ],
+     "cor": "#9FB3C8"
+    },
+    {
+     "tipo": "humano",
      "cabelo": "curto",
      "cabelo_cor": "castanho",
      "pele": "media",
      "roupa": "#3D7BD9",
+     "id": "p",
+     "x": 0.5,
+     "y": 0.48,
+     "escala": 0.9,
+     "expressao": "triste",
+     "olhar": "baixo",
+     "segura": "celular"
+    }
+   ]
+  },
+  {
+   "em": "linha8",
+   "cenario": "chapado",
+   "paleta": "noite",
+   "padrao": "chuva",
+   "elementos": [
+    {
+     "tipo": "humano",
+     "cabelo": "curto",
+     "cabelo_cor": "castanho",
+     "pele": "media",
+     "roupa": "#3D7BD9",
+     "id": "p",
+     "x": 0.5,
+     "y": 0.41,
+     "escala": 1.1,
      "expressao": "triste",
      "olhar": "baixo",
      "acoes": [
@@ -353,11 +616,11 @@
        "em": "dez",
        "faz": "conta",
        "para": 41,
-       "ate": "mais",
+       "ate": "espelho",
        "som": "tique"
       },
       {
-       "em": "mais",
+       "em": "espelho",
        "faz": "treme",
        "dur": 0.4,
        "forca": 14
@@ -367,7 +630,7 @@
    ],
    "acoes": [
     {
-     "em": "mais",
+     "em": "espelho",
      "faz": "soco",
      "forca": 0.1,
      "som": "impacto",
@@ -376,152 +639,301 @@
    ]
   },
   {
-   "em": "linha6",
+   "em": "linha9",
+   "cenario": "sala",
+   "paleta": "noite",
+   "elementos": [
+    {
+     "tipo": "humano",
+     "cabelo": "curto",
+     "cabelo_cor": "grisalho",
+     "pele": "media",
+     "roupa": "#3D7BD9",
+     "id": "p",
+     "x": 0.32,
+     "y": 0.4,
+     "escala": 1.0,
+     "expressao": "triste",
+     "olhar": "baixo",
+     "segura": "celular",
+     "acoes": [
+      {
+       "em": "porta",
+       "faz": "olha",
+       "para": "dir"
+      }
+     ]
+    },
+    {
+     "tipo": "humano",
+     "cabelo": "curto",
+     "cabelo_cor": "preto",
+     "pele": "media",
+     "roupa": "#FF8A1F",
+     "id": "k",
+     "x": 0.76,
+     "y": 0.45,
+     "escala": 0.7,
+     "expressao": "feliz",
+     "olhar": "esq",
+     "acoes": [
+      {
+       "em": "filho",
+       "faz": "entra",
+       "jeito": "desliza_dir",
+       "dur": 0.35,
+       "som": "passos",
+       "volume": 0.5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": "linha10",
+   "cenario": "chapado",
+   "paleta": "laranja",
+   "padrao": "raios",
+   "elementos": [
+    {
+     "tipo": "humano",
+     "cabelo": "curto",
+     "cabelo_cor": "preto",
+     "pele": "media",
+     "roupa": "#FF8A1F",
+     "id": "k",
+     "x": 0.5,
+     "y": 0.44,
+     "escala": 1.05,
+     "expressao": "feliz",
+     "olhar": "camera",
+     "acoes": [
+      {
+       "em": "pai",
+       "faz": "pula",
+       "altura": 50,
+       "som": "fofo"
+      },
+      {
+       "em": "tigre",
+       "faz": "squash",
+       "forca": 0.25
+      }
+     ]
+    },
+    {
+     "id": "r",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.17,
+     "texto": "RAWR!",
+     "tam": 170,
+     "acoes": [
+      {
+       "em": "tigre",
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "impacto"
+      }
+     ],
+     "fundo": "#FFC21A"
+    }
+   ],
+   "acoes": [
+    {
+     "em": "tigre",
+     "faz": "soco",
+     "forca": 0.1
+    }
+   ]
+  },
+  {
+   "em": "linha11",
+   "cenario": "sala",
+   "paleta": "rosa",
+   "elementos": [
+    {
+     "tipo": "humano",
+     "cabelo": "curto",
+     "cabelo_cor": "grisalho",
+     "pele": "media",
+     "roupa": "#3D7BD9",
+     "id": "p",
+     "x": 0.36,
+     "y": 0.4,
+     "escala": 1.05,
+     "expressao": "feliz",
+     "olhar": "camera",
+     "acoes": [
+      {
+       "em": "riu",
+       "faz": "pula",
+       "altura": 40,
+       "som": "fofo"
+      },
+      {
+       "em": "alto",
+       "faz": "treme",
+       "dur": 1.0,
+       "forca": 7
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.78,
+     "y": 0.48,
+     "escala": 0.75,
+     "olhar": "esq",
+     "sobrancelha": 0.8,
+     "acoes": [
+      {
+       "em": "riu",
+       "faz": "estoura",
+       "som": "estouro"
+      }
+     ]
+    },
+    {
+     "id": "h",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.15,
+     "texto": "HAHAHA",
+     "tam": 150,
+     "acoes": [
+      {
+       "em": "alto",
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pops"
+      }
+     ],
+     "fundo": "#FFC21A"
+    }
+   ],
+   "acoes": [
+    {
+     "em": "riu",
+     "faz": "flash"
+    },
+    {
+     "em": "riu",
+     "faz": "soco",
+     "forca": 0.14,
+     "som": "impacto"
+    }
+   ]
+  },
+  {
+   "em": "linha12",
    "cenario": "chapado",
    "paleta": "menta",
    "padrao": "raios",
    "elementos": [
     {
-     "id": "cel",
-     "tipo": "celular",
+     "tipo": "humano",
+     "cabelo": "curto",
+     "cabelo_cor": "grisalho",
+     "pele": "media",
+     "roupa": "#3D7BD9",
+     "id": "p",
      "x": 0.5,
-     "y": 0.4,
-     "escala": 1.0,
-     "rot": -6,
-     "tela": "texto",
-     "linhas": [
-      "VÓ",
-      "vídeo..."
-     ],
-     "cor_tela": "#2BA84A",
+     "y": 0.47,
+     "escala": 0.95,
+     "expressao": "feliz",
      "acoes": [
       {
-       "em": "celular",
-       "faz": "entra",
-       "jeito": "cai",
-       "dur": 0.3,
-       "som": "queda",
-       "volume": 0.5
+       "em": "anos",
+       "faz": "muda",
+       "prop": "cabelo_cor",
+       "para": "castanho",
+       "som": "coracao",
+       "volume": 0.6
       },
       {
-       "em": "tocou",
-       "faz": "treme",
-       "dur": 0.8,
-       "forca": 10,
+       "em": "anos",
+       "faz": "pula",
+       "altura": 30
+      }
+     ]
+    },
+    {
+     "id": "v",
+     "tipo": "contador",
+     "x": 0.5,
+     "y": 0.135,
+     "valor": 41,
+     "sufixo": " anos",
+     "tam": 120,
+     "fundo": true,
+     "acoes": [
+      {
+       "em": "anos",
+       "faz": "conta",
+       "para": 30,
+       "ate": "um#2",
        "som": "tique"
       }
      ]
     },
     {
-     "id": "vo",
-     "tipo": "texto",
-     "x": 0.5,
-     "y": 0.15,
-     "texto": "VÓ LIGANDO",
-     "tam": 110,
-     "fundo": "#2BA84A",
+     "id": "c1",
+     "tipo": "comentario",
+     "x": 0.34,
+     "y": 0.25,
+     "nome": "Mãe",
+     "texto": "oi, filho!",
+     "cor_avatar": "#2BA84A",
+     "largura": 560,
+     "escala": 0.95,
      "acoes": [
       {
-       "em": "tocou",
+       "em": "mae",
        "faz": "entra",
        "jeito": "pop",
        "som": "pop"
-      },
-      {
-       "em": "fazendo",
-       "faz": "sai",
-       "jeito": "some"
       }
      ]
     },
     {
-     "id": "oi",
-     "tipo": "texto",
-     "x": 0.5,
-     "y": 0.175,
-     "texto": "CARETA!",
-     "tam": 105,
-     "fundo": "#FF5FA2",
+     "id": "c2",
+     "tipo": "comentario",
+     "x": 0.66,
+     "y": 0.32,
+     "nome": "Pedro",
+     "texto": "KKKKKKKK",
+     "cor_avatar": "#3D7BD9",
+     "largura": 560,
+     "escala": 0.95,
      "acoes": [
       {
-       "em": "careta",
+       "em": "meme",
        "faz": "entra",
-       "jeito": "carimba",
-       "som": "impacto"
+       "jeito": "pop",
+       "som": "pop"
       }
      ]
-    },
-    {
-     "id": "pipo",
-     "tipo": "pipo",
-     "x": 0.76,
-     "y": 0.48,
-     "escala": 0.8,
-     "olhar": "esq",
-     "sobrancelha": 0.8,
-     "acoes": [
-      {
-       "em": "avo",
-       "faz": "entra",
-       "jeito": "desliza_dir",
-       "dur": 0.3,
-       "som": "whoosh",
-       "volume": 0.3
-      },
-      {
-       "em": "careta",
-       "faz": "estoura",
-       "som": "estouro",
-       "depois": 0.2
-      }
-     ]
-    }
-   ],
-   "acoes": [
-    {
-     "em": "careta",
-     "faz": "flash",
-     "depois": 0.2
     }
    ]
   },
   {
-   "em": "linha7",
-   "cenario": "sala",
-   "paleta": "rosa",
+   "em": "linha13",
+   "cenario": "chapado",
+   "paleta": "mostarda",
+   "padrao": "raios",
    "elementos": [
     {
-     "id": "p",
-     "tipo": "humano",
-     "x": 0.38,
-     "y": 0.38,
-     "escala": 1.2,
-     "cabelo": "curto",
-     "cabelo_cor": "castanho",
-     "pele": "media",
-     "roupa": "#3D7BD9",
-     "expressao": "feliz",
-     "segura": "celular",
-     "acoes": [
-      {
-       "em": "riu",
-       "faz": "pula",
-       "altura": 30,
-       "som": "fofo",
-       "volume": 0.5
-      }
-     ]
-    },
-    {
-     "id": "t",
+     "id": "t1",
      "tipo": "texto",
      "x": 0.5,
-     "y": 0.13,
-     "texto": "não custa nada",
-     "tam": 120,
+     "y": 0.19,
+     "texto": "sorriso não\né bobeira",
+     "tam": 110,
      "acoes": [
       {
-       "em": "custa",
+       "em": "sorriso",
        "faz": "entra",
        "jeito": "pop",
        "som": "pop"
@@ -531,17 +943,25 @@
     {
      "id": "pipo",
      "tipo": "pipo",
-     "x": 0.76,
-     "y": 0.48,
-     "escala": 0.75,
+     "x": 0.5,
+     "y": 0.47,
+     "escala": 0.9,
      "forma": "pipoca",
      "boca": "sorriso",
-     "olhar": "esq"
+     "olhar": "camera",
+     "acoes": [
+      {
+       "em": "anos",
+       "faz": "pula",
+       "altura": 40,
+       "som": "pop"
+      }
+     ]
     }
    ]
   },
   {
-   "em": "linha8",
+   "em": "linha14",
    "cenario": "celular",
    "hora": "18:33",
    "paleta": "noite",
@@ -550,10 +970,9 @@
      "id": "q",
      "tipo": "texto",
      "x": 0.5,
-     "y": 0.24,
+     "y": 0.2,
      "texto": "Quem te fez\nsorrir hoje?",
-     "tam": 105,
-     "cor": "#FFC21A",
+     "tam": 100,
      "acoes": [
       {
        "em": "quem",
@@ -561,35 +980,50 @@
        "jeito": "pop",
        "som": "pop"
       }
-     ]
+     ],
+     "cor": "#FFC21A"
+    },
+    {
+     "id": "m",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.35,
+     "texto": "manda esse vídeo\npra essa pessoa",
+     "tam": 72,
+     "acoes": [
+      {
+       "em": "manda",
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "whoosh"
+      }
+     ],
+     "fundo": "#FF5FA2"
     },
     {
      "id": "pipo",
      "tipo": "pipo",
      "x": 0.5,
-     "y": 0.46,
-     "escala": 0.9,
-     "rot": 0,
+     "y": 0.52,
+     "escala": 0.6,
      "forma": "pipoca",
+     "boca": "sorriso",
      "olhar": "camera",
-     "sobrancelha": 1,
      "acoes": [
       {
-       "em": "quem",
-       "faz": "entra",
-       "jeito": "desliza_esq",
-       "dur": 0.3,
-       "som": "whoosh",
-       "volume": 0.3
+       "em": "merece",
+       "faz": "pula",
+       "altura": 30,
+       "som": "fofo"
       }
      ]
     }
    ],
    "acoes": [
     {
-     "em": "hoje",
+     "em": "saber",
      "faz": "congela",
-     "depois": 0.4,
+     "depois": 0.3,
      "dur": 1.0
     }
    ]

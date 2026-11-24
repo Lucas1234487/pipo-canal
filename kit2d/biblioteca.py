@@ -653,6 +653,14 @@ def cenario(ctx, nome, pal, t, opts, seed=1):
                 for xx in range(0, W + 80, 80):
                     ctx.new_sub_path(); ctx.arc(xx + (40 if (yy // 80) % 2 else 0), yy + (t * 20) % 80, 12, 0, 2 * math.pi)
             ctx.set_source_rgb(*bg2); ctx.fill()
+        elif padrao == "chuva":   # chuva fina caindo, clima fechado
+            r = random.Random(7)
+            ctx.set_source_rgba(0.85, 0.92, 1.0, 0.28); ctx.set_line_width(5); ctx.set_line_cap(cairo.LINE_CAP_ROUND)
+            for i in range(140):
+                x0 = r.uniform(-200, W + 200); v = r.uniform(1400, 2000); ph = r.uniform(0, H)
+                y0 = (ph + t * v) % (H + 200) - 100
+                ctx.move_to(x0 - y0 * 0.18, y0); ctx.line_to(x0 - y0 * 0.18 - 12, y0 + 60)
+            ctx.stroke()
         elif padrao == "listras":
             off = (t * 30) % 160
             for k in range(-20, 30):
