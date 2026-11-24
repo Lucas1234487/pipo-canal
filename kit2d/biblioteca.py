@@ -680,6 +680,14 @@ DESENHOS = {"celular": desenha_celular, "calendario": desenha_calendario, "relog
             "texto": desenha_texto, "rachadura": desenha_rachadura, "bloco": desenha_bloco, "foto": desenha_foto}
 
 
+def _meme(ctx, st, t, pal, seed):   # formatos de meme redesenhados: kit2d/memes.py (import tardio, sem ciclo)
+    import memes
+    return memes.desenha_meme(ctx, st, t, pal, seed)
+
+
+DESENHOS["meme"] = _meme
+
+
 # ============================ CENÁRIOS ============================
 def cenario(ctx, nome, pal, t, opts, seed=1):
     bg, bg2, a1, a2, a3 = pal
