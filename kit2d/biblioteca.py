@@ -282,6 +282,12 @@ def desenha_pipo(ctx, st, t, seed):
 
 # ============================ HUMANO GENÉRICO ============================
 def desenha_humano(ctx, st, t, seed):
+    """Delega para o humano novo (kit2d/humano2.py). O antigo fica em desenha_humano_v1."""
+    from humano2 import desenha_humano2
+    return desenha_humano2(ctx, st, t, seed)
+
+
+def desenha_humano_v1(ctx, st, t, seed):
     pele = _cor(st.get("pele"), PELES["media"])
     cab = _cor(st.get("cabelo_cor"), CABELO_COR["preto"])
     roupa = _cor(st.get("roupa"), "#2A7DE1")
