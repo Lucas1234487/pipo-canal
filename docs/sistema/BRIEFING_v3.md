@@ -16,19 +16,18 @@ Diretor
  └─ QA final (só com o vídeo pronto, nunca por etapa)
      ├─ QA-Claude: agente NOVO, que não participou do vídeo; revisão técnica e de conteúdo
      └─ QA-Gemini: assiste ao MP4 com som (plateia + passada de pronúncia)
- └─ Lucas aprova  ->  só então vai para agendamento
+ └─ agendamento automático (o Lucas pode vetar a qualquer hora)
 ```
-- Os organizadores são agentes (ferramenta Agent) contratados pelo gerente. Cada um tem a sua spec em docs/sistema/specs/O1..O4 e usa os scripts do kit e o Gemini como ferramentas.
+- Como funciona na prática (testado em 24/11: um subagente NÃO consegue abrir outro subagente): o Diretor abre o Gerente de Produção; o gerente planeja e devolve os briefings dos organizadores; o Diretor contrata cada organizador com o briefing do gerente, sem mudar uma vírgula; a entrega de cada organizador volta para o MESMO gerente (SendMessage para o agente do gerente, que continua com a memória dele) para ele conferir e pedir correção. O gerente manda, o Diretor só faz a ponte.
+- Os organizadores são agentes (ferramenta Agent). Cada um tem a sua spec em docs/sistema/specs/O1..O4 e usa os scripts do kit e o Gemini como ferramentas.
 - O1 vem primeiro. O2 e O3 trabalham em paralelo a partir do roteiro e do timing. O4 junta tudo por último.
 - O gerente confere cada entrega e devolve ao Diretor 15 linhas + arquivos.
 - Pesquisa (G1), publicação (G5) e métricas (G6) seguem como gerentes próprios.
-- Se um gerente não tiver a ferramenta Agent na sessão dele, ele devolve ao Diretor a lista de organizadores com os briefings prontos, e o Diretor os contrata em nome dele. A estrutura de papéis e o QA final não mudam.
 
-## 3. Aprovação do Lucas (substitui "publicar sem mostrar")
-- Nenhum vídeo é agendado sem o OK do Lucas.
-- Depois do QA, o Diretor manda os vídeos ao Lucas (SendUserFile) com 3 linhas por vídeo: tema, nota do Gemini, o que o QA-Claude apontou.
-- O vídeo fica em fila/AAAA-MM-DD_X/ sem aprovado_lucas.json. Quando o Lucas aprovar na conversa, a sessão grava aprovado_lucas.json (data, comentário dele) e dá push. Se ele pedir mudança, a sessão corrige e manda de novo.
-- Assim que o Lucas aprovar, a própria sessão agenda no Studio pelo Claude in Chrome (G5), se o Chrome dele responder. Se não responder, a publicação em lote das 8h41 agenda. Ela só agenda pastas com aprovado_lucas.json.
+## 3. Publica sozinho, o Lucas só veta (decisão de 24/11 15h18, substitui a aprovação prévia)
+- Todo dia tem produção e agendamento, mesmo sem o Lucas aparecer. O que passa no piso dos guardrails é agendado direto.
+- Assim que o lote passa no QA, a sessão agenda no Studio pelo Claude in Chrome (Chrome pessoal do Lucas). Se o Chrome não responder, a publicação em lote das 8h41 agenda.
+- A sessão manda ao Lucas os vídeos e um resumo de 3 linhas por vídeo, para ele ver quando puder. Se ele vetar (GUARDRAILS §5), grava segurar.json e o vídeo vira privado.
 
 ## 4. O que o Lucas quer ver nos vídeos
 - Três pilares por dia: assunto do momento, história com regra inventada (ligada a quem assiste: mãe, filho, namorada, trabalho) e conhecimento (como o ossinho de dinossauro).

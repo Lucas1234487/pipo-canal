@@ -6,7 +6,7 @@ Uma sessão do Diretor produz os 3 vídeos do dia seguinte, um por pilar (decis�
 - H = história com regra inventada (specs/G2, formato HISTÓRIA), 45 a 65 s;
 - C = conhecimento/curiosidade (como o do ossinho de dinossauro), 35 a 60 s.
 A Pipo faz pontas e estoura em todos. Um 4º vídeo (Pipo protagonista) só depois de 5 dias seguidos em que os 3 passaram no piso sem correção manual (ver BASE 24/11).
-HIERARQUIA (obrigatória, BRIEFING_v3): Diretor -> 1 Gerente de Produção por vídeo -> O1 Roteiro e Fala, O2 Cenário, O3 Sonoplastia, O4 Montagem -> QA-Claude (agente novo) + QA-Gemini -> Lucas aprova -> agendamento. Só pastas com aprovado_lucas.json são agendadas.
+HIERARQUIA (obrigatória, BRIEFING_v3): Diretor -> 1 Gerente de Produção por vídeo -> O1 Roteiro e Fala, O2 Cenário, O3 Sonoplastia, O4 Montagem -> QA-Claude (agente novo) + QA-Gemini -> agendamento automático (o Lucas só veta: pasta com segurar.json não é agendada).
 1. Posse rápida: 00_LEIA_PRIMEIRO, GUARDRAILS, último handover, PAUTAS.md.
 2. G1 Pesquisa (modo diário, de preferência só Gemini): 5 pautas pontuadas para o dia, cada uma com destinatário ("manda pro grupo da firma"), gancho de quadro 1 e pergunta final com lado. Respeita a fila de PAUTAS.md e o calendário (datas dos próximos 7 dias).
 3. Diretor escolhe 3 pautas (M, H, C), em até 5 linhas de justificativa.

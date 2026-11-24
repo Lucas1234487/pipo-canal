@@ -1,6 +1,6 @@
 # Sistema PipoPop (versão 2, 24/11/2026)
 
-**Leia primeiro: docs/sistema/BRIEFING_v3.md (24/11). Ele manda na estrutura, na aprovação do Lucas e na memória entre agentes.**
+**Leia primeiro, nesta ordem: docs/sistema/02_GUARDRAILS.md, docs/sistema/BRIEFING_v3.md, docs/sistema/ARQUITETURA.md e docs/sistema/COMO_TRABALHAMOS.md (24/11).**
 
 Este é o manual de funcionamento do canal. Foi escrito a pedido do Lucas para o canal rodar sem ele corrigir o Diretor todo dia. Toda sessão de trabalho começa aqui.
 
