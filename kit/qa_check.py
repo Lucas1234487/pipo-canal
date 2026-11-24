@@ -1,5 +1,5 @@
 """Revisao automatica de um episodio. Uso: python3 qa_check.py WORK [pt|en]
-Le WORK/qa_scene.json (gerado por: PIPO_WORK=WORK python3 WORK/ep.py qa), WORK/layout_<lang>.json (gerado pelo compose)
+Le WORK/qa_scene.json (3D: PIPO_WORK=WORK python3 WORK/ep.py qa; 2D: gravado pelo kit2d/render2d.py junto com os quadros), WORK/layout_<lang>.json (gerado pelo compose)
 e o MP4 final. Gera WORK/qa_report_<lang>.md e WORK/qa_sheet_<lang>.jpg (folha de contato para revisao visual).
 Sai com codigo 1 se houver reprovacao."""
 import json, sys, os, subprocess
@@ -33,11 +33,12 @@ def runs(items):
 # 1) cena 3D
 scene = json.load(open(f"{WORK}/qa_scene.json")) if os.path.exists(f"{WORK}/qa_scene.json") else None
 if scene is None:
-    FAIL.append("qa_scene.json ausente: rode `ep.py qa` antes")
+    FAIL.append("qa_scene.json ausente: rode `ep.py qa` (3D) ou `kit2d/render2d.py WORK` (2D) antes")
 else:
     for tp, al, a, b, n in runs(scene["issues"]):
         msg = f"{tp}: {al} (quadros {a}-{b}, {n} amostras)"
-        if tp in ("objetos_atravessando",) or (tp == "imagens_sobrepostas" and n >= 3) or tp.startswith("texto3d_na_faixa") and n >= 2:
+        if tp in ("objetos_atravessando",) or (tp == "imagens_sobrepostas" and n >= 3) or tp.startswith("texto3d_na_faixa") and n >= 2 \
+                or (tp == "texto_na_faixa_legenda" and n >= 2) or (tp == "fora_zona_segura" and n >= 3):   # 2D (kit2d)
             FAIL.append(msg)
         else:
             WARN.append(msg)
