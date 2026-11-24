@@ -33,4 +33,12 @@ Leitura (Diretor 1):
 | Versão | Duração | Plateia | Lucas | Decisão |
 |---|---|---|---|---|
 | v1 (1080 nativo, modelos CC0, som CC0) | 34,9 s | Davi 3 (sai 7,5 s), Renata 5 (sai 31 s), Júlio 5 (sai 31 s), Carla 6 (até o fim), Thiago 4 (até o fim); média 4,6 | 7 ("gostei, mas não prende") | reprovado (não publicado) |
-| v2 (abre na ceia, mãos CC0, 1080 Kaggle) | 23,0 s | Davi 2 (sai 2 s), Renata 5 (sai 14 s), Júlio 6, Carla 6, Thiago 4 (até o fim para corrigir); média 4,6 | aguardando | reprovado pela plateia (não publicado) |
+| v2 (abre na ceia, mãos CC0, 1080 Kaggle) | 23,0 s | Davi 2 (sai 2 s), Renata 5 (sai 14 s), Júlio 6, Carla 6, Thiago 4 (até o fim para corrigir); média 4,6 | 3 ("péssimo") | reprovado (não publicado) |
+
+## Teste: Gemini como Plateia (24/11/2026, app grátis, modelo "4 Hydrogen"; o Argon é pago)
+| Vídeo | Lucas | Nossa plateia (Claude) | Gemini |
+|---|---|---|---|
+| ep004 v1 | 7 | 4,6 | 6,5 (5 perfis completos) |
+| ep004 v2 | 3 | 4,6 | ~7,2 (3 perfis; o app apagou a resposta no meio) |
+Leitura: nenhuma das duas plateias acompanha o Lucas. O Gemini acertou o v1 e errou feio o v2 (deu mais nota ao vídeo que o Lucas achou pior). No app grátis ele também apaga a resposta no meio (2 de 3 tentativas). Não vale trocar a plateia por ele.
+
