@@ -112,7 +112,32 @@ Ações de câmera (em `acoes` da cena): `soco` (zoom punch, `forca` 0,12) · `t
 Cuidado: zoom e pan empurram o que está embaixo para a faixa da legenda. Prefira `soco` no elemento.
 
 Sons (`som`): pop, pop2, pop3, pops, estouro, whoosh, slide, impacto, impacto2, vidro, queda, metal, madeira, carimbo, tique, porta, passos, mastiga, mastiga2, arroto, ooh, fofo, coracao.
+Sons de meme (assets/sfx/memes/, mesmo volume entre si): boom ("vine boom"), disco (arranhão de disco), violino_triste, badumtss, palhaco (buzina),
+riser (suspense 1,6 s), dundun ("dun dun dunnn"), ohh (plateia), risada (plateia), grilo, certo (ding), errado (buzzer), dinheiro (ching),
+glitch, gongo, apito_sobe, apito_desce, boing, fa e fa2 (o "FAAH" com eco, nosso; fa = voz grave, fa2 = voz aguda). Use `volume` 0,6 a 0,9.
 Músicas: percussao, misterio, viagem, aventura. Tudo CC0 (assets/LICENCAS.md). Não use arquivo de fora de assets/.
+
+### 4.2 Reações de meme (ação de câmera `"faz": "reacao"`)
+O efeito cômico dos memes virais (o "aughhh", o vine boom, o arranhão de disco) refeito com som livre e a nossa câmera. Nunca áudio ou vídeo original de desenho, filme ou streamer.
+```json
+"acoes": [{"em": "prova", "faz": "reacao", "estilo": "boom", "alvo": "pipo"}]
+```
+- `estilo` (abaixo), `alvo` (id de elemento ou [x, y]; padrão: o 1º personagem da cena; em personagem a câmera mira o rosto), `dur` (0,4 a 1,2 s),
+  `forca` (1,0; multiplica o zoom/tremor), `som` (troca o som; `false` = mudo), `som_dur` (corta o som em N s), `volume` (0,8).
+- Cada reação traz o seu som (já cortado para não atropelar a narração). Não ponha `som` de novo na mesma ação.
+- Durante a reação a câmera fica presa dentro do cenário, e o QA não acusa legenda/zona segura (o zoom passa por cima de propósito).
+
+| estilo | o que acontece | som | quando usar |
+|---|---|---|---|
+| boom | zoom rápido no alvo, tremor leve, vermelho e contraste, vinheta, congela 0,4 s (0,9 s) | boom | revelação, fala absurda, "olha isso" |
+| disco | congela o quadro, tira a cor, tarja "*para tudo*" no topo (`texto`, `texto_y` 0,1; `"texto": ""` tira) (1,0 s) | disco | virada: "e aí deu tudo errado", interromper a história |
+| triste | tira a cor + azul, vinheta, zoom lento (1,2 s) | violino_triste (2,6 s) | derrota, fracasso fofo, "e o salário acabou" |
+| dramatico | 3 cortes secos de zoom no rosto, no tempo do dun dun dunnn (1,2 s) | dundun (2,2 s) | suspense falso, revelação exagerada |
+| ohh | linhas de impacto brancas de mangá + soco leve (0,9 s) | ohh (2,0 s) | indireta, "ele não sabia...", golpe baixo |
+| grilo | tudo congela, o alvo pisca duas vezes, cor some um pouco (1,2 s) | grilo | piada sem graça, silêncio constrangedor |
+| fa | zoom seco + tremor forte + flash branco (0,7 s) | fa | grito de susto/indignação, "FAAH" |
+
+Regra de dose: no máximo 2 reações por vídeo, nunca duas seguidas da mesma; pausa na narração ajuda (a reação dura até 1,2 s e o som passa disso).
 
 ## 5. Exemplos
 ### A) Celular comendo o calendário (quadro 1 com conflito)

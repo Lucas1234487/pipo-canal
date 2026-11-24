@@ -36,4 +36,31 @@ Todos de https://opengameart.org, baixados só quando a página dizia CC0 1.0 (o
 | musica/cc0-mystery | mistério / exploração | polygondan |
 | musica/a-mystery-travel | mistério leve | cybersoft |
 
+## Sons de meme (assets/sfx/memes/), 24/11/2026
+
+Pedido do dono: o efeito dos memes sonoros virais sem usar o original (Bob Esponja = Paramount/Nickelodeon, Content ID). Buscados na API do Openverse (filtro `license=cc0,pdm`), todos vindos do Freesound; a licença foi conferida de novo NA PÁGINA do Freesound de cada som (CC0 1.0). Baixado o preview HQ (mp3) que o Openverse indica; cortado, com fade e volume igualado (cerca de -14 LUFS momentâneo, pico -3 dBFS), mono 48 kHz ogg. Apelido, autor, página, arquivo baixado e recorte de cada um em sfx/memes/proveniencia.tsv.
+
+| Apelido | Som de origem (Freesound) | Autor |
+|---|---|---|
+| boom | "Boom 1" + sub-grave de "Sine Bass Drop" | greenvwbeetle + josheb_policarpio |
+| disco | "Record Scratch #2" | musicvision31 |
+| violino_triste | "Hearts and Flowers.wav" | andyssoundbox |
+| badumtss | "Sting, rimshot, drum roll (smooth)" | tlwmdbt |
+| palhaco | "Clown Horn (Single Honk).wav" | Gimp_Revival |
+| riser | "Riser" | Rizzard |
+| dundun | "Dun Dun Duuun v.01.mp3" | divenorth |
+| ohh | "Crowd Oooh.wav" | deleted_user_2104797 |
+| risada | "Crowd laugh.wav" | deleted_user_2104797 |
+| grilo | "Cricket - Grillo" | Lunevix |
+| certo | "Quiz Gameshow Correct Ding 01.mp3" | craigscottuk |
+| errado | "Wrong Answer" | -Andreas |
+| dinheiro | "cash register chching" | disman |
+| glitch | "Glitch Corruption" | dotY21 |
+| gongo | "Gong" | qubodup |
+| apito_sobe, apito_desce | "SLIDE WHISTLE - 1" (subida e descida recortadas) | SamuelGremaud |
+| boing | "Funny Boing" | se2001 |
+| fa, fa2 | GERADO POR NÓS: edge-tts (pt-BR-AntonioNeural / pt-BR-FranciscaNeural) dizendo "FÁÁÁÁÁÁ!" + saturação, queda de tom, eco, reverb e corte seco (kit/gera_fa.py). Não usa o áudio do streamer. | PipoPop |
+
+Recusados na conferência da página (o Openverse dizia CC0, a página não): "Boing Spring Mouth harp downward 1" (pan14, está CC-BY 4.0) e "Cash register" (MaoDin204, página sem licença CC0 legível). Sempre confira a página: o índice do Openverse pode estar velho.
+
 Páginas recusadas por não serem CC0 (não usar sem crédito): bubble-pop, cork, cracking-sounds, long-deep-impact, big-low-frequency-explosion-boom, robot-scanning-area, breeze, 6-monstrous-growls, cinematic-ending-music, cinematic-intro-soundtrack, cinematic-strings-trailer, cinematic-trailer-music, mystery, high-tension, distant-horizon.
