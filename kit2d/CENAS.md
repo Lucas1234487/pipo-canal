@@ -93,7 +93,7 @@ Elementos (`tipo`) e as propriedades que aceitam (todas podem mudar com `muda`):
 | tipo | para que | propriedades |
 |---|---|---|
 | pipo | a Pipo (espiga cansada, sobrancelha levantada) | `segura`: "celular"; `olhar`: camera, celular, esq, dir, cima, baixo; `sobrancelha` 0 a 1,2; `palpebra` (0,42 cansada; 0 aberta); `boca`: reta, o, sorriso, sorriso_torto, triste; `forma`: "pipoca" (já estourada) |
-| humano | pessoa (cartoon editorial, kit2d/humano2.py; detalhes na seção 4.1) | `idade`, `corpo`, `cabelo`, `cabelo_cor`, `barba`, `pele`, `roupa`, `calca`, `sapato`, `manga`, `expressao`, `olhar`, `pose`, `aponta_para`, `segura`: "celular", `assento`, acessórios `oculos`, `bone`, `mochila`, `avental`, `gravata`, `fone` |
+| humano | pessoa (cartoon editorial, kit2d/humano2.py; detalhes na seção 4.1) | `preset` (elenco fixo, seção 4.2), `idade`, `corpo`, `cabelo`, `cabelo_cor`, `barba`, `pele`, `roupa`, `calca`, `sapato`, `manga`, `expressao`, `olhar`, `pose`, `aponta_para`, `segura`: "celular", `assento`, traços (4.2) e acessórios `oculos`, `bone`, `mochila`, `avental`, `gravata`, `fone` |
 | celular | celular na mão | `tela`: feed (rolando), boca (come coisas), texto; `linhas` (tela texto); `cor_tela`; `dedao`: true (polegar rolando) |
 | calendario | folhinha do mês | `titulo`, `comidos` (quantos dias viraram buraco), `cor` |
 | fluxo | folhinhas voando de A para B | `de`, `para`: id de elemento ou [x, y]; `ritmo` (por s), `vida` (s), `adianta` (s já em voo no 1º quadro), `cor` |
@@ -181,6 +181,26 @@ Músicas: percussao, misterio, viagem, aventura. Tudo CC0 (assets/LICENCAS.md). 
   Com `escala` 0,8 e `y` 0,36 o rosto do adulto fica entre 0,22 e 0,30. Rosto nunca entre `y` 0,60 e 0,72: o QA acusa `rosto_na_faixa_legenda`.
 - Exemplo: `{"id": "vo", "tipo": "humano", "x": 0.7, "y": 0.36, "escala": 0.85, "idade": "idoso", "cabelo": "coque", "expressao": "feliz", "pose": "acenando", "avental": true}`
 
+
+### 4.2 Humano: assinatura, traços peculiares e elenco fixo
+Assinatura do canal (todo humano tem, não precisa pedir):
+- Bochecha-grão: em cada bochecha, um grãozinho de milho rosado com brilho branco (o mesmo grão do corpo da Pipo).
+- Olho com a pálpebra da Pipo: olhos grandes, meio cobertos por uma pálpebra da cor da pele.
+- Cabeça de borracha: quando a `expressao` troca, a cabeça estica (surpreso, bravo, nervoso, apaixonado) ou amassa (as outras) e balança por 0,5 s.
+
+Traços (combine à vontade; a piada é o traço, nunca o grupo: nada de raça, etnia, religião, deficiência ou corpo como humilhação):
+- `cabeca`: oval (padrão), feijao, pera, quadrada, lua (cara de lua cheia). `queixo`: normal, quadrado, furinho. `pescoco`: curto, normal, longo ou px.
+- `nariz`: normal, bolinha, batata, pontudo, adunco, arrebitado. `orelhas`: normal, abano.
+- `dentes`: normal, separados, dentuco (aparece até de boca fechada), aparelho, banguela (os outros aparecem com a boca aberta: feliz, gargalhada, bravo).
+- `sobrancelha`: "fina", "grossa", "monocelha". `cilios`: true. `sardas`, `olheiras`: true. `pinta`: true, "esq" ou "dir".
+- `cabelo` extras: topete, moicano, calvicie (coroa careca com a "ponte" de fios), franja_reta, arrepiado. `barba`: também "bigodao".
+- `brilho`: true (aura de galã: estrelinhas e dente que brilha) ou "sutil".
+- Roupa: `estampa` (natal, havaiana, listras, xadrez), `manga` "regata", `pochete`, `faixa` (testeira). `oculos_tipo`: redondo, ponta, fundo_de_garrafa (aumenta os olhos), escuro; `oculos_cor`.
+
+Elenco fixo (`"preset": "nome"`; qualquer propriedade no elemento vale por cima; lista em kit2d/elenco.py):
+vizinho_exagerado, tia_do_zap, gala, crush, chefe, estagiario, vovo_turbo, crianca_terrivel, tiozao_do_churrasco, nerd, esportista, influencer, seu_ze_da_banca.
+Ex.: `{"id": "chefe", "tipo": "humano", "preset": "chefe", "x": 0.7, "y": 0.36, "escala": 0.85, "acoes": [{"em": "prazo", "faz": "expressao", "para": "surpreso"}]}`
+Use os mesmos nomes de preset nos vídeos para virarem personagens recorrentes.
 
 ## 5. Exemplos
 ### A) Celular comendo o calendário (quadro 1 com conflito)
