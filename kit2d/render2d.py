@@ -15,6 +15,7 @@ from PIL import Image
 import estilo as E
 from estilo import W, H, FPS, clamp, ease_out_back, ease_in_back, ease_out, ease_in_out, hexc
 import biblioteca as B
+import cenarios2 as C2
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CAUDA = 0.6   # segundos depois da última palavra
@@ -111,6 +112,7 @@ class Trilha:
 
 CURVAS = {"suave": ease_in_out, "rapido": ease_out, "elastico": lambda x: ease_out_back(x, 1.6), "linear": lambda x: x}
 PERSONAGENS = ("pipo", "humano")
+ATRAS_DA_FRENTE = PERSONAGENS + ("porta",)   # desenhados antes da camada da frente do cenário (o resto fica por cima)
 NUMERICAS = ("x", "y", "escala", "rot", "alpha")
 
 
@@ -171,7 +173,10 @@ class Elemento:
                 self.tr_get("alpha").add(t0, d, 0)
             self.tr_get("_vis").add(t0 + d, 1e-3, 0)
         elif faz == "move":
-            x, y = a["para"]
+            if isinstance(a["para"], str):   # "para": "porta" (âncora do cenário)
+                x, y, _ = C2.posiciona(self.cena.d.get("cenario", "chapado"), dict(self.d, ancora=a["para"], dx=a.get("dx", 0), dy=a.get("dy", 0)))
+            else:
+                x, y = a["para"]
             self.tr_get("x").add(t0, dur or 0.5, x, curva); self.tr_get("y").add(t0, dur or 0.5, y, curva)
         elif faz in ("escala", "gira"):
             self.tr_get("escala" if faz == "escala" else "rot").add(t0, dur or 0.4, a["para"], curva)
@@ -205,6 +210,18 @@ class Cena:
         self.pal = E.paleta(d.get("paleta"))
         self.cam = {k: Trilha(v) for k, v in (("zoom", d.get("zoom", 1.0)), ("cx", 0.5), ("cy", 0.5), ("rot", 0.0))}
         self.efeitos = []; self.congela = []; self.sons = []
+        ocup = set()
+        for e in d.get("elementos", []):   # âncoras: "ancora": "sofa_assento" no lugar de x, y
+            if e.get("ancora"):
+                e["x"], e["y"], s = C2.posiciona(d.get("cenario", "chapado"), e)
+                if s:
+                    e["escala"] = s
+                if e.get("tipo") in PERSONAGENS:
+                    ocup.add(e["ancora"])
+            for a in e.get("acoes", []):
+                if a.get("faz") == "move" and isinstance(a.get("para"), str) and e.get("tipo") in PERSONAGENS:
+                    ocup.add(a["para"])
+        d["_ocupadas"] = sorted(ocup)
         self.els = [Elemento(e, self, rel, i) for i, e in enumerate(d.get("elementos", []))]
         for a in d.get("acoes", []):
             t0 = rel.t(a.get("em"), self.t0) + a.get("depois", 0)
@@ -327,17 +344,32 @@ class Filme:
         ctx.translate(W / 2 + sdx, H / 2 + sdy); ctx.scale(z, z); ctx.rotate(math.radians(rot)); ctx.translate(-cx * W, -cy * H)
         B.cenario(ctx, c.d.get("cenario", "chapado"), c.pal, t, c.d, seed=c.idx * 13 + 1)
         caixas = {}
+        nome_cen = c.d.get("cenario", "chapado")
+        atras = [el for el in c.els if el.d.get("camada", "meio" if el.tipo in ATRAS_DA_FRENTE else "topo") == "meio"]
+        for el in atras:
+            self.elemento(ctx, el, t, c, caixas)
+        C2.cenario_frente(ctx, nome_cen, c.pal, t, c.d, seed=c.idx * 13 + 1)
         for el in c.els:
+            if el not in atras:
+                self.elemento(ctx, el, t, c, caixas)
+        ctx.identity_matrix()
+        if flash > 0:
+            ctx.set_source_rgba(1, 1, 1, flash * 0.85); ctx.paint()
+        E.aplica_textura(ctx, tex, int(t * FPS))
+        return caixas
+
+    def elemento(self, ctx, el, t, c, caixas):
+        if True:
             st = el.estado(t)
             if st.get("_vis", 1) < 0.5 or st.get("alpha", 1) <= 0.01:
-                continue
+                return
             if el.tipo == "fluxo":
-                self.fluxo(ctx, el, st, t, c); continue
+                self.fluxo(ctx, el, st, t, c); return
             sx, sy, dx, dy, alpha, extra = efeitos_el(el, t)
             st.update(extra)
             a = st.get("alpha", 1) * alpha
             if a <= 0.01:
-                continue
+                return
             ctx.save()
             ctx.translate(st["x"] * W + st["_dx"] + dx, st["y"] * H + st["_dy"] + dy)
             ctx.rotate(math.radians(st.get("rot", 0)))
@@ -364,11 +396,6 @@ class Filme:
                 if b:
                     caixas[(el.id, k, el.tipo, entrou, bool(el.d.get("pode_sobrepor")))] = dev_box(ctx, b)
             ctx.restore()
-        ctx.identity_matrix()
-        if flash > 0:
-            ctx.set_source_rgba(1, 1, 1, flash * 0.85); ctx.paint()
-        E.aplica_textura(ctx, tex, int(t * FPS))
-        return caixas
 
     def fluxo(self, ctx, el, st, t, c):
         """Folhinhas/objetos voando de um elemento para outro (o celular comendo o calendário)."""

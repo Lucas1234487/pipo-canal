@@ -48,7 +48,46 @@ Cena: `em` (corte; a 1ª é sempre 0), `cenario`, `paleta`, `padrao` (no chapado
 ## 4. Cardápio
 Paletas: tomate, mostarda, petroleo, uva, menta, cobalto, noite, rosa, laranja (troque a cada cena: dá ritmo).
 
-Cenários: `chapado` (cor + padrão: raios, bolinhas, listras, chuva, nada) · `sala` (sofá; `cor_sofa`) · `escritorio` · `quarto` · `celular` (tela gigante; `hora`, `cor_tela`).
+Cenários simples: `chapado` (cor + padrão: raios, bolinhas, listras, chuva, nada) · `celular` (tela gigante; `hora`, `cor_tela`).
+
+### Cenários em camadas (kit2d/cenarios2.py)
+Fundo condizente com a história e com vida própria (algo sempre se mexe, sem roubar a cena). Três camadas: fundo, meio e FRENTE.
+A frente (mesa, balcão, painel, encosto do banco, cerca...) é desenhada DEPOIS dos personagens: esconde as pernas de quem está atrás.
+`pipo`, `humano` e `porta` ficam atrás da frente; textos, cartões, setas etc. ficam por cima dela. Mude com `"camada": "meio"` ou `"topo"`.
+
+Opções da cena: `luz` (dia, tarde, noite: noite = abajur/lâmpadas com halo quente e janela escura com lua; tarde = laranja com raio de sol; os personagens pegam só um pouco da cor e não perdem contraste) ·
+`ceu` (só o céu das janelas) · `vida`: false (congela as animações) · `chuva`: true (gotas escorrendo na janela; chuva na rua) · `frente`: false (sem camada da frente).
+
+| cenário | o que tem (vida) | âncoras |
+|---|---|---|
+| sala | janela com cortina balançando, nuvens, pássaro, carrinho ao longe, ventilador de teto, relógio, porta, luminária; `cor_sofa` | sofa_assento, sofa_esq, sofa_dir, porta, janela, quadro, relogio, chao |
+| escritorio | persiana, mural de post-its, monitor com texto rolando, café com vapor, luminária, relógio (mesa na frente) | cadeira, em_pe, mesa, monitor, janela, quadro, relogio |
+| quarto | janela (noite por padrão), cama, criado-mudo com abajur, ventilador, pôster | cama, em_pe, janela, abajur, poster |
+| cozinha | geladeira com ímãs, janela com cortininha, panela com vapor, utensílios balançando (balcão na frente) | balcao, geladeira, fogao, pia, janela, relogio |
+| rua | prédios, loja com toldo, semáforo trocando (`sinal` fixa: verde, amarelo, vermelho), poste, carro passando na frente | calcada, calcada_esq, calcada_dir, loja, semaforo, poste, ceu |
+| onibus | paisagem passando nas janelas, alças balançando, botão PARE (encosto da frente) | banco, banco_dir, em_pe, janela, pare |
+| escola | lousa (`lousa`: "texto\nde giz"), relógio, carteiras (carteira na frente) | carteira, professor, lousa, relogio |
+| carro | de frente para quem está dentro: rua passando no vidro de trás, cheirinho balançando, rádio, volante na frente do motorista. `vista`: "motorista" = rua vindo no para-brisa | motorista, carona, para_brisa, retrovisor, radio |
+| casa_natal_fora | fachada à noite (padrão), pisca-pisca correndo, árvore acesa na janela, vizinho com MUITO mais luz, estrelas, cerca com luzinhas na frente | quintal, quintal_esq, quintal_dir, porta, janela, vizinho, ceu |
+| sala_natal | árvore piscando, presentes, festão, ventilador de teto e de pé (calor), mesa da ceia com peru soltando vapor na frente | mesa, arvore, presentes, ceia, centro, janela |
+| loja | vitrine com gente passando, araras, placas piscando (`placa` "-50%", `placa2` "PROMO"), balcão com caixa na frente | caixa, centro, vitrine, placa, placa2 |
+| supermercado | corredor em perspectiva, placa de preço balançando (`preco`), alguém cruzando no fundo, carrinho na frente | carrinho, corredor, placa, fundo |
+| praia | ondas, espuma indo e voltando, sol girando, barquinho, gaivota, guarda-sol; cadeira de praia na frente se alguém senta | areia, areia_dir, cadeira, guarda_sol, mar, ceu |
+| festa | bandeirinhas, balões, globo e feixes de luz coloridos girando, velas, confete caindo na frente (noite por padrão) | centro, esq, bolo, globo |
+| cidade_noite_alto | cidade vista do alto: janelas acendendo e apagando, faróis andando nas ruas | ceu, cidade, lua |
+| espaco_terra | Terra à noite girando com luzes das cidades piscando, atmosfera, satélite passando | espaco, terra, satelite, flutuando |
+| hospital | monitor cardíaco com traçado correndo e bipe, soro pingando, persiana, leito | leito, medico, monitor, janela |
+| academia | espelho, halteres, esteira com a lona andando e km subindo, ventilador, cartaz (`cartaz`) | esteira, halteres, espelho, cartaz |
+| restaurante | luminárias balançando, cardápio (`cardapio`), garçom passando ao fundo, pratos com vapor e toalha xadrez na frente | mesa, mesa_dir, garcom, cardapio |
+
+Âncoras: em qualquer elemento, `"ancora": "sofa_assento"` no lugar de `x`, `y` (com `dx`, `dy` opcionais, em fração da tela).
+Assento: o quadril do personagem vai no assento e a frente cobre as pernas. Chão: os pés no chão. As outras são pontos (o centro do elemento vai ali).
+Personagem sem `escala` ganha a escala certa da âncora. `move` também aceita âncora: `{"faz": "move", "para": "porta"}`.
+Âncora errada dá erro com a lista das âncoras do cenário.
+
+Porta que abre: `{"id": "pt", "tipo": "porta", "ancora": "porta", "acoes": [{"em": "toc", "faz": "muda", "prop": "abre", "para": 1, "dur": 0.5, "som": "porta"}]}`
+e, DEPOIS dela na lista, o humano com `"ancora": "porta"` e `{"faz": "entra", "jeito": "aparece"}`: ele aparece no vão e o batente fica na frente dele.
+A porta também funciona no chapado (`largura`, `altura`, `cor`, `dentro` = cor da luz do outro lado).
 
 Elementos (`tipo`) e as propriedades que aceitam (todas podem mudar com `muda`):
 | tipo | para que | propriedades |
