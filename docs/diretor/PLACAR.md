@@ -49,4 +49,4 @@ Leitura: nenhuma das duas plateias acompanha o Lucas. O Gemini acertou o v1 e er
 | ep004 | oK8hh0lxU4U | O ossinho da sorte do Natal é de dinossauro 🦖 | 0:34 | 24/11/2026 ~08h30 (público) | v1 corrigido (frase do Niko e "como as do T. rex" regravadas, sem pills, estalo mais alto, cauda cortada) | Lucas 7, plateia 4,6, Gemini 6,5 |
 Ligações: "Vídeo relacionado" da parte 2 aponta para a parte 1 (927OYhLGseo) e vice-versa. Comentário fixado com a pergunta. Declaração de IA: "Não" (o vídeo não se encaixa em nenhum critério do YouTube: pessoa real, filmagem real, cena realista ou música gerada). Medir em 24 h e 7 dias.
 
-| ep006 | (ver Studio) | 60 dias: o que o feed comeu do seu ano 📱 | 0:22 | 24/11/2026 (publicado pelo Lucas) | 1º vídeo 2D; Pipo feminina e estouro adicionados após o feedback | Lucas 8,5, Gemini 8,4 |
+| ep006 | vOu4cf_zyWo | 60 dias: o que o feed comeu do seu ano 📱 | 0:22 | 24/11/2026 (publicado pelo Lucas) | 1º vídeo 2D; Pipo feminina e estouro adicionados após o feedback | Lucas 8,5, Gemini 8,4 |
