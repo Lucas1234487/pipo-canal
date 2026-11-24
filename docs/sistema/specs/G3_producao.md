@@ -29,3 +29,7 @@ Backlog do kit2d, por ordem:
 2. Interação: personagem senta no sofá, abre a porta, deita na cama, pega o celular da mesa, olha pela janela, fica atrás da mesa (camada da frente cobre as pernas).
 3. Humano mais bonito: rosto mais expressivo, cabelo longo que não pareça véu (o Gemini leu a ruiva como hijab), criança com proporção de criança.
 4. Novos cenários: rua/trânsito, cozinha, carro, ônibus, escola.
+
+## Estado do motor em 24/11 noite
+Feito: cenários em camadas com vida e âncoras, temáticos (Natal, loja, praia, festa, cidade, espaço...), fundos animados, foto em tela cheia com mergulho, humano novo com assinatura e elenco fixo, 20 memes da Pipo, 7 reações de meme com som.
+Backlog (pedidos dos organizadores nos bilhetes): chuva no cidade_noite_alto; controle de brilho/escurecer do cenário (hoje é um bloco com alpha); tela dividida (split-screen com duas mini-cenas); "pisca" com brilho em vez de sumir; braço na Pipo pipoca; mapa estilizado (Brasil/mundo); árvore e casa como elementos soltos.

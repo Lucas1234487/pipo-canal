@@ -11,7 +11,8 @@
 | Memória de decisão | docs/BASE_CONHECIMENTO.md, docs/diretor/EXPERIMENTOS.md, docs/diretor/PLACAR.md, docs/historico.csv | o que sabemos, o que estamos testando, como foi |
 | Pautas | docs/sistema/PAUTAS.md, docs/diretor/RESGATE_PESQUISA.md, docs/pesquisa/ | o que falar |
 | Motor de voz | kit/tts.py (edge-tts, Francisca/Antonio) | roteiro.json -> narração + timing.json |
-| Motor 2D | kit2d/ (render2d.py, biblioteca.py, cenarios2.py, humano2.py, memes.py, CENAS.md) | cenas.json -> quadros PNG + QA de cena |
+| Motor 2D | kit2d/: render2d.py (tempo, câmera, reações, transições), biblioteca.py (Pipo e elementos), cenarios2.py (24+ cenários em camadas com vida e âncoras), fundos.py (14 fundos animados, foto em tela cheia, mergulho), humano2.py + elenco.py (humano com assinatura e 13 personagens fixos), memes.py (20 memes da Pipo), CENAS.md (cardápio) | cenas.json -> quadros PNG + QA de cena |
+| Sons | assets/sfx (CC0, com proveniência), assets/sfx/memes (reações), kit/gera_fa.py, kit/checa_sons.py (som some no celular?) | efeitos e reações |
 | Imagens reais | kit/imagens.py | busca CC0/domínio público com proveniência |
 | Montagem | kit/compose.py, kit/qa_check.py | legenda, som, mixagem, revisão automática |
 | Gemini | kit/gemini.py (chave em ~/.pipo/gemini_key, vem do Drive "PipoPop - segredos") | pesquisa com busca, plateia que assiste ao vídeo, pronúncia |
