@@ -1,3 +1,4 @@
 # Caderno do papel Gerente_producao
 Lições datadas, 1 a 3 linhas cada. Leia antes de começar; acrescente 1 no fim.
 - 25/11 (ep011 C): O2 e O3 em paralelo funcionam com cortes travados em palavras-chave do roteiro (fixadas no briefing do O1) e som em WORK/som.json com merge pelo O4.
+- 25/11 (ep010 H): briefings saem antes do timing; trave palavras-âncora no O1 e faça O2/O3 amarrarem nelas. Contador de lâmpadas = elemento casa (31 lâmpadas, luzes = n/31). O3 em paralelo grava som.json e o O4 faz o merge.
