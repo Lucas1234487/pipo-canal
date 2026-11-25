@@ -2058,80 +2058,251 @@ def _silhueta_malhando(ctx, S, x, chao, s, cor, tipo, seed):
             _halter(ctx, hx, hy, s * 0.8, escurece(cor, 0.3), seed + sx)
 
 
+PLACAS = [hexc("#E8352A"), hexc("#2A6FE8"), hexc("#FFC21A"), hexc("#2FB84A")]   # anilhas coloridas (bumper)
+TUBOS = ((90, 370), (400, 680), (710, 990))   # luminárias fluorescentes no teto
+RACK = (575, 825)                               # colunas do rack de agachamento
+PISO_ACAD = 1370
+
+
+def _anilha(ctx, x, y, r, cor, seed, fina=0.32):
+    """Anilha vista de lado (elipse fina) com aro e furo."""
+    forma(ctx, pts_elipse(x, y, r * fina, r, 16), cor, sombra=False, lw=4, seed=seed, amp=0.2, reto=False)
+    ctx.save(); ctx.translate(x, y); ctx.scale(r * fina * 0.55, r * 0.6); ctx.arc(0, 0, 1, 0, 2 * math.pi); ctx.restore()
+    ctx.set_source_rgba(*escurece(cor, 0.3), 0.8); ctx.set_line_width(3); ctx.stroke()
+    ctx.arc(x, y, r * 0.09, 0, 2 * math.pi); ctx.set_source_rgb(*INK); ctx.fill()
+    traco(ctx, [(x - r * fina * 0.5, y - r * 0.7), (x - r * fina * 0.62, y - r * 0.2)], lw=4, cor=(1, 1, 1), alpha=0.5, amp=0)
+
+
+def _nota(ctx, x, y, s, cor, a, dupla=False):
+    """Nota musical desenhada (sem depender de fonte): cabeça inclinada, haste e bandeirola (ou duas cabeças ligadas)."""
+    ctx.save(); ctx.translate(x, y); ctx.scale(s, s)
+    cabecas = [(0, 0), (34, -8)] if dupla else [(0, 0)]
+    for hx, hy in cabecas:
+        ctx.save(); ctx.translate(hx, hy); ctx.rotate(-0.4); ctx.scale(13, 9.5); ctx.arc(0, 0, 1, 0, 2 * math.pi); ctx.restore()
+        ctx.set_source_rgba(*INK, a); ctx.set_line_width(9); ctx.stroke_preserve(); ctx.set_source_rgba(*cor, a); ctx.fill()
+        ctx.move_to(hx + 11, hy - 3); ctx.line_to(hx + 11, hy - 52)
+        ctx.set_source_rgba(*INK, a); ctx.set_line_width(5); ctx.stroke()
+    if dupla:
+        ctx.move_to(11, -52); ctx.line_to(45, -60); ctx.line_to(45, -50); ctx.line_to(11, -42); ctx.close_path()
+    else:
+        ctx.move_to(11, -52); ctx.curve_to(28, -44, 30, -30, 22, -20); ctx.curve_to(26, -32, 20, -38, 11, -40); ctx.close_path()
+    ctx.set_source_rgba(*INK, a); ctx.fill()
+    ctx.restore()
+
+
+def _toalha_pendurada(ctx, x, y, cor, seed):
+    forma(ctx, [(x - 26, y), (x + 26, y), (x + 30, y + 150), (x + 4, y + 162), (x - 22, y + 150)], cor, sombra=True, sombra_off=(5, 6), lw=4, seed=seed, amp=0.4)
+    for k in (0, 1):
+        traco(ctx, [(x - 24, y + 120 + k * 12), (x + 28, y + 122 + k * 12)], lw=4, cor=escurece(cor, 0.2), seed=seed + k, amp=0.2)
+    traco(ctx, [(x - 32, y), (x + 32, y)], lw=10, cor=escurece(cor, 0.1), seed=seed + 3, amp=0.2)
+
+
+def _agachando(ctx, S, cx, chao, s):
+    """Personagem de fundo agachando com a barra nas costas no rack (sobe e desce), anilhas coloridas balançando um pouco."""
+    bg, bg2, a1, a2, a3 = S.pal
+    ciclo = S.tv * 2 * math.pi / 2.4
+    k = 0.5 - 0.5 * math.cos(ciclo)              # 0 em pé, 1 embaixo
+    k = k * k * (3 - 2 * k)
+    pele = hexc("#C8834F"); regata = hexc("#2A6FE8") if a1 != hexc("#2A6FE8") else hexc("#E8352A"); short = hexc("#2B2440")
+    quadril = chao - (232 - 108 * k) * s
+    ombro = quadril - 165 * s
+    barra_y = ombro + 6 * s
+    for sx in (-1, 1):   # pernas: joelho abre para o lado quando desce
+        H = (cx + sx * 30 * s, quadril); P_ = (cx + sx * 46 * s, chao - 10 * s)
+        d = math.hypot(P_[0] - H[0], P_[1] - H[1]); L = 122 * s
+        abre = math.sqrt(max(0.0, L * L - (d / 2) ** 2))
+        K = ((H[0] + P_[0]) / 2 + sx * abre, (H[1] + P_[1]) / 2)
+        traco(ctx, [H, K, P_], lw=34 * s + 10, amp=0)
+        traco(ctx, [H, K, P_], lw=34 * s, cor=pele, amp=0)
+        traco(ctx, [H, ((H[0] + K[0]) / 2, (H[1] + K[1]) / 2)], lw=40 * s, cor=short, amp=0)
+        forma(ctx, pts_elipse(P_[0] + sx * 12 * s, chao - 4 * s, 34 * s, 15 * s, 12), BRANCO, sombra=False, lw=4, seed=S.seed + 1310 + sx)
+    forma(ctx, pts_ret(cx - 50 * s, quadril - 30 * s, 100 * s, 56 * s, 16 * s), short, sombra=False, lw=4, seed=S.seed + 1312)
+    forma(ctx, [(cx - 52 * s, ombro), (cx + 52 * s, ombro), (cx + 44 * s, quadril - 20 * s), (cx - 44 * s, quadril - 20 * s)], regata,
+          sombra=False, lw=4, seed=S.seed + 1313, amp=0.3)
+    traco(ctx, [(cx - 20 * s, ombro + 4 * s), (cx, ombro + 34 * s), (cx + 20 * s, ombro + 4 * s)], lw=4, cor=pele, amp=0)
+    # cabeça (esforço: olhos apertados, dentes) e barra nas costas
+    hy = ombro - 52 * s
+    forma(ctx, pts_elipse(cx, hy, 40 * s, 44 * s, 16), pele, sombra=False, lw=4, seed=S.seed + 1314)
+    forma(ctx, _poli([(cx - 40 * s, hy - 8 * s), (cx - 34 * s, hy - 38 * s), (cx, hy - 48 * s), (cx + 34 * s, hy - 38 * s), (cx + 40 * s, hy - 8 * s), (cx, hy - 26 * s)]),
+          hexc("#3A2218"), sombra=False, lw=4, seed=S.seed + 1315, amp=0.2)
+    for sx in (-1, 1):
+        traco(ctx, [(cx + sx * 20 * s, hy - 2 * s), (cx + sx * 10 * s, hy + 3 * s), (cx + sx * 20 * s, hy + 8 * s)], lw=4, amp=0)
+    forma(ctx, pts_ret(cx - 14 * s, hy + 16 * s, 28 * s, 12 * s, 3 * s), BRANCO, sombra=False, lw=3, seed=S.seed + 1316, amp=0.1)
+    if k > 0.6:   # gota de suor quando está embaixo
+        ctx.arc(cx + 46 * s, hy - 20 * s + (k - 0.6) * 40 * s, 6 * s, 0, 2 * math.pi); ctx.set_source_rgb(*hexc("#7FD3FF")); ctx.fill()
+    xs = (RACK[0] - 70, RACK[1] + 70)
+    traco(ctx, [(xs[0], barra_y), (xs[1], barra_y)], lw=16, amp=0)
+    traco(ctx, [(xs[0], barra_y), (xs[1], barra_y)], lw=8, cor=hexc("#C9CED8"), amp=0)
+    for side, x0 in ((-1, xs[0] + 30), (1, xs[1] - 30)):
+        for j, (r, cor) in enumerate(((78 * s, PLACAS[0]), (66 * s, PLACAS[1]), (52 * s, PLACAS[2]))):
+            _anilha(ctx, x0 + side * j * 18, barra_y, r, cor, S.seed + 1320 + j + side * 5)
+    for sx in (-1, 1):   # braços segurando a barra
+        traco(ctx, [(cx + sx * 50 * s, ombro + 12 * s), (cx + sx * 92 * s, ombro + 30 * s), (cx + sx * 86 * s, barra_y)], lw=26 * s + 9, amp=0)
+        traco(ctx, [(cx + sx * 50 * s, ombro + 12 * s), (cx + sx * 92 * s, ombro + 30 * s), (cx + sx * 86 * s, barra_y)], lw=26 * s, cor=pele, amp=0)
+        forma(ctx, pts_elipse(cx + sx * 86 * s, barra_y, 15 * s, 15 * s, 10), pele, sombra=False, lw=4, seed=S.seed + 1330 + sx)
+
+
 def fundo_academia(ctx, S):
-    """Academia de bairro: espelho grande com gente malhando refletida, fila de esteiras, halteres no suporte,
-    banco de supino com barra, anilhas, placa SEM DOR SEM GANHO (opção 'cartaz')."""
-    _camada_fixa(ctx, _chave(S), lambda c: _academia_fixa(c, S))
+    """Academia de bairro inconfundível: teto com luminárias fluorescentes acesas, parede viva com faixas e o logo PIPO FIT,
+    espelho com gente malhando refletida, rack de agachamento com alguém agachando (sobe e desce) e anilhas coloridas,
+    bebedouro com galão borbulhando, suporte de halteres, caixinha de som soltando notas, toalha pendurada, piso de borracha preto.
+    Opções: 'cartaz' (SEM DOR\nSEM GANHO, aceita \n), 'logo' (PIPO FIT)."""
+    _camada_fixa(ctx, _chave(S, S.opts.get("cartaz"), S.opts.get("logo")), lambda c: _academia_fixa(c, S))
     _academia_viva(ctx, S)
 
 
 def _academia_fixa(ctx, S):
-    """Parte parada da academia (cache): paredes, piso, espelho, placa, halteres, banco, anilhas, esteiras."""
+    """Parte parada da academia (cache)."""
     bg, bg2, a1, a2, a3 = S.pal
-    ctx.set_source_rgb(*bg); ctx.paint()
-    _ret(ctx, 0, 0, W, 150, escurece(bg, 0.3))   # faixa escura no alto da parede
-    _ret(ctx, 0, 1000, W, 380, escurece(bg, 0.15))
-    traco(ctx, [(-10, 1000), (W + 10, 1000)], lw=5, alpha=0.5, seed=S.seed + 1099)
-    _ret(ctx, 0, 1380, W, H, hexc("#24202F"))   # piso de borracha em placas
-    for k in range(9):
-        traco(ctx, [(k * 140 - 20, 1380), (k * 170 - 260, H)], lw=3, alpha=0.4, seed=S.seed + 1100 + k)
-    for y in (1470, 1590, 1740):
-        traco(ctx, [(-10, y), (W + 10, y)], lw=3, alpha=0.4, seed=S.seed + 1100 + y)
-    # espelho grande com o reflexo de gente malhando
-    forma(ctx, pts_ret(40, 190, 620, 640, 8), CINZA, seed=S.seed + 1101)
-    forma(ctx, pts_ret(56, 206, 588, 608, 4), clareia(VIDRO_CLARO, 0.15), sombra=False, lw=4, seed=S.seed + 1102)
-    _ret(ctx, 56, 640, 588, 180, mix(VIDRO_CLARO, escurece(bg, 0.2), 0.45))
+    parede = clareia(bg, 0.08)
+    ctx.set_source_rgb(*parede); ctx.paint()
+    # faixas diagonais de academia na parede (cor viva)
+    ctx.save(); ctx.rectangle(0, 150, W, PISO_ACAD - 150); ctx.clip()
+    for k, cor in enumerate((a2, a1)):
+        x0 = 620 + k * 90
+        ctx.move_to(x0, 150); ctx.line_to(x0 + 70, 150); ctx.line_to(x0 + 70 - 900, 1050); ctx.line_to(x0 - 900, 1050); ctx.close_path()
+        ctx.set_source_rgba(*cor, 0.55); ctx.fill()
+    ctx.restore()
+    _ret(ctx, 0, 1050, W, PISO_ACAD - 1050, escurece(bg, 0.18))           # barrado de baixo
+    _ret(ctx, 0, 1040, W, 22, a2); traco(ctx, [(-10, 1040), (W + 10, 1040)], lw=5, amp=0); traco(ctx, [(-10, 1062), (W + 10, 1062)], lw=5, amp=0)
+    # teto escuro com as calhas das fluorescentes
+    _ret(ctx, 0, 0, W, 150, hexc("#2B2440"))
+    traco(ctx, [(-10, 150), (W + 10, 150)], lw=6, amp=0)
+    for x0, x1 in TUBOS:
+        forma(ctx, pts_ret(x0 - 14, 52, x1 - x0 + 28, 54, 10), hexc("#D9DEE8"), sombra=False, lw=4, seed=S.seed + 1300 + x0)
+    # piso de borracha preto: placas, granulado colorido e reflexo das luzes
+    _ret(ctx, 0, PISO_ACAD, W, H - PISO_ACAD, hexc("#18171D"))
+    rr = random.Random(S.seed + 77)
+    for i in range(900):
+        x, y = rr.uniform(0, W), rr.uniform(PISO_ACAD, H)
+        ctx.rectangle(x, y, 3, 3)
+    ctx.set_source_rgba(0.55, 0.58, 0.66, 0.35); ctx.fill()
+    for i in range(160):
+        x, y = rr.uniform(0, W), rr.uniform(PISO_ACAD, H)
+        ctx.rectangle(x, y, 3, 3)
+        ctx.set_source_rgba(*rr.choice(PLACAS), 0.55); ctx.fill()
+    for k in range(-3, 10):
+        traco(ctx, [(k * 150, PISO_ACAD), (k * 150 + (k * 150 - 540) * 0.9, H)], lw=4, cor=hexc("#050408"), seed=S.seed + 1340 + k, amp=0.3)
+    for y in (1450, 1560, 1720):
+        traco(ctx, [(-10, y), (W + 10, y)], lw=4, cor=hexc("#050408"), seed=S.seed + 1350 + y, amp=0.3)
+    for x0, x1 in TUBOS:   # reflexo das fluorescentes no piso
+        ctx.move_to(x0 + 30, PISO_ACAD + 40); ctx.line_to(x1 - 30, PISO_ACAD + 40); ctx.line_to(x1 + 10, PISO_ACAD + 120); ctx.line_to(x0 - 10, PISO_ACAD + 120); ctx.close_path()
+    ctx.set_source_rgba(1, 1, 1, 0.08); ctx.fill()
+    traco(ctx, [(-10, PISO_ACAD), (W + 10, PISO_ACAD)], lw=6, amp=0)
+    # logo PIPO FIT
+    lx, ly = 285, 285
+    forma(ctx, pts_ret(lx - 225, ly - 85, 450, 170, 40), hexc("#2B2440"), seed=S.seed + 1360)
+    forma(ctx, pts_ret(lx - 211, ly - 71, 422, 142, 30), hexc("#2B2440"), sombra=False, lw=0, seed=S.seed + 1361)
+    traco(ctx, _poli([(lx - 205, ly - 65), (lx + 205, ly - 65), (lx + 205, ly + 65), (lx - 205, ly + 65)], 40) + [(lx - 205, ly - 65)], lw=4, cor=a2, amp=0.2)
+    logo = S.opts.get("logo", "PIPO FIT").split(" ", 1)
+    texto(ctx, logo[0], lx - 60 if len(logo) > 1 else lx, ly + 4, 84, cor=AMARELO, contorno=INK, lw=4, sombra=False, max_w=230 if len(logo) > 1 else 380)
+    if len(logo) > 1:
+        texto(ctx, logo[1], lx + 128, ly + 4, 64, cor=BRANCO, contorno=INK, lw=4, sombra=False, max_w=130)
+    ctx.save(); ctx.translate(lx - 186, ly - 52); ctx.rotate(-0.5)   # haltere do logo
+    traco(ctx, [(-24, 0), (24, 0)], lw=8, cor=BRANCO, amp=0)
+    for sx in (-1, 1):
+        forma(ctx, pts_ret(sx * 26 - 8, -18, 16, 36, 4), VERMELHO, sombra=False, lw=3, seed=S.seed + 1362 + sx, amp=0.1)
+    ctx.restore()
     # placa SEM DOR SEM GANHO
-    forma(ctx, pts_ret(700, 220, 320, 250, 12), VERMELHO, seed=S.seed + 1103)
-    forma(ctx, pts_ret(716, 236, 288, 218, 8), AMARELO, sombra=False, lw=4, seed=S.seed + 1104)
+    forma(ctx, pts_ret(720, 200, 300, 210, 12), VERMELHO, seed=S.seed + 1103)
+    forma(ctx, pts_ret(735, 215, 270, 180, 8), AMARELO, sombra=False, lw=4, seed=S.seed + 1104)
     linhas = S.opts.get("cartaz", "SEM DOR\nSEM GANHO").split("\n")
     for j, ln in enumerate(linhas):
-        texto(ctx, ln, 860, 345 + (j - (len(linhas) - 1) / 2) * 76, 62, cor=VERMELHO, contorno=INK, lw=4, sombra=False, max_w=270)
-    # suporte de halteres (3 andares, do leve ao pesado)
-    forma(ctx, [(680, 560), (1050, 560), (1050, 590), (680, 590)], CINZA, seed=S.seed + 1105)
-    for row, y in enumerate((620, 730, 840)):
-        forma(ctx, pts_ret(680, y + 30, 370, 20, 6), CINZA, seed=S.seed + 1106 + row)
-        for k in range(4):
-            _halter(ctx, 730 + k * 92, y + 8 - row * 2, 0.85 + 0.12 * row, [a2, a1, hexc("#3A3348"), a3][(k + row) % 4], S.seed + 1110 + k + row * 10)
-    traco(ctx, [(690, 590), (690, 1000)], lw=10, seed=S.seed + 1120); traco(ctx, [(1040, 590), (1040, 1000)], lw=10, seed=S.seed + 1121)
-    # banco de supino com a barra no cavalete e alguém treinando
-    forma(ctx, pts_ret(720, 1270, 320, 44, 16), hexc("#3A3348"), seed=S.seed + 1122)
-    for lx in (760, 1000):
-        traco(ctx, [(lx, 1314), (lx, 1380)], lw=12, seed=S.seed + 1123 + lx)
-    for ux in (735, 1025):
-        traco(ctx, [(ux, 1380), (ux, 1110)], lw=14, cor=CINZA, seed=S.seed + 1125 + ux)
-    for k, (ax, r) in enumerate(((1060, 70), (1060, 52))):   # anilhas encostadas
-        forma(ctx, pts_elipse(ax - k * 30, 1380 - r, 18, r, 14), hexc("#2B2440"), sombra=False, lw=4, seed=S.seed + 1127 + k)
-    forma(ctx, pts_elipse(640, 1355, 30, 26, 12), a1, seed=S.seed + 1129, sombra_off=(4, 4))   # kettlebell
-    traco(ctx, [(620, 1335), (640, 1305), (660, 1335)], lw=8, amp=0)
-    # fila de esteiras: a do fundo com alguém correndo, a da frente (âncora) com o console na camada da frente
-    forma(ctx, [(130, 1280), (330, 1280), (350, 1320), (110, 1320)], hexc("#2B2440"), seed=S.seed + 1131)
-    traco(ctx, [(140, 1300), (165, 1120)], lw=10, cor=CINZA, amp=0)
-    forma(ctx, pts_ret(120, 1090, 120, 44, 10), hexc("#2B2440"), sombra=False, lw=4, seed=S.seed + 1132)
+        texto(ctx, ln, 870, 305 + (j - (len(linhas) - 1) / 2) * 68, 56, cor=VERMELHO, contorno=INK, lw=4, sombra=False, max_w=250)
+    # espelho com reflexo (as pessoas refletidas são animadas na camada viva)
+    forma(ctx, pts_ret(180, 440, 340, 560, 8), CINZA, seed=S.seed + 1101)
+    forma(ctx, pts_ret(194, 454, 312, 532, 4), clareia(VIDRO_CLARO, 0.15), sombra=False, lw=4, seed=S.seed + 1102)
+    _ret(ctx, 194, 860, 312, 126, mix(VIDRO_CLARO, hexc("#18171D"), 0.45))
+    # bebedouro com galão
+    bx = 95
+    forma(ctx, pts_ret(bx - 58, 1010, 116, 330, 16), hexc("#EEF1F6"), seed=S.seed + 1370, sombreado=0.08)
+    forma(ctx, pts_ret(bx - 46, 1060, 92, 70, 10), hexc("#C9CED8"), sombra=False, lw=4, seed=S.seed + 1371)
+    for k, cor in enumerate((hexc("#2A6FE8"), VERMELHO)):
+        forma(ctx, pts_ret(bx - 30 + k * 40, 1072, 20, 26, 5), cor, sombra=False, lw=3, seed=S.seed + 1372 + k, amp=0.1)
+    forma(ctx, pts_ret(bx - 34, 1150, 68, 14, 5), hexc("#9AA3B5"), sombra=False, lw=3, seed=S.seed + 1374, amp=0.1)   # grade da bandeja
+    forma(ctx, pts_ret(bx - 20, 1000, 40, 18, 6), hexc("#C9CED8"), sombra=False, lw=4, seed=S.seed + 1375)
+    forma(ctx, pts_ret(bx - 50, 860, 100, 146, 30), hexc("#8FD3FF"), seed=S.seed + 1376, sombreado=0.1)
+    for y in (900, 950):
+        traco(ctx, [(bx - 48, y), (bx + 48, y)], lw=4, cor=hexc("#4AA8E8"), amp=0.2, alpha=0.8)
+    traco(ctx, [(bx - 30, 875), (bx - 30, 985)], lw=8, cor=(1, 1, 1), alpha=0.6, amp=0)
+    forma(ctx, pts_ret(bx + 66, 1180, 34, 70, 8), BRANCO, sombra=False, lw=4, seed=S.seed + 1377)   # copinhos
+    # rack de agachamento (colunas, travessa, ganchos e barras de segurança)
+    rc = hexc("#E8352A") if a1 != hexc("#E8352A") else hexc("#2A6FE8")
+    for x in RACK:
+        forma(ctx, pts_ret(x - 16, 520, 32, PISO_ACAD - 520, 6), rc, sombra=True, sombra_off=(7, 8), lw=5, seed=S.seed + 1380 + x)
+        for y in range(560, 1300, 46):
+            ctx.arc(x, y, 4, 0, 2 * math.pi)
+        ctx.set_source_rgba(*INK, 0.7); ctx.fill()
+        forma(ctx, pts_ret(x - 40, PISO_ACAD - 20, 80, 22, 6), escurece(rc, 0.3), sombra=False, lw=4, seed=S.seed + 1382 + x)
+        forma(ctx, pts_ret(x - 30, 1150, 60, 18, 4), CINZA, sombra=False, lw=4, seed=S.seed + 1384 + x)   # pino de segurança
+    forma(ctx, pts_ret(RACK[0] - 22, 500, RACK[1] - RACK[0] + 44, 34, 8), rc, sombra=True, sombra_off=(7, 8), lw=5, seed=S.seed + 1386)
+    _toalha_pendurada(ctx, RACK[0] - 2, 640, hexc("#FFFFFF"), S.seed + 1388)
+    # anilhas coloridas encostadas na coluna do rack
+    for j, (cor, r) in enumerate(((PLACAS[3], 70), (PLACAS[1], 62), (PLACAS[2], 52))):
+        _anilha(ctx, RACK[0] + 40 + j * 22, PISO_ACAD - r, r, cor, S.seed + 1390 + j, fina=0.3)
+    # suporte de halteres (à direita) com a caixinha de som em cima
+    for x in (880, 1050):
+        traco(ctx, [(x, 600), (x, PISO_ACAD)], lw=12, cor=CINZA, seed=S.seed + 1400 + x)
+    for row, y in enumerate((640, 780, 920)):
+        forma(ctx, pts_ret(866, y + 28, 198, 18, 6), CINZA, seed=S.seed + 1403 + row)
+        for kk in range(2):
+            cor = PLACAS[(kk + row) % 4]
+            _halter(ctx, 925 + kk * 90, y + 8, 0.95 + 0.1 * row, cor, S.seed + 1410 + kk + row * 10)
+    forma(ctx, pts_ret(866, 594, 198, 18, 6), CINZA, seed=S.seed + 1420)
+    forma(ctx, pts_ret(905, 440, 120, 156, 18), hexc("#2B2440"), seed=S.seed + 1421)
+    forma(ctx, pts_ret(921, 456, 88, 22, 8), escurece(hexc("#2B2440"), 0.3), sombra=False, lw=3, seed=S.seed + 1422)
+    ctx.arc(1000, 467, 4, 0, 2 * math.pi); ctx.set_source_rgb(*hexc("#5BE07A")); ctx.fill()
+    # base da esteira da frente (o painel vem na camada da frente quando alguém usa)
     forma(ctx, [(120, 1360), (560, 1360), (600, 1430), (80, 1430)], hexc("#2B2440"), seed=S.seed + 1122)
 
 
 def _academia_viva(ctx, S):
-    """Gente malhando (no espelho, no supino, na esteira do fundo), lona da esteira, relógio e ventilador."""
+    """Fluorescentes acesas (uma pisca), gente no espelho, agachamento no rack, bolhas no galão, caixinha pulsando e soltando notas."""
     bg = S.pal[0]
-    ctx.save(); ctx.rectangle(56, 206, 588, 608); ctx.clip()
-    _silhueta_malhando(ctx, S, 200, 760, 0.95, mix(escurece(bg, 0.4), VIDRO_CLARO, 0.35), "rosca", 1)
-    _silhueta_malhando(ctx, S, 470, 760, 0.85, mix(escurece(bg, 0.4), VIDRO_CLARO, 0.45), "corre", 2)
+    ctx.save(); ctx.rectangle(194, 454, 312, 532); ctx.clip()
+    cor_ref = mix(escurece(bg, 0.4), VIDRO_CLARO, 0.4)
+    _silhueta_malhando(ctx, S, 290, 960, 0.8, cor_ref, "rosca", 1)
+    _silhueta_malhando(ctx, S, 430, 960, 0.7, mix(cor_ref, VIDRO_CLARO, 0.2), "corre", 2)
     ctx.restore()
-    for k in range(2):
-        ctx.move_to(170 + k * 170, 206); ctx.line_to(260 + k * 170, 206); ctx.line_to(150 + k * 170, 814); ctx.line_to(60 + k * 170, 814)
+    for k in range(2):   # reflexo no vidro
+        ctx.move_to(230 + k * 120, 454); ctx.line_to(290 + k * 120, 454); ctx.line_to(214 + k * 120, 986); ctx.line_to(154 + k * 120, 986)
         ctx.close_path()
-    ctx.set_source_rgba(1, 1, 1, 0.25); ctx.fill()
-    _relogio(ctx, S, 870, 100, 44)
-    _silhueta_malhando(ctx, S, 900, 1268, 0.8, escurece(bg, 0.55), "supino", 3)
-    _silhueta_malhando(ctx, S, 250, 1285, 0.6, escurece(bg, 0.5), "corre", 4)
-    rol = (S.tv * 260) % 60 if S.vida else 0
-    ctx.save(); ctx.rectangle(110, 1360, 470, 60); ctx.clip()
-    for k in range(10):
-        x = 100 + k * 60 + rol
-        ctx.move_to(x, 1366); ctx.line_to(x - 10, 1424)
-    ctx.set_source_rgba(1, 1, 1, 0.35); ctx.set_line_width(5); ctx.stroke(); ctx.restore()
-    _ventilador(ctx, S, 540, 90, 0.8)
+    ctx.save(); ctx.rectangle(194, 454, 312, 532); ctx.clip(); ctx.set_source_rgba(1, 1, 1, 0.22); ctx.fill(); ctx.restore()
+    # bolhas subindo no galão do bebedouro
+    for i in range(4):
+        u = (S.tv * 0.6 + i / 4) % 1
+        ctx.arc(95 + 22 * math.sin(i * 2.1 + u * 5), 990 - u * 120, 5 + i % 2 * 3, 0, 2 * math.pi)
+    ctx.set_source_rgba(1, 1, 1, 0.7); ctx.fill()
+    _agachando(ctx, S, (RACK[0] + RACK[1]) / 2, PISO_ACAD - 4, 0.9)
+    # caixinha de som pulsando no ritmo, notas saindo
+    bt = abs(math.sin(S.tv * math.pi * 2.0)) ** 3 if S.vida else 0
+    for y, r in ((515, 26), (568, 18)):
+        rr = r * (1 + 0.14 * bt)
+        forma(ctx, pts_elipse(965, y, rr + 6, rr + 6, 16), hexc("#3A3348"), sombra=False, lw=4, seed=S.seed + 1430 + y, reto=False)
+        forma(ctx, pts_elipse(965, y, rr * 0.45, rr * 0.45, 12), hexc("#9AA3B5"), sombra=False, lw=3, seed=S.seed + 1431 + y, reto=False)
+    if bt > 0.3:
+        for a in (-0.6, -0.2):
+            traco(ctx, [(935 + math.cos(math.pi + a) * 40, 515 + math.sin(math.pi + a) * 40), (935 + math.cos(math.pi + a) * 54, 515 + math.sin(math.pi + a) * 54)], lw=5, amp=0, alpha=bt)
+    cores = (PLACAS[2], hexc("#FF5A8A"), hexc("#5BE07A"), BRANCO)
+    for i in range(4):
+        u = (S.tv * 0.35 + i / 4) % 1
+        x = 900 - u * 330
+        y = 478 - u * 70 + 16 * math.sin(u * 9 + i)
+        a = min(1.0, u * 5) * (1 - max(0.0, u - 0.7) / 0.3)
+        _nota(ctx, x, y, 0.85 + 0.15 * (i % 2), cores[i], a, dupla=(i % 2 == 1))
+    # luz das fluorescentes (por cima da tinta de luz: continuam acesas à noite); a do meio dá umas piscadas
+    def luz(c):
+        for idx, (x0, x1) in enumerate(TUBOS):
+            pisca = idx == 1 and S.vida and (S.tv % 4.3) < 0.18 and int(S.tv * 30) % 2 == 0
+            g = cairo.LinearGradient(0, 100, 0, 760)
+            g.add_color_stop_rgba(0, 0.9, 0.97, 1.0, 0.0 if pisca else 0.20); g.add_color_stop_rgba(1, 0.9, 0.97, 1.0, 0)
+            c.save(); c.set_operator(cairo.OPERATOR_ADD)
+            c.move_to(x0, 100); c.line_to(x1, 100); c.line_to(x1 + 120, 760); c.line_to(x0 - 120, 760); c.close_path(); c.set_source(g); c.fill(); c.restore()
+            tubo = (0.62, 0.66, 0.72) if pisca else (0.97, 1.0, 1.0)
+            forma(c, pts_ret(x0, 64, x1 - x0, 26, 13), tubo, sombra=False, lw=4, seed=S.seed + 1440 + idx, amp=0.1)
+            if not pisca:
+                _halo(c, (x0 + x1) / 2, 77, 150, 0.18)
+    S.apos.append(luz)
 
 
 def frente_academia(ctx, S):
@@ -2273,7 +2444,8 @@ CENARIOS.update({
         "monitor": {"x": 850, "y": 435}, "janela": {"x": 240, "y": 430}}),
     "academia": dict(fundo=fundo_academia, frente=frente_academia, ancoras={
         "esteira": {"x": 340, "chao": 1370, "escala": 0.85}, "halteres": {"x": 840, "chao": 1480, "escala": 0.9},
-        "espelho": {"x": 340, "y": 500}, "cartaz": {"x": 850, "y": 345}}),
+        "espelho": {"x": 350, "y": 700}, "cartaz": {"x": 870, "y": 305}, "logo": {"x": 285, "y": 285},
+        "rack": {"x": 700, "y": 800}, "bebedouro": {"x": 95, "chao": 1480, "escala": 0.9}, "som": {"x": 965, "y": 520}}),
     "restaurante": dict(fundo=fundo_restaurante, frente=frente_restaurante, ancoras={
         "mesa": {"x": 340, "assento": 1190, "escala": 0.85}, "mesa_dir": {"x": 740, "assento": 1190, "escala": 0.85},
         "garcom": {"x": 930, "chao": 1480, "escala": 0.9}, "cardapio": {"x": 810, "y": 470}}),
