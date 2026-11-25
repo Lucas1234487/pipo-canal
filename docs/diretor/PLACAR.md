@@ -50,3 +50,12 @@ Leitura: nenhuma das duas plateias acompanha o Lucas. O Gemini acertou o v1 e er
 Ligações: "Vídeo relacionado" da parte 2 aponta para a parte 1 (927OYhLGseo) e vice-versa. Comentário fixado com a pergunta. Declaração de IA: "Não" (o vídeo não se encaixa em nenhum critério do YouTube: pessoa real, filmagem real, cena realista ou música gerada). Medir em 24 h e 7 dias.
 
 | ep006 | vOu4cf_zyWo | 60 dias: o que o feed comeu do seu ano 📱 | 0:22 | 24/11/2026 (publicado pelo Lucas) | 1º vídeo 2D; Pipo feminina e estouro adicionados após o feedback | Lucas 8,5, Gemini 8,4 |
+
+## Views em 24/11 20h50
+| vídeo | views |
+|---|---|
+| ossinho (oK8hh0lxU4U) | 1.370 |
+| feed 60 dias (vOu4cf_zyWo) | 1.256 |
+| Black Friday | 1.098 |
+| Natal 'Ela é adulta' | 1.078 |
+| sorriso v2 (XbSg8fMInEs, 18h33) | 470 em ~2h |

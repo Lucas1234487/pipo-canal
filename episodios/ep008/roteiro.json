@@ -1,0 +1,16 @@
+{"voice": "pt-BR-FranciscaNeural", "rate": "+5%", "pitch": "+0Hz", "lead": 0.3, "trim": true,
+ "lines": [
+  {"text": "Do espaço, dá pra ver o Natal chegando.", "pause": 0.35, "shot": "Terra escura vista de cima; pontos de cidade acendendo um a um; Pipo pequena no canto olhando pra baixo. Texto na tela: DO ESPAÇO DÁ PRA VER O NATAL?"},
+  {"text": "Um satélite da agência espacial americana mede a luz das cidades à noite.", "pause": 0.3, "shot": "FOTO: foto real da Terra à noite vista da estação espacial (O2 escolhe, CC0/domínio público); satélite 2D passa por cima"},
+  {"text": "Nos Estados Unidos, os cientistas compararam setenta cidades.", "pause": 0.3, "shot": "mapa 2D dos Estados Unidos com setenta pontinhos de luz; contador sobe até 70"},
+  {"text": "Da sexta das promoções até o Ano Novo, elas ficaram de vinte a cinquenta por cento mais brilhantes.", "pause": 0.3, "shot": "calendário vira do fim de novembro até primeiro de janeiro; os pontos do mapa ficam mais fortes; marcador +20% a +50%"},
+  {"text": "O motivo? Luz de Natal.", "pause": 0.3, "shot": "zoom num fio de pisca-pisca piscando colorido; Pipo arregala os olhos"},
+  {"text": "Mas quem mais brilhou não foi o centro da cidade.", "pause": 0.25, "shot": "VIRADA: prédios do centro em cinza, brilho fraco; Pipo balança a cabeça"},
+  {"text": "Foram os bairros. As casas.", "pause": 0.35, "shot": "PIPO ESTOURA na palavra 'bairros' e vira confete de luz sobre um bairro de casinhas todas iluminadas"},
+  {"text": "No centro, até trinta por cento a mais.", "pause": 0.2, "shot": "BARRAS: barra 'centro' sobe até 30%"},
+  {"text": "Nos bairros, até cinquenta.", "pause": 0.3, "shot": "BARRAS: barra 'bairros' sobe até 50% e passa a do centro"},
+  {"text": "Onde tem casa com quintal, tem pisca-pisca.", "pause": 0.3, "shot": "rua de casas com quintal, cada uma acendendo luzes; uma exagera muito mais que as outras"},
+  {"text": "E aquele vizinho exagerado entra nessa conta.", "pause": 0.35, "shot": "a casa exagerada pisca forte; o bairro inteiro visto de cima brilha como um ponto só"},
+  {"text": "Na sua rua, quem acende primeiro: você ou o vizinho?", "pause": 0.35, "shot": "tela dividida: sua casa x casa do vizinho, ambas com luzes apagadas; texto da pergunta na tela"},
+  {"text": "Manda pro vizinho que já montou a árvore.", "pause": 0.4, "shot": "árvore de Natal montada na janela do vizinho; Pipo aponta pra ela"}
+ ]}

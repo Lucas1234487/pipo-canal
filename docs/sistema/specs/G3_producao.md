@@ -33,3 +33,5 @@ Backlog do kit2d, por ordem:
 ## Estado do motor em 24/11 noite
 Feito: cenários em camadas com vida e âncoras, temáticos (Natal, loja, praia, festa, cidade, espaço...), fundos animados, foto em tela cheia com mergulho, humano novo com assinatura e elenco fixo, 20 memes da Pipo, 7 reações de meme com som.
 Backlog FEITO na dev-back (24/11): brilho de cena, chuva em qualquer cenário, split, pisca com brilho, braços da pipoca, mapa, árvore e casa soltas; mais os ajustes do dono (pés no sofá, ônibus refeito, carro, supermercado, academia, cidade_noite_alto, celular moderno). Pedido original: chuva no cidade_noite_alto; controle de brilho/escurecer do cenário (hoje é um bloco com alpha); tela dividida (split-screen com duas mini-cenas); "pisca" com brilho em vez de sumir; braço na Pipo pipoca; mapa estilizado (Brasil/mundo); árvore e casa como elementos soltos.
+- (24/11) compose: o loudnorm de uma passada achata os transientes (o estouro perdeu ~2 dB no master). Trocar por loudnorm em 2 passadas (medir e aplicar linear) ou ganho + limiter.
+- (24/11) ônibus e carro ficaram 16-22% mais lentos; cachear partes paradas.

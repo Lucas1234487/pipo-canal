@@ -1,0 +1,1749 @@
+{
+ "paleta": "noite",
+ "cenas": [
+  {
+   "em": 0,
+   "paleta": "noite",
+   "fundo_foto": "/home/claude/piloto_C/img/foto1.jpg",
+   "estilo": "real",
+   "kb_de": [
+    1.0,
+    0.5,
+    0.5
+   ],
+   "kb_para": [
+    1.25,
+    0.55,
+    0.48
+   ],
+   "deriva": 0,
+   "elementos": [
+    {
+     "id": "q",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.148,
+     "texto": "DÁ PRA VER\nO NATAL DAQUI?",
+     "tam": 105,
+     "cor": "#FFD23F",
+     "acoes": [
+      {
+       "em": "natal",
+       "faz": "soco",
+       "forca": 0.08,
+       "som": "tique",
+       "volume": 0.6
+      }
+     ]
+    },
+    {
+     "id": "cr",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.56,
+     "texto": "foto: NASA (domínio público)",
+     "tam": 34,
+     "cor": "#FFF8EC"
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.8,
+     "y": 0.44,
+     "escala": 0.62,
+     "olhar": "esq",
+     "sobrancelha": 0.5,
+     "acoes": [
+      {
+       "em": "espaco",
+       "faz": "olha",
+       "para": "baixo"
+      },
+      {
+       "em": "natal",
+       "faz": "sobrancelha",
+       "para": 1.2
+      },
+      {
+       "em": "natal",
+       "faz": "boca",
+       "para": "o"
+      },
+      {
+       "em": "chegando",
+       "faz": "pula",
+       "altura": 60,
+       "som": "pop3",
+       "volume": 0.5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": "linha1",
+   "paleta": "cobalto",
+   "fundo_foto": "/home/claude/piloto_C/img/foto1.jpg",
+   "estilo": "duotone",
+   "kb_de": [
+    1.25,
+    0.4,
+    0.45
+   ],
+   "kb_para": [
+    1.55,
+    0.45,
+    0.42
+   ],
+   "deriva": 0,
+   "elementos": [
+    {
+     "id": "tx",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.15,
+     "texto": "SATÉLITE DA NASA",
+     "tam": 96,
+     "cor": "#FFF8EC",
+     "acoes": [
+      {
+       "em": "satelite",
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop",
+       "volume": 0.7
+      },
+      {
+       "em": "americana",
+       "faz": "soco",
+       "forca": 0.06,
+       "som": "tique",
+       "volume": 0.6
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.18,
+     "y": 0.44,
+     "escala": 0.58,
+     "olhar": "cima",
+     "sobrancelha": 0.8,
+     "espelha": true,
+     "acoes": [
+      {
+       "em": "satelite",
+       "faz": "pula",
+       "altura": 50
+      },
+      {
+       "em": "americana",
+       "faz": "olha",
+       "para": "dir"
+      },
+      {
+       "em": "americana",
+       "faz": "sobrancelha",
+       "para": 1.1
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": "mede",
+   "cenario": "espaco_terra",
+   "paleta": "petroleo",
+   "transicao": "mergulho",
+   "mergulho_em": [
+    0.5,
+    0.42
+   ],
+   "elementos": [
+    {
+     "id": "f",
+     "tipo": "foto",
+     "arquivo": "/home/claude/piloto_C/img/foto1.jpg",
+     "x": 0.36,
+     "y": 0.4,
+     "largura": 560,
+     "credito": "NASA (domínio público)",
+     "zoom_lento": 0.08,
+     "rot": -4,
+     "acoes": [
+      {
+       "em": "cidades",
+       "faz": "soco",
+       "forca": 0.06,
+       "som": "pop2",
+       "volume": 0.6
+      }
+     ]
+    },
+    {
+     "id": "seta",
+     "tipo": "seta",
+     "x": 0.7,
+     "y": 0.25,
+     "vetor": [
+      -150,
+      120
+     ],
+     "curva": 0.2,
+     "progresso": 0,
+     "cor": "#FFD23F",
+     "acoes": [
+      {
+       "em": "luz",
+       "faz": "muda",
+       "prop": "progresso",
+       "para": 1,
+       "dur": 0.35
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.78,
+     "y": 0.44,
+     "escala": 0.55,
+     "olhar": "esq",
+     "sobrancelha": 0.6,
+     "acoes": [
+      {
+       "em": "luz",
+       "faz": "olha",
+       "para": "cima"
+      },
+      {
+       "em": "cidades",
+       "faz": "sobrancelha",
+       "para": 1.2
+      },
+      {
+       "em": "cidades",
+       "faz": "squash"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": "linha2",
+   "cenario": "espaco_terra",
+   "paleta": "uva",
+   "zoom": 1.06,
+   "elementos": [
+    {
+     "id": "v",
+     "tipo": "bloco",
+     "x": 0.5,
+     "y": 0.5,
+     "largura": 1400,
+     "altura": 2300,
+     "cor": "#05051A",
+     "alpha": 0.7,
+     "camada": "meio",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "estados",
+       "faz": "muda",
+       "prop": "alpha",
+       "para": 0.0,
+       "ate": "setenta"
+      }
+     ]
+    },
+    {
+     "id": "eua",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.14,
+     "texto": "ESTADOS UNIDOS",
+     "tam": 84,
+     "acoes": [
+      {
+       "em": "estados",
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop",
+       "volume": 0.7
+      }
+     ]
+    },
+    {
+     "id": "n",
+     "tipo": "contador",
+     "x": 0.5,
+     "y": 0.245,
+     "valor": 0,
+     "sufixo": " cidades",
+     "tam": 120,
+     "cor": "#FFD23F",
+     "acoes": [
+      {
+       "em": "compararam",
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop",
+       "volume": 0.7
+      },
+      {
+       "em": "setenta",
+       "faz": "conta",
+       "para": 70,
+       "ate": "setenta",
+       "som": "tique",
+       "volume": 0.7
+      },
+      {
+       "em": "cidades",
+       "faz": "soco",
+       "som": "pops",
+       "volume": 0.6
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.5,
+     "y": 0.45,
+     "escala": 0.75,
+     "olhar": "baixo",
+     "sobrancelha": 0.5,
+     "acoes": [
+      {
+       "em": "unidos",
+       "faz": "squash",
+       "som": "pop2",
+       "volume": 0.5
+      },
+      {
+       "em": "cientistas",
+       "faz": "olha",
+       "para": "camera"
+      },
+      {
+       "em": "setenta",
+       "faz": "sobrancelha",
+       "para": 1.2
+      },
+      {
+       "em": "setenta",
+       "faz": "boca",
+       "para": "o"
+      },
+      {
+       "em": "cidades",
+       "faz": "pula",
+       "altura": 50
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": "linha3",
+   "cenario": "cidade_noite_alto",
+   "paleta": "cobalto",
+   "transicao": "wipe_diagonal",
+   "elementos": [
+    {
+     "id": "v",
+     "tipo": "bloco",
+     "x": 0.5,
+     "y": 0.5,
+     "largura": 1400,
+     "altura": 2300,
+     "cor": "#05051A",
+     "alpha": 0.6,
+     "camada": "meio",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "sexta",
+       "faz": "muda",
+       "prop": "alpha",
+       "para": 0.3,
+       "ate": "novo"
+      }
+     ]
+    },
+    {
+     "id": "nov",
+     "tipo": "calendario",
+     "x": 0.29,
+     "y": 0.25,
+     "escala": 0.7,
+     "titulo": "NOV",
+     "comidos": 0,
+     "acoes": [
+      {
+       "em": "sexta",
+       "faz": "soco",
+       "som": "tique",
+       "volume": 0.6
+      },
+      {
+       "em": "promocoes",
+       "faz": "muda",
+       "prop": "comidos",
+       "para": 30,
+       "ate": "novo",
+       "som": "slide",
+       "volume": 0.6
+      }
+     ]
+    },
+    {
+     "id": "jan",
+     "tipo": "calendario",
+     "x": 0.71,
+     "y": 0.25,
+     "escala": 0.7,
+     "titulo": "JAN",
+     "cor": "#2A5BD1",
+     "acoes": [
+      {
+       "em": "ano",
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop2",
+       "volume": 0.7
+      }
+     ]
+    },
+    {
+     "id": "voo",
+     "tipo": "fluxo",
+     "de": "nov",
+     "para": "jan",
+     "ritmo": 6,
+     "escala": 0.8,
+     "acoes": [
+      {
+       "em": "promocoes",
+       "faz": "entra",
+       "jeito": "aparece"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.5,
+     "y": 0.47,
+     "escala": 0.78,
+     "olhar": "esq",
+     "sobrancelha": 0.5,
+     "acoes": [
+      {
+       "em": "promocoes",
+       "faz": "olha",
+       "para": "dir"
+      },
+      {
+       "em": "novo",
+       "faz": "pula",
+       "altura": 60
+      },
+      {
+       "em": "novo",
+       "faz": "sobrancelha",
+       "para": 1.1
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": "elas",
+   "cenario": "cidade_noite_alto",
+   "paleta": "uva",
+   "zoom": 1.08,
+   "elementos": [
+    {
+     "id": "v",
+     "tipo": "bloco",
+     "x": 0.5,
+     "y": 0.5,
+     "largura": 1400,
+     "altura": 2300,
+     "cor": "#05051A",
+     "alpha": 0.3,
+     "camada": "meio",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "vinte",
+       "faz": "muda",
+       "prop": "alpha",
+       "para": 0.0,
+       "ate": "cinquenta"
+      }
+     ]
+    },
+    {
+     "id": "q",
+     "tipo": "bloco",
+     "x": 0.5,
+     "y": 0.5,
+     "largura": 1400,
+     "altura": 2300,
+     "cor": "#FFB347",
+     "alpha": 0.0,
+     "camada": "meio",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "cinquenta",
+       "faz": "muda",
+       "prop": "alpha",
+       "para": 0.16,
+       "ate": "brilhantes"
+      }
+     ]
+    },
+    {
+     "id": "pct",
+     "tipo": "contador",
+     "x": 0.5,
+     "y": 0.17,
+     "valor": 0,
+     "prefixo": "+",
+     "sufixo": "%",
+     "tam": 130,
+     "cor": "#FFD23F",
+     "acoes": [
+      {
+       "em": "vinte",
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "impacto",
+       "volume": 0.7
+      },
+      {
+       "em": "vinte",
+       "faz": "conta",
+       "para": 20,
+       "dur": 0.25
+      },
+      {
+       "em": "cinquenta",
+       "faz": "muda",
+       "prop": "prefixo",
+       "para": "+20% a +",
+       "som": "impacto2",
+       "volume": 0.75
+      },
+      {
+       "em": "cinquenta",
+       "faz": "conta",
+       "para": 50,
+       "ate": "cento"
+      },
+      {
+       "em": "brilhantes",
+       "faz": "soco"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.5,
+     "y": 0.46,
+     "escala": 0.8,
+     "olhar": "baixo",
+     "sobrancelha": 0.6,
+     "palpebra": 0.42,
+     "acoes": [
+      {
+       "em": "vinte",
+       "faz": "squash"
+      },
+      {
+       "em": "cinquenta",
+       "faz": "palpebra",
+       "para": 0
+      },
+      {
+       "em": "cinquenta",
+       "faz": "sobrancelha",
+       "para": 1.2
+      },
+      {
+       "em": "brilhantes",
+       "faz": "boca",
+       "para": "sorriso"
+      },
+      {
+       "em": "brilhantes",
+       "faz": "olha",
+       "para": "camera"
+      },
+      {
+       "em": "brilhantes",
+       "faz": "pula",
+       "altura": 50
+      }
+     ]
+    }
+   ],
+   "acoes": [
+    {
+     "em": "brilhantes",
+     "faz": "flash",
+     "dur": 0.2,
+     "som": "dinheiro",
+     "volume": 0.6
+    }
+   ]
+  },
+  {
+   "em": "linha4",
+   "cenario": "chapado",
+   "paleta": "petroleo",
+   "padrao": "luzes",
+   "energia": 0.85,
+   "elementos": [
+    {
+     "id": "tx",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.2,
+     "texto": "O MOTIVO?",
+     "tam": 110,
+     "acoes": [
+      {
+       "em": "o",
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop",
+       "volume": 0.7
+      },
+      {
+       "em": "luz",
+       "faz": "muda",
+       "prop": "texto",
+       "para": "LUZ DE NATAL"
+      },
+      {
+       "em": "luz",
+       "faz": "soco",
+       "som": "certo",
+       "volume": 0.6
+      },
+      {
+       "em": "luz",
+       "faz": "muda",
+       "prop": "cor",
+       "para": "#FFD23F"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.5,
+     "y": 0.45,
+     "escala": 0.8,
+     "olhar": "cima",
+     "sobrancelha": 0.5,
+     "palpebra": 0.42,
+     "acoes": [
+      {
+       "em": "motivo",
+       "faz": "sobrancelha",
+       "para": 0.9
+      },
+      {
+       "em": "luz",
+       "faz": "palpebra",
+       "para": 0
+      },
+      {
+       "em": "luz",
+       "faz": "sobrancelha",
+       "para": 1.2
+      },
+      {
+       "em": "luz",
+       "faz": "boca",
+       "para": "o"
+      },
+      {
+       "em": "luz",
+       "faz": "pula",
+       "altura": 70
+      },
+      {
+       "em": "natal",
+       "faz": "olha",
+       "para": "camera"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": "linha5",
+   "cenario": "rua",
+   "paleta": "noite",
+   "luz": "noite",
+   "chuva": true,
+   "elementos": [
+    {
+     "id": "v",
+     "tipo": "bloco",
+     "x": 0.5,
+     "y": 0.5,
+     "largura": 1400,
+     "altura": 2300,
+     "cor": "#1B2A4A",
+     "alpha": 0.25,
+     "camada": "meio",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "nao",
+       "faz": "muda",
+       "prop": "alpha",
+       "para": 0.5,
+       "dur": 0.6
+      }
+     ]
+    },
+    {
+     "id": "tx",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.145,
+     "texto": "CENTRO",
+     "tam": 120,
+     "cor": "#AEB6C4",
+     "acoes": [
+      {
+       "em": "centro",
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop2",
+       "volume": 0.5
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.5,
+     "y": 0.44,
+     "escala": 0.75,
+     "olhar": "camera",
+     "sobrancelha": 0.9,
+     "boca": "reta",
+     "acoes": [
+      {
+       "em": "brilhou",
+       "faz": "olha",
+       "para": "esq"
+      },
+      {
+       "em": "nao",
+       "faz": "gira",
+       "para": -10,
+       "dur": 0.12
+      },
+      {
+       "em": "nao",
+       "depois": 0.12,
+       "faz": "gira",
+       "para": 10,
+       "dur": 0.15
+      },
+      {
+       "em": "nao",
+       "depois": 0.27,
+       "faz": "gira",
+       "para": -10,
+       "dur": 0.15
+      },
+      {
+       "em": "nao",
+       "depois": 0.42,
+       "faz": "gira",
+       "para": 0,
+       "dur": 0.12
+      },
+      {
+       "em": "cidade",
+       "faz": "boca",
+       "para": "triste"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": "bairros",
+   "cenario": "casa_natal_fora",
+   "paleta": "laranja",
+   "elementos": [
+    {
+     "id": "v",
+     "tipo": "bloco",
+     "x": 0.5,
+     "y": 0.5,
+     "largura": 1400,
+     "altura": 2300,
+     "cor": "#0A0820",
+     "alpha": 0.8,
+     "camada": "meio",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "bairros",
+       "depois": 0.12,
+       "faz": "muda",
+       "prop": "alpha",
+       "para": 0.0,
+       "dur": 0.35
+      }
+     ]
+    },
+    {
+     "id": "tx",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.145,
+     "texto": "BAIRROS!",
+     "tam": 110,
+     "cor": "#FFF8EC",
+     "acoes": [
+      {
+       "em": "bairros",
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": "casas",
+       "faz": "muda",
+       "prop": "texto",
+       "para": "AS CASAS!"
+      },
+      {
+       "em": "casas",
+       "faz": "soco",
+       "som": "pop3",
+       "volume": 0.6
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.5,
+     "y": 0.33,
+     "escala": 0.72,
+     "olhar": "camera",
+     "sobrancelha": 1.2,
+     "boca": "o",
+     "palpebra": 0,
+     "camada": "topo",
+     "acoes": [
+      {
+       "em": "bairros",
+       "depois": 0.12,
+       "faz": "estoura",
+       "som": "estouro",
+       "volume": 1.58
+      },
+      {
+       "em": "as",
+       "faz": "boca",
+       "para": "sorriso"
+      },
+      {
+       "em": "casas",
+       "faz": "pula",
+       "altura": 60
+      }
+     ]
+    }
+   ],
+   "acoes": [
+    {
+     "em": "bairros",
+     "faz": "flash",
+     "dur": 0.2
+    },
+    {
+     "em": "bairros",
+     "depois": 0.12,
+     "faz": "soco",
+     "forca": 0.1,
+     "som": "impacto",
+     "volume": 1.43
+    }
+   ]
+  },
+  {
+   "em": "linha7",
+   "cenario": "chapado",
+   "paleta": "rosa",
+   "padrao": "bokeh",
+   "energia": 0.7,
+   "transicao": "zoom_blur",
+   "elementos": [
+    {
+     "id": "bc",
+     "tipo": "barra",
+     "x": 0.28,
+     "y": 0.53,
+     "valor": 0,
+     "max": 60,
+     "altura": 620,
+     "largura": 200,
+     "cor": "#8D98AC",
+     "nome": "CENTRO",
+     "acoes": [
+      {
+       "em": "trinta",
+       "faz": "cresce",
+       "para": 30,
+       "ate": "cento",
+       "som": "slide",
+       "volume": 0.6
+      },
+      {
+       "em": "cento",
+       "faz": "muda",
+       "prop": "total",
+       "para": "+30%"
+      },
+      {
+       "em": "cento",
+       "faz": "soco",
+       "som": "tique",
+       "volume": 0.6
+      }
+     ]
+    },
+    {
+     "id": "bb",
+     "tipo": "barra",
+     "x": 0.6,
+     "y": 0.53,
+     "valor": 0,
+     "max": 60,
+     "altura": 620,
+     "largura": 200,
+     "cor": "#FFD23F",
+     "nome": "BAIRROS",
+     "acoes": []
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "forma": "pipoca",
+     "x": 0.85,
+     "y": 0.44,
+     "escala": 0.5,
+     "olhar": "esq",
+     "sobrancelha": 0.6,
+     "acoes": [
+      {
+       "em": "centro",
+       "faz": "pula",
+       "altura": 40,
+       "som": "pop",
+       "volume": 0.5
+      },
+      {
+       "em": "trinta",
+       "faz": "sobrancelha",
+       "para": 1.1
+      },
+      {
+       "em": "mais",
+       "faz": "squash"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": "linha8",
+   "cenario": "chapado",
+   "paleta": "mostarda",
+   "padrao": "bokeh",
+   "energia": 0.9,
+   "elementos": [
+    {
+     "id": "bc",
+     "tipo": "barra",
+     "x": 0.28,
+     "y": 0.53,
+     "valor": 30,
+     "max": 60,
+     "altura": 620,
+     "largura": 200,
+     "cor": "#8D98AC",
+     "nome": "CENTRO",
+     "acoes": [],
+     "total": "+30%"
+    },
+    {
+     "id": "bb",
+     "tipo": "barra",
+     "x": 0.6,
+     "y": 0.53,
+     "valor": 0,
+     "max": 60,
+     "altura": 620,
+     "largura": 200,
+     "cor": "#FFD23F",
+     "nome": "BAIRROS",
+     "acoes": [
+      {
+       "em": "ate",
+       "faz": "cresce",
+       "para": 50,
+       "ate": "cinquenta#2",
+       "curva": "elastico",
+       "som": "apito_sobe",
+       "volume": 0.5
+      },
+      {
+       "em": "cinquenta#2",
+       "faz": "muda",
+       "prop": "total",
+       "para": "+50%"
+      },
+      {
+       "em": "cinquenta#2",
+       "faz": "soco",
+       "som": "impacto2",
+       "volume": 0.85
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "forma": "pipoca",
+     "x": 0.85,
+     "y": 0.44,
+     "escala": 0.5,
+     "olhar": "esq",
+     "sobrancelha": 0.8,
+     "acoes": [
+      {
+       "em": "bairros",
+       "faz": "olha",
+       "para": "cima"
+      },
+      {
+       "em": "cinquenta#2",
+       "faz": "pula",
+       "altura": 80
+      },
+      {
+       "em": "cinquenta#2",
+       "faz": "boca",
+       "para": "sorriso"
+      }
+     ]
+    }
+   ],
+   "acoes": [
+    {
+     "em": "cinquenta#2",
+     "faz": "treme",
+     "forca": 14,
+     "dur": 0.3
+    },
+    {
+     "em": "cinquenta#2",
+     "faz": "reacao",
+     "estilo": "ohh",
+     "alvo": "bb",
+     "volume": 0.75,
+     "som_dur": 1.3
+    }
+   ]
+  },
+  {
+   "em": "linha9",
+   "cenario": "casa_natal_fora",
+   "paleta": "tomate",
+   "elementos": [
+    {
+     "tipo": "humano",
+     "preset": "vizinho_exagerado",
+     "id": "viz",
+     "ancora": "quintal_dir",
+     "expressao": "feliz",
+     "olhar": "cima",
+     "pose": "apontando",
+     "aponta_para": [
+      0.3,
+      -1
+     ],
+     "acoes": [
+      {
+       "em": "casa",
+       "faz": "entra",
+       "jeito": "desliza_dir",
+       "som": "passos",
+       "volume": 0.8
+      },
+      {
+       "em": "quintal",
+       "faz": "pose",
+       "para": "comemorando"
+      },
+      {
+       "em": "quintal",
+       "faz": "pula",
+       "altura": 40
+      },
+      {
+       "em": "pisca-pisca",
+       "faz": "pose",
+       "para": "apontando"
+      },
+      {
+       "em": "pisca-pisca",
+       "faz": "olha",
+       "para": "camera"
+      }
+     ]
+    },
+    {
+     "id": "tx",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.145,
+     "texto": "QUINTAL = PISCA-PISCA",
+     "tam": 72,
+     "cor": "#FFF8EC",
+     "acoes": [
+      {
+       "em": "quintal",
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop2",
+       "volume": 0.6
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "forma": "pipoca",
+     "x": 0.2,
+     "y": 0.46,
+     "escala": 0.5,
+     "olhar": "dir",
+     "sobrancelha": 0.7,
+     "acoes": [
+      {
+       "em": "casa",
+       "faz": "squash"
+      },
+      {
+       "em": "pisca-pisca",
+       "faz": "olha",
+       "para": "cima"
+      },
+      {
+       "em": "pisca-pisca",
+       "faz": "pula",
+       "altura": 40
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": "linha10",
+   "cenario": "casa_natal_fora",
+   "paleta": "rosa",
+   "elementos": [
+    {
+     "id": "tx",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.2,
+     "texto": "EXAGERADO",
+     "tam": 120,
+     "cor": "#FFD23F",
+     "rot": -6,
+     "acoes": [
+      {
+       "em": "exagerado",
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": "exagerado",
+       "depois": 0.9,
+       "faz": "treme",
+       "dur": 0.6,
+       "forca": 10
+      }
+     ]
+    },
+    {
+     "tipo": "humano",
+     "preset": "vizinho_exagerado",
+     "id": "viz",
+     "ancora": "quintal",
+     "dx": 0.16,
+     "expressao": "gargalhada",
+     "olhar": "camera",
+     "pose": "comemorando",
+     "acoes": [
+      {
+       "em": "vizinho",
+       "faz": "soco",
+       "som": "pop3",
+       "volume": 0.5
+      },
+      {
+       "em": "exagerado",
+       "depois": 0.9,
+       "faz": "treme",
+       "dur": 0.6,
+       "forca": 18
+      },
+      {
+       "em": "entra",
+       "faz": "pula",
+       "altura": 90
+      },
+      {
+       "em": "conta",
+       "faz": "pose",
+       "para": "acenando"
+      },
+      {
+       "em": "conta",
+       "faz": "pula",
+       "altura": 60,
+       "som": "pop",
+       "volume": 0.5
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "forma": "pipoca",
+     "x": 0.18,
+     "y": 0.46,
+     "escala": 0.45,
+     "olhar": "dir",
+     "sobrancelha": 1.0,
+     "acoes": [
+      {
+       "em": "exagerado",
+       "faz": "sobrancelha",
+       "para": 1.2
+      },
+      {
+       "em": "entra",
+       "faz": "pula",
+       "altura": 50,
+       "som": "pop2",
+       "volume": 0.5
+      }
+     ]
+    }
+   ],
+   "acoes": [
+    {
+     "em": "exagerado",
+     "faz": "reacao",
+     "estilo": "boom",
+     "alvo": "viz",
+     "volume": 0.75,
+     "som_dur": 0.8
+    }
+   ]
+  },
+  {
+   "em": "linha11",
+   "cenario": "casa_natal_fora",
+   "paleta": "mostarda",
+   "transicao": "papel",
+   "elementos": [
+    {
+     "id": "q",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.148,
+     "texto": "VOCÊ OU\nO VIZINHO?",
+     "tam": 100,
+     "acoes": [
+      {
+       "em": "rua",
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop",
+       "volume": 0.6
+      }
+     ]
+    },
+    {
+     "id": "la",
+     "tipo": "texto",
+     "x": 0.25,
+     "y": 0.27,
+     "texto": "VOCÊ",
+     "tam": 80,
+     "cor": "#FFF8EC",
+     "fundo": "#2A5BD1",
+     "acoes": [
+      {
+       "em": "voce",
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop2",
+       "volume": 0.7
+      },
+      {
+       "em": "voce",
+       "faz": "soco"
+      }
+     ]
+    },
+    {
+     "id": "lb",
+     "tipo": "texto",
+     "x": 0.77,
+     "y": 0.27,
+     "texto": "VIZINHO",
+     "tam": 80,
+     "cor": "#FFF8EC",
+     "fundo": "#E8452C",
+     "acoes": [
+      {
+       "em": "vizinho",
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop3",
+       "volume": 0.7
+      },
+      {
+       "em": "vizinho",
+       "faz": "soco"
+      }
+     ]
+    },
+    {
+     "tipo": "humano",
+     "preset": "vizinho_exagerado",
+     "id": "viz",
+     "ancora": "quintal_dir",
+     "expressao": "neutro",
+     "olhar": "esq",
+     "acoes": [
+      {
+       "em": "primeiro",
+       "faz": "olha",
+       "para": "camera"
+      },
+      {
+       "em": "vizinho",
+       "faz": "expressao",
+       "para": "gargalhada"
+      },
+      {
+       "em": "vizinho",
+       "faz": "pose",
+       "para": "acenando"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "forma": "pipoca",
+     "x": 0.25,
+     "y": 0.47,
+     "escala": 0.5,
+     "olhar": "dir",
+     "sobrancelha": 0.8,
+     "acoes": [
+      {
+       "em": "acende",
+       "faz": "olha",
+       "para": "camera"
+      },
+      {
+       "em": "voce",
+       "faz": "pula",
+       "altura": 50
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": "linha12",
+   "cenario": "sala_natal",
+   "paleta": "laranja",
+   "elementos": [
+    {
+     "id": "tx",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.148,
+     "texto": "MANDA PRO VIZINHO\nDA ÁRVORE",
+     "tam": 92,
+     "cor": "#FFF8EC",
+     "acoes": [
+      {
+       "em": "manda",
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "certo",
+       "volume": 0.55
+      }
+     ]
+    },
+    {
+     "id": "seta",
+     "tipo": "seta",
+     "x": 0.4,
+     "y": 0.37,
+     "vetor": [
+      -90,
+      -10
+     ],
+     "curva": 0.2,
+     "progresso": 0,
+     "cor": "#FFF8EC",
+     "acoes": [
+      {
+       "em": "montou",
+       "faz": "muda",
+       "prop": "progresso",
+       "para": 1,
+       "dur": 0.35,
+       "som": "slide",
+       "volume": 0.4
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "forma": "pipoca",
+     "x": 0.5,
+     "y": 0.42,
+     "escala": 0.55,
+     "olhar": "esq",
+     "sobrancelha": 1.0,
+     "boca": "sorriso",
+     "camada": "topo",
+     "acoes": [
+      {
+       "em": "vizinho",
+       "faz": "pula",
+       "altura": 50
+      },
+      {
+       "em": "montou",
+       "faz": "squash"
+      },
+      {
+       "em": "arvore",
+       "faz": "olha",
+       "para": "camera"
+      },
+      {
+       "em": "arvore",
+       "faz": "pula",
+       "altura": 60
+      }
+     ]
+    }
+   ],
+   "acoes": [
+    {
+     "em": "arvore",
+     "faz": "soco",
+     "forca": 0.08,
+     "som": "fofo",
+     "volume": 0.55
+    },
+    {
+     "em": 42.15,
+     "faz": "congela",
+     "dur": 0.8
+    }
+   ]
+  }
+ ],
+ "musica": "misterio",
+ "whoosh_nos_cortes": false,
+ "silencios": [
+  [
+   22.85,
+   44.0
+  ]
+ ],
+ "sfx": [
+  [
+   "assets/sfx/75-cc0-breaking-falling-hit-sfx/bfh1_hit_07.ogg",
+   0.02,
+   0.45
+  ],
+  [
+   [
+    "assets/sfx/air-whoosh/whoosh2_0.wav",
+    0.0,
+    0.7,
+    0.15
+   ],
+   2.938,
+   0.25
+  ],
+  [
+   [
+    "assets/sfx/air-whoosh/whoosh2_0.wav",
+    0.0,
+    0.7,
+    0.15
+   ],
+   5.321,
+   0.5
+  ],
+  [
+   "assets/sfx/memes/apito_sobe.ogg",
+   5.6,
+   0.5
+  ],
+  [
+   [
+    "assets/sfx/air-whoosh/whoosh2_0.wav",
+    0.0,
+    0.7,
+    0.15
+   ],
+   7.515,
+   0.25
+  ],
+  [
+   "assets/sfx/pop-sounds/pop7.ogg",
+   8.94,
+   0.5
+  ],
+  [
+   "assets/sfx/pop-sounds/pop4.ogg",
+   9.35,
+   0.5
+  ],
+  [
+   "assets/sfx/pop-sounds/pop7.ogg",
+   10.0,
+   0.5
+  ],
+  [
+   [
+    "assets/sfx/air-whoosh/whoosh2_0.wav",
+    0.0,
+    0.7,
+    0.15
+   ],
+   11.687,
+   0.4
+  ],
+  [
+   [
+    "assets/sfx/air-whoosh/whoosh2_0.wav",
+    0.0,
+    0.7,
+    0.15
+   ],
+   14.201,
+   0.25
+  ],
+  [
+   [
+    "assets/sfx/air-whoosh/whoosh2_0.wav",
+    0.0,
+    0.7,
+    0.15
+   ],
+   17.609,
+   0.25
+  ],
+  [
+   "assets/sfx/pop-sounds/pop7.ogg",
+   19.15,
+   0.45
+  ],
+  [
+   "assets/sfx/pop-sounds/pop1.ogg",
+   19.5,
+   0.4
+  ],
+  [
+   [
+    "assets/sfx/air-whoosh/whoosh2_0.wav",
+    0.0,
+    0.7,
+    0.15
+   ],
+   19.874,
+   0.25
+  ],
+  [
+   [
+    "assets/sfx/rain-long-thunder/rain-thunder.ogg",
+    2.0,
+    2.86,
+    0.3
+   ],
+   19.99,
+   0.9
+  ],
+  [
+   "assets/sfx/memes/riser.ogg",
+   21.25,
+   0.8
+  ],
+  [
+   [
+    "assets/sfx/air-whoosh/whoosh2_0.wav",
+    0.0,
+    0.7,
+    0.15
+   ],
+   23.36,
+   0.45
+  ],
+  [
+   [
+    "assets/musica/adventure-intro-title-cinematic-epic/Adventure%20Theme%20Intro.wav",
+    10.0,
+    3.0,
+    0.1
+   ],
+   23.44,
+   0.45
+  ],
+  [
+   [
+    "assets/sfx/air-whoosh/whoosh2_0.wav",
+    0.0,
+    0.7,
+    0.15
+   ],
+   25.264,
+   0.4
+  ],
+  [
+   [
+    "assets/musica/adventure-intro-title-cinematic-epic/Adventure%20Theme%20Intro.wav",
+    13.0,
+    8.0,
+    0.1
+   ],
+   26.44,
+   0.2
+  ],
+  [
+   [
+    "assets/sfx/air-whoosh/whoosh2_0.wav",
+    0.0,
+    0.7,
+    0.15
+   ],
+   27.884,
+   0.25
+  ],
+  [
+   [
+    "assets/sfx/air-whoosh/whoosh2_0.wav",
+    0.0,
+    0.7,
+    0.15
+   ],
+   29.985,
+   0.25
+  ],
+  [
+   "assets/sfx/pop-sounds/pop7.ogg",
+   31.8,
+   0.45
+  ],
+  [
+   "assets/sfx/pop-sounds/pop1.ogg",
+   32.05,
+   0.45
+  ],
+  [
+   "assets/sfx/pop-sounds/pop4.ogg",
+   32.3,
+   0.45
+  ],
+  [
+   [
+    "assets/sfx/air-whoosh/whoosh2_0.wav",
+    0.0,
+    0.7,
+    0.15
+   ],
+   32.86,
+   0.25
+  ],
+  [
+   [
+    "assets/musica/adventure-intro-title-cinematic-epic/Adventure%20Theme%20Intro.wav",
+    21.0,
+    8.0,
+    0.2
+   ],
+   34.44,
+   0.07
+  ],
+  [
+   [
+    "assets/sfx/air-whoosh/whoosh2_0.wav",
+    0.0,
+    0.7,
+    0.15
+   ],
+   35.928,
+   0.35
+  ],
+  [
+   "assets/sfx/a-slide-pop-sound/slidepop_0.mp3",
+   36.05,
+   0.5
+  ],
+  [
+   [
+    "assets/sfx/air-whoosh/whoosh2_0.wav",
+    0.0,
+    0.7,
+    0.15
+   ],
+   39.519,
+   0.25
+  ],
+  [
+   "assets/sfx/pop-sounds/pop1.ogg",
+   42.2,
+   0.35
+  ]
+ ]
+}
