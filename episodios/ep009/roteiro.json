@@ -1,0 +1,13 @@
+{"voice": "pt-BR-AntonioNeural", "rate": "+6%", "pitch": "+0Hz", "lead": 0.3, "trim": true,
+ "lines": [
+  {"text": "Em cinco dias, o seu décimo terceiro vai ter dois donos.", "pause": 0.35, "shot": "tela dividida: à esquerda CONTA (boleto, cartão, conta de luz em desenho), à direita VITRINE (vitrine genérica sem marca); um saquinho de dinheiro escrito 13º no meio, sendo puxado pelos dois lados. Texto na tela: 5 DIAS, 2 DONOS. Só desenho."},
+  {"text": "A primeira parcela tem que cair até segunda, dia trinta.", "pause": 0.3, "shot": "folhinha de novembro em desenho; as folhas viram rápido e um carimbo bate no 30 (SEGUNDA) com som de carimbo"},
+  {"text": "Mas a sexta das promoções chega antes: dia vinte e sete.", "pause": 0.3, "shot": "corte para uma loja genérica (sem nome, sem logo) com placas OFERTA e PROMOÇÃO piscando; na folhinha, o 27 acende antes do 30"},
+  {"text": "O plano: quitar o cartão, pagar a luz, guardar um pouco.", "pause": 0.3, "shot": "o amigo sentado no quarto com caderninho; lista entrando item a item, cada um com um tique: quitar cartão, pagar luz, guardar um pouco; Pipo pequena no canto concordando"},
+  {"text": "Aí a vitrine começa a piscar.", "pause": 0.2, "shot": "celular do amigo vibra com notificações de oferta (sem marca, sem porcentagem); placas piscando cada vez mais rápido; Pipo tremendo de tensão"},
+  {"text": "Só vou dar uma olhadinha.", "pause": 0.4, "shot": "VIRADA: o amigo abre o celular com cara de inocente; PIPO ESTOURA de tensão exatamente na palavra 'olhadinha' e vira chuva de pipoca"},
+  {"text": "O dinheiro nem caiu na conta e já tem dono.", "pause": 0.35, "shot": "MEME redesenhado no nosso traço: mão gigante entra pelo lado e leva o saco 13º embora antes de ele pousar na mão do amigo"},
+  {"text": "E a conta de luz? Fica pra dezembro.", "pause": 0.35, "shot": "a lista do amigo de volta: o item 'pagar a luz' escorrega pra folhinha de dezembro; lâmpada do quarto pisca fraca; Pipo (pipoca) dá de ombros"},
+  {"text": "Conta ou vitrine?", "pause": 0.35, "shot": "dois botões grandes na tela, CONTA e VITRINE; um dedo indeciso vai e volta entre eles. Texto na tela: CONTA OU VITRINE?"},
+  {"text": "Manda pro amigo que já gastou o décimo terceiro antes de cair.", "pause": 0.4, "shot": "Pipo pipoca de volta e aponta para o amigo, que esconde sacolas atrás das costas. Texto na tela: MANDA PRO AMIGO QUE JÁ GASTOU O 13º"}
+ ]}

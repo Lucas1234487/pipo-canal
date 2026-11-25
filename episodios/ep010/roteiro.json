@@ -1,0 +1,105 @@
+{
+ "voice": "pt-BR-FranciscaNeural",
+ "rate": "+6%",
+ "pitch": "+0Hz",
+ "lead": 0.1,
+ "trim": true,
+ "trim_tail": 0.1,
+ "lines": [
+  {
+   "text": "A casa da Ana foi a única da rua que apagou.",
+   "pause": 0.25,
+   "shot": "casa da Ana escura entre casas acesas, noite de dezembro"
+  },
+  {
+   "text": "E não foi a conta de luz.",
+   "pause": 0.3,
+   "shot": "conta de luz paga na porta da geladeira, carimbo PAGO"
+  },
+  {
+   "text": "A primeira árvore com luz elétrica de que se tem notícia acendeu em mil oitocentos e oitenta e dois, em Nova York.",
+   "pause": 0.2,
+   "shot": "árvore antiga de 1882 em sala de época (foto real de domínio público se houver; O2 decide), texto 1882 Nova York"
+  },
+  {
+   "text": "Eram oitenta lâmpadas.",
+   "pause": 0.25,
+   "shot": "árvore de época se enchendo de lâmpadas vermelhas, brancas e azuis, contador 80"
+  },
+  {
+   "text": "Agora imagina um mundo com uma regra:",
+   "pause": 0.1,
+   "shot": "carimbo REGRA batendo na tela, whoosh"
+  },
+  {
+   "text": "cada depois eu te ligo que você não cumpre apaga uma lâmpada da sua casa.",
+   "pause": 0.25,
+   "shot": "regra acontecendo: celular com 'depois eu te ligo' e uma lâmpada da casa estalando e apagando"
+  },
+  {
+   "text": "A Ana começou dezembro com trinta e uma. Uma pra cada dia.",
+   "pause": 0.25,
+   "shot": "Ana na janela, varal de 31 lâmpadas acesas, contador 31"
+  },
+  {
+   "text": "A amiga mandou um áudio. Depois eu te ligo. Trinta.",
+   "pause": 0.25,
+   "shot": "SPLIT Ana x amiga gravando áudio, uma lâmpada apaga, contador 30"
+  },
+  {
+   "text": "O irmão perguntou da ceia. Depois eu te ligo. Vinte e nove.",
+   "pause": 0.25,
+   "shot": "SPLIT Ana x irmão com mensagem da ceia, lâmpada apaga, contador 29"
+  },
+  {
+   "text": "Prazo, reunião. E a rua inteira brilhando, menos ela.",
+   "pause": 0.3,
+   "shot": "montagem rápida prazo/reunião, contador caindo até 1, depois SPLIT Ana x rua brilhando"
+  },
+  {
+   "text": "Na véspera de Natal, sobrou uma.",
+   "pause": 0.25,
+   "shot": "casa escura com uma lâmpada só, contador 1, chuva fina"
+  },
+  {
+   "text": "Aí chegou mensagem da avó: me liga quando puder, filha.",
+   "pause": 0.3,
+   "shot": "celular vibrando com mensagem da avó, contador 1, Ana triste"
+  },
+  {
+   "text": "E a Ana digitou: depois eu te ligo.",
+   "pause": 0.8,
+   "shot": "dedo digitando 'depois eu te ligo'; no fim a última lâmpada apaga, contador 0, ESCURO e silêncio"
+  },
+  {
+   "text": "Ela olhou pro escuro. E ligou.",
+   "pause": 0.25,
+   "shot": "ESCURO, só a luz do celular no rosto da Ana; toque de chamada em 'ligou'"
+  },
+  {
+   "text": "A avó atendeu no primeiro toque: tava te esperando.",
+   "pause": 0.2,
+   "shot": "SPLIT Ana x avó sorrindo com o telefone, paleta esquentando"
+  },
+  {
+   "text": "E as trinta e uma acenderam de uma vez.",
+   "pause": 0.25,
+   "shot": "PIPO ESTOURA em 'acenderam', flash, as 31 lâmpadas acendem juntas, contador 31, música aventura"
+  },
+  {
+   "text": "Dois minutos de ligação acendem o que um mês de desculpa apagou.",
+   "pause": 0.25,
+   "shot": "Ana rindo ao telefone na casa acesa, texto da lição na tela"
+  },
+  {
+   "text": "Quantas lâmpadas a sua casa já perdeu?",
+   "pause": 0.3,
+   "shot": "Pipo pipoca aponta para a tela, texto 'Quantas a sua já perdeu?' e varal com lâmpadas apagadas"
+  },
+  {
+   "text": "Manda pra quem você tá devendo uma ligação. Ou liga agora.",
+   "pause": 0.2,
+   "shot": "texto 'Manda pra quem você tá devendo uma ligação', ícone de enviar e de telefone"
+  }
+ ]
+}

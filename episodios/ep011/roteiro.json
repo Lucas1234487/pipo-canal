@@ -1,0 +1,20 @@
+{
+ "voice": "pt-BR-FranciscaNeural",
+ "rate": "+5%",
+ "pitch": "+0Hz",
+ "lead": 0.1,
+ "trim": true,
+ "trim_tail": 0.1,
+ "lines": [
+  {"text": "Por que o sorvete gela a boca e dói na testa?", "pause": 0.3, "chave": ["SORVETE"], "shot": "FOTO real: pessoa (sem rosto identificável) com a mão na testa segurando um sorvete; texto grande da pergunta no quadro 1"},
+  {"text": "Num calor desses, todo mundo já engoliu rápido demais.", "pause": 0.25, "chave": ["CALOR", "ENGOLIU"], "shot": "FOTO real: sol forte, termômetro de rua ou praia lotada; mergulha no desenho com a colher entrando na boca"},
+  {"text": "O frio bate direto no céu da boca.", "pause": 0.2, "chave": ["FRIO"], "shot": "Corte de raio X 2D da boca: bola de sorvete encosta no céu da boca, onda azul de frio"},
+  {"text": "Pela explicação mais aceita, os vasinhos dali se fecham no susto,", "pause": 0.1, "chave": ["FECHAM"], "shot": "Close nos vasinhos vermelhos apertando (efeito de aperto), Pipo espiga leva susto ao lado"},
+  {"text": "e logo abrem de uma vez, e o sangue volta com tudo.", "pause": 0.25, "chave": ["ABREM"], "shot": "Vasinhos abrem num tranco, fluxo vermelho corre, tremida na tela"},
+  {"text": "Quem leva esse aviso pro cérebro é um nervo só, o trigêmeo.", "pause": 0.2, "chave": ["NERVO", "TRIGÊMEO"], "shot": "Nervo desenhado como fio amarelo que acende da boca até o cérebro; rótulo TRIGÊMEO na tela"},
+  {"text": "E é o mesmo nervo que cuida da testa.", "pause": 0.3, "chave": ["TESTA"], "shot": "PIPO ESTOURA em 'testa': o fio se ramifica até a testa, flash e estouro, Pipo vira pipoca"},
+  {"text": "Aí o cérebro erra o endereço e sente a dor lá em cima.", "pause": 0.25, "chave": ["ERRA"], "shot": "Cérebro carteiro entrega o pacote 'DOR' na casa errada (testa) em vez da boca; Pipo pipoca aponta"},
+  {"text": "Pra aliviar, encosta a língua no céu da boca.", "pause": 0.25, "chave": ["LÍNGUA"], "shot": "Língua desenhada encosta no céu da boca, onda laranja de calor substitui o azul"},
+  {"text": "Sorvete ou açaí: qual te pega mais?", "pause": 0.2, "chave": ["SORVETE#2", "AÇAÍ"], "shot": "SPLIT SORVETE x AÇAÍ: tela dividida, Pipo pipoca no meio; texto 'Comenta: sorvete ou açaí?'"}
+ ]
+}
