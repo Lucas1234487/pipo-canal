@@ -19,3 +19,8 @@ Ao Diretor: lista de vídeos agendados (título, data e hora, link) e comentári
 
 ## Aceite
 Nenhum vídeo da fila esquecido; nenhum vídeo sem "não é para crianças"; nada publicado fora do Chrome pessoal.
+
+## Comentário fixado: obrigatório em todo vídeo (Lucas, 25/11)
+- Vídeo agendado não aceita comentário: o fixado só entra depois que o vídeo vai ao ar.
+- Quem fixa: a tarefa da noite (21h43, se existir), a publicação em lote (8h41, fixa o que já está público) e qualquer sessão com o Chrome do Lucas aberto. Ao fixar, grave fila/<pasta>/fixado.json.
+- Como (testado em 25/11): abrir youtube.com/watch?v=ID, pausar o vídeo, rolar até os comentários (window.scrollTo(0,900) e esperar ~4 s), clicar em #simplebox-placeholder, escrever em #contenteditable-root com execCommand('insertText'), clicar em #submit-button button; depois, no primeiro ytd-comment-thread-renderer, abrir o menu (#action-menu button), escolher "Fixar/Pin" e confirmar (#confirm-button button). Conferir o texto "Fixado por @pipopo.88". Clicar por coordenada falha quando a página rola.
