@@ -1,0 +1,1378 @@
+{
+ "paleta": "mostarda",
+ "cenas": [
+  {
+   "em": 0,
+   "cenario": "chapado",
+   "padrao": "halftone",
+   "paleta": "mostarda",
+   "elementos": [
+    {
+     "id": "sp",
+     "tipo": "split",
+     "x": 0.5,
+     "y": 0.32,
+     "altura": 760,
+     "meio": "",
+     "paineis": [
+      {
+       "cenario": "cozinha",
+       "luz": "noite",
+       "rotulo": "CONTA",
+       "cor_rotulo": "#2A3FD1",
+       "paleta": "petroleo",
+       "foco": [
+        0.55,
+        0.45
+       ],
+       "elementos": [
+        {
+         "id": "e1",
+         "tipo": "humano",
+         "preset": "estagiario",
+         "ancora": "balcao",
+         "expressao": "nervoso",
+         "acoes": [
+          {
+           "em": "dias",
+           "faz": "treme",
+           "dur": 0.5,
+           "forca": 6
+          },
+          {
+           "em": "donos",
+           "faz": "pose",
+           "para": "maos_na_cabeca"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "cenario": "loja",
+       "rotulo": "VITRINE",
+       "cor_rotulo": "#E8352A",
+       "paleta": "tomate",
+       "placa": "OFERTA",
+       "placa2": "PROMO",
+       "foco": [
+        0.5,
+        0.42
+       ],
+       "elementos": []
+      }
+     ]
+    },
+    {
+     "id": "c13",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.32,
+     "texto": "13º",
+     "cor": "#E8352A",
+     "fundo": "#FFF8EC",
+     "tam": 130,
+     "rot": -6,
+     "acoes": [
+      {
+       "em": "decimo",
+       "faz": "soco"
+      },
+      {
+       "em": "donos",
+       "faz": "soco"
+      }
+     ]
+    },
+    {
+     "id": "t5",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.555,
+     "texto": "5 DIAS, 2 DONOS",
+     "tam": 88,
+     "cor": "#FFF8EC",
+     "acoes": [
+      {
+       "em": "cinco",
+       "faz": "soco"
+      },
+      {
+       "em": "dois",
+       "faz": "soco"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.8,
+     "y": 0.4,
+     "escala": 0.6,
+     "olhar": "cima",
+     "sobrancelha": 0.9,
+     "camada": "topo",
+     "acoes": [
+      {
+       "em": "cinco",
+       "faz": "pula",
+       "altura": 40
+      },
+      {
+       "em": "terceiro",
+       "faz": "olha",
+       "para": "camera"
+      },
+      {
+       "em": "donos",
+       "faz": "sobrancelha",
+       "para": 1.2
+      }
+     ]
+    }
+   ],
+   "acoes": [
+    {
+     "em": "donos",
+     "faz": "treme",
+     "dur": 0.3,
+     "forca": 6
+    }
+   ]
+  },
+  {
+   "em": "linha1",
+   "cenario": "chapado",
+   "padrao": "papel_rasgado",
+   "paleta": "menta",
+   "elementos": [
+    {
+     "id": "nov",
+     "tipo": "calendario",
+     "x": 0.46,
+     "y": 0.3,
+     "escala": 1.0,
+     "titulo": "NOVEMBRO",
+     "comidos": 0,
+     "acoes": [
+      {
+       "em": "primeira",
+       "faz": "muda",
+       "prop": "comidos",
+       "para": 24,
+       "ate": "segunda"
+      }
+     ]
+    },
+    {
+     "id": "tapa31",
+     "tipo": "bloco",
+     "x": 0.5318,
+     "y": 0.4151,
+     "largura": 376,
+     "altura": 70,
+     "raio": 14,
+     "cor": "#FFF8EC"
+    },
+    {
+     "id": "seg",
+     "tipo": "carimbo",
+     "x": 0.39,
+     "y": 0.41,
+     "texto": "SEG 30",
+     "cor": "#E8352A",
+     "inclina": -10,
+     "tam": 70,
+     "acoes": [
+      {
+       "em": "trinta",
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": "trinta",
+       "faz": "soco",
+       "depois": 0.15
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.8,
+     "y": 0.47,
+     "escala": 0.75,
+     "acoes": [
+      {
+       "em": "parcela",
+       "faz": "olha",
+       "para": "cima"
+      },
+      {
+       "em": "cair",
+       "faz": "pula",
+       "altura": 50
+      },
+      {
+       "em": "trinta",
+       "faz": "sobrancelha",
+       "para": 1.2
+      },
+      {
+       "em": "trinta",
+       "faz": "squash"
+      }
+     ],
+     "olhar": "esq",
+     "sobrancelha": 0.6,
+     "aponta_para": [
+      -1,
+      -0.6
+     ]
+    }
+   ],
+   "acoes": [
+    {
+     "em": "segunda",
+     "faz": "soco",
+     "forca": 0.08
+    },
+    {
+     "em": "trinta",
+     "faz": "soco",
+     "forca": 0.06
+    }
+   ]
+  },
+  {
+   "em": "linha2",
+   "cenario": "loja",
+   "paleta": "tomate",
+   "transicao": "wipe_diagonal",
+   "placa": "SEXTA 27",
+   "placa2": "PROMO",
+   "elementos": [
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.5,
+     "y": 0.37,
+     "escala": 0.8,
+     "acoes": [
+      {
+       "em": "sexta",
+       "faz": "olha",
+       "para": "esq"
+      },
+      {
+       "em": "promocoes",
+       "faz": "olha",
+       "para": "dir"
+      },
+      {
+       "em": "antes",
+       "faz": "pula",
+       "altura": 40
+      },
+      {
+       "em": "vinte",
+       "faz": "palpebra",
+       "para": 0
+      },
+      {
+       "em": "vinte",
+       "faz": "sobrancelha",
+       "para": 1.2
+      },
+      {
+       "em": "vinte",
+       "faz": "boca",
+       "para": "o"
+      },
+      {
+       "em": "sete",
+       "faz": "treme",
+       "dur": 0.4,
+       "forca": 5
+      }
+     ],
+     "olhar": "cima",
+     "sobrancelha": 0.5,
+     "camada": "meio"
+    }
+   ],
+   "acoes": [
+    {
+     "em": "vinte",
+     "faz": "soco",
+     "forca": 0.06
+    }
+   ]
+  },
+  {
+   "em": "linha3",
+   "cenario": "quarto",
+   "luz": "tarde",
+   "paleta": "petroleo",
+   "elementos": [
+    {
+     "id": "est",
+     "tipo": "humano",
+     "preset": "estagiario",
+     "ancora": "cama",
+     "pose": "sentado",
+     "assento": false,
+     "segura": "celular",
+     "olhar": "celular",
+     "expressao": "feliz",
+     "acoes": [
+      {
+       "em": "plano",
+       "faz": "olha",
+       "para": "camera"
+      },
+      {
+       "em": "quitar",
+       "faz": "olha",
+       "para": "celular"
+      },
+      {
+       "em": "guardar",
+       "faz": "expressao",
+       "para": "charmoso"
+      }
+     ]
+    },
+    {
+     "id": "l0",
+     "tipo": "texto",
+     "x": 0.44,
+     "y": 0.13,
+     "texto": "QUITAR O CARTÃO",
+     "tam": 66,
+     "cor": "#FFF8EC",
+     "fundo": "#1F6E6A",
+     "acoes": [
+      {
+       "em": "cartao",
+       "faz": "entra",
+       "jeito": "desliza_esq"
+      }
+     ]
+    },
+    {
+     "id": "ok0",
+     "tipo": "texto",
+     "x": 0.86,
+     "y": 0.13,
+     "texto": "OK",
+     "tam": 66,
+     "cor": "#FFF8EC",
+     "fundo": "#2E9E4F",
+     "acoes": [
+      {
+       "em": "cartao",
+       "faz": "entra",
+       "jeito": "pop",
+       "depois": 0.3
+      }
+     ]
+    },
+    {
+     "id": "l1",
+     "tipo": "texto",
+     "x": 0.44,
+     "y": 0.195,
+     "texto": "PAGAR A LUZ",
+     "tam": 66,
+     "cor": "#FFF8EC",
+     "fundo": "#1F6E6A",
+     "acoes": [
+      {
+       "em": "luz",
+       "faz": "entra",
+       "jeito": "desliza_esq"
+      }
+     ]
+    },
+    {
+     "id": "ok1",
+     "tipo": "texto",
+     "x": 0.86,
+     "y": 0.195,
+     "texto": "OK",
+     "tam": 66,
+     "cor": "#FFF8EC",
+     "fundo": "#2E9E4F",
+     "acoes": [
+      {
+       "em": "luz",
+       "faz": "entra",
+       "jeito": "pop",
+       "depois": 0.3
+      }
+     ]
+    },
+    {
+     "id": "l2",
+     "tipo": "texto",
+     "x": 0.44,
+     "y": 0.26,
+     "texto": "GUARDAR UM POUCO",
+     "tam": 66,
+     "cor": "#FFF8EC",
+     "fundo": "#1F6E6A",
+     "acoes": [
+      {
+       "em": "pouco",
+       "faz": "entra",
+       "jeito": "desliza_esq"
+      }
+     ]
+    },
+    {
+     "id": "ok2",
+     "tipo": "texto",
+     "x": 0.86,
+     "y": 0.26,
+     "texto": "OK",
+     "tam": 66,
+     "cor": "#FFF8EC",
+     "fundo": "#2E9E4F",
+     "acoes": [
+      {
+       "em": "pouco",
+       "faz": "entra",
+       "jeito": "pop",
+       "depois": 0.3
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.82,
+     "y": 0.47,
+     "escala": 0.7,
+     "acoes": [
+      {
+       "em": "cartao",
+       "faz": "pula",
+       "altura": 40
+      },
+      {
+       "em": "luz",
+       "faz": "pula",
+       "altura": 40
+      },
+      {
+       "em": "pouco",
+       "faz": "pula",
+       "altura": 40
+      },
+      {
+       "em": "pouco",
+       "faz": "boca",
+       "para": "sorriso"
+      }
+     ],
+     "olhar": "esq",
+     "sobrancelha": 0.5,
+     "boca": "sorriso_torto"
+    }
+   ]
+  },
+  {
+   "em": "linha4",
+   "cenario": "celular",
+   "padrao": "bokeh",
+   "paleta": "rosa",
+   "hora": "18:33",
+   "energia": 0.8,
+   "elementos": [
+    {
+     "id": "sh",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.17,
+     "texto": "SÓ HOJE",
+     "tam": 110,
+     "cor": "#FFD23F",
+     "fundo": "#C2185B",
+     "acoes": [
+      {
+       "em": "vitrine",
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": "comeca",
+       "faz": "pisca",
+       "ritmo": 3,
+       "dur": 0.9,
+       "brilho": true
+      },
+      {
+       "em": "piscar",
+       "faz": "pisca",
+       "ritmo": 6,
+       "dur": 0.8,
+       "brilho": true
+      },
+      {
+       "em": "so",
+       "faz": "pisca",
+       "ritmo": 10,
+       "dur": 0.75,
+       "brilho": true
+      }
+     ]
+    },
+    {
+     "id": "pr",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.27,
+     "texto": "PROMO",
+     "tam": 110,
+     "cor": "#FFF8EC",
+     "fundo": "#E8352A",
+     "acoes": [
+      {
+       "em": "comeca",
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": "piscar",
+       "faz": "pisca",
+       "ritmo": 5,
+       "dur": 0.8,
+       "brilho": true
+      },
+      {
+       "em": "vou",
+       "faz": "pisca",
+       "ritmo": 9,
+       "dur": 0.5,
+       "brilho": true
+      },
+      {
+       "em": "uma",
+       "faz": "pisca",
+       "ritmo": 14,
+       "dur": 0.15,
+       "brilho": true
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.5,
+     "y": 0.45,
+     "escala": 0.85,
+     "acoes": [
+      {
+       "em": "vitrine",
+       "faz": "sobrancelha",
+       "para": 0.9
+      },
+      {
+       "em": "comeca",
+       "faz": "treme",
+       "dur": 0.8,
+       "forca": 3
+      },
+      {
+       "em": "piscar",
+       "faz": "sobrancelha",
+       "para": 1.2
+      },
+      {
+       "em": "piscar",
+       "faz": "treme",
+       "dur": 0.8,
+       "forca": 6
+      },
+      {
+       "em": "so",
+       "faz": "palpebra",
+       "para": 0
+      },
+      {
+       "em": "so",
+       "faz": "treme",
+       "dur": 0.75,
+       "forca": 10
+      },
+      {
+       "em": "dar",
+       "faz": "treme",
+       "dur": 0.35,
+       "forca": 16
+      },
+      {
+       "em": "olhadinha",
+       "faz": "estoura"
+      },
+      {
+       "em": "olhadinha",
+       "faz": "olha",
+       "para": "camera",
+       "depois": 0.4
+      }
+     ],
+     "olhar": "cima",
+     "sobrancelha": 0.5
+    },
+    {
+     "id": "rc",
+     "tipo": "rachadura",
+     "x": 0.56,
+     "y": 0.3,
+     "progresso": 0,
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "olhadinha",
+       "faz": "muda",
+       "prop": "progresso",
+       "para": 1,
+       "dur": 0.3,
+       "curva": "rapido"
+      }
+     ]
+    }
+   ],
+   "acoes": [
+    {
+     "em": "olhadinha",
+     "faz": "treme",
+     "dur": 0.5,
+     "forca": 18
+    }
+   ]
+  },
+  {
+   "em": "linha6",
+   "cenario": "chapado",
+   "padrao": "raios_hq",
+   "paleta": "cobalto",
+   "transicao": "zoom_blur",
+   "elementos": [
+    {
+     "id": "m",
+     "tipo": "meme",
+     "formato": "distraida",
+     "x": 0.5,
+     "y": 0.335,
+     "revela": 1,
+     "texto": "EU OLHANDO A VITRINE",
+     "roubado": "13º",
+     "hora": 6.5,
+     "pers": {
+      "tipo": "humano",
+      "preset": "estagiario"
+     },
+     "acoes": [
+      {
+       "em": "linha6",
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": "dono",
+       "faz": "muda",
+       "prop": "revela",
+       "para": 2,
+       "dur": 0.7
+      }
+     ]
+    }
+   ],
+   "acoes": [
+    {
+     "em": "dono",
+     "faz": "reacao",
+     "estilo": "boom",
+     "alvo": "m",
+     "dur": 0.8,
+     "forca": 0.4
+    }
+   ]
+  },
+  {
+   "em": "linha7",
+   "cenario": "cozinha",
+   "luz": "noite",
+   "paleta": "uva",
+   "brilho": 1,
+   "elementos": [
+    {
+     "id": "est",
+     "tipo": "humano",
+     "preset": "estagiario",
+     "ancora": "balcao",
+     "expressao": "nervoso",
+     "olhar": "dir",
+     "acoes": [
+      {
+       "em": "luz",
+       "faz": "olha",
+       "para": "cima"
+      },
+      {
+       "em": "fica",
+       "faz": "olha",
+       "para": "dir"
+      },
+      {
+       "em": "dezembro",
+       "faz": "pose",
+       "para": "bracos_cruzados"
+      }
+     ]
+    },
+    {
+     "id": "dez",
+     "tipo": "calendario",
+     "x": 0.71,
+     "y": 0.27,
+     "escala": 0.66,
+     "titulo": "DEZEMBRO",
+     "cor": "#6A3FD1",
+     "acoes": [
+      {
+       "em": "fica",
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": "dezembro",
+       "faz": "soco",
+       "depois": 0.45
+      }
+     ]
+    },
+    {
+     "id": "pl",
+     "tipo": "texto",
+     "x": 0.33,
+     "y": 0.15,
+     "texto": "PAGAR A LUZ",
+     "tam": 72,
+     "cor": "#FFF8EC",
+     "fundo": "#1F6E6A",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "luz",
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": "dezembro",
+       "faz": "move",
+       "para": [
+        0.71,
+        0.3
+       ],
+       "dur": 0.45,
+       "curva": "suave"
+      },
+      {
+       "em": "dezembro",
+       "faz": "escala",
+       "para": 0.6,
+       "dur": 0.45
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.17,
+     "y": 0.46,
+     "escala": 0.65,
+     "acoes": [
+      {
+       "em": "conta",
+       "faz": "olha",
+       "para": "dir"
+      },
+      {
+       "em": "luz",
+       "faz": "sobrancelha",
+       "para": 1.2
+      },
+      {
+       "em": "fica",
+       "faz": "boca",
+       "para": "reta"
+      },
+      {
+       "em": "fica",
+       "faz": "pula",
+       "altura": 30
+      },
+      {
+       "em": "dezembro",
+       "faz": "olha",
+       "para": "camera"
+      }
+     ],
+     "forma": "pipoca",
+     "olhar": "dir",
+     "sobrancelha": 0.8,
+     "boca": "triste",
+     "palpebra": 0.42
+    }
+   ],
+   "acoes": [
+    {
+     "em": "linha7",
+     "faz": "brilho",
+     "para": 0.45,
+     "dur": 0.08,
+     "depois": 0.25
+    },
+    {
+     "em": "conta",
+     "faz": "brilho",
+     "para": 1,
+     "dur": 0.08
+    },
+    {
+     "em": "luz",
+     "faz": "brilho",
+     "para": 0.35,
+     "dur": 0.08,
+     "depois": 0.2
+    },
+    {
+     "em": "luz",
+     "faz": "brilho",
+     "para": 1,
+     "dur": 0.1,
+     "depois": 0.4
+    },
+    {
+     "em": "luz",
+     "faz": "brilho",
+     "para": 0.5,
+     "dur": 0.06,
+     "depois": 0.9
+    },
+    {
+     "em": "fica",
+     "faz": "brilho",
+     "para": 0.9,
+     "dur": 0.1
+    },
+    {
+     "em": "dezembro",
+     "faz": "brilho",
+     "para": 0.4,
+     "dur": 0.08,
+     "depois": 0.6
+    }
+   ]
+  },
+  {
+   "em": "linha8",
+   "cenario": "chapado",
+   "padrao": "halftone",
+   "paleta": "laranja",
+   "elementos": [
+    {
+     "id": "q",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.15,
+     "texto": "CONTA OU VITRINE?",
+     "tam": 84,
+     "cor": "#FFF8EC",
+     "acoes": [
+      {
+       "em": "conta",
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ]
+    },
+    {
+     "id": "m2",
+     "tipo": "meme",
+     "formato": "botoes_dificil",
+     "x": 0.5,
+     "y": 0.39,
+     "escala": 0.9,
+     "revela": 1,
+     "botao_a": "CONTA",
+     "botao_b": "VITRINE",
+     "pers": {
+      "tipo": "pipo",
+      "forma": "pipoca"
+     },
+     "acoes": [
+      {
+       "em": "conta",
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": "vitrine",
+       "faz": "muda",
+       "prop": "revela",
+       "para": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": "linha9",
+   "cenario": "sala",
+   "luz": "noite",
+   "paleta": "noite",
+   "transicao": "papel",
+   "elementos": [
+    {
+     "id": "est",
+     "tipo": "humano",
+     "preset": "estagiario",
+     "ancora": "sofa_assento",
+     "pose": "sentado",
+     "assento": false,
+     "segura": "celular",
+     "olhar": "celular",
+     "expressao": "feliz",
+     "acoes": [
+      {
+       "em": "amigo",
+       "faz": "olha",
+       "para": "camera"
+      },
+      {
+       "em": "gastou",
+       "faz": "expressao",
+       "para": "envergonhado"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.8,
+     "y": 0.45,
+     "escala": 0.7,
+     "acoes": [
+      {
+       "em": "manda",
+       "faz": "pula",
+       "altura": 40
+      },
+      {
+       "em": "amigo",
+       "faz": "sobrancelha",
+       "para": 1.2
+      },
+      {
+       "em": "gastou",
+       "faz": "squash"
+      },
+      {
+       "em": "antes",
+       "faz": "olha",
+       "para": "camera"
+      }
+     ],
+     "forma": "pipoca",
+     "pose": "apontando",
+     "aponta_para": [
+      -1,
+      0.1
+     ],
+     "olhar": "esq",
+     "sobrancelha": 0.8
+    },
+    {
+     "id": "ch",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.16,
+     "texto": "MANDA PRO AMIGO\nQUE JÁ GASTOU O 13º",
+     "tam": 72,
+     "cor": "#FFD23F",
+     "fundo": "#1B1530",
+     "acoes": [
+      {
+       "em": "manda",
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": "terceiro",
+       "faz": "soco"
+      }
+     ]
+    }
+   ],
+   "acoes": [
+    {
+     "em": "cair",
+     "faz": "congela",
+     "dur": 0.6
+    }
+   ]
+  }
+ ],
+ "musica": "assets/musica/a-mystery-travel/mystery_travel.mp3",
+ "musica_inicio": 30.5,
+ "silencios": [
+  [
+   18.6,
+   40.0
+  ]
+ ],
+ "sfx": [
+  [
+   "assets/sfx/75-cc0-breaking-falling-hit-sfx/bfh1_hit_07.ogg",
+   0.0,
+   0.7
+  ],
+  [
+   "assets/sfx/pop-sounds/pop1.ogg",
+   0.57,
+   0.7
+  ],
+  [
+   "assets/sfx/pop-sounds/pop4.ogg",
+   0.94,
+   0.75
+  ],
+  [
+   "assets/sfx/memes/dinheiro.ogg",
+   1.89,
+   0.7
+  ],
+  [
+   "assets/sfx/3-pop-sounds/3pops.ogg",
+   3.13,
+   0.6
+  ],
+  [
+   [
+    "assets/sfx/air-whoosh/whoosh2_0.wav",
+    0,
+    0.7,
+    0.15
+   ],
+   4.38,
+   0.3
+  ],
+  [
+   "assets/sfx/a-slide-pop-sound/slidepop_0.mp3",
+   4.97,
+   0.6
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_hit_02.ogg",
+   7.1,
+   0.9
+  ],
+  [
+   [
+    "assets/sfx/air-whoosh/whoosh2_0.wav",
+    0,
+    0.7,
+    0.15
+   ],
+   7.89,
+   0.3
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_switch_01.ogg",
+   8.36,
+   0.6
+  ],
+  [
+   "assets/sfx/pop-sounds/pop5.ogg",
+   8.88,
+   0.7
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_switch_02.ogg",
+   9.43,
+   0.6
+  ],
+  [
+   "assets/sfx/pop-sounds/pop6.ogg",
+   9.67,
+   0.7
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_switch_01.ogg",
+   10.35,
+   0.6
+  ],
+  [
+   "assets/sfx/pop-sounds/pop7.ogg",
+   10.6,
+   0.8
+  ],
+  [
+   [
+    "assets/sfx/air-whoosh/whoosh2_0.wav",
+    0,
+    0.7,
+    0.15
+   ],
+   11.74,
+   0.3
+  ],
+  [
+   "assets/sfx/a-slide-pop-sound/slidepop_0.mp3",
+   12.0,
+   0.55
+  ],
+  [
+   "assets/sfx/pop-sounds/pop8.ogg",
+   13.11,
+   0.8
+  ],
+  [
+   "assets/sfx/pop-sounds/pop9.ogg",
+   14.16,
+   0.85
+  ],
+  [
+   "assets/sfx/pop-sounds/pop10.ogg",
+   15.28,
+   0.8
+  ],
+  [
+   [
+    "assets/sfx/air-whoosh/whoosh2_0.wav",
+    0,
+    0.7,
+    0.15
+   ],
+   16.04,
+   0.3
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_switch_01.ogg",
+   16.3,
+   0.55
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_switch_02.ogg",
+   16.85,
+   0.59
+  ],
+  [
+   "assets/sfx/memes/riser.ogg",
+   16.98,
+   0.85
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_switch_01.ogg",
+   17.3,
+   0.63
+  ],
+  [
+   "assets/sfx/pop-sounds/pop4.ogg",
+   17.42,
+   0.6
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_switch_02.ogg",
+   17.65,
+   0.67
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_switch_01.ogg",
+   17.95,
+   0.71
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_switch_02.ogg",
+   18.18,
+   0.75
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_switch_01.ogg",
+   18.36,
+   0.79
+  ],
+  [
+   "assets/sfx/75-cc0-breaking-falling-hit-sfx/bfh1_hit_03.ogg",
+   19.01,
+   0.95
+  ],
+  [
+   "assets/sfx/3-pop-sounds/pop2.ogg",
+   19.01,
+   1.0
+  ],
+  [
+   [
+    "assets/musica/cinematic-percussion-loop/Cinematic%20percussion%20loop%202.wav",
+    0,
+    12.0,
+    0.7
+   ],
+   19.01,
+   0.05
+  ],
+  [
+   "assets/sfx/75-cc0-breaking-falling-hit-sfx/bfh1_glass_breaking_02.ogg",
+   19.040000000000003,
+   0.95
+  ],
+  [
+   [
+    "assets/sfx/air-whoosh/whoosh2_0.wav",
+    0,
+    0.7,
+    0.15
+   ],
+   20.02,
+   0.3
+  ],
+  [
+   "assets/sfx/a-slide-pop-sound/slidepop_0.mp3",
+   20.27,
+   0.65
+  ],
+  [
+   [
+    "assets/sfx/memes/apito_sobe.ogg",
+    0,
+    0.65,
+    0.1
+   ],
+   21.35,
+   0.6
+  ],
+  [
+   [
+    "assets/sfx/air-whoosh/whoosh2_0.wav",
+    0,
+    0.7,
+    0.15
+   ],
+   22.97,
+   0.3
+  ],
+  [
+   [
+    "assets/sfx/memes/glitch.ogg",
+    0,
+    0.35,
+    0.05
+   ],
+   23.1,
+   0.55
+  ],
+  [
+   "assets/sfx/pop-sounds/pop1.ogg",
+   23.66,
+   0.8
+  ],
+  [
+   [
+    "assets/musica/cinematic-percussion-loop/Cinematic%20percussion%20loop%202.wav",
+    4.99,
+    0.8,
+    0.3
+   ],
+   24.0,
+   0.025
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_switch_02.ogg",
+   24.35,
+   0.5
+  ],
+  [
+   "assets/sfx/a-slide-pop-sound/slidepop_0.mp3",
+   25.38,
+   0.7
+  ],
+  [
+   [
+    "assets/sfx/air-whoosh/whoosh2_0.wav",
+    0,
+    0.7,
+    0.15
+   ],
+   26.36,
+   0.3
+  ],
+  [
+   "assets/sfx/pop-sounds/pop5.ogg",
+   26.48,
+   0.8
+  ],
+  [
+   "assets/sfx/pop-sounds/pop7.ogg",
+   26.99,
+   0.8
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_switch_01.ogg",
+   27.3,
+   0.55
+  ],
+  [
+   [
+    "assets/musica/cinematic-percussion-loop/Cinematic%20percussion%20loop%202.wav",
+    8.49,
+    0.55,
+    0.2
+   ],
+   27.48,
+   0.02
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_switch_02.ogg",
+   27.62,
+   0.55
+  ],
+  [
+   [
+    "assets/sfx/air-whoosh/whoosh2_0.wav",
+    0,
+    0.7,
+    0.15
+   ],
+   27.93,
+   0.3
+  ],
+  [
+   "assets/sfx/3-pop-sounds/pop1.ogg",
+   28.05,
+   0.8
+  ],
+  [
+   "assets/sfx/a-slide-pop-sound/slidepop_0.mp3",
+   28.4,
+   0.6
+  ],
+  [
+   "assets/sfx/80-cc0-creature-sfx/cute_02.ogg",
+   28.58,
+   0.9
+  ],
+  [
+   "assets/sfx/memes/certo.ogg",
+   31.32,
+   0.6
+  ]
+ ],
+ "whoosh_nos_cortes": false,
+ "volume_whoosh": 0.3
+}

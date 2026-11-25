@@ -59,3 +59,18 @@ Ligações: "Vídeo relacionado" da parte 2 aponta para a parte 1 (927OYhLGseo) 
 | Black Friday | 1.098 |
 | Natal 'Ela é adulta' | 1.078 |
 | sorriso v2 (XbSg8fMInEs, 18h33) | 470 em ~2h |
+
+## Leitura do Studio em 25/11 ~09h40 (painel do canal)
+| vídeo | dado |
+|---|---|
+| sorriso v2 (XbSg8fMInEs) | 1,1 mil views em 14h45; 45,6% vistos em média; 30 curtidas; 4 comentários; 4º de 7 no ranking das primeiras horas |
+| ossinho (oK8hh0lxU4U) | 1,6 mil (48 h) |
+| feed 60 dias (vOu4cf_zyWo) | 1,3 mil (48 h) |
+| canal | 16 inscritos (+6 em 28 dias); 7,8 mil views e 22,2 h assistidas em 28 dias |
+
+## Agendados em 25/11 (estrutura v3, retomada da madrugada)
+| # | ID | Título | Horário | Notas antes |
+|---|---|---|---|---|
+| ep009 M | Z8NvSx1DZjs | 13º cai até segunda. A promoção, na sexta 💸 | 25/11 18h33 | Gemini 8,4; QA-Claude CORRIGE (dia 31 em novembro, meme cortado) -> corrigido |
+| ep010 H | YNHI1cBnw5M | A casa dela foi a única da rua que apagou 💡 | 25/11 21h17 | Gemini 7,4; QA-Claude CORRIGE (casa rosa na C26) -> corrigido |
+| ep011 C | KcIoeQgofaw | Por que o sorvete dói na testa? 🍦 | 26/11 12h07 | Gemini 8,6; QA-Claude APROVA |
