@@ -9,12 +9,13 @@ ELENCO = {
                        segura="celular", olhar="celular", pinta="esq", roupa="#16A57A", estampa="havaiana", expressao="feliz"),
     "gala": dict(cabelo="topete", cabelo_cor="preto", pele="morena", queixo="quadrado", sobrancelha="grossa", brilho=True, corpo="forte",
                  roupa="#FFF3E0", manga="longa", expressao="feliz"),
-    # crush: bonita de verdade (cartoon elegante, sem sexualizar): olhos grandes com íris e cílios, sobrancelha feita, lábio com cor,
-    # cabelão volumoso com luzes e balanço, blazer, colar e argolas, aura suave. Compare com o gala (bonitão CARICATO).
-    "crush": dict(cabelo="volumoso", cabelo_cor="castanho_escuro", luzes="caramelo", pele="morena", olhos="grandes", iris="#8A5A2B",
-                  cilios="longos", sobrancelha="arqueada", labios="#D9506E", pinta="dir", blush=True, brilho="sutil", aura="#FFD9EC",
-                  roupa="#FFF3F6", jaqueta="#E83E7C", manga="longa", colar="#F2C14E", brincos="#F2C14E", calca="#2B2440", sapato="#E83E7C",
-                  expressao="charmoso"),
+    # crush (refeita em 25/11/2026 a pedido do dono: "loira de olho azul com um corpão"): bonita de verdade, cartoon de estúdio,
+    # elegante e NÃO reveladora. Cabelão loiro até a cintura com ondas, brilho e balanço; olhos azuis amendoados com cílios;
+    # rosto delicado; batom; corpo curvilíneo (cintura fina, quadril) com blusa justa de decote canoa alto e jeans de cintura alta com cinto.
+    "crush": dict(cabelo="sereia", cabelo_cor="dourado", luzes="mel", pele="clara", corpo="curvilineo", cabeca="delicada",
+                  olhos="marcantes", iris="#2E8BEA", sobrancelha="arqueada", labios="#E0436B", nariz="delicado",
+                  brilho="sutil", aura="#FFE9B8", roupa="#E8354A", gola="canoa", manga="curta", calca="#3F6FC8", cintura_alta=True,
+                  cinto="#7A4A2A", brincos="gota", colar="#F2C14E", sapato="#D93A5E", expressao="charmoso"),
     # crush_ele: a versão masculina, igualmente bonito (nada de caricato): ondulado com volume, barba por fazer, sorriso de canto
     "crush_ele": dict(cabelo="ondulado", cabelo_cor="preto", pele="escura", olhos="grandes", iris="#6B3E1F", sobrancelha="marcada",
                       barba="rala", brilho="sutil", aura="#D9ECFF", roupa="#FFFFFF", jaqueta="#2747C9", manga="longa",
