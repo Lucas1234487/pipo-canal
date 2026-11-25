@@ -2,6 +2,9 @@
 
 O G1 reabastece a fila todo domingo. O Diretor marca a pauta como usada no dia em que o vídeo entra na fila de publicação. Não repetir tema dos últimos 20 vídeos.
 
+## Pedidos do Lucas (prioridade sobre a fila)
+- Série H em 3 partes, dias seguidos, na próxima vaga de H livre: "E se os animais tivessem olhos pra frente?" (cotidiano, dinossauros, evolução até a sociedade). Brief completo em docs/diretor/series/olhos_pra_frente.md.
+
 ## Fila (da pesquisa inicial; ver docs/diretor/RESGATE_PESQUISA.md)
 | # | Tipo | Pauta | Para quem manda |
 |---|---|---|---|
