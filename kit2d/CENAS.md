@@ -81,7 +81,7 @@ Opções da cena: `luz` (dia, tarde, noite: noite = abajur/lâmpadas com halo qu
 | cidade_noite_alto | cidade vista do alto: serra e lua, rio com reflexos e ponte iluminada, avenidas com faróis (brancos vindo, vermelhos indo), prédios variados com antena piscando, janelas acendendo, letreiros de neon | ceu, cidade, lua |
 | espaco_terra | Terra à noite girando com luzes das cidades piscando, atmosfera, satélite passando | espaco, terra, satelite, flutuando |
 | hospital | monitor cardíaco com traçado correndo e bipe, soro pingando, persiana, leito | leito, medico, monitor, janela |
-| academia | espelho grande com gente malhando refletida, halteres no suporte, banco de supino com alguém treinando, anilhas, kettlebell, esteiras em fila (a da frente com km subindo), placa SEM DOR SEM GANHO (`cartaz`, aceita \n) | esteira, halteres, espelho, cartaz |
+| academia | teto com 3 fluorescentes acesas (a do meio pisca às vezes; continuam acesas com `luz` noite), parede viva com faixas diagonais e logo PIPO FIT (`logo`), placa SEM DOR SEM GANHO (`cartaz`, aceita \n), espelho com gente malhando refletida, rack de agachamento vermelho com alguém agachando (sobe e desce, anilhas coloridas na barra) e toalha pendurada, bebedouro com galão borbulhando, suporte de halteres coloridos com caixinha de som pulsando e soltando notas, piso de borracha preto com granulado colorido, esteira na frente (km subindo) | esteira, halteres, espelho, cartaz, logo, rack, bebedouro, som |
 | restaurante | luminárias balançando, cardápio (`cardapio`), garçom passando ao fundo, pratos com vapor e toalha xadrez na frente | mesa, mesa_dir, garcom, cardapio |
 
 Âncoras: em qualquer elemento, `"ancora": "sofa_assento"` no lugar de `x`, `y` (com `dx`, `dy` opcionais, em fração da tela).
@@ -245,16 +245,18 @@ Músicas: percussao, misterio, viagem, aventura. Tudo CC0 (assets/LICENCAS.md). 
 
 ### 4.1 Humano em detalhe
 - `idade`: adulto (padrão), crianca (cabeça bem maior, corpo curto), idoso (leve corcunda, rugas, cabelo grisalho e óculos por padrão; `"oculos": false` tira).
-- `corpo`: magro, medio (padrão), forte.
+- `corpo`: magro, medio (padrão), forte, curvilineo (feminino de cartoon: ombro delicado, cintura fina, quadril marcado, coxas afinando; mãos passam por fora do quadril).
 - `cabelo`: curto, longo (franja e mechas com pontas), coque, cacheado, black_power, careca, rabo_de_cavalo, trancas. `barba`: true (cheia), "bigode", "cavanhaque".
 - `cabelo_cor`: preto, castanho, loiro, ruivo, grisalho, branco, azul, rosa ou "#hex". `pele`: clara, media, morena, escura. `roupa`, `calca`, `sapato`: "#hex". `manga`: curta (padrão) ou longa.
 - `expressao`: neutro, feliz, gargalhada, bravo, surpreso, triste, chorando (lágrimas), nervoso (gota de suor), envergonhado (bochecha corada), apaixonado (olhos de coração), cansado,
   charmoso (sorriso de canto, olho brilhando), esforco (dente cerrado, cara de quem levanta peso), ofegante (boca aberta puxando ar, língua de fora). Pisca sozinho. As sobrancelhas mudam suave na troca.
 - `pose`: em_pe (padrão), sentado (com banquinho; `"assento": false` para sentar no sofá do cenário), bracos_cruzados, maos_na_cabeca, acenando, apontando (`aponta_para`: [dx, dy], direção na tela), comemorando,
-  muque (os dois bíceps para cima), correndo (braços balançando), caido (deita no chão com a cabeça para a esquerda e rola: o "cai-cai"; ocupa ~1,6x a largura, deixe espaço à esquerda).
+  muque (os dois bíceps para cima), mao_na_cintura (as duas mãos na cintura, cotovelos para fora: pose confiante), correndo (braços balançando), caido (deita no chão com a cabeça para a esquerda e rola: o "cai-cai"; ocupa ~1,6x a largura, deixe espaço à esquerda).
   Troque com `{"em": "palavra", "faz": "pose", "para": "comemorando"}` (ou `muda` com `prop` "pose"): os braços e as pernas giram até a pose nova em 0,38 s.
 - `segura`: "celular" (com pose em_pe ou sentado) põe as duas mãos no celular; `"olhar": "celular"` acende a tela no rosto.
-- Acessórios: `oculos`, `bone`, `mochila`, `avental`, `gravata`, `fone`. Use true ou uma cor ("#hex").
+- Acessórios: `oculos`, `bone`, `mochila`, `avental`, `gravata`, `fone`, `toalha` (no ombro). Use true ou uma cor ("#hex").
+- Roupa feminina elegante (combina com `corpo` curvilineo): `vestido` "#hex" (vestido midi evasê com barra balançando; sentado vira saia nas coxas),
+  `cintura_alta`: true (calça de cintura alta numa peça só com a blusa por dentro, bolso e braguilha), `cinto` "#hex", `gola` "canoa" (decote alto de ombro a ombro).
 - Medidas (escala 1): pés em y +338 px do centro para todas as idades; rosto do adulto entre -334 e -138; criança e idoso têm o rosto mais baixo; sentado desce o corpo 66 px.
   Com `escala` 0,8 e `y` 0,36 o rosto do adulto fica entre 0,22 e 0,30. Rosto nunca entre `y` 0,60 e 0,72: o QA acusa `rosto_na_faixa_legenda`.
 - Exemplo: `{"id": "vo", "tipo": "humano", "x": 0.7, "y": 0.36, "escala": 0.85, "idade": "idoso", "cabelo": "coque", "expressao": "feliz", "pose": "acenando", "avental": true}`
@@ -277,15 +279,20 @@ Traços (combine à vontade; a piada é o traço, nunca o grupo: nada de raça, 
 - Beleza (para personagem bonito de verdade, não caricato): `olhos` "grandes", `iris` "#hex" (íris colorida), `cilios` "longos" (delineado com gatinho + cílios curvos),
   `sobrancelha` "arqueada" (feita, afina na ponta) ou "marcada" (mais grossa, masculina), `labios` "#hex" (lábio colorido; boca aberta ganha contorno da cor),
   `blush`, `aura` "#hex" (brilho suave atrás da cabeça), `cabelo` "volumoso" (cabelão com volume, franja varrida, brilho e balanço) com `luzes` "#hex" (mechas),
-  `cabelo` "ondulado" (topo ondulado com mecha na testa), `barba` "rala" (por fazer), `jaqueta` "#hex" (blazer aberto; as mangas ficam da cor dela), `colar`, `brincos` ("#hex" = argola, "brilhante").
+  `cabelo` "ondulado" (topo ondulado com mecha na testa), `cabelo` "sereia" (cabelão até a cintura com ondas largas, franja varrida, anel de brilho e mechas na frente dos ombros balançando),
+  `olhos` "marcantes" (amendoados com o canto de fora levantado, íris enorme em degradê com raios e dois brilhos, delineado com gatinho, cílios curvos afinando, sombra suave; `sombra_olho` "#hex" ou false),
+  `cabeca` "delicada" (rosto em coração, queixo fino), `nariz` "delicado", `brincos` "gota" (pontinho de ouro com gotinha balançando), `barba` "rala" (por fazer), `jaqueta` "#hex" (blazer aberto; as mangas ficam da cor dela), `colar`, `brincos` ("#hex" = argola, "brilhante").
 - Esporte (sem futebol): `corpo` "maromba" (ombrão, cintura fina, bíceps), `bronzeado`, `veia` (na testa, pulsando), `segura` "garrafa" (galão de academia; `garrafa_cor`),
   `cabelo` "raspado", `relogio` "#hex", `numero` (número de peito, ex. "42"), `suor` (gotas voando), `chuteira` (travas no sapato; só no neymaro).
-- Cores de cabelo novas: platinado, castanho_escuro, caramelo.
+- Cores de cabelo novas: platinado, castanho_escuro, caramelo, dourado, mel (boa para `luzes` em loiro).
 
 Elenco fixo (`"preset": "nome"`; qualquer propriedade no elemento vale por cima; lista em kit2d/elenco.py):
 vizinho_exagerado, tia_do_zap, gala, crush, crush_ele, chefe, estagiario, vovo_turbo, crianca_terrivel, tiozao_do_churrasco, nerd, marombeiro (alias: esportista),
 maratonista, neymaro, influencer, seu_ze_da_banca.
 - gala x crush: o gala é o bonitão CARICATO (topete, brilho exagerado, dente que brilha); crush e crush_ele são bonitos de verdade (olhos com íris, sobrancelha feita, cabelo com brilho, roupa estilosa, aura sutil). Não troque um pelo outro.
+- crush (refeita em 25/11/2026, pedido do dono: "loira de olho azul com um corpão"): cabelo sereia dourado com luzes mel, olhos marcantes azuis, rosto delicado, batom,
+  corpo curvilineo com blusa vermelha justa de gola canoa, jeans de cintura alta com cinto, sapatilha vermelha, brinco gota. Elegante, nada revelador.
+  Variações: `"vestido": "#2F6FE4", "cinto": "#F2C14E"` (vestido midi) e `"pose": "mao_na_cintura"`.
 - marombeiro: braços enormes, regata, garrafinha gigante, veia na testa, bronze, pose muque. maratonista (de domingo): faixa, relógio, roupa neon, número 42, suor, ofegante, pose correndo.
 - neymaro: EXCEÇÃO à regra de futebol/pessoa real, aprovada pelo dono em 24/11/2026 (só este preset). Caricatura simpática: moicano platinado, faixa, brilhante na orelha, sorrisão,
   chuteira colorida, camisa amarela GENÉRICA. Nunca ponha escudo, número 10, patrocínio, logo de clube/seleção/marca nem o nome real. Pose comemorando; `"pose": "caido"` + `"expressao": "chorando"` faz o cai-cai.
