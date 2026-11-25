@@ -15,3 +15,8 @@ NÃO GOSTEI: onibus (refazer).
 ## Imersão com foto real (mergulho): GOSTEI.
 ## Memes: todos GOSTEI, menos expectativa_realidade e plot_twist (TALVEZ: caprichar).
 ## Reações de meme: todas GOSTEI (boom já refeito audível no celular, disco, triste, dramatico, ohh, grilo, fa).
+
+# Revisão 2 do Lucas (25/11, página "PipoPop: revisão 2")
+GOSTEI: crush_ele, chefe (corrigido), marombeiro, maratonista, neymaro (e o cai-cai), sala com pés, ônibus refeito, carro dia/noite, supermercado, cidade à noite refeita, celular estilo iPhone, brilho de cena, chuva, tela dividida, pisca com brilho, Pipo pipoca com braços, mapa do Brasil, mapa do mundo, casa e árvore soltas, memes expectativa x realidade e plot twist refeitos.
+NÃO GOSTEI: crush ("deve ser loira de olho azul com um corpão"): refazer.
+TALVEZ: academia (refeita): melhorar mais.
