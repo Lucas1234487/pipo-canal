@@ -10,3 +10,6 @@
 Marcas: nenhuma na fala, na legenda, nas imagens ou na meta. O picolé é liso e o açaí é desenho.
 Fala: nenhuma palavra estrangeira nem sigla (pt-BR-FranciscaNeural); "açaí" é português.
 Nada a corrigir.
+
+## Checagem das fontes (Diretor, 25/11 09h40, com a permissão do Lucas)
+Harvard Health e Johns Hopkins abertas: as duas confirmam frio no céu da boca, vasos que fecham e reabrem, nervo trigêmeo e dor na testa (Harvard chama de dor referida). Língua no céu da boca: Hopkins recomenda; Harvard diz que é o alívio mais comum, sem prova de que funcione. A fala diz "pra aliviar", sem prometer cura: fica.
