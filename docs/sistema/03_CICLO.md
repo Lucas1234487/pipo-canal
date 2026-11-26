@@ -1,5 +1,7 @@
 # 03. Ciclo: o que acontece todo dia e toda semana
 
+OBRIGATÓRIO em toda sessão que produz ou agenda (26/11): (1) gravar fila/_trava_producao.json ao começar a produzir e apagar ao terminar; (2) rodar python3 kit/guardrails.py <pasta> antes de agendar em qualquer rede (saída 1 = não agenda); (3) se um caminho de publicação falhar, seguir a cadeia de fallback do 05_CONTINUIDADE.md; (4) decisão drástica vai para docs/diretor/DECISOES_LUCAS.md e o dia segue.
+
 Redes sociais (Instagram, Facebook, perfis, stories, memes, interação): o Diretor também é dono, ver specs/G7_redes.md. Toda produção diária, além dos 3 vídeos, faz os stories do dia e cuida do arquivo; a sessão semanal revisa perfis e posts de meme.
 
 ## 1. Produção diária (tarefa agendada na nuvem, de madrugada, sem o Lucas)
