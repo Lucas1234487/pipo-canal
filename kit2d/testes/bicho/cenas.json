@@ -1,0 +1,1024 @@
+{
+ "paleta": "tomate",
+ "whoosh_nos_cortes": false,
+ "cenas": [
+  {
+   "em": 0.0,
+   "cenario": "chapado",
+   "padrao": "nada",
+   "paleta": "tomate",
+   "deriva": 0,
+   "elementos": [
+    {
+     "id": "pombo_frente_lado",
+     "tipo": "bicho",
+     "especie": "pombo",
+     "olhos": "lado",
+     "vista": "frente",
+     "x": 0.27,
+     "y": 0.33,
+     "escala": 0.92,
+     "expressao": "neutro",
+     "pose": "bicando"
+    },
+    {
+     "id": "pombo_frente_frente",
+     "tipo": "bicho",
+     "especie": "pombo",
+     "olhos": "frente",
+     "vista": "frente",
+     "x": 0.73,
+     "y": 0.33,
+     "escala": 0.92,
+     "expressao": "julgando",
+     "espelha": false
+    },
+    {
+     "id": "r",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.1,
+     "texto": "pombo · frente",
+     "tam": 64
+    },
+    {
+     "id": "r2",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.52,
+     "texto": "lado        frente",
+     "tam": 52
+    }
+   ]
+  },
+  {
+   "em": 1.5,
+   "cenario": "chapado",
+   "padrao": "nada",
+   "paleta": "menta",
+   "deriva": 0,
+   "elementos": [
+    {
+     "id": "gato_frente_lado",
+     "tipo": "bicho",
+     "especie": "gato",
+     "olhos": "lado",
+     "vista": "frente",
+     "x": 0.27,
+     "y": 0.33,
+     "escala": 0.92,
+     "expressao": "desconfiado",
+     "pose": "agachado"
+    },
+    {
+     "id": "gato_frente_frente",
+     "tipo": "bicho",
+     "especie": "gato",
+     "olhos": "frente",
+     "vista": "frente",
+     "x": 0.73,
+     "y": 0.33,
+     "escala": 0.92,
+     "expressao": "assustado",
+     "espelha": false
+    },
+    {
+     "id": "r",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.1,
+     "texto": "gato · frente",
+     "tam": 64
+    },
+    {
+     "id": "r2",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.52,
+     "texto": "lado        frente",
+     "tam": 52
+    }
+   ]
+  },
+  {
+   "em": 3.0,
+   "cenario": "chapado",
+   "padrao": "nada",
+   "paleta": "cobalto",
+   "deriva": 0,
+   "elementos": [
+    {
+     "id": "vaca_frente_lado",
+     "tipo": "bicho",
+     "especie": "vaca",
+     "olhos": "lado",
+     "vista": "frente",
+     "x": 0.27,
+     "y": 0.33,
+     "escala": 0.92,
+     "expressao": "julgando"
+    },
+    {
+     "id": "vaca_frente_frente",
+     "tipo": "bicho",
+     "especie": "vaca",
+     "olhos": "frente",
+     "vista": "frente",
+     "x": 0.73,
+     "y": 0.33,
+     "escala": 0.92,
+     "expressao": "feliz",
+     "espelha": false
+    },
+    {
+     "id": "r",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.1,
+     "texto": "vaca · frente",
+     "tam": 64
+    },
+    {
+     "id": "r2",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.52,
+     "texto": "lado        frente",
+     "tam": 52
+    }
+   ]
+  },
+  {
+   "em": 4.5,
+   "cenario": "chapado",
+   "padrao": "nada",
+   "paleta": "mostarda",
+   "deriva": 0,
+   "elementos": [
+    {
+     "id": "galinha_frente_lado",
+     "tipo": "bicho",
+     "especie": "galinha",
+     "olhos": "lado",
+     "vista": "frente",
+     "x": 0.27,
+     "y": 0.33,
+     "escala": 0.92,
+     "expressao": "assustado",
+     "pose": "voando"
+    },
+    {
+     "id": "galinha_frente_frente",
+     "tipo": "bicho",
+     "especie": "galinha",
+     "olhos": "frente",
+     "vista": "frente",
+     "x": 0.73,
+     "y": 0.33,
+     "escala": 0.92,
+     "expressao": "neutro",
+     "espelha": false
+    },
+    {
+     "id": "r",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.1,
+     "texto": "galinha · frente",
+     "tam": 64
+    },
+    {
+     "id": "r2",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.52,
+     "texto": "lado        frente",
+     "tam": 52
+    }
+   ]
+  },
+  {
+   "em": 6.0,
+   "cenario": "chapado",
+   "padrao": "nada",
+   "paleta": "uva",
+   "deriva": 0,
+   "elementos": [
+    {
+     "id": "cavalo_frente_lado",
+     "tipo": "bicho",
+     "especie": "cavalo",
+     "olhos": "lado",
+     "vista": "frente",
+     "x": 0.27,
+     "y": 0.33,
+     "escala": 0.92,
+     "expressao": "feliz"
+    },
+    {
+     "id": "cavalo_frente_frente",
+     "tipo": "bicho",
+     "especie": "cavalo",
+     "olhos": "frente",
+     "vista": "frente",
+     "x": 0.73,
+     "y": 0.33,
+     "escala": 0.92,
+     "expressao": "desconfiado",
+     "espelha": false
+    },
+    {
+     "id": "r",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.1,
+     "texto": "cavalo · frente",
+     "tam": 64
+    },
+    {
+     "id": "r2",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.52,
+     "texto": "lado        frente",
+     "tam": 52
+    }
+   ]
+  },
+  {
+   "em": 7.5,
+   "cenario": "chapado",
+   "padrao": "nada",
+   "paleta": "petroleo",
+   "deriva": 0,
+   "elementos": [
+    {
+     "id": "coelho_frente_lado",
+     "tipo": "bicho",
+     "especie": "coelho",
+     "olhos": "lado",
+     "vista": "frente",
+     "x": 0.27,
+     "y": 0.33,
+     "escala": 0.92,
+     "expressao": "neutro"
+    },
+    {
+     "id": "coelho_frente_frente",
+     "tipo": "bicho",
+     "especie": "coelho",
+     "olhos": "frente",
+     "vista": "frente",
+     "x": 0.73,
+     "y": 0.33,
+     "escala": 0.92,
+     "expressao": "julgando",
+     "espelha": false
+    },
+    {
+     "id": "r",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.1,
+     "texto": "coelho · frente",
+     "tam": 64
+    },
+    {
+     "id": "r2",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.52,
+     "texto": "lado        frente",
+     "tam": 52
+    }
+   ]
+  },
+  {
+   "em": 9.0,
+   "cenario": "chapado",
+   "padrao": "nada",
+   "paleta": "rosa",
+   "deriva": 0,
+   "elementos": [
+    {
+     "id": "pombo_perfil_lado",
+     "tipo": "bicho",
+     "especie": "pombo",
+     "olhos": "lado",
+     "vista": "perfil",
+     "x": 0.27,
+     "y": 0.33,
+     "escala": 0.8,
+     "expressao": "desconfiado",
+     "pose": "bicando"
+    },
+    {
+     "id": "pombo_perfil_frente",
+     "tipo": "bicho",
+     "especie": "pombo",
+     "olhos": "frente",
+     "vista": "perfil",
+     "x": 0.73,
+     "y": 0.33,
+     "escala": 0.8,
+     "expressao": "assustado",
+     "espelha": false
+    },
+    {
+     "id": "r",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.1,
+     "texto": "pombo · perfil",
+     "tam": 64
+    },
+    {
+     "id": "r2",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.52,
+     "texto": "lado        frente",
+     "tam": 52
+    }
+   ]
+  },
+  {
+   "em": 10.5,
+   "cenario": "chapado",
+   "padrao": "nada",
+   "paleta": "laranja",
+   "deriva": 0,
+   "elementos": [
+    {
+     "id": "gato_perfil_lado",
+     "tipo": "bicho",
+     "especie": "gato",
+     "olhos": "lado",
+     "vista": "perfil",
+     "x": 0.27,
+     "y": 0.33,
+     "escala": 0.8,
+     "expressao": "julgando",
+     "pose": "agachado"
+    },
+    {
+     "id": "gato_perfil_frente",
+     "tipo": "bicho",
+     "especie": "gato",
+     "olhos": "frente",
+     "vista": "perfil",
+     "x": 0.73,
+     "y": 0.33,
+     "escala": 0.8,
+     "expressao": "feliz",
+     "espelha": false
+    },
+    {
+     "id": "r",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.1,
+     "texto": "gato · perfil",
+     "tam": 64
+    },
+    {
+     "id": "r2",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.52,
+     "texto": "lado        frente",
+     "tam": 52
+    }
+   ]
+  },
+  {
+   "em": 12.0,
+   "cenario": "chapado",
+   "padrao": "nada",
+   "paleta": "tomate",
+   "deriva": 0,
+   "elementos": [
+    {
+     "id": "vaca_perfil_lado",
+     "tipo": "bicho",
+     "especie": "vaca",
+     "olhos": "lado",
+     "vista": "perfil",
+     "x": 0.27,
+     "y": 0.33,
+     "escala": 0.8,
+     "expressao": "assustado"
+    },
+    {
+     "id": "vaca_perfil_frente",
+     "tipo": "bicho",
+     "especie": "vaca",
+     "olhos": "frente",
+     "vista": "perfil",
+     "x": 0.73,
+     "y": 0.33,
+     "escala": 0.8,
+     "expressao": "neutro",
+     "espelha": false
+    },
+    {
+     "id": "r",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.1,
+     "texto": "vaca · perfil",
+     "tam": 64
+    },
+    {
+     "id": "r2",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.52,
+     "texto": "lado        frente",
+     "tam": 52
+    }
+   ]
+  },
+  {
+   "em": 13.5,
+   "cenario": "chapado",
+   "padrao": "nada",
+   "paleta": "menta",
+   "deriva": 0,
+   "elementos": [
+    {
+     "id": "galinha_perfil_lado",
+     "tipo": "bicho",
+     "especie": "galinha",
+     "olhos": "lado",
+     "vista": "perfil",
+     "x": 0.27,
+     "y": 0.33,
+     "escala": 0.8,
+     "expressao": "feliz",
+     "pose": "voando"
+    },
+    {
+     "id": "galinha_perfil_frente",
+     "tipo": "bicho",
+     "especie": "galinha",
+     "olhos": "frente",
+     "vista": "perfil",
+     "x": 0.73,
+     "y": 0.33,
+     "escala": 0.8,
+     "expressao": "desconfiado",
+     "espelha": false
+    },
+    {
+     "id": "r",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.1,
+     "texto": "galinha · perfil",
+     "tam": 64
+    },
+    {
+     "id": "r2",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.52,
+     "texto": "lado        frente",
+     "tam": 52
+    }
+   ]
+  },
+  {
+   "em": 15.0,
+   "cenario": "chapado",
+   "padrao": "nada",
+   "paleta": "cobalto",
+   "deriva": 0,
+   "elementos": [
+    {
+     "id": "cavalo_perfil_lado",
+     "tipo": "bicho",
+     "especie": "cavalo",
+     "olhos": "lado",
+     "vista": "perfil",
+     "x": 0.27,
+     "y": 0.33,
+     "escala": 0.8,
+     "expressao": "neutro"
+    },
+    {
+     "id": "cavalo_perfil_frente",
+     "tipo": "bicho",
+     "especie": "cavalo",
+     "olhos": "frente",
+     "vista": "perfil",
+     "x": 0.73,
+     "y": 0.33,
+     "escala": 0.8,
+     "expressao": "julgando",
+     "espelha": false
+    },
+    {
+     "id": "r",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.1,
+     "texto": "cavalo · perfil",
+     "tam": 64
+    },
+    {
+     "id": "r2",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.52,
+     "texto": "lado        frente",
+     "tam": 52
+    }
+   ]
+  },
+  {
+   "em": 16.5,
+   "cenario": "chapado",
+   "padrao": "nada",
+   "paleta": "mostarda",
+   "deriva": 0,
+   "elementos": [
+    {
+     "id": "coelho_perfil_lado",
+     "tipo": "bicho",
+     "especie": "coelho",
+     "olhos": "lado",
+     "vista": "perfil",
+     "x": 0.27,
+     "y": 0.33,
+     "escala": 0.8,
+     "expressao": "desconfiado"
+    },
+    {
+     "id": "coelho_perfil_frente",
+     "tipo": "bicho",
+     "especie": "coelho",
+     "olhos": "frente",
+     "vista": "perfil",
+     "x": 0.73,
+     "y": 0.33,
+     "escala": 0.8,
+     "expressao": "assustado",
+     "espelha": false
+    },
+    {
+     "id": "r",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.1,
+     "texto": "coelho · perfil",
+     "tam": 64
+    },
+    {
+     "id": "r2",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.52,
+     "texto": "lado        frente",
+     "tam": 52
+    }
+   ]
+  },
+  {
+   "em": 18.0,
+   "cenario": "chapado",
+   "padrao": "nada",
+   "paleta": "uva",
+   "deriva": 0,
+   "elementos": [
+    {
+     "id": "pombo_cima_lado",
+     "tipo": "bicho",
+     "especie": "pombo",
+     "olhos": "lado",
+     "vista": "cima",
+     "x": 0.27,
+     "y": 0.36,
+     "escala": 0.8,
+     "expressao": "julgando",
+     "campo": 330,
+     "cego": true,
+     "alcance": 330
+    },
+    {
+     "id": "pombo_cima_frente",
+     "tipo": "bicho",
+     "especie": "pombo",
+     "olhos": "frente",
+     "vista": "cima",
+     "x": 0.73,
+     "y": 0.36,
+     "escala": 0.8,
+     "expressao": "feliz",
+     "espelha": false,
+     "campo": 190,
+     "cego": true,
+     "alcance": 330
+    },
+    {
+     "id": "r",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.1,
+     "texto": "pombo · cima",
+     "tam": 64
+    },
+    {
+     "id": "r2",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.52,
+     "texto": "lado        frente",
+     "tam": 52
+    }
+   ]
+  },
+  {
+   "em": 19.5,
+   "cenario": "chapado",
+   "padrao": "nada",
+   "paleta": "petroleo",
+   "deriva": 0,
+   "elementos": [
+    {
+     "id": "gato_cima_lado",
+     "tipo": "bicho",
+     "especie": "gato",
+     "olhos": "lado",
+     "vista": "cima",
+     "x": 0.27,
+     "y": 0.36,
+     "escala": 0.8,
+     "expressao": "assustado",
+     "campo": 330,
+     "cego": true,
+     "alcance": 330
+    },
+    {
+     "id": "gato_cima_frente",
+     "tipo": "bicho",
+     "especie": "gato",
+     "olhos": "frente",
+     "vista": "cima",
+     "x": 0.73,
+     "y": 0.36,
+     "escala": 0.8,
+     "expressao": "neutro",
+     "espelha": false,
+     "campo": 190,
+     "cego": true,
+     "alcance": 330
+    },
+    {
+     "id": "r",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.1,
+     "texto": "gato · cima",
+     "tam": 64
+    },
+    {
+     "id": "r2",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.52,
+     "texto": "lado        frente",
+     "tam": 52
+    }
+   ]
+  },
+  {
+   "em": 21.0,
+   "cenario": "chapado",
+   "padrao": "nada",
+   "paleta": "rosa",
+   "deriva": 0,
+   "elementos": [
+    {
+     "id": "vaca_cima_lado",
+     "tipo": "bicho",
+     "especie": "vaca",
+     "olhos": "lado",
+     "vista": "cima",
+     "x": 0.27,
+     "y": 0.36,
+     "escala": 0.8,
+     "expressao": "feliz",
+     "campo": 330,
+     "cego": true,
+     "alcance": 330
+    },
+    {
+     "id": "vaca_cima_frente",
+     "tipo": "bicho",
+     "especie": "vaca",
+     "olhos": "frente",
+     "vista": "cima",
+     "x": 0.73,
+     "y": 0.36,
+     "escala": 0.8,
+     "expressao": "desconfiado",
+     "espelha": false,
+     "campo": 190,
+     "cego": true,
+     "alcance": 330
+    },
+    {
+     "id": "r",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.1,
+     "texto": "vaca · cima",
+     "tam": 64
+    },
+    {
+     "id": "r2",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.52,
+     "texto": "lado        frente",
+     "tam": 52
+    }
+   ]
+  },
+  {
+   "em": 22.5,
+   "cenario": "chapado",
+   "padrao": "nada",
+   "paleta": "laranja",
+   "deriva": 0,
+   "elementos": [
+    {
+     "id": "galinha_cima_lado",
+     "tipo": "bicho",
+     "especie": "galinha",
+     "olhos": "lado",
+     "vista": "cima",
+     "x": 0.27,
+     "y": 0.36,
+     "escala": 0.8,
+     "expressao": "neutro",
+     "campo": 330,
+     "cego": true,
+     "alcance": 330
+    },
+    {
+     "id": "galinha_cima_frente",
+     "tipo": "bicho",
+     "especie": "galinha",
+     "olhos": "frente",
+     "vista": "cima",
+     "x": 0.73,
+     "y": 0.36,
+     "escala": 0.8,
+     "expressao": "julgando",
+     "espelha": false,
+     "campo": 190,
+     "cego": true,
+     "alcance": 330
+    },
+    {
+     "id": "r",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.1,
+     "texto": "galinha · cima",
+     "tam": 64
+    },
+    {
+     "id": "r2",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.52,
+     "texto": "lado        frente",
+     "tam": 52
+    }
+   ]
+  },
+  {
+   "em": 24.0,
+   "cenario": "chapado",
+   "padrao": "nada",
+   "paleta": "tomate",
+   "deriva": 0,
+   "elementos": [
+    {
+     "id": "cavalo_cima_lado",
+     "tipo": "bicho",
+     "especie": "cavalo",
+     "olhos": "lado",
+     "vista": "cima",
+     "x": 0.27,
+     "y": 0.36,
+     "escala": 0.8,
+     "expressao": "desconfiado",
+     "campo": 330,
+     "cego": true,
+     "alcance": 330
+    },
+    {
+     "id": "cavalo_cima_frente",
+     "tipo": "bicho",
+     "especie": "cavalo",
+     "olhos": "frente",
+     "vista": "cima",
+     "x": 0.73,
+     "y": 0.36,
+     "escala": 0.8,
+     "expressao": "assustado",
+     "espelha": false,
+     "campo": 190,
+     "cego": true,
+     "alcance": 330
+    },
+    {
+     "id": "r",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.1,
+     "texto": "cavalo · cima",
+     "tam": 64
+    },
+    {
+     "id": "r2",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.52,
+     "texto": "lado        frente",
+     "tam": 52
+    }
+   ]
+  },
+  {
+   "em": 25.5,
+   "cenario": "chapado",
+   "padrao": "nada",
+   "paleta": "menta",
+   "deriva": 0,
+   "elementos": [
+    {
+     "id": "coelho_cima_lado",
+     "tipo": "bicho",
+     "especie": "coelho",
+     "olhos": "lado",
+     "vista": "cima",
+     "x": 0.27,
+     "y": 0.36,
+     "escala": 0.8,
+     "expressao": "julgando",
+     "campo": 330,
+     "cego": true,
+     "alcance": 330
+    },
+    {
+     "id": "coelho_cima_frente",
+     "tipo": "bicho",
+     "especie": "coelho",
+     "olhos": "frente",
+     "vista": "cima",
+     "x": 0.73,
+     "y": 0.36,
+     "escala": 0.8,
+     "expressao": "feliz",
+     "espelha": false,
+     "campo": 190,
+     "cego": true,
+     "alcance": 330
+    },
+    {
+     "id": "r",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.1,
+     "texto": "coelho · cima",
+     "tam": 64
+    },
+    {
+     "id": "r2",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.52,
+     "texto": "lado        frente",
+     "tam": 52
+    }
+   ]
+  },
+  {
+   "em": 27.0,
+   "cenario": "rua",
+   "elementos": [
+    {
+     "id": "pombo",
+     "tipo": "bicho",
+     "especie": "pombo",
+     "vista": "perfil",
+     "ancora": "calcada_esq",
+     "olhos": "frente",
+     "expressao": "julgando",
+     "acoes": [
+      {
+       "em": 27.1,
+       "faz": "entra",
+       "jeito": "desliza_esq"
+      },
+      {
+       "em": 27.8,
+       "faz": "move",
+       "para": "calcada", "dx": -0.08,
+       "dur": 2.4,
+       "curva": "linear"
+      },
+      {
+       "em": 30.4,
+       "faz": "pula",
+       "altura": 90
+      },
+      {
+       "em": 30.9,
+       "faz": "olha",
+       "para": "camera"
+      }
+     ]
+    },
+    {
+     "id": "gato",
+     "tipo": "bicho",
+     "especie": "gato",
+     "vista": "frente",
+     "ancora": "calcada_dir",
+     "expressao": "desconfiado",
+     "acoes": [
+      {
+       "em": 27.3,
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": 28.6,
+       "faz": "treme",
+       "dur": 0.5
+      },
+      {
+       "em": 29.4,
+       "faz": "squash"
+      },
+      {
+       "em": 30.0,
+       "faz": "pose",
+       "para": "agachado"
+      },
+      {
+       "em": 31.2,
+       "faz": "soco"
+      },
+      {
+       "em": 31.6,
+       "faz": "sai",
+       "jeito": "pop"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": 32.0,
+   "cenario": "chapado",
+   "padrao": "nada",
+   "paleta": "noite",
+   "elementos": [
+    {
+     "id": "cav",
+     "tipo": "bicho",
+     "especie": "cavalo",
+     "vista": "cima",
+     "x": 0.5,
+     "y": 0.34,
+     "escala": 0.7,
+     "campo": 120,
+     "cego": true,
+     "alcance": 560,
+     "expressao": "assustado",
+     "acoes": [
+      {
+       "em": 32.2,
+       "faz": "muda",
+       "prop": "campo",
+       "para": 350,
+       "dur": 2.0
+      },
+      {
+       "em": 34.4,
+       "faz": "escala",
+       "para": 0.8
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

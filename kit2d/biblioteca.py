@@ -732,6 +732,14 @@ def _meme(ctx, st, t, pal, seed):   # formatos de meme redesenhados: kit2d/memes
 DESENHOS["meme"] = _meme
 
 
+def _bicho(ctx, st, t, pal, seed):   # bichos (pombo, gato, vaca, galinha, cavalo, coelho): kit2d/bicho.py
+    import bicho
+    return bicho.desenha_bicho(ctx, st, t, pal, seed)
+
+
+DESENHOS["bicho"] = _bicho
+
+
 # ============================ CENÁRIOS ============================
 def cenario(ctx, nome, pal, t, opts, seed=1):
     if C2.tem(nome):   # cenários em camadas (kit2d/cenarios2.py)

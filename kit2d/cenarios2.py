@@ -2509,17 +2509,17 @@ def posiciona(nome_cenario, el):
         raise SystemExit(f"âncora '{nome}' não existe no cenário '{nome_cenario}'. Âncoras: {disp}")
     a = anc[nome]
     tipo = el.get("tipo")
-    pers = tipo in ("humano", "pipo")
+    pers = tipo in ("humano", "pipo", "bicho")
     s = el.get("escala", a.get("escala", 1.0) if pers else 1.0)
     x = a["x"]
     if pers and "assento" in a:
-        y = a["assento"] - (140 if tipo == "humano" else 235) * s
+        y = a["assento"] - {"humano": 140, "pipo": 235, "bicho": 150}[tipo] * s
     elif pers and "chao" in a:
-        y = a["chao"] - (335 if tipo == "humano" else 285) * s
+        y = a["chao"] - {"humano": 335, "pipo": 285, "bicho": 205}[tipo] * s
     else:
         y = a.get("y", a.get("chao", a.get("assento", H / 2)))
     if pers:   # rosto nunca na faixa da legenda (y 0,60): sobe o personagem se precisar
-        y = min(y, 0.595 * H + (150 if tipo == "humano" else 50) * s)
+        y = min(y, 0.595 * H + {"humano": 150, "pipo": 50, "bicho": 0}[tipo] * s)
     return x / W + el.get("dx", 0), y / H + el.get("dy", 0), (s if pers and "escala" not in el else None)
 
 

@@ -127,7 +127,7 @@ class Trilha:
 
 
 CURVAS = {"suave": ease_in_out, "rapido": ease_out, "elastico": lambda x: ease_out_back(x, 1.6), "linear": lambda x: x}
-PERSONAGENS = ("pipo", "humano")
+PERSONAGENS = ("pipo", "humano", "bicho")
 ATRAS_DA_FRENTE = PERSONAGENS + ("porta", "arvore_natal", "casa")   # desenhados antes da camada da frente do cenário (o resto fica por cima)
 NUMERICAS = ("x", "y", "escala", "rot", "alpha")
 
@@ -298,7 +298,7 @@ class Cena:
             st = el.estado(t0)
             px, py = st["x"] + st["_dx"] / W, st["y"] + st["_dy"] / H
             if el.tipo in PERSONAGENS:   # mira no rosto, não na barriga
-                py -= (145 if el.tipo == "pipo" else 255) * st.get("escala", 1) / H
+                py -= {"pipo": 145, "humano": 255, "bicho": 90}[el.tipo] * st.get("escala", 1) / H
         else:
             px, py = alvo
         r = {"estilo": est, "t0": t0, "dur": dur, "alvo": (px, py), "el": el.id if el else None,
@@ -570,6 +570,8 @@ class Filme:
                 return
             if el.tipo == "fluxo":
                 self.fluxo(ctx, el, st, t, c); return
+            if el.tipo == "bicho" and "x" in el.tr:   # velocidade (px/s) para o bicho andar sozinho quando se move
+                st["_vel"] = (el.tr["x"](t) - el.tr["x"](t - 0.05)) * W / 0.05
             sx, sy, dx, dy, alpha, extra = efeitos_el(el, t)
             st.update(extra)
             rea, ru = getattr(self, "_rea", (None, 0))

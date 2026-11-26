@@ -57,7 +57,7 @@ Cenários simples: `chapado` (cor + padrão: raios, bolinhas, listras, chuva, na
 ### Cenários em camadas (kit2d/cenarios2.py)
 Fundo condizente com a história e com vida própria (algo sempre se mexe, sem roubar a cena). Três camadas: fundo, meio e FRENTE.
 A frente (mesa, balcão, painel, encosto do banco, cerca...) é desenhada DEPOIS dos personagens: esconde as pernas de quem está atrás.
-`pipo`, `humano` e `porta` ficam atrás da frente; textos, cartões, setas etc. ficam por cima dela. Mude com `"camada": "meio"` ou `"topo"`.
+`pipo`, `humano`, `bicho` e `porta` ficam atrás da frente; textos, cartões, setas etc. ficam por cima dela. Mude com `"camada": "meio"` ou `"topo"`.
 
 Opções da cena: `luz` (dia, tarde, noite: noite = abajur/lâmpadas com halo quente e janela escura com lua; tarde = laranja com raio de sol; os personagens pegam só um pouco da cor e não perdem contraste) ·
 `ceu` (só o céu das janelas) · `vida`: false (congela as animações) · `chuva`: true (gotas escorrendo na janela nos internos; chuva caindo nos externos e no chapado) · `frente`: false (sem camada da frente).
@@ -116,6 +116,7 @@ Elementos (`tipo`) e as propriedades que aceitam (todas podem mudar com `muda`):
 | split | tela dividida em 2 ou 3 painéis, cada um com a sua mini-cena (seção 4.4) | `paineis`, `direcao` (lado, pilha), `largura` (960), `altura` (900), `meio` ("VS"), `contorno` (16), `tam_rotulo` |
 | mapa | mapa estilizado (kit2d/mapa.py, sem precisão cartográfica) | `qual`: brasil, mundo, america_sul; `regioes` (ou `estados`): true pinta as 5 regiões; `destaque`: lista de cidades com ponto brilhando (`"bauru"` ou `{"cidade", "rotulo", "cor", "lado"}` ou `{"lon", "lat", ...}`); `largura`, `cor` (terra), `cor_mar` (false tira), `titulo` |
 | arvore_natal | árvore de Natal solta com pisca-pisca correndo e estrela com halo | `altura` (560 px), `luzes` 0 a 1 (anime para acender), `luz`: "noite" (brilho mais forte) |
+| bicho | bicho no traço da casa (kit2d/bicho.py; detalhes e exemplo na seção 4.5) | `especie`: pombo, gato, vaca, galinha, cavalo, coelho; `olhos`: lado, frente (gato é sempre frente); `vista`: frente, perfil, cima; `campo` (graus, só em cima), `cego`, `alcance` (620); `olhar`; `expressao`: neutro, desconfiado, julgando, assustado, feliz; `pose`: parado, bicando, agachado, voando (aves); `anda`; `cor`, `cor2` |
 | casa | fachada solta (a da casa_natal_fora) | `largura` (520), `altura` (460), `cor` (parede), `telhado`, `luzes` 0 a 1 (o pisca-pisca acende da esquerda para a direita e a janela esquenta), `natal` (false tira pisca-pisca e guirlanda) |
 
 Todo elemento: `id`, `x`, `y`, `escala`, `rot` (graus), `alpha`, `espelha`, `pode_sobrepor` (true = não acusar texto sobreposto), `camada` (meio/topo).
@@ -137,6 +138,23 @@ recortada e encolhida para caber no painel, com contorno grosso entre eles.
   {"cenario": "sala", "rotulo": "VOCÊ", "brilho": 0.6, "elementos": [{"id": "a", "tipo": "pipo", "ancora": "sofa_assento", "segura": "celular"}]},
   {"cenario": "casa_natal_fora", "rotulo": "VIZINHO", "foco": [0.75, 0.45],
    "elementos": [{"id": "b", "tipo": "humano", "preset": "vizinho_exagerado", "ancora": "quintal_dir", "pose": "comemorando"}]}]}
+```
+
+### 4.5 Bichos (`"tipo": "bicho"`, kit2d/bicho.py)
+Com `escala` 1 o bicho tem ~420 px de altura (pés em +205 px do centro). Conta como personagem: respira, fica atrás da frente do cenário, aceita âncora de chão/assento
+(`"ancora": "calcada"`) e o QA acusa `rosto_na_faixa_legenda` como no humano. Vida própria: pisca, respira, mexe rabo e orelha; com `move` (ou `"anda": true`) anda sozinho e o pombo balança a cabeça.
+- `olhos`: "lado" = como é de verdade (de frente, um olho em cada borda da cabeça; de cima, nas laterais) · "frente" = os dois juntos na cara, com sobrancelha: lê como cara de gente.
+- `vista`: "frente" (encara a câmera), "perfil" (olha para a direita; `"espelha": true` vira), "cima" (visto do alto, cabeça para cima).
+- Em "cima": `campo` (graus; real: pombo 340, cavalo 350, vaca 330, galinha 300, coelho 360; gente ~190) desenha o cone de visão translúcido saindo dos olhos; `cego`: true pinta a zona cega de vermelho.
+  Anime com `{"faz": "muda", "prop": "campo", "para": 190, "dur": 1.2}`. `alcance` = raio do cone em px.
+- Ações: entra, sai, move (anda), escala, pula, treme, squash, soco, muda, `olha`, `expressao`, `pose`. `voando` só vale para pombo e galinha.
+- Custo: ~5 ms por bicho por quadro (o humano custa ~8); o cone soma ~7 ms (desenhado em 1/4 da resolução, em cache).
+```json
+{"id": "pb", "tipo": "bicho", "especie": "pombo", "vista": "perfil", "olhos": "lado", "ancora": "calcada_esq", "expressao": "desconfiado",
+ "acoes": [{"em": "imagine", "faz": "muda", "prop": "olhos", "para": "frente", "som": "pop"},
+           {"em": "anda", "faz": "move", "para": "calcada", "dur": 2}]},
+{"id": "vc", "tipo": "bicho", "especie": "vaca", "vista": "cima", "x": 0.5, "y": 0.34, "escala": 0.8, "campo": 330, "cego": true,
+ "acoes": [{"em": "frente", "faz": "muda", "prop": "campo", "para": 190, "dur": 1.2}]}
 ```
 
 ### 4.1 Memes (`"tipo": "meme"`, kit2d/memes.py)
