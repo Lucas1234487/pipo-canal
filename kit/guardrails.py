@@ -160,8 +160,9 @@ def checa(pasta, pilar=None):
     qp = os.path.join(pasta, "qa_claude.md")
     if os.path.exists(qp):
         q = open(qp).read()
-        mm = re.search(r"VEREDITO:\s*(\w+)", q) or re.search(r"^#.*?:\s*(APROVA|CORRIGE|REPROVA)\b", q, re.M)
-        ver = mm.group(1).upper() if mm else ""
+        # vale o ÚLTIMO veredito do arquivo (reconferência depois da correção), sem diferenciar maiúsculas (26/11)
+        vs = re.findall(r"VEREDITO[^:\n]*:\s*\**\s*(APROVA|CORRIGE|REPROVA)", q, re.I) or re.findall(r"^#.*?:\s*(APROVA|CORRIGE|REPROVA)\b", q, re.M)
+        ver = vs[-1].upper() if vs else ""
         if ver == "APROVA" or ("CORRIGE" in ver and re.search(r"Rodada de corre[cç][aã]o|corrigid|Liberado para a fila", q, re.I)):
             R.ok("qa_claude", ver)
         elif ver == "REPROVA":
@@ -174,6 +175,8 @@ def checa(pasta, pilar=None):
     if os.path.exists(gp):
         g = open(gp).read()
         notas = [float(x.replace(",", ".")) for x in re.findall(r"Nota[^:\n]*:?\**\s*\**\s*(\d+(?:[.,]\d+)?)\s*/\s*10", g)]
+        if not notas:  # formato "Nota de 0 a 10: 9" (26/11)
+            notas = [float(x.replace(",", ".")) for x in re.findall(r"Nota de 0 a 10\**\s*:\s*\**\s*(\d+(?:[.,]\d+)?)", g, re.I)]
         if notas:
             med = sum(notas) / len(notas)
             (R.ok if med >= LIMITES["nota_gemini_min"] else R.falha)("nota_gemini", f"média {med:.1f} ({len(notas)} perfis, mín {LIMITES['nota_gemini_min']})")

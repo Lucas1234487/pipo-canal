@@ -32,6 +32,7 @@ Todos de https://opengameart.org, baixados só quando a página dizia CC0 1.0 (o
 | sfx/heartbeat-sounds | batimento lento e rápido | bart |
 | sfx/3-pop-sounds, sfx/pop-sounds, sfx/pop-effect-sounds, sfx/a-slide-pop-sound | estouros (pop) para a Pipo | wubitog, cogitollc, trezegames, ezduzziteh |
 | sfx/verao-cc0 | cigarra ("Japanese Cicada") e gelo trincando ("Ice Crack 1"), do Freesound via Openverse, CC0 conferida na página em 25/11/2026 (ep011 C, O3) | macdaddyno1, j_p_higgins |
+| sfx/olhos-cc0 | pombo ("pigeon.wav"), vaca ("Cow Moo"), galinha ("Chicken clucking"), cavalo ("Horse_Whinny.wav"), miado ("cat meow"), asas ("pigeons_fly away_ wing flaps_CsG"), do Freesound (preview HQ), CC0 1.0 conferida na página de cada som em 26/11/2026; páginas e recortes em sfx/proveniencia.tsv. bip.ogg: gerado por nós fora do kit, sem comando no repo, não usar (ep013 H, O3) | squashy555, invertedturtle, Breviceps, foxen10, tuberatanka, csaszi |
 | musica/adventure-intro-title-cinematic-epic | abertura épica | nene |
 | musica/cinematic-percussion-loop | percussão cinematográfica em loop | marwan-antonios |
 | musica/cc0-mystery | mistério / exploração | polygondan |

@@ -1,0 +1,117 @@
+{
+ "voice": "pt-BR-AntonioNeural",
+ "rate": "+5%",
+ "pitch": "+0Hz",
+ "lead": 0.1,
+ "trim": true,
+ "trim_tail": 0.1,
+ "aposta": "evolucao",
+ "gancho": "A tia comprou CINCO panetones. Nenhum vai MOFAR.",
+ "tema": "comida de fim de ano / ciência do panetone",
+ "emocao": {
+  "inicio": "identificação com riso de canto: 'é verdade, lá em casa nunca vi panetone mofar'",
+  "fim": "graça e briga boa: o time que come a fruta cristalizada contra o time que tira"
+ },
+ "reconhecivel": "tia do grupo da família, panetone na mesa, fruta cristalizada",
+ "interacao": "comentario_dilema_fim (come ou tira a fruta cristalizada)",
+ "hashtags": [
+  "#PipoPop",
+  "#FelizNatal",
+  "#curiosidades",
+  "#panetone",
+  "#ceiadenatal"
+ ],
+ "pergunta_de_todo_video": {
+  "1_mais_do_mesmo": "Não. É a dúvida que todo mundo tem em dezembro e ninguém pesquisa, com resposta que surpreende (o segredo é o azedinho do fermento, não o conservante). O NOSSO: a tia das cinco caixas e a Pipo estourando no 'ácida'.",
+  "2_sentimento": "Nos 2 primeiros segundos: identificação e riso de 'é a minha tia, e é verdade, nunca vi panetone mofar'. No fim: graça e vontade de entrar na briga da fruta cristalizada.",
+  "3_reconhecivel": "Panetone na mesa de Natal, a caixa empilhada, a tia do grupo da família, a fruta cristalizada catada com o dedo.",
+  "4_precisa_quer_nem_sabe": "Nem sabe que quer: ninguém procura 'por que o panetone não mofa', mas todo mundo já estranhou e para o dedo quando vê a resposta.",
+  "5_por_que_mandaria": "Para a tia das cinco caixas (marcar ela) e para o grupo da família, puxando a briga de quem come e quem tira a fruta."
+ },
+ "lines": [
+  {
+   "text": "A tia comprou cinco panetones. Nenhum vai mofar.",
+   "pause": 0.25,
+   "chave": [
+    "CINCO",
+    "MOFAR"
+   ],
+   "shot": "Quadro 1: tia carregando pilha de CINCO caixas de panetone sem marca, texto grande do gancho; Pipo espiga espia atrás da pilha"
+  },
+  {
+   "text": "Pão comum estraga em poucos dias. O panetone aguenta semanas.",
+   "pause": 0.25,
+   "chave": [
+    "AGUENTA"
+   ],
+   "shot": "Tela dividida: pão francês ganhando manchas verdes num calendário que vira rápido; panetone intacto, calendário virando semanas"
+  },
+  {
+   "text": "Primeiro: a massa leva muito açúcar e gordura.",
+   "pause": 0.2,
+   "chave": [
+    "AÇÚCAR",
+    "GORDURA"
+   ],
+   "shot": "Tigela gigante: saco de AÇÚCAR e tablete de manteiga (GORDURA) caem na massa, pop em cada um"
+  },
+  {
+   "text": "O açúcar prende a água, e sobra menos pro mofo.",
+   "pause": 0.25,
+   "chave": [
+    "PRENDE"
+   ],
+   "shot": "Gotinhas de água presas pelos cristais de açúcar; mofo desenhado com canudinho chupa e quase não vem nada"
+  },
+  {
+   "text": "Mas o grande truque é o fermento natural, que trabalha devagar.",
+   "pause": 0.2,
+   "chave": [
+    "FERMENTO"
+   ],
+   "shot": "Pote de FERMENTO natural (massa-mãe borbulhando) com relógio girando; massa subindo devagar"
+  },
+  {
+   "text": "Ele deixa a massa levemente ácida.",
+   "pause": 0.25,
+   "chave": [
+    "ÁCIDA"
+   ],
+   "shot": "PIPO ESTOURA em 'ácida': flash amarelo-limão, Pipo vira pipoca; texto ÁCIDA na tela"
+  },
+  {
+   "text": "E nesse azedinho, o mofo cresce bem mais lento.",
+   "pause": 0.25,
+   "chave": [
+    "CRESCE"
+   ],
+   "shot": "Mofo tenta CRESCER na fatia, faz careta de azedo e encolhe; Pipo pipoca ri"
+  },
+  {
+   "text": "No de mercado, tem saco fechado e, às vezes, conservante.",
+   "pause": 0.2,
+   "chave": [
+    "MERCADO",
+    "conservante"
+   ],
+   "shot": "Prateleira de MERCADO sem marca: saco metalizado selado e frasquinho rotulado 'conservante'"
+  },
+  {
+   "text": "O artesanal, sem isso, dura menos.",
+   "pause": 0.25,
+   "chave": [
+    "ARTESANAL"
+   ],
+   "shot": "Panetone ARTESANAL de padaria em papel simples, ampulheta pequena ao lado"
+  },
+  {
+   "text": "E a fruta cristalizada: você come ou tira?",
+   "pause": 0.2,
+   "chave": [
+    "FRUTA",
+    "TIRA"
+   ],
+   "shot": "Close de FRUTA cristalizada; split COME x TIRA com a tia e a Pipo pipoca em lados opostos; texto 'Comenta: come ou tira?'"
+  }
+ ]
+}

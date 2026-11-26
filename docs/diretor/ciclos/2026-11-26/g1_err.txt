@@ -1,0 +1,6 @@
+gemini-3.8-flash indisponível (429), tentando o próximo
+gemini-3.7-flash indisponível (429), tentando o próximo
+gemini-3.6-flash indisponível (429), tentando o próximo
+gemini-flash-latest indisponível (429), tentando o próximo
+gemini-3.5-flash indisponível (429), tentando o próximo
+modelo: gemini-2.5-flash

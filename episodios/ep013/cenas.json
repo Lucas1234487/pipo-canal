@@ -1,0 +1,2425 @@
+{
+ "paleta": "mostarda",
+ "cenas": [
+  {
+   "em": 0,
+   "paleta": "mostarda",
+   "fundo_foto": "/home/claude/2026-11-26_H/img/foto1.jpg",
+   "estilo": "real",
+   "kb_de": [
+    1.0,
+    0.56,
+    0.4
+   ],
+   "kb_para": [
+    1.5,
+    0.585,
+    0.35
+   ],
+   "deriva": 0,
+   "elementos": [
+    {
+     "id": "q",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.165,
+     "texto": "ELE TÁ TE\nOLHANDO?",
+     "tam": 72,
+     "cor": "#FFF8EC",
+     "acoes": [
+      {
+       "em": 0,
+       "depois": -0.34,
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": "problema",
+       "faz": "soco"
+      }
+     ]
+    },
+    {
+     "id": "cr",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.565,
+     "texto": "foto: Andrew Cunnington (CC0)",
+     "tam": 28,
+     "cor": "#FFF8EC",
+     "acoes": [
+      {
+       "em": "problema",
+       "depois": -0.45,
+       "faz": "sai",
+       "jeito": "some",
+       "dur": 0.2
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.15,
+     "y": 0.53,
+     "escala": 0.4,
+     "acoes": [
+      {
+       "em": 0.25,
+       "faz": "olha",
+       "para": "dir"
+      },
+      {
+       "em": 1.1,
+       "faz": "squash"
+      },
+      {
+       "em": 1.95,
+       "faz": "sobrancelha",
+       "para": 0.6
+      },
+      {
+       "em": 2.8,
+       "faz": "olha",
+       "para": "camera"
+      },
+      {
+       "em": "problema",
+       "faz": "boca",
+       "para": "o"
+      }
+     ],
+     "sobrancelha": 1.1,
+     "palpebra": 0.5
+    }
+   ]
+  },
+  {
+   "em": "problema",
+   "cenario": "rua",
+   "luz": "dia",
+   "paleta": "mostarda",
+   "transicao": "mergulho",
+   "mergulho_em": [
+    0.55,
+    0.43
+   ],
+   "zoom": 1.0,
+   "elementos": [
+    {
+     "id": "pb",
+     "tipo": "bicho",
+     "especie": "pombo",
+     "olhos": "frente",
+     "vista": "frente",
+     "x": 0.5,
+     "y": 0.3,
+     "escala": 1.15,
+     "expressao": "julgando",
+     "acoes": [
+      {
+       "em": "problema",
+       "faz": "escala",
+       "para": 1.22,
+       "dur": 0.8
+      }
+     ]
+    }
+   ],
+   "acoes": [
+    {
+     "em": "problema",
+     "depois": 0.12,
+     "faz": "reacao",
+     "estilo": "boom",
+     "alvo": "pb",
+     "dur": 0.4
+    }
+   ]
+  },
+  {
+   "em": 3.85,
+   "cenario": "chapado",
+   "padrao": "halftone",
+   "paleta": "rosa",
+   "elementos": [
+    {
+     "id": "sp",
+     "tipo": "split",
+     "x": 0.5,
+     "y": 0.37,
+     "altura": 780,
+     "meio": "",
+     "paineis": [
+      {
+       "cenario": "ceu",
+       "paleta": "menta",
+       "rotulo": "ANTES",
+       "rotulo_pos": "baixo",
+       "foco": [
+        0.5,
+        0.42
+       ],
+       "zoom": 1.2,
+       "elementos": [
+        {
+         "id": "pa",
+         "tipo": "bicho",
+         "especie": "pombo",
+         "olhos": "lado",
+         "vista": "perfil",
+         "x": 0.5,
+         "y": 0.42,
+         "escala": 1.5,
+         "expressao": "neutro",
+         "pose": "bicando",
+         "acoes": [
+          {
+           "em": "nova",
+           "faz": "pose",
+           "para": "parado"
+          },
+          {
+           "em": "frente",
+           "faz": "squash"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "cenario": "ceu",
+       "paleta": "laranja",
+       "rotulo": "AGORA",
+       "rotulo_pos": "baixo",
+       "foco": [
+        0.5,
+        0.42
+       ],
+       "zoom": 1.2,
+       "elementos": [
+        {
+         "id": "pn",
+         "tipo": "bicho",
+         "especie": "pombo",
+         "olhos": "frente",
+         "vista": "frente",
+         "x": 0.5,
+         "y": 0.42,
+         "escala": 1.7,
+         "expressao": "desconfiado",
+         "acoes": [
+          {
+           "em": "ganhou",
+           "faz": "soco"
+          },
+          {
+           "em": "ganhou",
+           "faz": "expressao",
+           "para": "desconfiado"
+          },
+          {
+           "em": "igual",
+           "faz": "expressao",
+           "para": "julgando"
+          },
+          {
+           "em": "seu",
+           "faz": "pula",
+           "altura": 40
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "reg",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.125,
+     "texto": "REGRA: OLHO NA FRENTE",
+     "tam": 62,
+     "cor": "#FFF8EC",
+     "acoes": [
+      {
+       "em": "regra",
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": "ganhou",
+       "faz": "soco"
+      }
+     ],
+     "fundo": "#E8452C",
+     "rot": -3
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.86,
+     "y": 0.52,
+     "escala": 0.36,
+     "acoes": [
+      {
+       "em": 4.1,
+       "faz": "olha",
+       "para": "esq"
+      },
+      {
+       "em": 4.95,
+       "faz": "squash"
+      },
+      {
+       "em": 5.8,
+       "faz": "sobrancelha",
+       "para": 0.6
+      },
+      {
+       "em": 6.65,
+       "faz": "olha",
+       "para": "camera"
+      },
+      {
+       "em": 7.5,
+       "faz": "squash"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": 8.07,
+   "cenario": "chapado",
+   "padrao": "bokeh",
+   "paleta": "menta",
+   "elementos": [
+    {
+     "id": "gato",
+     "tipo": "bicho",
+     "especie": "gato",
+     "olhos": "frente",
+     "vista": "frente",
+     "x": 0.5,
+     "y": 0.42,
+     "escala": 1.15,
+     "expressao": "desconfiado",
+     "acoes": [
+      {
+       "em": 8.07,
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": "notaram",
+       "faz": "olha",
+       "para": "esq"
+      },
+      {
+       "em": "ja",
+       "faz": "olha",
+       "para": "camera"
+      },
+      {
+       "em": "ja",
+       "faz": "squash"
+      }
+     ]
+    },
+    {
+     "id": "ja",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.15,
+     "texto": "GATO, CACHORRO\nE CORUJA:\nJÁ ERAM ASSIM",
+     "tam": 62,
+     "cor": "#FFF8EC",
+     "acoes": [
+      {
+       "em": "gato",
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": "ja",
+       "faz": "soco"
+      }
+     ],
+     "fundo": "#1D1B3A"
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.17,
+     "y": 0.5,
+     "escala": 0.38,
+     "acoes": [
+      {
+       "em": 8.32,
+       "faz": "olha",
+       "para": "dir"
+      },
+      {
+       "em": 9.17,
+       "faz": "squash"
+      },
+      {
+       "em": 10.02,
+       "faz": "sobrancelha",
+       "para": 0.6
+      },
+      {
+       "em": 10.87,
+       "faz": "olha",
+       "para": "camera"
+      }
+     ]
+    }
+   ],
+   "acoes": [
+    {
+     "em": "assim",
+     "depois": 0.05,
+     "faz": "reacao",
+     "estilo": "grilo",
+     "alvo": "gato",
+     "dur": 0.6
+    }
+   ]
+  },
+  {
+   "em": 11.86,
+   "cenario": "chapado",
+   "padrao": "ceu",
+   "ceu": "dia",
+   "paleta": "laranja",
+   "elementos": [
+    {
+     "id": "vaca",
+     "tipo": "bicho",
+     "especie": "vaca",
+     "olhos": "frente",
+     "vista": "frente",
+     "x": 0.5,
+     "y": 0.39,
+     "escala": 1.05,
+     "expressao": "julgando",
+     "acoes": [
+      {
+       "em": "vaca",
+       "faz": "escala",
+       "para": 1.3,
+       "ate": "domingo"
+      },
+      {
+       "em": "encara",
+       "faz": "soco"
+      },
+      {
+       "em": "tia",
+       "faz": "expressao",
+       "para": "desconfiado"
+      }
+     ]
+    },
+    {
+     "id": "tia",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.155,
+     "texto": "IGUAL TIA\nNO ALMOÇO",
+     "tam": 72,
+     "cor": "#FFF8EC",
+     "acoes": [
+      {
+       "em": "igual",
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.84,
+     "y": 0.52,
+     "escala": 0.36,
+     "acoes": [
+      {
+       "em": 12.11,
+       "faz": "olha",
+       "para": "esq"
+      },
+      {
+       "em": 12.96,
+       "faz": "squash"
+      },
+      {
+       "em": 13.81,
+       "faz": "sobrancelha",
+       "para": 0.6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": 14.8,
+   "cenario": "chapado",
+   "padrao": "papel_rasgado",
+   "paleta": "tomate",
+   "elementos": [
+    {
+     "id": "gal",
+     "tipo": "bicho",
+     "especie": "galinha",
+     "olhos": "frente",
+     "vista": "frente",
+     "x": 0.5,
+     "y": 0.4,
+     "escala": 1.1,
+     "expressao": "julgando",
+     "acoes": [
+      {
+       "em": "cara",
+       "faz": "soco"
+      },
+      {
+       "em": "chama",
+       "faz": "pula",
+       "altura": 50
+      },
+      {
+       "em": "gerente",
+       "faz": "treme",
+       "dur": 0.4,
+       "forca": 8
+      }
+     ]
+    },
+    {
+     "id": "fala",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.15,
+     "texto": "QUERO FALAR\nCOM O GERENTE",
+     "tam": 68,
+     "cor": "#FFF8EC",
+     "acoes": [
+      {
+       "em": "cara",
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": "gerente",
+       "faz": "soco"
+      }
+     ],
+     "rot": -2
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.16,
+     "y": 0.52,
+     "escala": 0.36,
+     "acoes": [
+      {
+       "em": 15.05,
+       "faz": "olha",
+       "para": "dir"
+      },
+      {
+       "em": 15.9,
+       "faz": "squash"
+      },
+      {
+       "em": 16.75,
+       "faz": "sobrancelha",
+       "para": 0.6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": 17.45,
+   "cenario": "chapado",
+   "padrao": "formas",
+   "paleta": "uva",
+   "energia": 0.35,
+   "elementos": [
+    {
+     "id": "sp",
+     "tipo": "split",
+     "x": 0.5,
+     "y": 0.37,
+     "altura": 800,
+     "meio": "",
+     "paineis": [
+      {
+       "cenario": "sala",
+       "luz": "dia",
+       "foco": [
+        0.36,
+        0.28
+       ],
+       "zoom": 2.0,
+       "elementos": [
+        {
+         "id": "cav",
+         "tipo": "bicho",
+         "especie": "cavalo",
+         "olhos": "frente",
+         "vista": "frente",
+         "x": 0.36,
+         "y": 0.31,
+         "escala": 1.2,
+         "expressao": "desconfiado",
+         "olhar": "dir",
+         "acoes": [
+          {
+           "em": "cavalo",
+           "faz": "entra",
+           "jeito": "pop"
+          },
+          {
+           "em": "vizinho",
+           "faz": "olha",
+           "para": "camera"
+          },
+          {
+           "em": "janela",
+           "faz": "olha",
+           "para": "dir"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "cenario": "sala",
+       "luz": "dia",
+       "foco": [
+        0.36,
+        0.28
+       ],
+       "zoom": 2.0,
+       "elementos": [
+        {
+         "id": "coe",
+         "tipo": "bicho",
+         "especie": "coelho",
+         "olhos": "frente",
+         "vista": "frente",
+         "x": 0.36,
+         "y": 0.31,
+         "escala": 1.2,
+         "expressao": "julgando",
+         "olhar": "esq",
+         "acoes": [
+          {
+           "em": "coelho",
+           "faz": "entra",
+           "jeito": "pop"
+          },
+          {
+           "em": "fofoqueiro",
+           "faz": "olha",
+           "para": "camera"
+          },
+          {
+           "em": "janela",
+           "faz": "olha",
+           "para": "esq"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "viz",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.12,
+     "texto": "VIZINHOS",
+     "tam": 72,
+     "cor": "#FFF8EC",
+     "acoes": [
+      {
+       "em": "viraram",
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ],
+     "fundo": "#1D1B3A"
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.84,
+     "y": 0.52,
+     "escala": 0.34,
+     "acoes": [
+      {
+       "em": 17.7,
+       "faz": "olha",
+       "para": "esq"
+      },
+      {
+       "em": 18.55,
+       "faz": "squash"
+      },
+      {
+       "em": 19.4,
+       "faz": "sobrancelha",
+       "para": 0.6
+      },
+      {
+       "em": 20.25,
+       "faz": "olha",
+       "para": "camera"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": 20.71,
+   "cenario": "chapado",
+   "padrao": "gradiente_vivo",
+   "paleta": "petroleo",
+   "energia": 0.5,
+   "elementos": [
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.5,
+     "y": 0.4,
+     "escala": 0.8,
+     "acoes": [
+      {
+       "em": 20.96,
+       "faz": "olha",
+       "para": "camera"
+      },
+      {
+       "em": 21.81,
+       "faz": "squash"
+      },
+      {
+       "em": 22.66,
+       "faz": "sobrancelha",
+       "para": 0.6
+      },
+      {
+       "em": 23.51,
+       "faz": "olha",
+       "para": "esq"
+      },
+      {
+       "em": 24.36,
+       "faz": "squash"
+      },
+      {
+       "em": "engracado",
+       "faz": "pula",
+       "altura": 40
+      },
+      {
+       "em": "so",
+       "faz": "boca",
+       "para": "reta"
+      },
+      {
+       "em": "so",
+       "faz": "palpebra",
+       "para": 0.3
+      },
+      {
+       "em": "cobra",
+       "faz": "sobrancelha",
+       "para": 0.2
+      }
+     ],
+     "boca": "sorriso"
+    },
+    {
+     "id": "preco",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.17,
+     "texto": "MAS TEM\nUM PREÇO",
+     "tam": 72,
+     "cor": "#FFF8EC",
+     "acoes": [
+      {
+       "em": "cobra",
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": "caro",
+       "faz": "soco"
+      }
+     ]
+    }
+   ],
+   "acoes": [
+    {
+     "em": "so",
+     "faz": "brilho",
+     "para": 0.6,
+     "dur": 1.2
+    }
+   ]
+  },
+  {
+   "em": 24.63,
+   "cenario": "chapado",
+   "padrao": "ondas",
+   "paleta": "menta",
+   "energia": 0.4,
+   "elementos": [
+    {
+     "id": "pc",
+     "tipo": "bicho",
+     "especie": "pombo",
+     "olhos": "lado",
+     "vista": "cima",
+     "x": 0.5,
+     "y": 0.4,
+     "escala": 0.9,
+     "campo": 0,
+     "alcance": 560,
+     "expressao": "neutro",
+     "acoes": [
+      {
+       "em": "olho",
+       "faz": "muda",
+       "prop": "campo",
+       "para": 340,
+       "ate": "volta"
+      },
+      {
+       "em": "lado",
+       "faz": "soco"
+      }
+     ]
+    },
+    {
+     "id": "ol",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.12,
+     "texto": "OLHO DO LADO",
+     "tam": 72,
+     "cor": "#FFF8EC",
+     "acoes": [
+      {
+       "em": "olho",
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.85,
+     "y": 0.53,
+     "escala": 0.34,
+     "acoes": [
+      {
+       "em": 24.88,
+       "faz": "olha",
+       "para": "esq"
+      },
+      {
+       "em": 25.73,
+       "faz": "squash"
+      },
+      {
+       "em": 26.58,
+       "faz": "sobrancelha",
+       "para": 0.6
+      },
+      {
+       "em": 27.43,
+       "faz": "olha",
+       "para": "camera"
+      },
+      {
+       "em": 28.28,
+       "faz": "squash"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": 28.65,
+   "cenario": "chapado",
+   "padrao": "bokeh",
+   "paleta": "uva",
+   "energia": 0.4,
+   "calma": 0.8,
+   "elementos": [
+    {
+     "id": "pc",
+     "tipo": "bicho",
+     "especie": "pombo",
+     "olhos": "lado",
+     "vista": "cima",
+     "x": 0.5,
+     "y": 0.4,
+     "escala": 0.9,
+     "campo": 340,
+     "alcance": 560,
+     "cego": false,
+     "expressao": "neutro",
+     "acoes": [
+      {
+       "em": "frente",
+       "faz": "muda",
+       "prop": "olhos",
+       "para": "frente"
+      },
+      {
+       "em": "frente",
+       "faz": "muda",
+       "prop": "campo",
+       "para": 190,
+       "dur": 1.2
+      },
+      {
+       "em": "costas",
+       "faz": "muda",
+       "prop": "cego",
+       "para": true
+      },
+      {
+       "em": "costas",
+       "faz": "treme",
+       "dur": 0.4,
+       "forca": 8
+      }
+     ]
+    },
+    {
+     "id": "pcego",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.12,
+     "texto": "PONTO CEGO",
+     "tam": 76,
+     "cor": "#E8452C",
+     "acoes": [
+      {
+       "em": "costas",
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ],
+     "fundo": "#FFF8EC"
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.85,
+     "y": 0.53,
+     "escala": 0.34,
+     "acoes": [
+      {
+       "em": 28.9,
+       "faz": "olha",
+       "para": "esq"
+      },
+      {
+       "em": 29.75,
+       "faz": "squash"
+      },
+      {
+       "em": 30.6,
+       "faz": "sobrancelha",
+       "para": 0.6
+      },
+      {
+       "em": 31.45,
+       "faz": "olha",
+       "para": "baixo"
+      },
+      {
+       "em": "costas",
+       "faz": "boca",
+       "para": "o"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": 31.91,
+   "cenario": "rua",
+   "luz": "tarde",
+   "paleta": "noite",
+   "brilho": 0.75,
+   "elementos": [
+    {
+     "id": "pb",
+     "tipo": "bicho",
+     "especie": "pombo",
+     "olhos": "frente",
+     "vista": "perfil",
+     "x": 0.68,
+     "y": 0.48,
+     "escala": 0.8,
+     "pose": "bicando",
+     "expressao": "neutro"
+    },
+    {
+     "id": "gato",
+     "tipo": "bicho",
+     "especie": "gato",
+     "vista": "perfil",
+     "x": 0.0,
+     "y": 0.47,
+     "escala": 0.9,
+     "pose": "agachado",
+     "expressao": "desconfiado",
+     "acoes": [
+      {
+       "em": 31.91,
+       "faz": "move",
+       "para": [
+        0.3,
+        0.47
+       ],
+       "ate": "gato",
+       "curva": "linear"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.84,
+     "y": 0.25,
+     "escala": 0.32,
+     "acoes": [
+      {
+       "em": 32.16,
+       "faz": "olha",
+       "para": "esq"
+      },
+      {
+       "em": 33.01,
+       "faz": "squash"
+      }
+     ]
+    }
+   ],
+   "acoes": [
+    {
+     "em": 31.91,
+     "faz": "pan",
+     "para": [
+      0.5,
+      0.58
+     ],
+     "dur": 0.01
+    }
+   ]
+  },
+  {
+   "em": 33.86,
+   "cenario": "chapado",
+   "padrao": "gradiente_vivo",
+   "paleta": "petroleo",
+   "energia": 0.4,
+   "elementos": [
+    {
+     "id": "pb",
+     "tipo": "bicho",
+     "especie": "pombo",
+     "olhos": "frente",
+     "vista": "frente",
+     "x": 0.5,
+     "y": 0.38,
+     "escala": 1.0,
+     "pose": "bicando",
+     "expressao": "feliz",
+     "acoes": [
+      {
+       "em": "migalha",
+       "faz": "soco"
+      }
+     ]
+    },
+    {
+     "id": "mig",
+     "tipo": "bloco",
+     "x": 0.72,
+     "y": 0.505,
+     "largura": 40,
+     "altura": 30,
+     "cor": "#E9B872",
+     "acoes": [
+      {
+       "em": "migalha",
+       "faz": "pula",
+       "altura": 20
+      }
+     ]
+    },
+    {
+     "id": "so",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.15,
+     "texto": "SÓ OLHO\nPRA MIGALHA",
+     "tam": 72,
+     "cor": "#FFF8EC",
+     "acoes": [
+      {
+       "em": "olho",
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.15,
+     "y": 0.52,
+     "escala": 0.34,
+     "acoes": [
+      {
+       "em": 34.11,
+       "faz": "olha",
+       "para": "dir"
+      },
+      {
+       "em": 34.96,
+       "faz": "squash"
+      },
+      {
+       "em": 35.81,
+       "faz": "sobrancelha",
+       "para": 0.6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": "celular",
+   "cenario": "chapado",
+   "padrao": "raios_hq",
+   "paleta": "cobalto",
+   "elementos": [
+    {
+     "id": "sp",
+     "tipo": "split",
+     "x": 0.5,
+     "y": 0.34,
+     "meio": "=",
+     "paineis": [
+      {
+       "cenario": "rua",
+       "luz": "tarde",
+       "rotulo": "POMBO",
+       "foco": [
+        0.5,
+        0.58
+       ],
+       "zoom": 1.5,
+       "elementos": [
+        {
+         "id": "pb",
+         "tipo": "bicho",
+         "especie": "pombo",
+         "olhos": "frente",
+         "vista": "perfil",
+         "ancora": "calcada",
+         "escala": 0.7,
+         "pose": "bicando"
+        }
+       ]
+      },
+      {
+       "cenario": "rua",
+       "luz": "tarde",
+       "rotulo": "VOCÊ",
+       "foco": [
+        0.5,
+        0.5
+       ],
+       "zoom": 1.35,
+       "elementos": [
+        {
+         "id": "vc",
+         "tipo": "humano",
+         "preset": "estagiario",
+         "ancora": "calcada",
+         "segura": "celular",
+         "olhar": "celular",
+         "acoes": [
+          {
+           "em": "celular",
+           "faz": "move",
+           "para": [
+            0.62,
+            0.5
+           ],
+           "dur": 0.8,
+           "curva": "linear"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": 37.58,
+   "cenario": "chapado",
+   "padrao": "espiral",
+   "paleta": "noite",
+   "energia": 0.3,
+   "velocidade": 0.4,
+   "elementos": [
+    {
+     "id": "gato",
+     "tipo": "bicho",
+     "especie": "gato",
+     "vista": "frente",
+     "x": 0.5,
+     "y": 0.4,
+     "escala": 0.95,
+     "pose": "agachado",
+     "expressao": "desconfiado",
+     "acoes": [
+      {
+       "em": "perto",
+       "faz": "escala",
+       "para": 1.15,
+       "dur": 0.5
+      },
+      {
+       "em": "perto#2",
+       "faz": "escala",
+       "para": 1.35,
+       "dur": 0.5
+      },
+      {
+       "em": "gato",
+       "faz": "olha",
+       "para": "dir"
+      }
+     ]
+    },
+    {
+     "id": "mp",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.165,
+     "texto": "MAIS PERTO",
+     "tam": 54,
+     "cor": "#FFF8EC",
+     "acoes": [
+      {
+       "em": "perto",
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": "perto#2",
+       "faz": "soco"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.85,
+     "y": 0.52,
+     "escala": 0.34,
+     "acoes": [
+      {
+       "em": 37.83,
+       "faz": "olha",
+       "para": "esq"
+      },
+      {
+       "em": 38.68,
+       "faz": "squash"
+      },
+      {
+       "em": 39.53,
+       "faz": "sobrancelha",
+       "para": 0.6
+      },
+      {
+       "em": 40.38,
+       "faz": "olha",
+       "para": "camera"
+      },
+      {
+       "em": "perto",
+       "faz": "sobrancelha",
+       "para": 1.2
+      },
+      {
+       "em": "gato",
+       "faz": "boca",
+       "para": "o"
+      }
+     ],
+     "palpebra": 0
+    }
+   ],
+   "acoes": [
+    {
+     "em": 37.58,
+     "faz": "zoom",
+     "para": 1.12,
+     "ate": "pulou"
+    },
+    {
+     "em": "perto#2",
+     "faz": "treme",
+     "dur": 1.5,
+     "forca": 4
+    }
+   ]
+  },
+  {
+   "em": "pulou",
+   "cenario": "chapado",
+   "padrao": "raios_hq",
+   "paleta": "tomate",
+   "energia": 1.0,
+   "transicao": "flash_cor",
+   "elementos": [
+    {
+     "id": "pb",
+     "tipo": "bicho",
+     "especie": "pombo",
+     "olhos": "frente",
+     "vista": "perfil",
+     "x": 0.76,
+     "y": 0.44,
+     "escala": 0.6,
+     "pose": "bicando",
+     "expressao": "neutro",
+     "acoes": [
+      {
+       "em": "pulou",
+       "depois": 0.15,
+       "faz": "expressao",
+       "para": "assustado"
+      },
+      {
+       "em": "pulou",
+       "depois": 0.15,
+       "faz": "pose",
+       "para": "parado"
+      }
+     ]
+    },
+    {
+     "id": "gato",
+     "tipo": "bicho",
+     "especie": "gato",
+     "vista": "perfil",
+     "x": 0.25,
+     "y": 0.44,
+     "escala": 0.75,
+     "pose": "agachado",
+     "expressao": "feliz",
+     "acoes": [
+      {
+       "em": "pulou",
+       "faz": "pula",
+       "altura": 260,
+       "dur": 0.85
+      },
+      {
+       "em": "pulou",
+       "faz": "move",
+       "para": [
+        0.55,
+        0.4
+       ],
+       "dur": 0.85,
+       "curva": "linear"
+      },
+      {
+       "em": "pulou",
+       "faz": "expressao",
+       "para": "assustado"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.5,
+     "y": 0.22,
+     "escala": 0.55,
+     "palpebra": 0,
+     "sobrancelha": 1.2,
+     "boca": "o",
+     "acoes": [
+      {
+       "em": "pulou",
+       "faz": "estoura"
+      },
+      {
+       "em": "pulou",
+       "depois": 0.35,
+       "faz": "pula",
+       "altura": 40
+      }
+     ]
+    }
+   ],
+   "acoes": [
+    {
+     "em": "pulou",
+     "faz": "flash"
+    },
+    {
+     "em": "pulou",
+     "faz": "soco",
+     "forca": 0.18
+    },
+    {
+     "em": "pulou",
+     "faz": "treme",
+     "dur": 0.5,
+     "forca": 14
+    }
+   ]
+  },
+  {
+   "em": 42.25,
+   "cenario": "chapado",
+   "padrao": "ceu",
+   "ceu": "dia",
+   "paleta": "laranja",
+   "elementos": [
+    {
+     "id": "gato",
+     "tipo": "bicho",
+     "especie": "gato",
+     "vista": "perfil",
+     "x": 0.42,
+     "y": 0.47,
+     "escala": 0.75,
+     "pose": "parado",
+     "expressao": "assustado",
+     "acoes": [
+      {
+       "em": "estouro",
+       "faz": "expressao",
+       "para": "assustado"
+      },
+      {
+       "em": "voou",
+       "faz": "squash",
+       "forca": 0.35
+      },
+      {
+       "em": "voou",
+       "depois": 0.15,
+       "faz": "move",
+       "para": [
+        0.4,
+        1.25
+       ],
+       "dur": 0.35,
+       "curva": "rapido"
+      },
+      {
+       "em": "voou",
+       "depois": 0.5,
+       "faz": "sai",
+       "jeito": "some"
+      }
+     ]
+    },
+    {
+     "id": "pb",
+     "tipo": "bicho",
+     "especie": "pombo",
+     "olhos": "frente",
+     "vista": "perfil",
+     "x": 0.66,
+     "y": 0.45,
+     "escala": 0.6,
+     "pose": "parado",
+     "expressao": "assustado",
+     "acoes": [
+      {
+       "em": "estouro",
+       "faz": "pula",
+       "altura": 60
+      },
+      {
+       "em": "voou",
+       "faz": "pose",
+       "para": "voando"
+      },
+      {
+       "em": "voou",
+       "faz": "move",
+       "para": [
+        0.82,
+        0.16
+       ],
+       "dur": 0.75
+      },
+      {
+       "em": "tempo",
+       "faz": "sai",
+       "jeito": "some"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "forma": "pipoca",
+     "x": 0.2,
+     "y": 0.22,
+     "escala": 0.5,
+     "boca": "sorriso",
+     "palpebra": 0,
+     "acoes": [
+      {
+       "em": 42.5,
+       "faz": "olha",
+       "para": "camera"
+      },
+      {
+       "em": 43.35,
+       "faz": "pula",
+       "altura": 26
+      },
+      {
+       "em": 44.2,
+       "faz": "sobrancelha",
+       "para": 0.6
+      },
+      {
+       "em": 45.05,
+       "faz": "olha",
+       "para": "esq"
+      }
+     ]
+    },
+    {
+     "id": "voou",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.12,
+     "texto": "VOOU!",
+     "tam": 80,
+     "cor": "#FFF8EC",
+     "acoes": [
+      {
+       "em": "voou",
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": 45.34,
+   "cenario": "chapado",
+   "padrao": "formas",
+   "paleta": "menta",
+   "energia": 0.45,
+   "elementos": [
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "forma": "pipoca",
+     "x": 0.5,
+     "y": 0.4,
+     "escala": 0.85,
+     "boca": "reta",
+     "acoes": [
+      {
+       "em": 45.59,
+       "faz": "olha",
+       "para": "camera"
+      },
+      {
+       "em": 46.44,
+       "faz": "squash"
+      },
+      {
+       "em": 47.29,
+       "faz": "sobrancelha",
+       "para": 0.6
+      },
+      {
+       "em": 48.14,
+       "faz": "olha",
+       "para": "camera"
+      },
+      {
+       "em": 48.99,
+       "faz": "squash"
+      },
+      {
+       "em": "vezes",
+       "faz": "olha",
+       "para": "dir"
+      },
+      {
+       "em": "tras",
+       "faz": "olha",
+       "para": "dir"
+      },
+      {
+       "em": "tras",
+       "faz": "boca",
+       "para": "o"
+      }
+     ]
+    },
+    {
+     "id": "lic",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.15,
+     "texto": "O PERIGO PODE\nVIR POR TRÁS",
+     "tam": 72,
+     "cor": "#FFF8EC",
+     "acoes": [
+      {
+       "em": "perigo",
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": "tras",
+       "faz": "soco"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": 49.85,
+   "cenario": "rua",
+   "luz": "dia",
+   "paleta": "cobalto",
+   "sinal": "vermelho",
+   "elementos": [
+    {
+     "id": "vc",
+     "tipo": "humano",
+     "preset": "estagiario",
+     "x": 0.3,
+     "y": 0.47,
+     "escala": 0.55,
+     "segura": "celular",
+     "olhar": "celular",
+     "acoes": [
+      {
+       "em": 49.85,
+       "faz": "move",
+       "para": [
+        0.62,
+        0.47
+       ],
+       "dur": 2.6,
+       "curva": "linear"
+      }
+     ]
+    },
+    {
+     "id": "manda",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.25,
+     "texto": "MANDA PRA QUEM\nATRAVESSA A RUA\nOLHANDO A TELA",
+     "tam": 58,
+     "cor": "#FFF8EC",
+     "acoes": [
+      {
+       "em": "manda",
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ],
+     "fundo": "#1D1B3A"
+    },
+    {
+     "id": "env",
+     "tipo": "bloco",
+     "x": 0.8,
+     "y": 0.46,
+     "largura": 150,
+     "altura": 150,
+     "cor": "#2FB36B",
+     "texto": "",
+     "raio": 75,
+     "acoes": [
+      {
+       "em": "tela",
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": "tela",
+       "depois": 0.3,
+       "faz": "soco"
+      }
+     ]
+    },
+    {
+     "id": "envs",
+     "tipo": "seta",
+     "x": 0.77,
+     "y": 0.475,
+     "vetor": [
+      70,
+      -50
+     ],
+     "cor": "#FFF8EC",
+     "progresso": 1,
+     "acoes": [
+      {
+       "em": "tela",
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.14,
+     "y": 0.42,
+     "escala": 0.3,
+     "acoes": [
+      {
+       "em": 50.1,
+       "faz": "olha",
+       "para": "dir"
+      },
+      {
+       "em": 50.95,
+       "faz": "squash"
+      },
+      {
+       "em": 51.8,
+       "faz": "sobrancelha",
+       "para": 0.6
+      }
+     ],
+     "forma": "pipoca"
+    }
+   ],
+   "acoes": [
+    {
+     "em": 49.85,
+     "faz": "pan",
+     "para": [
+      0.5,
+      0.58
+     ],
+     "dur": 0.01
+    }
+   ]
+  },
+  {
+   "em": 52.65,
+   "cenario": "chapado",
+   "padrao": "grade_retro",
+   "paleta": "noite",
+   "transicao": "zoom_blur",
+   "elementos": [
+    {
+     "id": "pb",
+     "tipo": "bicho",
+     "especie": "pombo",
+     "olhos": "lado",
+     "vista": "perfil",
+     "x": 0.5,
+     "y": 0.4,
+     "escala": 1.0,
+     "expressao": "desconfiado",
+     "acoes": [
+      {
+       "em": "nasceu",
+       "faz": "soco"
+      },
+      {
+       "em": "pista",
+       "faz": "olha",
+       "para": "cima"
+      },
+      {
+       "em": "dinossauros",
+       "faz": "expressao",
+       "para": "assustado"
+      },
+      {
+       "em": "dinossauros",
+       "faz": "pula",
+       "altura": 40
+      }
+     ]
+    },
+    {
+     "id": "q2",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.15,
+     "texto": "POR QUE\nDO LADO?",
+     "tam": 72,
+     "cor": "#FFF8EC",
+     "acoes": [
+      {
+       "em": "por",
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": "lado",
+       "depois": 0.9,
+       "faz": "sai",
+       "jeito": "pop"
+      }
+     ]
+    },
+    {
+     "id": "pista",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.15,
+     "texto": "A PISTA:\nDINOSSAUROS",
+     "tam": 76,
+     "cor": "#FFC21A",
+     "acoes": [
+      {
+       "em": "pista",
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": "dinossauros",
+       "faz": "soco"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.16,
+     "y": 0.52,
+     "escala": 0.34,
+     "acoes": [
+      {
+       "em": 52.9,
+       "faz": "olha",
+       "para": "dir"
+      },
+      {
+       "em": 53.75,
+       "faz": "squash"
+      },
+      {
+       "em": 54.6,
+       "faz": "sobrancelha",
+       "para": 0.6
+      },
+      {
+       "em": 55.45,
+       "faz": "olha",
+       "para": "cima"
+      },
+      {
+       "em": 56.3,
+       "faz": "squash"
+      },
+      {
+       "em": 57.15,
+       "faz": "sobrancelha",
+       "para": 1.1
+      }
+     ],
+     "forma": "pipoca"
+    }
+   ]
+  },
+  {
+   "em": 57.71,
+   "cenario": "chapado",
+   "padrao": "raios_hq",
+   "paleta": "mostarda",
+   "energia": 0.7,
+   "elementos": [
+    {
+     "id": "com",
+     "tipo": "comentario",
+     "x": 0.56,
+     "y": 0.3,
+     "nome": "você",
+     "texto": "parte 2",
+     "largura": 560,
+     "escala": 1.45,
+     "acoes": [
+      {
+       "em": "comenta",
+       "faz": "entra",
+       "jeito": "desliza_dir"
+      },
+      {
+       "em": "dois",
+       "faz": "squash"
+      }
+     ]
+    },
+    {
+     "id": "cta",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.15,
+     "texto": "COMENTA:\nPARTE 2",
+     "tam": 76,
+     "cor": "#FFF8EC",
+     "acoes": [
+      {
+       "em": "comenta",
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": "levo",
+       "faz": "soco"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "forma": "pipoca",
+     "x": 0.24,
+     "y": 0.47,
+     "escala": 0.62,
+     "boca": "sorriso",
+     "pose": "apontando",
+     "aponta_para": [
+      0.6,
+      -1
+     ],
+     "acoes": [
+      {
+       "em": 57.96,
+       "faz": "olha",
+       "para": "dir"
+      },
+      {
+       "em": 58.81,
+       "faz": "pula",
+       "altura": 26
+      },
+      {
+       "em": 59.66,
+       "faz": "sobrancelha",
+       "para": 0.6
+      }
+     ]
+    }
+   ],
+   "acoes": [
+    {
+     "em": 59.900000000000006,
+     "faz": "congela",
+     "dur": 0.3
+    }
+   ]
+  }
+ ],
+ "musica": "percussao",
+ "musica_inicio": 0,
+ "whoosh_nos_cortes": false,
+ "volume_whoosh": 0.22,
+ "silencios": [
+  [
+   0,
+   60.5
+  ]
+ ],
+ "sfx": [
+  [
+   [
+    "assets/musica/cinematic-percussion-loop/Cinematic%20percussion%20loop%202.wav",
+    0,
+    12.0,
+    0.02
+   ],
+   0.0,
+   0.05
+  ],
+  [
+   "assets/sfx/olhos-cc0/pombo.ogg",
+   0.0,
+   0.3
+  ],
+  [
+   "assets/sfx/pop-sounds/pop1.ogg",
+   0.55,
+   0.55
+  ],
+  [
+   "assets/sfx/olhos-cc0/pombo.ogg",
+   1.7,
+   0.4
+  ],
+  [
+   "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+   2.93,
+   0.15
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_hit_02.ogg",
+   4.03,
+   0.4
+  ],
+  [
+   "assets/sfx/pop-sounds/pop1.ogg",
+   4.95,
+   0.55
+  ],
+  [
+   "assets/sfx/pop-sounds/pop4.ogg",
+   5.56,
+   0.55
+  ],
+  [
+   "assets/sfx/pop-sounds/pop7.ogg",
+   6.28,
+   0.55
+  ],
+  [
+   "assets/sfx/pop-sounds/pop1.ogg",
+   6.98,
+   0.5
+  ],
+  [
+   [
+    "assets/sfx/air-whoosh/whoosh2_0.wav",
+    0,
+    0.7,
+    0.15
+   ],
+   7.82,
+   0.3
+  ],
+  [
+   "assets/sfx/pop-sounds/pop4.ogg",
+   8.17,
+   0.5
+  ],
+  [
+   "assets/sfx/pop-sounds/pop7.ogg",
+   8.79,
+   0.5
+  ],
+  [
+   "assets/sfx/pop-sounds/pop1.ogg",
+   9.33,
+   0.5
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_hit_02.ogg",
+   10.75,
+   0.4
+  ],
+  [
+   [
+    "assets/musica/cinematic-percussion-loop/Cinematic%20percussion%20loop%202.wav",
+    0,
+    8.73,
+    0.02
+   ],
+   11.98,
+   0.05
+  ],
+  [
+   "assets/sfx/olhos-cc0/vaca.ogg",
+   12.99,
+   0.55
+  ],
+  [
+   "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+   14.65,
+   0.3
+  ],
+  [
+   "assets/sfx/olhos-cc0/galinha.ogg",
+   15.03,
+   0.4
+  ],
+  [
+   "assets/sfx/memes/apito_sobe.ogg",
+   16.67,
+   0.45
+  ],
+  [
+   [
+    "assets/sfx/air-whoosh/whoosh2_0.wav",
+    0,
+    0.7,
+    0.15
+   ],
+   17.2,
+   0.3
+  ],
+  [
+   "assets/sfx/olhos-cc0/cavalo.ogg",
+   17.55,
+   0.4
+  ],
+  [
+   "assets/sfx/memes/boing.ogg",
+   18.11,
+   0.5
+  ],
+  [
+   "assets/sfx/a-slide-pop-sound/slidepop_0.mp3",
+   19.93,
+   0.5
+  ],
+  [
+   [
+    "assets/musica/cc0-mystery/mystery%20exploration.mp3",
+    4.0,
+    20.19,
+    0.5
+   ],
+   20.71,
+   0.11
+  ],
+  [
+   "assets/sfx/75-cc0-breaking-falling-hit-sfx/bfh1_hit_07.ogg",
+   20.71,
+   0.85
+  ],
+  [
+   "assets/sfx/memes/apito_desce.ogg",
+   21.7,
+   0.4
+  ],
+  [
+   "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+   24.38,
+   0.28
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_switch_01.ogg",
+   26.34,
+   0.5
+  ],
+  [
+   "assets/sfx/a-slide-pop-sound/slidepop_0.mp3",
+   27.0,
+   0.5
+  ],
+  [
+   [
+    "assets/sfx/air-whoosh/whoosh2_0.wav",
+    0,
+    0.7,
+    0.15
+   ],
+   28.4,
+   0.28
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_switch_01.ogg",
+   29.15,
+   0.5
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_hit_02.ogg",
+   29.87,
+   0.7
+  ],
+  [
+   "assets/sfx/memes/errado.ogg",
+   31.06,
+   0.4
+  ],
+  [
+   "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+   31.76,
+   0.22
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_footstep_01.ogg",
+   32.2,
+   0.3
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_footstep_02.ogg",
+   32.76,
+   0.3
+  ],
+  [
+   "assets/sfx/75-cc0-breaking-falling-hit-sfx/bfh1_hit_03.ogg",
+   33.18,
+   0.55
+  ],
+  [
+   [
+    "assets/sfx/air-whoosh/whoosh2_0.wav",
+    0,
+    0.7,
+    0.15
+   ],
+   33.61,
+   0.22
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_footstep_wood_01.ogg",
+   34.1,
+   0.2
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_footstep_01.ogg",
+   34.63,
+   0.3
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_switch_01.ogg",
+   35.24,
+   0.35
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_footstep_02.ogg",
+   35.99,
+   0.3
+  ],
+  [
+   "assets/sfx/pop-sounds/pop7.ogg",
+   36.81,
+   0.6
+  ],
+  [
+   [
+    "assets/sfx/air-whoosh/whoosh2_0.wav",
+    0,
+    0.7,
+    0.15
+   ],
+   37.33,
+   0.2
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_footstep_wood_01.ogg",
+   37.68,
+   0.25
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_footstep_01.ogg",
+   39.26,
+   0.3
+  ],
+  [
+   "assets/sfx/memes/riser.ogg",
+   39.72,
+   0.8
+  ],
+  [
+   [
+    "assets/musica/cinematic-percussion-loop/Cinematic%20percussion%20loop%202.wav",
+    4.0,
+    8.0,
+    0.02
+   ],
+   41.34,
+   0.06
+  ],
+  [
+   "assets/sfx/3-pop-sounds/pop2.ogg",
+   41.34,
+   1.0
+  ],
+  [
+   "assets/sfx/75-cc0-breaking-falling-hit-sfx/bfh1_hit_03.ogg",
+   41.34,
+   0.9
+  ],
+  [
+   "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+   41.34,
+   0.35
+  ],
+  [
+   "assets/sfx/pop-sounds/pop4.ogg",
+   41.6,
+   0.55
+  ],
+  [
+   "assets/sfx/pop-sounds/pop1.ogg",
+   41.78,
+   0.5
+  ],
+  [
+   "assets/sfx/olhos-cc0/miado.ogg",
+   41.85,
+   0.5
+  ],
+  [
+   [
+    "assets/sfx/air-whoosh/whoosh2_0.wav",
+    0,
+    0.7,
+    0.15
+   ],
+   42.0,
+   0.3
+  ],
+  [
+   "assets/sfx/olhos-cc0/asas.ogg",
+   44.31,
+   0.7
+  ],
+  [
+   "assets/sfx/75-cc0-breaking-falling-hit-sfx/bfh1_falling_01.ogg",
+   44.7,
+   0.5
+  ],
+  [
+   "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+   45.19,
+   0.3
+  ],
+  [
+   "assets/sfx/memes/certo.ogg",
+   47.3,
+   0.45
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_switch_01.ogg",
+   49.12,
+   0.4
+  ],
+  [
+   [
+    "assets/musica/cinematic-percussion-loop/Cinematic%20percussion%20loop%202.wav",
+    0,
+    8.41,
+    0.02
+   ],
+   49.32,
+   0.06
+  ],
+  [
+   [
+    "assets/sfx/air-whoosh/whoosh2_0.wav",
+    0,
+    0.7,
+    0.15
+   ],
+   49.6,
+   0.3
+  ],
+  [
+   "assets/sfx/pop-sounds/pop4.ogg",
+   49.95,
+   0.6
+  ],
+  [
+   "assets/sfx/a-slide-pop-sound/slidepop_0.mp3",
+   51.32,
+   0.4
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_air_02.ogg",
+   52.45,
+   0.4
+  ],
+  [
+   "assets/sfx/pop-sounds/pop1.ogg",
+   53.24,
+   0.4
+  ],
+  [
+   [
+    "assets/sfx/memes/dundun.ogg",
+    0,
+    2.2,
+    0.7
+   ],
+   54.95,
+   0.45
+  ],
+  [
+   [
+    "assets/sfx/cc0-deep-monster-roar/monster_roar.wav",
+    0.15,
+    1.8,
+    0.5
+   ],
+   56.64,
+   0.25
+  ],
+  [
+   "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+   57.56,
+   0.22
+  ],
+  [
+   [
+    "assets/musica/cinematic-percussion-loop/Cinematic%20percussion%20loop%202.wav",
+    8.39,
+    2.21,
+    0.02
+   ],
+   57.71,
+   0.04
+  ],
+  [
+   "assets/sfx/pop-sounds/pop7.ogg",
+   57.71,
+   0.6
+  ],
+  [
+   "assets/sfx/memes/certo.ogg",
+   58.67,
+   0.5
+  ],
+  [
+   [
+    "assets/musica/cinematic-percussion-loop/Cinematic%20percussion%20loop%202.wav",
+    10.58,
+    0.4,
+    0.02
+   ],
+   59.9,
+   0.022
+  ]
+ ],
+ "cauda": 0.08
+}

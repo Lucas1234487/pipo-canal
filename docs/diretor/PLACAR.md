@@ -74,3 +74,11 @@ Ligações: "Vídeo relacionado" da parte 2 aponta para a parte 1 (927OYhLGseo) 
 | ep009 M | Z8NvSx1DZjs | 13º cai até segunda. A promoção, na sexta 💸 | 25/11 18h33 | Gemini 8,4; QA-Claude CORRIGE (dia 31 em novembro, meme cortado) -> corrigido |
 | ep010 H | YNHI1cBnw5M | A casa dela foi a única da rua que apagou 💡 | 25/11 21h17 | Gemini 7,4; QA-Claude CORRIGE (casa rosa na C26) -> corrigido |
 | ep011 C | KcIoeQgofaw | Por que o sorvete dói na testa? 🍦 | 26/11 12h07 | Gemini 8,6; QA-Claude APROVA |
+
+## Agendados em 26/11 (produção diária, 3 pilares)
+| # | ID | Título | Horário | Notas antes |
+|---|---|---|---|---|
+| ep012 M | V3MchhaJU0g | Black Friday: tira print do preço hoje 📸 | 26/11 18:33 | Gemini 8,8; QA-Claude CORRIGE (quadro 1, plaquinha, comentário) -> corrigido |
+| ep013 H | (Metricool 443744187) | E se o pombo tivesse olho na frente? 👀 Parte 1 | 26/11 21:17 | Gemini 9,2; QA-Claude CORRIGE (antes x agora, pombo, gato) -> corrigido |
+| ep014 C | (Metricool 443758177) | Por que o panetone demora pra mofar? 🎄 | 27/11 11:37 | Gemini 8,0; QA-Claude CORRIGE (foto, estouro x fala, título) -> corrigido |
+Parciais do Buffer (vigia 20:23, medidas 26/11 01:13): 24_A 1.260 views/38 h, 24_B 1.152/31 h (30 curtidas, 4 coment.), 25_C 1.100/13 h, 25_M 1.138/7 h, 25_H 871/4 h (31 curtidas, 3,6%).

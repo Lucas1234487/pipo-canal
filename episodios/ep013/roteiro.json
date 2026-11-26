@@ -1,0 +1,129 @@
+{
+ "voice": "pt-BR-AntonioNeural",
+ "rate": "+4%",
+ "pitch": "+0Hz",
+ "lead": 0.15,
+ "trim": true,
+ "trim_tail": 0.1,
+ "aposta": "ousado",
+ "serie": "olhos_pra_frente",
+ "parte": 1,
+ "ancoras": [
+  "problema",
+  "costas",
+  "celular",
+  "pulou",
+  "voou",
+  "trás",
+  "rua",
+  "dinossauros"
+ ],
+ "hashtags": [
+  "#PipoPop",
+  "#curiosidades",
+  "#animais",
+  "#ciencia",
+  "#pombo"
+ ],
+ "interacao": "fim_compartilhamento + fim_comentario (parte dois)",
+ "comentario_fixado": "Qual ficou mais assustador com olho na frente: a vaca, a galinha ou o cavalo? 👀",
+ "pergunta_de_todo_video": {
+  "1_mais_do_mesmo": "Não. 'E se' de bicho existe, mas pombo com cara de gente encarando a câmera, em série de 3 partes que termina nos dinossauros, é novo no canal e no feed. O nosso: a Pipo estourando no susto e salvando o pombo sem querer.",
+  "2_sentimento": "Nos 2 primeiros segundos: estranhamento e riso nervoso (um pombo de olho na frente te encarando). No fim: alívio do susto + curiosidade de saber a parte dois.",
+  "3_reconhecivel": "Pombo da praça, gato de rua, vaca, galinha, tia no almoço de domingo, cliente que quer falar com o gerente, vizinho fofoqueiro na janela, gente andando olhando o celular.",
+  "4_precisa_quer_nem_sabe": "Nem sabe que quer: ninguém procura por que o olho do pombo é do lado, mas a pergunta prende quando aparece; e ainda aprende um fato real (ponto cego nas costas).",
+  "5_por_que_mandaria": "Para zoar quem atravessa a rua sem tirar o olho do celular (amigo, irmão, mãe) e para marcar a tia que encara no almoço de domingo."
+ },
+ "lines": [
+  {
+   "text": "Esse pombo tá te olhando. E isso é um problema.",
+   "pause": 0.2,
+   "shot": "FOTO REAL DO POMBO (CC0, tela cheia) na praça, mergulha no 2D: o pombo com olhos na frente da cara encarando a câmera, zoom lento"
+  },
+  {
+   "text": "Regra nova: todo bicho ganhou olho na frente, igual o seu.",
+   "pause": 0.2,
+   "shot": "carimbo REGRA batendo; regra acontecendo: os olhos de vários bichos deslizam do lado para a frente da cara, pop em cada um"
+  },
+  {
+   "text": "Gato, cachorro e coruja nem notaram: já eram assim.",
+   "pause": 0.2,
+   "shot": "gato, cachorro e coruja dando de ombros, iguaizinhos ao normal (olho na frente desde sempre), selo 'JÁ ERA ASSIM'"
+  },
+  {
+   "text": "Mas a vaca te encara igual tia no almoço de domingo.",
+   "pause": 0.2,
+   "shot": "vaca no pasto com olhos na frente, encarando de perto, mesa de almoço de domingo ao fundo"
+  },
+  {
+   "text": "A galinha tá com cara de quem chama o gerente.",
+   "pause": 0.2,
+   "shot": "galinha de olho na frente, sobrancelha franzida, balcão de loja, plaquinha 'gerente'"
+  },
+  {
+   "text": "Cavalo e coelho viraram vizinho fofoqueiro na janela.",
+   "pause": 0.2,
+   "shot": "cavalo e coelho de olho na frente espiando por uma janela com cortina, cochichando"
+  },
+  {
+   "text": "Engraçado? Só que olho na frente cobra caro.",
+   "pause": 0.2,
+   "shot": "a Pipo (espiga) rindo, depois para de rir; paleta escurece para noite/petróleo, música mistério"
+  },
+  {
+   "text": "O pombo de verdade tem olho do lado: vê quase tudo em volta.",
+   "pause": 0.2,
+   "shot": "SPLIT: pombo real (olho do lado) com leque de visão quase em volta toda, cone largo colorido"
+  },
+  {
+   "text": "Olho na frente deixa um ponto cego enorme nas costas.",
+   "pause": 0.2,
+   "shot": "pombo da regra (olho na frente): cone de visão estreito na frente e grande área escura nas COSTAS, carimbo PONTO CEGO"
+  },
+  {
+   "text": "E é bem ali que chega o gato.",
+   "pause": 0.2,
+   "shot": "na área escura atrás do pombo, um gato surge agachado, olhos brilhando; batida grave"
+  },
+  {
+   "text": "O pombo só tem olho pra migalha, igual a gente no celular.",
+   "pause": 0.2,
+   "shot": "pombo bicando migalha de cabeça baixa; corte rápido para gente andando olhando o CELULAR"
+  },
+  {
+   "text": "Mais perto. Mais perto.",
+   "pause": 0.55,
+   "shot": "gato avançando em dois passos, zoom fechando, batida de coração, silêncio no fim"
+  },
+  {
+   "text": "E o gato pulou!",
+   "pause": 0.4,
+   "shot": "PIPO ESTOURA em 'pulou' (de espiga vira pipoca, som de estouro, flash), gato no ar; daqui em diante a Pipo em forma pipoca"
+  },
+  {
+   "text": "O estouro assustou o pombo, e ele voou a tempo.",
+   "pause": 0.2,
+   "shot": "pombo dá um pulo de susto com o estouro e VOA, gato cai no vazio; paleta quente, música aventura"
+  },
+  {
+   "text": "Nem todo perigo vem da frente. Às vezes vem por trás.",
+   "pause": 0.2,
+   "shot": "Pipo pipoca olhando por cima do ombro, texto da lição na tela"
+  },
+  {
+   "text": "Manda pra quem atravessa a rua olhando a tela.",
+   "pause": 0.2,
+   "shot": "faixa de pedestre, pessoa atravessando a RUA olhando a tela; texto 'Manda pra quem atravessa assim', ícone de enviar"
+  },
+  {
+   "text": "Por que o pombo nasceu com olho do lado? A pista tá nos dinossauros.",
+   "pause": 0.2,
+   "shot": "pombo pousado; a sombra dele vira a sombra de um dinossauro, ponto de interrogação gigante"
+  },
+  {
+   "text": "Comenta parte dois que eu te levo lá.",
+   "pause": 0.2,
+   "shot": "texto 'Comenta PARTE DOIS', Pipo pipoca apontando para os comentários; fim logo depois"
+  }
+ ]
+}

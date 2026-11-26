@@ -1,0 +1,130 @@
+{
+ "voice": "pt-BR-FranciscaNeural",
+ "rate": "+5%",
+ "pitch": "+0Hz",
+ "lead": 0.1,
+ "trim": true,
+ "trim_tail": 0.1,
+ "aposta": "seguro",
+ "experimentos": [
+  "m_util_dica"
+ ],
+ "humor": "nenhum",
+ "hashtags": [
+  "#PipoPop",
+  "#BlackFriday",
+  "#BlackFridayBrasil",
+  "#DireitoDoConsumidor",
+  "#EconomiaDomestica"
+ ],
+ "interacao": [
+  "comentario: confia ou desconfia (linha9)",
+  "compartilhar: manda pra quem vai comprar televisão amanhã (linha10)"
+ ],
+ "pergunta_de_todo_video": {
+  "1_mais_do_mesmo": "O tema é batido em toda véspera, mas o nosso é a Pipo de detetive com o print na mão e o estouro ao ver o mesmo preço fantasiado; a dica vira uma cena, não uma lista.",
+  "2_sentimento": "No começo, susto e alerta (o preço vai mentir pra mim?); no fim, raiva boa e a vontade de 'eu preciso mandar isso' antes de sexta.",
+  "3_reconhecivel": "O carrinho cheio na quinta à noite, a televisão esperando desconto e a tela piscando 'oferta imperdível': todo mundo já viveu.",
+  "4_precisa_ou_quer": "Precisa, e é para hoje: amanhã já é tarde para anotar o preço de antes.",
+  "5_por_que_mandar": "Porque protege o dinheiro de alguém amanhã; manda para o tio, o pai ou o amigo que já está de olho numa televisão."
+ },
+ "lines": [
+  {
+   "text": "Tira print desse preço hoje. Amanhã ele vai mentir pra você.",
+   "pause": 0.3,
+   "chave": [
+    "PRINT",
+    "MENTIR"
+   ],
+   "shot": "CELULAR GIGANTE em tela cheia com uma televisão e etiqueta de preço com 'PREÇO DE EXEMPLO' (sem marca, sem loja); texto grande no quadro 1: TIRA PRINT HOJE; dedo bate no botão de print"
+  },
+  {
+   "text": "Quinta à noite, o tio já enche o carrinho pra sexta.",
+   "pause": 0.2,
+   "chave": [
+    "CARRINHO"
+   ],
+   "shot": "sala à noite (paleta noite), o tio no sofá com o celular; um CARRINHO de compras desenhado enche de caixas, uma a uma, com pop em cada uma"
+  },
+  {
+   "text": "A televisão tá lá, parada, só esperando o desconto.",
+   "pause": 0.2,
+   "chave": [
+    "TELEVISÃO",
+    "DESCONTO"
+   ],
+   "shot": "close da TELEVISÃO dentro do carrinho, de laço, com plaquinha 'esperando DESCONTO'; relógio da parede andando"
+  },
+  {
+   "text": "A Pipo, desconfiada, guarda o preço de hoje.",
+   "pause": 0.3,
+   "chave": [
+    "GUARDA"
+   ],
+   "shot": "Pipo espiga com lupa e cara desconfiada; FLASH DE PRINT (tela branca rápida com som de câmera) e a Pipo GUARDA a foto do preço (PREÇO DE EXEMPLO) num envelope com a data de quinta"
+  },
+  {
+   "text": "Sexta bem cedo, a tela pisca: oferta imperdível!",
+   "pause": 0.25,
+   "chave": [
+    "linha4",
+    "PISCA"
+   ],
+   "shot": "corte seco para manhã de sexta (paleta quente); a tela do celular PISCA em vermelho e amarelo com 'OFERTA IMPERDÍVEL!' e preço riscado (PREÇO DE EXEMPLO); o tio arregala os olhos"
+  },
+  {
+   "text": "Aí a Pipo compara com o print de ontem.",
+   "pause": 0.45,
+   "chave": [
+    "COMPARA",
+    "PRINT#2"
+   ],
+   "shot": "tela dividida: à esquerda o print de quinta tirado do envelope, à direita a oferta de sexta; a Pipo COMPARA, olhando de um lado para o outro"
+  },
+  {
+   "text": "É o mesmo preço. Só ganhou fantasia de desconto.",
+   "pause": 0.15,
+   "chave": [
+    "MESMO",
+    "FANTASIA",
+    "DESCONTO#2"
+   ],
+   "shot": "VIRADA: os dois preços se sobrepõem e batem iguais; PIPO ESTOURA em 'mesmo' (flash, som de estouro, vira pipoca); a etiqueta de sexta ganha chapéu e bigode de festa (FANTASIA)"
+  },
+  {
+   "text": "Tem loja que sobe o preço antes, pra fingir que baixou.",
+   "pause": 0.12,
+   "chave": [
+    "SOBE",
+    "BAIXOU"
+   ],
+   "shot": "GRÁFICO SOBE E VOLTA: linha do preço sobe nas semanas antes e desce na sexta de volta ao mesmo ponto; Pipo pipoca aponta a linha; loja genérica sem nome nem logo"
+  },
+  {
+   "text": "Quem defende o consumidor avisa: anota o preço antes.",
+   "pause": 0.12,
+   "chave": [
+    "linha8",
+    "ANOTA"
+   ],
+   "shot": "caderninho e caneta: a mão ANOTA o preço; texto na tela 'Dica dos órgãos de defesa do consumidor (Procon-SP, Idec)'; carimbo CONFERE NO DIA"
+  },
+  {
+   "text": "No preço de sexta: confia ou desconfia?",
+   "pause": 0.12,
+   "chave": [
+    "CONFIA"
+   ],
+   "shot": "dois botões grandes na tela, CONFIA e DESCONFIA; Pipo pipoca de braços cruzados ao lado do DESCONFIA; texto: COMENTA: CONFIA OU DESCONFIA?"
+  },
+  {
+   "text": "Manda pra quem vai comprar televisão amanhã.",
+   "pause": 0.2,
+   "chave": [
+    "MANDA",
+    "TELEVISÃO#2"
+   ],
+   "shot": "CTA escrito na tela: MANDA PRA QUEM VAI COMPRAR TELEVISÃO AMANHÃ; o tio com o carrinho olha para a câmera, a Pipo pipoca empurra o celular para ele"
+  }
+ ]
+}

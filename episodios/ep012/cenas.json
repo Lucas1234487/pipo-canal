@@ -1,0 +1,2305 @@
+{
+ "cauda": 0.08,
+ "paleta": "cobalto",
+ "cenas": [
+  {
+   "em": 0,
+   "cenario": "celular",
+   "padrao": "gradiente_vivo",
+   "paleta": "cobalto",
+   "hora": "21:47",
+   "energia": 0.7,
+   "elementos": [
+    {
+     "largura": 60,
+     "altura": 70,
+     "cor": "#1D1B3A",
+     "raio": 8,
+     "id": "tv_pe",
+     "tipo": "bloco",
+     "x": 0.5,
+     "y": 0.4318,
+     "escala": 1.0,
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "print",
+       "faz": "move",
+       "para": [
+        0.5,
+        0.4256
+       ],
+       "dur": 0.25
+      },
+      {
+       "em": "print",
+       "faz": "escala",
+       "para": 0.88,
+       "dur": 0.25
+      }
+     ]
+    },
+    {
+     "largura": 300,
+     "altura": 26,
+     "cor": "#1D1B3A",
+     "raio": 13,
+     "id": "tv_base",
+     "tipo": "bloco",
+     "x": 0.5,
+     "y": 0.4526,
+     "escala": 1.0,
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "print",
+       "faz": "move",
+       "para": [
+        0.5,
+        0.4439
+       ],
+       "dur": 0.25
+      },
+      {
+       "em": "print",
+       "faz": "escala",
+       "para": 0.88,
+       "dur": 0.25
+      }
+     ]
+    },
+    {
+     "largura": 660,
+     "altura": 400,
+     "cor": "#1D1B3A",
+     "raio": 30,
+     "id": "tv_mold",
+     "tipo": "bloco",
+     "x": 0.5,
+     "y": 0.325,
+     "escala": 1.0,
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "print",
+       "faz": "move",
+       "para": [
+        0.5,
+        0.3316
+       ],
+       "dur": 0.25
+      },
+      {
+       "em": "print",
+       "faz": "escala",
+       "para": 0.88,
+       "dur": 0.25
+      }
+     ]
+    },
+    {
+     "largura": 600,
+     "altura": 340,
+     "cor": "#2B4FA8",
+     "raio": 16,
+     "id": "tv_tela",
+     "tipo": "bloco",
+     "x": 0.5,
+     "y": 0.3219,
+     "escala": 1.0,
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "print",
+       "faz": "move",
+       "para": [
+        0.5,
+        0.3289
+       ],
+       "dur": 0.25
+      },
+      {
+       "em": "print",
+       "faz": "escala",
+       "para": 0.88,
+       "dur": 0.25
+      }
+     ]
+    },
+    {
+     "largura": 60,
+     "altura": 300,
+     "cor": "#FFFFFF",
+     "alpha": 0.28,
+     "rot": 28,
+     "raio": 20,
+     "id": "tv_bri",
+     "tipo": "bloco",
+     "x": 0.3611,
+     "y": 0.3042,
+     "escala": 1.0,
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "print",
+       "faz": "move",
+       "para": [
+        0.3778,
+        0.3133
+       ],
+       "dur": 0.25
+      },
+      {
+       "em": "print",
+       "faz": "escala",
+       "para": 0.88,
+       "dur": 0.25
+      }
+     ]
+    },
+    {
+     "largura": 24,
+     "altura": 280,
+     "cor": "#FFFFFF",
+     "alpha": 0.22,
+     "rot": 28,
+     "raio": 10,
+     "id": "tv_bri2",
+     "tipo": "bloco",
+     "x": 0.4259,
+     "y": 0.3042,
+     "escala": 1.0,
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "print",
+       "faz": "move",
+       "para": [
+        0.4348,
+        0.3133
+       ],
+       "dur": 0.25
+      },
+      {
+       "em": "print",
+       "faz": "escala",
+       "para": 0.88,
+       "dur": 0.25
+      }
+     ]
+    },
+    {
+     "id": "etq",
+     "tipo": "contador",
+     "x": 0.42,
+     "y": 0.5,
+     "valor": 2000,
+     "prefixo": "R$ ",
+     "tam": 110,
+     "cor": "#FFD23F",
+     "acoes": [
+      {
+       "em": "print",
+       "faz": "move",
+       "para": [
+        0.4296,
+        0.4856
+       ],
+       "dur": 0.25
+      },
+      {
+       "em": "print",
+       "faz": "escala",
+       "para": 0.88,
+       "dur": 0.25
+      },
+      {
+       "em": "mentir",
+       "faz": "treme",
+       "dur": 0.6,
+       "forca": 12
+      }
+     ]
+    },
+    {
+     "id": "ex",
+     "tipo": "texto",
+     "x": 0.42,
+     "y": 0.565,
+     "texto": "PREÇO DE EXEMPLO",
+     "tam": 48,
+     "cor": "#FFD23F",
+     "fundo": "#1D1B3A",
+     "acoes": [
+      {
+       "em": "print",
+       "faz": "move",
+       "para": [
+        0.4296,
+        0.5428
+       ],
+       "dur": 0.25
+      },
+      {
+       "em": "print",
+       "faz": "escala",
+       "para": 0.88,
+       "dur": 0.25
+      }
+     ]
+    },
+    {
+     "id": "tit",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.155,
+     "texto": "TIRA PRINT DESSE PREÇO HOJE\nAMANHÃ ELE VAI MENTIR",
+     "tam": 58,
+     "cor": "#FFF8EC",
+     "acoes": [
+      {
+       "em": -0.1,
+       "faz": "entra",
+       "jeito": "pop",
+       "dur": 0.3
+      },
+      {
+       "em": "hoje",
+       "faz": "soco"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.84,
+     "y": 0.5,
+     "escala": 0.5,
+     "sobrancelha": 1.2,
+     "palpebra": 0.42,
+     "olhar": "esq",
+     "camada": "topo",
+     "acoes": [
+      {
+       "em": "mentir",
+       "faz": "entra",
+       "jeito": "desliza_dir",
+       "dur": 0.3
+      },
+      {
+       "em": "pra",
+       "faz": "olha",
+       "para": "camera"
+      },
+      {
+       "em": "voce",
+       "faz": "squash"
+      }
+     ]
+    }
+   ],
+   "acoes": [
+    {
+     "em": "print",
+     "faz": "flash",
+     "dur": 0.2
+    },
+    {
+     "em": "mentir",
+     "faz": "soco",
+     "forca": 0.1
+    }
+   ]
+  },
+  {
+   "em": "linha1",
+   "cenario": "sala",
+   "luz": "noite",
+   "paleta": "uva",
+   "elementos": [
+    {
+     "id": "tio",
+     "tipo": "humano",
+     "preset": "tiozao_do_churrasco",
+     "ancora": "sofa_assento",
+     "pose": "sentado",
+     "assento": false,
+     "segura": "celular",
+     "olhar": "celular",
+     "expressao": "feliz",
+     "acoes": [
+      {
+       "em": "tio",
+       "faz": "squash"
+      },
+      {
+       "em": "carrinho",
+       "faz": "expressao",
+       "para": "charmoso"
+      },
+      {
+       "em": "sexta",
+       "faz": "olha",
+       "para": "camera"
+      }
+     ]
+    },
+    {
+     "id": "car",
+     "tipo": "texto",
+     "x": 0.7,
+     "y": 0.255,
+     "texto": "CARRINHO:\n1 TV",
+     "tam": 72,
+     "cor": "#FFF8EC",
+     "fundo": "#6B3FA0",
+     "rot": -4,
+     "acoes": [
+      {
+       "em": "carrinho",
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": "sexta",
+       "faz": "soco"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": "linha2",
+   "cenario": "chapado",
+   "padrao": "formas",
+   "paleta": "menta",
+   "energia": 0.55,
+   "elementos": [
+    {
+     "largura": 60,
+     "altura": 70,
+     "cor": "#1D1B3A",
+     "raio": 8,
+     "id": "tv_pe",
+     "tipo": "bloco",
+     "x": 0.47,
+     "y": 0.4474,
+     "escala": 1.1,
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "televisao",
+       "faz": "move",
+       "para": [
+        0.47,
+        0.4374
+       ],
+       "dur": 1.4
+      },
+      {
+       "em": "parada",
+       "faz": "move",
+       "para": [
+        0.47,
+        0.4474
+       ],
+       "dur": 1.2
+      }
+     ]
+    },
+    {
+     "largura": 300,
+     "altura": 26,
+     "cor": "#1D1B3A",
+     "raio": 13,
+     "id": "tv_base",
+     "tipo": "bloco",
+     "x": 0.47,
+     "y": 0.4704,
+     "escala": 1.1,
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "televisao",
+       "faz": "move",
+       "para": [
+        0.47,
+        0.4604
+       ],
+       "dur": 1.4
+      },
+      {
+       "em": "parada",
+       "faz": "move",
+       "para": [
+        0.47,
+        0.4704
+       ],
+       "dur": 1.2
+      }
+     ]
+    },
+    {
+     "largura": 660,
+     "altura": 400,
+     "cor": "#1D1B3A",
+     "raio": 30,
+     "id": "tv_mold",
+     "tipo": "bloco",
+     "x": 0.47,
+     "y": 0.33,
+     "escala": 1.1,
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "televisao",
+       "faz": "move",
+       "para": [
+        0.47,
+        0.32
+       ],
+       "dur": 1.4
+      },
+      {
+       "em": "parada",
+       "faz": "move",
+       "para": [
+        0.47,
+        0.33
+       ],
+       "dur": 1.2
+      }
+     ]
+    },
+    {
+     "largura": 600,
+     "altura": 340,
+     "cor": "#2B4FA8",
+     "raio": 16,
+     "id": "tv_tela",
+     "tipo": "bloco",
+     "x": 0.47,
+     "y": 0.3266,
+     "escala": 1.1,
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "televisao",
+       "faz": "move",
+       "para": [
+        0.47,
+        0.3166
+       ],
+       "dur": 1.4
+      },
+      {
+       "em": "parada",
+       "faz": "move",
+       "para": [
+        0.47,
+        0.3266
+       ],
+       "dur": 1.2
+      }
+     ]
+    },
+    {
+     "largura": 60,
+     "altura": 300,
+     "cor": "#FFFFFF",
+     "alpha": 0.28,
+     "rot": 28,
+     "raio": 20,
+     "id": "tv_bri",
+     "tipo": "bloco",
+     "x": 0.3172,
+     "y": 0.3071,
+     "escala": 1.1,
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "televisao",
+       "faz": "move",
+       "para": [
+        0.3172,
+        0.2971
+       ],
+       "dur": 1.4
+      },
+      {
+       "em": "parada",
+       "faz": "move",
+       "para": [
+        0.3172,
+        0.3071
+       ],
+       "dur": 1.2
+      }
+     ]
+    },
+    {
+     "largura": 24,
+     "altura": 280,
+     "cor": "#FFFFFF",
+     "alpha": 0.22,
+     "rot": 28,
+     "raio": 10,
+     "id": "tv_bri2",
+     "tipo": "bloco",
+     "x": 0.3885,
+     "y": 0.3071,
+     "escala": 1.1,
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "televisao",
+       "faz": "move",
+       "para": [
+        0.3885,
+        0.2971
+       ],
+       "dur": 1.4
+      },
+      {
+       "em": "parada",
+       "faz": "move",
+       "para": [
+        0.3885,
+        0.3071
+       ],
+       "dur": 1.2
+      }
+     ]
+    },
+    {
+     "id": "etq",
+     "tipo": "contador",
+     "x": 0.47,
+     "y": 0.5,
+     "valor": 2000,
+     "prefixo": "R$ ",
+     "tam": 100,
+     "cor": "#FFD23F",
+     "acoes": [
+      {
+       "em": "esperando",
+       "faz": "pisca",
+       "brilho": true,
+       "dur": 0.8,
+       "cor": "#FFD98A"
+      }
+     ]
+    },
+    {
+     "id": "ex",
+     "tipo": "texto",
+     "x": 0.47,
+     "y": 0.565,
+     "texto": "PREÇO DE EXEMPLO",
+     "tam": 48,
+     "cor": "#FFD23F",
+     "fundo": "#1D1B3A",
+     "acoes": []
+    },
+    {
+     "id": "tit",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.15,
+     "texto": "ESPERANDO O\nDESCONTO...",
+     "tam": 72,
+     "cor": "#FFF8EC",
+     "acoes": [
+      {
+       "em": "desconto",
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ]
+    },
+    {
+     "id": "tio",
+     "tipo": "humano",
+     "preset": "tiozao_do_churrasco",
+     "x": 0.87,
+     "y": 0.5,
+     "escala": 0.4,
+     "expressao": "neutro",
+     "camada": "topo",
+     "olhar": "esq",
+     "acoes": [
+      {
+       "em": "desconto",
+       "faz": "expressao",
+       "para": "apaixonado"
+      },
+      {
+       "em": "desconto",
+       "faz": "pula",
+       "altura": 30
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": "linha3",
+   "cenario": "chapado",
+   "padrao": "ondas",
+   "paleta": "petroleo",
+   "energia": 0.6,
+   "elementos": [
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.56,
+     "y": 0.4,
+     "escala": 0.95,
+     "segura": "celular",
+     "olhar": "celular",
+     "palpebra": 0.42,
+     "sobrancelha": 1.2,
+     "acoes": [
+      {
+       "em": "Pipo",
+       "faz": "olha",
+       "para": "camera"
+      },
+      {
+       "em": "desconfiada",
+       "faz": "olha",
+       "para": "esq"
+      },
+      {
+       "em": "desconfiada",
+       "depois": 0.4,
+       "faz": "olha",
+       "para": "dir"
+      },
+      {
+       "em": "guarda",
+       "faz": "squash"
+      },
+      {
+       "em": "guarda",
+       "faz": "olha",
+       "para": "celular"
+      },
+      {
+       "em": "hoje",
+       "faz": "olha",
+       "para": "cima"
+      }
+     ]
+    },
+    {
+     "id": "pol_m",
+     "tipo": "bloco",
+     "x": 0.29,
+     "y": 0.19,
+     "largura": 500,
+     "altura": 300,
+     "cor": "#FFFFFF",
+     "raio": 8,
+     "rot": -7,
+     "acoes": [
+      {
+       "em": "guarda",
+       "faz": "entra",
+       "jeito": "cai",
+       "dur": 0.55
+      }
+     ]
+    },
+    {
+     "id": "pol_f",
+     "tipo": "bloco",
+     "x": 0.29,
+     "y": 0.184,
+     "largura": 460,
+     "altura": 210,
+     "cor": "#24305E",
+     "raio": 6,
+     "rot": -7,
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "guarda",
+       "faz": "entra",
+       "jeito": "cai",
+       "dur": 0.55
+      }
+     ]
+    },
+    {
+     "id": "pol_t0",
+     "tipo": "texto",
+     "x": 0.29,
+     "y": 0.167,
+     "texto": "PRINT DE QUINTA:",
+     "tam": 52,
+     "cor": "#FFF8EC",
+     "rot": -7,
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "guarda",
+       "faz": "entra",
+       "jeito": "cai",
+       "dur": 0.55
+      }
+     ]
+    },
+    {
+     "id": "pol_t1",
+     "tipo": "texto",
+     "x": 0.29,
+     "y": 0.201,
+     "texto": "R$ 2.000",
+     "tam": 52,
+     "cor": "#FFD23F",
+     "rot": -7,
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "guarda",
+       "faz": "entra",
+       "jeito": "cai",
+       "dur": 0.55
+      }
+     ]
+    },
+    {
+     "id": "pol_ex",
+     "tipo": "texto",
+     "x": 0.31,
+     "y": 0.268,
+     "texto": "EXEMPLO",
+     "tam": 48,
+     "cor": "#FFD23F",
+     "fundo": "#C2185B",
+     "rot": -7,
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "guarda",
+       "faz": "entra",
+       "jeito": "cai",
+       "dur": 0.55
+      }
+     ]
+    }
+   ],
+   "acoes": [
+    {
+     "em": "guarda",
+     "faz": "flash",
+     "dur": 0.18
+    }
+   ]
+  },
+  {
+   "em": "linha4",
+   "cenario": "loja",
+   "luz": "dia",
+   "paleta": "laranja",
+   "placa": "OFERTA!",
+   "placa2": "SÓ HOJE",
+   "transicao": "wipe_diagonal",
+   "elementos": [
+    {
+     "id": "tio",
+     "tipo": "humano",
+     "preset": "tiozao_do_churrasco",
+     "ancora": "centro",
+     "expressao": "feliz",
+     "pose": "comemorando",
+     "acoes": [
+      {
+       "em": "Sexta",
+       "faz": "pula",
+       "altura": 50
+      },
+      {
+       "em": "cedo",
+       "faz": "pula",
+       "altura": 50
+      },
+      {
+       "em": "pisca",
+       "faz": "move",
+       "para": [
+        0.2,
+        0.47
+       ],
+       "dur": 0.35
+      },
+      {
+       "em": "pisca",
+       "faz": "expressao",
+       "para": "apaixonado"
+      },
+      {
+       "em": "oferta",
+       "faz": "pula",
+       "altura": 60
+      },
+      {
+       "em": "imperdivel",
+       "faz": "pula",
+       "altura": 60
+      }
+     ]
+    },
+    {
+     "id": "card",
+     "tipo": "bloco",
+     "camada": "topo",
+     "x": 0.62,
+     "y": 0.44,
+     "largura": 620,
+     "altura": 330,
+     "cor": "#1D1B3A",
+     "raio": 26,
+     "rot": -3,
+     "acoes": [
+      {
+       "em": "pisca",
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": "imperdivel",
+       "faz": "soco"
+      }
+     ]
+    },
+    {
+     "id": "risco",
+     "tipo": "bloco",
+     "camada": "topo",
+     "x": 0.62,
+     "y": 0.4,
+     "largura": 500,
+     "altura": 16,
+     "cor": "#E8352A",
+     "raio": 8,
+     "rot": -6,
+     "acoes": [
+      {
+       "em": "pisca",
+       "faz": "entra",
+       "jeito": "pop",
+       "depois": 0.15
+      }
+     ]
+    },
+    {
+     "id": "de",
+     "tipo": "texto",
+     "camada": "topo",
+     "x": 0.62,
+     "y": 0.398,
+     "texto": "DE R$ 2.600",
+     "tam": 64,
+     "cor": "#B9B4CC",
+     "rot": -3,
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "pisca",
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ]
+    },
+    {
+     "id": "por",
+     "tipo": "texto",
+     "camada": "topo",
+     "x": 0.62,
+     "y": 0.472,
+     "texto": "POR R$ 2.000",
+     "tam": 84,
+     "cor": "#FFD23F",
+     "rot": -3,
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "pisca",
+       "faz": "entra",
+       "jeito": "pop",
+       "depois": 0.2
+      },
+      {
+       "em": "oferta",
+       "faz": "pisca",
+       "brilho": true,
+       "dur": 1.0,
+       "cor": "#FFD98A"
+      }
+     ]
+    },
+    {
+     "id": "ex",
+     "tipo": "texto",
+     "x": 0.62,
+     "y": 0.553,
+     "texto": "PREÇO DE EXEMPLO",
+     "tam": 48,
+     "cor": "#FFD23F",
+     "fundo": "#1D1B3A",
+     "acoes": [
+      {
+       "em": "pisca",
+       "faz": "entra",
+       "jeito": "pop",
+       "depois": 0.2
+      }
+     ],
+     "camada": "topo"
+    }
+   ],
+   "acoes": [
+    {
+     "em": "pisca",
+     "faz": "flash",
+     "dur": 0.12
+    }
+   ]
+  },
+  {
+   "em": "linha5",
+   "cenario": "chapado",
+   "padrao": "bokeh",
+   "paleta": "noite",
+   "energia": 0.6,
+   "elementos": [
+    {
+     "id": "qui_m",
+     "tipo": "bloco",
+     "x": 0.27,
+     "y": 0.25,
+     "largura": 500,
+     "altura": 300,
+     "cor": "#FFFFFF",
+     "raio": 8,
+     "rot": -5,
+     "acoes": [
+      {
+       "em": "linha5",
+       "faz": "entra",
+       "jeito": "desliza_esq",
+       "dur": 0.35
+      }
+     ]
+    },
+    {
+     "id": "qui_f",
+     "tipo": "bloco",
+     "x": 0.27,
+     "y": 0.244,
+     "largura": 460,
+     "altura": 210,
+     "cor": "#24305E",
+     "raio": 6,
+     "rot": -5,
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "linha5",
+       "faz": "entra",
+       "jeito": "desliza_esq",
+       "dur": 0.35
+      }
+     ]
+    },
+    {
+     "id": "qui_t0",
+     "tipo": "texto",
+     "x": 0.27,
+     "y": 0.227,
+     "texto": "QUINTA",
+     "tam": 52,
+     "cor": "#FFF8EC",
+     "rot": -5,
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "linha5",
+       "faz": "entra",
+       "jeito": "desliza_esq",
+       "dur": 0.35
+      }
+     ]
+    },
+    {
+     "id": "qui_t1",
+     "tipo": "texto",
+     "x": 0.27,
+     "y": 0.261,
+     "texto": "R$ 2.000",
+     "tam": 52,
+     "cor": "#FFD23F",
+     "rot": -5,
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "linha5",
+       "faz": "entra",
+       "jeito": "desliza_esq",
+       "dur": 0.35
+      }
+     ]
+    },
+    {
+     "id": "qui_ex",
+     "tipo": "texto",
+     "x": 0.29,
+     "y": 0.328,
+     "texto": "EXEMPLO",
+     "tam": 48,
+     "cor": "#FFD23F",
+     "fundo": "#C2185B",
+     "rot": -5,
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "linha5",
+       "faz": "entra",
+       "jeito": "desliza_esq",
+       "dur": 0.35
+      }
+     ]
+    },
+    {
+     "id": "sex",
+     "tipo": "bloco",
+     "x": 0.73,
+     "y": 0.25,
+     "largura": 400,
+     "altura": 280,
+     "cor": "#E8352A",
+     "raio": 26,
+     "rot": 4,
+     "acoes": [
+      {
+       "em": "compara",
+       "faz": "entra",
+       "jeito": "desliza_dir",
+       "dur": 0.35
+      }
+     ]
+    },
+    {
+     "id": "sex_t0",
+     "tipo": "texto",
+     "x": 0.73,
+     "y": 0.225,
+     "texto": "SEXTA",
+     "tam": 60,
+     "cor": "#FFF8EC",
+     "rot": 4,
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "compara",
+       "faz": "entra",
+       "jeito": "desliza_dir",
+       "dur": 0.35
+      }
+     ]
+    },
+    {
+     "id": "sex_t1",
+     "tipo": "texto",
+     "x": 0.73,
+     "y": 0.265,
+     "texto": "R$ 2.000",
+     "tam": 60,
+     "cor": "#FFD23F",
+     "rot": 4,
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "compara",
+       "faz": "entra",
+       "jeito": "desliza_dir",
+       "dur": 0.35
+      }
+     ]
+    },
+    {
+     "id": "ex",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.385,
+     "texto": "PREÇO DE EXEMPLO",
+     "tam": 48,
+     "cor": "#FFD23F",
+     "fundo": "#1D1B3A",
+     "acoes": []
+    },
+    {
+     "id": "seta",
+     "tipo": "seta",
+     "x": 0.3,
+     "y": 0.435,
+     "vetor": [
+      380,
+      0
+     ],
+     "curva": 0.35,
+     "progresso": 0,
+     "cor": "#FFD23F",
+     "acoes": [
+      {
+       "em": "print#2",
+       "faz": "muda",
+       "prop": "progresso",
+       "para": 1,
+       "dur": 0.4
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.5,
+     "y": 0.5,
+     "escala": 0.62,
+     "segura": "celular",
+     "olhar": "esq",
+     "palpebra": 0.42,
+     "sobrancelha": 1.1,
+     "acoes": [
+      {
+       "em": "compara",
+       "faz": "olha",
+       "para": "dir"
+      },
+      {
+       "em": "com",
+       "faz": "olha",
+       "para": "esq"
+      },
+      {
+       "em": "print#2",
+       "faz": "olha",
+       "para": "dir"
+      },
+      {
+       "em": "ontem",
+       "faz": "olha",
+       "para": "camera"
+      },
+      {
+       "em": "ontem",
+       "faz": "palpebra",
+       "para": 0
+      },
+      {
+       "em": "ontem",
+       "faz": "treme",
+       "dur": 0.4,
+       "forca": 5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": "linha6",
+   "cenario": "chapado",
+   "padrao": "espiral",
+   "paleta": "tomate",
+   "energia": 0.95,
+   "velocidade": 1.3,
+   "transicao": "flash_cor",
+   "elementos": [
+    {
+     "id": "etq",
+     "tipo": "contador",
+     "x": 0.5,
+     "y": 0.325,
+     "valor": 2000,
+     "prefixo": "R$ ",
+     "tam": 120,
+     "cor": "#FFD23F",
+     "acoes": [
+      {
+       "em": "mesmo",
+       "faz": "soco"
+      },
+      {
+       "em": "fantasia",
+       "faz": "squash"
+      }
+     ]
+    },
+    {
+     "id": "ex",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.42,
+     "texto": "PREÇO DE EXEMPLO",
+     "tam": 48,
+     "cor": "#FFD23F",
+     "fundo": "#1D1B3A",
+     "acoes": []
+    },
+    {
+     "pode_sobrepor": true,
+     "id": "chap",
+     "tipo": "bloco",
+     "x": 0.66,
+     "y": 0.255,
+     "largura": 110,
+     "altura": 150,
+     "cor": "#2A3FD1",
+     "raio": 14,
+     "rot": 14,
+     "acoes": [
+      {
+       "em": "fantasia",
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ]
+    },
+    {
+     "pode_sobrepor": true,
+     "id": "chap_f",
+     "tipo": "bloco",
+     "x": 0.66,
+     "y": 0.272,
+     "largura": 110,
+     "altura": 22,
+     "cor": "#FFD23F",
+     "raio": 8,
+     "rot": 14,
+     "acoes": [
+      {
+       "em": "fantasia",
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ]
+    },
+    {
+     "pode_sobrepor": true,
+     "id": "pomp",
+     "tipo": "bloco",
+     "x": 0.677,
+     "y": 0.213,
+     "largura": 48,
+     "altura": 48,
+     "cor": "#FFD23F",
+     "raio": 24,
+     "acoes": [
+      {
+       "em": "fantasia",
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ]
+    },
+    {
+     "pode_sobrepor": true,
+     "id": "gb1",
+     "tipo": "bloco",
+     "x": 0.455,
+     "y": 0.375,
+     "largura": 90,
+     "altura": 60,
+     "cor": "#C2185B",
+     "raio": 16,
+     "rot": -15,
+     "acoes": [
+      {
+       "em": "fantasia",
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ]
+    },
+    {
+     "pode_sobrepor": true,
+     "id": "gb2",
+     "tipo": "bloco",
+     "x": 0.545,
+     "y": 0.375,
+     "largura": 90,
+     "altura": 60,
+     "cor": "#C2185B",
+     "raio": 16,
+     "rot": 15,
+     "acoes": [
+      {
+       "em": "fantasia",
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ]
+    },
+    {
+     "pode_sobrepor": true,
+     "id": "gb0",
+     "tipo": "bloco",
+     "x": 0.5,
+     "y": 0.375,
+     "largura": 40,
+     "altura": 40,
+     "cor": "#FFD23F",
+     "raio": 12,
+     "acoes": [
+      {
+       "em": "fantasia",
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ]
+    },
+    {
+     "id": "car",
+     "tipo": "carimbo",
+     "x": 0.5,
+     "y": 0.22,
+     "texto": "MESMO PREÇO",
+     "cor": "#FFF8EC",
+     "tam": 88,
+     "inclina": -10,
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "mesmo",
+       "faz": "entra",
+       "jeito": "pop",
+       "dur": 0.25
+      },
+      {
+       "em": "ganhou",
+       "faz": "sai",
+       "jeito": "pop"
+      }
+     ]
+    },
+    {
+     "id": "tit",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.165,
+     "texto": "FANTASIA DE\nDESCONTO",
+     "tam": 72,
+     "cor": "#FFD23F",
+     "acoes": [
+      {
+       "em": "fantasia",
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.5,
+     "y": 0.555,
+     "escala": 0.6,
+     "olhar": "cima",
+     "palpebra": 0.42,
+     "sobrancelha": 1.2,
+     "acoes": [
+      {
+       "em": "linha6",
+       "faz": "treme",
+       "dur": 0.3,
+       "forca": 4
+      },
+      {
+       "em": "mesmo",
+       "faz": "estoura"
+      },
+      {
+       "em": "preco",
+       "faz": "olha",
+       "para": "camera"
+      },
+      {
+       "em": "So",
+       "faz": "pula",
+       "altura": 40
+      },
+      {
+       "em": "desconto#2",
+       "faz": "olha",
+       "para": "cima"
+      },
+      {
+       "em": "desconto#2",
+       "faz": "squash"
+      }
+     ]
+    }
+   ],
+   "acoes": [
+    {
+     "em": "mesmo",
+     "faz": "soco",
+     "forca": 0.14
+    },
+    {
+     "em": "mesmo",
+     "faz": "treme",
+     "dur": 0.4,
+     "forca": 22
+    },
+    {
+     "em": "fantasia",
+     "faz": "reacao",
+     "estilo": "ohh",
+     "alvo": "pipo"
+    }
+   ]
+  },
+  {
+   "em": "linha7",
+   "cenario": "chapado",
+   "padrao": "grade_retro",
+   "paleta": "mostarda",
+   "energia": 0.6,
+   "elementos": [
+    {
+     "id": "linha_antes",
+     "tipo": "bloco",
+     "x": 0.45,
+     "y": 0.4188,
+     "largura": 700,
+     "altura": 12,
+     "cor": "#FFF8EC",
+     "raio": 6,
+     "alpha": 0.95
+    },
+    {
+     "id": "rot_antes",
+     "tipo": "texto",
+     "x": 0.26,
+     "y": 0.3888,
+     "texto": "PREÇO DE ANTES",
+     "tam": 48,
+     "cor": "#FFF8EC",
+     "fundo": "#1D1B3A"
+    },
+    {
+     "id": "bar",
+     "tipo": "barra",
+     "x": 0.58,
+     "y": 0.55,
+     "valor": 45,
+     "max": 100,
+     "altura": 560,
+     "largura": 210,
+     "cor": "#E8352A",
+     "nome": "PREÇO",
+     "acoes": [
+      {
+       "em": "sobe",
+       "faz": "cresce",
+       "para": 92,
+       "dur": 0.7
+      },
+      {
+       "em": "baixou",
+       "faz": "cresce",
+       "para": 45,
+       "dur": 0.5
+      }
+     ]
+    },
+    {
+     "id": "lab",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.165,
+     "texto": "SOBE ANTES",
+     "tam": 72,
+     "cor": "#FFD23F",
+     "acoes": [
+      {
+       "em": "sobe",
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": "baixou",
+       "faz": "muda",
+       "prop": "texto",
+       "para": "FINGE QUE BAIXOU"
+      },
+      {
+       "em": "baixou",
+       "faz": "soco"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "forma": "pipoca",
+     "x": 0.84,
+     "y": 0.47,
+     "escala": 0.55,
+     "aponta_para": [
+      -1,
+      -0.4
+     ],
+     "olhar": "esq",
+     "acoes": [
+      {
+       "em": "loja",
+       "faz": "pula",
+       "altura": 30
+      },
+      {
+       "em": "sobe",
+       "faz": "olha",
+       "para": "cima"
+      },
+      {
+       "em": "antes",
+       "faz": "squash"
+      },
+      {
+       "em": "baixou",
+       "faz": "olha",
+       "para": "camera"
+      },
+      {
+       "em": "baixou",
+       "faz": "pula",
+       "altura": 40
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": "linha8",
+   "cenario": "escritorio",
+   "luz": "tarde",
+   "paleta": "menta",
+   "elementos": [
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "forma": "pipoca",
+     "ancora": "cadeira",
+     "segura": "celular",
+     "olhar": "celular",
+     "acoes": [
+      {
+       "em": "defende",
+       "faz": "olha",
+       "para": "camera"
+      },
+      {
+       "em": "anota",
+       "faz": "pula",
+       "altura": 40
+      },
+      {
+       "em": "anota",
+       "faz": "olha",
+       "para": "celular"
+      },
+      {
+       "em": "antes",
+       "faz": "squash"
+      }
+     ]
+    },
+    {
+     "id": "tit",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.165,
+     "texto": "ANOTA O\nPREÇO ANTES",
+     "tam": 80,
+     "cor": "#FFD23F",
+     "acoes": [
+      {
+       "em": "anota",
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ]
+    },
+    {
+     "id": "dica",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.283,
+     "texto": "DICA DOS ÓRGÃOS DE\nDEFESA DO CONSUMIDOR\n(PROCON-SP, IDEC)",
+     "tam": 58,
+     "cor": "#FFF8EC",
+     "fundo": "#1F6E6A",
+     "acoes": [
+      {
+       "em": "anota",
+       "faz": "entra",
+       "jeito": "pop",
+       "depois": 0.25
+      }
+     ]
+    },
+    {
+     "camada": "topo",
+     "id": "pol_m",
+     "tipo": "bloco",
+     "x": 0.72,
+     "y": 0.47,
+     "largura": 500,
+     "altura": 300,
+     "cor": "#FFFFFF",
+     "raio": 8,
+     "rot": 8,
+     "acoes": [
+      {
+       "em": "consumidor",
+       "faz": "entra",
+       "jeito": "cai",
+       "dur": 0.5
+      }
+     ]
+    },
+    {
+     "camada": "topo",
+     "id": "pol_f",
+     "tipo": "bloco",
+     "x": 0.72,
+     "y": 0.464,
+     "largura": 460,
+     "altura": 210,
+     "cor": "#24305E",
+     "raio": 6,
+     "rot": 8,
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "consumidor",
+       "faz": "entra",
+       "jeito": "cai",
+       "dur": 0.5
+      }
+     ]
+    },
+    {
+     "camada": "topo",
+     "id": "pol_t0",
+     "tipo": "texto",
+     "x": 0.72,
+     "y": 0.447,
+     "texto": "PRINT DE QUINTA:",
+     "tam": 52,
+     "cor": "#FFF8EC",
+     "rot": 8,
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "consumidor",
+       "faz": "entra",
+       "jeito": "cai",
+       "dur": 0.5
+      }
+     ]
+    },
+    {
+     "camada": "topo",
+     "id": "pol_t1",
+     "tipo": "texto",
+     "x": 0.72,
+     "y": 0.481,
+     "texto": "R$ 2.000",
+     "tam": 52,
+     "cor": "#FFD23F",
+     "rot": 8,
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "consumidor",
+       "faz": "entra",
+       "jeito": "cai",
+       "dur": 0.5
+      }
+     ]
+    },
+    {
+     "camada": "topo",
+     "id": "pol_ex",
+     "tipo": "texto",
+     "x": 0.74,
+     "y": 0.548,
+     "texto": "EXEMPLO",
+     "tam": 48,
+     "cor": "#FFD23F",
+     "fundo": "#C2185B",
+     "rot": 8,
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "consumidor",
+       "faz": "entra",
+       "jeito": "cai",
+       "dur": 0.5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": "linha9",
+   "cenario": "chapado",
+   "padrao": "gradiente_vivo",
+   "paleta": "rosa",
+   "energia": 0.7,
+   "elementos": [
+    {
+     "id": "tit",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.165,
+     "texto": "NO PREÇO DE SEXTA:\nCONFIA OU DESCONFIA?",
+     "tam": 72,
+     "cor": "#FFF8EC",
+     "acoes": [
+      {
+       "em": "linha9",
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ]
+    },
+    {
+     "id": "sim",
+     "tipo": "bloco",
+     "x": 0.28,
+     "y": 0.34,
+     "largura": 400,
+     "altura": 220,
+     "cor": "#2E9E4F",
+     "texto": "CONFIO",
+     "tam": 80,
+     "rot": -3,
+     "acoes": [
+      {
+       "em": "confia",
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ]
+    },
+    {
+     "id": "nao",
+     "tipo": "bloco",
+     "x": 0.72,
+     "y": 0.34,
+     "largura": 400,
+     "altura": 220,
+     "cor": "#E8352A",
+     "texto": "DESCONFIO",
+     "tam": 72,
+     "rot": 3,
+     "acoes": [
+      {
+       "em": "desconfia",
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": "desconfia",
+       "depois": 0.35,
+       "faz": "soco"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "forma": "pipoca",
+     "x": 0.5,
+     "y": 0.5,
+     "escala": 0.55,
+     "olhar": "camera",
+     "acoes": [
+      {
+       "em": "preco",
+       "faz": "pula",
+       "altura": 40
+      },
+      {
+       "em": "sexta",
+       "faz": "pula",
+       "altura": 40
+      },
+      {
+       "em": "confia",
+       "faz": "olha",
+       "para": "esq"
+      },
+      {
+       "em": "confia",
+       "faz": "pula",
+       "altura": 50
+      },
+      {
+       "em": "desconfia",
+       "faz": "olha",
+       "para": "dir"
+      },
+      {
+       "em": "desconfia",
+       "faz": "pula",
+       "altura": 50
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": "linha10",
+   "cenario": "quarto",
+   "luz": "noite",
+   "paleta": "cobalto",
+   "elementos": [
+    {
+     "id": "tio",
+     "tipo": "humano",
+     "preset": "tiozao_do_churrasco",
+     "ancora": "cama",
+     "pose": "sentado",
+     "assento": false,
+     "segura": "celular",
+     "olhar": "celular",
+     "expressao": "neutro",
+     "acoes": [
+      {
+       "em": "manda",
+       "faz": "expressao",
+       "para": "surpreso"
+      },
+      {
+       "em": "comprar",
+       "faz": "olha",
+       "para": "camera"
+      },
+      {
+       "em": "amanha",
+       "faz": "expressao",
+       "para": "feliz"
+      }
+     ]
+    },
+    {
+     "id": "tit",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.165,
+     "texto": "MANDA PRA QUEM VAI\nCOMPRAR TV AMANHÃ",
+     "tam": 72,
+     "cor": "#FFD23F",
+     "acoes": [
+      {
+       "em": "manda",
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ]
+    },
+    {
+     "id": "com",
+     "tipo": "comentario",
+     "x": 0.5,
+     "y": 0.29,
+     "largura": 700,
+     "nome": "SOBRINHA",
+     "texto": "TIO, TIRA PRINT ANTES!",
+     "cor_avatar": "#C2185B",
+     "acoes": [
+      {
+       "em": "manda",
+       "faz": "entra",
+       "jeito": "desliza_dir",
+       "depois": 0.2
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "forma": "pipoca",
+     "x": 0.83,
+     "y": 0.47,
+     "escala": 0.5,
+     "olhar": "camera",
+     "aponta_para": [
+      0.3,
+      -1
+     ],
+     "acoes": [
+      {
+       "em": "linha10",
+       "faz": "pula",
+       "altura": 30
+      },
+      {
+       "em": 33.35,
+       "faz": "gira",
+       "para": 12,
+       "dur": 0.3
+      },
+      {
+       "em": 33.65,
+       "faz": "gira",
+       "para": -12,
+       "dur": 0.3
+      },
+      {
+       "em": 33.95,
+       "faz": "gira",
+       "para": 12,
+       "dur": 0.3
+      },
+      {
+       "em": 34.25,
+       "faz": "gira",
+       "para": -12,
+       "dur": 0.3
+      },
+      {
+       "em": 34.55,
+       "faz": "gira",
+       "para": 12,
+       "dur": 0.3
+      },
+      {
+       "em": 34.85,
+       "faz": "gira",
+       "para": -12,
+       "dur": 0.3
+      },
+      {
+       "em": 35.15,
+       "faz": "gira",
+       "para": 12,
+       "dur": 0.3
+      }
+     ]
+    }
+   ],
+   "acoes": [
+    {
+     "em": 35.629,
+     "faz": "congela",
+     "dur": 0.3
+    }
+   ]
+  }
+ ],
+ "musica": "misterio",
+ "musica_inicio": 0,
+ "whoosh_nos_cortes": false,
+ "volume_whoosh": 0.22,
+ "silencios": [
+  [
+   0,
+   36.43
+  ]
+ ],
+ "sfx": [
+  [
+   [
+    "assets/musica/cc0-mystery/mystery%20exploration.mp3",
+    0,
+    13.98,
+    0.15
+   ],
+   0,
+   0.11
+  ],
+  [
+   "assets/sfx/75-cc0-breaking-falling-hit-sfx/bfh1_hit_07.ogg",
+   0.0,
+   0.35
+  ],
+  [
+   "assets/sfx/pop-sounds/pop1.ogg",
+   0.05,
+   0.6
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_switch_02.ogg",
+   0.46,
+   0.7
+  ],
+  [
+   [
+    "assets/sfx/memes/glitch.ogg",
+    0,
+    0.25,
+    0.04
+   ],
+   0.48,
+   0.4
+  ],
+  [
+   "assets/sfx/75-cc0-breaking-falling-hit-sfx/bfh1_hit_03.ogg",
+   2.78,
+   0.75
+  ],
+  [
+   "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+   4.04,
+   0.22
+  ],
+  [
+   "assets/sfx/pop-sounds/pop7.ogg",
+   6.12,
+   0.7
+  ],
+  [
+   [
+    "assets/sfx/air-whoosh/whoosh2_0.wav",
+    0,
+    0.7,
+    0.15
+   ],
+   7.33,
+   0.24
+  ],
+  [
+   "assets/sfx/memes/certo.ogg",
+   9.82,
+   0.5
+  ],
+  [
+   "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+   10.6,
+   0.22
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_switch_01.ogg",
+   12.21,
+   0.75
+  ],
+  [
+   "assets/sfx/pop-sounds/pop9.ogg",
+   12.23,
+   0.45
+  ],
+  [
+   [
+    "assets/sfx/air-whoosh/whoosh2_0.wav",
+    0,
+    0.7,
+    0.15
+   ],
+   13.73,
+   0.34
+  ],
+  [
+   "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+   13.76,
+   0.12
+  ],
+  [
+   [
+    "assets/musica/cc0-mystery/mystery%20exploration.mp3",
+    13.83,
+    3.76,
+    0.15
+   ],
+   13.83,
+   0.1265
+  ],
+  [
+   [
+    "assets/sfx/memes/glitch.ogg",
+    0.6,
+    0.5,
+    0.05
+   ],
+   15.37,
+   0.45
+  ],
+  [
+   "assets/sfx/pop-sounds/pop3.ogg",
+   15.4,
+   0.35
+  ],
+  [
+   "assets/sfx/pop-sounds/pop4.ogg",
+   15.62,
+   0.35
+  ],
+  [
+   "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+   17.34,
+   0.2
+  ],
+  [
+   [
+    "assets/musica/cc0-mystery/mystery%20exploration.mp3",
+    17.44,
+    1.6,
+    0.15
+   ],
+   17.44,
+   0.077
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_switch_01.ogg",
+   18.2,
+   0.6
+  ],
+  [
+   [
+    "assets/musica/cc0-mystery/mystery%20exploration.mp3",
+    18.89,
+    1.14,
+    0.15
+   ],
+   18.89,
+   0.044
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_switch_02.ogg",
+   18.89,
+   0.6
+  ],
+  [
+   [
+    "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+    0,
+    0.45,
+    0.08
+   ],
+   20.12,
+   0.2
+  ],
+  [
+   [
+    "assets/sfx/air-whoosh/whoosh2_0.wav",
+    0,
+    0.7,
+    0.15
+   ],
+   20.45,
+   0.3
+  ],
+  [
+   [
+    "assets/musica/adventure-intro-title-cinematic-epic/Adventure%20Theme%20Intro.wav",
+    13.0,
+    9.15,
+    0.15
+   ],
+   20.53,
+   0.176
+  ],
+  [
+   "assets/sfx/3-pop-sounds/pop2.ogg",
+   20.53,
+   1.0
+  ],
+  [
+   [
+    "assets/sfx/memes/boom.ogg",
+    0,
+    1.5,
+    0.3
+   ],
+   20.53,
+   0.5
+  ],
+  [
+   "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+   23.61,
+   0.15
+  ],
+  [
+   "assets/sfx/memes/apito_sobe.ogg",
+   24.37,
+   0.55
+  ],
+  [
+   "assets/sfx/memes/apito_desce.ogg",
+   26.34,
+   0.6
+  ],
+  [
+   [
+    "assets/sfx/air-whoosh/whoosh2_0.wav",
+    0,
+    0.7,
+    0.15
+   ],
+   26.95,
+   0.24
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_switch_02.ogg",
+   28.95,
+   0.65
+  ],
+  [
+   [
+    "assets/musica/adventure-intro-title-cinematic-epic/Adventure%20Theme%20Intro.wav",
+    22.0,
+    4.15,
+    0.15
+   ],
+   29.53,
+   0.0715
+  ],
+  [
+   "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+   30.28,
+   0.22
+  ],
+  [
+   "assets/sfx/pop-sounds/pop1.ogg",
+   31.68,
+   0.7
+  ],
+  [
+   "assets/sfx/3-pop-sounds/pop1.ogg",
+   32.34,
+   0.9
+  ],
+  [
+   [
+    "assets/sfx/air-whoosh/whoosh2_0.wav",
+    0,
+    0.7,
+    0.15
+   ],
+   33.15,
+   0.24
+  ],
+  [
+   "assets/sfx/memes/certo.ogg",
+   33.34,
+   0.6
+  ],
+  [
+   [
+    "assets/musica/adventure-intro-title-cinematic-epic/Adventure%20Theme%20Intro.wav",
+    26.0,
+    3.0,
+    0.3
+   ],
+   33.53,
+   0.143
+  ]
+ ]
+}

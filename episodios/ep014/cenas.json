@@ -1,0 +1,7899 @@
+{
+ "paleta": "mostarda",
+ "cenas": [
+  {
+   "em": 0,
+   "cenario": "sala_natal",
+   "luz": "tarde",
+   "paleta": "mostarda",
+   "elementos": [
+    {
+     "id": "tia",
+     "tipo": "humano",
+     "preset": "tia_do_zap",
+     "ancora": "mesa",
+     "dx": 0.035,
+     "segura": "",
+     "olhar": "camera",
+     "pose": "mao_na_cintura",
+     "expressao": "feliz",
+     "acoes": [
+      {
+       "em": "tia",
+       "faz": "squash",
+       "forca": 0.08
+      },
+      {
+       "em": "cinco",
+       "faz": "olha",
+       "para": "esq"
+      },
+      {
+       "em": "panetones",
+       "faz": "olha",
+       "para": "camera"
+      },
+      {
+       "em": "nenhum",
+       "faz": "pose",
+       "para": "bracos_cruzados"
+      },
+      {
+       "em": "mofar",
+       "faz": "expressao",
+       "para": "charmoso"
+      },
+      {
+       "em": "mofar",
+       "faz": "pula",
+       "altura": 18
+      }
+     ]
+    },
+    {
+     "id": "cal_fundo",
+     "tipo": "bloco",
+     "x": 0.835,
+     "y": 0.345,
+     "largura": 270,
+     "altura": 300,
+     "cor": "#1D1B3A",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": 2.2,
+       "faz": "treme",
+       "dur": 0.3,
+       "forca": 3
+      }
+     ],
+     "raio": 22
+    },
+    {
+     "id": "cal_topo",
+     "tipo": "bloco",
+     "x": 0.835,
+     "y": 0.2905,
+     "largura": 270,
+     "altura": 92,
+     "cor": "#E8452C",
+     "pode_sobrepor": true,
+     "acoes": [],
+     "raio": 20,
+     "texto": "NOV",
+     "tam": 66,
+     "cor_texto": "#FFF3E0"
+    },
+    {
+     "id": "cal_dia",
+     "tipo": "texto",
+     "x": 0.835,
+     "y": 0.371,
+     "texto": "31",
+     "tam": 150,
+     "cor": "#FFF3E0",
+     "acoes": [],
+     "pode_sobrepor": true
+    },
+    {
+     "id": "cx0",
+     "tipo": "bloco",
+     "x": 0.555,
+     "y": 0.5417,
+     "largura": 290,
+     "altura": 126,
+     "cor": "#E8452C",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": 0.0,
+       "faz": "gira",
+       "para": 0.9,
+       "dur": 0.42
+      },
+      {
+       "em": 0.42,
+       "faz": "gira",
+       "para": -0.9,
+       "dur": 0.42
+      },
+      {
+       "em": 0.84,
+       "faz": "gira",
+       "para": 0.9,
+       "dur": 0.42
+      },
+      {
+       "em": 1.26,
+       "faz": "gira",
+       "para": -0.9,
+       "dur": 0.42
+      },
+      {
+       "em": 1.68,
+       "faz": "gira",
+       "para": 0.9,
+       "dur": 0.42
+      },
+      {
+       "em": 2.1,
+       "faz": "gira",
+       "para": -0.9,
+       "dur": 0.42
+      },
+      {
+       "em": 2.52,
+       "faz": "gira",
+       "para": 0.9,
+       "dur": 0.42
+      },
+      {
+       "em": 2.94,
+       "faz": "gira",
+       "para": -0.9,
+       "dur": 0.42
+      },
+      {
+       "em": 3.36,
+       "faz": "gira",
+       "para": 0.9,
+       "dur": 0.42
+      },
+      {
+       "em": 3.78,
+       "faz": "gira",
+       "para": -0.9,
+       "dur": 0.42
+      },
+      {
+       "em": 4.2,
+       "faz": "gira",
+       "para": 0.9,
+       "dur": 0.42
+      },
+      {
+       "em": "cinco",
+       "depois": 0.45,
+       "faz": "squash",
+       "forca": 0.12
+      }
+     ],
+     "raio": 18,
+     "texto": "PANETONE",
+     "tam": 40,
+     "cor_texto": "#FFF3E0",
+     "rot": 0
+    },
+    {
+     "id": "cx1",
+     "tipo": "bloco",
+     "x": 0.551,
+     "y": 0.473,
+     "largura": 284,
+     "altura": 126,
+     "cor": "#2F6FE4",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": 0.0,
+       "faz": "gira",
+       "para": 1.8,
+       "dur": 0.42
+      },
+      {
+       "em": 0.42,
+       "faz": "gira",
+       "para": -1.8,
+       "dur": 0.42
+      },
+      {
+       "em": 0.84,
+       "faz": "gira",
+       "para": 1.8,
+       "dur": 0.42
+      },
+      {
+       "em": 1.26,
+       "faz": "gira",
+       "para": -1.8,
+       "dur": 0.42
+      },
+      {
+       "em": 1.68,
+       "faz": "gira",
+       "para": 1.8,
+       "dur": 0.42
+      },
+      {
+       "em": 2.1,
+       "faz": "gira",
+       "para": -1.8,
+       "dur": 0.42
+      },
+      {
+       "em": 2.52,
+       "faz": "gira",
+       "para": 1.8,
+       "dur": 0.42
+      },
+      {
+       "em": 2.94,
+       "faz": "gira",
+       "para": -1.8,
+       "dur": 0.42
+      },
+      {
+       "em": 3.36,
+       "faz": "gira",
+       "para": 1.8,
+       "dur": 0.42
+      },
+      {
+       "em": 3.78,
+       "faz": "gira",
+       "para": -1.8,
+       "dur": 0.42
+      },
+      {
+       "em": 4.2,
+       "faz": "gira",
+       "para": 1.8,
+       "dur": 0.42
+      },
+      {
+       "em": "cinco",
+       "depois": 0.45,
+       "faz": "squash",
+       "forca": 0.12
+      }
+     ],
+     "raio": 18,
+     "texto": "PANETONE",
+     "tam": 40,
+     "cor_texto": "#FFF3E0",
+     "rot": 0
+    },
+    {
+     "id": "cx2",
+     "tipo": "bloco",
+     "x": 0.563,
+     "y": 0.4042,
+     "largura": 278,
+     "altura": 126,
+     "cor": "#16A57A",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": 0.0,
+       "faz": "gira",
+       "para": 2.7,
+       "dur": 0.42
+      },
+      {
+       "em": 0.42,
+       "faz": "gira",
+       "para": -2.7,
+       "dur": 0.42
+      },
+      {
+       "em": 0.84,
+       "faz": "gira",
+       "para": 2.7,
+       "dur": 0.42
+      },
+      {
+       "em": 1.26,
+       "faz": "gira",
+       "para": -2.7,
+       "dur": 0.42
+      },
+      {
+       "em": 1.68,
+       "faz": "gira",
+       "para": 2.7,
+       "dur": 0.42
+      },
+      {
+       "em": 2.1,
+       "faz": "gira",
+       "para": -2.7,
+       "dur": 0.42
+      },
+      {
+       "em": 2.52,
+       "faz": "gira",
+       "para": 2.7,
+       "dur": 0.42
+      },
+      {
+       "em": 2.94,
+       "faz": "gira",
+       "para": -2.7,
+       "dur": 0.42
+      },
+      {
+       "em": 3.36,
+       "faz": "gira",
+       "para": 2.7,
+       "dur": 0.42
+      },
+      {
+       "em": 3.78,
+       "faz": "gira",
+       "para": -2.7,
+       "dur": 0.42
+      },
+      {
+       "em": 4.2,
+       "faz": "gira",
+       "para": 2.7,
+       "dur": 0.42
+      },
+      {
+       "em": "cinco",
+       "depois": 0.45,
+       "faz": "squash",
+       "forca": 0.12
+      }
+     ],
+     "raio": 18,
+     "texto": "PANETONE",
+     "tam": 40,
+     "cor_texto": "#FFF3E0",
+     "rot": 0
+    },
+    {
+     "id": "cx3",
+     "tipo": "bloco",
+     "x": 0.543,
+     "y": 0.3355,
+     "largura": 272,
+     "altura": 126,
+     "cor": "#C8318A",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": 0.0,
+       "faz": "gira",
+       "para": 3.6,
+       "dur": 0.42
+      },
+      {
+       "em": 0.42,
+       "faz": "gira",
+       "para": -3.6,
+       "dur": 0.42
+      },
+      {
+       "em": 0.84,
+       "faz": "gira",
+       "para": 3.6,
+       "dur": 0.42
+      },
+      {
+       "em": 1.26,
+       "faz": "gira",
+       "para": -3.6,
+       "dur": 0.42
+      },
+      {
+       "em": 1.68,
+       "faz": "gira",
+       "para": 3.6,
+       "dur": 0.42
+      },
+      {
+       "em": 2.1,
+       "faz": "gira",
+       "para": -3.6,
+       "dur": 0.42
+      },
+      {
+       "em": 2.52,
+       "faz": "gira",
+       "para": 3.6,
+       "dur": 0.42
+      },
+      {
+       "em": 2.94,
+       "faz": "gira",
+       "para": -3.6,
+       "dur": 0.42
+      },
+      {
+       "em": 3.36,
+       "faz": "gira",
+       "para": 3.6,
+       "dur": 0.42
+      },
+      {
+       "em": 3.78,
+       "faz": "gira",
+       "para": -3.6,
+       "dur": 0.42
+      },
+      {
+       "em": 4.2,
+       "faz": "gira",
+       "para": 3.6,
+       "dur": 0.42
+      },
+      {
+       "em": "cinco",
+       "depois": 0.45,
+       "faz": "squash",
+       "forca": 0.12
+      }
+     ],
+     "raio": 18,
+     "texto": "PANETONE",
+     "tam": 40,
+     "cor_texto": "#FFF3E0",
+     "rot": 0
+    },
+    {
+     "id": "cx4",
+     "tipo": "bloco",
+     "x": 0.571,
+     "y": 0.2667,
+     "largura": 266,
+     "altura": 126,
+     "cor": "#FF8A1F",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "cinco",
+       "faz": "entra",
+       "jeito": "cai",
+       "dur": 0.45
+      },
+      {
+       "em": "cinco",
+       "depois": 0.45,
+       "faz": "squash",
+       "forca": 0.25
+      },
+      {
+       "em": 1.519,
+       "faz": "gira",
+       "para": 6.5,
+       "dur": 0.36
+      },
+      {
+       "em": 1.879,
+       "faz": "gira",
+       "para": -6.5,
+       "dur": 0.36
+      },
+      {
+       "em": 2.239,
+       "faz": "gira",
+       "para": 6.5,
+       "dur": 0.36
+      },
+      {
+       "em": 2.599,
+       "faz": "gira",
+       "para": -6.5,
+       "dur": 0.36
+      },
+      {
+       "em": 2.959,
+       "faz": "gira",
+       "para": 6.5,
+       "dur": 0.36
+      },
+      {
+       "em": 3.319,
+       "faz": "gira",
+       "para": -6.5,
+       "dur": 0.36
+      },
+      {
+       "em": 3.679,
+       "faz": "gira",
+       "para": 6.5,
+       "dur": 0.36
+      },
+      {
+       "em": 4.039,
+       "faz": "gira",
+       "para": -6.5,
+       "dur": 0.36
+      },
+      {
+       "em": 4.399,
+       "faz": "gira",
+       "para": 6.5,
+       "dur": 0.36
+      }
+     ],
+     "raio": 18,
+     "texto": "PANETONE",
+     "tam": 40,
+     "cor_texto": "#FFF3E0",
+     "rot": 0
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.2,
+     "y": 0.5,
+     "escala": 0.58,
+     "acoes": [
+      {
+       "em": 0,
+       "faz": "olha",
+       "para": "dir"
+      },
+      {
+       "em": "cinco",
+       "depois": 0.45,
+       "faz": "pula",
+       "altura": 34
+      },
+      {
+       "em": "cinco",
+       "depois": 0.45,
+       "faz": "sobrancelha",
+       "para": 1.2
+      },
+      {
+       "em": "panetones",
+       "faz": "boca",
+       "para": "o"
+      },
+      {
+       "em": "nenhum",
+       "faz": "olha",
+       "para": "cima"
+      },
+      {
+       "em": "mofar",
+       "faz": "olha",
+       "para": "camera"
+      },
+      {
+       "em": "mofar",
+       "faz": "boca",
+       "para": "sorriso_torto"
+      },
+      {
+       "em": "mofar",
+       "faz": "squash"
+      }
+     ],
+     "sobrancelha": 0.9
+    },
+    {
+     "id": "tit",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.175,
+     "texto": "5 PANETONES.\nNENHUM MOFA.",
+     "tam": 72,
+     "cor": "#FFC21A",
+     "acoes": [
+      {
+       "em": 0,
+       "depois": -0.34,
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": "mofar",
+       "faz": "squash",
+       "forca": 0.12
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": "linha1",
+   "cenario": "chapado",
+   "padrao": "papel_rasgado",
+   "paleta": "cobalto",
+   "energia": 0.7,
+   "transicao": "papel",
+   "elementos": [
+    {
+     "id": "pao_casca",
+     "tipo": "bloco",
+     "x": 0.5,
+     "y": 0.36,
+     "largura": 470,
+     "altura": 500,
+     "cor": "#B5793A",
+     "pode_sobrepor": true,
+     "acoes": [],
+     "raio": 130
+    },
+    {
+     "id": "pao_miolo",
+     "tipo": "bloco",
+     "x": 0.5,
+     "y": 0.368,
+     "largura": 400,
+     "altura": 420,
+     "cor": "#F3E2B8",
+     "pode_sobrepor": true,
+     "acoes": [],
+     "raio": 110
+    },
+    {
+     "id": "m0",
+     "tipo": "bloco",
+     "x": 0.4,
+     "y": 0.3,
+     "largura": 90,
+     "altura": 90,
+     "cor": "#4E9A33",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "estraga",
+       "depois": 0.0,
+       "faz": "escala",
+       "para": 1.0,
+       "dur": 0.7,
+       "curva": "elastico"
+      },
+      {
+       "em": "dias",
+       "depois": 0.5,
+       "faz": "escala",
+       "para": 1.25,
+       "dur": 0.6
+      }
+     ],
+     "raio": 45,
+     "escala": 0.01
+    },
+    {
+     "id": "m1",
+     "tipo": "bloco",
+     "x": 0.58,
+     "y": 0.33,
+     "largura": 70,
+     "altura": 70,
+     "cor": "#4E9A33",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "estraga",
+       "depois": 0.08,
+       "faz": "escala",
+       "para": 1.0,
+       "dur": 0.7,
+       "curva": "elastico"
+      },
+      {
+       "em": "dias",
+       "depois": 0.55,
+       "faz": "escala",
+       "para": 1.25,
+       "dur": 0.6
+      }
+     ],
+     "raio": 35,
+     "escala": 0.01
+    },
+    {
+     "id": "m2",
+     "tipo": "bloco",
+     "x": 0.52,
+     "y": 0.43,
+     "largura": 110,
+     "altura": 110,
+     "cor": "#4E9A33",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "poucos",
+       "depois": 0.16,
+       "faz": "escala",
+       "para": 1.0,
+       "dur": 0.7,
+       "curva": "elastico"
+      },
+      {
+       "em": "dias",
+       "depois": 0.6,
+       "faz": "escala",
+       "para": 1.25,
+       "dur": 0.6
+      }
+     ],
+     "raio": 55,
+     "escala": 0.01
+    },
+    {
+     "id": "m3",
+     "tipo": "bloco",
+     "x": 0.42,
+     "y": 0.42,
+     "largura": 60,
+     "altura": 60,
+     "cor": "#4E9A33",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "poucos",
+       "depois": 0.24,
+       "faz": "escala",
+       "para": 1.0,
+       "dur": 0.7,
+       "curva": "elastico"
+      },
+      {
+       "em": "dias",
+       "depois": 0.65,
+       "faz": "escala",
+       "para": 1.25,
+       "dur": 0.6
+      }
+     ],
+     "raio": 30,
+     "escala": 0.01
+    },
+    {
+     "id": "m4",
+     "tipo": "bloco",
+     "x": 0.61,
+     "y": 0.44,
+     "largura": 80,
+     "altura": 80,
+     "cor": "#4E9A33",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "dias",
+       "depois": 0.32,
+       "faz": "escala",
+       "para": 1.0,
+       "dur": 0.7,
+       "curva": "elastico"
+      },
+      {
+       "em": "dias",
+       "depois": 0.7,
+       "faz": "escala",
+       "para": 1.25,
+       "dur": 0.6
+      }
+     ],
+     "raio": 40,
+     "escala": 0.01
+    },
+    {
+     "id": "m5",
+     "tipo": "bloco",
+     "x": 0.48,
+     "y": 0.28,
+     "largura": 66,
+     "altura": 66,
+     "cor": "#4E9A33",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "dias",
+       "depois": 0.4,
+       "faz": "escala",
+       "para": 1.0,
+       "dur": 0.7,
+       "curva": "elastico"
+      },
+      {
+       "em": "dias",
+       "depois": 0.75,
+       "faz": "escala",
+       "para": 1.25,
+       "dur": 0.6
+      }
+     ],
+     "raio": 33,
+     "escala": 0.01
+    },
+    {
+     "id": "m6",
+     "tipo": "bloco",
+     "x": 0.56,
+     "y": 0.26,
+     "largura": 50,
+     "altura": 50,
+     "cor": "#4E9A33",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "dias",
+       "depois": 0.48,
+       "faz": "escala",
+       "para": 1.0,
+       "dur": 0.7,
+       "curva": "elastico"
+      },
+      {
+       "em": "dias",
+       "depois": 0.8,
+       "faz": "escala",
+       "para": 1.25,
+       "dur": 0.6
+      }
+     ],
+     "raio": 25,
+     "escala": 0.01
+    },
+    {
+     "id": "tit",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.155,
+     "texto": "PÃO COMUM",
+     "tam": 88,
+     "cor": "#FFF3E0",
+     "acoes": [
+      {
+       "em": "pao",
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ]
+    },
+    {
+     "id": "dias",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.535,
+     "texto": "POUCOS DIAS",
+     "tam": 62,
+     "cor": "#FFF3E0",
+     "acoes": [
+      {
+       "em": "poucos",
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ],
+     "fundo": "#E8452C"
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.83,
+     "y": 0.47,
+     "escala": 0.6,
+     "acoes": [
+      {
+       "em": "pao",
+       "faz": "olha",
+       "para": "esq"
+      },
+      {
+       "em": "estraga",
+       "faz": "boca",
+       "para": "triste"
+      },
+      {
+       "em": "estraga",
+       "faz": "treme",
+       "dur": 0.4,
+       "forca": 5
+      },
+      {
+       "em": "dias",
+       "faz": "olha",
+       "para": "camera"
+      },
+      {
+       "em": "dias",
+       "faz": "sobrancelha",
+       "para": 1.2
+      },
+      {
+       "em": "dias",
+       "faz": "pula",
+       "altura": 22
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": "aguenta",
+   "cenario": "chapado",
+   "padrao": "halftone",
+   "paleta": "tomate",
+   "energia": 0.7,
+   "elementos": [
+    {
+     "id": "voo",
+     "tipo": "fluxo",
+     "de": [
+      0.08,
+      0.2
+     ],
+     "para": [
+      0.95,
+      0.12
+     ],
+     "ritmo": 3,
+     "vida": 1.4,
+     "adianta": 0.8,
+     "cor": "#FFF3E0"
+    },
+    {
+     "id": "pt_papel",
+     "tipo": "bloco",
+     "x": 0.53,
+     "y": 0.4203,
+     "largura": 540,
+     "altura": 255,
+     "cor": "#C98A4B",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "aguenta",
+       "faz": "squash",
+       "forca": 0.18
+      },
+      {
+       "em": "semanas",
+       "faz": "pula",
+       "altura": 26
+      },
+      {
+       "em": "primeiro",
+       "faz": "squash",
+       "forca": 0.1
+      }
+     ],
+     "raio": 30
+    },
+    {
+     "id": "pt_domo",
+     "tipo": "bloco",
+     "x": 0.53,
+     "y": 0.3187,
+     "largura": 600,
+     "altura": 390,
+     "cor": "#E9A93B",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "aguenta",
+       "faz": "squash",
+       "forca": 0.18
+      },
+      {
+       "em": "semanas",
+       "faz": "pula",
+       "altura": 26
+      },
+      {
+       "em": "primeiro",
+       "faz": "squash",
+       "forca": 0.1
+      }
+     ],
+     "raio": 187
+    },
+    {
+     "id": "pt_brilho",
+     "tipo": "bloco",
+     "x": 0.4744,
+     "y": 0.2641,
+     "largura": 315,
+     "altura": 84,
+     "cor": "#F6C766",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "aguenta",
+       "faz": "squash",
+       "forca": 0.18
+      },
+      {
+       "em": "semanas",
+       "faz": "pula",
+       "altura": 26
+      },
+      {
+       "em": "primeiro",
+       "faz": "squash",
+       "forca": 0.1
+      }
+     ],
+     "raio": 42
+    },
+    {
+     "id": "pt_f0",
+     "tipo": "bloco",
+     "x": 0.3772,
+     "y": 0.3266,
+     "largura": 45,
+     "altura": 45,
+     "cor": "#E8452C",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "aguenta",
+       "faz": "squash",
+       "forca": 0.18
+      },
+      {
+       "em": "semanas",
+       "faz": "pula",
+       "altura": 26
+      },
+      {
+       "em": "primeiro",
+       "faz": "squash",
+       "forca": 0.1
+      }
+     ],
+     "raio": 12
+    },
+    {
+     "id": "pt_f1",
+     "tipo": "bloco",
+     "x": 0.4883,
+     "y": 0.3578,
+     "largura": 45,
+     "altura": 45,
+     "cor": "#3DAA3A",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "aguenta",
+       "faz": "squash",
+       "forca": 0.18
+      },
+      {
+       "em": "semanas",
+       "faz": "pula",
+       "altura": 26
+      },
+      {
+       "em": "primeiro",
+       "faz": "squash",
+       "forca": 0.1
+      }
+     ],
+     "raio": 12
+    },
+    {
+     "id": "pt_f2",
+     "tipo": "bloco",
+     "x": 0.6272,
+     "y": 0.3109,
+     "largura": 45,
+     "altura": 45,
+     "cor": "#FF8A1F",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "aguenta",
+       "faz": "squash",
+       "forca": 0.18
+      },
+      {
+       "em": "semanas",
+       "faz": "pula",
+       "altura": 26
+      },
+      {
+       "em": "primeiro",
+       "faz": "squash",
+       "forca": 0.1
+      }
+     ],
+     "raio": 12
+    },
+    {
+     "id": "pt_f3",
+     "tipo": "bloco",
+     "x": 0.6967,
+     "y": 0.3656,
+     "largura": 45,
+     "altura": 45,
+     "cor": "#E8452C",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "aguenta",
+       "faz": "squash",
+       "forca": 0.18
+      },
+      {
+       "em": "semanas",
+       "faz": "pula",
+       "altura": 26
+      },
+      {
+       "em": "primeiro",
+       "faz": "squash",
+       "forca": 0.1
+      }
+     ],
+     "raio": 12
+    },
+    {
+     "id": "pt_f4",
+     "tipo": "bloco",
+     "x": 0.5439,
+     "y": 0.2875,
+     "largura": 45,
+     "altura": 45,
+     "cor": "#3DAA3A",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "aguenta",
+       "faz": "squash",
+       "forca": 0.18
+      },
+      {
+       "em": "semanas",
+       "faz": "pula",
+       "altura": 26
+      },
+      {
+       "em": "primeiro",
+       "faz": "squash",
+       "forca": 0.1
+      }
+     ],
+     "raio": 12
+    },
+    {
+     "id": "car",
+     "tipo": "carimbo",
+     "x": 0.6,
+     "y": 0.5,
+     "texto": "AGUENTA",
+     "cor": "#1D1B3A",
+     "tam": 110,
+     "inclina": -9,
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "aguenta",
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ]
+    },
+    {
+     "id": "sem",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.17,
+     "texto": "SEMANAS",
+     "tam": 80,
+     "cor": "#FFC21A",
+     "acoes": [
+      {
+       "em": "semanas",
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": "primeiro",
+       "faz": "sai",
+       "jeito": "pop"
+      }
+     ],
+     "fundo": "#1D1B3A"
+    },
+    {
+     "id": "seg",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.17,
+     "texto": "1º SEGREDO",
+     "tam": 80,
+     "cor": "#FFF3E0",
+     "acoes": [
+      {
+       "em": "primeiro",
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ],
+     "fundo": "#2F6FE4",
+     "pode_sobrepor": true
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.17,
+     "y": 0.5,
+     "escala": 0.6,
+     "acoes": [
+      {
+       "em": "aguenta",
+       "faz": "olha",
+       "para": "dir"
+      },
+      {
+       "em": "aguenta",
+       "faz": "boca",
+       "para": "o"
+      },
+      {
+       "em": "semanas",
+       "faz": "sobrancelha",
+       "para": 1.2
+      },
+      {
+       "em": "primeiro",
+       "faz": "pose",
+       "para": "apontando"
+      },
+      {
+       "em": "primeiro",
+       "faz": "olha",
+       "para": "camera"
+      },
+      {
+       "em": "massa",
+       "faz": "pula",
+       "altura": 20
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": "acucar",
+   "fundo_foto": "/home/claude/2026-11-27_C/img/foto1.jpg",
+   "estilo": "real",
+   "paleta": "menta",
+   "kb_de": [
+    1.0,
+    0.5,
+    0.52
+   ],
+   "kb_para": [
+    1.1,
+    0.5,
+    0.5
+   ],
+   "deriva": 0,
+   "transicao_dur": 0.25,
+   "elementos": [
+    {
+     "id": "acu",
+     "tipo": "texto",
+     "x": 0.3,
+     "y": 0.2,
+     "texto": "AÇÚCAR",
+     "tam": 84,
+     "cor": "#FFF3E0",
+     "acoes": [
+      {
+       "em": "acucar",
+       "depois": -0.05,
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ],
+     "fundo": "#2F6FE4"
+    },
+    {
+     "id": "gor",
+     "tipo": "texto",
+     "x": 0.68,
+     "y": 0.29,
+     "texto": "GORDURA",
+     "tam": 84,
+     "cor": "#FFC21A",
+     "acoes": [
+      {
+       "em": "gordura",
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ],
+     "fundo": "#E8452C"
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.2,
+     "y": 0.47,
+     "escala": 0.6,
+     "acoes": [
+      {
+       "em": "acucar",
+       "faz": "olha",
+       "para": "dir"
+      },
+      {
+       "em": "acucar",
+       "faz": "sobrancelha",
+       "para": 1.2
+      },
+      {
+       "em": "muito",
+       "faz": "pula",
+       "altura": 22
+      },
+      {
+       "em": "gordura",
+       "faz": "boca",
+       "para": "o"
+      },
+      {
+       "em": "gordura",
+       "faz": "squash",
+       "forca": 0.18
+      },
+      {
+       "em": "gordura",
+       "depois": 0.5,
+       "faz": "olha",
+       "para": "camera"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": "linha3",
+   "cenario": "chapado",
+   "padrao": "ondas",
+   "paleta": "petroleo",
+   "energia": 0.7,
+   "transicao": "mergulho",
+   "mergulho_em": [
+    0.5,
+    0.45
+   ],
+   "elementos": [
+    {
+     "id": "g0",
+     "tipo": "bloco",
+     "x": 0.24,
+     "y": 0.3,
+     "largura": 160,
+     "altura": 160,
+     "cor": "#3FA9F5",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "prende",
+       "depois": 0.0,
+       "faz": "squash",
+       "forca": 0.22
+      },
+      {
+       "em": "agua",
+       "faz": "treme",
+       "dur": 0.5,
+       "forca": 4
+      },
+      {
+       "em": "menos",
+       "faz": "squash",
+       "forca": 0.12
+      }
+     ],
+     "raio": 80
+    },
+    {
+     "id": "gb0",
+     "tipo": "bloco",
+     "x": 0.222,
+     "y": 0.288,
+     "largura": 36,
+     "altura": 36,
+     "cor": "#BFE6FF",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "prende",
+       "depois": 0.0,
+       "faz": "squash",
+       "forca": 0.22
+      },
+      {
+       "em": "agua",
+       "faz": "treme",
+       "dur": 0.5,
+       "forca": 4
+      },
+      {
+       "em": "menos",
+       "faz": "squash",
+       "forca": 0.12
+      }
+     ],
+     "raio": 18
+    },
+    {
+     "id": "acb0-1",
+     "tipo": "bloco",
+     "x": 0.155,
+     "y": 0.33,
+     "largura": 58,
+     "altura": 58,
+     "cor": "#FFFFFF",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "linha3",
+       "faz": "move",
+       "para": [
+        0.155,
+        0.32999999999999996
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": "prende",
+       "depois": 0.0,
+       "faz": "move",
+       "para": [
+        0.17,
+        0.32999999999999996
+       ],
+       "dur": 0.25,
+       "curva": "elastico"
+      },
+      {
+       "em": "sobra",
+       "faz": "pula",
+       "altura": 10
+      }
+     ],
+     "raio": 10,
+     "rot": -8
+    },
+    {
+     "id": "acm0-1",
+     "tipo": "bloco",
+     "x": 0.185,
+     "y": 0.32,
+     "largura": 52,
+     "altura": 18,
+     "cor": "#FFFFFF",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "linha3",
+       "faz": "move",
+       "para": [
+        0.185,
+        0.32
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": "prende",
+       "depois": 0.0,
+       "faz": "move",
+       "para": [
+        0.195,
+        0.32
+       ],
+       "dur": 0.25,
+       "curva": "elastico"
+      }
+     ],
+     "raio": 9,
+     "rot": 25
+    },
+    {
+     "id": "acb01",
+     "tipo": "bloco",
+     "x": 0.325,
+     "y": 0.33,
+     "largura": 58,
+     "altura": 58,
+     "cor": "#FFFFFF",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "linha3",
+       "faz": "move",
+       "para": [
+        0.325,
+        0.32999999999999996
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": "prende",
+       "depois": 0.0,
+       "faz": "move",
+       "para": [
+        0.31,
+        0.32999999999999996
+       ],
+       "dur": 0.25,
+       "curva": "elastico"
+      },
+      {
+       "em": "sobra",
+       "faz": "pula",
+       "altura": 10
+      }
+     ],
+     "raio": 10,
+     "rot": 8
+    },
+    {
+     "id": "acm01",
+     "tipo": "bloco",
+     "x": 0.295,
+     "y": 0.32,
+     "largura": 52,
+     "altura": 18,
+     "cor": "#FFFFFF",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "linha3",
+       "faz": "move",
+       "para": [
+        0.295,
+        0.32
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": "prende",
+       "depois": 0.0,
+       "faz": "move",
+       "para": [
+        0.285,
+        0.32
+       ],
+       "dur": 0.25,
+       "curva": "elastico"
+      }
+     ],
+     "raio": 9,
+     "rot": -25
+    },
+    {
+     "id": "g1",
+     "tipo": "bloco",
+     "x": 0.5,
+     "y": 0.25,
+     "largura": 160,
+     "altura": 160,
+     "cor": "#3FA9F5",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "prende",
+       "depois": 0.06,
+       "faz": "squash",
+       "forca": 0.22
+      },
+      {
+       "em": "agua",
+       "faz": "treme",
+       "dur": 0.5,
+       "forca": 4
+      },
+      {
+       "em": "menos",
+       "faz": "squash",
+       "forca": 0.12
+      }
+     ],
+     "raio": 80
+    },
+    {
+     "id": "gb1",
+     "tipo": "bloco",
+     "x": 0.482,
+     "y": 0.238,
+     "largura": 36,
+     "altura": 36,
+     "cor": "#BFE6FF",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "prende",
+       "depois": 0.06,
+       "faz": "squash",
+       "forca": 0.22
+      },
+      {
+       "em": "agua",
+       "faz": "treme",
+       "dur": 0.5,
+       "forca": 4
+      },
+      {
+       "em": "menos",
+       "faz": "squash",
+       "forca": 0.12
+      }
+     ],
+     "raio": 18
+    },
+    {
+     "id": "acb1-1",
+     "tipo": "bloco",
+     "x": 0.415,
+     "y": 0.28,
+     "largura": 58,
+     "altura": 58,
+     "cor": "#FFFFFF",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "linha3",
+       "faz": "move",
+       "para": [
+        0.415,
+        0.28
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": "prende",
+       "depois": 0.06,
+       "faz": "move",
+       "para": [
+        0.43,
+        0.28
+       ],
+       "dur": 0.25,
+       "curva": "elastico"
+      },
+      {
+       "em": "sobra",
+       "faz": "pula",
+       "altura": 10
+      }
+     ],
+     "raio": 10,
+     "rot": -8
+    },
+    {
+     "id": "acm1-1",
+     "tipo": "bloco",
+     "x": 0.445,
+     "y": 0.27,
+     "largura": 52,
+     "altura": 18,
+     "cor": "#FFFFFF",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "linha3",
+       "faz": "move",
+       "para": [
+        0.445,
+        0.27
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": "prende",
+       "depois": 0.06,
+       "faz": "move",
+       "para": [
+        0.455,
+        0.27
+       ],
+       "dur": 0.25,
+       "curva": "elastico"
+      }
+     ],
+     "raio": 9,
+     "rot": 25
+    },
+    {
+     "id": "acb11",
+     "tipo": "bloco",
+     "x": 0.585,
+     "y": 0.28,
+     "largura": 58,
+     "altura": 58,
+     "cor": "#FFFFFF",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "linha3",
+       "faz": "move",
+       "para": [
+        0.585,
+        0.28
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": "prende",
+       "depois": 0.06,
+       "faz": "move",
+       "para": [
+        0.57,
+        0.28
+       ],
+       "dur": 0.25,
+       "curva": "elastico"
+      },
+      {
+       "em": "sobra",
+       "faz": "pula",
+       "altura": 10
+      }
+     ],
+     "raio": 10,
+     "rot": 8
+    },
+    {
+     "id": "acm11",
+     "tipo": "bloco",
+     "x": 0.555,
+     "y": 0.27,
+     "largura": 52,
+     "altura": 18,
+     "cor": "#FFFFFF",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "linha3",
+       "faz": "move",
+       "para": [
+        0.555,
+        0.27
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": "prende",
+       "depois": 0.06,
+       "faz": "move",
+       "para": [
+        0.545,
+        0.27
+       ],
+       "dur": 0.25,
+       "curva": "elastico"
+      }
+     ],
+     "raio": 9,
+     "rot": -25
+    },
+    {
+     "id": "g2",
+     "tipo": "bloco",
+     "x": 0.76,
+     "y": 0.3,
+     "largura": 160,
+     "altura": 160,
+     "cor": "#3FA9F5",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "prende",
+       "depois": 0.12,
+       "faz": "squash",
+       "forca": 0.22
+      },
+      {
+       "em": "agua",
+       "faz": "treme",
+       "dur": 0.5,
+       "forca": 4
+      },
+      {
+       "em": "menos",
+       "faz": "squash",
+       "forca": 0.12
+      }
+     ],
+     "raio": 80
+    },
+    {
+     "id": "gb2",
+     "tipo": "bloco",
+     "x": 0.742,
+     "y": 0.288,
+     "largura": 36,
+     "altura": 36,
+     "cor": "#BFE6FF",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "prende",
+       "depois": 0.12,
+       "faz": "squash",
+       "forca": 0.22
+      },
+      {
+       "em": "agua",
+       "faz": "treme",
+       "dur": 0.5,
+       "forca": 4
+      },
+      {
+       "em": "menos",
+       "faz": "squash",
+       "forca": 0.12
+      }
+     ],
+     "raio": 18
+    },
+    {
+     "id": "acb2-1",
+     "tipo": "bloco",
+     "x": 0.675,
+     "y": 0.33,
+     "largura": 58,
+     "altura": 58,
+     "cor": "#FFFFFF",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "linha3",
+       "faz": "move",
+       "para": [
+        0.675,
+        0.32999999999999996
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": "prende",
+       "depois": 0.12,
+       "faz": "move",
+       "para": [
+        0.69,
+        0.32999999999999996
+       ],
+       "dur": 0.25,
+       "curva": "elastico"
+      },
+      {
+       "em": "sobra",
+       "faz": "pula",
+       "altura": 10
+      }
+     ],
+     "raio": 10,
+     "rot": -8
+    },
+    {
+     "id": "acm2-1",
+     "tipo": "bloco",
+     "x": 0.705,
+     "y": 0.32,
+     "largura": 52,
+     "altura": 18,
+     "cor": "#FFFFFF",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "linha3",
+       "faz": "move",
+       "para": [
+        0.705,
+        0.32
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": "prende",
+       "depois": 0.12,
+       "faz": "move",
+       "para": [
+        0.715,
+        0.32
+       ],
+       "dur": 0.25,
+       "curva": "elastico"
+      }
+     ],
+     "raio": 9,
+     "rot": 25
+    },
+    {
+     "id": "acb21",
+     "tipo": "bloco",
+     "x": 0.845,
+     "y": 0.33,
+     "largura": 58,
+     "altura": 58,
+     "cor": "#FFFFFF",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "linha3",
+       "faz": "move",
+       "para": [
+        0.845,
+        0.32999999999999996
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": "prende",
+       "depois": 0.12,
+       "faz": "move",
+       "para": [
+        0.83,
+        0.32999999999999996
+       ],
+       "dur": 0.25,
+       "curva": "elastico"
+      },
+      {
+       "em": "sobra",
+       "faz": "pula",
+       "altura": 10
+      }
+     ],
+     "raio": 10,
+     "rot": 8
+    },
+    {
+     "id": "acm21",
+     "tipo": "bloco",
+     "x": 0.815,
+     "y": 0.32,
+     "largura": 52,
+     "altura": 18,
+     "cor": "#FFFFFF",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "linha3",
+       "faz": "move",
+       "para": [
+        0.815,
+        0.32
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": "prende",
+       "depois": 0.12,
+       "faz": "move",
+       "para": [
+        0.805,
+        0.32
+       ],
+       "dur": 0.25,
+       "curva": "elastico"
+      }
+     ],
+     "raio": 9,
+     "rot": -25
+    },
+    {
+     "id": "mf_pelo0",
+     "tipo": "bloco",
+     "x": 0.6881,
+     "y": 0.48,
+     "largura": 71,
+     "altura": 71,
+     "cor": "#4E9A33",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "linha3",
+       "faz": "move",
+       "para": [
+        0.6881,
+        0.48
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": "agua",
+       "faz": "move",
+       "para": [
+        0.6381,
+        0.46
+       ],
+       "dur": 0.5
+      },
+      {
+       "em": "sobra",
+       "faz": "treme",
+       "dur": 0.5,
+       "forca": 5
+      },
+      {
+       "em": "menos",
+       "faz": "move",
+       "para": [
+        0.7281,
+        0.49
+       ],
+       "dur": 0.6
+      },
+      {
+       "em": "mofo",
+       "faz": "pula",
+       "altura": 26
+      },
+      {
+       "em": "truque",
+       "faz": "squash",
+       "forca": 0.15
+      }
+     ],
+     "raio": 35
+    },
+    {
+     "id": "mf_pelo1",
+     "tipo": "bloco",
+     "x": 0.6713,
+     "y": 0.5091,
+     "largura": 71,
+     "altura": 71,
+     "cor": "#4E9A33",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "linha3",
+       "faz": "move",
+       "para": [
+        0.6713,
+        0.5091
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": "agua",
+       "faz": "move",
+       "para": [
+        0.6213,
+        0.4891
+       ],
+       "dur": 0.5
+      },
+      {
+       "em": "sobra",
+       "faz": "treme",
+       "dur": 0.5,
+       "forca": 5
+      },
+      {
+       "em": "menos",
+       "faz": "move",
+       "para": [
+        0.7113,
+        0.5191
+       ],
+       "dur": 0.6
+      },
+      {
+       "em": "mofo",
+       "faz": "pula",
+       "altura": 26
+      },
+      {
+       "em": "truque",
+       "faz": "squash",
+       "forca": 0.15
+      }
+     ],
+     "raio": 35
+    },
+    {
+     "id": "mf_pelo2",
+     "tipo": "bloco",
+     "x": 0.6272,
+     "y": 0.5272,
+     "largura": 71,
+     "altura": 71,
+     "cor": "#4E9A33",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "linha3",
+       "faz": "move",
+       "para": [
+        0.6272,
+        0.5272
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": "agua",
+       "faz": "move",
+       "para": [
+        0.5772,
+        0.5072
+       ],
+       "dur": 0.5
+      },
+      {
+       "em": "sobra",
+       "faz": "treme",
+       "dur": 0.5,
+       "forca": 5
+      },
+      {
+       "em": "menos",
+       "faz": "move",
+       "para": [
+        0.6672,
+        0.5372
+       ],
+       "dur": 0.6
+      },
+      {
+       "em": "mofo",
+       "faz": "pula",
+       "altura": 26
+      },
+      {
+       "em": "truque",
+       "faz": "squash",
+       "forca": 0.15
+      }
+     ],
+     "raio": 35
+    },
+    {
+     "id": "mf_pelo3",
+     "tipo": "bloco",
+     "x": 0.5728,
+     "y": 0.5272,
+     "largura": 71,
+     "altura": 71,
+     "cor": "#4E9A33",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "linha3",
+       "faz": "move",
+       "para": [
+        0.5728,
+        0.5272
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": "agua",
+       "faz": "move",
+       "para": [
+        0.5228,
+        0.5072
+       ],
+       "dur": 0.5
+      },
+      {
+       "em": "sobra",
+       "faz": "treme",
+       "dur": 0.5,
+       "forca": 5
+      },
+      {
+       "em": "menos",
+       "faz": "move",
+       "para": [
+        0.6128,
+        0.5372
+       ],
+       "dur": 0.6
+      },
+      {
+       "em": "mofo",
+       "faz": "pula",
+       "altura": 26
+      },
+      {
+       "em": "truque",
+       "faz": "squash",
+       "forca": 0.15
+      }
+     ],
+     "raio": 35
+    },
+    {
+     "id": "mf_pelo4",
+     "tipo": "bloco",
+     "x": 0.5287,
+     "y": 0.5091,
+     "largura": 71,
+     "altura": 71,
+     "cor": "#4E9A33",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "linha3",
+       "faz": "move",
+       "para": [
+        0.5287,
+        0.5091
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": "agua",
+       "faz": "move",
+       "para": [
+        0.4787,
+        0.4891
+       ],
+       "dur": 0.5
+      },
+      {
+       "em": "sobra",
+       "faz": "treme",
+       "dur": 0.5,
+       "forca": 5
+      },
+      {
+       "em": "menos",
+       "faz": "move",
+       "para": [
+        0.5687,
+        0.5191
+       ],
+       "dur": 0.6
+      },
+      {
+       "em": "mofo",
+       "faz": "pula",
+       "altura": 26
+      },
+      {
+       "em": "truque",
+       "faz": "squash",
+       "forca": 0.15
+      }
+     ],
+     "raio": 35
+    },
+    {
+     "id": "mf_pelo5",
+     "tipo": "bloco",
+     "x": 0.5119,
+     "y": 0.48,
+     "largura": 71,
+     "altura": 71,
+     "cor": "#4E9A33",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "linha3",
+       "faz": "move",
+       "para": [
+        0.5119,
+        0.48
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": "agua",
+       "faz": "move",
+       "para": [
+        0.4619,
+        0.46
+       ],
+       "dur": 0.5
+      },
+      {
+       "em": "sobra",
+       "faz": "treme",
+       "dur": 0.5,
+       "forca": 5
+      },
+      {
+       "em": "menos",
+       "faz": "move",
+       "para": [
+        0.5519,
+        0.49
+       ],
+       "dur": 0.6
+      },
+      {
+       "em": "mofo",
+       "faz": "pula",
+       "altura": 26
+      },
+      {
+       "em": "truque",
+       "faz": "squash",
+       "forca": 0.15
+      }
+     ],
+     "raio": 35
+    },
+    {
+     "id": "mf_pelo6",
+     "tipo": "bloco",
+     "x": 0.5287,
+     "y": 0.4509,
+     "largura": 71,
+     "altura": 71,
+     "cor": "#4E9A33",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "linha3",
+       "faz": "move",
+       "para": [
+        0.5287,
+        0.4509
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": "agua",
+       "faz": "move",
+       "para": [
+        0.4787,
+        0.4309
+       ],
+       "dur": 0.5
+      },
+      {
+       "em": "sobra",
+       "faz": "treme",
+       "dur": 0.5,
+       "forca": 5
+      },
+      {
+       "em": "menos",
+       "faz": "move",
+       "para": [
+        0.5687,
+        0.4609
+       ],
+       "dur": 0.6
+      },
+      {
+       "em": "mofo",
+       "faz": "pula",
+       "altura": 26
+      },
+      {
+       "em": "truque",
+       "faz": "squash",
+       "forca": 0.15
+      }
+     ],
+     "raio": 35
+    },
+    {
+     "id": "mf_pelo7",
+     "tipo": "bloco",
+     "x": 0.5728,
+     "y": 0.4328,
+     "largura": 71,
+     "altura": 71,
+     "cor": "#4E9A33",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "linha3",
+       "faz": "move",
+       "para": [
+        0.5728,
+        0.4328
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": "agua",
+       "faz": "move",
+       "para": [
+        0.5228,
+        0.4128
+       ],
+       "dur": 0.5
+      },
+      {
+       "em": "sobra",
+       "faz": "treme",
+       "dur": 0.5,
+       "forca": 5
+      },
+      {
+       "em": "menos",
+       "faz": "move",
+       "para": [
+        0.6128,
+        0.4428
+       ],
+       "dur": 0.6
+      },
+      {
+       "em": "mofo",
+       "faz": "pula",
+       "altura": 26
+      },
+      {
+       "em": "truque",
+       "faz": "squash",
+       "forca": 0.15
+      }
+     ],
+     "raio": 35
+    },
+    {
+     "id": "mf_pelo8",
+     "tipo": "bloco",
+     "x": 0.6272,
+     "y": 0.4328,
+     "largura": 71,
+     "altura": 71,
+     "cor": "#4E9A33",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "linha3",
+       "faz": "move",
+       "para": [
+        0.6272,
+        0.4328
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": "agua",
+       "faz": "move",
+       "para": [
+        0.5772,
+        0.4128
+       ],
+       "dur": 0.5
+      },
+      {
+       "em": "sobra",
+       "faz": "treme",
+       "dur": 0.5,
+       "forca": 5
+      },
+      {
+       "em": "menos",
+       "faz": "move",
+       "para": [
+        0.6672,
+        0.4428
+       ],
+       "dur": 0.6
+      },
+      {
+       "em": "mofo",
+       "faz": "pula",
+       "altura": 26
+      },
+      {
+       "em": "truque",
+       "faz": "squash",
+       "forca": 0.15
+      }
+     ],
+     "raio": 35
+    },
+    {
+     "id": "mf_pelo9",
+     "tipo": "bloco",
+     "x": 0.6713,
+     "y": 0.4509,
+     "largura": 71,
+     "altura": 71,
+     "cor": "#4E9A33",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "linha3",
+       "faz": "move",
+       "para": [
+        0.6713,
+        0.4509
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": "agua",
+       "faz": "move",
+       "para": [
+        0.6213,
+        0.4309
+       ],
+       "dur": 0.5
+      },
+      {
+       "em": "sobra",
+       "faz": "treme",
+       "dur": 0.5,
+       "forca": 5
+      },
+      {
+       "em": "menos",
+       "faz": "move",
+       "para": [
+        0.7113,
+        0.4609
+       ],
+       "dur": 0.6
+      },
+      {
+       "em": "mofo",
+       "faz": "pula",
+       "altura": 26
+      },
+      {
+       "em": "truque",
+       "faz": "squash",
+       "forca": 0.15
+      }
+     ],
+     "raio": 35
+    },
+    {
+     "id": "mf_corpo",
+     "tipo": "bloco",
+     "x": 0.6,
+     "y": 0.48,
+     "largura": 204,
+     "altura": 204,
+     "cor": "#7BC74D",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "linha3",
+       "faz": "move",
+       "para": [
+        0.6,
+        0.48
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": "agua",
+       "faz": "move",
+       "para": [
+        0.55,
+        0.46
+       ],
+       "dur": 0.5
+      },
+      {
+       "em": "sobra",
+       "faz": "treme",
+       "dur": 0.5,
+       "forca": 5
+      },
+      {
+       "em": "menos",
+       "faz": "move",
+       "para": [
+        0.64,
+        0.49
+       ],
+       "dur": 0.6
+      },
+      {
+       "em": "mofo",
+       "faz": "pula",
+       "altura": 26
+      },
+      {
+       "em": "truque",
+       "faz": "squash",
+       "forca": 0.15
+      }
+     ],
+     "raio": 102
+    },
+    {
+     "id": "mf_olhoE",
+     "tipo": "bloco",
+     "x": 0.5622,
+     "y": 0.4667,
+     "largura": 62,
+     "altura": 62,
+     "cor": "#FFFFFF",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "linha3",
+       "faz": "move",
+       "para": [
+        0.5622,
+        0.4667
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": "agua",
+       "faz": "move",
+       "para": [
+        0.5122,
+        0.4467
+       ],
+       "dur": 0.5
+      },
+      {
+       "em": "sobra",
+       "faz": "treme",
+       "dur": 0.5,
+       "forca": 5
+      },
+      {
+       "em": "menos",
+       "faz": "move",
+       "para": [
+        0.6022,
+        0.4767
+       ],
+       "dur": 0.6
+      },
+      {
+       "em": "mofo",
+       "faz": "pula",
+       "altura": 26
+      },
+      {
+       "em": "truque",
+       "faz": "squash",
+       "forca": 0.15
+      }
+     ],
+     "raio": 31
+    },
+    {
+     "id": "mf_olhoD",
+     "tipo": "bloco",
+     "x": 0.6378,
+     "y": 0.4667,
+     "largura": 62,
+     "altura": 62,
+     "cor": "#FFFFFF",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "linha3",
+       "faz": "move",
+       "para": [
+        0.6378,
+        0.4667
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": "agua",
+       "faz": "move",
+       "para": [
+        0.5878,
+        0.4467
+       ],
+       "dur": 0.5
+      },
+      {
+       "em": "sobra",
+       "faz": "treme",
+       "dur": 0.5,
+       "forca": 5
+      },
+      {
+       "em": "menos",
+       "faz": "move",
+       "para": [
+        0.6778,
+        0.4767
+       ],
+       "dur": 0.6
+      },
+      {
+       "em": "mofo",
+       "faz": "pula",
+       "altura": 26
+      },
+      {
+       "em": "truque",
+       "faz": "squash",
+       "forca": 0.15
+      }
+     ],
+     "raio": 31
+    },
+    {
+     "id": "mf_pupE",
+     "tipo": "bloco",
+     "x": 0.5685,
+     "y": 0.4703,
+     "largura": 27,
+     "altura": 27,
+     "cor": "#1D1B3A",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "linha3",
+       "faz": "move",
+       "para": [
+        0.5685,
+        0.4703
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": "agua",
+       "faz": "move",
+       "para": [
+        0.5185,
+        0.4503
+       ],
+       "dur": 0.5
+      },
+      {
+       "em": "sobra",
+       "faz": "treme",
+       "dur": 0.5,
+       "forca": 5
+      },
+      {
+       "em": "menos",
+       "faz": "move",
+       "para": [
+        0.6085,
+        0.4803
+       ],
+       "dur": 0.6
+      },
+      {
+       "em": "mofo",
+       "faz": "pula",
+       "altura": 26
+      },
+      {
+       "em": "truque",
+       "faz": "squash",
+       "forca": 0.15
+      }
+     ],
+     "raio": 13
+    },
+    {
+     "id": "mf_pupD",
+     "tipo": "bloco",
+     "x": 0.6441,
+     "y": 0.4703,
+     "largura": 27,
+     "altura": 27,
+     "cor": "#1D1B3A",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "linha3",
+       "faz": "move",
+       "para": [
+        0.6441,
+        0.4703
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": "agua",
+       "faz": "move",
+       "para": [
+        0.5941,
+        0.4503
+       ],
+       "dur": 0.5
+      },
+      {
+       "em": "sobra",
+       "faz": "treme",
+       "dur": 0.5,
+       "forca": 5
+      },
+      {
+       "em": "menos",
+       "faz": "move",
+       "para": [
+        0.6841,
+        0.4803
+       ],
+       "dur": 0.6
+      },
+      {
+       "em": "mofo",
+       "faz": "pula",
+       "altura": 26
+      },
+      {
+       "em": "truque",
+       "faz": "squash",
+       "forca": 0.15
+      }
+     ],
+     "raio": 13
+    },
+    {
+     "id": "mf_boca",
+     "tipo": "bloco",
+     "x": 0.6,
+     "y": 0.5021,
+     "largura": 81,
+     "altura": 28,
+     "cor": "#2B1B24",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "linha3",
+       "faz": "move",
+       "para": [
+        0.6,
+        0.5021
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": "agua",
+       "faz": "move",
+       "para": [
+        0.55,
+        0.4821
+       ],
+       "dur": 0.5
+      },
+      {
+       "em": "sobra",
+       "faz": "treme",
+       "dur": 0.5,
+       "forca": 5
+      },
+      {
+       "em": "menos",
+       "faz": "move",
+       "para": [
+        0.64,
+        0.5121
+       ],
+       "dur": 0.6
+      },
+      {
+       "em": "mofo",
+       "faz": "pula",
+       "altura": 26
+      },
+      {
+       "em": "truque",
+       "faz": "squash",
+       "forca": 0.15
+      }
+     ],
+     "raio": 14
+    },
+    {
+     "id": "mf_lingua",
+     "tipo": "bloco",
+     "x": 0.6047,
+     "y": 0.5207,
+     "largura": 44,
+     "altura": 62,
+     "cor": "#FF6F91",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "linha3",
+       "faz": "move",
+       "para": [
+        0.6047,
+        0.5207
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": "agua",
+       "faz": "move",
+       "para": [
+        0.5547,
+        0.5007
+       ],
+       "dur": 0.5
+      },
+      {
+       "em": "sobra",
+       "faz": "treme",
+       "dur": 0.5,
+       "forca": 5
+      },
+      {
+       "em": "menos",
+       "faz": "move",
+       "para": [
+        0.6447,
+        0.5307
+       ],
+       "dur": 0.6
+      },
+      {
+       "em": "mofo",
+       "faz": "pula",
+       "altura": 26
+      },
+      {
+       "em": "truque",
+       "faz": "squash",
+       "forca": 0.15
+      }
+     ],
+     "raio": 22
+    },
+    {
+     "id": "sede",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.155,
+     "texto": "SEM ÁGUA SOLTA",
+     "tam": 72,
+     "cor": "#FFF3E0",
+     "acoes": [
+      {
+       "em": "prende",
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ],
+     "fundo": "#E8452C"
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.2,
+     "y": 0.5,
+     "escala": 0.58,
+     "acoes": [
+      {
+       "em": "linha3",
+       "faz": "olha",
+       "para": "dir"
+      },
+      {
+       "em": "prende",
+       "faz": "boca",
+       "para": "o"
+      },
+      {
+       "em": "sobra",
+       "faz": "boca",
+       "para": "sorriso_torto"
+      },
+      {
+       "em": "mofo",
+       "faz": "pula",
+       "altura": 22
+      },
+      {
+       "em": "truque",
+       "faz": "olha",
+       "para": "camera"
+      },
+      {
+       "em": "truque",
+       "faz": "sobrancelha",
+       "para": 1.2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": "fermento",
+   "cenario": "cozinha",
+   "luz": "noite",
+   "paleta": "noite",
+   "elementos": [
+    {
+     "id": "rel",
+     "tipo": "relogio",
+     "ancora": "relogio",
+     "escala": 0.32,
+     "horas": 3,
+     "giro": 2.2
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.22,
+     "y": 0.47,
+     "escala": 0.66,
+     "acoes": [
+      {
+       "em": "fermento",
+       "faz": "olha",
+       "para": "dir"
+      },
+      {
+       "em": "natural",
+       "faz": "sobrancelha",
+       "para": 1.2
+      },
+      {
+       "em": "trabalha",
+       "faz": "pula",
+       "altura": 20
+      },
+      {
+       "em": "devagar",
+       "faz": "palpebra",
+       "para": 0.42
+      },
+      {
+       "em": "devagar",
+       "faz": "boca",
+       "para": "o"
+      },
+      {
+       "em": "ele",
+       "faz": "olha",
+       "para": "camera"
+      },
+      {
+       "em": "massa",
+       "faz": "sobrancelha",
+       "para": 1.0
+      },
+      {
+       "em": "levemente",
+       "faz": "treme",
+       "dur": 0.5,
+       "forca": 4
+      }
+     ],
+     "sobrancelha": 0.2,
+     "palpebra": 0.2
+    },
+    {
+     "id": "pote",
+     "tipo": "bloco",
+     "x": 0.52,
+     "y": 0.505,
+     "largura": 230,
+     "altura": 270,
+     "cor": "#BFE3EA",
+     "pode_sobrepor": true,
+     "acoes": [],
+     "raio": 40,
+     "alpha": 0.95
+    },
+    {
+     "id": "massa",
+     "tipo": "bloco",
+     "x": 0.52,
+     "y": 0.527,
+     "largura": 200,
+     "altura": 170,
+     "cor": "#F3E2B8",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "fermento",
+       "faz": "move",
+       "para": [
+        0.52,
+        0.51
+       ],
+       "ate": "devagar",
+       "curva": "linear"
+      },
+      {
+       "em": "fermento",
+       "faz": "escala",
+       "para": 1.12,
+       "ate": "devagar",
+       "curva": "linear"
+      }
+     ],
+     "raio": 34
+    },
+    {
+     "id": "tampa",
+     "tipo": "bloco",
+     "x": 0.52,
+     "y": 0.43,
+     "largura": 250,
+     "altura": 40,
+     "cor": "#C98A4B",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "devagar",
+       "faz": "pula",
+       "altura": 14
+      },
+      {
+       "em": "levemente",
+       "faz": "pula",
+       "altura": 16
+      }
+     ],
+     "raio": 14
+    },
+    {
+     "id": "rot_pote",
+     "tipo": "bloco",
+     "x": 0.52,
+     "y": 0.535,
+     "largura": 170,
+     "altura": 50,
+     "cor": "#E8452C",
+     "pode_sobrepor": true,
+     "acoes": [],
+     "raio": 10,
+     "texto": "FERMENTO",
+     "tam": 28,
+     "cor_texto": "#FFF3E0"
+    },
+    {
+     "id": "bo0",
+     "tipo": "bloco",
+     "x": 0.485,
+     "y": 0.545,
+     "largura": 28,
+     "altura": 28,
+     "cor": "#FFFFFF",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": 17.08,
+       "faz": "move",
+       "para": [
+        0.499,
+        0.465
+       ],
+       "dur": 0.78,
+       "curva": "linear"
+      },
+      {
+       "em": 17.865,
+       "faz": "move",
+       "para": [
+        0.485,
+        0.545
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 17.88,
+       "faz": "move",
+       "para": [
+        0.499,
+        0.465
+       ],
+       "dur": 0.78,
+       "curva": "linear"
+      },
+      {
+       "em": 18.665,
+       "faz": "move",
+       "para": [
+        0.485,
+        0.545
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 18.68,
+       "faz": "move",
+       "para": [
+        0.499,
+        0.465
+       ],
+       "dur": 0.78,
+       "curva": "linear"
+      },
+      {
+       "em": 19.465,
+       "faz": "move",
+       "para": [
+        0.485,
+        0.545
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 19.48,
+       "faz": "move",
+       "para": [
+        0.499,
+        0.465
+       ],
+       "dur": 0.78,
+       "curva": "linear"
+      },
+      {
+       "em": 20.265,
+       "faz": "move",
+       "para": [
+        0.485,
+        0.545
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 20.28,
+       "faz": "move",
+       "para": [
+        0.499,
+        0.465
+       ],
+       "dur": 0.78,
+       "curva": "linear"
+      },
+      {
+       "em": 21.065,
+       "faz": "move",
+       "para": [
+        0.485,
+        0.545
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 21.08,
+       "faz": "move",
+       "para": [
+        0.499,
+        0.465
+       ],
+       "dur": 0.78,
+       "curva": "linear"
+      },
+      {
+       "em": 21.865,
+       "faz": "move",
+       "para": [
+        0.485,
+        0.545
+       ],
+       "dur": 0.01
+      }
+     ],
+     "raio": 14,
+     "alpha": 0.85
+    },
+    {
+     "id": "bo1",
+     "tipo": "bloco",
+     "x": 0.52,
+     "y": 0.545,
+     "largura": 22,
+     "altura": 22,
+     "cor": "#FFFFFF",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": 17.08,
+       "faz": "move",
+       "para": [
+        0.52,
+        0.513
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 17.08,
+       "faz": "move",
+       "para": [
+        0.52,
+        0.465
+       ],
+       "dur": 0.46,
+       "curva": "linear"
+      },
+      {
+       "em": 17.545,
+       "faz": "move",
+       "para": [
+        0.52,
+        0.545
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 17.56,
+       "faz": "move",
+       "para": [
+        0.52,
+        0.465
+       ],
+       "dur": 0.78,
+       "curva": "linear"
+      },
+      {
+       "em": 18.345,
+       "faz": "move",
+       "para": [
+        0.52,
+        0.545
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 18.36,
+       "faz": "move",
+       "para": [
+        0.52,
+        0.465
+       ],
+       "dur": 0.78,
+       "curva": "linear"
+      },
+      {
+       "em": 19.145,
+       "faz": "move",
+       "para": [
+        0.52,
+        0.545
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 19.16,
+       "faz": "move",
+       "para": [
+        0.52,
+        0.465
+       ],
+       "dur": 0.78,
+       "curva": "linear"
+      },
+      {
+       "em": 19.945,
+       "faz": "move",
+       "para": [
+        0.52,
+        0.545
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 19.96,
+       "faz": "move",
+       "para": [
+        0.52,
+        0.465
+       ],
+       "dur": 0.78,
+       "curva": "linear"
+      },
+      {
+       "em": 20.745,
+       "faz": "move",
+       "para": [
+        0.52,
+        0.545
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 20.76,
+       "faz": "move",
+       "para": [
+        0.52,
+        0.465
+       ],
+       "dur": 0.78,
+       "curva": "linear"
+      },
+      {
+       "em": 21.545,
+       "faz": "move",
+       "para": [
+        0.52,
+        0.545
+       ],
+       "dur": 0.01
+      }
+     ],
+     "raio": 11,
+     "alpha": 0.85
+    },
+    {
+     "id": "bo2",
+     "tipo": "bloco",
+     "x": 0.555,
+     "y": 0.545,
+     "largura": 30,
+     "altura": 30,
+     "cor": "#FFFFFF",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": 17.08,
+       "faz": "move",
+       "para": [
+        0.5452,
+        0.489
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 17.08,
+       "faz": "move",
+       "para": [
+        0.541,
+        0.465
+       ],
+       "dur": 0.22,
+       "curva": "linear"
+      },
+      {
+       "em": 17.305,
+       "faz": "move",
+       "para": [
+        0.555,
+        0.545
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 17.32,
+       "faz": "move",
+       "para": [
+        0.541,
+        0.465
+       ],
+       "dur": 0.78,
+       "curva": "linear"
+      },
+      {
+       "em": 18.105,
+       "faz": "move",
+       "para": [
+        0.555,
+        0.545
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 18.12,
+       "faz": "move",
+       "para": [
+        0.541,
+        0.465
+       ],
+       "dur": 0.78,
+       "curva": "linear"
+      },
+      {
+       "em": 18.905,
+       "faz": "move",
+       "para": [
+        0.555,
+        0.545
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 18.92,
+       "faz": "move",
+       "para": [
+        0.541,
+        0.465
+       ],
+       "dur": 0.78,
+       "curva": "linear"
+      },
+      {
+       "em": 19.705,
+       "faz": "move",
+       "para": [
+        0.555,
+        0.545
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 19.72,
+       "faz": "move",
+       "para": [
+        0.541,
+        0.465
+       ],
+       "dur": 0.78,
+       "curva": "linear"
+      },
+      {
+       "em": 20.505,
+       "faz": "move",
+       "para": [
+        0.555,
+        0.545
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 20.52,
+       "faz": "move",
+       "para": [
+        0.541,
+        0.465
+       ],
+       "dur": 0.78,
+       "curva": "linear"
+      },
+      {
+       "em": 21.305,
+       "faz": "move",
+       "para": [
+        0.555,
+        0.545
+       ],
+       "dur": 0.01
+      }
+     ],
+     "raio": 15,
+     "alpha": 0.85
+    },
+    {
+     "id": "bo3",
+     "tipo": "bloco",
+     "x": 0.505,
+     "y": 0.545,
+     "largura": 18,
+     "altura": 18,
+     "cor": "#FFFFFF",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": 17.08,
+       "faz": "move",
+       "para": [
+        0.5065,
+        0.525
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 17.08,
+       "faz": "move",
+       "para": [
+        0.511,
+        0.465
+       ],
+       "dur": 0.58,
+       "curva": "linear"
+      },
+      {
+       "em": 17.665,
+       "faz": "move",
+       "para": [
+        0.505,
+        0.545
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 17.68,
+       "faz": "move",
+       "para": [
+        0.511,
+        0.465
+       ],
+       "dur": 0.78,
+       "curva": "linear"
+      },
+      {
+       "em": 18.465,
+       "faz": "move",
+       "para": [
+        0.505,
+        0.545
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 18.48,
+       "faz": "move",
+       "para": [
+        0.511,
+        0.465
+       ],
+       "dur": 0.78,
+       "curva": "linear"
+      },
+      {
+       "em": 19.265,
+       "faz": "move",
+       "para": [
+        0.505,
+        0.545
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 19.28,
+       "faz": "move",
+       "para": [
+        0.511,
+        0.465
+       ],
+       "dur": 0.78,
+       "curva": "linear"
+      },
+      {
+       "em": 20.065,
+       "faz": "move",
+       "para": [
+        0.505,
+        0.545
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 20.08,
+       "faz": "move",
+       "para": [
+        0.511,
+        0.465
+       ],
+       "dur": 0.78,
+       "curva": "linear"
+      },
+      {
+       "em": 20.865,
+       "faz": "move",
+       "para": [
+        0.505,
+        0.545
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 20.88,
+       "faz": "move",
+       "para": [
+        0.511,
+        0.465
+       ],
+       "dur": 0.78,
+       "curva": "linear"
+      },
+      {
+       "em": 21.665,
+       "faz": "move",
+       "para": [
+        0.505,
+        0.545
+       ],
+       "dur": 0.01
+      }
+     ],
+     "raio": 9,
+     "alpha": 0.85
+    },
+    {
+     "id": "bo4",
+     "tipo": "bloco",
+     "x": 0.54,
+     "y": 0.545,
+     "largura": 24,
+     "altura": 24,
+     "cor": "#FFFFFF",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": 17.08,
+       "faz": "move",
+       "para": [
+        0.5356,
+        0.501
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 17.08,
+       "faz": "move",
+       "para": [
+        0.532,
+        0.465
+       ],
+       "dur": 0.34,
+       "curva": "linear"
+      },
+      {
+       "em": 17.425,
+       "faz": "move",
+       "para": [
+        0.54,
+        0.545
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 17.44,
+       "faz": "move",
+       "para": [
+        0.532,
+        0.465
+       ],
+       "dur": 0.78,
+       "curva": "linear"
+      },
+      {
+       "em": 18.225,
+       "faz": "move",
+       "para": [
+        0.54,
+        0.545
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 18.24,
+       "faz": "move",
+       "para": [
+        0.532,
+        0.465
+       ],
+       "dur": 0.78,
+       "curva": "linear"
+      },
+      {
+       "em": 19.025,
+       "faz": "move",
+       "para": [
+        0.54,
+        0.545
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 19.04,
+       "faz": "move",
+       "para": [
+        0.532,
+        0.465
+       ],
+       "dur": 0.78,
+       "curva": "linear"
+      },
+      {
+       "em": 19.825,
+       "faz": "move",
+       "para": [
+        0.54,
+        0.545
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 19.84,
+       "faz": "move",
+       "para": [
+        0.532,
+        0.465
+       ],
+       "dur": 0.78,
+       "curva": "linear"
+      },
+      {
+       "em": 20.625,
+       "faz": "move",
+       "para": [
+        0.54,
+        0.545
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 20.64,
+       "faz": "move",
+       "para": [
+        0.532,
+        0.465
+       ],
+       "dur": 0.78,
+       "curva": "linear"
+      },
+      {
+       "em": 21.425,
+       "faz": "move",
+       "para": [
+        0.54,
+        0.545
+       ],
+       "dur": 0.01
+      }
+     ],
+     "raio": 12,
+     "alpha": 0.85
+    },
+    {
+     "id": "bs0",
+     "tipo": "bloco",
+     "x": 0.5,
+     "y": 0.415,
+     "largura": 24,
+     "altura": 24,
+     "cor": "#FFFFFF",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": 17.08,
+       "faz": "move",
+       "para": [
+        0.48,
+        0.345
+       ],
+       "dur": 0.98,
+       "curva": "linear"
+      },
+      {
+       "em": 18.065,
+       "faz": "move",
+       "para": [
+        0.5,
+        0.415
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 18.08,
+       "faz": "move",
+       "para": [
+        0.48,
+        0.345
+       ],
+       "dur": 0.98,
+       "curva": "linear"
+      },
+      {
+       "em": 19.065,
+       "faz": "move",
+       "para": [
+        0.5,
+        0.415
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 19.08,
+       "faz": "move",
+       "para": [
+        0.48,
+        0.345
+       ],
+       "dur": 0.98,
+       "curva": "linear"
+      },
+      {
+       "em": 20.065,
+       "faz": "move",
+       "para": [
+        0.5,
+        0.415
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 20.08,
+       "faz": "move",
+       "para": [
+        0.48,
+        0.345
+       ],
+       "dur": 0.98,
+       "curva": "linear"
+      },
+      {
+       "em": 21.065,
+       "faz": "move",
+       "para": [
+        0.5,
+        0.415
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 21.08,
+       "faz": "move",
+       "para": [
+        0.48,
+        0.345
+       ],
+       "dur": 0.98,
+       "curva": "linear"
+      },
+      {
+       "em": 22.065,
+       "faz": "move",
+       "para": [
+        0.5,
+        0.415
+       ],
+       "dur": 0.01
+      }
+     ],
+     "raio": 12,
+     "alpha": 0.7
+    },
+    {
+     "id": "bs1",
+     "tipo": "bloco",
+     "x": 0.545,
+     "y": 0.415,
+     "largura": 24,
+     "altura": 24,
+     "cor": "#FFFFFF",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": 17.08,
+       "faz": "move",
+       "para": [
+        0.5575,
+        0.38
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 17.08,
+       "faz": "move",
+       "para": [
+        0.57,
+        0.345
+       ],
+       "dur": 0.48,
+       "curva": "linear"
+      },
+      {
+       "em": 17.565,
+       "faz": "move",
+       "para": [
+        0.545,
+        0.415
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 17.58,
+       "faz": "move",
+       "para": [
+        0.57,
+        0.345
+       ],
+       "dur": 0.98,
+       "curva": "linear"
+      },
+      {
+       "em": 18.565,
+       "faz": "move",
+       "para": [
+        0.545,
+        0.415
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 18.58,
+       "faz": "move",
+       "para": [
+        0.57,
+        0.345
+       ],
+       "dur": 0.98,
+       "curva": "linear"
+      },
+      {
+       "em": 19.565,
+       "faz": "move",
+       "para": [
+        0.545,
+        0.415
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 19.58,
+       "faz": "move",
+       "para": [
+        0.57,
+        0.345
+       ],
+       "dur": 0.98,
+       "curva": "linear"
+      },
+      {
+       "em": 20.565,
+       "faz": "move",
+       "para": [
+        0.545,
+        0.415
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 20.58,
+       "faz": "move",
+       "para": [
+        0.57,
+        0.345
+       ],
+       "dur": 0.98,
+       "curva": "linear"
+      },
+      {
+       "em": 21.565,
+       "faz": "move",
+       "para": [
+        0.545,
+        0.415
+       ],
+       "dur": 0.01
+      }
+     ],
+     "raio": 12,
+     "alpha": 0.7
+    },
+    {
+     "id": "tit",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.19,
+     "texto": "FERMENTO\nNATURAL",
+     "tam": 80,
+     "cor": "#FFC21A",
+     "acoes": [
+      {
+       "em": "fermento",
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ]
+    },
+    {
+     "id": "dev",
+     "tipo": "texto",
+     "x": 0.72,
+     "y": 0.36,
+     "texto": "DEVAGAR...",
+     "tam": 56,
+     "cor": "#FFF3E0",
+     "acoes": [
+      {
+       "em": "devagar",
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ],
+     "fundo": "#1D1B3A"
+    }
+   ]
+  },
+  {
+   "em": "acida",
+   "cenario": "chapado",
+   "padrao": "luzes",
+   "paleta": "laranja",
+   "energia": 0.9,
+   "transicao": "zoom_blur",
+   "elementos": [
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.5,
+     "y": 0.45,
+     "escala": 0.95,
+     "acoes": [
+      {
+       "em": "acida",
+       "depois": 0.06,
+       "faz": "estoura"
+      },
+      {
+       "em": "acida",
+       "faz": "olha",
+       "para": "camera"
+      },
+      {
+       "em": "acida",
+       "depois": 0.4,
+       "faz": "boca",
+       "para": "o"
+      },
+      {
+       "em": "azedinho",
+       "faz": "boca",
+       "para": "sorriso_torto"
+      },
+      {
+       "em": "azedinho",
+       "faz": "squash",
+       "forca": 0.2
+      },
+      {
+       "em": "nesse",
+       "faz": "pula",
+       "altura": 30
+      },
+      {
+       "em": "azedinho",
+       "depois": 0.5,
+       "faz": "treme",
+       "dur": 0.4,
+       "forca": 6
+      }
+     ],
+     "sobrancelha": 1.2,
+     "palpebra": 0
+    },
+    {
+     "id": "pc0",
+     "tipo": "bloco",
+     "x": 0.45,
+     "y": 0.42,
+     "largura": 60,
+     "altura": 60,
+     "cor": "#FFF6DA",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "acida",
+       "depois": 0.1,
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": "acida",
+       "depois": 0.1,
+       "faz": "move",
+       "para": [
+        0.15,
+        0.3
+       ],
+       "dur": 1.6,
+       "curva": "suave"
+      }
+     ],
+     "raio": 30,
+     "escala": 1.0
+    },
+    {
+     "id": "pc1",
+     "tipo": "bloco",
+     "x": 0.55,
+     "y": 0.42,
+     "largura": 54,
+     "altura": 54,
+     "cor": "#FFF6DA",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "acida",
+       "depois": 0.13,
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": "acida",
+       "depois": 0.13,
+       "faz": "move",
+       "para": [
+        0.86,
+        0.26
+       ],
+       "dur": 1.6,
+       "curva": "suave"
+      }
+     ],
+     "raio": 27,
+     "escala": 1.0
+    },
+    {
+     "id": "pc2",
+     "tipo": "bloco",
+     "x": 0.5,
+     "y": 0.4,
+     "largura": 46,
+     "altura": 46,
+     "cor": "#FFF6DA",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "acida",
+       "depois": 0.16,
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": "acida",
+       "depois": 0.16,
+       "faz": "move",
+       "para": [
+        0.3,
+        0.22
+       ],
+       "dur": 1.6,
+       "curva": "suave"
+      }
+     ],
+     "raio": 23,
+     "escala": 1.0
+    },
+    {
+     "id": "pc3",
+     "tipo": "bloco",
+     "x": 0.5,
+     "y": 0.45,
+     "largura": 50,
+     "altura": 50,
+     "cor": "#FFF6DA",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "acida",
+       "depois": 0.19,
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": "acida",
+       "depois": 0.19,
+       "faz": "move",
+       "para": [
+        0.78,
+        0.52
+       ],
+       "dur": 1.6,
+       "curva": "suave"
+      }
+     ],
+     "raio": 25,
+     "escala": 1.0
+    },
+    {
+     "id": "pc4",
+     "tipo": "bloco",
+     "x": 0.48,
+     "y": 0.45,
+     "largura": 58,
+     "altura": 58,
+     "cor": "#FFF6DA",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "acida",
+       "depois": 0.22,
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": "acida",
+       "depois": 0.22,
+       "faz": "move",
+       "para": [
+        0.2,
+        0.53
+       ],
+       "dur": 1.6,
+       "curva": "suave"
+      }
+     ],
+     "raio": 29,
+     "escala": 1.0
+    },
+    {
+     "id": "pc5",
+     "tipo": "bloco",
+     "x": 0.52,
+     "y": 0.4,
+     "largura": 44,
+     "altura": 44,
+     "cor": "#FFF6DA",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "acida",
+       "depois": 0.25,
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": "acida",
+       "depois": 0.25,
+       "faz": "move",
+       "para": [
+        0.66,
+        0.2
+       ],
+       "dur": 1.6,
+       "curva": "suave"
+      }
+     ],
+     "raio": 22,
+     "escala": 1.0
+    },
+    {
+     "id": "tit",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.2,
+     "texto": "ÁCIDA!",
+     "tam": 170,
+     "cor": "#FFC21A",
+     "acoes": [
+      {
+       "em": "acida",
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ]
+    },
+    {
+     "id": "az",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.555,
+     "texto": "AZEDINHO",
+     "tam": 64,
+     "cor": "#FFF3E0",
+     "acoes": [
+      {
+       "em": "azedinho",
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ],
+     "fundo": "#3DAA3A"
+    }
+   ],
+   "acoes": [
+    {
+     "em": "acida",
+     "depois": 0.06,
+     "faz": "soco",
+     "forca": 0.14
+    },
+    {
+     "em": "acida",
+     "depois": 0.06,
+     "faz": "treme",
+     "forca": 14,
+     "dur": 0.3
+    }
+   ]
+  },
+  {
+   "em": "cresce",
+   "cenario": "chapado",
+   "padrao": "gradiente_vivo",
+   "paleta": "uva",
+   "energia": 0.8,
+   "elementos": [
+    {
+     "id": "ft8_casca",
+     "tipo": "bloco",
+     "x": 0.4,
+     "y": 0.3184,
+     "largura": 676,
+     "altura": 156,
+     "cor": "#C8781F",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "cresce",
+       "faz": "treme",
+       "dur": 2.0,
+       "forca": 1.5
+      }
+     ],
+     "raio": 78
+    },
+    {
+     "id": "ft8_miolo",
+     "tipo": "bloco",
+     "x": 0.4,
+     "y": 0.4335,
+     "largura": 650,
+     "altura": 442,
+     "cor": "#FBE08A",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "cresce",
+       "faz": "treme",
+       "dur": 2.0,
+       "forca": 1.5
+      }
+     ],
+     "raio": 65
+    },
+    {
+     "id": "ft8_base",
+     "tipo": "bloco",
+     "x": 0.4,
+     "y": 0.5554,
+     "largura": 676,
+     "altura": 52,
+     "cor": "#C98A4B",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "cresce",
+       "faz": "treme",
+       "dur": 2.0,
+       "forca": 1.5
+      }
+     ],
+     "raio": 18
+    },
+    {
+     "id": "ft8_al0",
+     "tipo": "bloco",
+     "x": 0.2074,
+     "y": 0.3929,
+     "largura": 44,
+     "altura": 44,
+     "cor": "#F2C95C",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "cresce",
+       "faz": "treme",
+       "dur": 2.0,
+       "forca": 1.5
+      }
+     ],
+     "raio": 22
+    },
+    {
+     "id": "ft8_al1",
+     "tipo": "bloco",
+     "x": 0.3278,
+     "y": 0.4606,
+     "largura": 44,
+     "altura": 44,
+     "cor": "#F2C95C",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "cresce",
+       "faz": "treme",
+       "dur": 2.0,
+       "forca": 1.5
+      }
+     ],
+     "raio": 22
+    },
+    {
+     "id": "ft8_al2",
+     "tipo": "bloco",
+     "x": 0.4722,
+     "y": 0.4065,
+     "largura": 44,
+     "altura": 44,
+     "cor": "#F2C95C",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "cresce",
+       "faz": "treme",
+       "dur": 2.0,
+       "forca": 1.5
+      }
+     ],
+     "raio": 22
+    },
+    {
+     "id": "ft8_al3",
+     "tipo": "bloco",
+     "x": 0.6046,
+     "y": 0.4674,
+     "largura": 44,
+     "altura": 44,
+     "cor": "#F2C95C",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "cresce",
+       "faz": "treme",
+       "dur": 2.0,
+       "forca": 1.5
+      }
+     ],
+     "raio": 22
+    },
+    {
+     "id": "ft8_al4",
+     "tipo": "bloco",
+     "x": 0.2556,
+     "y": 0.508,
+     "largura": 44,
+     "altura": 44,
+     "cor": "#F2C95C",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "cresce",
+       "faz": "treme",
+       "dur": 2.0,
+       "forca": 1.5
+      }
+     ],
+     "raio": 22
+    },
+    {
+     "id": "ft8_al5",
+     "tipo": "bloco",
+     "x": 0.5324,
+     "y": 0.5148,
+     "largura": 44,
+     "altura": 44,
+     "cor": "#F2C95C",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "cresce",
+       "faz": "treme",
+       "dur": 2.0,
+       "forca": 1.5
+      }
+     ],
+     "raio": 22
+    },
+    {
+     "id": "ft8_al6",
+     "tipo": "bloco",
+     "x": 0.4,
+     "y": 0.3591,
+     "largura": 44,
+     "altura": 44,
+     "cor": "#F2C95C",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "cresce",
+       "faz": "treme",
+       "dur": 2.0,
+       "forca": 1.5
+      }
+     ],
+     "raio": 22
+    },
+    {
+     "id": "ft8_fr0",
+     "tipo": "bloco",
+     "x": 0.2796,
+     "y": 0.4132,
+     "largura": 44,
+     "altura": 44,
+     "cor": "#E8452C",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "cresce",
+       "faz": "treme",
+       "dur": 2.0,
+       "forca": 1.5
+      }
+     ],
+     "raio": 10
+    },
+    {
+     "id": "ft8_fr1",
+     "tipo": "bloco",
+     "x": 0.4241,
+     "y": 0.4877,
+     "largura": 44,
+     "altura": 44,
+     "cor": "#3DAA3A",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "cresce",
+       "faz": "treme",
+       "dur": 2.0,
+       "forca": 1.5
+      }
+     ],
+     "raio": 10
+    },
+    {
+     "id": "ft8_fr2",
+     "tipo": "bloco",
+     "x": 0.5685,
+     "y": 0.3794,
+     "largura": 44,
+     "altura": 44,
+     "cor": "#FF8A1F",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "cresce",
+       "faz": "treme",
+       "dur": 2.0,
+       "forca": 1.5
+      }
+     ],
+     "raio": 10
+    },
+    {
+     "id": "ft8_fr3",
+     "tipo": "bloco",
+     "x": 0.1713,
+     "y": 0.4742,
+     "largura": 44,
+     "altura": 44,
+     "cor": "#3DAA3A",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "cresce",
+       "faz": "treme",
+       "dur": 2.0,
+       "forca": 1.5
+      }
+     ],
+     "raio": 10
+    },
+    {
+     "id": "ft8_fr4",
+     "tipo": "bloco",
+     "x": 0.6287,
+     "y": 0.4268,
+     "largura": 44,
+     "altura": 44,
+     "cor": "#E8452C",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "cresce",
+       "faz": "treme",
+       "dur": 2.0,
+       "forca": 1.5
+      }
+     ],
+     "raio": 10
+    },
+    {
+     "id": "mofo_pelo0",
+     "tipo": "bloco",
+     "x": 0.4415,
+     "y": 0.292,
+     "largura": 33,
+     "altura": 33,
+     "cor": "#4E9A33",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "cresce",
+       "faz": "escala",
+       "para": 2.75,
+       "dur": 3.0,
+       "curva": "linear"
+      },
+      {
+       "em": "cresce",
+       "faz": "move",
+       "para": [
+        0.5141,
+        0.285
+       ],
+       "dur": 3.0,
+       "curva": "linear"
+      },
+      {
+       "em": "lento",
+       "faz": "treme",
+       "dur": 0.6,
+       "forca": 3
+      }
+     ],
+     "raio": 16
+    },
+    {
+     "id": "mofo_pelo1",
+     "tipo": "bloco",
+     "x": 0.4336,
+     "y": 0.3057,
+     "largura": 33,
+     "altura": 33,
+     "cor": "#4E9A33",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "cresce",
+       "faz": "escala",
+       "para": 2.75,
+       "dur": 3.0,
+       "curva": "linear"
+      },
+      {
+       "em": "cresce",
+       "faz": "move",
+       "para": [
+        0.4923,
+        0.3227
+       ],
+       "dur": 3.0,
+       "curva": "linear"
+      },
+      {
+       "em": "lento",
+       "faz": "treme",
+       "dur": 0.6,
+       "forca": 3
+      }
+     ],
+     "raio": 16
+    },
+    {
+     "id": "mofo_pelo2",
+     "tipo": "bloco",
+     "x": 0.4128,
+     "y": 0.3142,
+     "largura": 33,
+     "altura": 33,
+     "cor": "#4E9A33",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "cresce",
+       "faz": "escala",
+       "para": 2.75,
+       "dur": 3.0,
+       "curva": "linear"
+      },
+      {
+       "em": "cresce",
+       "faz": "move",
+       "para": [
+        0.4353,
+        0.346
+       ],
+       "dur": 3.0,
+       "curva": "linear"
+      },
+      {
+       "em": "lento",
+       "faz": "treme",
+       "dur": 0.6,
+       "forca": 3
+      }
+     ],
+     "raio": 16
+    },
+    {
+     "id": "mofo_pelo3",
+     "tipo": "bloco",
+     "x": 0.3872,
+     "y": 0.3142,
+     "largura": 33,
+     "altura": 33,
+     "cor": "#4E9A33",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "cresce",
+       "faz": "escala",
+       "para": 2.75,
+       "dur": 3.0,
+       "curva": "linear"
+      },
+      {
+       "em": "cresce",
+       "faz": "move",
+       "para": [
+        0.3647,
+        0.346
+       ],
+       "dur": 3.0,
+       "curva": "linear"
+      },
+      {
+       "em": "lento",
+       "faz": "treme",
+       "dur": 0.6,
+       "forca": 3
+      }
+     ],
+     "raio": 16
+    },
+    {
+     "id": "mofo_pelo4",
+     "tipo": "bloco",
+     "x": 0.3664,
+     "y": 0.3057,
+     "largura": 33,
+     "altura": 33,
+     "cor": "#4E9A33",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "cresce",
+       "faz": "escala",
+       "para": 2.75,
+       "dur": 3.0,
+       "curva": "linear"
+      },
+      {
+       "em": "cresce",
+       "faz": "move",
+       "para": [
+        0.3077,
+        0.3227
+       ],
+       "dur": 3.0,
+       "curva": "linear"
+      },
+      {
+       "em": "lento",
+       "faz": "treme",
+       "dur": 0.6,
+       "forca": 3
+      }
+     ],
+     "raio": 16
+    },
+    {
+     "id": "mofo_pelo5",
+     "tipo": "bloco",
+     "x": 0.3585,
+     "y": 0.292,
+     "largura": 33,
+     "altura": 33,
+     "cor": "#4E9A33",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "cresce",
+       "faz": "escala",
+       "para": 2.75,
+       "dur": 3.0,
+       "curva": "linear"
+      },
+      {
+       "em": "cresce",
+       "faz": "move",
+       "para": [
+        0.2859,
+        0.285
+       ],
+       "dur": 3.0,
+       "curva": "linear"
+      },
+      {
+       "em": "lento",
+       "faz": "treme",
+       "dur": 0.6,
+       "forca": 3
+      }
+     ],
+     "raio": 16
+    },
+    {
+     "id": "mofo_pelo6",
+     "tipo": "bloco",
+     "x": 0.3664,
+     "y": 0.2783,
+     "largura": 33,
+     "altura": 33,
+     "cor": "#4E9A33",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "cresce",
+       "faz": "escala",
+       "para": 2.75,
+       "dur": 3.0,
+       "curva": "linear"
+      },
+      {
+       "em": "cresce",
+       "faz": "move",
+       "para": [
+        0.3077,
+        0.2473
+       ],
+       "dur": 3.0,
+       "curva": "linear"
+      },
+      {
+       "em": "lento",
+       "faz": "treme",
+       "dur": 0.6,
+       "forca": 3
+      }
+     ],
+     "raio": 16
+    },
+    {
+     "id": "mofo_pelo7",
+     "tipo": "bloco",
+     "x": 0.3872,
+     "y": 0.2698,
+     "largura": 33,
+     "altura": 33,
+     "cor": "#4E9A33",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "cresce",
+       "faz": "escala",
+       "para": 2.75,
+       "dur": 3.0,
+       "curva": "linear"
+      },
+      {
+       "em": "cresce",
+       "faz": "move",
+       "para": [
+        0.3647,
+        0.224
+       ],
+       "dur": 3.0,
+       "curva": "linear"
+      },
+      {
+       "em": "lento",
+       "faz": "treme",
+       "dur": 0.6,
+       "forca": 3
+      }
+     ],
+     "raio": 16
+    },
+    {
+     "id": "mofo_pelo8",
+     "tipo": "bloco",
+     "x": 0.4128,
+     "y": 0.2698,
+     "largura": 33,
+     "altura": 33,
+     "cor": "#4E9A33",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "cresce",
+       "faz": "escala",
+       "para": 2.75,
+       "dur": 3.0,
+       "curva": "linear"
+      },
+      {
+       "em": "cresce",
+       "faz": "move",
+       "para": [
+        0.4353,
+        0.224
+       ],
+       "dur": 3.0,
+       "curva": "linear"
+      },
+      {
+       "em": "lento",
+       "faz": "treme",
+       "dur": 0.6,
+       "forca": 3
+      }
+     ],
+     "raio": 16
+    },
+    {
+     "id": "mofo_pelo9",
+     "tipo": "bloco",
+     "x": 0.4336,
+     "y": 0.2783,
+     "largura": 33,
+     "altura": 33,
+     "cor": "#4E9A33",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "cresce",
+       "faz": "escala",
+       "para": 2.75,
+       "dur": 3.0,
+       "curva": "linear"
+      },
+      {
+       "em": "cresce",
+       "faz": "move",
+       "para": [
+        0.4923,
+        0.2473
+       ],
+       "dur": 3.0,
+       "curva": "linear"
+      },
+      {
+       "em": "lento",
+       "faz": "treme",
+       "dur": 0.6,
+       "forca": 3
+      }
+     ],
+     "raio": 16
+    },
+    {
+     "id": "mofo_corpo",
+     "tipo": "bloco",
+     "x": 0.4,
+     "y": 0.292,
+     "largura": 96,
+     "altura": 96,
+     "cor": "#7BC74D",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "cresce",
+       "faz": "escala",
+       "para": 2.75,
+       "dur": 3.0,
+       "curva": "linear"
+      },
+      {
+       "em": "cresce",
+       "faz": "move",
+       "para": [
+        0.4,
+        0.285
+       ],
+       "dur": 3.0,
+       "curva": "linear"
+      },
+      {
+       "em": "lento",
+       "faz": "treme",
+       "dur": 0.6,
+       "forca": 3
+      }
+     ],
+     "raio": 48
+    },
+    {
+     "id": "mofo_olhoE",
+     "tipo": "bloco",
+     "x": 0.3822,
+     "y": 0.2858,
+     "largura": 29,
+     "altura": 29,
+     "cor": "#FFFFFF",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "cresce",
+       "faz": "escala",
+       "para": 2.75,
+       "dur": 3.0,
+       "curva": "linear"
+      },
+      {
+       "em": "cresce",
+       "faz": "move",
+       "para": [
+        0.3511,
+        0.2678
+       ],
+       "dur": 3.0,
+       "curva": "linear"
+      },
+      {
+       "em": "lento",
+       "faz": "treme",
+       "dur": 0.6,
+       "forca": 3
+      }
+     ],
+     "raio": 14
+    },
+    {
+     "id": "mofo_olhoD",
+     "tipo": "bloco",
+     "x": 0.4178,
+     "y": 0.2858,
+     "largura": 29,
+     "altura": 29,
+     "cor": "#FFFFFF",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "cresce",
+       "faz": "escala",
+       "para": 2.75,
+       "dur": 3.0,
+       "curva": "linear"
+      },
+      {
+       "em": "cresce",
+       "faz": "move",
+       "para": [
+        0.4489,
+        0.2678
+       ],
+       "dur": 3.0,
+       "curva": "linear"
+      },
+      {
+       "em": "lento",
+       "faz": "treme",
+       "dur": 0.6,
+       "forca": 3
+      }
+     ],
+     "raio": 14
+    },
+    {
+     "id": "mofo_pupE",
+     "tipo": "bloco",
+     "x": 0.3852,
+     "y": 0.2874,
+     "largura": 12,
+     "altura": 12,
+     "cor": "#1D1B3A",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "cresce",
+       "faz": "escala",
+       "para": 2.75,
+       "dur": 3.0,
+       "curva": "linear"
+      },
+      {
+       "em": "cresce",
+       "faz": "move",
+       "para": [
+        0.3593,
+        0.2724
+       ],
+       "dur": 3.0,
+       "curva": "linear"
+      },
+      {
+       "em": "lento",
+       "faz": "treme",
+       "dur": 0.6,
+       "forca": 3
+      }
+     ],
+     "raio": 6
+    },
+    {
+     "id": "mofo_pupD",
+     "tipo": "bloco",
+     "x": 0.4207,
+     "y": 0.2874,
+     "largura": 12,
+     "altura": 12,
+     "cor": "#1D1B3A",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "cresce",
+       "faz": "escala",
+       "para": 2.75,
+       "dur": 3.0,
+       "curva": "linear"
+      },
+      {
+       "em": "cresce",
+       "faz": "move",
+       "para": [
+        0.457,
+        0.2724
+       ],
+       "dur": 3.0,
+       "curva": "linear"
+      },
+      {
+       "em": "lento",
+       "faz": "treme",
+       "dur": 0.6,
+       "forca": 3
+      }
+     ],
+     "raio": 6
+    },
+    {
+     "id": "mofo_boca",
+     "tipo": "bloco",
+     "x": 0.4,
+     "y": 0.3024,
+     "largura": 38,
+     "altura": 13,
+     "cor": "#2B1B24",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "cresce",
+       "faz": "escala",
+       "para": 2.75,
+       "dur": 3.0,
+       "curva": "linear"
+      },
+      {
+       "em": "cresce",
+       "faz": "move",
+       "para": [
+        0.4,
+        0.3136
+       ],
+       "dur": 3.0,
+       "curva": "linear"
+      },
+      {
+       "em": "lento",
+       "faz": "treme",
+       "dur": 0.6,
+       "forca": 3
+      }
+     ],
+     "raio": 6
+    },
+    {
+     "id": "mofo_lingua",
+     "tipo": "bloco",
+     "x": 0.4022,
+     "y": 0.3112,
+     "largura": 20,
+     "altura": 29,
+     "cor": "#FF6F91",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "cresce",
+       "faz": "escala",
+       "para": 2.75,
+       "dur": 3.0,
+       "curva": "linear"
+      },
+      {
+       "em": "cresce",
+       "faz": "move",
+       "para": [
+        0.4061,
+        0.3377
+       ],
+       "dur": 3.0,
+       "curva": "linear"
+      },
+      {
+       "em": "lento",
+       "faz": "treme",
+       "dur": 0.6,
+       "forca": 3
+      }
+     ],
+     "raio": 10
+    },
+    {
+     "id": "tit",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.155,
+     "texto": "BEM MAIS LENTO",
+     "tam": 78,
+     "cor": "#FFC21A",
+     "acoes": [
+      {
+       "em": "bem",
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.86,
+     "y": 0.46,
+     "escala": 0.62,
+     "acoes": [
+      {
+       "em": "cresce",
+       "faz": "olha",
+       "para": "esq"
+      },
+      {
+       "em": "cresce",
+       "faz": "boca",
+       "para": "sorriso"
+      },
+      {
+       "em": "cresce",
+       "depois": 0.3,
+       "faz": "treme",
+       "dur": 0.4,
+       "forca": 4
+      },
+      {
+       "em": "lento",
+       "depois": 0.5,
+       "faz": "pula",
+       "altura": 18
+      },
+      {
+       "em": "bem",
+       "faz": "boca",
+       "para": "sorriso"
+      },
+      {
+       "em": "mais",
+       "faz": "pula",
+       "altura": 26
+      },
+      {
+       "em": "lento",
+       "faz": "squash",
+       "forca": 0.2
+      },
+      {
+       "em": "lento",
+       "faz": "olha",
+       "para": "camera"
+      }
+     ],
+     "forma": "pipoca",
+     "palpebra": 0
+    }
+   ],
+   "acoes": [
+    {
+     "em": "cresce",
+     "faz": "reacao",
+     "estilo": "grilo",
+     "alvo": "mofo_corpo"
+    }
+   ]
+  },
+  {
+   "em": "mercado",
+   "cenario": "supermercado",
+   "paleta": "rosa",
+   "preco": "LEVE 5",
+   "elementos": [
+    {
+     "id": "tia",
+     "tipo": "humano",
+     "preset": "tia_do_zap",
+     "ancora": "carrinho",
+     "dx": 0.04,
+     "segura": "",
+     "olhar": "esq",
+     "pose": "em_pe",
+     "expressao": "feliz",
+     "acoes": [
+      {
+       "em": "mercado",
+       "faz": "pula",
+       "altura": 14
+      },
+      {
+       "em": "saco",
+       "faz": "olha",
+       "para": "camera"
+      },
+      {
+       "em": "fechado",
+       "faz": "expressao",
+       "para": "charmoso"
+      },
+      {
+       "em": "conservante",
+       "faz": "expressao",
+       "para": "surpreso"
+      },
+      {
+       "em": "conservante",
+       "faz": "pose",
+       "para": "maos_na_cabeca"
+      }
+     ]
+    },
+    {
+     "id": "cc0",
+     "tipo": "bloco",
+     "x": 0.6,
+     "y": 0.585,
+     "largura": 150,
+     "altura": 100,
+     "cor": "#E8452C",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "mercado",
+       "depois": 0.0,
+       "faz": "squash",
+       "forca": 0.12
+      },
+      {
+       "em": "fechado",
+       "faz": "pula",
+       "altura": 10
+      },
+      {
+       "em": "vezes",
+       "faz": "treme",
+       "dur": 0.3,
+       "forca": 3
+      }
+     ],
+     "raio": 14,
+     "rot": -6
+    },
+    {
+     "id": "cc1",
+     "tipo": "bloco",
+     "x": 0.73,
+     "y": 0.588,
+     "largura": 150,
+     "altura": 100,
+     "cor": "#2F6FE4",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "mercado",
+       "depois": 0.06,
+       "faz": "squash",
+       "forca": 0.12
+      },
+      {
+       "em": "fechado",
+       "faz": "pula",
+       "altura": 10
+      },
+      {
+       "em": "vezes",
+       "faz": "treme",
+       "dur": 0.3,
+       "forca": 3
+      }
+     ],
+     "raio": 14,
+     "rot": 4
+    },
+    {
+     "id": "cc2",
+     "tipo": "bloco",
+     "x": 0.86,
+     "y": 0.585,
+     "largura": 150,
+     "altura": 100,
+     "cor": "#16A57A",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "mercado",
+       "depois": 0.12,
+       "faz": "squash",
+       "forca": 0.12
+      },
+      {
+       "em": "fechado",
+       "faz": "pula",
+       "altura": 10
+      },
+      {
+       "em": "vezes",
+       "faz": "treme",
+       "dur": 0.3,
+       "forca": 3
+      }
+     ],
+     "raio": 14,
+     "rot": -3
+    },
+    {
+     "id": "cc3",
+     "tipo": "bloco",
+     "x": 0.575,
+     "y": 0.528,
+     "largura": 150,
+     "altura": 100,
+     "cor": "#FF8A1F",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "mercado",
+       "depois": 0.18,
+       "faz": "squash",
+       "forca": 0.12
+      },
+      {
+       "em": "fechado",
+       "faz": "pula",
+       "altura": 10
+      },
+      {
+       "em": "vezes",
+       "faz": "treme",
+       "dur": 0.3,
+       "forca": 3
+      }
+     ],
+     "raio": 14,
+     "rot": 7,
+     "texto": "PANETONE",
+     "tam": 26,
+     "cor_texto": "#FFF3E0"
+    },
+    {
+     "id": "cc4",
+     "tipo": "bloco",
+     "x": 0.875,
+     "y": 0.528,
+     "largura": 150,
+     "altura": 100,
+     "cor": "#C8318A",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "mercado",
+       "depois": 0.24,
+       "faz": "squash",
+       "forca": 0.12
+      },
+      {
+       "em": "fechado",
+       "faz": "pula",
+       "altura": 10
+      },
+      {
+       "em": "vezes",
+       "faz": "treme",
+       "dur": 0.3,
+       "forca": 3
+      }
+     ],
+     "raio": 14,
+     "rot": -5,
+     "texto": "PANETONE",
+     "tam": 26,
+     "cor_texto": "#FFF3E0"
+    },
+    {
+     "id": "saco",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.27,
+     "texto": "SACO FECHADO",
+     "tam": 60,
+     "cor": "#FFF3E0",
+     "acoes": [
+      {
+       "em": "saco",
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ],
+     "fundo": "#1D1B3A"
+    },
+    {
+     "id": "cons",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.37,
+     "texto": "ÀS VEZES: CONSERVANTE",
+     "tam": 54,
+     "cor": "#FFF3E0",
+     "acoes": [
+      {
+       "em": "conservante",
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ],
+     "fundo": "#E8452C"
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.2,
+     "y": 0.48,
+     "escala": 0.6,
+     "acoes": [
+      {
+       "em": "mercado",
+       "faz": "olha",
+       "para": "dir"
+      },
+      {
+       "em": "saco",
+       "faz": "pula",
+       "altura": 20
+      },
+      {
+       "em": "vezes",
+       "faz": "boca",
+       "para": "o"
+      },
+      {
+       "em": "conservante",
+       "faz": "sobrancelha",
+       "para": 1.2
+      },
+      {
+       "em": "conservante",
+       "faz": "treme",
+       "dur": 0.4,
+       "forca": 5
+      }
+     ],
+     "forma": "pipoca",
+     "palpebra": 0
+    }
+   ]
+  },
+  {
+   "em": "artesanal",
+   "cenario": "cozinha",
+   "luz": "dia",
+   "paleta": "menta",
+   "elementos": [
+    {
+     "id": "vovo",
+     "tipo": "humano",
+     "preset": "vovo_turbo",
+     "ancora": "balcao",
+     "dx": 0.06,
+     "pose": "apontando",
+     "aponta_para": [
+      -1,
+      0.2
+     ],
+     "expressao": "feliz",
+     "acoes": [
+      {
+       "em": "artesanal",
+       "faz": "pose",
+       "para": "comemorando"
+      },
+      {
+       "em": "sem",
+       "faz": "expressao",
+       "para": "gargalhada"
+      },
+      {
+       "em": "dura",
+       "faz": "pose",
+       "para": "mao_na_cintura"
+      },
+      {
+       "em": "menos",
+       "faz": "expressao",
+       "para": "envergonhado"
+      }
+     ]
+    },
+    {
+     "id": "pa_papel",
+     "tipo": "bloco",
+     "x": 0.86,
+     "y": 0.5197,
+     "largura": 151,
+     "altura": 71,
+     "cor": "#C98A4B",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "artesanal",
+       "faz": "move",
+       "para": [
+        0.36,
+        0.5437
+       ],
+       "dur": 0.7,
+       "curva": "elastico"
+      },
+      {
+       "em": "dura",
+       "faz": "squash",
+       "forca": 0.15
+      }
+     ],
+     "raio": 8
+    },
+    {
+     "id": "pa_domo",
+     "tipo": "bloco",
+     "x": 0.86,
+     "y": 0.4913,
+     "largura": 168,
+     "altura": 109,
+     "cor": "#E9A93B",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "artesanal",
+       "faz": "move",
+       "para": [
+        0.36,
+        0.5153
+       ],
+       "dur": 0.7,
+       "curva": "elastico"
+      },
+      {
+       "em": "dura",
+       "faz": "squash",
+       "forca": 0.15
+      }
+     ],
+     "raio": 52
+    },
+    {
+     "id": "pa_brilho",
+     "tipo": "bloco",
+     "x": 0.8444,
+     "y": 0.4759,
+     "largura": 88,
+     "altura": 23,
+     "cor": "#F6C766",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "artesanal",
+       "faz": "move",
+       "para": [
+        0.3444,
+        0.4999
+       ],
+       "dur": 0.7,
+       "curva": "elastico"
+      },
+      {
+       "em": "dura",
+       "faz": "squash",
+       "forca": 0.15
+      }
+     ],
+     "raio": 11
+    },
+    {
+     "id": "pa_f0",
+     "tipo": "bloco",
+     "x": 0.8172,
+     "y": 0.4934,
+     "largura": 12,
+     "altura": 12,
+     "cor": "#E8452C",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "artesanal",
+       "faz": "move",
+       "para": [
+        0.3172,
+        0.5174
+       ],
+       "dur": 0.7,
+       "curva": "elastico"
+      },
+      {
+       "em": "dura",
+       "faz": "squash",
+       "forca": 0.15
+      }
+     ],
+     "raio": 3
+    },
+    {
+     "id": "pa_f1",
+     "tipo": "bloco",
+     "x": 0.8483,
+     "y": 0.5022,
+     "largura": 12,
+     "altura": 12,
+     "cor": "#3DAA3A",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "artesanal",
+       "faz": "move",
+       "para": [
+        0.3483,
+        0.5262
+       ],
+       "dur": 0.7,
+       "curva": "elastico"
+      },
+      {
+       "em": "dura",
+       "faz": "squash",
+       "forca": 0.15
+      }
+     ],
+     "raio": 3
+    },
+    {
+     "id": "pa_f2",
+     "tipo": "bloco",
+     "x": 0.8872,
+     "y": 0.4891,
+     "largura": 12,
+     "altura": 12,
+     "cor": "#FF8A1F",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "artesanal",
+       "faz": "move",
+       "para": [
+        0.3872,
+        0.5131
+       ],
+       "dur": 0.7,
+       "curva": "elastico"
+      },
+      {
+       "em": "dura",
+       "faz": "squash",
+       "forca": 0.15
+      }
+     ],
+     "raio": 3
+    },
+    {
+     "id": "pa_f3",
+     "tipo": "bloco",
+     "x": 0.9067,
+     "y": 0.5044,
+     "largura": 12,
+     "altura": 12,
+     "cor": "#E8452C",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "artesanal",
+       "faz": "move",
+       "para": [
+        0.4067,
+        0.5284
+       ],
+       "dur": 0.7,
+       "curva": "elastico"
+      },
+      {
+       "em": "dura",
+       "faz": "squash",
+       "forca": 0.15
+      }
+     ],
+     "raio": 3
+    },
+    {
+     "id": "pa_f4",
+     "tipo": "bloco",
+     "x": 0.8639,
+     "y": 0.4825,
+     "largura": 12,
+     "altura": 12,
+     "cor": "#3DAA3A",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "artesanal",
+       "faz": "move",
+       "para": [
+        0.3639,
+        0.5065
+       ],
+       "dur": 0.7,
+       "curva": "elastico"
+      },
+      {
+       "em": "dura",
+       "faz": "squash",
+       "forca": 0.15
+      }
+     ],
+     "raio": 3
+    },
+    {
+     "id": "vp0",
+     "tipo": "bloco",
+     "x": 0.33,
+     "y": 0.46,
+     "largura": 52,
+     "altura": 52,
+     "cor": "#FFFFFF",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "artesanal",
+       "faz": "entra",
+       "jeito": "pop",
+       "depois": 0.6
+      },
+      {
+       "em": 30.2,
+       "faz": "move",
+       "para": [
+        0.35,
+        0.34
+       ],
+       "dur": 1.08,
+       "curva": "linear"
+      },
+      {
+       "em": 31.285,
+       "faz": "move",
+       "para": [
+        0.33,
+        0.46
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 31.3,
+       "faz": "move",
+       "para": [
+        0.35,
+        0.34
+       ],
+       "dur": 1.08,
+       "curva": "linear"
+      },
+      {
+       "em": 32.385,
+       "faz": "move",
+       "para": [
+        0.33,
+        0.46
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 32.4,
+       "faz": "move",
+       "para": [
+        0.35,
+        0.34
+       ],
+       "dur": 1.08,
+       "curva": "linear"
+      },
+      {
+       "em": 33.485,
+       "faz": "move",
+       "para": [
+        0.33,
+        0.46
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 33.5,
+       "faz": "move",
+       "para": [
+        0.35,
+        0.34
+       ],
+       "dur": 1.08,
+       "curva": "linear"
+      },
+      {
+       "em": 34.585,
+       "faz": "move",
+       "para": [
+        0.33,
+        0.46
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 34.6,
+       "faz": "move",
+       "para": [
+        0.35,
+        0.34
+       ],
+       "dur": 1.08,
+       "curva": "linear"
+      },
+      {
+       "em": 35.685,
+       "faz": "move",
+       "para": [
+        0.33,
+        0.46
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 35.7,
+       "faz": "move",
+       "para": [
+        0.35,
+        0.34
+       ],
+       "dur": 1.08,
+       "curva": "linear"
+      },
+      {
+       "em": 36.785,
+       "faz": "move",
+       "para": [
+        0.33,
+        0.46
+       ],
+       "dur": 0.01
+      }
+     ],
+     "raio": 26,
+     "alpha": 0.55
+    },
+    {
+     "id": "vp1",
+     "tipo": "bloco",
+     "x": 0.36,
+     "y": 0.46,
+     "largura": 52,
+     "altura": 52,
+     "cor": "#FFFFFF",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "artesanal",
+       "faz": "entra",
+       "jeito": "pop",
+       "depois": 0.6
+      },
+      {
+       "em": 30.2,
+       "faz": "move",
+       "para": [
+        0.3666,
+        0.4204
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 30.2,
+       "faz": "move",
+       "para": [
+        0.38,
+        0.34
+       ],
+       "dur": 0.717,
+       "curva": "linear"
+      },
+      {
+       "em": 30.922,
+       "faz": "move",
+       "para": [
+        0.36,
+        0.46
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 30.937,
+       "faz": "move",
+       "para": [
+        0.38,
+        0.34
+       ],
+       "dur": 1.08,
+       "curva": "linear"
+      },
+      {
+       "em": 32.022,
+       "faz": "move",
+       "para": [
+        0.36,
+        0.46
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 32.037,
+       "faz": "move",
+       "para": [
+        0.38,
+        0.34
+       ],
+       "dur": 1.08,
+       "curva": "linear"
+      },
+      {
+       "em": 33.122,
+       "faz": "move",
+       "para": [
+        0.36,
+        0.46
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 33.137,
+       "faz": "move",
+       "para": [
+        0.38,
+        0.34
+       ],
+       "dur": 1.08,
+       "curva": "linear"
+      },
+      {
+       "em": 34.222,
+       "faz": "move",
+       "para": [
+        0.36,
+        0.46
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 34.237,
+       "faz": "move",
+       "para": [
+        0.38,
+        0.34
+       ],
+       "dur": 1.08,
+       "curva": "linear"
+      },
+      {
+       "em": 35.322,
+       "faz": "move",
+       "para": [
+        0.36,
+        0.46
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 35.337,
+       "faz": "move",
+       "para": [
+        0.38,
+        0.34
+       ],
+       "dur": 1.08,
+       "curva": "linear"
+      },
+      {
+       "em": 36.422,
+       "faz": "move",
+       "para": [
+        0.36,
+        0.46
+       ],
+       "dur": 0.01
+      }
+     ],
+     "raio": 26,
+     "alpha": 0.55
+    },
+    {
+     "id": "vp2",
+     "tipo": "bloco",
+     "x": 0.39,
+     "y": 0.46,
+     "largura": 52,
+     "altura": 52,
+     "cor": "#FFFFFF",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "artesanal",
+       "faz": "entra",
+       "jeito": "pop",
+       "depois": 0.6
+      },
+      {
+       "em": 30.2,
+       "faz": "move",
+       "para": [
+        0.4032,
+        0.3808
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 30.2,
+       "faz": "move",
+       "para": [
+        0.41,
+        0.34
+       ],
+       "dur": 0.354,
+       "curva": "linear"
+      },
+      {
+       "em": 30.559,
+       "faz": "move",
+       "para": [
+        0.39,
+        0.46
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 30.574,
+       "faz": "move",
+       "para": [
+        0.41,
+        0.34
+       ],
+       "dur": 1.08,
+       "curva": "linear"
+      },
+      {
+       "em": 31.659,
+       "faz": "move",
+       "para": [
+        0.39,
+        0.46
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 31.674,
+       "faz": "move",
+       "para": [
+        0.41,
+        0.34
+       ],
+       "dur": 1.08,
+       "curva": "linear"
+      },
+      {
+       "em": 32.759,
+       "faz": "move",
+       "para": [
+        0.39,
+        0.46
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 32.774,
+       "faz": "move",
+       "para": [
+        0.41,
+        0.34
+       ],
+       "dur": 1.08,
+       "curva": "linear"
+      },
+      {
+       "em": 33.859,
+       "faz": "move",
+       "para": [
+        0.39,
+        0.46
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 33.874,
+       "faz": "move",
+       "para": [
+        0.41,
+        0.34
+       ],
+       "dur": 1.08,
+       "curva": "linear"
+      },
+      {
+       "em": 34.959,
+       "faz": "move",
+       "para": [
+        0.39,
+        0.46
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 34.974,
+       "faz": "move",
+       "para": [
+        0.41,
+        0.34
+       ],
+       "dur": 1.08,
+       "curva": "linear"
+      },
+      {
+       "em": 36.059,
+       "faz": "move",
+       "para": [
+        0.39,
+        0.46
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 36.074,
+       "faz": "move",
+       "para": [
+        0.41,
+        0.34
+       ],
+       "dur": 1.08,
+       "curva": "linear"
+      },
+      {
+       "em": 37.159,
+       "faz": "move",
+       "para": [
+        0.39,
+        0.46
+       ],
+       "dur": 0.01
+      }
+     ],
+     "raio": 26,
+     "alpha": 0.55
+    },
+    {
+     "id": "card",
+     "tipo": "bloco",
+     "x": 0.5,
+     "y": 0.198,
+     "largura": 700,
+     "altura": 220,
+     "cor": "#1D1B3A",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "artesanal",
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": "dura",
+       "faz": "soco"
+      }
+     ],
+     "raio": 30
+    },
+    {
+     "id": "card_t1",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.172,
+     "texto": "ARTESANAL:",
+     "tam": 64,
+     "cor": "#FFF3E0",
+     "acoes": [
+      {
+       "em": "artesanal",
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": "dura",
+       "faz": "soco"
+      }
+     ],
+     "pode_sobrepor": true
+    },
+    {
+     "id": "card_t2",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.224,
+     "texto": "DURA MENOS",
+     "tam": 64,
+     "cor": "#FFC21A",
+     "acoes": [
+      {
+       "em": "artesanal",
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": "dura",
+       "faz": "soco"
+      }
+     ],
+     "pode_sobrepor": true
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.17,
+     "y": 0.47,
+     "escala": 0.58,
+     "acoes": [
+      {
+       "em": "artesanal",
+       "faz": "olha",
+       "para": "dir"
+      },
+      {
+       "em": "isso",
+       "faz": "pula",
+       "altura": 22
+      },
+      {
+       "em": "dura",
+       "faz": "boca",
+       "para": "triste"
+      },
+      {
+       "em": "menos",
+       "faz": "olha",
+       "para": "camera"
+      }
+     ],
+     "forma": "pipoca",
+     "palpebra": 0
+    }
+   ]
+  },
+  {
+   "em": "fruta",
+   "cenario": "sala_natal",
+   "paleta": "tomate",
+   "luz": "noite",
+   "elementos": [
+    {
+     "id": "tia",
+     "tipo": "humano",
+     "preset": "tia_do_zap",
+     "ancora": "mesa",
+     "dx": 0.07,
+     "escala": 0.72,
+     "segura": "",
+     "olhar": "esq",
+     "pose": "bracos_cruzados",
+     "expressao": "bravo",
+     "acoes": [
+      {
+       "em": "voce",
+       "faz": "olha",
+       "para": "camera"
+      },
+      {
+       "em": "tira",
+       "faz": "expressao",
+       "para": "surpreso"
+      }
+     ]
+    },
+    {
+     "id": "ft11_casca",
+     "tipo": "bloco",
+     "x": 0.5,
+     "y": 0.3737,
+     "largura": 374,
+     "altura": 86,
+     "cor": "#C8781F",
+     "pode_sobrepor": true,
+     "acoes": [],
+     "raio": 43
+    },
+    {
+     "id": "ft11_miolo",
+     "tipo": "bloco",
+     "x": 0.5,
+     "y": 0.4375,
+     "largura": 360,
+     "altura": 244,
+     "cor": "#FBE08A",
+     "pode_sobrepor": true,
+     "acoes": [],
+     "raio": 36
+    },
+    {
+     "id": "ft11_base",
+     "tipo": "bloco",
+     "x": 0.5,
+     "y": 0.505,
+     "largura": 374,
+     "altura": 28,
+     "cor": "#C98A4B",
+     "pode_sobrepor": true,
+     "acoes": [],
+     "raio": 10
+    },
+    {
+     "id": "ft11_al0",
+     "tipo": "bloco",
+     "x": 0.3933,
+     "y": 0.415,
+     "largura": 24,
+     "altura": 24,
+     "cor": "#F2C95C",
+     "pode_sobrepor": true,
+     "acoes": [],
+     "raio": 12
+    },
+    {
+     "id": "ft11_al1",
+     "tipo": "bloco",
+     "x": 0.46,
+     "y": 0.4525,
+     "largura": 24,
+     "altura": 24,
+     "cor": "#F2C95C",
+     "pode_sobrepor": true,
+     "acoes": [],
+     "raio": 12
+    },
+    {
+     "id": "ft11_al2",
+     "tipo": "bloco",
+     "x": 0.54,
+     "y": 0.4225,
+     "largura": 24,
+     "altura": 24,
+     "cor": "#F2C95C",
+     "pode_sobrepor": true,
+     "acoes": [],
+     "raio": 12
+    },
+    {
+     "id": "ft11_al3",
+     "tipo": "bloco",
+     "x": 0.6133,
+     "y": 0.4562,
+     "largura": 24,
+     "altura": 24,
+     "cor": "#F2C95C",
+     "pode_sobrepor": true,
+     "acoes": [],
+     "raio": 12
+    },
+    {
+     "id": "ft11_al4",
+     "tipo": "bloco",
+     "x": 0.42,
+     "y": 0.4788,
+     "largura": 24,
+     "altura": 24,
+     "cor": "#F2C95C",
+     "pode_sobrepor": true,
+     "acoes": [],
+     "raio": 12
+    },
+    {
+     "id": "ft11_al5",
+     "tipo": "bloco",
+     "x": 0.5733,
+     "y": 0.4825,
+     "largura": 24,
+     "altura": 24,
+     "cor": "#F2C95C",
+     "pode_sobrepor": true,
+     "acoes": [],
+     "raio": 12
+    },
+    {
+     "id": "ft11_al6",
+     "tipo": "bloco",
+     "x": 0.5,
+     "y": 0.3962,
+     "largura": 24,
+     "altura": 24,
+     "cor": "#F2C95C",
+     "pode_sobrepor": true,
+     "acoes": [],
+     "raio": 12
+    },
+    {
+     "id": "ft11_fr0",
+     "tipo": "bloco",
+     "x": 0.4333,
+     "y": 0.4263,
+     "largura": 24,
+     "altura": 24,
+     "cor": "#E8452C",
+     "pode_sobrepor": true,
+     "acoes": [],
+     "raio": 5
+    },
+    {
+     "id": "ft11_fr1",
+     "tipo": "bloco",
+     "x": 0.5133,
+     "y": 0.4675,
+     "largura": 24,
+     "altura": 24,
+     "cor": "#3DAA3A",
+     "pode_sobrepor": true,
+     "acoes": [],
+     "raio": 5
+    },
+    {
+     "id": "ft11_fr2",
+     "tipo": "bloco",
+     "x": 0.5933,
+     "y": 0.4075,
+     "largura": 24,
+     "altura": 24,
+     "cor": "#FF8A1F",
+     "pode_sobrepor": true,
+     "acoes": [],
+     "raio": 5
+    },
+    {
+     "id": "ft11_fr3",
+     "tipo": "bloco",
+     "x": 0.3733,
+     "y": 0.46,
+     "largura": 24,
+     "altura": 24,
+     "cor": "#3DAA3A",
+     "pode_sobrepor": true,
+     "acoes": [],
+     "raio": 5
+    },
+    {
+     "id": "ft11_fr4",
+     "tipo": "bloco",
+     "x": 0.6267,
+     "y": 0.4337,
+     "largura": 24,
+     "altura": 24,
+     "cor": "#E8452C",
+     "pode_sobrepor": true,
+     "acoes": [],
+     "raio": 5
+    },
+    {
+     "id": "cr0",
+     "tipo": "bloco",
+     "x": 0.36,
+     "y": 0.07,
+     "largura": 40,
+     "altura": 40,
+     "cor": "#E8452C",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": 32.68,
+       "faz": "move",
+       "para": [
+        0.37,
+        0.33
+       ],
+       "dur": 0.88,
+       "curva": "linear"
+      },
+      {
+       "em": 33.565,
+       "faz": "move",
+       "para": [
+        0.36,
+        0.07
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 33.58,
+       "faz": "move",
+       "para": [
+        0.37,
+        0.33
+       ],
+       "dur": 0.88,
+       "curva": "linear"
+      },
+      {
+       "em": 34.465,
+       "faz": "move",
+       "para": [
+        0.36,
+        0.07
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 34.48,
+       "faz": "move",
+       "para": [
+        0.37,
+        0.33
+       ],
+       "dur": 0.88,
+       "curva": "linear"
+      },
+      {
+       "em": 35.365,
+       "faz": "move",
+       "para": [
+        0.36,
+        0.07
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 35.38,
+       "faz": "move",
+       "para": [
+        0.37,
+        0.33
+       ],
+       "dur": 0.88,
+       "curva": "linear"
+      },
+      {
+       "em": 36.265,
+       "faz": "move",
+       "para": [
+        0.36,
+        0.07
+       ],
+       "dur": 0.01
+      }
+     ],
+     "raio": 9,
+     "rot": 0
+    },
+    {
+     "id": "cr1",
+     "tipo": "bloco",
+     "x": 0.44,
+     "y": 0.07,
+     "largura": 40,
+     "altura": 40,
+     "cor": "#3DAA3A",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": 32.68,
+       "faz": "move",
+       "para": [
+        0.4445,
+        0.187
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 32.68,
+       "faz": "move",
+       "para": [
+        0.45,
+        0.33
+       ],
+       "dur": 0.475,
+       "curva": "linear"
+      },
+      {
+       "em": 33.16,
+       "faz": "move",
+       "para": [
+        0.44,
+        0.07
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 33.175,
+       "faz": "move",
+       "para": [
+        0.45,
+        0.33
+       ],
+       "dur": 0.88,
+       "curva": "linear"
+      },
+      {
+       "em": 34.06,
+       "faz": "move",
+       "para": [
+        0.44,
+        0.07
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 34.075,
+       "faz": "move",
+       "para": [
+        0.45,
+        0.33
+       ],
+       "dur": 0.88,
+       "curva": "linear"
+      },
+      {
+       "em": 34.96,
+       "faz": "move",
+       "para": [
+        0.44,
+        0.07
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 34.975,
+       "faz": "move",
+       "para": [
+        0.45,
+        0.33
+       ],
+       "dur": 0.88,
+       "curva": "linear"
+      },
+      {
+       "em": 35.86,
+       "faz": "move",
+       "para": [
+        0.44,
+        0.07
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 35.875,
+       "faz": "move",
+       "para": [
+        0.45,
+        0.33
+       ],
+       "dur": 0.88,
+       "curva": "linear"
+      },
+      {
+       "em": 36.76,
+       "faz": "move",
+       "para": [
+        0.44,
+        0.07
+       ],
+       "dur": 0.01
+      }
+     ],
+     "raio": 9,
+     "rot": 12
+    },
+    {
+     "id": "cr2",
+     "tipo": "bloco",
+     "x": 0.52,
+     "y": 0.07,
+     "largura": 40,
+     "altura": 40,
+     "cor": "#FF8A1F",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": 32.68,
+       "faz": "move",
+       "para": [
+        0.522,
+        0.122
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 32.68,
+       "faz": "move",
+       "para": [
+        0.53,
+        0.33
+       ],
+       "dur": 0.7,
+       "curva": "linear"
+      },
+      {
+       "em": 33.385,
+       "faz": "move",
+       "para": [
+        0.52,
+        0.07
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 33.4,
+       "faz": "move",
+       "para": [
+        0.53,
+        0.33
+       ],
+       "dur": 0.88,
+       "curva": "linear"
+      },
+      {
+       "em": 34.285,
+       "faz": "move",
+       "para": [
+        0.52,
+        0.07
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 34.3,
+       "faz": "move",
+       "para": [
+        0.53,
+        0.33
+       ],
+       "dur": 0.88,
+       "curva": "linear"
+      },
+      {
+       "em": 35.185,
+       "faz": "move",
+       "para": [
+        0.52,
+        0.07
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 35.2,
+       "faz": "move",
+       "para": [
+        0.53,
+        0.33
+       ],
+       "dur": 0.88,
+       "curva": "linear"
+      },
+      {
+       "em": 36.085,
+       "faz": "move",
+       "para": [
+        0.52,
+        0.07
+       ],
+       "dur": 0.01
+      }
+     ],
+     "raio": 9,
+     "rot": 24
+    },
+    {
+     "id": "cr3",
+     "tipo": "bloco",
+     "x": 0.6,
+     "y": 0.07,
+     "largura": 40,
+     "altura": 40,
+     "cor": "#FFC21A",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": 32.68,
+       "faz": "move",
+       "para": [
+        0.607,
+        0.252
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 32.68,
+       "faz": "move",
+       "para": [
+        0.61,
+        0.33
+       ],
+       "dur": 0.25,
+       "curva": "linear"
+      },
+      {
+       "em": 32.935,
+       "faz": "move",
+       "para": [
+        0.6,
+        0.07
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 32.95,
+       "faz": "move",
+       "para": [
+        0.61,
+        0.33
+       ],
+       "dur": 0.88,
+       "curva": "linear"
+      },
+      {
+       "em": 33.835,
+       "faz": "move",
+       "para": [
+        0.6,
+        0.07
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 33.85,
+       "faz": "move",
+       "para": [
+        0.61,
+        0.33
+       ],
+       "dur": 0.88,
+       "curva": "linear"
+      },
+      {
+       "em": 34.735,
+       "faz": "move",
+       "para": [
+        0.6,
+        0.07
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 34.75,
+       "faz": "move",
+       "para": [
+        0.61,
+        0.33
+       ],
+       "dur": 0.88,
+       "curva": "linear"
+      },
+      {
+       "em": 35.635,
+       "faz": "move",
+       "para": [
+        0.6,
+        0.07
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 35.65,
+       "faz": "move",
+       "para": [
+        0.61,
+        0.33
+       ],
+       "dur": 0.88,
+       "curva": "linear"
+      },
+      {
+       "em": 36.535,
+       "faz": "move",
+       "para": [
+        0.6,
+        0.07
+       ],
+       "dur": 0.01
+      }
+     ],
+     "raio": 9,
+     "rot": 36
+    },
+    {
+     "id": "cr4",
+     "tipo": "bloco",
+     "x": 0.66,
+     "y": 0.07,
+     "largura": 40,
+     "altura": 40,
+     "cor": "#C8318A",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": 32.68,
+       "faz": "move",
+       "para": [
+        0.6635,
+        0.161
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 32.68,
+       "faz": "move",
+       "para": [
+        0.67,
+        0.33
+       ],
+       "dur": 0.565,
+       "curva": "linear"
+      },
+      {
+       "em": 33.25,
+       "faz": "move",
+       "para": [
+        0.66,
+        0.07
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 33.265,
+       "faz": "move",
+       "para": [
+        0.67,
+        0.33
+       ],
+       "dur": 0.88,
+       "curva": "linear"
+      },
+      {
+       "em": 34.15,
+       "faz": "move",
+       "para": [
+        0.66,
+        0.07
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 34.165,
+       "faz": "move",
+       "para": [
+        0.67,
+        0.33
+       ],
+       "dur": 0.88,
+       "curva": "linear"
+      },
+      {
+       "em": 35.05,
+       "faz": "move",
+       "para": [
+        0.66,
+        0.07
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 35.065,
+       "faz": "move",
+       "para": [
+        0.67,
+        0.33
+       ],
+       "dur": 0.88,
+       "curva": "linear"
+      },
+      {
+       "em": 35.95,
+       "faz": "move",
+       "para": [
+        0.66,
+        0.07
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 35.965,
+       "faz": "move",
+       "para": [
+        0.67,
+        0.33
+       ],
+       "dur": 0.88,
+       "curva": "linear"
+      },
+      {
+       "em": 36.85,
+       "faz": "move",
+       "para": [
+        0.66,
+        0.07
+       ],
+       "dur": 0.01
+      }
+     ],
+     "raio": 9,
+     "rot": 48
+    },
+    {
+     "id": "cr5",
+     "tipo": "bloco",
+     "x": 0.4,
+     "y": 0.07,
+     "largura": 40,
+     "altura": 40,
+     "cor": "#3DAA3A",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": 32.68,
+       "faz": "move",
+       "para": [
+        0.4085,
+        0.291
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 32.68,
+       "faz": "move",
+       "para": [
+        0.41,
+        0.33
+       ],
+       "dur": 0.115,
+       "curva": "linear"
+      },
+      {
+       "em": 32.8,
+       "faz": "move",
+       "para": [
+        0.4,
+        0.07
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 32.815,
+       "faz": "move",
+       "para": [
+        0.41,
+        0.33
+       ],
+       "dur": 0.88,
+       "curva": "linear"
+      },
+      {
+       "em": 33.7,
+       "faz": "move",
+       "para": [
+        0.4,
+        0.07
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 33.715,
+       "faz": "move",
+       "para": [
+        0.41,
+        0.33
+       ],
+       "dur": 0.88,
+       "curva": "linear"
+      },
+      {
+       "em": 34.6,
+       "faz": "move",
+       "para": [
+        0.4,
+        0.07
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 34.615,
+       "faz": "move",
+       "para": [
+        0.41,
+        0.33
+       ],
+       "dur": 0.88,
+       "curva": "linear"
+      },
+      {
+       "em": 35.5,
+       "faz": "move",
+       "para": [
+        0.4,
+        0.07
+       ],
+       "dur": 0.01
+      },
+      {
+       "em": 35.515,
+       "faz": "move",
+       "para": [
+        0.41,
+        0.33
+       ],
+       "dur": 0.88,
+       "curva": "linear"
+      },
+      {
+       "em": 36.4,
+       "faz": "move",
+       "para": [
+        0.4,
+        0.07
+       ],
+       "dur": 0.01
+      }
+     ],
+     "raio": 9,
+     "rot": 60
+    },
+    {
+     "id": "catado0",
+     "tipo": "bloco",
+     "x": 0.2,
+     "y": 0.555,
+     "largura": 38,
+     "altura": 38,
+     "cor": "#E8452C",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "cristalizada",
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ],
+     "raio": 9
+    },
+    {
+     "id": "catado1",
+     "tipo": "bloco",
+     "x": 0.26,
+     "y": 0.56,
+     "largura": 38,
+     "altura": 38,
+     "cor": "#3DAA3A",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "voce",
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ],
+     "raio": 9
+    },
+    {
+     "id": "catado2",
+     "tipo": "bloco",
+     "x": 0.32,
+     "y": 0.553,
+     "largura": 38,
+     "altura": 38,
+     "cor": "#FF8A1F",
+     "pode_sobrepor": true,
+     "acoes": [
+      {
+       "em": "come",
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ],
+     "raio": 9
+    },
+    {
+     "id": "come",
+     "tipo": "bloco",
+     "x": 0.27,
+     "y": 0.27,
+     "largura": 360,
+     "altura": 150,
+     "cor": "#16A57A",
+     "pode_sobrepor": false,
+     "acoes": [
+      {
+       "em": "come",
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": "ou",
+       "faz": "pula",
+       "altura": 14
+      }
+     ],
+     "raio": 28,
+     "texto": "COME",
+     "tam": 86,
+     "cor_texto": "#FFF3E0"
+    },
+    {
+     "id": "tira",
+     "tipo": "bloco",
+     "x": 0.73,
+     "y": 0.27,
+     "largura": 360,
+     "altura": 150,
+     "cor": "#E8452C",
+     "pode_sobrepor": false,
+     "acoes": [
+      {
+       "em": "tira",
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ],
+     "raio": 28,
+     "texto": "TIRA",
+     "tam": 86,
+     "cor_texto": "#FFF3E0"
+    },
+    {
+     "id": "tit",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.155,
+     "texto": "COME OU TIRA?",
+     "tam": 86,
+     "cor": "#FFC21A",
+     "acoes": [
+      {
+       "em": "fruta",
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": "tira",
+       "faz": "squash",
+       "forca": 0.12
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.17,
+     "y": 0.47,
+     "escala": 0.6,
+     "acoes": [
+      {
+       "em": "fruta",
+       "faz": "olha",
+       "para": "dir"
+      },
+      {
+       "em": "fruta",
+       "faz": "pose",
+       "para": "apontando"
+      },
+      {
+       "em": "cristalizada",
+       "faz": "pula",
+       "altura": 20
+      },
+      {
+       "em": "voce",
+       "faz": "pula",
+       "altura": 20
+      },
+      {
+       "em": "come",
+       "faz": "olha",
+       "para": "camera"
+      },
+      {
+       "em": "tira",
+       "faz": "boca",
+       "para": "sorriso"
+      },
+      {
+       "em": "tira",
+       "faz": "squash",
+       "forca": 0.2
+      }
+     ],
+     "forma": "pipoca",
+     "palpebra": 0,
+     "aponta_para": [
+      1,
+      0.3
+     ]
+    }
+   ],
+   "acoes": [
+    {
+     "em": 35.791,
+     "faz": "congela",
+     "dur": 0.3
+    }
+   ]
+  }
+ ],
+ "cauda": 0.08,
+ "musica": "viagem",
+ "musica_inicio": 10.9,
+ "whoosh_nos_cortes": false,
+ "volume_whoosh": 0.22,
+ "silencios": [
+  [
+   0,
+   20.8
+  ],
+  [
+   20.8,
+   40
+  ]
+ ],
+ "sfx": [
+  [
+   "assets/sfx/75-cc0-breaking-falling-hit-sfx/bfh1_hit_07.ogg",
+   0.0,
+   0.55
+  ],
+  [
+   [
+    "assets/musica/a-mystery-travel/mystery_travel.mp3",
+    10.9,
+    9.32,
+    0.12
+   ],
+   0,
+   0.193
+  ],
+  [
+   "assets/sfx/pop-sounds/pop1.ogg",
+   0.22,
+   0.6
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_wood_hit_01.ogg",
+   1.019,
+   0.8
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_items_02.ogg",
+   1.119,
+   0.35
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_switch_01.ogg",
+   3.552,
+   0.7
+  ],
+  [
+   [
+    "assets/sfx/air-whoosh/whoosh2_0.wav",
+    0,
+    0.7,
+    0.15
+   ],
+   4.223,
+   1.0
+  ],
+  [
+   "assets/sfx/a-slide-pop-sound/slidepop_0.mp3",
+   4.363,
+   0.35
+  ],
+  [
+   "assets/sfx/pop-sounds/pop4.ogg",
+   5.0,
+   0.5
+  ],
+  [
+   "assets/sfx/pop-sounds/pop7.ogg",
+   5.476,
+   0.5
+  ],
+  [
+   "assets/sfx/pop-sounds/pop2.ogg",
+   5.869,
+   0.5
+  ],
+  [
+   "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+   7.699,
+   0.35
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_hit_02.ogg",
+   7.819,
+   0.9
+  ],
+  [
+   [
+    "assets/musica/a-mystery-travel/mystery_travel.mp3",
+    20.1,
+    3.22,
+    0.12
+   ],
+   9.2,
+   0.304
+  ],
+  [
+   "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+   10.909,
+   0.3
+  ],
+  [
+   "assets/sfx/pop-sounds/pop8.ogg",
+   11.493,
+   0.55
+  ],
+  [
+   [
+    "assets/sfx/air-whoosh/whoosh2_0.wav",
+    0,
+    0.7,
+    0.15
+   ],
+   12.221,
+   0.7
+  ],
+  [
+   [
+    "assets/musica/a-mystery-travel/mystery_travel.mp3",
+    23.2,
+    4.82,
+    0.12
+   ],
+   12.3,
+   0.408
+  ],
+  [
+   [
+    "assets/sfx/80-cc0-creature-sfx/eat_04.ogg",
+    0,
+    0.25,
+    0.05
+   ],
+   12.391,
+   0.6
+  ],
+  [
+   "assets/sfx/a-slide-pop-sound/slidepop_0.mp3",
+   13.129,
+   0.5
+  ],
+  [
+   [
+    "assets/sfx/air-whoosh/whoosh2_0.wav",
+    0,
+    0.7,
+    0.15
+   ],
+   16.957,
+   0.8
+  ],
+  [
+   [
+    "assets/musica/a-mystery-travel/mystery_travel.mp3",
+    27.9,
+    3.8,
+    0.12
+   ],
+   17.0,
+   0.219
+  ],
+  [
+   "assets/sfx/80-cc0-creature-sfx/burble_01.ogg",
+   17.197,
+   0.5
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_switch_01.ogg",
+   17.62,
+   0.45
+  ],
+  [
+   "assets/sfx/80-cc0-creature-sfx/burble_02.ogg",
+   17.95,
+   0.5
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_switch_02.ogg",
+   18.25,
+   0.45
+  ],
+  [
+   "assets/sfx/80-cc0-creature-sfx/burble_01.ogg",
+   18.55,
+   0.55
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_switch_01.ogg",
+   18.8,
+   0.5
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_switch_02.ogg",
+   19.0,
+   0.5
+  ],
+  [
+   [
+    "assets/sfx/memes/riser.ogg",
+    0,
+    1.55,
+    0.05
+   ],
+   19.2,
+   0.9
+  ],
+  [
+   "assets/sfx/75-cc0-breaking-falling-hit-sfx/bfh1_hit_07.ogg",
+   21.121,
+   0.5
+  ],
+  [
+   [
+    "assets/musica/a-mystery-travel/mystery_travel.mp3",
+    32.04,
+    2.38,
+    0.12
+   ],
+   21.14,
+   0.163
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_items_01.ogg",
+   21.301,
+   0.6
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_misc_02.ogg",
+   21.441,
+   0.5
+  ],
+  [
+   "assets/sfx/memes/boom.ogg",
+   21.6,
+   0.7
+  ],
+  [
+   "assets/sfx/3-pop-sounds/pop2.ogg",
+   21.6,
+   1.0
+  ],
+  [
+   "assets/sfx/75-cc0-breaking-falling-hit-sfx/bfh1_glass_breaking_02.ogg",
+   21.6,
+   0.8
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_misc_05.ogg",
+   21.641,
+   0.45
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_items_02.ogg",
+   21.861,
+   0.45
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_misc_03.ogg",
+   22.121,
+   0.4
+  ],
+  [
+   [
+    "assets/musica/a-mystery-travel/mystery_travel.mp3",
+    34.3,
+    1.42,
+    0.12
+   ],
+   23.4,
+   0.114
+  ],
+  [
+   [
+    "assets/musica/a-mystery-travel/mystery_travel.mp3",
+    35.6,
+    7.82,
+    0.12
+   ],
+   24.7,
+   0.147
+  ],
+  [
+   [
+    "assets/sfx/air-whoosh/whoosh2_0.wav",
+    0,
+    0.7,
+    0.15
+   ],
+   25.166,
+   0.8
+  ],
+  [
+   "assets/sfx/memes/dinheiro.ogg",
+   25.486,
+   0.45
+  ],
+  [
+   "assets/sfx/a-slide-pop-sound/slidepop_0.mp3",
+   26.238,
+   0.4
+  ],
+  [
+   "assets/sfx/pop-sounds/pop9.ogg",
+   28.214,
+   0.55
+  ],
+  [
+   "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+   29.397,
+   0.5
+  ],
+  [
+   "assets/sfx/memes/certo.ogg",
+   29.637,
+   0.45
+  ],
+  [
+   [
+    "assets/musica/a-mystery-travel/mystery_travel.mp3",
+    43.3,
+    2.32,
+    0.12
+   ],
+   32.4,
+   0.344
+  ],
+  [
+   [
+    "assets/sfx/air-whoosh/whoosh2_0.wav",
+    0,
+    0.7,
+    0.15
+   ],
+   32.559,
+   0.9
+  ],
+  [
+   "assets/sfx/pop-sounds/pop1.ogg",
+   33.02,
+   0.5
+  ],
+  [
+   "assets/sfx/pop-sounds/pop5.ogg",
+   33.17,
+   0.5
+  ],
+  [
+   "assets/sfx/pop-sounds/pop3.ogg",
+   33.32,
+   0.5
+  ],
+  [
+   "assets/sfx/pop-sounds/pop6.ogg",
+   33.5,
+   0.5
+  ],
+  [
+   "assets/sfx/pop-sounds/pop10.ogg",
+   33.64,
+   0.45
+  ],
+  [
+   "assets/sfx/pop-sounds/pop2.ogg",
+   33.85,
+   0.45
+  ],
+  [
+   "assets/sfx/pop-sounds/pop5.ogg",
+   34.381,
+   0.5
+  ],
+  [
+   [
+    "assets/musica/a-mystery-travel/mystery_travel.mp3",
+    45.5,
+    0.92,
+    0.12
+   ],
+   34.6,
+   0.286
+  ],
+  [
+   "assets/sfx/pop-sounds/pop7.ogg",
+   34.845,
+   0.6
+  ],
+  [
+   [
+    "assets/musica/a-mystery-travel/mystery_travel.mp3",
+    46.3,
+    0.691,
+    0.12
+   ],
+   35.4,
+   0.144
+  ]
+ ]
+}

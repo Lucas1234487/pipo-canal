@@ -3,7 +3,7 @@
 O G1 reabastece a fila todo domingo. O Diretor marca a pauta como usada no dia em que o vídeo entra na fila de publicação. Não repetir tema dos últimos 20 vídeos.
 
 ## Pedidos do Lucas (prioridade sobre a fila)
-- Série H em 3 partes, dias seguidos, na próxima vaga de H livre: "E se os animais tivessem olhos pra frente?" (cotidiano, dinossauros, evolução até a sociedade). Brief completo em docs/diretor/series/olhos_pra_frente.md.
+- Série H em 3 partes, dias seguidos (parte 1 = ep013, 26/11; parte 2 = H de 27/11; parte 3 = H de 28/11): "E se os animais tivessem olhos pra frente?" (cotidiano, dinossauros, evolução até a sociedade). Brief completo em docs/diretor/series/olhos_pra_frente.md.
 
 ## Fila (da pesquisa inicial; ver docs/diretor/RESGATE_PESQUISA.md)
 | # | Tipo | Pauta | Para quem manda |
@@ -38,3 +38,6 @@ O G1 reabastece a fila todo domingo. O Diretor marca a pauta como usada no dia e
 | 2026-11-24 | ep004 | O ossinho da sorte do Natal é de dinossauro |
 | 2026-11-24 | ep006 (em produção, teste do 2D) | Quanto tempo de vida você passou rolando o feed esse ano |
 | descartada | ep005 | "Fica parado que o T. rex não te vê" (fato batido; o Lucas achou tosco) |
+| 2026-11-26 | ep012 M | Véspera da Black Friday: tira print do preço hoje |
+| 2026-11-26 | ep013 H | Série olhos pra frente, parte 1 (pedido do Lucas) |
+| 2026-11-27 | ep014 C | Por que o panetone demora pra mofar (fila #19) |
