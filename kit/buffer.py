@@ -48,6 +48,8 @@ def gql(query, variables=None):
 def agendar(rede, quando, texto, video=None, imagem=None, titulo=None, comentario=None, tipo=None):
     cid = CANAIS[rede]
     # plano grátis não tem "primeiro comentário": a pergunta vai no fim da legenda
+    if comentario:
+        _pendente(rede, quando, comentario)
     if comentario and comentario not in texto:
         texto = texto.rstrip() + "\n\n" + comentario if "#" not in texto else texto.replace("\n\n#", "\n\n" + comentario + "\n\n#", 1)
     if video:
@@ -69,6 +71,18 @@ def agendar(rede, quando, texto, video=None, imagem=None, titulo=None, comentari
     q = """mutation($input: CreatePostInput!){ createPost(input:$input){
         __typename ... on PostActionSuccess { post { id dueAt status } } ... on MutationError { message } } }"""
     return gql(q, {"input": inp})["createPost"]
+
+
+def _pendente(rede, quando, comentario):
+    """Buffer grátis não posta primeiro comentário: registra para o Chrome fazer depois (G7 §5)."""
+    p = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "docs", "diretor", "redes", "comentarios_pendentes.json")
+    try:
+        L = json.load(open(p))
+    except Exception:
+        L = []
+    L.append({"rede": rede, "pasta": os.environ.get("PIPO_PASTA", ""), "publica_em": quando, "via": "buffer",
+              "comentario": comentario, "feito": False})
+    json.dump(L, open(p, "w"), ensure_ascii=False, indent=1)
 
 
 def fila():
