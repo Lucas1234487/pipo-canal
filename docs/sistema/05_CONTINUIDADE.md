@@ -23,7 +23,7 @@ Produção:
 
 Publicação (para cada rede, em ordem):
 1. Metricool (createScheduledPost). Atenção ao LIMITE do plano (ver abaixo).
-2. API direta da plataforma (YouTube Data API v3; Meta Graph API para Instagram e página do Facebook), com tokens no arquivo "PipoPop - segredos" do Drive, quando existirem.
+2. Buffer (plano grátis: 3 canais = YouTube Shorts, Instagram e Facebook; até 10 posts na fila por canal, repõe a qualquer hora; sem limite mensal). Pela API do Buffer (chave no "PipoPop - segredos" do Drive) ou pelo conector do Buffer, se estiver ligado. Obs.: a YouTube Data API direta NÃO serve: projeto não verificado sobe vídeo travado em privado. Meta Graph API direta fica como reserva do Instagram/Facebook.
 3. Claude in Chrome no Chrome pessoal do Lucas: YouTube Studio (receita em G5) e Meta Business Suite (business.facebook.com, publicar Reel no Instagram e na página).
 4. Nada funcionou: o vídeo fica na fila, o Vigia tenta de novo no próximo horário, e o Lucas recebe UMA mensagem curta dizendo o que travou e o que ele pode fazer (sem pedir decisão que o Diretor pode tomar).
 Conferência: depois do horário, getScheduledPosts/analytics; post com status de erro volta para a cadeia a partir do caminho seguinte.
@@ -31,4 +31,5 @@ Conferência: depois do horário, getScheduledPosts/analytics; post com status d
 ## Limite do Metricool (plano grátis)
 O plano grátis publica no máximo 20 posts por mês, contando cada rede separadamente (1 vídeo em YouTube + Instagram + Facebook = 3). Nosso ritmo (3 vídeos x 3 redes + stories) passa de 250 por mês. Enquanto o plano for o grátis:
 - Prioridade dos 20 do Metricool: vídeos novos no YouTube > vídeos novos no Instagram > Facebook > stories > arquivo.
-- O resto vai pelo caminho 2 ou 3. Isso está em DECISOES_LUCAS.md.
+- O resto vai pelo Buffer (caminho 2) ou pelo Chrome (3). Decisão do Lucas em 26/11: API grátis primeiro, Chrome em último caso.
+- Em 26/11 os 10 Reels de arquivo do Instagram/Facebook viraram RASCUNHO no Metricool para não estourar o limite; quando o Buffer estiver ligado, eles saem pelo Buffer nos horários do YouTube.
