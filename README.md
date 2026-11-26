@@ -1,42 +1,51 @@
 # PipoPop
 
-**Comece aqui:** `docs/sistema/00_LEIA_PRIMEIRO.md` (Sistema v2, 24/11/2026). Este canal é comandado pelo Diretor. Leia `docs/diretor/BRIEFING_DIRETOR.md` e siga a ordem de leitura de `docs/diretor/APOSENTADORIA.md`. Depois leia `docs/diretor/RESGATE_PESQUISA.md` (o que a pesquisa inicial mandou e o canal esqueceu).
-Memória: `docs/BASE_CONHECIMENTO.md` (longo prazo), `docs/diretor/handovers/` (diário de cada mandato, em ordem), `docs/diretor/PLACAR.md` (números).
-Referência do que funcionou: `referencias/dinossauros/`.
+Canal de vídeos curtos (YouTube Shorts @pipopo.88, Instagram Reels @pipo.pop88, página do Facebook "PipoPop"), feito em 2D por código e comandado por agentes. O dono do negócio no dia a dia é o **Diretor**; o Lucas só veta e decide o que é drástico.
 
----
+## Comece aqui (qualquer agente)
+1. `docs/sistema/00_LEIA_PRIMEIRO.md` (índice de tudo)
+2. `docs/sistema/02_GUARDRAILS.md` (o que nunca, o que sempre, piso de qualidade)
+3. `docs/sistema/ARQUITETURA.md` (o mapa: peças, fluxo do dia, dados, publicação)
+4. O briefing/spec do seu papel em `docs/sistema/specs/` + o seu caderno em `docs/diretor/cadernos/`
+5. Diretor: o último handover em `docs/diretor/handovers/` e `docs/diretor/DECISOES_LUCAS.md`
 
-# Pipo - kit de produção do canal
+## O que o Lucas pediu (as palavras dele, para entender o sentimento)
+`docs/diretor/pedidos_lucas/`: melhora contínua, furar a bolha, transcender. O objetivo nº 1 é crescer e chegar na monetização nas 3 redes (`docs/sistema/06_CRESCIMENTO.md`).
 
-Canal de vídeos curtos 3D (YouTube Shorts + Instagram Reels), PT e EN, foco Brasil.
-Mascote: Pipo, espiguinha de milho que estoura e vira uma menininha de pipoca premium com maria-chiquinha.
+## Documentos do sistema
+| Arquivo | Para quê |
+|---|---|
+| 02_GUARDRAILS | regras e piso de qualidade |
+| 03_CICLO | o que acontece todo dia e toda semana; slots de horário |
+| 04_MELHORA_CONTINUA | revisão semanal rígida, boletim por papel, base que evolui |
+| 05_CONTINUIDADE | o canal nunca para: cadeia de fallback, trava, avisos ao Lucas |
+| 06_CRESCIMENTO | metas de monetização, detector de estagnação, carteira diária, 5 perguntas de todo vídeo |
+| 07_DADOS | tudo vira dado: por vídeo x rede x janela, análise semanal e mensal |
+| BRIEFING_v3, ARQUITETURA, COMO_TRABALHAMOS | hierarquia e funcionamento |
+| specs/G1..G7, O1..O4, QA_claude | o como de cada papel |
+| diretor/APOSENTADORIA | passagem de bastão: contexto vazio, mas nunca burro |
 
-## Pastas
-- `kit/` código de produção (Blender via `bpy`, edge-tts, ffmpeg)
-- `docs/biblia_do_canal.md` regras do canal (roteiro, proibições, vozes, horários, SEO)
-- `docs/pauta_14_dias.md`, `docs/decisoes_pendentes.md`
-- `docs/pesquisa/` os 15 relatórios + revisões das personas
+## Código (`kit/`, `kit2d/`)
+| Comando | O que faz |
+|---|---|
+| `python3 kit/tts.py WORK` | narração (edge-tts) |
+| `python3 kit2d/render2d.py WORK [--previa]` | render 2D (pycairo) |
+| `python3 kit/compose.py WORK` | montagem, legenda, som |
+| `python3 kit/qa_check.py WORK pt` | QA técnico do vídeo |
+| `python3 kit/gemini.py video ...` | QA-Gemini (plateia + pronúncia) |
+| `python3 kit/guardrails.py <pasta>` | portão determinístico antes de agendar (saída 1 = não agenda) |
+| `python3 kit/buffer.py agendar ...` | publicar pelo Buffer (caminho 2) |
+| `python3 kit/dados.py video/post/metrica/tabela/analise` | base de dados do canal |
+| `python3 kit/imagens.py`, `kit/checa_sons.py` | fotos CC0/NASA com proveniência; audibilidade dos sons |
 
-## Fluxo de um episódio
-```bash
-bash kit/setup.sh                                   # 1x por sessão
-WORK=/home/claude/ep1; mkdir -p $WORK
-# 1) escrever $WORK/roteiro.json (e roteiro_en.json) -> ver docstring de kit/tts.py
-python3 kit/tts.py $WORK ; python3 kit/tts.py $WORK en
-# 2) copiar kit/ep_exemplo_blackfriday.py para $WORK/ep.py e reescrever a parte do episódio
-PIPO_KIT=$PWD/kit PIPO_WORK=$WORK python3 $WORK/ep.py 1,300,600   # prévia (olhar $WORK/prev/*.png)
-PIPO_KIT=$PWD/kit PIPO_WORK=$WORK python3 $WORK/ep.py full        # render (~3-4 s/quadro em 540x960)
-# 2b) revisão da cena antes do render (segundos): ver $WORK/qa_scene.json
-PIPO_KIT=$PWD/kit PIPO_WORK=$WORK python3 $WORK/ep.py qa
-# 3) montar
-python3 kit/compose.py $WORK        # -> $WORK/final_pt.mp4
-python3 kit/compose.py $WORK en     # -> $WORK/final_en.mp4 (usa timing_en.json e pills_en)
-# 4) revisão final (legenda sobreposta, objetos sobrepostos, zona segura, áudio) + folha de contato
-python3 kit/qa_check.py $WORK pt ; python3 kit/qa_check.py $WORK en
-```
+## Onde fica cada coisa
+- Vídeos prontos e publicados: branch `fila` (pastas `AAAA-MM-DD_M/H/C`, `arquivo/`, `social/`). Nunca apagar vídeo publicado.
+- Dados: `dados/` (videos.jsonl, posts.jsonl, metricas.jsonl).
+- Memória do Diretor: `docs/diretor/` (handovers, cadernos, boletins, análises, EXPERIMENTOS, MELHORIAS, PLACAR, DECISOES_LUCAS, redes/).
+- Marca: `assets/marca/` (avatar, banner, capa).
+- Segredos: NUNCA no git. Drive "PipoPop - segredos" (Gemini) e "PipoPop - segredos Buffer" -> `~/.pipo/` (chmod 600).
 
-## Funções principais (pipo_lib.py)
-`wt(palavra, n)` tempo de uma palavra da narração · `pipo_place` · `pipo_start_kernel` · `pipo_idle` · `pipo_hop` ·
-`pipo_tension` · `pipo_pop` (o estouro, com partículas) · `pipo_unpop` (loop) · `set_face(F, quadro, lid, brow, browL, look)` ·
-`blink` · `SIGN` (cara de tédio + sobrancelha levantada) · `FK` rosto da espiga · `FP` rosto da menininha ·
-`qa_key` / `qa_touch` (revisão) · `lit()` material 3D · `flat()` emissivo · `text3d` · `confetti` · `finish(shots, events, shake_at)`.
+## Tarefas agendadas
+Produção diária 03:37 · Vigia 09:23, 15:23, 20:23 · Semanal domingo 21:47 (horário de Brasília).
+
+_Histórico: o canal começou em 3D (Blender) em 21/11/2026 e virou 2D em 24/11/2026; o kit 3D antigo continua em `kit/` só como referência._
