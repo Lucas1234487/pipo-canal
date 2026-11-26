@@ -13,6 +13,10 @@ Cada vídeo vai para YouTube + Reel no Instagram + Reel no Facebook, mesmo horá
 ## 2. Sincronia e arquivo (decisão do Lucas, 26/11)
 As 3 redes andam no mesmo passo: Instagram e Facebook usam SÓ os horários do YouTube (tabela do 03_CICLO). Pode sair mais de um Reel no mesmo horário no Instagram/Facebook. Vídeo que já saiu no YouTube e ainda falta no Instagram/Facebook entra no próximo horário da tabela, junto com o vídeo novo, até zerar a diferença. Nunca repostar vídeo datado que perdeu o sentido. Controle em docs/diretor/redes/arquivo.md.
 
+## 2b. Todo vídeo publicado fica salvo no git (Lucas, 26/11)
+- Nenhum vídeo publicado pode existir só no YouTube. O upload.mp4 de todo vídeo que vai ao ar fica na branch `fila` (pasta do dia ou fila/arquivo/<data>_<slug>/) e NUNCA é apagado, nem na limpeza de disco.
+- Se aparecer no Studio um vídeo sem arquivo no git (ex.: subido à mão pelo Lucas), baixar pelo Studio (Opções > Baixar, no Chrome dele), pedir que ele ponha no Drive "Pipo - Canal" e subir para fila/arquivo/.
+
 ## 3. Posts de imagem e carrossel (memes)
 - 2 a 4 por semana no Instagram e no Facebook (type POST). Fontes: memes da Pipo de kit2d/memes.py, quadro mais forte de um vídeo com frase nova, curiosidade em carrossel (3 a 5 lâminas, 1080x1350).
 - Renderizar em PNG, subir na branch `fila` em social/AAAA-MM-DD_<slug>/ e usar a URL raw no Metricool. isAiGenerated true.
