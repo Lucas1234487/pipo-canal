@@ -25,11 +25,12 @@ Nenhum vídeo da fila esquecido; nenhum vídeo sem "não é para crianças"; nad
 - Quem fixa: a tarefa da noite (21h43, se existir), a publicação em lote (8h41, fixa o que já está público) e qualquer sessão com o Chrome do Lucas aberto. Ao fixar, grave fila/<pasta>/fixado.json.
 - Como (testado em 25/11): abrir youtube.com/watch?v=ID, pausar o vídeo, rolar até os comentários (window.scrollTo(0,900) e esperar ~4 s), clicar em #simplebox-placeholder, escrever em #contenteditable-root com execCommand('insertText'), clicar em #submit-button button; depois, no primeiro ytd-comment-thread-renderer, abrir o menu (#action-menu button), escolher "Fixar/Pin" e confirmar (#confirm-button button). Conferir o texto "Fixado por @pipopo.88". Clicar por coordenada falha quando a página rola.
 
-## Instagram @pipo.pop88 pelo Metricool (pedido do Lucas, 26/11)
-- Antes de agendar, chamar getBrandSettings. Se networksData tiver instagramData, cada vídeo agendado no YouTube também vai para o Instagram no MESMO horário, num post separado: providers [{"network":"instagram"}], instagramData {"type":"REEL","showReelOnFeed":true,"isAiGenerated":true}, media = mesma URL raw do upload.mp4, text = descrição do meta.json + hashtags (até 5), firstCommentText = comentario_fixado.
-- Gravar o id em agendado.json (campo "instagram"). Se o vídeo já estava agendado só no YouTube, agendar o Instagram também (se o horário passou, o próximo slot livre do dia).
-- Se instagramData não existir, a conta ainda não foi conectada pelo Lucas: seguir só com o YouTube e anotar no handover, sem tentar pelo Chrome.
-- Só a conta @pipo.pop88. Nunca a conta pessoal do Lucas.
+## Instagram @pipo.pop88 e página do Facebook "PipoPop" pelo Metricool (conectados em 26/11)
+- Metricool brand 8272438 tem youtubeData, instagramData (pipo.pop88) e facebookData (página PipoPop 1491381724050961).
+- Cada vídeo agendado no YouTube ganha um 2º post no Metricool, no MESMO horário, com providers [{"network":"instagram"},{"network":"facebook"}]: instagramData {"type":"REEL","showReelOnFeed":true,"isAiGenerated":true}, facebookData {"type":"REEL","title": título do meta.json}, media = mesma URL raw do upload.mp4, text = título + descrição do meta.json (hashtags no fim, até 5), firstCommentText = comentario_fixado.
+- Gravar o id em agendado.json (campo "meta_ig_fb"). Se o vídeo já estava agendado só no YouTube, agendar o post do Instagram/Facebook também (se o horário passou, o próximo slot livre do dia).
+- Se getBrandSettings não tiver instagramData ou facebookData, a conexão caiu: seguir com o que estiver conectado e anotar no handover para o Lucas reconectar.
+- Só @pipo.pop88 e a página PipoPop. Nunca a conta pessoal do Lucas.
 
 ## CAMINHO PRINCIPAL: Metricool (sem PC, testado em 25/11)
 O YouTube do canal está conectado no Metricool (marca 8272438, fuso America/Sao_Paulo). Qualquer sessão, mesmo na nuvem e com o PC do Lucas desligado, agenda assim:
