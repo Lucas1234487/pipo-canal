@@ -46,3 +46,6 @@ Os gerentes leem só a própria spec em docs/sistema/specs/ e os arquivos que el
 | Números | docs/diretor/PLACAR.md, docs/historico.csv |
 | Pautas usadas e fila de pautas | docs/sistema/PAUTAS.md |
 | Kit 3D (arquivado) | kit/, render/, assets/modelos/ |
+
+- 04_MELHORA_CONTINUA.md: melhora contínua de todas as áreas, revisão semanal rígida com pesquisa e boletim por papel (Lucas, 26/11).
+- specs/G7_redes.md: Instagram, Facebook, perfis, stories, memes; todo vídeo salvo no git.

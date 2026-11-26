@@ -32,6 +32,9 @@ Nenhum vídeo da fila esquecido; nenhum vídeo sem "não é para crianças"; nad
 - Se getBrandSettings não tiver instagramData ou facebookData, a conexão caiu: seguir com o que estiver conectado e anotar no handover para o Lucas reconectar.
 - Só @pipo.pop88 e a página PipoPop. Nunca a conta pessoal do Lucas.
 
+## Hashtags obrigatórias (pedido do Lucas, 26/11)
+Toda descrição (YouTube) e toda legenda (Instagram/Facebook) termina com as hashtags do meta.json (3 a 5, com #PipoPop). Antes de agendar, conferir no texto enviado ao Metricool/Studio que elas estão lá; sem hashtag não agenda.
+
 ## CAMINHO PRINCIPAL: Metricool (sem PC, testado em 25/11)
 O YouTube do canal está conectado no Metricool (marca 8272438, fuso America/Sao_Paulo). Qualquer sessão, mesmo na nuvem e com o PC do Lucas desligado, agenda assim:
 - Depois do push na `fila`, a URL pública do vídeo é https://raw.githubusercontent.com/Lucas1234487/pipo-canal/fila/<PASTA>/upload.mp4 (o repositório é público; o Metricool baixa e guarda).
