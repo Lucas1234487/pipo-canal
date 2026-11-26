@@ -1,6 +1,6 @@
 # 03. Ciclo: o que acontece todo dia e toda semana
 
-OBRIGATÓRIO em toda sessão que produz ou agenda (26/11): (1) gravar fila/_trava_producao.json ao começar a produzir e apagar ao terminar; (2) rodar python3 kit/guardrails.py <pasta> antes de agendar em qualquer rede (saída 1 = não agenda); (3) se um caminho de publicação falhar, seguir a cadeia de fallback do 05_CONTINUIDADE.md; (4) decisão drástica vai para docs/diretor/DECISOES_LUCAS.md e o dia segue.
+OBRIGATÓRIO em toda sessão que produz ou agenda (26/11): (1) gravar fila/_trava_producao.json ao começar a produzir e apagar ao terminar; (2) rodar python3 kit/guardrails.py <pasta> antes de agendar em qualquer rede (saída 1 = não agenda); (3) se um caminho de publicação falhar, seguir a cadeia de fallback do 05_CONTINUIDADE.md; (4) decisão drástica vai para docs/diretor/DECISOES_LUCAS.md e o dia segue; (5) registrar cada vídeo em dados/ (python3 kit/dados.py video <pasta> e, ao agendar, kit/dados.py post) e preencher no meta.json: aposta, tema, emocao, reconhecivel, estilo_animacao, versao_pipo, musica, meme, erro_proposital (07_DADOS); (6) roteiro só é aprovado com as 5 perguntas do 06_CRESCIMENTO.
 
 Redes sociais (Instagram, Facebook, perfis, stories, memes, interação): o Diretor também é dono, ver specs/G7_redes.md. Toda produção diária, além dos 3 vídeos, faz os stories do dia e cuida do arquivo; a sessão semanal revisa perfis e posts de meme.
 
