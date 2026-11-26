@@ -10,8 +10,8 @@ O Diretor é dono de TUDO que aparece nas redes, não só dos vídeos: perfis, b
 ## 1. Vídeos (todo dia, G5)
 Cada vídeo vai para YouTube + Reel no Instagram + Reel no Facebook, mesmo horário. Regra completa em G5.
 
-## 2. Arquivo (popular as redes novas)
-Vídeos que já saíram no YouTube e ainda não foram para Instagram/Facebook entram fora dos horários principais (09:37 e 14:23), no máximo 2 por dia, até zerar. Nunca repostar vídeo datado que perdeu o sentido (ex.: "13º cai até segunda"). Controle em docs/diretor/redes/arquivo.md.
+## 2. Sincronia e arquivo (decisão do Lucas, 26/11)
+As 3 redes andam no mesmo passo: Instagram e Facebook usam SÓ os horários do YouTube (tabela do 03_CICLO). Pode sair mais de um Reel no mesmo horário no Instagram/Facebook. Vídeo que já saiu no YouTube e ainda falta no Instagram/Facebook entra no próximo horário da tabela, junto com o vídeo novo, até zerar a diferença. Nunca repostar vídeo datado que perdeu o sentido. Controle em docs/diretor/redes/arquivo.md.
 
 ## 3. Posts de imagem e carrossel (memes)
 - 2 a 4 por semana no Instagram e no Facebook (type POST). Fontes: memes da Pipo de kit2d/memes.py, quadro mais forte de um vídeo com frase nova, curiosidade em carrossel (3 a 5 lâminas, 1080x1350).
