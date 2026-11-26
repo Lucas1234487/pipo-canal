@@ -1,5 +1,7 @@
 # 03. Ciclo: o que acontece todo dia e toda semana
 
+Redes sociais (Instagram, Facebook, perfis, stories, memes, interação): o Diretor também é dono, ver specs/G7_redes.md. Toda produção diária, além dos 3 vídeos, faz os stories do dia e cuida do arquivo; a sessão semanal revisa perfis e posts de meme.
+
 ## 1. Produção diária (tarefa agendada na nuvem, de madrugada, sem o Lucas)
 Uma sessão do Diretor produz os 3 vídeos do dia seguinte, um por pilar (decisão do Lucas, 24/11):
 - M = assunto do momento (data, tendência, notícia leve da semana: Black Friday, Natal, volta às aulas), 25 a 40 s;
