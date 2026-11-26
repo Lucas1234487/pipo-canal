@@ -25,6 +25,12 @@ Nenhum vídeo da fila esquecido; nenhum vídeo sem "não é para crianças"; nad
 - Quem fixa: a tarefa da noite (21h43, se existir), a publicação em lote (8h41, fixa o que já está público) e qualquer sessão com o Chrome do Lucas aberto. Ao fixar, grave fila/<pasta>/fixado.json.
 - Como (testado em 25/11): abrir youtube.com/watch?v=ID, pausar o vídeo, rolar até os comentários (window.scrollTo(0,900) e esperar ~4 s), clicar em #simplebox-placeholder, escrever em #contenteditable-root com execCommand('insertText'), clicar em #submit-button button; depois, no primeiro ytd-comment-thread-renderer, abrir o menu (#action-menu button), escolher "Fixar/Pin" e confirmar (#confirm-button button). Conferir o texto "Fixado por @pipopo.88". Clicar por coordenada falha quando a página rola.
 
+## Instagram @pipo.pop88 pelo Metricool (pedido do Lucas, 26/11)
+- Antes de agendar, chamar getBrandSettings. Se networksData tiver instagramData, cada vídeo agendado no YouTube também vai para o Instagram no MESMO horário, num post separado: providers [{"network":"instagram"}], instagramData {"type":"REEL","showReelOnFeed":true,"isAiGenerated":true}, media = mesma URL raw do upload.mp4, text = descrição do meta.json + hashtags (até 5), firstCommentText = comentario_fixado.
+- Gravar o id em agendado.json (campo "instagram"). Se o vídeo já estava agendado só no YouTube, agendar o Instagram também (se o horário passou, o próximo slot livre do dia).
+- Se instagramData não existir, a conta ainda não foi conectada pelo Lucas: seguir só com o YouTube e anotar no handover, sem tentar pelo Chrome.
+- Só a conta @pipo.pop88. Nunca a conta pessoal do Lucas.
+
 ## CAMINHO PRINCIPAL: Metricool (sem PC, testado em 25/11)
 O YouTube do canal está conectado no Metricool (marca 8272438, fuso America/Sao_Paulo). Qualquer sessão, mesmo na nuvem e com o PC do Lucas desligado, agenda assim:
 - Depois do push na `fila`, a URL pública do vídeo é https://raw.githubusercontent.com/Lucas1234487/pipo-canal/fila/<PASTA>/upload.mp4 (o repositório é público; o Metricool baixa e guarda).
