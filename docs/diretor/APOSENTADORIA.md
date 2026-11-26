@@ -60,3 +60,12 @@ Diretor: <número do mandato>  ·  Ciclo: <o que foi esse ciclo>
 5. docs/diretor/FUNCOES.md
 
 As pesquisas de docs/pesquisa/ são consulta, e não leitura obrigatória. Abra a que servir à decisão do dia.
+
+## Regra de ouro (Lucas, 26/11): contexto vazio, mas nunca burro
+Toda a hierarquia se aposenta e passa o bastão: Diretor -> Diretor sucessor (handover), Gerente -> Gerente, O1..O4 -> mesmo papel, QA-Claude -> QA-Claude, QA-Gemini (prompt) -> próxima versão do prompt. Ninguém começa com contexto cheio; todo mundo começa sabendo o essencial porque está ESCRITO NO GIT.
+- O que é permanente (regra, padrão, receita) vai para as specs (docs/sistema/specs/), GUARDRAILS, 04/05 ou BASE_CONHECIMENTO. Não fica só no handover.
+- O que é do papel vai para o caderno do papel (docs/diretor/cadernos/<papel>.md): no máximo ~40 linhas, só lições vivas. Passou disso, o semanal enxuga: o que virou regra sobe para a spec e sai do caderno.
+- O handover é curto (até ~40 linhas): estado, o que mudou, pendências, decisões, próximos passos. Não copia spec.
+- Quem é contratado lê: o briefing do seu papel + a spec do papel + o caderno do papel + o último bilhete do mesmo papel. Nada além do necessário (sem ler handovers antigos inteiros, sem colar histórico no briefing).
+- O sucessor do Diretor lê o ÚLTIMO handover (não todos) + o que o 03_CICLO manda.
+- Na revisão semanal, o boletim avalia também se os cadernos e handovers estão enxutos e úteis (nota em Fluxo/Hierarquia).
