@@ -41,6 +41,9 @@ Título, capa/thumbnail, primeira frase, descrição, hashtags, estilo do coment
 ## Estudar quem dá certo (todo dia um pouco, toda semana fundo)
 Para cada vídeo que viralizou fora (do nosso nicho ou não), responder: qual o gancho, qual a emoção, por que as pessoas compartilham, que formato visual, que duração, o que dá para trazer para o mundo da Pipo que ainda não existe aqui. Guardar em docs/pesquisa/referencias_virais.md (link, por que funciona, ideia para nós).
 
+## Nada é sagrado, nem a Pipo
+A Pipo é uma aposta, não um dogma. Se os dados mostrarem que ela segura numa rede e atrapalha em outra, muda só naquela rede; se atrapalhar em todas, troca. Mudança desse tamanho (mascote, nome do canal) é decisão drástica: vai para DECISOES_LUCAS.md com os números, e o Lucas já disse que topa mudar.
+
 ## Limites que não mudam
 Impactante e "sensacionalista" no gancho, sim; mentira, fato inventado, susto enganoso ou golpe, não (GUARDRAILS e QA continuam valendo). Viralizar com mentira derruba o canal e a monetização.
 
