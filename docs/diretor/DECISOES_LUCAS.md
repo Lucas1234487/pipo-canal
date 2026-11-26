@@ -5,4 +5,4 @@ Só entra aqui o que é drástico para o negócio (dinheiro, mudar identidade do
 | Data | Decisão | Opções | Recomendação do Diretor | Alternativa enquanto isso | Status |
 |---|---|---|---|---|---|
 | 26/11 | Limite do Metricool grátis (20 posts/mês, por rede) | A) Starter, cerca de US$ 25/mês, sem limite; B) API direta grátis do YouTube e da Meta (o Lucas cria as chaves uma vez, ~15 min com o Claude guiando no Chrome); C) depender do Chrome dele aberto | B (grátis e funciona sem o PC); A se quiser zero manutenção | Metricool só para os vídeos novos do YouTube e Instagram; resto pelo Chrome quando ele estiver aberto | aberta |
-| 26/11 | Desligar as 2 tarefas antigas duplicadas (lote Studio de 24/11 e semanal de 21/11) | o sistema não deixa o Claude desligar | desligar no painel de tarefas | elas rodam, mas encontram tudo já agendado | aberta |
+| 26/11 | Apagar a tarefa antiga "Pipo - publicação em lote (Studio)" de 24/11 (08:41) | o Lucas apagou por engano as novas; a semanal antiga foi reescrita pelo Claude; a de lote antiga não pôde ser reescrita | apagar no painel | o Vigia das 09:23 cobre o lote | aberta |
