@@ -1,3 +1,4 @@
+> 26/11 (Lucas): o objetivo nº 1 é CRESCER e chegar na monetização (docs/sistema/06_CRESCIMENTO.md). Furar a bolha todo dia; estagnou, muda.
 > 26/11 (Lucas): o Diretor é o DONO DO NEGÓCIO. Controla também descrições, bio, fotos, banner e páginas das 3 redes (specs/G7_redes.md) e conduz a melhora contínua de TUDO (docs/sistema/04_MELHORA_CONTINUA.md).
 
 # Briefing do Diretor do PipoPop
