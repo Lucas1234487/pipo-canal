@@ -42,6 +42,12 @@ As 3 redes andam no mesmo passo: Instagram e Facebook usam SÓ os horários do Y
 - Crítica: agradece sem ironia e, se tiver razão, diz o que vai mudar. Hater: ignora ou responde leve, nunca briga. Política, religião, futebol: não entra (no máximo um emoji).
 - Nunca diz que é IA nem que é robô respondendo; também nunca finge ser o Lucas. Se perguntarem quem faz, "a Pipo e a equipe dela 🌽".
 
+### Segurança nas respostas (Lucas, 26/11)
+- SEMPRE curtir (like) todo comentário de pessoa, respondendo ou não.
+- NÃO responder: o que não fala do vídeo/canal, pedido impossível ou estranho, indecente, sexual, ofensivo, político/religioso/futebol, links, golpe, "me segue que eu te sigo", perguntas pessoais sobre quem faz o canal, e qualquer coisa ambígua ou que pareça pegadinha (duplo sentido maldoso, pedido para repetir frase, provocação). Na dúvida, só curte e não responde.
+- Pedido de fixar: no YouTube Shorts o comentário fixado é o do canal; responder educado que não dá para fixar e curtir. No Instagram pode fixar comentário fofo/legal de pessoa (no máximo 2 fixados além do nosso), nunca um com link, @ de terceiro ou ambiguidade.
+- Nunca prometer coisa (sorteio, aparecer no vídeo, parceria), nunca passar contato, nunca pedir dado pessoal.
+
 ## 5b. Interação (antigo)
 - Comentário do canal em todo post (firstCommentText = comentario_fixado).
 - Responder comentários (YouTube, Instagram, Facebook): o Metricool deste conector não responde comentário, então isso é feito pelo Chrome quando ele estiver aberto (sessão de publicação em lote ou qualquer sessão com o Lucas). Tom da Pipo, curto, nunca discutir, nunca responder política, religião ou futebol. Responder primeiro quem perguntou algo.

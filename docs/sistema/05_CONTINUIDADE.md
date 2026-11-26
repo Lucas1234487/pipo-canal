@@ -33,3 +33,7 @@ O plano grátis publica no máximo 20 posts por mês, contando cada rede separad
 - Prioridade dos 20 do Metricool: vídeos novos no YouTube > vídeos novos no Instagram > Facebook > stories > arquivo.
 - O resto vai pelo Buffer (caminho 2) ou pelo Chrome (3). Decisão do Lucas em 26/11: API grátis primeiro, Chrome em último caso.
 - 26/11: os 10 Reels de arquivo ficaram como RASCUNHO no Metricool (não publicar) e foram agendados pelo Buffer no Instagram e no Facebook nos horários do YouTube de 26/11. Primeiro caso real da cadeia.
+
+## Avisar o Lucas (ele pode demorar a abrir o chat)
+- As tarefas têm notificação no celular. Decisão drástica ou bloqueio que a cadeia inteira não resolveu: SendUserMessage NA HORA, curta (o que é, as opções, a recomendação, o que acontece se ele não responder).
+- Todo domingo a semanal manda o resumo da semana com as decisões abertas. O Lucas combinou de passar no chat nos fins de semana para conferir.
