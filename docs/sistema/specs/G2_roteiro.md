@@ -74,3 +74,7 @@ Sempre na fala E escrito na tela, curto. Os exemplos do Lucas são exemplos, nã
 
 ## Hashtags (pedido do Lucas, 26/11)
 O1 pesquisa NA INTERNET (busca web e Gemini com busca, não de cabeça) as hashtags em alta no momento que combinam com a história: YouTube Shorts, Instagram e TikTok BR. Entrega em roteiro.json/meta.json o campo "hashtags": 3 a 5, sempre com #PipoPop, misturando 1 ou 2 grandes em alta + 2 ou 3 de nicho do tema, e anota em fatos.md de onde tirou (link ou consulta). Nada de hashtag sem relação com o vídeo.
+
+
+## Furar a bolha (Lucas, 26/11)
+Todo roteiro.json traz "aposta" (seguro|ousado|evolucao) e as 5 respostas da "Pergunta de todo vídeo" de docs/sistema/06_CRESCIMENTO.md. Sem isso o Diretor não aprova.

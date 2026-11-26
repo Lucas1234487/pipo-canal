@@ -20,6 +20,27 @@ Medir por rede, média móvel de 7 dias: views por vídeo, % que continuou assis
 Tema (momento, útil, curiosidade chocante, história que faz chorar/rir/estressar); coisas reconhecíveis (família, mãe, animal, comida, escola, trabalho, celular); palavras e gancho dos 2 primeiros segundos (pergunta, número, conflito, "você faz isso errado"); duração (curto 15-25 s vs. 45-65 s); ritmo e transições; música (alegre/triste, longa/curta); cor e contraste; erro proposital; animação caprichada vs. absurda vs. "ruim de propósito"; séries com parte 2; título e capa; horário; resposta a comentário em vídeo; tendência e meme da semana.
 Cada semana pelo menos 1 aposta ousada (fora do padrão) além dos ajustes.
 
+## Carteira diária (3 vídeos = 3 apostas diferentes) (Lucas, 26/11)
+Os 3 vídeos do dia não são 3 tentativas iguais. Em cada dia, pelo menos:
+- 1 SEGURO COM MARCA: o que já funciona no mercado (trend, formato em alta, tema universal: cachorro, pipoca, mãe, comida, dinheiro, escola) feito do nosso jeito para a pessoa voltar (Pipo, estouro, regra inventada, humor da casa).
+- 1 OUSADO: relação não óbvia entre duas coisas que dão certo (ex.: estrutura de um nicho aplicada a outro tema; formato de documentário em tema bobo; meme + ciência; dadaísta de propósito), ou algo que ninguém faz mas que os dados sugerem que pode funcionar.
+- 1 EVOLUÇÃO DO QUE MAIS RENDEU: variação/parte 2/mesma estrutura do nosso melhor vídeo recente.
+Os pilares M, H e C continuam; a carteira é o ângulo de cada um. Registrar no meta.json o campo "aposta": seguro|ousado|evolucao, para o G6 comparar.
+
+## Pergunta de todo vídeo (O1, Gerente e Diretor respondem por escrito no roteiro)
+1. Isso é mais do mesmo? Se for, o que tem de NOSSO que faz a pessoa lembrar e voltar? Se não for, o que de novo vai parar o dedo?
+2. Que sentimento a pessoa sente nos 2 primeiros segundos e no fim (rir, chorar, raiva boa, susto, identificação, "eu preciso mandar isso")?
+3. O que tem de reconhecível na hora (animal, família, comida, objeto do dia a dia, situação que todo mundo viveu)?
+4. O público precisa disso, quer isso, ou nem sabe que quer? (as três valem; dizer qual)
+5. Por que alguém mandaria esse vídeo para alguém? Para quem?
+Sem as 5 respostas, o Diretor não aprova o roteiro.
+
+## Tudo é variável (teste A/B contínuo)
+Título, capa/thumbnail, primeira frase, descrição, hashtags, estilo do comentário do canal, foto de perfil, bio, horário, duração, música, ritmo, paleta, estilo de animação (caprichada, absurda, "ruim de propósito"), citação de pensador/pessoa famosa (frase real, com fonte, sem imagem protegida), foto real CC0. Uma variável por vez quando possível, anotada em EXPERIMENTOS.md com o resultado.
+
+## Estudar quem dá certo (todo dia um pouco, toda semana fundo)
+Para cada vídeo que viralizou fora (do nosso nicho ou não), responder: qual o gancho, qual a emoção, por que as pessoas compartilham, que formato visual, que duração, o que dá para trazer para o mundo da Pipo que ainda não existe aqui. Guardar em docs/pesquisa/referencias_virais.md (link, por que funciona, ideia para nós).
+
 ## Limites que não mudam
 Impactante e "sensacionalista" no gancho, sim; mentira, fato inventado, susto enganoso ou golpe, não (GUARDRAILS e QA continuam valendo). Viralizar com mentira derruba o canal e a monetização.
 
