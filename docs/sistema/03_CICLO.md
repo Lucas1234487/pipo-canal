@@ -4,6 +4,13 @@ OBRIGATÓRIO em toda sessão que produz ou agenda (26/11): (1) gravar fila/_trav
 
 Redes sociais (Instagram, Facebook, perfis, stories, memes, interação): o Diretor também é dono, ver specs/G7_redes.md. Toda produção diária, além dos 3 vídeos, faz os stories do dia e cuida do arquivo; a sessão semanal revisa perfis e posts de meme.
 
+## 0. Modo enxuto e guardas (Órion de Vídeo, 28/11; vale sobre o resto deste arquivo)
+- Posse: `python3 kit/estado.py fila` e ler só docs/diretor/ESTADO.md + o que o prompt da tarefa mandar. O resto, sob demanda.
+- Por vídeo: o Diretor escreve o roteiro; 1 produtor (Sonnet) faz cenas, som, render, montagem; QA-Gemini sempre; QA-Claude (Sonnet, agente novo) sempre por enquanto: em 26 e 27/11 ele pegou problema real em 4 de 5 vídeos que o Gemini deu 8+. Todo achado do QA-Claude que repetir 2x vira checagem em script (qa_check/guardrails) e, quando as classes de erro estiverem cobertas, ele passa a rodar só por gatilho (`guardrails.gatilhos_qa`).
+- Guardas de falha fechada: `kit/buffer.py agendar --video` exige `--pasta` e guardrails.py = 0; "QA-Claude dispensado: motivo" só passa sem gatilho.
+- Vigia: `python3 kit/tem_trabalho.py fila` primeiro; saída 0 = só métricas e encerra.
+- Testes: `python3 kit/testes/test_guardas.py`.
+
 ## 1. Produção diária (tarefa agendada na nuvem, de madrugada, sem o Lucas)
 Uma sessão do Diretor produz os 3 vídeos do dia seguinte, um por pilar (decisão do Lucas, 24/11):
 - M = assunto do momento (data, tendência, notícia leve da semana: Black Friday, Natal, volta às aulas), 25 a 40 s;
