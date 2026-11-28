@@ -1,0 +1,3086 @@
+{
+ "paleta": "mostarda",
+ "musica": "viagem",
+ "musica_inicio": 6,
+ "whoosh_nos_cortes": false,
+ "volume_whoosh": 0.22,
+ "silencios": [
+  [
+   32.28,
+   64.81
+  ]
+ ],
+ "sfx": [
+  [
+   [
+    "assets/musica/cc0-mystery/mystery%20exploration.mp3",
+    4.0,
+    3.68,
+    0.5
+   ],
+   32.31,
+   0.11
+  ],
+  [
+   [
+    "assets/musica/adventure-intro-title-cinematic-epic/Adventure%20Theme%20Intro.wav",
+    13.0,
+    14.62,
+    0.5
+   ],
+   40.21,
+   0.14
+  ],
+  [
+   [
+    "assets/musica/a-mystery-travel/mystery_travel.mp3",
+    62.0,
+    9.08,
+    0.5
+   ],
+   54.83,
+   0.13
+  ],
+  [
+   "assets/sfx/memes/riser.ogg",
+   34.34,
+   0.6
+  ],
+  [
+   [
+    "assets/sfx/cc0-deep-monster-roar/monster_roar.wav",
+    0.15,
+    1.8,
+    0.5
+   ],
+   36.41,
+   0.95
+  ],
+  [
+   "assets/sfx/75-cc0-breaking-falling-hit-sfx/bfh1_hit_07.ogg",
+   36.41,
+   0.7
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_footstep_01.ogg",
+   34.02,
+   0.7
+  ],
+  [
+   "assets/sfx/75-cc0-breaking-falling-hit-sfx/bfh1_hit_03.ogg",
+   34.02,
+   0.5
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_footstep_02.ogg",
+   35.23,
+   0.7
+  ],
+  [
+   "assets/sfx/75-cc0-breaking-falling-hit-sfx/bfh1_hit_03.ogg",
+   35.23,
+   0.5
+  ],
+  [
+   "assets/sfx/pop-sounds/pop7.ogg",
+   33.809999999999995,
+   0.35
+  ],
+  [
+   "assets/sfx/pop-sounds/pop7.ogg",
+   34.459999999999994,
+   0.35
+  ],
+  [
+   "assets/sfx/pop-sounds/pop7.ogg",
+   35.11,
+   0.35
+  ],
+  [
+   "assets/sfx/olhos-cc0/pombo.ogg",
+   45.22,
+   0.4
+  ],
+  [
+   "assets/sfx/olhos-cc0/asas.ogg",
+   51.53,
+   0.6
+  ],
+  [
+   "assets/sfx/olhos-cc0/miado.ogg",
+   49.91,
+   0.4
+  ],
+  [
+   "assets/sfx/memes/boing.ogg",
+   12.2,
+   0.45
+  ],
+  [
+   "assets/sfx/memes/apito_sobe.ogg",
+   9.930000000000001,
+   0.35
+  ],
+  [
+   "assets/sfx/100-cc0-sfx-2/sfx100v2_hit_02.ogg",
+   7.68,
+   0.5
+  ],
+  [
+   "assets/sfx/80-cc0-creature-sfx/eat_01.ogg",
+   1.3499999999999999,
+   0.5
+  ],
+  [
+   "assets/sfx/memes/ohh.ogg",
+   46.85,
+   0.35
+  ],
+  [
+   "assets/sfx/memes/dundun.ogg",
+   32.43,
+   0.45
+  ],
+  [
+   "assets/sfx/80-cc0-creature-sfx/cute_03.ogg",
+   29.95,
+   0.5
+  ],
+  [
+   "assets/sfx/memes/errado.ogg",
+   50.23,
+   0.3
+  ],
+  [
+   "assets/sfx/memes/risada.ogg",
+   40.85,
+   0.3
+  ],
+  [
+   "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+   3.39,
+   0.2
+  ],
+  [
+   "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+   6.1,
+   0.2
+  ],
+  [
+   "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+   7.33,
+   0.2
+  ],
+  [
+   "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+   9.43,
+   0.2
+  ],
+  [
+   "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+   10.91,
+   0.2
+  ],
+  [
+   "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+   13.18,
+   0.2
+  ],
+  [
+   "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+   14.48,
+   0.2
+  ],
+  [
+   "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+   17.01,
+   0.2
+  ],
+  [
+   "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+   18.76,
+   0.2
+  ],
+  [
+   "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+   21.13,
+   0.2
+  ],
+  [
+   "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+   23.42,
+   0.2
+  ],
+  [
+   "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+   25.13,
+   0.2
+  ],
+  [
+   "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+   27.84,
+   0.2
+  ],
+  [
+   "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+   29.53,
+   0.2
+  ],
+  [
+   "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+   31.66,
+   0.2
+  ],
+  [
+   "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+   32.19,
+   0.2
+  ],
+  [
+   "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+   33.8,
+   0.2
+  ],
+  [
+   "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+   40.09,
+   0.2
+  ],
+  [
+   "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+   42.26,
+   0.2
+  ],
+  [
+   "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+   43.9,
+   0.2
+  ],
+  [
+   "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+   46.03,
+   0.2
+  ],
+  [
+   "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+   47.78,
+   0.2
+  ],
+  [
+   "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+   50.06,
+   0.2
+  ],
+  [
+   "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+   52.07,
+   0.2
+  ],
+  [
+   "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+   54.71,
+   0.2
+  ],
+  [
+   "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+   56.17,
+   0.2
+  ],
+  [
+   "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+   58.29,
+   0.2
+  ],
+  [
+   "assets/sfx/air-whoosh/whoosh_1passada.ogg",
+   61.21,
+   0.2
+  ]
+ ],
+ "cauda": 0.08,
+ "cenas": [
+  {
+   "em": 0,
+   "cenario": "cretaceo",
+   "luz": "dia",
+   "paleta": "menta",
+   "deriva": 0,
+   "elementos": [
+    {
+     "id": "sombra",
+     "tipo": "bicho",
+     "especie": "tiranossauro",
+     "vista": "perfil",
+     "x": 0.66,
+     "y": 0.37,
+     "escala": 1.2,
+     "silhueta": true,
+     "espelha": true,
+     "alpha": 0.95,
+     "acoes": [
+      {
+       "em": 0,
+       "faz": "escala",
+       "para": 1.32,
+       "dur": 3.5,
+       "curva": "linear"
+      }
+     ]
+    },
+    {
+     "id": "pato",
+     "tipo": "bicho",
+     "especie": "bicodepato",
+     "vista": "frente",
+     "x": 0.25,
+     "y": 0.395,
+     "escala": 1.2,
+     "olhos": "frente",
+     "pose": "bicando",
+     "expressao": "neutro"
+    },
+    {
+     "id": "samam",
+     "tipo": "bicho",
+     "especie": "bicodepato",
+     "vista": "planta",
+     "x": 0.47,
+     "y": 0.475,
+     "escala": 0.5
+    },
+    {
+     "id": "t1",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.17,
+     "texto": "OLHO NA FRENTE\n= ALMOÇO",
+     "tam": 80,
+     "cor": "#FFF8EC",
+     "acoes": [
+      {
+       "em": -0.4,
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop2"
+      },
+      {
+       "em": 2.79,
+       "faz": "soco"
+      }
+     ]
+    },
+    {
+     "id": "selo",
+     "tipo": "texto",
+     "x": 0.8,
+     "y": 0.54,
+     "texto": "PARTE 2",
+     "tam": 44,
+     "cor": "#FFF8EC",
+     "fundo": "#E8452C",
+     "rot": 6,
+     "acoes": [
+      {
+       "em": -0.4,
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop3"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.1,
+     "y": 0.53,
+     "escala": 0.4,
+     "acoes": [
+      {
+       "em": 0.3,
+       "faz": "olha",
+       "para": "esq"
+      },
+      {
+       "em": 1.1,
+       "faz": "squash"
+      },
+      {
+       "em": 1.9,
+       "faz": "sobrancelha",
+       "para": 0.6
+      },
+      {
+       "em": 2.7,
+       "faz": "olha",
+       "para": "camera"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": 3.51,
+   "cenario": "rua",
+   "luz": "tarde",
+   "paleta": "mostarda",
+   "elementos": [
+    {
+     "id": "sombra",
+     "tipo": "bicho",
+     "especie": "tiranossauro",
+     "vista": "frente",
+     "x": 0.55,
+     "y": 0.36,
+     "escala": 0.5,
+     "silhueta": true,
+     "alpha": 0.0,
+     "acoes": [
+      {
+       "em": 4.69,
+       "faz": "muda",
+       "prop": "alpha",
+       "para": 0.85,
+       "dur": 1.4
+      },
+      {
+       "em": 4.69,
+       "faz": "escala",
+       "para": 1.5,
+       "dur": 1.6,
+       "curva": "suave"
+      }
+     ]
+    },
+    {
+     "id": "pb",
+     "tipo": "bicho",
+     "especie": "pombo",
+     "vista": "perfil",
+     "x": 0.45,
+     "y": 0.44,
+     "escala": 1.05,
+     "olhos": "lado",
+     "pose": "bicando",
+     "expressao": "neutro"
+    },
+    {
+     "id": "t2",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.17,
+     "texto": "PARTE 2",
+     "tam": 84,
+     "cor": "#FFF8EC",
+     "fundo": "#1F5FD1",
+     "rot": -3,
+     "acoes": [
+      {
+       "em": 3.98,
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop"
+      },
+      {
+       "em": 4.640000000000001,
+       "faz": "sai",
+       "jeito": "some",
+       "dur": 0.15
+      }
+     ]
+    },
+    {
+     "id": "t3",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.17,
+     "texto": "A SOMBRA CRESCEU",
+     "tam": 60,
+     "cor": "#FFF8EC",
+     "fundo": "#E8452C",
+     "rot": 2,
+     "acoes": [
+      {
+       "em": 4.69,
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop2"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.86,
+     "y": 0.53,
+     "escala": 0.4,
+     "acoes": [
+      {
+       "em": 3.81,
+       "faz": "olha",
+       "para": "esq"
+      },
+      {
+       "em": 4.61,
+       "faz": "squash"
+      },
+      {
+       "em": 5.41,
+       "faz": "sobrancelha",
+       "para": 0.6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": 6.22,
+   "cenario": "cretaceo",
+   "luz": "dia",
+   "transicao": "mergulho",
+   "mergulho_em": [
+    0.55,
+    0.4
+   ],
+   "elementos": [
+    {
+     "id": "pato",
+     "tipo": "bicho",
+     "especie": "bicodepato",
+     "vista": "perfil",
+     "x": 0.22,
+     "y": 0.404,
+     "escala": 1.1,
+     "olhos": "lado",
+     "anda": true,
+     "acoes": [
+      {
+       "em": 6.22,
+       "faz": "move",
+       "para": [
+        0.6,
+        0.404
+       ],
+       "dur": 1.6,
+       "curva": "linear"
+      }
+     ]
+    },
+    {
+     "id": "t4",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.17,
+     "texto": "CRETÁCEO",
+     "tam": 84,
+     "cor": "#FFF8EC",
+     "fundo": "#2E9E4A",
+     "rot": -3,
+     "acoes": [
+      {
+       "em": 6.569999999999999,
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop3"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.9,
+     "y": 0.53,
+     "escala": 0.4,
+     "acoes": [
+      {
+       "em": 6.52,
+       "faz": "olha",
+       "para": "esq"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": 7.45,
+   "cenario": "cretaceo",
+   "luz": "dia",
+   "elementos": [
+    {
+     "id": "d0",
+     "tipo": "bicho",
+     "especie": "bicodepato",
+     "vista": "frente",
+     "x": 0.2,
+     "y": 0.447,
+     "escala": 0.72,
+     "olhos": "lado",
+     "pose": "bicando",
+     "cor": "#8A7BE0",
+     "acoes": []
+    },
+    {
+     "id": "d1",
+     "tipo": "bicho",
+     "especie": "bicodepato",
+     "vista": "frente",
+     "x": 0.5,
+     "y": 0.447,
+     "escala": 0.72,
+     "olhos": "lado",
+     "pose": "bicando",
+     "cor": "#58B7D6",
+     "acoes": []
+    },
+    {
+     "id": "d2",
+     "tipo": "bicho",
+     "especie": "bicodepato",
+     "vista": "frente",
+     "x": 0.8,
+     "y": 0.447,
+     "escala": 0.72,
+     "olhos": "lado",
+     "pose": "bicando",
+     "cor": "#D6A84E",
+     "acoes": [],
+     "cor2": "#FBF0D0"
+    },
+    {
+     "id": "t5",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.17,
+     "texto": "REGRA",
+     "tam": 100,
+     "cor": "#FFF8EC",
+     "fundo": "#E8452C",
+     "rot": -4,
+     "acoes": [
+      {
+       "em": 7.47,
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop"
+      },
+      {
+       "em": 7.93,
+       "faz": "soco"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.5,
+     "y": 0.57,
+     "escala": 0.4,
+     "acoes": [
+      {
+       "em": 7.75,
+       "faz": "olha",
+       "para": "esq"
+      },
+      {
+       "em": 8.55,
+       "faz": "squash"
+      },
+      {
+       "em": 9.35,
+       "faz": "sobrancelha",
+       "para": 0.6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": 9.55,
+   "cenario": "cretaceo",
+   "luz": "tarde",
+   "elementos": [
+    {
+     "id": "d0",
+     "tipo": "bicho",
+     "especie": "bicodepato",
+     "vista": "frente",
+     "x": 0.2,
+     "y": 0.447,
+     "escala": 0.72,
+     "olhos": "lado",
+     "pose": "bicando",
+     "cor": "#8A7BE0",
+     "acoes": [
+      {
+       "em": 9.63,
+       "faz": "muda",
+       "prop": "olhos",
+       "para": "frente",
+       "som": "pop2"
+      },
+      {
+       "em": 9.63,
+       "faz": "squash"
+      }
+     ]
+    },
+    {
+     "id": "d1",
+     "tipo": "bicho",
+     "especie": "bicodepato",
+     "vista": "frente",
+     "x": 0.5,
+     "y": 0.447,
+     "escala": 0.72,
+     "olhos": "lado",
+     "pose": "bicando",
+     "cor": "#58B7D6",
+     "acoes": [
+      {
+       "em": 9.88,
+       "faz": "muda",
+       "prop": "olhos",
+       "para": "frente",
+       "som": "pop3"
+      },
+      {
+       "em": 9.88,
+       "faz": "squash"
+      }
+     ]
+    },
+    {
+     "id": "d2",
+     "tipo": "bicho",
+     "especie": "bicodepato",
+     "vista": "frente",
+     "x": 0.8,
+     "y": 0.447,
+     "escala": 0.72,
+     "olhos": "lado",
+     "pose": "bicando",
+     "cor": "#D6A84E",
+     "acoes": [
+      {
+       "em": 9.97,
+       "faz": "muda",
+       "prop": "olhos",
+       "para": "frente",
+       "som": "pop"
+      },
+      {
+       "em": 9.97,
+       "faz": "squash"
+      }
+     ],
+     "cor2": "#FBF0D0"
+    },
+    {
+     "id": "t6",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.17,
+     "texto": "OLHO NA FRENTE",
+     "tam": 72,
+     "cor": "#FFF8EC",
+     "fundo": "#1F5FD1",
+     "rot": 2,
+     "acoes": [
+      {
+       "em": 9.63,
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop2"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.5,
+     "y": 0.57,
+     "escala": 0.4,
+     "acoes": [
+      {
+       "em": 9.85,
+       "faz": "olha",
+       "para": "esq"
+      },
+      {
+       "em": 10.65,
+       "faz": "squash"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": 11.03,
+   "cenario": "cretaceo",
+   "luz": "tarde",
+   "elementos": [
+    {
+     "id": "rex",
+     "tipo": "bicho",
+     "especie": "tiranossauro",
+     "vista": "frente",
+     "x": 0.5,
+     "y": 0.39,
+     "escala": 1.3,
+     "pose": "ombros",
+     "acoes": [
+      {
+       "em": 12.2,
+       "faz": "soco"
+      }
+     ]
+    },
+    {
+     "id": "t7",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.17,
+     "texto": "NEM LIGOU",
+     "tam": 80,
+     "cor": "#FFF8EC",
+     "fundo": "#8E2F2A",
+     "rot": -3,
+     "acoes": [
+      {
+       "em": 11.99,
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop3"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.1,
+     "y": 0.53,
+     "escala": 0.4,
+     "acoes": [
+      {
+       "em": 11.33,
+       "faz": "olha",
+       "para": "esq"
+      },
+      {
+       "em": 12.13,
+       "faz": "squash"
+      },
+      {
+       "em": 12.93,
+       "faz": "sobrancelha",
+       "para": 0.6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": 13.3,
+   "cenario": "cretaceo",
+   "luz": "dia",
+   "elementos": [
+    {
+     "id": "rex",
+     "tipo": "bicho",
+     "especie": "tiranossauro",
+     "vista": "frente",
+     "x": 0.5,
+     "y": 0.36,
+     "escala": 1.55,
+     "pose": "ombros",
+     "expressao": "feliz"
+    },
+    {
+     "id": "t8",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.17,
+     "texto": "JÁ ERA ASSIM",
+     "tam": 76,
+     "cor": "#FFF8EC",
+     "fundo": "#7A3FBF",
+     "rot": 3,
+     "acoes": [
+      {
+       "em": 13.56,
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop"
+      },
+      {
+       "em": 13.95,
+       "faz": "soco"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.9,
+     "y": 0.53,
+     "escala": 0.4,
+     "acoes": [
+      {
+       "em": 13.65,
+       "faz": "olha",
+       "para": "esq"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": 14.6,
+   "cenario": "chapado",
+   "padrao": "halftone",
+   "paleta": "rosa",
+   "deriva": 0,
+   "elementos": [
+    {
+     "id": "cr",
+     "tipo": "bicho",
+     "especie": "tiranossauro",
+     "vista": "cranio",
+     "x": 0.5,
+     "y": 0.38,
+     "escala": 1.7,
+     "acoes": [
+      {
+       "em": 15.44,
+       "faz": "soco"
+      }
+     ]
+    },
+    {
+     "id": "t11",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.15,
+     "texto": "ESTUDO COM\nO CRÂNIO",
+     "tam": 64,
+     "cor": "#FFF8EC",
+     "fundo": "#1A0F24",
+     "rot": -2,
+     "acoes": [
+      {
+       "em": 14.83,
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop2"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.88,
+     "y": 0.54,
+     "escala": 0.4,
+     "acoes": [
+      {
+       "em": 14.9,
+       "faz": "olha",
+       "para": "esq"
+      },
+      {
+       "em": 15.7,
+       "faz": "squash"
+      },
+      {
+       "em": 16.5,
+       "faz": "sobrancelha",
+       "para": 0.6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": 17.13,
+   "cenario": "cretaceo",
+   "luz": "dia",
+   "elementos": [
+    {
+     "id": "rex",
+     "tipo": "bicho",
+     "especie": "tiranossauro",
+     "vista": "perfil",
+     "x": 0.5,
+     "y": 0.404,
+     "escala": 1.1,
+     "anda": true,
+     "acoes": [
+      {
+       "em": 17.28,
+       "faz": "move",
+       "para": [
+        0.58,
+        0.404
+       ],
+       "dur": 1.6,
+       "curva": "linear"
+      }
+     ]
+    },
+    {
+     "id": "t12",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.17,
+     "texto": "VISÃO EM\nPROFUNDIDADE",
+     "tam": 68,
+     "cor": "#FFF8EC",
+     "fundo": "#2E9E4A",
+     "rot": 2,
+     "acoes": [
+      {
+       "em": 17.28,
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop3"
+      },
+      {
+       "em": 18.35,
+       "faz": "soco"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.1,
+     "y": 0.53,
+     "escala": 0.4,
+     "acoes": [
+      {
+       "em": 17.58,
+       "faz": "olha",
+       "para": "esq"
+      },
+      {
+       "em": 18.38,
+       "faz": "squash"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": 18.88,
+   "cenario": "cretaceo",
+   "luz": "dia",
+   "elementos": [
+    {
+     "id": "pato",
+     "tipo": "bicho",
+     "especie": "bicodepato",
+     "vista": "perfil",
+     "x": 0.4,
+     "y": 0.404,
+     "escala": 1.1,
+     "olhos": "lado",
+     "anda": true,
+     "acoes": [
+      {
+       "em": 18.88,
+       "faz": "move",
+       "para": [
+        0.5,
+        0.404
+       ],
+       "dur": 1.8,
+       "curva": "linear"
+      }
+     ]
+    },
+    {
+     "id": "t13",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.17,
+     "texto": "BICO-DE-PATO",
+     "tam": 80,
+     "cor": "#FFF8EC",
+     "fundo": "#8A7BE0",
+     "rot": -3,
+     "acoes": [
+      {
+       "em": 19.43,
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.9,
+     "y": 0.53,
+     "escala": 0.4,
+     "acoes": [
+      {
+       "em": 19.18,
+       "faz": "olha",
+       "para": "esq"
+      },
+      {
+       "em": 19.98,
+       "faz": "squash"
+      },
+      {
+       "em": 20.78,
+       "faz": "sobrancelha",
+       "para": 0.6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": 21.25,
+   "cenario": "chapado",
+   "padrao": "gradiente_vivo",
+   "paleta": "menta",
+   "deriva": 0,
+   "elementos": [
+    {
+     "id": "pato",
+     "tipo": "bicho",
+     "especie": "bicodepato",
+     "vista": "cima",
+     "x": 0.5,
+     "y": 0.47,
+     "escala": 1.0,
+     "olhos": "lado",
+     "campo": 300,
+     "cego": true,
+     "alcance": 480
+    },
+    {
+     "id": "t14",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.15,
+     "texto": "NA VIDA REAL:\nOLHO DO LADO",
+     "tam": 60,
+     "cor": "#FFF8EC",
+     "fundo": "#1F5FD1",
+     "rot": 2,
+     "acoes": [
+      {
+       "em": 21.35,
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop2"
+      },
+      {
+       "em": 22.95,
+       "faz": "soco"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.12,
+     "y": 0.52,
+     "escala": 0.4,
+     "acoes": [
+      {
+       "em": 21.65,
+       "faz": "olha",
+       "para": "esq"
+      },
+      {
+       "em": 22.45,
+       "faz": "squash"
+      },
+      {
+       "em": 23.25,
+       "faz": "sobrancelha",
+       "para": 0.6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": 23.54,
+   "cenario": "chapado",
+   "padrao": "bokeh",
+   "paleta": "laranja",
+   "deriva": 0,
+   "elementos": [
+    {
+     "id": "pato",
+     "tipo": "bicho",
+     "especie": "bicodepato",
+     "vista": "frente",
+     "x": 0.5,
+     "y": 0.36,
+     "escala": 1.5,
+     "olhos": "lado",
+     "acoes": [
+      {
+       "em": 23.83,
+       "faz": "olha",
+       "para": "esq"
+      },
+      {
+       "em": 24.24,
+       "faz": "olha",
+       "para": "dir"
+      },
+      {
+       "em": 24.57,
+       "faz": "olha",
+       "para": "camera"
+      }
+     ]
+    },
+    {
+     "id": "t16",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.15,
+     "texto": "VÊ QUASE TUDO\nEM VOLTA",
+     "tam": 60,
+     "cor": "#FFF8EC",
+     "fundo": "#E8452C",
+     "rot": 2,
+     "acoes": [
+      {
+       "em": 23.59,
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop3"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.9,
+     "y": 0.54,
+     "escala": 0.4,
+     "acoes": [
+      {
+       "em": 23.89,
+       "faz": "olha",
+       "para": "esq"
+      },
+      {
+       "em": 24.69,
+       "faz": "squash"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": 25.25,
+   "cenario": "cretaceo",
+   "luz": "dia",
+   "elementos": [
+    {
+     "id": "pato",
+     "tipo": "bicho",
+     "especie": "bicodepato",
+     "vista": "frente",
+     "x": 0.5,
+     "y": 0.36,
+     "escala": 1.5,
+     "olhos": "lado",
+     "acoes": [
+      {
+       "em": 26.85,
+       "faz": "muda",
+       "prop": "olhos",
+       "para": "frente",
+       "som": "pop2"
+      },
+      {
+       "em": 26.85,
+       "faz": "squash"
+      },
+      {
+       "em": 26.85,
+       "faz": "expressao",
+       "para": "julgando"
+      }
+     ]
+    },
+    {
+     "id": "t17",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.17,
+     "texto": "REGRA: OLHO NA FRENTE",
+     "tam": 56,
+     "cor": "#FFF8EC",
+     "fundo": "#E8452C",
+     "rot": -3,
+     "acoes": [
+      {
+       "em": 25.6,
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop"
+      },
+      {
+       "em": 26.85,
+       "faz": "soco"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.9,
+     "y": 0.54,
+     "escala": 0.4,
+     "acoes": [
+      {
+       "em": 25.55,
+       "faz": "olha",
+       "para": "esq"
+      },
+      {
+       "em": 26.35,
+       "faz": "squash"
+      },
+      {
+       "em": 27.15,
+       "faz": "sobrancelha",
+       "para": 0.6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": 27.96,
+   "cenario": "chapado",
+   "padrao": "gradiente_vivo",
+   "paleta": "petroleo",
+   "deriva": 0,
+   "elementos": [
+    {
+     "id": "planta",
+     "tipo": "bicho",
+     "especie": "bicodepato",
+     "vista": "planta",
+     "x": 0.5,
+     "y": 0.27,
+     "escala": 0.8
+    },
+    {
+     "id": "pato",
+     "tipo": "bicho",
+     "especie": "bicodepato",
+     "vista": "cima",
+     "x": 0.5,
+     "y": 0.46,
+     "escala": 0.95,
+     "olhos": "frente",
+     "campo": 55,
+     "cego": true,
+     "alcance": 420,
+     "expressao": "julgando"
+    },
+    {
+     "id": "t18",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.15,
+     "texto": "SÓ VÊ O PRATO",
+     "tam": 72,
+     "cor": "#FFF8EC",
+     "fundo": "#1A0F24",
+     "rot": 2,
+     "acoes": [
+      {
+       "em": 28.6,
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop2"
+      },
+      {
+       "em": 28.99,
+       "faz": "soco"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.1,
+     "y": 0.53,
+     "escala": 0.4,
+     "acoes": [
+      {
+       "em": 28.36,
+       "faz": "olha",
+       "para": "esq"
+      },
+      {
+       "em": 29.16,
+       "faz": "squash"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": 29.65,
+   "cenario": "chapado",
+   "padrao": "gradiente_vivo",
+   "paleta": "tomate",
+   "deriva": 0,
+   "elementos": [
+    {
+     "id": "tio",
+     "tipo": "humano",
+     "preset": "tiozao_do_churrasco",
+     "x": 0.4,
+     "y": 0.37,
+     "escala": 0.85,
+     "expressao": "apaixonado",
+     "olhar": "baixo",
+     "acoes": [
+      {
+       "em": 29.65,
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": 31.5,
+       "faz": "soco"
+      }
+     ]
+    },
+    {
+     "id": "grill",
+     "tipo": "icone",
+     "qual": "churrasqueira",
+     "x": 0.5,
+     "y": 0.54,
+     "escala": 0.8,
+     "acoes": [
+      {
+       "em": 29.75,
+       "faz": "entra",
+       "jeito": "sobe"
+      }
+     ]
+    },
+    {
+     "id": "t19",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.15,
+     "texto": "TIO NO CHURRASCO",
+     "tam": 64,
+     "cor": "#FFF8EC",
+     "fundo": "#E8452C",
+     "rot": -2,
+     "acoes": [
+      {
+       "em": 30.14,
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop3"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.88,
+     "y": 0.4,
+     "escala": 0.4,
+     "acoes": [
+      {
+       "em": 29.95,
+       "faz": "olha",
+       "para": "esq"
+      },
+      {
+       "em": 30.75,
+       "faz": "squash"
+      },
+      {
+       "em": 31.55,
+       "faz": "sobrancelha",
+       "para": 0.6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": 31.78,
+   "cenario": "cretaceo",
+   "luz": "dia",
+   "elementos": [
+    {
+     "id": "pato",
+     "tipo": "bicho",
+     "especie": "bicodepato",
+     "vista": "frente",
+     "x": 0.5,
+     "y": 0.36,
+     "escala": 1.5,
+     "olhos": "frente",
+     "expressao": "feliz"
+    },
+    {
+     "id": "t20",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.17,
+     "texto": "IGUAL!",
+     "tam": 100,
+     "cor": "#FFF8EC",
+     "fundo": "#2E9E4A",
+     "rot": 3,
+     "acoes": [
+      {
+       "em": 31.78,
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.9,
+     "y": 0.53,
+     "escala": 0.4,
+     "acoes": [
+      {
+       "em": 32.08,
+       "faz": "olha",
+       "para": "esq"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": 32.31,
+   "cenario": "cretaceo",
+   "luz": "noite",
+   "paleta": "noite",
+   "brilho": 0.75,
+   "elementos": [
+    {
+     "id": "f1",
+     "tipo": "bicho",
+     "especie": "bicodepato",
+     "vista": "planta",
+     "x": 0.1,
+     "y": 0.43,
+     "escala": 1.0,
+     "acoes": [
+      {
+       "em": 33.28,
+       "faz": "treme",
+       "dur": 0.9,
+       "forca": 10
+      }
+     ]
+    },
+    {
+     "id": "f2",
+     "tipo": "bicho",
+     "especie": "bicodepato",
+     "vista": "planta",
+     "x": 0.26,
+     "y": 0.45,
+     "escala": 0.8,
+     "acoes": [
+      {
+       "em": 33.43,
+       "faz": "treme",
+       "dur": 0.9,
+       "forca": 12
+      }
+     ]
+    },
+    {
+     "id": "pato",
+     "tipo": "bicho",
+     "especie": "bicodepato",
+     "vista": "perfil",
+     "x": 0.6,
+     "y": 0.404,
+     "escala": 1.0,
+     "olhos": "frente",
+     "pose": "bicando",
+     "expressao": "neutro"
+    },
+    {
+     "id": "t21",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.17,
+     "texto": "E QUEM CHEGA\nPELO LADO?",
+     "tam": 68,
+     "cor": "#FFF8EC",
+     "fundo": "#1A0F24",
+     "rot": -2,
+     "acoes": [
+      {
+       "em": 32.53,
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop2"
+      },
+      {
+       "em": 33.28,
+       "faz": "soco"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.9,
+     "y": 0.54,
+     "escala": 0.4,
+     "acoes": [
+      {
+       "em": 32.61,
+       "faz": "olha",
+       "para": "esq"
+      },
+      {
+       "em": 33.41,
+       "faz": "squash"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": 33.92,
+   "cenario": "cretaceo",
+   "acoes": [
+    {
+     "em": 34.02,
+     "faz": "treme",
+     "dur": 0.4,
+     "forca": 14
+    },
+    {
+     "em": 35.23,
+     "faz": "treme",
+     "dur": 0.5,
+     "forca": 22
+    }
+   ],
+   "luz": "noite",
+   "paleta": "noite",
+   "brilho": 0.75,
+   "elementos": [
+    {
+     "id": "pg1",
+     "tipo": "bicho",
+     "especie": "tiranossauro",
+     "vista": "pegada",
+     "x": 0.1,
+     "y": 0.5,
+     "escala": 0.7,
+     "alpha": 0.9,
+     "acoes": [
+      {
+       "em": 34.02,
+       "faz": "entra",
+       "jeito": "cai"
+      }
+     ]
+    },
+    {
+     "id": "pg2",
+     "tipo": "bicho",
+     "especie": "tiranossauro",
+     "vista": "pegada",
+     "x": 0.26,
+     "y": 0.5,
+     "escala": 0.9,
+     "alpha": 0.9,
+     "acoes": [
+      {
+       "em": 35.23,
+       "faz": "entra",
+       "jeito": "cai"
+      }
+     ]
+    },
+    {
+     "id": "rex",
+     "tipo": "bicho",
+     "especie": "tiranossauro",
+     "vista": "perfil",
+     "x": 1.3,
+     "y": 0.4,
+     "escala": 1.1,
+     "silhueta": true,
+     "espelha": true,
+     "alpha": 0.75,
+     "anda": true,
+     "acoes": [
+      {
+       "em": 34.02,
+       "faz": "move",
+       "para": [
+        0.93,
+        0.4
+       ],
+       "dur": 2.29,
+       "curva": "linear"
+      }
+     ]
+    },
+    {
+     "id": "pato",
+     "tipo": "bicho",
+     "especie": "bicodepato",
+     "vista": "perfil",
+     "x": 0.4,
+     "y": 0.404,
+     "escala": 1.0,
+     "olhos": "frente",
+     "pose": "bicando",
+     "expressao": "desconfiado"
+    },
+    {
+     "id": "t22",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.17,
+     "texto": "PASSO...",
+     "tam": 90,
+     "cor": "#FFF8EC",
+     "fundo": "#1A0F24",
+     "rot": -2,
+     "acoes": [
+      {
+       "em": 34.02,
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop3"
+      },
+      {
+       "em": 35.23,
+       "faz": "muda",
+       "prop": "texto",
+       "para": "PASSO...\nPASSO...",
+       "som": "pop3"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.9,
+     "y": 0.54,
+     "escala": 0.4,
+     "acoes": [
+      {
+       "em": 34.22,
+       "faz": "olha",
+       "para": "esq"
+      },
+      {
+       "em": 35.02,
+       "faz": "squash"
+      },
+      {
+       "em": 35.82,
+       "faz": "sobrancelha",
+       "para": 0.6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": 36.31,
+   "cenario": "cretaceo",
+   "acoes": [
+    {
+     "em": 36.41,
+     "faz": "flash"
+    },
+    {
+     "em": 36.41,
+     "faz": "treme",
+     "dur": 0.7,
+     "forca": 30
+    },
+    {
+     "em": 36.41,
+     "faz": "soco",
+     "forca": 0.14
+    }
+   ],
+   "luz": "noite",
+   "paleta": "noite",
+   "brilho": 1.0,
+   "elementos": [
+    {
+     "id": "rex",
+     "tipo": "bicho",
+     "especie": "tiranossauro",
+     "vista": "frente",
+     "x": 0.6,
+     "y": 0.36,
+     "escala": 1.5,
+     "pose": "rugindo",
+     "expressao": "assustado",
+     "acoes": [
+      {
+       "em": 36.41,
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ]
+    },
+    {
+     "id": "t24",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.15,
+     "texto": "RUGIDO!",
+     "tam": 110,
+     "cor": "#FFF8EC",
+     "fundo": "#E8452C",
+     "rot": -4,
+     "acoes": [
+      {
+       "em": 36.41,
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop"
+      },
+      {
+       "em": 36.709999999999994,
+       "faz": "soco"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.25,
+     "y": 0.5,
+     "escala": 0.7,
+     "sobrancelha": 1.1,
+     "acoes": [
+      {
+       "em": 36.36,
+       "faz": "olha",
+       "para": "dir"
+      },
+      {
+       "em": 36.41,
+       "faz": "estoura",
+       "som": "estouro"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": 37.45,
+   "cenario": "cretaceo",
+   "acoes": [
+    {
+     "em": 39.61,
+     "faz": "reacao",
+     "estilo": "grilo",
+     "alvo": "pato_f",
+     "dur": 0.6
+    }
+   ],
+   "luz": "tarde",
+   "elementos": [
+    {
+     "id": "rex",
+     "tipo": "bicho",
+     "especie": "tiranossauro",
+     "vista": "perfil",
+     "x": 0.3,
+     "y": 0.385,
+     "escala": 1.3,
+     "expressao": "neutro"
+    },
+    {
+     "id": "pato_p",
+     "tipo": "bicho",
+     "especie": "bicodepato",
+     "vista": "perfil",
+     "x": 0.72,
+     "y": 0.42,
+     "escala": 0.95,
+     "olhos": "frente",
+     "pose": "bicando",
+     "acoes": [
+      {
+       "em": 38.62,
+       "faz": "muda",
+       "prop": "alpha",
+       "para": 0.0,
+       "dur": 0.5
+      }
+     ]
+    },
+    {
+     "id": "pato_f",
+     "tipo": "bicho",
+     "especie": "bicodepato",
+     "vista": "frente",
+     "x": 0.76,
+     "y": 0.4,
+     "escala": 1.15,
+     "olhos": "frente",
+     "alpha": 0.0,
+     "expressao": "assustado",
+     "olhar": "esq",
+     "acoes": [
+      {
+       "em": 38.62,
+       "faz": "muda",
+       "prop": "alpha",
+       "para": 1.0,
+       "dur": 0.5
+      },
+      {
+       "em": 39.35,
+       "faz": "expressao",
+       "para": "desconfiado"
+      },
+      {
+       "em": 39.35,
+       "faz": "muda",
+       "prop": "suor",
+       "para": true
+      },
+      {
+       "em": 39.65,
+       "faz": "olha",
+       "para": "camera"
+      }
+     ]
+    },
+    {
+     "id": "t25",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.17,
+     "texto": "AH... OI.",
+     "tam": 90,
+     "cor": "#FFF8EC",
+     "fundo": "#8E2F2A",
+     "rot": -3,
+     "acoes": [
+      {
+       "em": 39.35,
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop2"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.5,
+     "y": 0.56,
+     "escala": 0.4,
+     "acoes": [
+      {
+       "em": 37.75,
+       "faz": "olha",
+       "para": "esq"
+      },
+      {
+       "em": 38.55,
+       "faz": "squash"
+      },
+      {
+       "em": 39.35,
+       "faz": "sobrancelha",
+       "para": 0.6
+      }
+     ],
+     "forma": "pipoca"
+    }
+   ]
+  },
+  {
+   "em": 40.21,
+   "cenario": "chapado",
+   "padrao": "formas",
+   "paleta": "tomate",
+   "transicao": "zoom_blur",
+   "energia": 0.5,
+   "deriva": 0,
+   "elementos": [
+    {
+     "id": "sp",
+     "tipo": "split",
+     "x": 0.5,
+     "y": 0.37,
+     "altura": 780,
+     "meio": "",
+     "tam_rotulo": 56,
+     "paineis": [
+      {
+       "cenario": "cretaceo",
+       "luz": "tarde",
+       "rotulo": "CAÇADOR",
+       "cor_rotulo": "#E8452C",
+       "rotulo_pos": "baixo",
+       "foco": [
+        0.5,
+        0.4
+       ],
+       "zoom": 1.9,
+       "elementos": [
+        {
+         "id": "r",
+         "tipo": "bicho",
+         "especie": "tiranossauro",
+         "vista": "frente",
+         "x": 0.5,
+         "y": 0.4,
+         "escala": 1.0,
+         "pose": "ombros",
+         "expressao": "julgando"
+        }
+       ]
+      },
+      {
+       "cenario": "cretaceo",
+       "luz": "tarde",
+       "rotulo": "PRESA",
+       "cor_rotulo": "#1F5FD1",
+       "rotulo_pos": "baixo",
+       "foco": [
+        0.5,
+        0.4
+       ],
+       "zoom": 1.9,
+       "elementos": [
+        {
+         "id": "p",
+         "tipo": "bicho",
+         "especie": "bicodepato",
+         "vista": "frente",
+         "x": 0.5,
+         "y": 0.4,
+         "escala": 1.0,
+         "olhos": "lado",
+         "pose": "bicando"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "t28",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.15,
+     "texto": "FRENTE  x  LADO",
+     "tam": 76,
+     "cor": "#FFF8EC",
+     "fundo": "#E8452C",
+     "rot": -2,
+     "acoes": [
+      {
+       "em": 40.76,
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop3"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.88,
+     "y": 0.55,
+     "escala": 0.4,
+     "acoes": [
+      {
+       "em": 40.51,
+       "faz": "olha",
+       "para": "esq"
+      },
+      {
+       "em": 41.31,
+       "faz": "squash"
+      },
+      {
+       "em": 42.11,
+       "faz": "sobrancelha",
+       "para": 0.6
+      }
+     ],
+     "forma": "pipoca"
+    }
+   ]
+  },
+  {
+   "em": 42.38,
+   "cenario": "chapado",
+   "padrao": "gradiente_vivo",
+   "paleta": "laranja",
+   "energia": 0.6,
+   "deriva": 0,
+   "elementos": [
+    {
+     "id": "sp",
+     "tipo": "split",
+     "x": 0.5,
+     "y": 0.37,
+     "altura": 780,
+     "meio": "",
+     "tam_rotulo": 56,
+     "paineis": [
+      {
+       "cenario": "bokeh",
+       "paleta": "laranja",
+       "rotulo": "CAÇADOR",
+       "cor_rotulo": "#E8452C",
+       "rotulo_pos": "baixo",
+       "foco": [
+        0.5,
+        0.4
+       ],
+       "zoom": 1.35,
+       "elementos": [
+        {
+         "id": "r",
+         "tipo": "bicho",
+         "especie": "tiranossauro",
+         "vista": "cima",
+         "x": 0.5,
+         "y": 0.48,
+         "escala": 0.9,
+         "campo": 70,
+         "alcance": 380
+        }
+       ]
+      },
+      {
+       "cenario": "bokeh",
+       "paleta": "rosa",
+       "rotulo": "PRESA",
+       "cor_rotulo": "#1F5FD1",
+       "rotulo_pos": "baixo",
+       "foco": [
+        0.5,
+        0.4
+       ],
+       "zoom": 1.35,
+       "elementos": [
+        {
+         "id": "p",
+         "tipo": "bicho",
+         "especie": "bicodepato",
+         "vista": "cima",
+         "x": 0.5,
+         "y": 0.48,
+         "escala": 0.9,
+         "olhos": "lado",
+         "campo": 300,
+         "alcance": 340
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "t29",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.15,
+     "texto": "PRESA VÊ\nQUASE TUDO",
+     "tam": 64,
+     "cor": "#FFF8EC",
+     "fundo": "#1F5FD1",
+     "rot": 2,
+     "acoes": [
+      {
+       "em": 42.5,
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.88,
+     "y": 0.55,
+     "escala": 0.4,
+     "acoes": [
+      {
+       "em": 42.68,
+       "faz": "olha",
+       "para": "esq"
+      },
+      {
+       "em": 43.48,
+       "faz": "squash"
+      }
+     ],
+     "forma": "pipoca"
+    }
+   ]
+  },
+  {
+   "em": 44.02,
+   "cenario": "cretaceo",
+   "luz": "tarde",
+   "elementos": [
+    {
+     "id": "rex",
+     "tipo": "bicho",
+     "especie": "tiranossauro",
+     "vista": "frente",
+     "x": 0.5,
+     "y": 0.393,
+     "escala": 1.2,
+     "expressao": "neutro"
+    },
+    {
+     "id": "pb",
+     "tipo": "bicho",
+     "especie": "pombo",
+     "vista": "frente",
+     "x": 0.95,
+     "y": 0.24,
+     "escala": 0.36,
+     "olhos": "lado",
+     "pose": "voando",
+     "acoes": [
+      {
+       "em": 44.32,
+       "faz": "move",
+       "para": [
+        0.5,
+        0.228
+       ],
+       "dur": 1.1,
+       "curva": "suave"
+      },
+      {
+       "em": 45.42,
+       "faz": "pose",
+       "para": "parado"
+      },
+      {
+       "em": 45.42,
+       "faz": "squash",
+       "som": "pop2"
+      }
+     ]
+    },
+    {
+     "id": "t30",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.15,
+     "texto": "O POMBO\nDA PARTE 1",
+     "tam": 64,
+     "cor": "#FFF8EC",
+     "fundo": "#1F5FD1",
+     "rot": -2,
+     "acoes": [
+      {
+       "em": 44.32,
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop2"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.15,
+     "y": 0.54,
+     "escala": 0.4,
+     "acoes": [
+      {
+       "em": 44.32,
+       "faz": "olha",
+       "para": "esq"
+      },
+      {
+       "em": 45.12,
+       "faz": "squash"
+      },
+      {
+       "em": 45.92,
+       "faz": "sobrancelha",
+       "para": 0.6
+      }
+     ],
+     "forma": "pipoca"
+    }
+   ]
+  },
+  {
+   "em": 46.15,
+   "cenario": "chapado",
+   "padrao": "gradiente_vivo",
+   "paleta": "uva",
+   "deriva": 0,
+   "elementos": [
+    {
+     "id": "arv",
+     "tipo": "icone",
+     "qual": "arvore",
+     "x": 0.5,
+     "y": 0.5,
+     "acoes": [
+      {
+       "em": 46.15,
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ]
+    },
+    {
+     "id": "pb",
+     "tipo": "bicho",
+     "especie": "pombo",
+     "vista": "frente",
+     "x": 0.287,
+     "y": 0.31,
+     "escala": 0.65,
+     "olhos": "lado",
+     "acoes": [
+      {
+       "em": 46.25,
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop3"
+      }
+     ]
+    },
+    {
+     "id": "rex",
+     "tipo": "bicho",
+     "especie": "tiranossauro",
+     "vista": "frente",
+     "x": 0.713,
+     "y": 0.31,
+     "escala": 0.65,
+     "acoes": [
+      {
+       "em": 46.5,
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop"
+      }
+     ]
+    },
+    {
+     "id": "t31",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.56,
+     "texto": "PRIMOS",
+     "tam": 72,
+     "cor": "#FFF8EC",
+     "fundo": "#C2410C",
+     "rot": -2,
+     "acoes": [
+      {
+       "em": 46.55,
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop2"
+      }
+     ]
+    },
+    {
+     "id": "t32",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.15,
+     "texto": "AVES SÃO\nDINOSSAUROS",
+     "tam": 64,
+     "cor": "#FFF8EC",
+     "fundo": "#5B2A86",
+     "rot": 2,
+     "acoes": [
+      {
+       "em": 46.25,
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.5,
+     "y": 0.4,
+     "escala": 0.4,
+     "acoes": [
+      {
+       "em": 46.45,
+       "faz": "olha",
+       "para": "esq"
+      },
+      {
+       "em": 47.25,
+       "faz": "squash"
+      }
+     ],
+     "forma": "pipoca"
+    }
+   ]
+  },
+  {
+   "em": 47.9,
+   "cenario": "rua",
+   "luz": "tarde",
+   "paleta": "mostarda",
+   "elementos": [
+    {
+     "id": "pb",
+     "tipo": "bicho",
+     "especie": "pombo",
+     "vista": "perfil",
+     "x": 0.62,
+     "y": 0.44,
+     "escala": 1.0,
+     "olhos": "lado",
+     "pose": "bicando",
+     "acoes": [
+      {
+       "em": 49.11,
+       "faz": "olha",
+       "para": "esq"
+      }
+     ]
+    },
+    {
+     "id": "gato",
+     "tipo": "bicho",
+     "especie": "gato",
+     "vista": "perfil",
+     "x": 0.0,
+     "y": 0.45,
+     "escala": 1.0,
+     "pose": "agachado",
+     "expressao": "desconfiado",
+     "acoes": [
+      {
+       "em": 47.9,
+       "faz": "move",
+       "para": [
+        0.3,
+        0.45
+       ],
+       "dur": 2.4,
+       "curva": "linear"
+      }
+     ]
+    },
+    {
+     "id": "t33",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.15,
+     "texto": "HOJE ELE É\nA CAÇA",
+     "tam": 68,
+     "cor": "#FFF8EC",
+     "fundo": "#E8452C",
+     "rot": -2,
+     "acoes": [
+      {
+       "em": 48.48,
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop3"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.9,
+     "y": 0.26,
+     "escala": 0.4,
+     "acoes": [
+      {
+       "em": 48.2,
+       "faz": "olha",
+       "para": "esq"
+      },
+      {
+       "em": 49.0,
+       "faz": "squash"
+      },
+      {
+       "em": 49.8,
+       "faz": "sobrancelha",
+       "para": 0.6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": 50.18,
+   "cenario": "chapado",
+   "padrao": "gradiente_vivo",
+   "paleta": "menta",
+   "deriva": 0,
+   "elementos": [
+    {
+     "id": "gato",
+     "tipo": "bicho",
+     "especie": "gato",
+     "vista": "cima",
+     "x": 0.92,
+     "y": 0.46,
+     "escala": 0.7,
+     "acoes": [
+      {
+       "em": 50.18,
+       "faz": "move",
+       "para": [
+        0.72,
+        0.46
+       ],
+       "dur": 1.0,
+       "curva": "linear"
+      }
+     ]
+    },
+    {
+     "id": "pb",
+     "tipo": "bicho",
+     "especie": "pombo",
+     "vista": "cima",
+     "x": 0.45,
+     "y": 0.47,
+     "escala": 1.0,
+     "olhos": "lado",
+     "campo": 340,
+     "alcance": 450,
+     "acoes": [
+      {
+       "em": 51.53,
+       "faz": "pose",
+       "para": "voando",
+       "som": "pop3"
+      },
+      {
+       "em": 51.53,
+       "faz": "move",
+       "para": [
+        0.45,
+        0.05
+       ],
+       "dur": 0.9,
+       "curva": "rapido"
+      }
+     ]
+    },
+    {
+     "id": "t34",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.15,
+     "texto": "POR ISSO:\nOLHO DO LADO",
+     "tam": 64,
+     "cor": "#FFF8EC",
+     "fundo": "#2E9E4A",
+     "rot": 2,
+     "acoes": [
+      {
+       "em": 50.46,
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.15,
+     "y": 0.3,
+     "escala": 0.4,
+     "acoes": [
+      {
+       "em": 50.48,
+       "faz": "olha",
+       "para": "esq"
+      },
+      {
+       "em": 51.28,
+       "faz": "squash"
+      }
+     ],
+     "forma": "pipoca"
+    }
+   ]
+  },
+  {
+   "em": 52.19,
+   "cenario": "chapado",
+   "padrao": "formas",
+   "paleta": "menta",
+   "energia": 0.4,
+   "deriva": 0,
+   "elementos": [
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.36,
+     "y": 0.42,
+     "escala": 0.95,
+     "forma": "pipoca",
+     "boca": "sorriso",
+     "acoes": [
+      {
+       "em": 52.19,
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": 53.41,
+       "faz": "pula",
+       "altura": 50
+      }
+     ]
+    },
+    {
+     "id": "lupa",
+     "tipo": "icone",
+     "qual": "lupa",
+     "x": 0.68,
+     "y": 0.4,
+     "escala": 1.2,
+     "acoes": [
+      {
+       "em": 52.339999999999996,
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop2"
+      },
+      {
+       "em": 53.14,
+       "faz": "move",
+       "para": [
+        0.6,
+        0.38
+       ],
+       "dur": 0.8
+      }
+     ]
+    },
+    {
+     "id": "t35",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.15,
+     "texto": "CADA OLHO NO\nSEU LUGAR",
+     "tam": 72,
+     "cor": "#FFF8EC",
+     "fundo": "#1F5FD1",
+     "rot": -2,
+     "acoes": [
+      {
+       "em": 52.28,
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop3"
+      },
+      {
+       "em": 54.14,
+       "faz": "soco"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": 54.83,
+   "cenario": "chapado",
+   "padrao": "ceu",
+   "ceu": "noite",
+   "paleta": "noite",
+   "deriva": 0,
+   "elementos": [
+    {
+     "id": "q",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.36,
+     "texto": "?",
+     "tam": 560,
+     "cor": "#FFC21A",
+     "acoes": [
+      {
+       "em": 54.93,
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop"
+      },
+      {
+       "em": 55.15,
+       "faz": "soco"
+      },
+      {
+       "em": 55.15,
+       "faz": "pula",
+       "altura": 40
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.84,
+     "y": 0.52,
+     "escala": 0.4,
+     "forma": "pipoca",
+     "boca": "o",
+     "acoes": [
+      {
+       "em": 55.03,
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": 55.35,
+       "faz": "squash"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": 56.29,
+   "cenario": "chapado",
+   "padrao": "ceu",
+   "ceu": "tarde",
+   "paleta": "laranja",
+   "deriva": 0,
+   "elementos": [
+    {
+     "id": "mac",
+     "tipo": "icone",
+     "qual": "macaco",
+     "x": 0.5,
+     "y": 0.45,
+     "escala": 1.4,
+     "acoes": [
+      {
+       "em": 56.29,
+       "faz": "entra",
+       "jeito": "desliza_dir",
+       "som": "pop2"
+      }
+     ]
+    },
+    {
+     "id": "q2",
+     "tipo": "texto",
+     "x": 0.82,
+     "y": 0.27,
+     "texto": "?",
+     "tam": 240,
+     "cor": "#FFC21A",
+     "acoes": [
+      {
+       "em": 56.74,
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop3"
+      },
+      {
+       "em": 57.67,
+       "faz": "soco"
+      }
+     ]
+    },
+    {
+     "id": "t36",
+     "tipo": "texto",
+     "x": 0.38,
+     "y": 0.17,
+     "texto": "E O NOSSO\nOLHO?",
+     "tam": 68,
+     "cor": "#FFF8EC",
+     "fundo": "#1F5FD1",
+     "rot": -2,
+     "acoes": [
+      {
+       "em": 56.74,
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.15,
+     "y": 0.5,
+     "escala": 0.4,
+     "acoes": [
+      {
+       "em": 56.59,
+       "faz": "olha",
+       "para": "esq"
+      },
+      {
+       "em": 57.39,
+       "faz": "squash"
+      },
+      {
+       "em": 58.19,
+       "faz": "sobrancelha",
+       "para": 0.6
+      }
+     ],
+     "forma": "pipoca"
+    }
+   ]
+  },
+  {
+   "em": 58.41,
+   "cenario": "chapado",
+   "padrao": "gradiente_vivo",
+   "paleta": "mostarda",
+   "deriva": 0,
+   "elementos": [
+    {
+     "id": "b1",
+     "tipo": "bloco",
+     "x": 0.27,
+     "y": 0.32,
+     "largura": 400,
+     "altura": 150,
+     "cor": "#E8452C",
+     "texto": "CAÇADOR",
+     "tam": 60,
+     "acoes": [
+      {
+       "em": 58.11,
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ]
+    },
+    {
+     "id": "b2",
+     "tipo": "bloco",
+     "x": 0.73,
+     "y": 0.32,
+     "largura": 400,
+     "altura": 150,
+     "cor": "#1F5FD1",
+     "texto": "PRESA",
+     "tam": 60,
+     "acoes": [
+      {
+       "em": 59.17,
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop2"
+      }
+     ]
+    },
+    {
+     "id": "rex",
+     "tipo": "bicho",
+     "especie": "tiranossauro",
+     "vista": "frente",
+     "x": 0.25,
+     "y": 0.47,
+     "escala": 0.75,
+     "acoes": [
+      {
+       "em": 58.11,
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ]
+    },
+    {
+     "id": "pato",
+     "tipo": "bicho",
+     "especie": "bicodepato",
+     "vista": "frente",
+     "x": 0.75,
+     "y": 0.47,
+     "escala": 0.75,
+     "olhos": "lado",
+     "acoes": [
+      {
+       "em": 59.27,
+       "faz": "entra",
+       "jeito": "pop"
+      }
+     ]
+    },
+    {
+     "id": "t37",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.15,
+     "texto": "QUAL VOCÊ\nSERIA?",
+     "tam": 68,
+     "cor": "#FFF8EC",
+     "fundo": "#1A0F24",
+     "rot": -2,
+     "acoes": [
+      {
+       "em": 59.79,
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop3"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.5,
+     "y": 0.52,
+     "escala": 0.5,
+     "forma": "pipoca",
+     "boca": "sorriso",
+     "acoes": [
+      {
+       "em": 58.11,
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": 59.79,
+       "faz": "pula",
+       "altura": 30
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "em": 61.33,
+   "cenario": "chapado",
+   "padrao": "gradiente_vivo",
+   "paleta": "uva",
+   "deriva": 0,
+   "elementos": [
+    {
+     "id": "t38",
+     "tipo": "texto",
+     "x": 0.5,
+     "y": 0.15,
+     "texto": "PARTE 3 VEM AÍ",
+     "tam": 68,
+     "cor": "#FFF8EC",
+     "fundo": "#E8452C",
+     "rot": -2,
+     "acoes": [
+      {
+       "em": 62.69,
+       "faz": "entra",
+       "jeito": "pop",
+       "som": "pop"
+      }
+     ]
+    },
+    {
+     "id": "c1",
+     "tipo": "comentario",
+     "x": 0.5,
+     "y": 0.44,
+     "nome": "@tio_da_picanha",
+     "texto": "caçador, claro!",
+     "largura": 560,
+     "cor_avatar": "#E8452C",
+     "acoes": [
+      {
+       "em": 61.76,
+       "faz": "entra",
+       "jeito": "desliza_dir",
+       "som": "pop2"
+      }
+     ]
+    },
+    {
+     "id": "c2",
+     "tipo": "comentario",
+     "x": 0.5,
+     "y": 0.53,
+     "nome": "@pombo_da_praca",
+     "texto": "presa, e voo!",
+     "largura": 560,
+     "cor_avatar": "#1F5FD1",
+     "acoes": [
+      {
+       "em": 62.71,
+       "faz": "entra",
+       "jeito": "desliza_esq",
+       "som": "pop3"
+      }
+     ]
+    },
+    {
+     "id": "pipo",
+     "tipo": "pipo",
+     "x": 0.5,
+     "y": 0.3,
+     "escala": 0.7,
+     "forma": "pipoca",
+     "boca": "sorriso",
+     "pose": "apontando",
+     "aponta_para": [
+      0,
+      400
+     ],
+     "acoes": [
+      {
+       "em": 61.33,
+       "faz": "entra",
+       "jeito": "pop"
+      },
+      {
+       "em": 61.709999999999994,
+       "faz": "pula",
+       "altura": 30
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
