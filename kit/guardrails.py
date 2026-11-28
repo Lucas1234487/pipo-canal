@@ -65,6 +65,45 @@ def loudness(p):
     return (float(i[-1]) if i else None, float(pk[-1]) if pk else None)
 
 
+NOTA_DISPENSA_QA = 7.5   # nota Gemini mínima para dispensar o QA-Claude (modo enxuto, 28/11)
+
+
+def notas_gemini(pasta):
+    gp = os.path.join(pasta, "avaliacao_gemini.md")
+    if not os.path.exists(gp):
+        return [], ""
+    g = open(gp).read()
+    n = [float(x.replace(",", ".")) for x in re.findall(r"Nota[^:\n]*:?\**\s*\**\s*(\d+(?:[.,]\d+)?)\s*/\s*10", g)]
+    if not n:
+        n = [float(x.replace(",", ".")) for x in re.findall(r"Nota de 0 a 10\**\s*:\s*\**\s*(\d+(?:[.,]\d+)?)", g, re.I)]
+    return n, g
+
+
+def gatilhos_qa(pasta):
+    """Gatilhos que tornam o QA-Claude obrigatório (03_CICLO, modo enxuto). Lista vazia = pode dispensar."""
+    g = []
+    n, txt = notas_gemini(pasta)
+    if not n:
+        g.append("sem nota do Gemini")
+    elif sum(n) / len(n) < NOTA_DISPENSA_QA:
+        g.append(f"nota Gemini {sum(n)/len(n):.1f} < {NOTA_DISPENSA_QA}")
+    if re.search(r"erro grave|fato errado|ofensiv", txt, re.I) and not re.search(r"sem erro grave|nenhum erro grave|falso positivo", txt, re.I):
+        g.append("Gemini citou erro grave")
+    try:
+        m = json.load(open(os.path.join(pasta, "meta.json")))
+    except Exception:
+        m = {}
+    if str(m.get("aposta", "")).lower().startswith("ousad"):
+        g.append("aposta ousado")
+    if m.get("formato_novo") or m.get("elemento_novo"):
+        g.append("formato/elemento novo")
+    if m.get("tema_sensivel"):
+        g.append("tema sensível")
+    if m.get("qa_check_avisos"):
+        g.append("aviso do qa_check")
+    return g
+
+
 def checa(pasta, pilar=None):
     R = Res()
     nome = os.path.basename(os.path.normpath(pasta))
@@ -163,7 +202,15 @@ def checa(pasta, pilar=None):
         # vale o ÚLTIMO veredito do arquivo (reconferência depois da correção), sem diferenciar maiúsculas (26/11)
         vs = re.findall(r"VEREDITO[^:\n]*:\s*\**\s*(APROVA|CORRIGE|REPROVA)", q, re.I) or re.findall(r"^#.*?:\s*(APROVA|CORRIGE|REPROVA)\b", q, re.M)
         ver = vs[-1].upper() if vs else ""
-        if ver == "APROVA" or ("CORRIGE" in ver and re.search(r"Rodada de corre[cç][aã]o|corrigid|Liberado para a fila", q, re.I)):
+        disp = re.search(r"QA-Claude dispensado\s*:\s*(\S.*)", q, re.I)
+        if not vs and disp:
+            # modo enxuto (28/11): QA-Claude só por gatilho. Dispensa vale se NENHUM gatilho está presente.
+            gat = gatilhos_qa(pasta)
+            if gat:
+                R.falha("qa_claude", "dispensado, mas há gatilho: " + "; ".join(gat) + " -> rodar QA-Claude")
+            else:
+                R.ok("qa_claude", "dispensado (sem gatilho): " + disp.group(1).strip()[:80])
+        elif ver == "APROVA" or ("CORRIGE" in ver and re.search(r"Rodada de corre[cç][aã]o|corrigid|Liberado para a fila", q, re.I)):
             R.ok("qa_claude", ver)
         elif ver == "REPROVA":
             R.falha("qa_claude", "REPROVA")

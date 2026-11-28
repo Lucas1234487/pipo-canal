@@ -96,7 +96,19 @@ if __name__ == "__main__":
     ap.add_argument("--rede"); ap.add_argument("--video"); ap.add_argument("--imagem")
     ap.add_argument("--quando"); ap.add_argument("--texto", default="")
     ap.add_argument("--titulo"); ap.add_argument("--comentario"); ap.add_argument("--tipo")
+    ap.add_argument("--pasta", help="pasta do vídeo na fila (obrigatória para --video: guarda de falha fechada)")
     a = ap.parse_args()
+    if a.acao == "agendar" and a.video:
+        # GUARDA (Órion, 28/11): nenhum vídeo sai sem guardrails.py = 0 (inclui relatório do Gemini e QA)
+        if not a.pasta:
+            sys.exit(print("RECUSADO: agendar vídeo exige --pasta <pasta do vídeo> (guardrails antes de agendar)", file=sys.stderr) or 2)
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        import guardrails
+        R = guardrails.checa(a.pasta)
+        if not R.passou:
+            falhas = "; ".join(f"{k}: {m}" for st, k, m in R.itens if st == "FALHA")
+            sys.exit(print("RECUSADO pelo guardrails: " + falhas, file=sys.stderr) or 2)
+        os.environ.setdefault("PIPO_PASTA", a.pasta)
     if a.acao == "canais":
         print(json.dumps(gql('query($o:OrganizationId!){ channels(input:{organizationId:$o}){ id name service type } }', {"o": ORG}), indent=1, ensure_ascii=False))
     elif a.acao == "fila":
