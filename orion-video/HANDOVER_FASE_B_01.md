@@ -18,3 +18,8 @@
 1. Com OK: mesclar orion-video na main e atualizar prompts (produção: posse via estado.py, QA-Claude sempre, --pasta; vigia: tem_trabalho.py; semanal: pesquisa no Gemini).
 2. Guardas novas a partir dos achados do QA-Claude: SFX sobre palavra-chave (timestamps), sobreposição com a Pipo, título x fala (Gemini).
 3. Medir: prints 28/11 noite e 29/11 08:00 -> custo/medicoes.csv.
+
+## Atualização 15:18 (OK do Lucas: "pode fazer o que quiser")
+- main = orion-video mesclada (13f7ce7). Prompts novos: produção (posse via estado.py, QA-Claude sonnet sempre, buffer --pasta), vigia (tem_trabalho.py primeiro), semanal (pesquisa e pautas no Gemini, custo no boletim).
+- Produção disparada às 15:17: 2026-11-28_C às 19:06 e 2026-11-28_H (série olhos, parte 2) às 21:13.
+- Pendente: Lucas apagar pipo-pesquisa e pipo-revisao e salvar os cartões; prints de uso hoje à noite e 29/11 08:00.
