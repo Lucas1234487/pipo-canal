@@ -1,0 +1,10 @@
+VEREDITO: APROVA (após 1 rodada de correção; 1ª passada: CORRIGE, 1 achado médio no quadro 1 e 3 menores)
+Checado: fala x cena (bico-de-pato, T. rex, tio/picanha, pombo, gato, macaco: todos aparecem), estouro 36,4-36,6 s (Pipo vira pipoca no "Rugido", som alto, sem plaquinha na cabeça), legenda x fala, português, cena cara a cara (39,6 s: T. rex olha de lado, sorriso amarelo, sem dente em ação, ok), dinossauros sem cara de personagem famoso, fatos x fatos.md (sem número exagerado), título/descrição/fixado x fala.
+1. 0,0-3,2 s (MÉDIO): sem som o quadro 1 não lê como conflito. A "sombra" atrás é uma mancha redonda com 2 olhos (parece gorila/blob, não tiranossauro) e o bico-de-pato aparece de perfil com 1 olho lateral, mas o texto diz "OLHO NA FRENTE = ALMOÇO" e o roteiro pedia os DOIS OLHOS NA FRENTE. Correção: silhueta com cabeça grande, mandíbula e bracinhos de T. rex; bico-de-pato com os 2 olhos na frente (como na regra); manter o texto.
+2. 0,2-3,2 s: etiqueta "PARTE 2" encostada na sombra do T. rex. Mover para o canto superior (fora da silhueta).
+3. 7,7-8,5 s: carimbo "REGRA" minúsculo (~70 px) no céu; só fica grande aos 9,2 s. Entrar já no tamanho de 9,2 s.
+4. 36,6 s: Pipo pipoca estourada fica cortada na borda esquerda do quadro (perto da zona segura) e perto do braço do T. rex. Recuar uns 60 px para dentro.
+Opcional (fala, não bloqueia): 40,2-43,4 s "caçador tem olho na frente, e presa tem olho do lado" soa absoluto; fatos.md c diz tendência. Trocar por "caçador costuma ter... e presa costuma ter...". Gemini 8,4 não viu o item 1.
+
+## Reconferência (Diretor, 28/11, após a rodada única de correção do produtor)
+Olhei os quadros 0,5 s, 8,0 s e 36,6 s em resolução cheia (WORK/qa_quadros/): quadro 1 com silhueta de tiranossauro reconhecível atrás do bico-de-pato de olhos na frente, texto "OLHO NA FRENTE = ALMOÇO" legível, "PARTE 2" no canto livre; "REGRA" entra grande; Pipo pipoca inteira no quadro no estouro. qa_check APROVADO. Opcional "tem olho" -> "costuma ter" não aplicado (fala diz "por isso", tendência registrada em fatos.md c). VEREDITO FINAL: APROVA.
