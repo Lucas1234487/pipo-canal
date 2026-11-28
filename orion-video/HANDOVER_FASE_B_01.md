@@ -9,7 +9,7 @@
 
 ## Achados
 - BUG AO VIVO: o prompt da produção (03:37) manda escrever "QA-Claude dispensado", mas o guardrails da main reprova isso (veredito não encontrado). Sem correção, nada da madrugada de 29/11 agenda.
-- QA-Claude pegou problema real em 4 de 5 vídeos (25/11 M, 26/11 M, 26/11 H?, 27/11 C) que o Gemini deu 8+: sobreposição na Pipo, foto parecendo mofo, som em cima da palavra-chave, título absoluto, cartão do quadro 1. Decisão: QA-Claude Sonnet SEMPRE até essas classes virarem script.
+- QA-Claude pegou problema real em 3 dos últimos 5 vídeos (25/11 H, 26/11 M, 27/11 C), com o Gemini dando 7,4 a 8,8: sobreposição na Pipo, foto parecendo mofo, som em cima da palavra-chave, título absoluto, cartão do quadro 1. Decisão: QA-Claude Sonnet SEMPRE até essas classes virarem script.
 - Push na main foi bloqueado pelo classificador de ações: precisa OK explícito do Lucas na conversa.
 - 27 comentários pendentes (feito=false).
 - Semanal roda amanhã (dom 21:47) em Opus lendo ~15 docs + pesquisa ampla: maior gasto da semana, lapidar antes.

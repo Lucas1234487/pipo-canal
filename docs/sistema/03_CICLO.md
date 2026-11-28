@@ -6,7 +6,7 @@ Redes sociais (Instagram, Facebook, perfis, stories, memes, interação): o Dire
 
 ## 0. Modo enxuto e guardas (Órion de Vídeo, 28/11; vale sobre o resto deste arquivo)
 - Posse: `python3 kit/estado.py fila` e ler só docs/diretor/ESTADO.md + o que o prompt da tarefa mandar. O resto, sob demanda.
-- Por vídeo: o Diretor escreve o roteiro; 1 produtor (Sonnet) faz cenas, som, render, montagem; QA-Gemini sempre; QA-Claude (Sonnet, agente novo) sempre por enquanto: em 26 e 27/11 ele pegou problema real em 4 de 5 vídeos que o Gemini deu 8+. Todo achado do QA-Claude que repetir 2x vira checagem em script (qa_check/guardrails) e, quando as classes de erro estiverem cobertas, ele passa a rodar só por gatilho (`guardrails.gatilhos_qa`).
+- Por vídeo: o Diretor escreve o roteiro; 1 produtor (Sonnet) faz cenas, som, render, montagem; QA-Gemini sempre; QA-Claude (Sonnet, agente novo) sempre por enquanto: em 26 e 27/11 ele pegou problema real em 3 dos últimos 5 vídeos (25/11 H, 26/11 M, 27/11 C), com o Gemini dando 7,4 a 8,8. Todo achado do QA-Claude que repetir 2x vira checagem em script (qa_check/guardrails) e, quando as classes de erro estiverem cobertas, ele passa a rodar só por gatilho (`guardrails.gatilhos_qa`).
 - Guardas de falha fechada: `kit/buffer.py agendar --video` exige `--pasta` e guardrails.py = 0; "QA-Claude dispensado: motivo" só passa sem gatilho.
 - Vigia: `python3 kit/tem_trabalho.py fila` primeiro; saída 0 = só métricas e encerra.
 - Testes: `python3 kit/testes/test_guardas.py`.
