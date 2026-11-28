@@ -1,0 +1,95 @@
+{
+ "voice": "pt-BR-FranciscaNeural",
+ "rate": "+6%",
+ "pitch": "+0Hz",
+ "lead": 0.15,
+ "trim": true,
+ "trim_tail": 0.1,
+ "aposta": "seguro",
+ "ancoras": [
+  "volta",
+  "morta",
+  "vem",
+  "fora",
+  "sapato",
+  "janela",
+  "mistura",
+  "vence",
+  "porta",
+  "casa"
+ ],
+ "hashtags": [
+  "#PipoPop",
+  "#curiosidades",
+  "#limpeza",
+  "#faxina",
+  "#casa"
+ ],
+ "interacao": "fim_compartilhamento (quem entra de sapato) + fim_comentario dilema (sapato entra ou fica)",
+ "humor": "nenhum",
+ "comentario_fixado": "Time sapato na porta ou time entra de sapato mesmo? 👟🚪",
+ "pergunta_de_todo_video": {
+  "1_mais_do_mesmo": "Tema universal (faxina), mas desmonta uma crença que todo mundo repete (poeira = pele morta). O nosso: a Pipo estourando na revelação e a mãe da vassoura em loop.",
+  "2_sentimento": "Começo: identificação e leve raiva boa (varreu ontem, voltou hoje). Fim: 'ahh, então é isso' e vontade de cobrar o sapato de alguém.",
+  "3_reconhecivel": "Mãe varrendo, poeira no móvel, sapato sujo, janela aberta, tapete da porta.",
+  "4_precisa_quer_nem_sabe": "Quer: todo mundo já reclamou da poeira que volta; e precisa (dica útil da porta).",
+  "5_por_que_mandaria": "Para quem entra de sapato em casa (marido, filho, visita) e para a mãe que vive varrendo."
+ },
+ "lines": [
+  {
+   "text": "Sua mãe varreu a casa toda. Amanhã a poeira volta.",
+   "pause": 0.2,
+   "shot": "QUADRO 1: sala limpinha, mãe com vassoura orgulhosa; o relógio gira e a poeira volta em camada no móvel; texto topo 'VARREU ONTEM. VOLTOU HOJE.'"
+  },
+  {
+   "text": "E não: ela não é feita principalmente de pele morta.",
+   "pause": 0.2,
+   "shot": "lupa sobre a poeira; carimbo 'MITO' em cima de um cartão 'PELE MORTA'"
+  },
+  {
+   "text": "Um estudo nos Estados Unidos calculou de onde ela vem.",
+   "pause": 0.2,
+   "shot": "mapa/prancheta com casa em corte e setas de origem; Pipo espiga curiosa"
+  },
+  {
+   "text": "Mais da metade entra lá de fora!",
+   "pause": 0.2,
+   "shot": "PIPO ESTOURA em 'fora' (pipoca, flash, pop); porta escancarando com nuvem de poeira entrando; texto 'MAIS DA METADE: DE FORA'"
+  },
+  {
+   "text": "Terra que entra grudada na sola do sapato.",
+   "pause": 0.2,
+   "shot": "close na sola do sapato deixando pegadas de terra no piso; Pipo pipoca apontando"
+  },
+  {
+   "text": "E pozinho que o vento sopra pela janela.",
+   "pause": 0.2,
+   "shot": "janela aberta, cortina balançando, partículas brilhando entrando"
+  },
+  {
+   "text": "Pele, fiapo de roupa e de tapete são o resto da mistura.",
+   "pause": 0.2,
+   "shot": "pote de liquidificador misturando ícones: pele, fiapo, tapete, terra (terra maior)"
+  },
+  {
+   "text": "Por isso só a vassoura não vence.",
+   "pause": 0.2,
+   "shot": "mãe varrendo em loop, poeira voltando; reação de meme"
+  },
+  {
+   "text": "Quer menos poeira? Começa pela porta: tapete e sapato do lado de fora.",
+   "pause": 0.2,
+   "shot": "porta de entrada com tapete e sapatos enfileirados do lado de fora; checks verdes"
+  },
+  {
+   "text": "Manda pra quem entra de sapato na sua casa.",
+   "pause": 0.2,
+   "shot": "texto 'MANDA PRA QUEM ENTRA DE SAPATO', ícone de enviar; pé de sapato pisando no tapete limpo"
+  },
+  {
+   "text": "E aí: sapato entra ou fica na porta?",
+   "pause": 0.2,
+   "shot": "texto 'ENTRA ou FICA NA PORTA?' com dois botões; Pipo pipoca; fim logo depois"
+  }
+ ]
+}
