@@ -2453,6 +2453,125 @@ CENARIOS.update({
 ASSENTOS = {nome: {a for a, d in c["ancoras"].items() if "assento" in d} for nome, c in CENARIOS.items()}
 
 
+# ---------- CRETÁCEO (ep015): floresta de samambaias e cicas, vulcão fumegando ao fundo, folhas balançando
+def _cica(ctx, S, x, base, h, s, seed, cor_folha):
+    tr = hexc("#8A5A3A")
+    forma(ctx, [(x - 24 * s, base), (x - 15 * s, base - h * 0.5), (x - 12 * s, base - h), (x + 12 * s, base - h), (x + 16 * s, base - h * 0.5), (x + 24 * s, base)],
+          tr, sombra=False, lw=5, seed=seed, reto=False, amp=1.0)
+    for k in range(5):
+        yy = base - h * (0.12 + 0.18 * k)
+        traco(ctx, [(x - 16 * s, yy), (x, yy + 10 * s), (x + 16 * s, yy)], lw=4, cor=escurece(tr, 0.4), seed=seed + k, amp=0.5)
+    cy = base - h
+    for i in range(9):
+        ang = -math.pi / 2 + (i - 4) * 0.34 + 0.05 * math.sin(S.tv * 1.6 + i + seed)
+        L = 190 * s * (1 - abs(i - 4) * 0.05)
+        pts = []
+        for k in range(0, 7):
+            u = k / 6
+            ax = x + math.cos(ang) * L * u
+            ay = cy + math.sin(ang) * L * u + 120 * s * u * u
+            pts.append((ax, ay))
+        traco(ctx, pts, lw=8 * s, cor=escurece(cor_folha, 0.3), seed=seed + 10 + i, amp=0.5)
+        for k in range(1, 7):
+            px, py = pts[k]
+            for sg in (-1, 1):
+                traco(ctx, [(px, py), (px + sg * 34 * s * (1 - k * 0.1), py + 14 * s)], lw=7 * s, cor=cor_folha, seed=seed + 30 + i * 7 + k, amp=0.4)
+
+
+def _moita(ctx, S, x, y, s, seed, cor):
+    for i, ang in enumerate((-1.1, -0.65, -0.25, 0.15, 0.6, 1.05)):
+        a = ang + 0.09 * math.sin(S.tv * 2.0 + i * 1.3 + seed)
+        L = 260 * s * (1 - abs(ang) * 0.22)
+        pts = [(x, y)]
+        for k in range(1, 6):
+            u = k / 5
+            pts.append((x + math.sin(a) * L * u, y - math.cos(a) * L * u + 70 * s * u * u))
+        traco(ctx, pts, lw=9 * s, cor=escurece(cor, 0.35), seed=seed + i, amp=0.6)
+        for k in range(1, 6):
+            px, py = pts[k]
+            for sg in (-1, 1):
+                traco(ctx, [(px, py), (px + sg * 46 * s * (1 - k * 0.12), py + 16 * s)], lw=9 * s, cor=cor if (i + k) % 2 else clareia(cor, 0.12), seed=seed + 7 + k + i * 5, amp=0.5)
+
+
+CRETA_CHAO = 940
+
+
+def fundo_cretaceo(ctx, S):
+    hz = CRETA_CHAO
+    S.comp = True
+    K = (lambda c: tuple(min(1.0, c[i] / S.T[i]) for i in range(3))) if S.T else (lambda c: c)
+    c1, c2 = {"dia": ("#5EC8C4", "#FFE7A3"), "tarde": ("#FF7A3D", "#FFD089"), "noite": CEU["noite"]}.get(S.ceu, ("#5EC8C4", "#FFE7A3"))
+    g = cairo.LinearGradient(0, 0, 0, hz)
+    g.add_color_stop_rgb(0, *K(hexc(c1))); g.add_color_stop_rgb(1, *K(hexc(c2)))
+    ctx.rectangle(0, 0, W, hz); ctx.set_source(g); ctx.fill()
+    if S.ceu == "noite":
+        _estrelas(ctx, S, 0, 0, W, hz - 300, 40)
+    else:
+        for k in range(3):
+            ph = (S.tv * (10 + 6 * k) + k * 400) % (W + 400) - 200
+            _nuvem(ctx, ph, 150 + 150 * k, 0.8 - 0.12 * k, K(clareia(hexc(c2), 0.55)), S.seed + 700 + k)
+    S.comp = False
+    # morros ao longe
+    for i, (cx, rx, ry, c) in enumerate(((150, 330, 150, "#4F9E7A"), (560, 300, 110, "#5BAE84"))):
+        forma(ctx, pts_elipse(cx, hz, rx, ry, 24), hexc(c), sombra=False, lw=4, seed=S.seed + 710 + i, amp=0.8)
+    # vulcão
+    vx = 830
+    forma(ctx, [(420, hz + 10), (700, 560), (740, 520), (920, 520), (960, 560), (1240, hz + 10)], hexc("#7A4B3C"), sombra=False, lw=6, seed=S.seed + 720, reto=True)
+    forma(ctx, [(840, 520), (960, 560), (1240, hz + 10), (980, hz + 10)], hexc("#5E372E"), sombra=False, lw=0, seed=S.seed + 721, reto=True)
+    glow = 0.6 + 0.4 * math.sin(S.tv * 3)
+    ctx.save(); ctx.set_operator(cairo.OPERATOR_ADD)
+    g2 = cairo.RadialGradient(vx, 520, 0, vx, 520, 260)
+    g2.add_color_stop_rgba(0, 1.0, 0.55, 0.15, 0.55 * glow); g2.add_color_stop_rgba(1, 1.0, 0.4, 0.1, 0)
+    ctx.set_source(g2); ctx.arc(vx, 520, 260, 0, 2 * math.pi); ctx.fill(); ctx.restore()
+    forma(ctx, pts_elipse(vx, 524, 92, 22, 16), hexc("#FF8A2A"), sombra=False, lw=5, seed=S.seed + 722, amp=0.6)
+    for k, (dx, ln) in enumerate(((-40, 150), (10, 230), (50, 120))):   # lava escorrendo
+        traco(ctx, [(vx + dx, 536), (vx + dx * 1.6 + 6 * math.sin(S.tv * 2 + k), 536 + ln * 0.5), (vx + dx * 2.2, 536 + ln)], lw=11, cor=hexc("#FFB02E"), seed=S.seed + 723 + k, amp=0.6, alpha=0.9)
+    # fumaça subindo e brasas
+    for i in range(7):
+        u = (S.tv * 0.22 + i / 7) % 1.0
+        r = 40 + u * 110
+        x = vx + 30 * math.sin(u * 5 + i) + u * 120; y = 500 - u * 520
+        ctx.arc(x, y, r, 0, 2 * math.pi); ctx.set_source_rgba(*(K(hexc("#6B5F6B")) if S.T else hexc("#6B5F6B")), 0.8 * (1 - u) ** 0.8); ctx.fill()
+    rr = random.Random(5)
+    for i in range(14):
+        u = (S.tv * 0.5 + rr.random()) % 1.0
+        x = vx + rr.uniform(-80, 80) + u * rr.uniform(-160, 160); y = 510 - u * 380 * rr.uniform(0.5, 1.0)
+        ctx.arc(x, y, 5, 0, 2 * math.pi); ctx.set_source_rgba(1, 0.65, 0.2, 1 - u); ctx.fill()
+    # chão
+    g3 = cairo.LinearGradient(0, hz, 0, H)
+    g3.add_color_stop_rgb(0, *hexc("#7DBE4A")); g3.add_color_stop_rgb(1, *hexc("#3F8A3A"))
+    pts = [(x, hz + math.sin(x / 120) * 10) for x in range(-20, W + 60, 40)]
+    path = pts + [(W + 40, H + 20), (-40, H + 20)]
+    ctx.move_to(*path[0]); [ctx.line_to(*q) for q in path[1:]]; ctx.close_path(); ctx.set_source(g3); ctx.fill()
+    traco(ctx, pts, lw=6, cor=INK, amp=0)
+    # cicas e moitas no meio
+    verde = hexc("#35A24A")
+    _cica(ctx, S, 120, hz + 20, 430, 1.0, S.seed + 730, verde)
+    _cica(ctx, S, 330, hz + 10, 250, 0.7, S.seed + 760, clareia(verde, 0.1))
+    _cica(ctx, S, 985, hz + 30, 340, 0.85, S.seed + 790, verde)
+    for i, (x, s_) in enumerate(((230, 0.5), (640, 0.42), (900, 0.45))):
+        _moita(ctx, S, x, hz + 40 + i * 6, s_, S.seed + 820 + i * 9, clareia(verde, 0.05))
+    # cinzas caindo
+    if S.vida:
+        for i in range(18):
+            u = (S.tv * 0.12 + rr.random()) % 1.0
+            x = rr.uniform(0, W) + 30 * math.sin(S.tv + i); y = u * (H + 40) - 20
+            ctx.arc(x, y, 3.5, 0, 2 * math.pi); ctx.set_source_rgba(0.9, 0.9, 0.85, 0.35); ctx.fill()
+
+
+def frente_cretaceo(ctx, S):
+    tc = S.tc
+    verde = tc(hexc("#2F9444"))
+    _moita(ctx, S, 70, 1960, 1.15, S.seed + 840, verde)
+    _moita(ctx, S, 1010, 1980, 1.25, S.seed + 850, verde)
+
+
+CENARIOS["cretaceo"] = dict(fundo=fundo_cretaceo, frente=frente_cretaceo, ancoras={
+    "chao": {"x": 540, "chao": 1000, "escala": 1.0}, "chao_esq": {"x": 300, "chao": 1000, "escala": 1.0},
+    "chao_dir": {"x": 780, "chao": 1000, "escala": 1.0}, "vulcao": {"x": 830, "y": 520}, "ceu": {"x": 540, "y": 300}})
+ASSENTOS["cretaceo"] = set()
+
+
 def tem(nome):
     return nome in CENARIOS
 

@@ -588,7 +588,7 @@ class Filme:
                 sy *= 1 + 0.014 * math.sin(t * 2.6 + el.seed)
             if el.d.get("espelha"):
                 sx = -sx
-            ctx.scale(max(1e-3, s * sx), max(1e-3, s * sy) if sy > 0 else 1e-3)
+            ctx.scale(math.copysign(max(1e-3, abs(s * sx)), s * sx), max(1e-3, s * sy) if sy > 0 else 1e-3)   # espelha: sx negativo vale (antes sumia)
             glow = st.get("_brilho", 0)
             if a < 0.99 or glow > 0.01:
                 ctx.push_group()

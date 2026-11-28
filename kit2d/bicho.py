@@ -2,7 +2,7 @@
 Contorno grosso, cor chapada com sombra simples, olhos grandes. Traço próprio (nada copiado de personagem de terceiros).
 
 Propriedades (todas mudam com "muda"):
-  especie: pombo, gato, vaca, galinha, cavalo, coelho
+  especie: pombo, gato, vaca, galinha, cavalo, coelho, tiranossauro, bicodepato (dinos: ver seção DINOSSAUROS no fim do arquivo)
   olhos:   "lado" (como é de verdade: um olho de cada lado da cabeça) | "frente" (os dois juntos na cara, com sobrancelha). Gato é sempre "frente".
   vista:   "frente" (encara a câmera) | "perfil" (olhando para a direita; "espelha": true vira) | "cima" (visto do alto, cabeça para cima)
   campo:   graus do campo de visão (só em "cima"): desenha o cone translúcido saindo dos olhos. cego: true pinta a zona cega de vermelho.
@@ -155,7 +155,7 @@ def _anim(st, t, seed):
     anda = bool(st.get("anda")) or abs(vel) > 25
     ph = seed * 0.37
     P = dict(t=t, seed=seed, expr=expr, pose=pose, anda=anda,
-             olhos="frente" if esp == "gato" else st.get("olhos", "lado"),
+             olhos="frente" if esp in ("gato", "tiranossauro") else st.get("olhos", "lado"),
              look=LOOK.get(st.get("olhar", "camera"), (0, 0)), olhar=st.get("olhar", "camera"))
     base = LID[expr]
     P["lid"] = _piscada(t, seed, base) if expr != "feliz" else 0.0
@@ -856,7 +856,9 @@ def desenha_bicho(ctx, st, t, pal, seed):
     S, P = _anim(st, t, seed)
     vista = st.get("vista", "frente")
     ctx.save()
-    if vista == "cima":
+    if S["nome"] in DINOS:
+        bx = _dino(ctx, S, P, st, vista)
+    elif vista == "cima":
         bx = _cima(ctx, S, P, st)
     elif vista == "perfil":
         bx = _perfil(ctx, S, P)
@@ -867,3 +869,420 @@ def desenha_bicho(ctx, st, t, pal, seed):
         raise SystemExit(f"bicho: vista '{vista}' não existe. Use frente, perfil ou cima")
     ctx.restore()
     return bx
+
+
+# ============================ DINOSSAUROS (ep015) ============================
+# tiranossauro: bípede, cabeção, bracinhos, cauda; olhos SEMPRE "frente". Extras: abre (0 a 1, boca), ombros (0 a 1, dá de ombros),
+#   pose "rugindo" (boca aberta tremendo) e "ombros" (dá de ombros sozinho); silhueta: true (sombra escura com olhos acesos);
+#   vistas: frente, perfil, cima (2 cones que cruzam num alvo: campo = abertura de cada cone, alcance = distância do alvo), cranio (com lupa), pegada.
+# bicodepato (hadrossauro): quadrúpede/semi, bico largo de pato, crista (crista: false tira); aceita olhos "lado" (real) e "frente" (regra);
+#   vistas: frente, perfil (pose bicando = come samambaia), cima (cone: campo, cego). suor: true (gota de nervoso).
+# Design próprio (nada de filme/desenho conhecido).
+DINOS = ("tiranossauro", "bicodepato")
+ESPECIES["tiranossauro"] = dict(cor="#D8583E", cor2="#F7DDA8", listra="#8E2F2A", espinho="#FFC21A", garra="#FFF1D0", interior="#7A1B33",
+                                lingua="#F07B9C", campo=70, dino=True)
+ESPECIES["bicodepato"] = dict(cor="#8A7BE0", cor2="#E9E2FF", listra="#5B4BB0", bico="#F5B73A", bico2="#FFD36B", crista="#FF8FA8",
+                              mao="#6B5CC4", campo=300, dino=True)
+_SIL = "#1B1330"
+
+
+def _dino_cores(S, st):
+    if st.get("silhueta"):
+        for k, v in list(S.items()):
+            if isinstance(v, tuple) and len(v) == 3 and k not in ("espinho",):
+                S[k] = hexc(_SIL)
+        S["espinho"] = hexc("#2A1F45")
+
+
+def _samambaia(ctx, x, y, s, t, seed, cor="#2E9E4A"):
+    """Moita de samambaia (folhas em leque com folíolos) balançando; base em (x, y)."""
+    c = hexc(cor); c2 = escurece(c, 0.25)
+    for i, ang in enumerate((-1.0, -0.5, 0.0, 0.5, 1.0)):
+        a = ang + 0.08 * math.sin(t * 2.2 + i + seed)
+        L = (150 - abs(ang) * 36) * s
+        pts = [(x, y)]
+        for k in range(1, 6):
+            u = k / 5
+            pts.append((x + math.sin(a) * L * u + 0.35 * math.sin(a) * L * u * u * (1 if ang >= 0 else -1) * 0.4, y - math.cos(a) * L * u))
+        traco(ctx, pts, lw=7 * s, cor=c2, seed=seed + i, amp=0.6)
+        for k in range(1, 6):
+            px, py = pts[k]
+            for sg in (-1, 1):
+                traco(ctx, [(px, py), (px + sg * 26 * s * (1 - k * 0.12) * math.cos(a), py - 8 * s)], lw=7 * s, cor=c, seed=seed + 7 + k, amp=0.5)
+
+
+def _garras(ctx, x, y, n, dx, s, cor, seed):
+    for i in range(n):
+        xx = x + (i - (n - 1) / 2) * dx
+        F(ctx, [(xx - 5 * s, y), (xx, y + 14 * s), (xx + 5 * s, y)], cor, seed + i, lw=3.5, amp=0.3)
+
+
+def _dentes(ctx, x0, x1, y, n, h, sd, baixo=True, w=9):
+    for i in range(n):
+        xx = x0 + (x1 - x0) * (i + 0.5) / n
+        F(ctx, [(xx - w / 2, y), (xx + w / 2, y), (xx, y + (h if baixo else -h))], BRANCO, sd + i, lw=3, amp=0.2)
+
+
+# -------------------------- tiranossauro
+def _trex_frente(ctx, S, P, st):
+    sd = P["seed"]; t = P["t"]; expr = P["expr"]
+    ab = P["abre"]; om = P["omb"]
+    cor, cor2, lis = S["cor"], S["cor2"], S["listra"]
+    bob = 3 * math.sin(t * 2.2)
+    ctx.translate(P["treme"], 0)
+    a = P["rabo"]
+    tubo(ctx, [(60, 178), (150, 188 + 6 * a), (200, 170), (212, 138 + 10 * a)], cor, 34, sd + 1)
+    for i, lado in enumerate((-1, 1)):
+        lift = max(0, _passo(P, i * math.pi, 14))
+        x = lado * 54
+        tubo(ctx, [(x, 108), (x + lado * 6, 188 - lift)], cor, 56, sd + 30 + i)
+        F(ctx, EL(x + lado * 16, 197 - lift, 46, 17, 14), cor, sd + 32 + i)
+        _garras(ctx, x + lado * 16 + 4, 204 - lift, 3, 24, 1.0, S["garra"], sd + 34 + i)
+    F(ctx, EL(0, 66, 116, 126, 28), cor, sd + 40, sombra=True, sb=0.16)
+    F(ctx, EL(0, 94, 64, 94, 18), cor2, sd + 41, lw=0)
+    for i in range(3):
+        traco(ctx, [(-44, 66 + i * 36), (0, 74 + i * 36), (44, 66 + i * 36)], lw=5, cor=escurece(cor2, 0.25), seed=sd + 42 + i, alpha=0.8)
+    # bracinhos (dar de ombros: sobem e abrem as mãos para os lados)
+    for i, lado in enumerate((-1, 1)):
+        sx, sy = lado * 84, 44
+        ex, ey = lado * (110 + om * 28), 74 - om * 28
+        hx, hy = lado * (96 + om * 52), 104 - om * 74
+        tubo(ctx, [(sx, sy), (ex, ey), (hx, hy)], cor, 22, sd + 50 + i)
+        F(ctx, EL(hx, hy, 15, 13, 10), cor, sd + 52 + i, lw=4)
+        _garras(ctx, hx, hy + 6, 2, 11, 0.8, S["garra"], sd + 54 + i)
+    # cabeça (cabeção)
+    ctx.save()
+    ctx.translate(0, bob - om * 8 + (math.sin(t * 38) * 4 if ab > 0.5 else 0)); ctx.rotate(om * 0.07 * math.sin(t * 5) + (0.02 * math.sin(t * 40) if ab > 0.5 else 0))
+    for i, x in enumerate((-30, 0, 30)):
+        F(ctx, [(x - 11, -176 + abs(x) * 0.35), (x, -208 + abs(x) * 0.5), (x + 11, -176 + abs(x) * 0.35)], S["espinho"], sd + 60 + i, lw=4.5, amp=0.4)
+    F(ctx, EL(0, -102, 110, 94, 30), cor, sd + 61, sombra=True, sb=0.14)
+    F(ctx, EL(0, -62, 82, 46, 22), cor2, sd + 62, lw=0)
+    for lado in (-1, 1):   # bochecha
+        F(ctx, EL(lado * 92, -78, 18, 14, 10), escurece(cor, 0.12), sd + 63 + lado, lw=0)
+    # boca: fechada (sorrisinho com 2 dentes) ou aberta (rugido)
+    if ab > 0.05:
+        F(ctx, EL(0, -56 + 10 * ab, 70, 8 + 34 * ab, 22), S["interior"], sd + 66, lw=5)
+        F(ctx, EL(0, -44 + 14 * ab, 34, 8 + 16 * ab, 14), S["lingua"], sd + 67, lw=0)
+        _dentes(ctx, -60, 60, -56 - 0.0, 7, 15, sd + 68, baixo=True)
+        _dentes(ctx, -52, 52, -56 + 20 * ab + 10, 5, 12, sd + 80, baixo=False)
+    else:
+        boca(ctx, expr, 0, -54, 2.5, sd + 66)
+        for lado in (-1, 1):
+            F(ctx, [(lado * 48 - 6, -60), (lado * 48 + 6, -60), (lado * 48, -45)], BRANCO, sd + 70 + lado, lw=3, amp=0.2)
+    for lado in (-1, 1):   # narinas
+        ctx.arc(lado * 16, -84, 4.5, 0, 2 * math.pi); ctx.set_source_rgb(*INK); ctx.fill()
+    # olhos juntos na frente + sobrancelhas
+    pup = 0.26 if (ab > 0.5 or expr == "assustado") else 0.46
+    oss = []
+    for lado in (-1, 1):
+        olho(ctx, lado * 40, -128, 26, 28, P["look"], P["lid"], cor, sd + 90 + lado, pupila=pup, feliz=P["feliz"],
+             iris=hexc("#FFC21A") if st.get("silhueta") else None)
+        oss.append((lado * 40, -128, 26, 28, lado))
+    sobrancelhas(ctx, oss, "julgando" if expr == "neutro" and ab < 0.1 else expr, sd + 7)
+    ctx.restore()
+    if st.get("suor"):
+        _gota(ctx, 118, -150, t, sd)
+    return {"corpo": (-215, -215, 220, 215), "rosto": (-110, -200, 110, -30)}
+
+
+def _gota(ctx, x, y, t, sd):
+    u = (t * 1.3 + sd * 0.1) % 1.0
+    yy = y + u * 36
+    F(ctx, [(x, yy - 24), (x + 12, yy), (x, yy + 12), (x - 12, yy)], hexc("#7FD6FF"), sd + 301, lw=4, amp=0.2, sombra=False)
+
+
+def _trex_perfil(ctx, S, P, st):
+    sd = P["seed"]; t = P["t"]; expr = P["expr"]
+    ab = P["abre"]; om = P["omb"]
+    cor, cor2, lis = S["cor"], S["cor2"], S["listra"]
+    ctx.translate(P["treme"] - 20, 0)
+    bob = 3 * math.sin(t * 2.2); a = P["rabo"]
+    tail = [(-90, 0), (-190, 14 + 12 * a), (-290, 70 + 34 * a), (-320, 100 + 40 * a), (-200, 96 + 14 * a), (-96, 126)]
+    F(ctx, tail, cor, sd + 1, sb=0.1, sombra=True)
+    for k in range(3):
+        traco(ctx, [(-140 - k * 50, 40 + k * 12 + 6 * a), (-150 - k * 50, 70 + k * 12 + 6 * a)], lw=8, cor=lis, seed=sd + 2 + k, alpha=0.8)
+
+    def perna(x, c, k, lado):
+        lift = max(0, _passo(P, k, 16))
+        F(ctx, EL(x + 5, 102, 56, 72, 18, 0.2), c, sd + 10 + lado, sb=0.12)
+        tubo(ctx, [(x + 14, 150), (x + 4, 176 - lift), (x + 16, 194 - lift)], c, 34, sd + 12 + lado)
+        F(ctx, EL(x + 42, 199 - lift, 52, 16, 14), c, sd + 14 + lado)
+        _garras(ctx, x + 84, 196 - lift, 3, 12, 0.8, S["garra"], sd + 16 + lado)
+    perna(-34, escurece(cor, 0.2), math.pi, 0)
+    F(ctx, EL(-6, 36, 130, 98, 28, -0.16), cor, sd + 20, sombra=True, sb=0.16)
+    F(ctx, EL(34, 66, 84, 52, 20, -0.16), cor2, sd + 21, lw=0)
+    for i in range(3):
+        traco(ctx, [(-78 + i * 48, -42 + i * 5), (-66 + i * 48, 4 + i * 5)], lw=12, cor=lis, seed=sd + 22 + i, alpha=0.75)
+    perna(10, cor, 0, 1)
+    # bracinho
+    sx, sy = 74, 46
+    tubo(ctx, [(sx, sy), (sx + 26 + om * 10, sy + 30 - om * 34), (sx + 50 + om * 14, sy + 24 - om * 56)], cor, 18, sd + 30)
+    _garras(ctx, sx + 52 + om * 14, sy + 28 - om * 56, 2, 10, 0.8, S["garra"], sd + 31)
+    # pescoço e cabeça
+    hxx, hyy = 138, -92 + bob
+    F(ctx, EL(100, -34, 52, 72, 18, 0.55), cor, sd + 40)
+    ctx.save(); ctx.translate(hxx, hyy); ctx.rotate(-0.05 * ab + (0.025 * math.sin(t * 40) if ab > 0.5 else 0))
+    for i in range(3):
+        F(ctx, [(-40 + i * 26 - 10, -52), (-40 + i * 26, -76), (-40 + i * 26 + 10, -52)], S["espinho"], sd + 41 + i, lw=4.5, amp=0.4)
+    # mandíbula de baixo (abre girando) atrás do crânio
+    ctx.save(); ctx.translate(30, 34); ctx.rotate(ab * 0.5)
+    if ab > 0.05:
+        F(ctx, [(0, 0), (120, -2), (130, 12 - 6), (0, 6)], S["interior"], sd + 44, lw=4)
+    F(ctx, EL(70, 12, 74, 17, 16), cor2, sd + 45)
+    _dentes(ctx, 24, 128, 0, 6, 12, sd + 46, baixo=False, w=8)
+    ctx.restore()
+    F(ctx, EL(0, 0, 88, 66, 26, 0.05), cor, sd + 50, sombra=True, sb=0.14)
+    F(ctx, EL(80, 8, 70, 38, 20, 0.1), cor, sd + 51)
+    _dentes(ctx, 30, 140, 26, 6, 13, sd + 52, baixo=True, w=9)
+    ctx.arc(142, -4, 5, 0, 2 * math.pi); ctx.set_source_rgb(*INK); ctx.fill()
+    tubo(ctx, [(10, -26), (50, -36), (84, -30)], escurece(cor, 0.25), 14, sd + 56)
+    oss = []
+    for ex, ey, r in ((38, -8, 21), (72, -6, 18)):
+        olho(ctx, ex, ey, r, r * 1.05, P["look"] if P["olhar"] not in ("camera", "frente") else (0.7, 0.05), P["lid"], cor, sd + 60 + int(ex),
+             pupila=P["pupila"], feliz=P["feliz"], iris=hexc("#FFC21A") if st.get("silhueta") else None)
+        oss.append((ex, ey, r, r * 1.05, 1))
+    sobrancelhas(ctx, oss, "julgando" if expr == "neutro" and ab < 0.1 else expr, sd + 8)
+    ctx.restore()
+    return {"corpo": (-340, -190, 280, 215), "rosto": (hxx - 70, hyy - 70, hxx + 200, hyy + 50)}
+
+
+def _trex_cima(ctx, S, P, st):
+    sd = P["seed"]; t = P["t"]; expr = P["expr"]
+    cor, cor2, lis = S["cor"], S["cor2"], S["listra"]
+    ab = P["abre"]
+    ctx.translate(P["treme"], 0)
+    ex, ey = 34, -160
+    campo = st.get("campo", 70); D = st.get("alcance", 520)
+    if campo > 0 and not st.get("sem_cone"):
+        ang = math.atan(ex / D)
+        for lado in (-1, 1):
+            ctx.save(); ctx.translate(lado * ex, ey); ctx.rotate(-lado * ang)
+            cone(ctx, 0, 0, campo, D / math.cos(ang), False, t)
+            ctx.restore()
+        if st.get("mira", True):   # régua tracejada + alvo onde os dois cones se cruzam
+            ay = ey - D
+            ctx.save(); ctx.set_dash([14, 12], (t * 30) % 26); ctx.set_line_width(5); ctx.set_source_rgba(1, 1, 1, 0.9)
+            ctx.move_to(0, ey - 30); ctx.line_to(0, ay + 40); ctx.stroke(); ctx.restore()
+            for k in range(1, 5):
+                yy = ey - 30 - (D - 70) * k / 5
+                traco(ctx, [(-12, yy), (12, yy)], lw=5, cor=BRANCO, amp=0)
+            pul = 1 + 0.12 * math.sin(t * 7)
+            ctx.save(); ctx.translate(0, ay); ctx.scale(pul, pul)
+            ctx.arc(0, 0, 34, 0, 2 * math.pi); ctx.set_source_rgba(1, 0.2, 0.2, 0.25); ctx.fill_preserve(); ctx.set_source_rgb(*hexc("#E8352A")); ctx.set_line_width(7); ctx.stroke()
+            for dx, dy in ((-52, 0), (52, 0), (0, -52), (0, 52)):
+                traco(ctx, [(dx * 0.62, dy * 0.62), (dx, dy)], lw=7, cor=hexc("#E8352A"), amp=0)
+            ctx.restore()
+    # cauda
+    a = P["rabo"]
+    F(ctx, [(-44, 120), (-30 + 14 * a, 250), (10 * a, 360), (26 * a + 6, 372), (30 + 14 * a, 250), (44, 120)], cor, sd + 1, sb=0.1)
+    for lado in (-1, 1):   # pés
+        k = 0 if lado < 0 else math.pi
+        F(ctx, EL(lado * 92, 80 + _passo(P, k, 14), 28, 46, 14), escurece(cor, 0.15), sd + 5 + lado)
+    F(ctx, EL(0, 62, 78, 142, 28), cor, sd + 10, sombra=True, sb=0.14)
+    for i in range(4):
+        traco(ctx, [(-54, 30 + i * 44), (0, 42 + i * 44), (54, 30 + i * 44)], lw=11, cor=lis, seed=sd + 11 + i, alpha=0.7)
+    for lado in (-1, 1):   # bracinhos
+        tubo(ctx, [(lado * 70, -40), (lado * 98, -20), (lado * 92, 6)], cor, 16, sd + 20 + lado)
+    # cabeção
+    F(ctx, EL(0, -138, 66, 70, 26), cor, sd + 30, sombra=True, sb=0.12)
+    F(ctx, EL(0, -204, 42, 34, 18), cor, sd + 31)
+    for lado in (-1, 1):
+        ctx.arc(lado * 14, -222, 4, 0, 2 * math.pi); ctx.set_source_rgb(*INK); ctx.fill()
+    pup = 0.26 if expr == "assustado" else 0.5
+    oss = []
+    for lado in (-1, 1):
+        olho(ctx, lado * ex, ey, 17, 18, (0, -0.7), P["lid"], cor, sd + 40 + lado, pupila=pup, feliz=P["feliz"])
+        oss.append((lado * ex, ey, 17, 18, lado))
+    sobrancelhas(ctx, oss, "julgando" if expr == "neutro" else expr, sd + 9)
+    return {"corpo": (-120, -240, 120, 380), "rosto": (-66, -240, 66, -70)}
+
+
+def _trex_cranio(ctx, S, P, st):
+    """Crânio estilizado (osso claro, órbita, dentes) com lupa por cima."""
+    sd = P["seed"]; t = P["t"]
+    osso = hexc("#F4EAD2"); osso2 = escurece(osso, 0.18)
+    F(ctx, [(-190, -40), (-120, -110), (10, -130), (110, -92), (200, -50), (214, 8), (160, 30), (-20, 30), (-150, 56), (-196, 20)], osso, sd + 1, sb=0.14)
+    F(ctx, [(-10, 34), (160, 34), (206, 56), (150, 78), (20, 74), (-30, 52)], osso, sd + 2)
+    _dentes(ctx, 20, 190, 30, 8, 22, sd + 3, baixo=True, w=14)
+    F(ctx, EL(-60, -36, 46, 52, 18), hexc("#2B2233"), sd + 4, lw=5)
+    F(ctx, EL(100, -22, 18, 12, 12), hexc("#2B2233"), sd + 5, lw=4)
+    F(ctx, EL(30, -58, 36, 26, 16), hexc("#2B2233"), sd + 6, lw=4)
+    for i in range(3):
+        traco(ctx, [(-150 + i * 60, -80 + i * 6), (-130 + i * 60, -54 + i * 6)], lw=6, cor=osso2, seed=sd + 7 + i)
+    # lupa balançando sobre a órbita
+    ang = 0.15 * math.sin(t * 2.4)
+    ctx.save(); ctx.translate(-30 + 14 * math.sin(t * 1.8), -30); ctx.rotate(ang)
+    traco(ctx, [(60, 70), (112, 138)], lw=20, cor=hexc("#8A4B2A"), seed=sd + 20, amp=0)
+    ctx.arc(0, 0, 84, 0, 2 * math.pi); ctx.set_source_rgba(0.75, 0.92, 1.0, 0.28); ctx.fill_preserve()
+    ctx.set_source_rgb(*INK); ctx.set_line_width(16); ctx.stroke()
+    ctx.arc(0, 0, 84, 0, 2 * math.pi); ctx.set_source_rgb(*hexc("#FFC21A")); ctx.set_line_width(8); ctx.stroke()
+    traco(ctx, [(-44, -34), (-22, -56)], lw=9, cor=BRANCO, amp=0)
+    ctx.restore()
+    return {"corpo": (-215, -135, 220, 215), "rosto": None}
+
+
+def _trex_pegada(ctx, S, P, st):
+    sd = P["seed"]
+    cor = hexc(st.get("cor", "#3A2A22"))
+    F(ctx, EL(0, 40, 62, 74, 16), cor, sd + 1, sombra=False, lw=5)
+    for i, (dx, dy, r) in enumerate(((-64, -34, -0.5), (0, -62, 0), (64, -34, 0.5))):
+        F(ctx, EL(dx, dy, 24, 44, 12, r), cor, sd + 2 + i, sombra=False, lw=5)
+        F(ctx, [(dx - 8, dy - 36), (dx + 8, dy - 36), (dx, dy - 66)], BRANCO, sd + 6 + i, lw=3.5, sombra=False, amp=0.2)
+    return {"corpo": (-100, -130, 100, 120), "rosto": None}
+
+
+# -------------------------- bico-de-pato
+def _bico_olhos(ctx, S, P, pos_lado, pos_frente, r_lado, r_frente, sd):
+    """Olhos: 'lado' = um olho alto na lateral (como é de verdade); 'frente' = dois juntos na cara, com sobrancelha."""
+    expr = P["expr"]; oss = []
+    if P["olhos"] == "frente":
+        for i, (x, y, lado) in enumerate(pos_frente):
+            olho(ctx, x, y, r_frente, r_frente * 1.05, P["look"], P["lid"], S["cor"], sd + 90 + i, pupila=P["pupila"], feliz=P["feliz"])
+            oss.append((x, y, r_frente, r_frente * 1.05, lado))
+        sobrancelhas(ctx, oss, expr, sd + 7)
+    else:
+        for i, (x, y, lado) in enumerate(pos_lado):
+            olho(ctx, x, y, r_lado * 0.62, r_lado * 1.15, P["look"], P["lid"], S["cor"], sd + 90 + i, pupila=P["pupila"], feliz=P["feliz"])
+
+
+def _bico_frente(ctx, S, P, st):
+    sd = P["seed"]; t = P["t"]; expr = P["expr"]
+    cor, cor2, lis = S["cor"], S["cor2"], S["listra"]
+    hy_off = P["bica"] * 38
+    ctx.translate(P["treme"], 0)
+    a = P["rabo"]
+    tubo(ctx, [(60, 176), (150, 188 + 6 * a), (196, 170), (208, 142 + 10 * a)], cor, 32, sd + 1)
+    for i, lado in enumerate((-1, 1)):
+        lift = max(0, _passo(P, i * math.pi, 14))
+        x = lado * 52
+        tubo(ctx, [(x, 110), (x + lado * 6, 188 - lift)], cor, 54, sd + 30 + i)
+        F(ctx, EL(x + lado * 12, 197 - lift, 44, 16, 14), S["mao"], sd + 32 + i)
+        for d in (-1, 0, 1):
+            traco(ctx, [(x + lado * 12 + d * 22, 190 - lift), (x + lado * 12 + d * 22, 204 - lift)], lw=6, cor=INK, seed=sd + 34 + d, alpha=0.7)
+    F(ctx, EL(0, 76, 120, 122, 28), cor, sd + 40, sombra=True, sb=0.16)
+    F(ctx, EL(0, 100, 66, 92, 18), cor2, sd + 41, lw=0)
+    for i in range(3):
+        traco(ctx, [(-44, 70 + i * 36), (0, 78 + i * 36), (44, 70 + i * 36)], lw=5, cor=escurece(cor2, 0.25), seed=sd + 42 + i, alpha=0.8)
+    for i, lado in enumerate((-1, 1)):   # bracinhos curtos
+        tubo(ctx, [(lado * 100, 50), (lado * 128, 90), (lado * 122, 128)], cor, 22, sd + 50 + i)
+        F(ctx, EL(lado * 122, 134, 15, 14, 10), S["mao"], sd + 52 + i, lw=4)
+    ctx.save(); ctx.translate(0, hy_off)
+    if st.get("crista", True):
+        F(ctx, [(-22, -150), (-14, -214), (14, -214), (22, -150)], S["crista"], sd + 60, lw=5, amp=0.5)
+        traco(ctx, [(0, -204), (0, -164)], lw=5, cor=escurece(hexc(st.get("crista_cor", "#FF8FA8")), 0.3), seed=sd + 61, alpha=0.7)
+    F(ctx, EL(0, -102, 78, 70, 26), cor, sd + 62, sombra=True, sb=0.14)
+    F(ctx, EL(0, -92, 50, 36, 16), cor2, sd + 63, lw=0)
+    # bico largo de pato
+    F(ctx, EL(0, -62, 94, 38, 24), S["bico"], sd + 64, sb=0.14)
+    F(ctx, EL(0, -72, 70, 18, 16), S["bico2"], sd + 65, lw=0)
+    for lado in (-1, 1):
+        ctx.arc(lado * 34, -76, 4.5, 0, 2 * math.pi); ctx.set_source_rgb(*INK); ctx.fill()
+    boca(ctx, expr if expr != "neutro" else "neutro", 0, -50, 2.7, sd + 66)
+    _bico_olhos(ctx, S, P, [(-70, -120, -1), (70, -120, 1)], [(-30, -128, -1), (30, -128, 1)], 26, 24, sd)
+    ctx.restore()
+    if st.get("suor") or expr == "assustado":
+        _gota(ctx, 96, -150 + hy_off, t, sd)
+    return {"corpo": (-210, -215, 220, 215), "rosto": (-100, -215 + hy_off, 100, -30 + hy_off)}
+
+
+def _bico_perfil(ctx, S, P, st):
+    sd = P["seed"]; t = P["t"]; expr = P["expr"]
+    cor, cor2, lis = S["cor"], S["cor2"], S["listra"]
+    bk = P["bica"]
+    ctx.translate(P["treme"] - 30, 0)
+    a = P["rabo"]
+    F(ctx, [(-120, 30), (-210, 40 + 8 * a), (-300, 88 + 26 * a), (-312, 112 + 28 * a), (-210, 100 + 8 * a), (-110, 128)], cor, sd + 1, sb=0.1)
+
+    def perna(x, c, k, lado, esp=34, topo=118):
+        lift = max(0, _passo(P, k, 14))
+        tubo(ctx, [(x, topo), (x + 2, 176 - lift), (x + 4, 194 - lift)], c, esp, sd + 10 + lado)
+        F(ctx, EL(x + 16, 199 - lift, 40, 14, 14), S["mao"], sd + 14 + lado)
+    perna(-70, escurece(cor, 0.2), math.pi, 0, 40)
+    perna(60, escurece(cor, 0.2), 0, 2, 30)
+    F(ctx, EL(-10, 62, 146, 90, 28, -0.05), cor, sd + 20, sombra=True, sb=0.16)
+    F(ctx, EL(14, 98, 98, 44, 20, -0.05), cor2, sd + 21, lw=0)
+    for i in range(3):
+        traco(ctx, [(-70 + i * 52, -14 + i * 2), (-62 + i * 52, 30 + i * 2)], lw=11, cor=lis, seed=sd + 22 + i, alpha=0.75)
+    perna(-40, cor, 0, 1, 44)
+    perna(88, cor, math.pi, 3, 34)
+    # pescoço e cabeça: bicando = cabeça desce até a samambaia
+    hx = 150 + 60 * bk; hy = -86 + 238 * bk + 2 * math.sin(t * 2)
+    tubo(ctx, [(70, 20), (96 + 30 * bk, -40 + 90 * bk), (hx - 14, hy + 8)], cor, 66, sd + 30)
+    if bk > 0.3:
+        _samambaia(ctx, hx + 112, 206, 0.9, t, sd + 5)
+    ctx.save(); ctx.translate(hx, hy); ctx.rotate(0.35 * bk)
+    if st.get("crista", True):
+        F(ctx, [(-34, -38), (-60, -88), (-12, -92), (4, -42)], S["crista"], sd + 40, lw=5, amp=0.5)
+    F(ctx, EL(0, 0, 54, 44, 22), cor, sd + 41, sombra=True, sb=0.14)
+    F(ctx, EL(88, 8, 62, 26, 18), S["bico"], sd + 42, sb=0.12)
+    F(ctx, EL(92, 0, 40, 10, 12), S["bico2"], sd + 43, lw=0)
+    ctx.arc(118, -2, 4, 0, 2 * math.pi); ctx.set_source_rgb(*INK); ctx.fill()
+    if P["olhos"] == "frente":
+        oss = []
+        for i, (ex, ey, lado) in enumerate(((10, -16, -1), (38, -14, 1))):
+            olho(ctx, ex, ey, 17, 18, P["look"] if P["olhar"] not in ("camera", "frente") else (0.7, 0.1), P["lid"], cor, sd + 50 + i,
+                 pupila=P["pupila"], feliz=P["feliz"])
+            oss.append((ex, ey, 17, 18, 1))
+        sobrancelhas(ctx, oss, expr, sd + 7)
+    else:
+        olho(ctx, 8, -10, 11, 20, (0.7, 0.2), P["lid"], cor, sd + 50, pupila=P["pupila"], feliz=P["feliz"])
+    boca(ctx, expr, 78, 16, 0.8, sd + 60) if expr not in ("neutro",) else None
+    ctx.restore()
+    if st.get("suor") or expr == "assustado":
+        _gota(ctx, hx + 40, hy - 70, t, sd)
+    return {"corpo": (-330, -120, 300, 215), "rosto": (hx - 56, hy - 60, hx + 160, hy + 50)}
+
+
+def _bico_cima(ctx, S, P, st):
+    sd = P["seed"]; t = P["t"]; expr = P["expr"]
+    cor, cor2, lis = S["cor"], S["cor2"], S["listra"]
+    hy = -126 - 18 * P["bica"]
+    ctx.translate(P["treme"], 0)
+    if "campo" in st:
+        cone(ctx, 0, hy - 10, st["campo"], st.get("alcance", 620), st.get("cego"), t)
+    a = P["rabo"]
+    F(ctx, [(-40, 130), (-26 + 12 * a, 250), (8 * a, 372), (24 * a + 4, 380), (28 + 12 * a, 250), (42, 130)], cor, sd + 1, sb=0.1)
+    for i, (sx, yy) in enumerate(((-1, -20), (1, -20), (-1, 110), (1, 110))):
+        F(ctx, EL(sx * 92, yy + _passo(P, i * 1.7 + (math.pi if i in (1, 2) else 0), 14), 24, 38, 12), S["mao"], sd + 5 + i)
+    F(ctx, EL(0, 62, 82, 140, 28), cor, sd + 10, sombra=True, sb=0.14)
+    for i in range(4):
+        traco(ctx, [(-52, 20 + i * 44), (0, 32 + i * 44), (52, 20 + i * 44)], lw=11, cor=lis, seed=sd + 11 + i, alpha=0.7)
+    F(ctx, EL(0, hy, 52, 58, 22), cor, sd + 30, sombra=True, sb=0.12)
+    F(ctx, EL(0, hy - 70, 62, 30, 18), S["bico"], sd + 31, sb=0.12)
+    if st.get("crista", True):
+        F(ctx, EL(0, hy + 20, 12, 30, 12), S["crista"], sd + 32, lw=4)
+    if P["olhos"] == "frente":
+        oss = []
+        for lado in (-1, 1):
+            olho(ctx, lado * 24, hy - 24, 15, 16, (0, -0.6), P["lid"], cor, sd + 40 + lado, pupila=P["pupila"], feliz=P["feliz"])
+            oss.append((lado * 24, hy - 24, 15, 16, lado))
+        sobrancelhas(ctx, oss, expr, sd + 9)
+    else:
+        for lado in (-1, 1):
+            olho(ctx, lado * 50, hy - 4, 9, 17, (lado * 0.8, 0), P["lid"], cor, sd + 40 + lado, pupila=P["pupila"], feliz=P["feliz"])
+    return {"corpo": (-120, hy - 110, 120, 385), "rosto": (-62, hy - 100, 62, hy + 58)}
+
+
+def _bico_planta(ctx, S, P, st):
+    """Samambaia grande balançando (alvo do bico-de-pato; também folhas tremendo na borda escura)."""
+    for i, dx in enumerate((-70, 0, 70)):
+        _samambaia(ctx, dx, 120 - 8 * abs(dx) / 70, 1.2 - 0.2 * abs(dx) / 70, P["t"] + i, P["seed"] + i * 11, st.get("cor_folha", "#2E9E4A"))
+    return {"corpo": (-170, -180, 170, 125), "rosto": None}
+
+
+def _dino(ctx, S, P, st, vista):
+    esp = S["nome"]
+    _dino_cores(S, st)
+    P["abre"] = clamp(float(st.get("abre", 0.0)))
+    P["omb"] = clamp(float(st.get("ombros", 0.0)))
+    if P["pose"] == "rugindo":
+        P["abre"] = 1.0
+        P["treme"] = math.sin(P["t"] * 55) * 3.0
+    elif P["pose"] == "ombros":
+        u = (P["t"] % 1.8) / 1.8
+        P["omb"] = clamp(min(u / 0.12, 1.0) * (1 - clamp((u - 0.62) / 0.18))) if u < 0.8 else 0.0
+    tab = {"tiranossauro": dict(frente=_trex_frente, perfil=_trex_perfil, cima=_trex_cima, cranio=_trex_cranio, pegada=_trex_pegada),
+           "bicodepato": dict(frente=_bico_frente, perfil=_bico_perfil, cima=_bico_cima, planta=_bico_planta)}[esp]
+    if vista not in tab:
+        raise SystemExit(f"bicho: {esp} não tem vista '{vista}'. Vistas: {', '.join(tab)}")
+    return tab[vista](ctx, S, P, st)

@@ -94,7 +94,7 @@ def test_vigia_noite_sem_trabalho():
 
 def test_vigia_manha_produz_pilar_faltando():
     r = tem_trabalho.triagem(fila_fake({"2026-11-28_M": True}), datetime(2026, 11, 28, 9, 23))
-    assert r["produzir"] == ["2026-11-28_H", "2026-11-28_C"]
+    assert r["produzir"] == ["2026-11-28_H"], r  # C 10:41 sem folga de 2 h; M já existe; H 19:06
 
 
 def test_vigia_respeita_trava():
@@ -105,6 +105,18 @@ def test_vigia_respeita_trava():
 def test_vigia_acha_pasta_sem_agendar():
     r = tem_trabalho.triagem(fila_fake({"2026-11-29_M": False, "2026-11-29_H": True}), datetime(2026, 11, 28, 20, 23))
     assert r["agendar"] == ["2026-11-29_M"]
+
+
+def test_quadro1_sem_texto_falha():
+    d = pasta("VEREDITO: APROVA")
+    json.dump({"cenas": [{"em": 0, "elementos": [{"tipo": "texto", "texto": "OI", "acoes": []}]}]}, open(os.path.join(d, "cenas.json"), "w"))
+    assert item(d, "quadro1") == "FALHA"
+
+
+def test_quadro1_com_texto_passa():
+    d = pasta("VEREDITO: APROVA")
+    json.dump({"cenas": [{"em": 0, "elementos": [{"tipo": "texto", "texto": "OLHO NA FRENTE = ALMOÇO", "acoes": [{"em": -0.4, "faz": "entra"}]}]}]}, open(os.path.join(d, "cenas.json"), "w"))
+    assert item(d, "quadro1") == "OK"
 
 
 if __name__ == "__main__":

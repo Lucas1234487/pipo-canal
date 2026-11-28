@@ -188,6 +188,24 @@ def checa(pasta, pilar=None):
     else:
         R.aviso("horario", "sem horário no meta.json (usar o próximo slot)")
 
+    # quadro 1 (achado do QA-Claude 2x: ep012 26/11 e ep015 28/11): texto do conflito tem que estar na tela no 1º meio segundo
+    cp = os.path.join(pasta, "cenas.json")
+    if os.path.exists(cp):
+        try:
+            c0 = json.load(open(cp))["cenas"][0]
+            ok1 = False
+            for e in c0.get("elementos", []):
+                if e.get("tipo") != "texto" or len(str(e.get("texto", "")).split()) < 3:
+                    continue
+                ents = [a.get("em", 0) for a in e.get("acoes", []) if a.get("faz") == "entra"]
+                if not ents or min(ents) <= 0.3:
+                    ok1 = True
+            (R.ok if ok1 else R.falha)("quadro1", "texto de conflito (3+ palavras) na tela até 0,3 s" if ok1 else "quadro 1 sem texto de conflito (3+ palavras) até 0,3 s: ver docs/diretor/cadernos/QA_claude.md")
+        except Exception as ex:
+            R.aviso("quadro1", f"não li o cenas.json: {ex}")
+    else:
+        R.aviso("quadro1", "sem cenas.json na pasta (copie para checar o quadro 1)")
+
     # fatos: pilar C e H precisam de 2 fontes por fato central (pelo menos 2 links)
     fp = os.path.join(pasta, "fatos.md")
     if os.path.exists(fp):

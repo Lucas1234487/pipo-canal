@@ -1,0 +1,6 @@
+# Bilhete do produtor, ep015 (H, olhos pra frente parte 2)
+O que fiz: tts (80,9 s, +14 s do esperado: 22 falas, sem cortar texto) -> motor novo -> cenas.json (gen_cenas.py gera tudo a partir do timing.json) -> render2d -> compose -> qa_check APROVADO de primeira -> upload.mp4 720p (3,71 MB, 300k/340k + áudio 64k).
+Motor novo: bicho.py (tiranossauro e bicodepato, vistas frente/perfil/cima + cranio, pegada, planta), cenarios2.py (cenário cretaceo), icones.py (curtir, churrasqueira, macaco, arvore, lupa), correção do espelha no render2d, seção 4.6 no CENAS.md, teste em kit2d/testes/dino.
+Som: viagem na abertura, mistério só na tensão (41,4 a 47,9 s), silêncio de 0,27 s antes do rugido (48,35 s, estouro da Pipo junto), aventura em 56,0 s, viagem no gancho (71,4 s). Voz x música: 24,5 / 22,9 / 20,9 / ~23 dB. Nenhum som novo (sem proveniência a registrar).
+Faltou no motor: mordida/sem violência foi respeitado; o T. rex perfil não tem mandíbula articulada de verdade; o cone de 2 olhos só existe na vista cima; contador "DIAS" é 0 -> 3 (herbívoros na cena: 3). Pipo "apontando" para baixo fica discreto.
+Lição: reação "grilo" congela o quadro e segura a cena velha além do corte; use dur curto (0,5 s) e comece antes do corte.

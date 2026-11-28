@@ -1,0 +1,134 @@
+{
+ "voice": "pt-BR-AntonioNeural",
+ "rate": "+10%",
+ "pitch": "+0Hz",
+ "lead": 0.15,
+ "trim": true,
+ "trim_tail": 0.1,
+ "aposta": "evolucao",
+ "serie": "olhos_pra_frente",
+ "parte": 2,
+ "ancoras": [
+  "almoço",
+  "dinossauros",
+  "assim",
+  "lado",
+  "prato",
+  "picanha",
+  "Rugido",
+  "oi",
+  "presa",
+  "primo",
+  "caça",
+  "comenta"
+ ],
+ "hashtags": [
+  "#PipoPop",
+  "#curiosidades",
+  "#dinossauros",
+  "#animais",
+  "#ciencia"
+ ],
+ "interacao": "fim_comentario dilema caçador ou presa + CTA parte três (última linha)",
+ "humor": "referencia",
+ "comentario_fixado": "Caçador ou presa: qual você seria? E quem é o tio da picanha aí na sua família? 🍖👀",
+ "pergunta_de_todo_video": {
+  "1_mais_do_mesmo": "É a parte 2 da nossa melhor nota recente (ep013, 9,0): mesma regra, mas cenário, elenco e virada mudam. Dinossauro com olho de gente e o tio da picanha são nossos; a virada agora é revelação (o pombo é primo do tiranossauro e virou caça), não salvamento.",
+  "2_sentimento": "2 primeiros segundos: susto e riso (dinossauro com cara de gente e a sombra do tiranossauro atrás). No fim: o 'ahh, faz sentido' de ligar o pombo ao tiranossauro e vontade de ver a parte 3.",
+  "3_reconhecivel": "Dinossauro (todo mundo conhece), tio no churrasco vidrado na picanha, o pombo da praça.",
+  "4_precisa_quer_nem_sabe": "Quer: quem viu a parte 1 pediu a parte 2 nos comentários; e nem sabe que quer o porquê de caçador ter olho na frente.",
+  "5_por_que_mandaria": "Para marcar o tio da picanha e para quem viu a parte 1 com você; e para discutir se seria caçador ou presa."
+ },
+ "lines": [
+  {
+   "text": "Um olho no lugar errado, e esse dinossauro vira almoço.",
+   "pause": 0.2,
+   "shot": "QUADRO 1: bico-de-pato (hadrossauro) comendo de cabeça baixa com OS DOIS OLHOS NA FRENTE da cara; atrás dele, sombra enorme de tiranossauro; texto 'PARTE 2' pequeno no canto"
+  },
+  {
+   "text": "Parte dois: a sombra do pombo levou a gente pros dinossauros.",
+   "pause": 0.2,
+   "shot": "pombo da parte 1 na praça; a sombra dele cresce e vira sombra de dinossauro; transição mergulho (fundos.py) para floresta do Cretáceo com samambaias e vulcão ao fundo"
+  },
+  {
+   "text": "A regra continua: todo bicho com olho na frente da cara.",
+   "pause": 0.2,
+   "shot": "carimbo REGRA batendo; olhos de vários dinossauros herbívoros deslizam do lado para a frente, pop em cada um"
+  },
+  {
+   "text": "O tiranossauro nem ligou. Ele já era assim.",
+   "pause": 0.2,
+   "shot": "tiranossauro dá de ombros com os bracinhos, selo 'JÁ ERA ASSIM'"
+  },
+  {
+   "text": "Um estudo com o crânio dele mostrou: enxergava em profundidade muito bem.",
+   "pause": 0.2,
+   "shot": "crânio de tiranossauro estilizado com lupa; texto 'visão em profundidade'"
+  },
+  {
+   "text": "Agora o bico-de-pato. Na vida real, o olho dele ficava do lado: via quase tudo em volta.",
+   "pause": 0.2,
+   "shot": "SPLIT: bico-de-pato real (olho do lado) com leque largo de visão quase em volta"
+  },
+  {
+   "text": "Com a regra, o olho foi pra frente. Agora ele só vê o prato.",
+   "pause": 0.2,
+   "shot": "bico-de-pato da regra: cone estreito só na frente, apontado para a samambaia; laterais e costas escuras"
+  },
+  {
+   "text": "Igual tio no churrasco quando sai a picanha.",
+   "pause": 0.2,
+   "shot": "corte rápido: tio na churrasqueira de olho vidrado num espeto, coração nos olhos; volta ao bico-de-pato com a mesma cara"
+  },
+  {
+   "text": "E quem chega pelo lado?",
+   "pause": 0.2,
+   "shot": "paleta escurece (noite/petroleo), música mistério; folhas mexendo na lateral escura"
+  },
+  {
+   "text": "Passo. Passo.",
+   "pause": 0.55,
+   "shot": "pegadas grandes aparecendo na área escura, chão tremendo, batida de coração; pausa"
+  },
+  {
+   "text": "Rugido!",
+   "pause": 0.4,
+   "shot": "PIPO ESTOURA no 'rugido' (de espiga vira pipoca com o susto, som de estouro + rugido, flash, tremor); daqui em diante Pipo em forma pipoca"
+  },
+  {
+   "text": "O bico-de-pato virou devagar: ah... oi.",
+   "pause": 0.2,
+   "shot": "bico-de-pato vira a cabeça devagar e fica cara a cara com o tiranossauro, sorriso amarelo; grilo; corte seco (nada de violência)"
+  },
+  {
+   "text": "Por isso caçador tem olho na frente, e presa tem olho do lado.",
+   "pause": 0.2,
+   "shot": "SPLIT: tiranossauro (olho na frente, mira) x bico-de-pato real (olho do lado, leque largo); etiquetas CAÇADOR / PRESA; paleta quente, música aventura"
+  },
+  {
+   "text": "E o pombo da parte um? É primo desse tiranossauro.",
+   "pause": 0.2,
+   "shot": "pombo pousa na cabeça do tiranossauro; árvore genealógica simples ligando os dois"
+  },
+  {
+   "text": "Só que hoje ele é a caça. Por isso o olho dele é do lado.",
+   "pause": 0.2,
+   "shot": "pombo real (olho do lado) de olho no gato da parte 1 chegando; ele vê e voa"
+  },
+  {
+   "text": "Cada olho fica onde a sobrevivência mandou.",
+   "pause": 0.2,
+   "shot": "Pipo pipoca com uma lupa; texto da lição na tela"
+  },
+  {
+   "text": "E a gente? Por que o nosso olho foi pra frente?",
+   "pause": 0.2,
+   "shot": "ponto de interrogação gigante; silhueta de macaco numa árvore (gancho da parte 3)"
+  },
+  {
+   "text": "Caçador ou presa: qual você seria? Comenta, que a parte três vem aí.",
+   "pause": 0.2,
+   "shot": "texto 'CAÇADOR ou PRESA?' com dois botões; Pipo pipoca apontando para os comentários; fim logo depois"
+  }
+ ]
+}

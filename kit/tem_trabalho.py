@@ -15,7 +15,7 @@ from datetime import datetime, timedelta
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from guardrails import SLOTS  # noqa: E402
 
-PILARES = "MHC"  # ordem dos slots do dia (03_CICLO)
+PILARES = "CMH"  # ordem dos slots do dia (03_CICLO §3: C no 1º, M no 2º, H no 3º; corrigido 28/11)
 RAIZ = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 
 

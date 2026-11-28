@@ -157,6 +157,12 @@ Com `escala` 1 o bicho tem ~420 px de altura (pés em +205 px do centro). Conta 
  "acoes": [{"em": "frente", "faz": "muda", "prop": "campo", "para": 190, "dur": 1.2}]}
 ```
 
+### 4.6 Dinossauros, cenário Cretáceo e ícones (ep015, 28/11/2026)
+- `bicho` ganhou 2 espécies (kit2d/bicho.py, seção DINOSSAUROS; teste em kit2d/testes/dino): `tiranossauro` (olhos sempre "frente"; `abre` 0 a 1 = boca, `ombros` 0 a 1 = dá de ombros com os bracinhos, `pose` "rugindo" / "ombros"; `silhueta`: true = sombra escura com olhos acesos; vistas frente, perfil, cima [2 cones que cruzam num alvo: `campo` = abertura de cada cone, `alcance` = distância do alvo, `mira`: false tira a régua], `cranio` [com lupa] e `pegada`) e `bicodepato` (`olhos` "lado" ou "frente"; `crista`; `suor`; vistas frente, perfil [pose bicando come samambaia], cima [`campo`, `cego`] e `planta` [samambaia solta]).
+- Cenário `cretaceo` (cenarios2.py): samambaias e cicas balançando, vulcão fumegando com brasas e cinzas; `luz` dia, tarde ou noite; âncoras chao, chao_esq, chao_dir, vulcao, ceu. Chão em y 940: pés dos bichos em y ~1000 (`y` = (1000 - 205*escala)/1920).
+- Elemento `icone` (kit2d/icones.py): `qual` curtir (joinha pulsando), churrasqueira (espeto, chamas, fumaça), macaco (silhueta), arvore (Y de parentesco: `dx`, `dy`, `rotulo`), lupa.
+- `espelha: true` agora funciona (antes o elemento sumia): o render preserva o sinal da escala.
+
 ### 4.1 Memes (`"tipo": "meme"`, kit2d/memes.py)
 Regra do canal: o meme é a ESTRUTURA redesenhada (painéis, rótulos, nossos personagens). Nunca a foto original de meme famoso, nunca pessoa real.
 Use `x` 0,5 e `y` 0,335 com `escala` 1: a caixa (900 x 900) fica entre y 0,10 e 0,57, fora da legenda. Textos nunca ficam abaixo de 48 px (quebram linha).

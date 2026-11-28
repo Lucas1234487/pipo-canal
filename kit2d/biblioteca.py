@@ -740,6 +740,14 @@ def _bicho(ctx, st, t, pal, seed):   # bichos (pombo, gato, vaca, galinha, caval
 DESENHOS["bicho"] = _bicho
 
 
+def _icone(ctx, st, t, pal, seed):   # ícones soltos (joinha, churrasqueira, macaco, Y de parentesco): kit2d/icones.py
+    import icones
+    return icones.desenha_icone(ctx, st, t, pal, seed)
+
+
+DESENHOS["icone"] = _icone
+
+
 # ============================ CENÁRIOS ============================
 def cenario(ctx, nome, pal, t, opts, seed=1):
     if C2.tem(nome):   # cenários em camadas (kit2d/cenarios2.py)
