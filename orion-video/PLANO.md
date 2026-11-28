@@ -52,6 +52,9 @@
 | Esforço | baixo | médio (2–3 sessões) | médio-alto |
 Recomendo o 2: chega na sua meta de 10–12% e mantém os portões. Mudaria de ideia se a bancada mostrar o Sonnet reprovando 2x mais no QA, ou se a medição mostrar que o 2 ainda passa de 12%.
 
+## 4b. Melhora contínua e dados continuam (pedido do Lucas)
+Nada disso some; só fica mais barato: coleta de métricas e dados.py viram script (zero modelo); análise semanal e mensal seguem, com o Gemini fazendo a pesquisa ampla e o Opus só decidindo as mudanças; carteira seguro/ousado/evolução, 5 perguntas, detector de estagnação e "tudo vira dado" ficam iguais. Ganho extra: o custo de cada vídeo passa a ser dado também (para saber o que rende mais por % de uso).
+
 ## 5. Implementação (cada etapa reversível)
 1. **Emergência (agora, com seu OK):** vigia passa a 1x/dia (20:23) no Sonnet; produção sem paralelismo e com O2+O3+O4 num agente Sonnet (o "modo enxuto A" que o Diretor já propôs). Reverter = voltar o prompt.
 2. `ESTADO.md` por script + posse curta (só ESTADO + spec do papel). Teste: posse < 5 mil tokens.
