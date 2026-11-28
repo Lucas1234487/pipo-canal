@@ -48,6 +48,7 @@ lay = json.load(open(f"{WORK}/layout_{lang}.json")) if os.path.exists(f"{WORK}/l
 if not lay:
     FAIL.append(f"layout_{lang}.json ausente: rode o compose antes")
 bad_overlap, bad_safe, bad_multi, bad_3d = [], [], [], []
+bad_pipo_leg, bad_pipo_borda = [], []
 boxes3d = scene.get("boxes", {}) if scene else {}  # ep multi-cena: o foco fora da faixa de legenda vem em scene["foco"]
 for fr, L in lay.items():
     cap = L.get("legenda"); pills = L.get("pilulas", [])
@@ -68,8 +69,17 @@ for fr, L in lay.items():
                 fa = (face[2] - face[0]) * (face[3] - face[1])
                 if fa > 0 and inter(cap, face) / fa > 0.3:
                     bad_3d.append(int(fr))
+                ba = (b[2] - b[0]) * (b[3] - b[1])   # QA-Claude 2x (ep015 borda, ep016 legenda): corpo da Pipo sob a legenda
+                if ba > 0 and inter(cap, b) / ba > 0.35:
+                    bad_pipo_leg.append(int(fr))
+# Pipo cortada na borda do quadro (QA-Claude ep015 28/11)
+for k, bx in boxes3d.items():
+    for name, b in bx.items():
+        if name.startswith("pipo") and b and (b[0] < -0.02 or b[2] > 1.02):
+            bad_pipo_borda.append(int(k))
 for lst, msg, hard in ((bad_overlap, "legenda sobreposta a pilula de texto", True), (bad_multi, "duas pilulas ao mesmo tempo", True),
-                       (bad_safe, "texto fora da zona segura", True), (bad_3d, "legenda cobrindo o rosto da Pipo", False)):
+                       (bad_safe, "texto fora da zona segura", True), (bad_3d, "legenda cobrindo o rosto da Pipo", False),
+                       (sorted(set(bad_pipo_leg)), "legenda cobrindo o corpo da Pipo (>35%)", True), (sorted(set(bad_pipo_borda)), "Pipo cortada na borda do quadro", True)):
     if lst:
         lst.sort()
         (FAIL if hard and len(lst) > 2 else WARN).append(f"{msg}: {len(lst)} quadros (ex.: {lst[:6]})")

@@ -1,7 +1,7 @@
-# ESTADO do PipoPop (gerado por kit/estado.py em 28/11 16:45; não editar)
+# ESTADO do PipoPop (gerado por kit/estado.py em 28/11 17:20; não editar)
 
 ## Agora
-- produzir: - · agendar: - · trava ativa: False · comentários pendentes: 29
+- produzir: - · agendar: - · trava ativa: False · comentários pendentes: 31
 
 ## Fila, últimos 7 dias (evite repetir tema)
 | pasta | tema | aposta | Gemini | QA-Claude | agendado |
@@ -13,6 +13,7 @@
 | 2026-11-26_H | animais com olhos pra frente: o cotidiano | ousado | 9.0 | APROVA | sim |
 | 2026-11-26_M | black_friday_preco_antes | seguro | 8.8 | APROVA | sim |
 | 2026-11-27_C | comida de fim de ano / ciência do panetone | evolucao | 8.0 | APROVA | sim |
+| 2026-11-28_C | de onde vem a poeira de casa | seguro | 8.6 | APROVA | sim |
 | 2026-11-28_H | olhos pra frente parte 2: dinossauros | evolucao | 8.4 | APROVA | sim |
 
 ## Pedidos do Lucas (prioridade)

@@ -1,0 +1,7 @@
+# Brief QA-Claude — ep016 (C, de onde vem a poeira de casa), vai ao ar sáb 28/11 21h13
+Você é o QA-Claude, revisor independente. Leia SÓ: /home/claude/pipo-canal/docs/sistema/specs/QA_claude.md e /home/claude/pipo-canal/docs/diretor/cadernos/QA_claude.md; depois revise o material.
+WORK = /home/claude/2026-11-28_C: upload.mp4 / final_pt.mp4, roteiro.json (falas aprovadas), fatos.md, meta.json, qa_report_pt.md, qa_sheet_pt.jpg, timing.json, avaliacao_gemini.md (Gemini deu 8,6; a passada de pronúncia listou falsos positivos de fonética normal, confira ouvindo os trechos citados; não confie nele: ele pegou pouco nos últimos vídeos).
+Foque: fala x cena (cada bicho/objeto nomeado aparece?), quadro 1 sem som (conflito legível), estouro da Pipo (~11,75 s em "fora") visível/audível e sem sobreposição, legenda x fala, textos da tela (português, cortes), fatos x fatos.md (exageros), título/descrição/comentário fixado x fala, Pipo encostando na legenda no último segundo e coberta pela poeira no estouro (o produtor avisou), quadros já extraídos em WORK/qa_quadros/, zona segura.
+Extraia quadros com ffmpeg em resolução cheia onde precisar (scratch em /tmp/claude-0/-home-claude-pipo-canal/f3d3302f-a926-5fc2-97fb-59333619fdce/scratchpad).
+Entrega: WORK/qa_claude.md com VEREDITO na 1ª linha (APROVA | CORRIGE | REPROVA), achados com segundo e correção exata sugerida (no máximo 8). 1 lição datada (até 3 linhas) no fim do caderno QA_claude.md. Não mexa em mais nada.
+Retorno: caminho + veredito + achados em até 10 linhas.

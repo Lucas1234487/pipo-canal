@@ -1,0 +1,30 @@
+{
+ "titulo": "De onde vem a poeira que volta todo dia? 🧹",
+ "descricao": "Você varre e a poeira volta? Um estudo de David Layton e Paloma Beamer (Environmental Science & Technology, 2009) estimou, com um modelo de computador, que, em casas do Meio-Oeste dos Estados Unidos, mais de 60% da poeira vem de fora: terra trazida na sola do sapato e partículas sopradas pela janela. O resto é uma mistura, com pele e fibras de roupa e de tapete. A dica: tapete e sapato do lado de fora da porta. #PipoPop #curiosidades #limpeza #faxina #casa",
+ "hashtags": [
+  "#PipoPop",
+  "#curiosidades",
+  "#limpeza",
+  "#faxina",
+  "#casa"
+ ],
+ "comentario_fixado": "Time sapato na porta ou time entra de sapato mesmo? 👟🚪",
+ "horario_sugerido": "2026-11-28 21:13",
+ "interacao": "fim_compartilhamento (quem entra de sapato) + fim_comentario dilema (sapato entra ou fica)",
+ "humor": "nenhum",
+ "experimentos": [],
+ "aposta": "seguro",
+ "tema": "de onde vem a poeira de casa",
+ "emocao": "identificação -> 'ahh, é isso'",
+ "reconhecivel": "mãe varrendo, poeira no móvel, sapato sujo",
+ "estilo_animacao": "2D kit2d: sala/cozinha, mãe com vassoura, prancheta com casa, estouro em halftone, sola de sapato, liquidificador, botões ENTRA/FICA NA PORTA",
+ "versao_pipo": "espiga/pipoca 2D v1",
+ "musica": "percussao (cinematic-percussion-loop) com silêncio antes do estouro",
+ "meme": "reacao triste",
+ "erro_proposital": "nenhum",
+ "foto_real": false,
+ "voz": "pt-BR-FranciscaNeural",
+ "duracao": 33.8,
+ "titulo_en": "Where does the dust that keeps coming back come from? 🧹",
+ "descricao_en": "You sweep and the dust comes back? A study by David Layton and Paloma Beamer (Environmental Science & Technology, 2009) estimated with a computer model that over 60% of house dust comes from outdoors: soil tracked in on shoes and particles blown in through the window. The rest is skin, clothing and carpet fibers. Tip: leave the mat and shoes outside the door. #PipoPop #curiosidades #limpeza #faxina #casa"
+}

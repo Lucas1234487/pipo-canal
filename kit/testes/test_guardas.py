@@ -119,6 +119,29 @@ def test_quadro1_com_texto_passa():
     assert item(d, "quadro1") == "OK"
 
 
+def _qa_fake(boxes, cap):
+    d = tempfile.mkdtemp(prefix="qa_")
+    json.dump({"motor": "kit2d", "issues": [], "boxes": boxes}, open(os.path.join(d, "qa_scene.json"), "w"))
+    json.dump({str(k): {"legenda": cap, "pilulas": []} for k in boxes}, open(os.path.join(d, "layout_pt.json"), "w"))
+    r = subprocess.run([sys.executable, os.path.join(KIT, "qa_check.py"), d, "pt"], capture_output=True, text=True)
+    return open(os.path.join(d, "qa_report_pt.md")).read()
+
+
+def test_qa_pipo_cortada_na_borda_reprova():
+    rep = _qa_fake({str(i): {"pipo": [-0.08, 0.40, 0.20, 0.55]} for i in range(5)}, [0.2, 0.62, 0.8, 0.68])
+    assert "Pipo cortada na borda" in rep and "REPROVADO" in rep
+
+
+def test_qa_legenda_no_corpo_da_pipo_reprova():
+    rep = _qa_fake({str(i): {"pipo": [0.40, 0.56, 0.60, 0.70]} for i in range(5)}, [0.2, 0.60, 0.8, 0.68])
+    assert "corpo da Pipo" in rep and "REPROVADO" in rep
+
+
+def test_qa_pipo_ok_passa():
+    rep = _qa_fake({str(i): {"pipo": [0.40, 0.40, 0.60, 0.58]} for i in range(5)}, [0.2, 0.62, 0.8, 0.68])
+    assert "corpo da Pipo" not in rep and "borda" not in rep
+
+
 if __name__ == "__main__":
     fs = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     for f in fs:

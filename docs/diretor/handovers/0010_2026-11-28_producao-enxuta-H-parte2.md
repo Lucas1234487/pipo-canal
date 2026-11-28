@@ -23,3 +23,11 @@ Saiu 1 vídeo (ep015, H, série olhos pra frente parte 2, dinossauros) agendado 
 
 **1 lição:**
 Contar palavras antes de mandar o roteiro: 215 palavras na voz Antonio viraram 81 s. Para H, ~170 palavras com rate +10%.
+
+## Rodada extra (disparo manual das 15h17, pedido do Lucas: vídeo hoje)
+- O H (parte 2) já estava agendado às 19h06; não mexi. Produzi o C: ep016 "De onde vem a poeira que volta todo dia? 🧹" (aposta seguro, 33,8 s, voz Francisca), agendado às 21h13 (fora da tabela, horário pedido): YouTube Metricool 445781874, IG/FB Reel Buffer, stories 21h20.
+- Fato: estudo Layton e Beamer (ES&T 2009): mais de 60% da poeira de casa vem de fora (modelo, casas do Meio-Oeste). O Gemini --busca afirmou o contrário sem fonte; descartado após abrir as páginas.
+- Gemini 8,6 (pronúncia: falsos positivos de fonética normal). QA-Claude: CORRIGE (6 achados: quadro 1 sem poeira visível, estouro sob a voz, legenda na base da Pipo, MITO borrando, etiquetas sem contraste, fontes do mesmo comunicado) -> 1 rodada -> reconferência do Diretor -> APROVA com ressalva (poeira do quadro 1 ainda fraca; texto carrega o conflito). Pico 0,1 dBFS no upload: limitador aplicado pelo Diretor.
+- "Quadro 1 fraco no desenho" REINCIDIU (ep012, ep015, ep016): lição no caderno do O2. "Pipo na borda/legenda" 2x (ep015, ep016) virou checagem no qa_check.py (Pipo cortada na borda; legenda cobrindo >35% do corpo) com 3 testes (18 ok).
+- CUSTO da rodada: 1 produtor Sonnet novo (2 rodadas: produção + correção), 1 QA-Claude Sonnet novo, 1 retomada do web-fetch (fontes da poeira). Gemini: 1 texto com busca + 2 vídeos.
+- Hoje no ar: 19h06 H parte 2 e 21h13 C poeira. M de 27 e 28/11 não saiu.
